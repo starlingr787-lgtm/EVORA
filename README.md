@@ -9,6 +9,6 @@ A static marketing site for EVORA Studio, built with HTML, CSS, and JavaScript.
 
 ## Live site
 
-[Open EVORA Studio](https://evora-publish-g3h9efmoa-evora14.vercel.app/)
+[Open EVORA Studio](https://evora-publish.vercel.app/)
 
 The Vercel project is connected to this repository's `main` branch and deploys new commits automatically. No build step is required.
