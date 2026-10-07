@@ -1,0 +1,3576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f2eee7">
+<meta name="robots" content="index, follow">
+
+<title>EVORA Studio | Premium Websites &amp; Digital Experiences</title>
+<meta name="description" content="EVORA Studio creates custom websites and digital experiences for hospitality, beauty, lifestyle, product brands, and independent businesses.">
+<link rel="canonical" href="https://evora-publish-g3h9efmoa-evora14.vercel.app/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EVORA Studio">
+<meta property="og:url" content="https://evora-publish-g3h9efmoa-evora14.vercel.app/">
+<meta property="og:title" content="Digital experiences for brands with something to say | EVORA Studio">
+<meta property="og:description" content="A premium digital studio creating custom websites and digital experiences for hospitality, beauty, high-end cosmetics, lifestyle, product brands, and independent businesses.">
+<meta property="og:image" content="https://evora-publish-g3h9efmoa-evora14.vercel.app/assets/images/evora-hero.jpg">
+<meta property="og:image:alt" content="EVORA Studio — digital experiences for brands with something to say">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Digital experiences for brands with something to say | EVORA Studio">
+<meta name="twitter:description" content="Custom websites and digital experiences for hospitality, beauty, high-end cosmetics, lifestyle, product brands, and independent businesses.">
+<meta name="twitter:image" content="https://evora-publish-g3h9efmoa-evora14.vercel.app/assets/images/evora-hero.jpg">
+<meta name="twitter:image:alt" content="EVORA Studio — digital experiences for brands with something to say">
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "EVORA Studio",
+    "url": "https://evora-publish-g3h9efmoa-evora14.vercel.app/",
+    "email": "evoradigital@outlook.com",
+    "description": "A premium digital studio creating custom websites and digital experiences for hospitality, beauty, high-end cosmetics, lifestyle, product brands, and independent businesses.",
+    "serviceType": [
+        "Website design and development",
+        "Digital experiences"
+    ]
+}
+</script>
+
+<style>
+
+/* =========================================
+   EVORA — GLOBAL
+========================================= */
+
+:root {
+    --cream: #f2eee7;
+    --cream-dark: #e8e0d5;
+    --white: #faf8f4;
+    --black: #161412;
+    --grey: #6c655e;
+
+    --wine: #74313e;
+    --wine-light: #8b4a56;
+
+    --line: rgba(20, 18, 16, 0.15);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#work,
+#contact {
+    scroll-margin-top: 20px;
+}
+
+@media (max-width: 800px) {
+    #work,
+    #contact {
+        scroll-margin-top: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html,
+    body,
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--black);
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+.serif {
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+header {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 100;
+
+    padding: 18px 3vw;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: white;
+
+    mix-blend-mode: difference;
+}
+
+.logo {
+
+    font-family: Georgia, serif;
+
+    font-size: 24px;
+
+    letter-spacing: -0.03em;
+}
+
+nav {
+
+    display: flex;
+
+    gap: 28px;
+
+    font-size: 11px;
+}
+
+nav a {
+    transition: opacity .25s ease;
+}
+
+nav a:hover {
+    opacity: .68;
+}
+
+.nav-cta {
+
+    border: 1px solid currentColor;
+
+    border-radius: 999px;
+
+    padding: 10px 17px;
+
+    font-size: 10px;
+
+    transition: .3s, background-color .3s;
+}
+
+.nav-cta:hover {
+
+    transform: translateY(-2px);
+    background: rgba(255,255,255,.08);
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+
+    height: 100svh;
+
+    min-height: 700px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    padding:
+
+        110px
+        3vw
+        4vw;
+
+    color: white;
+
+    background: #17120f;
+}
+
+.hero-bg {
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+
+        linear-gradient(
+            90deg,
+            rgba(20, 14, 11, .72) 0%,
+            rgba(20, 14, 11, .25) 55%,
+            rgba(20, 14, 11, .05) 100%
+        ),
+
+        url("assets/images/evora-hero.jpg");
+
+    background-size: cover;
+
+    background-position: center 25%;
+
+    transform: scale(1.05);
+
+    animation:
+        heroMove
+        15s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+@keyframes heroMove {
+
+    to {
+
+        transform:
+
+            scale(1.12)
+
+            translateX(-1.5%);
+    }
+}
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 1200px;
+}
+
+.eyebrow {
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .2em;
+}
+
+.evora-title {
+
+    display: flex;
+
+    font-family:
+
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+
+        clamp(
+            100px,
+            17vw,
+            260px
+        );
+
+    letter-spacing: -.085em;
+
+    line-height: .7;
+
+    margin-top: 25px;
+}
+
+.evora-title span {
+
+    display: inline-block;
+
+    transition:
+
+        transform
+        .8s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+.hero-subtitle {
+
+    font-family: Georgia, serif;
+
+    font-size:
+
+        clamp(
+            28px,
+            3.4vw,
+            54px
+        );
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    max-width: 760px;
+
+    margin:
+
+        35px
+        0
+        15px;
+}
+
+.hero-description {
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    max-width: 510px;
+
+    color:
+
+        rgba(
+            255,
+            255,
+            255,
+            .8
+        );
+}
+
+
+/* =========================================
+   MOVING TEXT
+========================================= */
+
+.ticker {
+
+    overflow: hidden;
+
+    border-bottom:
+
+        1px solid
+        var(--line);
+
+    background:
+
+        var(--cream-dark);
+}
+
+.ticker-track {
+
+    display: flex;
+
+    width: max-content;
+
+    gap: 40px;
+
+    padding: 14px 0;
+
+    animation:
+
+        ticker
+        24s
+        linear
+        infinite;
+
+    font-size: 10px;
+
+    letter-spacing: .17em;
+
+    text-transform: uppercase;
+}
+
+.ticker-track span::after {
+
+    content: " ●";
+
+    color: var(--wine);
+
+    margin-left: 40px;
+}
+
+@keyframes ticker {
+
+    to {
+
+        transform:
+
+            translateX(-50%);
+    }
+}
+
+
+/* =========================================
+   EXPERIENCE INTRO
+========================================= */
+
+.experiences {
+
+    padding:
+
+        55px
+        0
+        65px;
+}
+
+.section-intro {
+
+    padding:
+
+        0
+        3vw
+        30px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+}
+
+.section-intro h2 {
+
+    margin: 0;
+
+    font-family: Georgia, serif;
+
+    font-size:
+
+        clamp(
+            50px,
+            6vw,
+            92px
+        );
+
+    font-weight: 400;
+
+    line-height: .95;
+}
+
+.section-intro p {
+
+    max-width: 360px;
+
+    margin: 0;
+
+    color: var(--grey);
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   MOVING GALLERY
+========================================= */
+
+.gallery-window {
+
+    overflow: hidden;
+}
+
+.gallery-window:focus-visible {
+
+    outline: 2px solid var(--wine);
+
+    outline-offset: 4px;
+}
+
+.gallery-window:focus {
+
+    overflow-x: auto;
+}
+
+.gallery-track {
+
+    width: max-content;
+
+    display: flex;
+
+    gap: 12px;
+
+    padding-left: 3vw;
+
+    animation:
+
+        galleryMove
+        40s
+        linear
+        infinite;
+}
+
+.gallery-window:hover .gallery-track,
+.gallery-window:focus .gallery-track {
+
+    animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .gallery-window {
+
+        overflow-x: auto;
+    }
+}
+
+@keyframes galleryMove {
+
+    to {
+
+        transform:
+
+            translateX(-50%);
+    }
+}
+
+.gallery-card {
+
+    width:
+
+        min(
+            35vw,
+            480px
+        );
+
+    height: 570px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background: #aaa;
+}
+
+.gallery-card img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    filter:
+
+        saturate(.78)
+        contrast(.96);
+
+    transition:
+
+        transform .8s ease,
+        filter .8s ease;
+}
+
+.gallery-card:hover img {
+
+    transform:
+
+        scale(1.05);
+
+    filter:
+
+        saturate(1);
+}
+
+.gallery-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        linear-gradient(
+            transparent 40%,
+            rgba(0,0,0,.72)
+        );
+}
+
+.gallery-info {
+
+    position: absolute;
+
+    z-index: 3;
+
+    bottom: 22px;
+
+    left: 22px;
+
+    right: 22px;
+
+    color: white;
+}
+
+.gallery-info small {
+
+    font-size: 9px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .18em;
+
+    opacity: .8;
+}
+
+.gallery-info h3 {
+
+    font-family:
+
+        Georgia,
+        serif;
+
+    font-size: 34px;
+
+    font-weight: 400;
+
+    margin:
+
+        7px
+        0;
+}
+
+.gallery-info p {
+
+    margin: 0;
+
+    font-size: 11px;
+
+    opacity: .88;
+}
+
+
+/* =========================================
+   MANIFESTO
+========================================= */
+
+.manifesto {
+
+    display: grid;
+
+    grid-template-columns:
+
+        .9fr
+        1.1fr;
+
+    min-height: 760px;
+
+    background: var(--white);
+
+    border-top:
+
+        1px solid
+        var(--line);
+
+    border-bottom:
+
+        1px solid
+        var(--line);
+}
+
+.manifesto-copy {
+
+    padding:
+
+        7vw
+        3vw;
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-direction: column;
+}
+
+.manifesto-copy h2 {
+
+    font-family:
+
+        Georgia,
+        serif;
+
+    font-size:
+
+        clamp(
+            55px,
+            6.4vw,
+            100px
+        );
+
+    line-height: .9;
+
+    font-weight: 400;
+
+    margin:
+
+        20px
+        0;
+}
+
+.manifesto-copy .lead {
+
+    font-family: Georgia, serif;
+
+    font-size: 25px;
+
+    max-width: 470px;
+}
+
+.manifesto-copy .body {
+
+    max-width: 480px;
+
+    line-height: 1.5;
+
+    font-size: 13px;
+
+    color: var(--grey);
+}
+
+.manifesto-image {
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.manifesto-image img {
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.note {
+
+    position: absolute;
+
+    top: 9%;
+
+    right: 7%;
+
+    padding: 15px 18px;
+
+    background: var(--white);
+
+    font-family:
+
+        Georgia,
+        serif;
+
+    font-size: 19px;
+
+    font-style: italic;
+
+    transform:
+
+        rotate(3deg);
+}
+
+
+/* =========================================
+   FEATURED PROJECT
+========================================= */
+
+.featured {
+
+    padding:
+
+        65px
+        3vw;
+
+    background:
+
+        var(--black);
+
+    color: white;
+}
+
+.featured-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 35px;
+}
+
+.featured-project {
+
+    display: grid;
+
+    grid-template-columns:
+
+        .85fr
+        1.15fr;
+
+    gap: 5vw;
+
+    align-items: center;
+}
+
+.featured-copy h2 {
+
+    font-family:
+
+        Georgia,
+        serif;
+
+    font-size:
+
+        clamp(
+            55px,
+            6vw,
+            94px
+        );
+
+    line-height: .9;
+
+    font-weight: 400;
+
+    margin:
+
+        18px
+        0;
+}
+
+.featured-copy p {
+
+    color: #c9c2bb;
+
+    line-height: 1.5;
+
+    font-size: 13px;
+
+    max-width: 450px;
+}
+
+.featured-image {
+
+    position: relative;
+
+    height: 680px;
+
+    overflow: hidden;
+}
+
+.featured-image > img {
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.featured-image > .featured-detail-image {
+
+    position: absolute;
+
+    width: 30%;
+
+    height: auto;
+
+    aspect-ratio: 4 / 5;
+
+    object-fit: cover;
+
+    right: 5%;
+
+    bottom: 5%;
+
+    border: 1px solid rgba(255,255,255,.55);
+
+    border-radius: 2px;
+
+    box-shadow:
+
+        0
+        20px
+        70px
+        rgba(0,0,0,.55);
+
+    transform:
+
+        rotate(2deg);
+}
+
+
+/* =========================================
+   LIVE EXPERIENCES
+========================================= */
+
+.live {
+
+    padding:
+
+        65px
+        3vw;
+
+    background:
+
+        var(--cream-dark);
+}
+
+.live-intro {
+
+    display: grid;
+
+    grid-template-columns:
+
+        1fr
+        .6fr;
+
+    gap: 5vw;
+
+    align-items: flex-end;
+
+    margin-bottom: 35px;
+}
+
+.live-intro h2 {
+
+    margin: 0;
+
+    font-family: Georgia, serif;
+
+    font-size:
+
+        clamp(
+            55px,
+            6vw,
+            94px
+        );
+
+    font-weight: 400;
+
+    line-height: .9;
+}
+
+.live-intro p {
+
+    color: var(--grey);
+
+    line-height: 1.5;
+
+    font-size: 13px;
+}
+
+.demo-grid {
+
+    display: grid;
+
+    grid-template-columns:
+
+        repeat(
+            4,
+            1fr
+        );
+
+    gap: 10px;
+}
+
+.demo {
+
+    background: white;
+
+    border:
+
+        1px solid
+        var(--line);
+
+    overflow: hidden;
+}
+
+.demo-image {
+
+    height: 310px;
+
+    overflow: hidden;
+}
+
+.demo-image img {
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+
+        transform
+        .7s ease;
+}
+
+.demo:hover img {
+
+    transform:
+
+        scale(1.06);
+}
+
+.demo-text {
+
+    padding: 17px;
+}
+
+.demo-text h3 {
+
+    margin: 0;
+
+    font-family: Georgia, serif;
+
+    font-weight: 400;
+
+    font-size: 24px;
+
+}
+
+.demo-text small {
+
+    display: block;
+
+    margin-top: 10px;
+
+    color: var(--grey);
+}
+
+
+/* =========================================
+   SERVICES
+========================================= */
+
+.services {
+
+    padding:
+
+        70px
+        3vw;
+
+    background: var(--white);
+}
+
+.services-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    margin-bottom: 30px;
+}
+
+.services-header h2 {
+
+    font-family: Georgia, serif;
+
+    font-size:
+
+        clamp(
+            50px,
+            5.5vw,
+            85px
+        );
+
+    margin: 0;
+
+    font-weight: 400;
+}
+
+.services-header p {
+
+    max-width: 360px;
+
+    color: var(--grey);
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+.service-grid {
+
+    display: grid;
+
+    grid-template-columns:
+
+        repeat(
+            4,
+            1fr
+        );
+
+    border-top:
+
+        1px solid
+        var(--line);
+}
+
+.service {
+
+    padding:
+
+        25px
+        20px
+        30px
+        0;
+
+    border-right:
+
+        1px solid
+        var(--line);
+}
+
+.service:not(:first-child) {
+
+    padding-left: 20px;
+}
+
+.service:last-child {
+    border-right: 0;
+}
+
+.service-number {
+
+    color: var(--wine);
+
+    font-size: 10px;
+}
+
+.service h3 {
+
+    margin:
+
+        55px
+        0
+        12px;
+
+    font-family: Georgia, serif;
+
+    font-weight: 400;
+
+    font-size: 27px;
+}
+
+.service p {
+
+    color: var(--grey);
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   WINE CTA
+========================================= */
+
+.contact-section {
+
+    padding:
+
+        0
+        3vw
+        65px;
+
+    background: var(--white);
+}
+
+.contact-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding:
+
+        55px
+        4vw;
+
+    background:
+
+        linear-gradient(
+            110deg,
+            #642934,
+            #773541 60%,
+            #87505a
+        );
+
+    color: #f8efeb;
+
+    display: grid;
+
+    grid-template-columns:
+
+        1.1fr
+        .9fr;
+
+    gap: 6vw;
+
+    align-items: center;
+}
+
+.contact-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+
+    height: 600px;
+
+    border:
+
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius: 50%;
+
+    right: -300px;
+
+    top: -400px;
+}
+
+.contact-card h2 {
+
+    font-family:
+
+        Georgia,
+        serif;
+
+    font-size:
+
+        clamp(
+            42px,
+            4.5vw,
+            70px
+        );
+
+    line-height: .95;
+
+    font-weight: 400;
+
+    margin:
+
+        12px
+        0;
+}
+
+.contact-card p {
+
+    font-size: 13px;
+
+    color: #ead9d5;
+
+    line-height: 1.5;
+}
+
+.email-form {
+
+    position: relative;
+
+    z-index: 3;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+.email-form label {
+
+    display: grid;
+
+    gap: 6px;
+
+    color: #f8efeb;
+
+    font-size: 11px;
+}
+
+.email-form .message-field,
+.email-form .form-status {
+
+    grid-column: 1 / -1;
+}
+
+.email-form input,
+.email-form textarea {
+
+    width: 100%;
+
+    padding:
+
+        12px
+        15px;
+
+    border-radius: 8px;
+
+    border:
+
+        1px solid
+        rgba(255,255,255,.55);
+
+    background:
+
+        rgba(255,255,255,.05);
+
+    color: white;
+
+    outline: none;
+
+    font: inherit;
+}
+
+.email-form textarea {
+
+    min-height: 72px;
+
+    resize: vertical;
+}
+
+.email-form input::placeholder,
+.email-form textarea::placeholder {
+
+    color: #dfc9c4;
+}
+
+.email-form button {
+
+    padding:
+
+        15px
+        20px;
+
+    border: none;
+
+    border-radius: 999px;
+
+    cursor: pointer;
+
+    background:
+
+        #f3e7e1;
+
+    color:
+
+        var(--wine);
+
+    justify-self: start;
+
+    transition:
+        background-color .25s ease,
+        transform .25s ease;
+}
+
+.email-form button:hover:not(:disabled) {
+    background: white;
+    transform: translateY(-2px);
+}
+
+.email-form button:disabled {
+
+    cursor: wait;
+
+    opacity: .75;
+}
+
+.email-form .form-status {
+
+    margin: 0;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+.email-form .form-status[data-state="error"] {
+
+    color: #ffe0d9;
+}
+
+.email-form .form-status[data-state="success"] {
+
+    color: #e5f2df;
+}
+
+.email-form .form-status[data-state="loading"] {
+
+    color: #f8efeb;
+}
+
+
+/* =========================================
+   CONNECTION
+========================================= */
+
+.connection {
+
+    padding:
+
+        70px
+        3vw;
+
+    background:
+
+        var(--black);
+
+    color: white;
+}
+
+.connection-header {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+}
+
+.connection-header h2 {
+
+    margin: 0;
+
+    font-family: Georgia, serif;
+
+    font-size:
+
+        clamp(
+            52px,
+            6vw,
+            90px
+        );
+
+    font-weight: 400;
+
+    line-height: .9;
+
+    max-width: 940px;
+}
+
+.connection-header p {
+
+    max-width: 330px;
+
+    color: #aaa29b;
+
+    line-height: 1.5;
+
+    font-size: 12px;
+}
+
+.connection-grid {
+
+    display: grid;
+
+    grid-template-columns:
+
+        repeat(
+            4,
+            1fr
+        );
+
+    gap: 7px;
+
+    margin-top: 40px;
+}
+
+.connection-item {
+
+    height: 260px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.connection-item img {
+
+    height: 100%;
+
+    object-fit: cover;
+
+    filter:
+
+        saturate(.55)
+        brightness(.74);
+
+    transition:
+
+        transform .7s,
+        filter .7s;
+}
+
+.connection-item:hover img {
+
+    transform:
+
+        scale(1.05);
+
+    filter:
+
+        saturate(.9)
+        brightness(.9);
+}
+
+.connection-item span {
+
+    position: absolute;
+
+    z-index: 2;
+
+    top: 12px;
+
+    left: 12px;
+
+    font-size: 9px;
+
+    letter-spacing: .15em;
+}
+
+
+/* =========================================
+   PROCESS
+========================================= */
+
+.process {
+
+    padding:
+
+        65px
+        3vw;
+
+    background: var(--cream);
+}
+
+.process-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    margin-bottom: 30px;
+}
+
+.process-header h2 {
+
+    font-family: Georgia, serif;
+
+    font-size:
+
+        clamp(
+            45px,
+            5vw,
+            76px
+        );
+
+    font-weight: 400;
+
+    margin: 0;
+}
+
+.process-grid {
+
+    display: grid;
+
+    grid-template-columns:
+
+        repeat(
+            4,
+            1fr
+        );
+
+    border-top:
+
+        1px solid
+        var(--line);
+}
+
+.step {
+
+    padding:
+
+        25px
+        20px
+        20px
+        0;
+
+    border-right:
+
+        1px solid
+        var(--line);
+}
+
+.step:not(:first-child) {
+
+    padding-left: 20px;
+}
+
+.step:last-child {
+    border-right: 0;
+}
+
+.step small {
+
+    color: var(--wine);
+}
+
+.step h3 {
+
+    font-family: Georgia, serif;
+
+    font-weight: 400;
+
+    font-size: 25px;
+
+    margin:
+
+        25px
+        0
+        8px;
+}
+
+.step p {
+
+    color: var(--grey);
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   FINAL
+========================================= */
+
+.final {
+
+    height: 82vh;
+
+    min-height: 650px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    padding:
+
+        60px
+        3vw;
+
+    overflow: hidden;
+
+    color: white;
+}
+
+.final img {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    filter:
+
+        brightness(.5)
+        saturate(.7);
+}
+
+.final::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.7),
+            rgba(0,0,0,.05)
+        );
+}
+
+.final-copy {
+
+    position: relative;
+
+    z-index: 3;
+}
+
+.final h2 {
+
+    margin:
+
+        10px
+        0
+        20px;
+
+    font-family: Georgia, serif;
+
+    font-size:
+
+        clamp(
+            65px,
+            8vw,
+            125px
+        );
+
+    font-weight: 400;
+
+    line-height: .85;
+}
+
+
+/* =========================================
+   SCROLL ANIMATION
+========================================= */
+
+.reveal {
+
+    opacity: 0;
+
+    transform:
+
+        translateY(25px);
+
+    transition:
+
+        opacity .9s ease,
+        transform .9s ease;
+}
+
+.reveal.visible {
+
+    opacity: 1;
+
+    transform: none;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width: 800px) {
+
+    header {
+
+        padding:
+
+            8px
+            16px;
+    }
+
+    nav {
+
+        display: none;
+    }
+
+    .nav-cta {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero {
+
+        min-height: 90svh;
+
+        padding:
+
+            100px
+            16px
+            30px;
+    }
+
+    .hero-bg {
+
+        background-position:
+
+            55%
+            center;
+    }
+
+    .evora-title {
+
+        font-size: 28vw;
+    }
+
+    .hero-subtitle {
+
+        font-size: 31px;
+    }
+
+    .section-intro {
+
+        display: block;
+
+        padding:
+
+            0
+            16px
+            25px;
+    }
+
+    .experiences {
+        padding-top: 64px;
+    }
+
+    .section-intro p {
+
+        margin-top: 15px;
+    }
+
+    .gallery-track {
+
+        padding-left: 16px;
+    }
+
+    .gallery-card {
+
+        width: 78vw;
+
+        height: 520px;
+    }
+
+    .manifesto {
+
+        grid-template-columns: 1fr;
+
+        min-height: auto;
+    }
+
+    .manifesto-copy {
+
+        padding:
+
+            64px
+            16px
+            48px;
+    }
+
+    .manifesto-image {
+
+        height: min(120vw, 480px);
+    }
+
+    .featured {
+
+        padding:
+
+            60px
+            16px;
+    }
+
+    .featured-project {
+
+        grid-template-columns: 1fr;
+    }
+
+    .featured-copy h2 {
+        font-size: clamp(42px, 12vw, 52px);
+        line-height: .95;
+    }
+
+    .featured-image {
+
+        height: min(125vw, 500px);
+    }
+
+    .live {
+
+        padding:
+
+            60px
+            16px;
+    }
+
+    .live-intro {
+
+        grid-template-columns: 1fr;
+    }
+
+    .demo-grid {
+
+        grid-template-columns:
+
+            1fr
+            1fr;
+    }
+
+    .demo-image {
+
+        height: 230px;
+    }
+
+    .services {
+
+        padding:
+
+            60px
+            16px;
+    }
+
+    .services-header {
+
+        display: block;
+    }
+
+    .service-grid {
+
+        grid-template-columns:
+
+            1fr
+            1fr;
+    }
+
+    .contact-section {
+
+        padding:
+
+            0
+            16px
+            50px;
+    }
+
+    .contact-card {
+
+        grid-template-columns: 1fr;
+
+        padding:
+
+            64px
+            22px;
+    }
+
+    .email-form {
+
+        grid-template-columns: 1fr;
+    }
+
+    .connection {
+
+        padding:
+
+            60px
+            16px;
+    }
+
+    .connection-header {
+
+        display: block;
+    }
+
+    .connection-grid {
+
+        grid-template-columns:
+
+            1fr
+            1fr;
+    }
+
+    .connection-item {
+
+        height: 190px;
+    }
+
+    .process {
+
+        padding:
+
+            60px
+            16px;
+    }
+
+    .process-grid {
+
+        grid-template-columns:
+
+            1fr
+            1fr;
+    }
+
+    .service:nth-child(2n),
+    .step:nth-child(2n) {
+        border-right: 0;
+    }
+
+    .final {
+
+        padding:
+
+            45px
+            16px;
+    }
+
+    .final h2 {
+
+        font-size: 16vw;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     NAVIGATION
+===================================== -->
+
+<header>
+
+<a href="#studio" class="logo">
+EVORA
+</a>
+
+<nav>
+
+<a href="#work">
+Work
+</a>
+
+<a href="#services">
+Services
+</a>
+
+<a href="#studio">
+Studio
+</a>
+
+<a href="#contact">
+Contact
+</a>
+
+</nav>
+
+<a href="#contact" class="nav-cta">
+Start a Project →
+</a>
+
+</header>
+
+<main>
+
+
+<!-- =====================================
+     HERO
+===================================== -->
+
+<section class="hero" id="studio">
+
+<div class="hero-bg"></div>
+
+<div class="hero-content">
+
+<div class="eyebrow">
+
+Digital Studio · Madrid / Worldwide
+
+</div>
+
+
+<div class="evora-title" id="evoraTitle">
+
+<span>E</span>
+<span>V</span>
+<span>O</span>
+<span>R</span>
+<span>A</span>
+
+</div>
+
+
+<h1 class="hero-subtitle">
+
+Digital experiences
+for brands with
+something to say.
+
+</h1>
+
+
+<p class="hero-description">
+
+We turn what makes a business
+worth choosing into an experience
+people can see, feel and remember.
+
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     TICKER
+===================================== -->
+
+<div class="ticker">
+
+<div class="ticker-track">
+
+<span>Patisserie</span>
+
+<span>Beauty</span>
+
+<span>High-End Cosmetics</span>
+
+<span>Product</span>
+
+<span>Culture</span>
+
+<span>Digital Experiences</span>
+
+<span>Patisserie</span>
+
+<span>Beauty</span>
+
+<span>High-End Cosmetics</span>
+
+<span>Product</span>
+
+<span>Culture</span>
+
+<span>Digital Experiences</span>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================
+     EXPERIENCES
+===================================== -->
+
+<section class="experiences" id="work">
+
+<div class="section-intro reveal">
+
+<h2>
+
+Selected
+concepts.
+
+</h2>
+
+<p>
+
+Digital worlds shaped around the character
+of the people and places behind them.
+
+</p>
+
+</div>
+
+
+<div
+class="gallery-window"
+tabindex="0"
+aria-label="Selected experiences">
+
+<div class="gallery-track">
+
+
+<!-- Patisserie -->
+
+<article class="gallery-card">
+
+<img
+src="assets/images/patisserie-feature.jpg"
+decoding="async"
+alt="Boutique patisserie">
+
+<div class="gallery-info">
+
+<small>
+
+01 / Patisserie
+
+</small>
+
+<h3>
+
+Desserts worth desiring.
+
+</h3>
+
+<p>
+
+Patisserie · pastries · boutique dessert shop
+
+</p>
+
+</div>
+
+</article>
+
+
+<!-- Beauty -->
+
+<article class="gallery-card">
+
+<img
+src="assets/images/beauty-experience.jpg"
+decoding="async"
+alt="Beauty experience">
+
+<div class="gallery-info">
+
+<small>
+
+02 / Beauty
+
+</small>
+
+<h3>
+
+Products you can almost feel.
+
+</h3>
+
+<p>
+
+Beauty · wellness · skincare
+
+</p>
+
+</div>
+
+</article>
+
+
+<!-- High-End Cosmetics -->
+
+<article class="gallery-card">
+
+<img
+src="assets/images/luxury-cosmetics.jpg"
+decoding="async"
+alt="Luxury cosmetics">
+
+<div class="gallery-info">
+
+<small>
+
+03 / High-End Cosmetics
+
+</small>
+
+<h3>
+
+Beauty worth looking closer at.
+
+</h3>
+
+<p>
+
+Luxury cosmetics · skincare · premium beauty
+
+</p>
+
+</div>
+
+</article>
+
+
+<!-- Product -->
+
+<article class="gallery-card">
+
+<img
+src="assets/images/product-experience.jpg"
+decoding="async"
+alt="Product experience">
+
+<div class="gallery-info">
+
+<small>
+
+04 / Product
+
+</small>
+
+<h3>
+
+Designed to be desired.
+
+</h3>
+
+<p>
+
+Ecommerce · launches · products
+
+</p>
+
+</div>
+
+</article>
+
+
+<!-- Repeat for smooth movement -->
+
+<article class="gallery-card">
+
+<img
+src="assets/images/patisserie-feature.jpg"
+decoding="async"
+alt="Boutique patisserie">
+
+<div class="gallery-info">
+
+<small>
+
+01 / Patisserie
+
+</small>
+
+<h3>
+
+Desserts worth desiring.
+
+</h3>
+
+<p>
+
+Patisserie · pastries · boutique dessert shop
+
+</p>
+
+</div>
+
+</article>
+
+
+<article class="gallery-card">
+
+<img
+src="assets/images/beauty-experience.jpg"
+decoding="async"
+alt="Beauty">
+
+<div class="gallery-info">
+
+<small>
+
+02 / Beauty
+
+</small>
+
+<h3>
+
+Products you can almost feel.
+
+</h3>
+
+<p>
+
+Beauty · wellness · skincare
+
+</p>
+
+</div>
+
+</article>
+
+
+<article class="gallery-card">
+
+<img
+src="assets/images/luxury-cosmetics.jpg"
+decoding="async"
+alt="High-end cosmetics">
+
+<div class="gallery-info">
+
+<small>
+
+03 / High-End Cosmetics
+
+</small>
+
+<h3>
+
+Beauty worth looking closer at.
+
+</h3>
+
+<p>
+
+Luxury cosmetics · skincare · premium beauty
+
+</p>
+
+</div>
+
+</article>
+
+
+<article class="gallery-card">
+
+<img
+src="assets/images/product-experience.jpg"
+decoding="async"
+alt="Product">
+
+<div class="gallery-info">
+
+<small>
+
+04 / Product
+
+</small>
+
+<h3>
+
+Designed to be desired.
+
+</h3>
+
+<p>
+
+Ecommerce · launches · products
+
+</p>
+
+</div>
+
+</article>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     MANIFESTO
+===================================== -->
+
+<section class="manifesto">
+
+<div class="manifesto-copy reveal">
+
+<div
+class="eyebrow"
+style="color:#74313e;">
+
+What EVORA means
+
+</div>
+
+
+<h2>
+
+A good business
+already has
+a feeling.
+
+</h2>
+
+
+<p class="lead">
+
+Our job is to make sure
+it survives the screen.
+
+</p>
+
+
+<p class="body">
+
+We design digital experiences
+that translate what makes a business
+special into something people
+can see, understand and remember.
+
+</p>
+
+</div>
+
+
+<div class="manifesto-image">
+
+<img
+src="assets/images/patisserie-feature.jpg"
+loading="lazy"
+decoding="async"
+alt="Elegant patisserie">
+
+<div class="note">
+
+Same feeling.
+<br>
+New screen.
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     FEATURED PROJECT
+===================================== -->
+
+<section class="featured">
+
+<div class="featured-header">
+
+<div class="eyebrow">
+
+Patisserie · Digital Concept
+
+</div>
+
+<div class="eyebrow">
+
+Patisserie
+
+</div>
+
+</div>
+
+
+<div class="featured-project">
+
+<div class="featured-copy reveal">
+
+<div class="eyebrow">
+
+Digital Experience
+
+</div>
+
+
+<h2>
+
+A pastry shop
+that feels
+irresistible.
+
+</h2>
+
+
+<p>
+
+A digital concept for a high-end dessert shop, combining refined visual storytelling, signature pastries and an online experience that feels as polished as the products themselves.
+
+</p>
+
+</div>
+
+
+<div class="featured-image reveal">
+
+<img
+src="assets/images/luxury-patisserie.jpg"
+loading="lazy"
+decoding="async"
+alt="Luxury patisserie">
+
+<img
+class="featured-detail-image"
+src="assets/images/luxury-skincare-detail.jpg"
+loading="lazy"
+decoding="async"
+alt="Luxury skincare detail">
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+    CONCEPT APPLICATIONS
+===================================== -->
+
+<section class="live">
+
+<div class="live-intro reveal">
+
+<h2>
+
+From first glance
+to final detail.
+
+</h2>
+
+
+<p>
+
+Good digital work should
+be experienced, not simply
+displayed in a mockup.
+
+</p>
+
+</div>
+
+
+<div class="demo-grid">
+
+
+<article class="demo reveal">
+
+<div class="demo-image">
+
+<img
+src="assets/images/interactive-menu.jpg"
+loading="lazy"
+decoding="async"
+alt="Menu experience">
+
+</div>
+
+<div class="demo-text">
+
+<h3>
+
+Interactive Menu
+
+</h3>
+
+<small>
+
+Hospitality →
+
+</small>
+
+</div>
+
+</article>
+
+
+
+<article class="demo reveal">
+
+<div class="demo-image">
+
+<img
+src="assets/images/boutique-patisserie.jpg"
+loading="lazy"
+decoding="async"
+alt="Boutique patisserie">
+
+</div>
+
+<div class="demo-text">
+
+<h3>
+
+Boutique Patisserie
+
+</h3>
+
+<small>
+
+Pastries / Dessert Shop →
+
+</small>
+
+</div>
+
+</article>
+
+
+
+<article class="demo reveal">
+
+<div class="demo-image">
+
+<img
+src="assets/images/product-discovery.jpg"
+loading="lazy"
+decoding="async"
+alt="Product">
+
+</div>
+
+<div class="demo-text">
+
+<h3>
+
+Product Discovery
+
+</h3>
+
+<small>
+
+Beauty →
+
+</small>
+
+</div>
+
+</article>
+
+
+
+<article class="demo reveal">
+
+<div class="demo-image">
+
+<img
+src="assets/images/immersive-story.jpg"
+loading="lazy"
+decoding="async"
+alt="Storytelling">
+
+</div>
+
+<div class="demo-text">
+
+<h3>
+
+Immersive Story
+
+</h3>
+
+<small>
+
+Culture →
+
+</small>
+
+</div>
+
+</article>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     SERVICES
+===================================== -->
+
+<section class="services" id="services">
+
+<div class="services-header reveal">
+
+<h2>
+
+What we make.
+
+</h2>
+
+
+<p>
+
+Not every project needs
+the same thing.
+
+Sometimes it is a full website.
+Sometimes one digital moment
+needs to work much harder.
+
+</p>
+
+</div>
+
+
+<div class="service-grid">
+
+<div class="service reveal">
+
+<div class="service-number">
+
+01
+
+</div>
+
+<h3>
+
+Websites
+
+</h3>
+
+<p>
+
+Design, development
+and responsive experiences.
+
+</p>
+
+</div>
+
+
+<div class="service reveal">
+
+<div class="service-number">
+
+02
+
+</div>
+
+<h3>
+
+Digital Experiences
+
+</h3>
+
+<p>
+
+Interactive pages,
+menus, booking and
+product discovery.
+
+</p>
+
+</div>
+
+
+<div class="service reveal">
+
+<div class="service-number">
+
+03
+
+</div>
+
+<h3>
+
+Digital Identity
+
+</h3>
+
+<p>
+
+Typography,
+art direction,
+colour and systems.
+
+</p>
+
+</div>
+
+
+<div class="service reveal">
+
+<div class="service-number">
+
+04
+
+</div>
+
+<h3>
+
+Launch Pages
+
+</h3>
+
+<p>
+
+Products,
+openings,
+campaigns
+and special moments.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     EMAIL CTA
+===================================== -->
+
+<section
+class="contact-section"
+id="contact">
+
+<div class="contact-card">
+
+<div class="reveal">
+
+<div class="eyebrow">
+
+Start a conversation
+
+</div>
+
+
+<h2>
+
+Leave your email
+and let's talk
+about your project.
+
+</h2>
+
+
+<p>
+
+Give us somewhere to reach you.
+
+We'll take a look at your business
+and get in touch.
+
+</p>
+
+</div>
+
+
+<!-- FormSubmit: activate the recipient email before publishing. -->
+<form
+class="email-form"
+id="emailForm"
+action="https://formsubmit.co/evoradigital@outlook.com"
+method="POST"
+aria-describedby="emailFormStatus">
+
+<input type="hidden" name="_subject" value="EVORA — New project enquiry">
+<input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+
+<label>
+Your name <span>(optional)</span>
+<input
+type="text"
+name="name"
+autocomplete="name"
+maxlength="120"
+placeholder="Your name">
+</label>
+
+<label>
+Email address
+<input
+type="email"
+name="email"
+autocomplete="email"
+maxlength="254"
+placeholder="you@yourcompany.com"
+required>
+</label>
+
+<label class="message-field">
+Project or message <span>(optional)</span>
+<textarea
+name="message"
+autocomplete="off"
+maxlength="3000"
+placeholder="A little about what you have in mind"></textarea>
+</label>
+
+<button type="submit">
+Let's Talk →
+</button>
+
+<p
+class="form-status"
+id="emailFormStatus"
+role="status"
+aria-live="polite"
+aria-atomic="true"
+hidden></p>
+
+</form>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     CONNECTION
+===================================== -->
+
+<section class="connection">
+
+<div class="connection-header reveal">
+
+<h2>
+
+That space
+in between
+is where we work.
+
+</h2>
+
+
+<p>
+
+A real business.
+
+A screen.
+
+A person on the other side.
+
+EVORA connects them.
+
+</p>
+
+</div>
+
+
+<div class="connection-grid reveal">
+
+
+<div class="connection-item">
+
+<span>
+
+A BUSINESS
+
+</span>
+
+<img
+src="assets/images/patisserie-feature.jpg"
+loading="lazy"
+decoding="async"
+alt="Patisserie">
+
+</div>
+
+
+<div class="connection-item">
+
+<span>
+
+A SCREEN
+
+</span>
+
+<img
+src="assets/images/luxury-cosmetics.jpg"
+loading="lazy"
+decoding="async"
+alt="Luxury cosmetics">
+
+</div>
+
+
+<div class="connection-item">
+
+<span>
+
+A PERSON
+
+</span>
+
+<img
+src="assets/images/editorial-portrait.jpg"
+loading="lazy"
+decoding="async"
+alt="Editorial portrait">
+
+</div>
+
+
+<div class="connection-item">
+
+<span>
+
+A CONNECTION
+
+</span>
+
+<img
+src="assets/images/luxury-patisserie.jpg"
+loading="lazy"
+decoding="async"
+alt="Patisserie product detail">
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     PROCESS
+===================================== -->
+
+<section class="process">
+
+<div class="process-header reveal">
+
+<h2>
+
+From feeling
+to screen.
+
+</h2>
+
+<div class="eyebrow">
+
+How we work
+
+</div>
+
+</div>
+
+
+<div class="process-grid">
+
+
+<div class="step reveal">
+
+<small>
+
+01
+
+</small>
+
+<h3>
+
+Understand
+
+</h3>
+
+<p>
+
+We understand what
+makes the business
+worth choosing.
+
+</p>
+
+</div>
+
+
+<div class="step reveal">
+
+<small>
+
+02
+
+</small>
+
+<h3>
+
+Shape
+
+</h3>
+
+<p>
+
+We translate it
+into a visual
+digital direction.
+
+</p>
+
+</div>
+
+
+<div class="step reveal">
+
+<small>
+
+03
+
+</small>
+
+<h3>
+
+Build
+
+</h3>
+
+<p>
+
+Design, motion,
+development and
+functionality.
+
+</p>
+
+</div>
+
+
+<div class="step reveal">
+
+<small>
+
+04
+
+</small>
+
+<h3>
+
+Launch
+
+</h3>
+
+<p>
+
+We test,
+refine and put
+it into the world.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================
+     FINAL
+===================================== -->
+
+<section class="final">
+
+<img
+src="assets/images/evora-closing.jpg"
+loading="lazy"
+decoding="async"
+alt="EVORA closing image">
+
+
+<div class="final-copy reveal">
+
+<div class="eyebrow">
+
+EVORA STUDIO
+
+</div>
+
+
+<h2>
+
+Got something
+<br>
+worth noticing?
+
+</h2>
+
+
+<p>
+
+Let's make sure
+people notice it.
+
+</p>
+
+
+<a
+href="#contact"
+class="nav-cta">
+
+Start a Project →
+
+</a>
+
+</div>
+
+</section>
+
+
+ </main>
+
+
+
+<script>
+
+/* =========================================
+   EVORA LETTER MOVEMENT
+========================================= */
+
+const letters = [
+
+    ...document.querySelectorAll(
+        "#evoraTitle span"
+    )
+];
+
+window.addEventListener(
+
+    "pointermove",
+
+    event => {
+
+        if (
+            window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches
+        ) {
+            return;
+        }
+
+        const x =
+
+            event.clientX
+            /
+            window.innerWidth
+            -
+            .5;
+
+
+        const y =
+
+            event.clientY
+            /
+            window.innerHeight
+            -
+            .5;
+
+
+        letters.forEach(
+
+            (letter, index) => {
+
+                letter.style.transform =
+
+                    `translate(
+                        ${x * (index - 2) * 14}px,
+                        ${y * ((index % 2) ? 7 : -7)}px
+                    )
+
+                    rotate(
+                        ${x * (index - 2) * 1.4}deg
+                    )`;
+
+            }
+
+        );
+
+    }
+
+);
+/* =========================================
+   SCROLL REVEALS
+========================================= */
+
+const observer =
+
+new IntersectionObserver(
+
+    entries => {
+
+        entries.forEach(
+
+            entry => {
+
+                if(
+
+                    entry.isIntersecting
+
+                ) {
+
+                    entry.target
+                    .classList
+                    .add(
+                        "visible"
+                    );
+
+                }
+
+            }
+
+        );
+
+    },
+
+    {
+
+        threshold: .12
+
+    }
+
+);
+
+document
+.querySelectorAll(
+    ".reveal"
+)
+.forEach(
+
+    element => {
+
+        observer.observe(
+            element
+        );
+
+    }
+
+);
+
+/* =========================================
+   HERO SCROLL MOVEMENT
+========================================= */
+
+window.addEventListener(
+
+    "scroll",
+
+    () => {
+
+        if (
+            window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches
+        ) {
+            return;
+        }
+
+        const hero =
+
+            document
+            .querySelector(
+                ".hero-bg"
+            );
+
+
+        const scroll =
+
+            window.scrollY;
+
+
+        hero.style.transform =
+
+            `scale(
+                ${1.05 + Math.min(scroll / 9000, .07)}
+            )
+
+            translateY(
+                ${scroll * .05}px
+            )`;
+
+    }
+
+);
+
+
+/* =========================================
+   CONTACT FORM
+========================================= */
+
+const form = document.getElementById("emailForm");
+const formStatus = document.getElementById("emailFormStatus");
+const submitButton = form.querySelector('button[type="submit"]');
+const submitButtonLabel = submitButton.textContent.trim();
+
+function setFormStatus(state, message) {
+    formStatus.dataset.state = state;
+    formStatus.textContent = message;
+    formStatus.hidden = !message;
+}
+
+form.addEventListener("submit", async event => {
+    event.preventDefault();
+    if (submitButton.disabled || !form.reportValidity()) return;
+
+    const endpoint = new URL(form.action);
+    if (endpoint.origin !== "https://formsubmit.co" || endpoint.pathname === "/") {
+        setFormStatus("error", "Something went wrong. Please try again.");
+        return;
+    }
+
+    const payload = new FormData(form);
+    if (String(payload.get("_honey") || "").trim()) {
+        setFormStatus("error", "Something went wrong. Please try again.");
+        return;
+    }
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+    form.setAttribute("aria-busy", "true");
+    setFormStatus("loading", "Sending your enquiry...");
+
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 20000);
+
+    try {
+        const response = await fetch(endpoint.origin + "/ajax" + endpoint.pathname, {
+            method: "POST",
+            headers: { "Accept": "application/json" },
+            body: payload,
+            signal: controller.signal
+        });
+        if (!response.ok) throw new Error("Form service rejected the request.");
+        const result = await response.json();
+
+        // A first-use activation response is not a delivered enquiry.
+        const serviceMessage = String(result.message || "");
+        if (/activat|confirm.{0,30}email|verify.{0,30}email/i.test(serviceMessage)) {
+            setFormStatus("error", "This form is awaiting email activation. Please try again later.");
+            return;
+        }
+        if (result.success !== true && result.success !== "true") {
+            throw new Error("Form service did not confirm the submission.");
+        }
+
+        form.reset();
+        setFormStatus("success", "Thanks. We’ll be in touch.");
+    } catch (error) {
+        setFormStatus("error", "Something went wrong. Please try again.");
+    } finally {
+        clearTimeout(timeout);
+        submitButton.disabled = false;
+        submitButton.textContent = submitButtonLabel;
+        form.removeAttribute("aria-busy");
+    }
+});
+
+</script>
+
+
+</body>
+</html>
