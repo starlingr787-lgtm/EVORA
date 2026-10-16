@@ -15,13 +15,13 @@
 <meta property="og:url" content="https://evoracreative.com/">
 <meta property="og:title" content="Digital experiences for brands with something to say | EVORA Studio">
 <meta property="og:description" content="A premium digital studio creating custom websites and digital experiences for hospitality, beauty, high-end cosmetics, lifestyle, product brands, and independent businesses.">
-<meta property="og:image" content="https://evoracreative.com/assets/images/evora-hero.jpg">
+<meta property="og:image" content="https://evoracreative.com/assets/images/101581-video-1080-poster.jpg">
 <meta property="og:image:alt" content="EVORA Studio — digital experiences for brands with something to say">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Digital experiences for brands with something to say | EVORA Studio">
 <meta name="twitter:description" content="Custom websites and digital experiences for hospitality, beauty, high-end cosmetics, lifestyle, product brands, and independent businesses.">
-<meta name="twitter:image" content="https://evoracreative.com/assets/images/evora-hero.jpg">
+<meta name="twitter:image" content="https://evoracreative.com/assets/images/101581-video-1080-poster.jpg">
 <meta name="twitter:image:alt" content="EVORA Studio — digital experiences for brands with something to say">
 
 <script type="application/ld+json">
@@ -192,16 +192,23 @@ nav a:hover {
 
 
 /* =========================================
-   HERO
+   HERO — FULLSCREEN VIDEO
 ========================================= */
+
+/* One film fills the entire first screen on every device.
+   The vertical showreel is cropped naturally with
+   object-fit: cover, and the editorial copy is layered
+   directly on top of it. No split layout, no side panel. */
 
 .hero {
 
-    height: 100svh;
-
-    min-height: 700px;
-
     position: relative;
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    min-height: 100svh;
 
     overflow: hidden;
 
@@ -209,16 +216,44 @@ nav a:hover {
 
     align-items: flex-end;
 
-    padding:
-
-        110px
-        3vw
-        4vw;
-
     color: white;
 
     background: #17120f;
 }
+
+/* The film itself — absolute, full-bleed */
+
+.hero-media {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+}
+
+/* object-fit: cover lets the 9:16 showreel fill widescreen
+   viewports; object-position keeps the richest part of the
+   composition (florals, cake, candlelight) in frame. */
+
+.hero-video {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center 35%;
+
+    background: #17120f;
+}
+
+/* Cinematic scrim — a soft wash under the fixed nav,
+   a deep pool under the copy, and a gentle left weight
+   so the type always reads against the film. */
 
 .hero-bg {
 
@@ -226,41 +261,148 @@ nav a:hover {
 
     inset: 0;
 
-    background-image:
+    z-index: 1;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            rgba(18, 13, 11, .55) 0%,
+            rgba(18, 13, 11, 0) 24%
+        ),
+
+        linear-gradient(
+            0deg,
+            rgba(18, 13, 11, .74) 0%,
+            rgba(18, 13, 11, .34) 36%,
+            rgba(18, 13, 11, 0) 62%
+        ),
 
         linear-gradient(
             90deg,
-            rgba(20, 14, 11, .72) 0%,
-            rgba(20, 14, 11, .25) 55%,
-            rgba(20, 14, 11, .05) 100%
-        ),
+            rgba(18, 13, 11, .38) 0%,
+            rgba(18, 13, 11, .08) 42%,
+            rgba(18, 13, 11, 0) 66%
+        );
 
-        url("assets/images/evora-hero.jpg");
-
-    background-size: cover;
-
-    background-position: center 25%;
-
-    transform: scale(1.05);
-
-    animation:
-        heroMove
-        15s
-        ease-in-out
-        infinite
-        alternate;
+    pointer-events: none;
 }
 
-@keyframes heroMove {
+.hero-meta {
 
-    to {
+    position: absolute;
 
-        transform:
+    top: 50%;
 
-            scale(1.12)
+    z-index: 2;
 
-            translateX(-1.5%);
-    }
+    font-size: 9px;
+
+    letter-spacing: .3em;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+
+    color: rgba(250, 248, 244, .6);
+
+    writing-mode: vertical-rl;
+
+    display: none;
+
+    pointer-events: none;
+}
+
+.hero-meta--left {
+
+    left: 3vw;
+
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.hero-meta--right {
+
+    right: 3vw;
+
+    transform: translateY(-50%);
+}
+
+.hero-video-toggle {
+
+    position: absolute;
+
+    right: 3vw;
+
+    bottom: 28px;
+
+    z-index: 3;
+
+    width: 44px;
+
+    height: 44px;
+
+    display: grid;
+
+    place-items: center;
+
+    padding: 0;
+
+    border: 1px solid rgba(250, 248, 244, .4);
+
+    border-radius: 50%;
+
+    background: rgba(23, 18, 15, .5);
+
+    -webkit-backdrop-filter: blur(8px);
+
+    backdrop-filter: blur(8px);
+
+    color: #faf8f4;
+
+    cursor: pointer;
+
+    transition:
+
+        background-color .25s ease,
+
+        border-color .25s ease,
+
+        transform .25s ease;
+}
+
+.hero-video-toggle:hover {
+
+    background: rgba(23, 18, 15, .75);
+
+    border-color: rgba(250, 248, 244, .8);
+
+    transform: scale(1.06);
+}
+
+.hero-video-toggle svg {
+
+    width: 13px;
+
+    height: 13px;
+
+    display: block;
+
+    fill: currentColor;
+}
+
+.hero-video-toggle .hero-toggle-icon--play {
+
+    display: none;
+}
+
+.hero-video-toggle[data-state="paused"] .hero-toggle-icon--play {
+
+    display: block;
+}
+
+.hero-video-toggle[data-state="paused"] .hero-toggle-icon--pause {
+
+    display: none;
 }
 
 .hero-content {
@@ -269,7 +411,18 @@ nav a:hover {
 
     z-index: 2;
 
-    max-width: 1200px;
+    width: 100%;
+
+    padding:
+
+        120px
+        3vw
+        9vh;
+
+    /* Container queries let the masthead scale to its own
+       column in every layout mode. */
+
+    container-type: inline-size;
 }
 
 .eyebrow {
@@ -281,9 +434,26 @@ nav a:hover {
     letter-spacing: .2em;
 }
 
-.evora-title {
+/* Small brand line above the headline */
 
-    display: flex;
+.hero-content .eyebrow {
+
+    margin: 0 0 20px;
+
+    font-size: 10px;
+
+    letter-spacing: .3em;
+
+    color: rgba(250, 248, 244, .72);
+}
+
+/* Refined editorial headline — confident, never oversized */
+
+.hero-title {
+
+    margin: 0;
+
+    max-width: 640px;
 
     font-family:
 
@@ -291,73 +461,56 @@ nav a:hover {
         "Times New Roman",
         serif;
 
-    font-size:
-
-        clamp(
-            100px,
-            17vw,
-            260px
-        );
-
-    letter-spacing: -.085em;
-
-    line-height: .7;
-
-    margin-top: 25px;
-}
-
-.evora-title span {
-
-    display: inline-block;
-
-    transition:
-
-        transform
-        .8s
-        cubic-bezier(.2,.8,.2,1);
-}
-
-.hero-subtitle {
-
-    font-family: Georgia, serif;
+    font-weight: 400;
 
     font-size:
 
         clamp(
             28px,
-            3.4vw,
-            54px
+            4.6vw,
+            58px
         );
 
-    font-weight: 400;
+    font-size:
 
-    line-height: 1;
+        clamp(
+            28px,
+            4.6cqw,
+            58px
+        );
 
-    max-width: 760px;
+    line-height: 1.08;
 
-    margin:
+    letter-spacing: -.01em;
 
-        35px
-        0
-        15px;
+    text-wrap: balance;
+}
+
+.hero-title em {
+
+    font-style: italic;
 }
 
 .hero-description {
 
+    margin: 20px 0 0;
+
+    max-width: 430px;
+
     font-size: 14px;
 
-    line-height: 1.5;
-
-    max-width: 510px;
+    line-height: 1.6;
 
     color:
 
         rgba(
-            255,
-            255,
-            255,
-            .8
+            250,
+            248,
+            244,
+            .78
         );
+
+    text-wrap: pretty;
 }
 
 
@@ -1614,6 +1767,8 @@ nav a:hover {
 
 .step {
 
+    position: relative;
+
     padding:
 
         25px
@@ -1636,9 +1791,242 @@ nav a:hover {
     border-right: 0;
 }
 
+/* staggered entrance */
+
+.process-grid .step:nth-child(1) { transition-delay: 0s; }
+
+.process-grid .step:nth-child(2) { transition-delay: 0.12s; }
+
+.process-grid .step:nth-child(3) { transition-delay: 0.24s; }
+
+.process-grid .step:nth-child(4) { transition-delay: 0.36s; }
+
+/* image frame */
+
+.step-media {
+
+    position: relative;
+
+    overflow: hidden;
+
+    aspect-ratio: 4 / 3;
+
+    margin-bottom: 22px;
+
+    background: var(--cream-dark);
+}
+
+/* first step is flush-left (no padding-left, aligns with header),
+   so its frame would be 20px wider/taller than the others —
+   pull it back in to keep all four images the same size */
+
+.step:first-child .step-media {
+
+    margin-right: 20px;
+}
+
+.step-media img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transform: scale(1.07);
+
+    transition:
+        transform 0.9s ease,
+        filter 0.7s ease;
+}
+
+.step.visible .step-media img {
+
+    transform: scale(1);
+}
+
+.step:hover .step-media img {
+
+    transform: scale(1.06);
+}
+
+/* per-step image treatments */
+
+.step-media::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    transition: opacity 0.7s ease;
+}
+
+.step--understand .step-media::after {
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(242, 238, 231, 0) 50%,
+            rgba(242, 238, 231, 0.5) 100%
+        );
+}
+
+.step--shape .step-media::after {
+
+    background:
+        linear-gradient(
+            160deg,
+            rgba(116, 49, 62, 0.42),
+            rgba(139, 74, 86, 0.16)
+        );
+}
+
+.step--shape:hover .step-media::after {
+
+    opacity: 0.1;
+}
+
+.step--build .step-media img {
+
+    filter: grayscale(1) contrast(1.05);
+}
+
+.step--build:hover .step-media img {
+
+    filter: grayscale(0) contrast(1);
+}
+
+.step--build .step-media::after {
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(22, 20, 18, 0) 55%,
+            rgba(22, 20, 18, 0.35) 100%
+        );
+}
+
+.step--launch .step-media::after {
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(116, 49, 62, 0) 55%,
+            rgba(116, 49, 62, 0.32) 100%
+        );
+}
+
+.step--launch:hover .step-media img {
+
+    transform: scale(1.1);
+}
+
+/* growing accent line on hover */
+
+.step::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -1px;
+    left: 0;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--wine);
+
+    transition: width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.step:hover::before {
+
+    width: 100%;
+}
+
+.step--shape::before { background: var(--wine-light); }
+
+.step--build::before { background: var(--black); }
+
+.step--launch::before { background: linear-gradient(90deg, var(--wine), var(--wine-light)); }
+
 .step small {
 
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 36px;
+    height: 36px;
+    padding: 0 6px;
+
+    border: 1px solid var(--wine);
+    border-radius: 50%;
+
     color: var(--wine);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    line-height: 1;
+
+    transition:
+        background 0.45s ease,
+        border-color 0.45s ease,
+        color 0.45s ease,
+        transform 0.45s ease;
+}
+
+.step--shape small {
+
+    border-color: var(--wine-light);
+    color: var(--wine-light);
+}
+
+.step--build small {
+
+    border-color: var(--black);
+    color: var(--black);
+}
+
+.step--launch small {
+
+    border-color: transparent;
+    background: linear-gradient(135deg, var(--wine), var(--wine-light));
+    color: var(--cream);
+}
+
+.step:hover small {
+
+    border-color: var(--wine);
+    background: var(--wine);
+    color: var(--cream);
+
+    transform: translateY(-3px);
+}
+
+.step--shape:hover small {
+
+    border-color: var(--wine-light);
+    background: var(--wine-light);
+}
+
+.step--build:hover small {
+
+    border-color: var(--black);
+    background: var(--black);
+}
+
+.step--launch:hover small {
+
+    border-color: transparent;
+    background: linear-gradient(135deg, var(--wine), var(--wine-light));
+
+    transform: translateY(-3px) scale(1.07);
 }
 
 .step h3 {
@@ -1651,10 +2039,25 @@ nav a:hover {
 
     margin:
 
-        25px
+        16px
         0
         8px;
+
+    transition:
+        color 0.4s ease,
+        transform 0.5s ease;
 }
+
+.step:hover h3 {
+
+    color: var(--wine);
+
+    transform: translateX(4px);
+}
+
+.step--shape:hover h3 { color: var(--wine-light); }
+
+.step--build:hover h3 { color: var(--black); }
 
 .step p {
 
@@ -1810,33 +2213,23 @@ nav a:hover {
         justify-content: center;
     }
 
-    .hero {
+    .hero-content {
 
-        min-height: 90svh;
-
-        padding:
-
-            100px
-            16px
-            30px;
+        padding: 104px 20px 11vh;
     }
 
-    .hero-bg {
+    .hero-title {
 
-        background-position:
-
-            55%
-            center;
+        font-size: 28px;
     }
 
-    .evora-title {
+    .hero-description {
 
-        font-size: 28vw;
-    }
+        margin-top: 14px;
 
-    .hero-subtitle {
+        font-size: 13px;
 
-        font-size: 31px;
+        max-width: 36ch;
     }
 
     .section-intro {
@@ -2047,6 +2440,61 @@ nav a:hover {
     }
 }
 
+
+/* =========================================
+   HERO — WIDE SCREENS
+   The film stays full-bleed at every width;
+   the edge labels appear once there is room.
+========================================= */
+
+@media (min-width: 900px) {
+
+    .hero-meta {
+
+        display: block;
+    }
+}
+
+
+/* Short viewports (landscape phones, compact laptop windows):
+   tighten the copy so nothing is clipped. */
+
+@media (max-height: 640px) {
+
+    .hero-content {
+
+        padding-top: 84px;
+
+        padding-bottom: 7vh;
+    }
+
+    .hero-title {
+
+        font-size:
+
+            clamp(
+                24px,
+                3.2vw,
+                38px
+            );
+    }
+
+    .hero-description {
+
+        margin-top: 12px;
+
+        font-size: 13px;
+    }
+}
+
+@media (max-height: 420px) {
+
+    .hero-meta {
+
+        display: none;
+    }
+}
+
 </style>
 </head>
 
@@ -2099,46 +2547,73 @@ Start a Project →
 
 <section class="hero" id="studio">
 
+<div class="hero-media">
+
+<video
+class="hero-video"
+autoplay
+muted
+loop
+playsinline
+preload="auto"
+poster="assets/images/101581-video-1080-poster.jpg"
+aria-label="EVORA Studio showreel — florals, patisserie and tableware in motion">
+
+<source src="assets/videos/101581-video-1080.mp4" type="video/mp4">
+
+</video>
+
+</div>
+
 <div class="hero-bg"></div>
+
+<span class="hero-meta hero-meta--left" aria-hidden="true">
+Showreel 01 — In Motion
+</span>
+
+<span class="hero-meta hero-meta--right" aria-hidden="true">
+Florals · Patisserie · Tableware
+</span>
 
 <div class="hero-content">
 
-<div class="eyebrow">
+<p class="eyebrow">
 
-Digital Studio · Madrid / Worldwide
+EVORA Studio · Madrid / Worldwide
 
-</div>
-
-
-<div class="evora-title" id="evoraTitle">
-
-<span>E</span>
-<span>V</span>
-<span>O</span>
-<span>R</span>
-<span>A</span>
-
-</div>
+</p>
 
 
-<h1 class="hero-subtitle">
+<h1 class="hero-title">
 
-Digital experiences
-for brands with
-something to say.
+Digital experiences for brands with <em>something to say.</em>
 
 </h1>
 
 
 <p class="hero-description">
 
-We turn what makes a business
-worth choosing into an experience
-people can see, feel and remember.
+We turn what makes a business worth choosing
+into an experience people can see, feel and remember.
 
 </p>
 
 </div>
+
+<button
+class="hero-video-toggle"
+type="button"
+aria-label="Pause background video">
+
+<svg class="hero-toggle-icon hero-toggle-icon--pause" viewBox="0 0 12 12" aria-hidden="true" focusable="false">
+<path d="M2 1h3v10H2zM7 1h3v10H7z"></path>
+</svg>
+
+<svg class="hero-toggle-icon hero-toggle-icon--play" viewBox="0 0 12 12" aria-hidden="true" focusable="false">
+<path d="M3 1l8 5-8 5z"></path>
+</svg>
+
+</button>
 
 </section>
 
@@ -3166,7 +3641,21 @@ How we work
 <div class="process-grid">
 
 
-<div class="step reveal">
+<div class="step step--understand reveal">
+
+<div class="step-media">
+
+<img
+
+src="assets/images/process-understand.jpg"
+
+alt="Design professionals listening attentively during a client meeting"
+
+loading="lazy"
+
+>
+
+</div>
 
 <small>
 
@@ -3182,16 +3671,30 @@ Understand
 
 <p>
 
-We understand what
-makes the business
-worth choosing.
+We listen first — your goals,
+your audience, and what makes
+your business worth choosing.
 
 </p>
 
 </div>
 
 
-<div class="step reveal">
+<div class="step step--shape reveal">
+
+<div class="step-media">
+
+<img
+
+src="assets/images/process-shape.jpg"
+
+alt="Artist palette, brushes and creative materials on a dark wooden table"
+
+loading="lazy"
+
+>
+
+</div>
 
 <small>
 
@@ -3207,16 +3710,31 @@ Shape
 
 <p>
 
-We translate it
-into a visual
-digital direction.
+We turn those findings into
+a clear visual direction,
+shaped around your brand and
+the people you want to reach.
 
 </p>
 
 </div>
 
 
-<div class="step reveal">
+<div class="step step--build reveal">
+
+<div class="step-media">
+
+<img
+
+src="assets/images/process-build.jpg"
+
+alt="Colourful code on a dark screen with shallow depth of field"
+
+loading="lazy"
+
+>
+
+</div>
 
 <small>
 
@@ -3232,16 +3750,30 @@ Build
 
 <p>
 
-Design, motion,
-development and
-functionality.
+Design, motion and code come
+together into a fast, polished
+website that feels alive.
 
 </p>
 
 </div>
 
 
-<div class="step reveal">
+<div class="step step--launch reveal">
+
+<div class="step-media">
+
+<img
+
+src="assets/images/process-launch.jpg"
+
+alt="Bottle of champagne and two flute glasses on a red cart"
+
+loading="lazy"
+
+>
+
+</div>
 
 <small>
 
@@ -3257,9 +3789,9 @@ Launch
 
 <p>
 
-We test,
-refine and put
-it into the world.
+We test every detail, refine
+the last percent, and send it
+into the world with confidence.
 
 </p>
 
@@ -3329,71 +3861,6 @@ Start a Project →
 
 <script>
 
-/* =========================================
-   EVORA LETTER MOVEMENT
-========================================= */
-
-const letters = [
-
-    ...document.querySelectorAll(
-        "#evoraTitle span"
-    )
-];
-
-window.addEventListener(
-
-    "pointermove",
-
-    event => {
-
-        if (
-            window.matchMedia(
-                "(prefers-reduced-motion: reduce)"
-            ).matches
-        ) {
-            return;
-        }
-
-        const x =
-
-            event.clientX
-            /
-            window.innerWidth
-            -
-            .5;
-
-
-        const y =
-
-            event.clientY
-            /
-            window.innerHeight
-            -
-            .5;
-
-
-        letters.forEach(
-
-            (letter, index) => {
-
-                letter.style.transform =
-
-                    `translate(
-                        ${x * (index - 2) * 14}px,
-                        ${y * ((index % 2) ? 7 : -7)}px
-                    )
-
-                    rotate(
-                        ${x * (index - 2) * 1.4}deg
-                    )`;
-
-            }
-
-        );
-
-    }
-
-);
 /* =========================================
    SCROLL REVEALS
 ========================================= */
@@ -3474,7 +3941,7 @@ window.addEventListener(
 
             document
             .querySelector(
-                ".hero-bg"
+                ".hero-media"
             );
 
 
@@ -3497,6 +3964,81 @@ window.addEventListener(
 
 );
 
+
+/* =========================================
+   HERO VIDEO — PLAYBACK + REDUCED MOTION
+========================================= */
+
+const heroVideo = document.querySelector(".hero-video");
+
+const heroVideoToggle = document.querySelector(".hero-video-toggle");
+
+if (heroVideo && heroVideoToggle) {
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const syncHeroVideoState = () => {
+
+        const playing = !heroVideo.paused && !heroVideo.ended;
+
+        heroVideoToggle.dataset.state = playing ? "playing" : "paused";
+
+        heroVideoToggle.setAttribute(
+            "aria-label",
+            playing
+                ? "Pause background video"
+                : "Play background video"
+        );
+
+    };
+
+    const applyMotionPreference = () => {
+
+        if (reducedMotion.matches) {
+
+            heroVideo.pause();
+
+        } else {
+
+            heroVideo.play().catch(syncHeroVideoState);
+
+        }
+
+    };
+
+    heroVideoToggle.addEventListener("click", () => {
+
+        if (heroVideo.paused) {
+
+            heroVideo.play().catch(() => {});
+
+        } else {
+
+            heroVideo.pause();
+
+        }
+
+    });
+
+    heroVideo.addEventListener("play", syncHeroVideoState);
+
+    heroVideo.addEventListener("pause", syncHeroVideoState);
+
+    if (typeof reducedMotion.addEventListener === "function") {
+
+        reducedMotion.addEventListener("change", applyMotionPreference);
+
+    } else if (typeof reducedMotion.addListener === "function") {
+
+        reducedMotion.addListener(applyMotionPreference);
+
+    }
+
+    applyMotionPreference();
+
+    syncHeroVideoState();
+
+}
 
 /* =========================================
    CONTACT FORM
