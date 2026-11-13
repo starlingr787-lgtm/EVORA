@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /index.original
+Disallow: /_originals/
 
 Sitemap: https://evoracreative.com/sitemap.xml

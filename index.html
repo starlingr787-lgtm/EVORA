@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#f2eee7">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <meta name="robots" content="index, follow">
 <title>EVORA Studio | Premium Websites &amp; Digital Experiences</title>
 <meta name="description" content="EVORA Studio creates custom websites and digital experiences for hospitality, beauty, lifestyle, product brands, and independent businesses.">
@@ -13,12 +14,12 @@
 <meta property="og:url" content="https://evoracreative.com/">
 <meta property="og:title" content="Digital experiences for brands with something to say | EVORA Studio">
 <meta property="og:description" content="A premium digital studio creating custom websites and digital experiences for hospitality, beauty, high-end cosmetics, lifestyle, product brands, and independent businesses.">
-<meta property="og:image" content="https://evoracreative.com/assets/images/101581-video-1080-poster.jpg">
+<meta property="og:image" content="https://evoracreative.com/assets/images/og-evora.jpg">
 <meta property="og:image:alt" content="EVORA Studio — digital experiences for brands with something to say">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Digital experiences for brands with something to say | EVORA Studio">
 <meta name="twitter:description" content="Custom websites and digital experiences for hospitality, beauty, high-end cosmetics, lifestyle, product brands, and independent businesses.">
-<meta name="twitter:image" content="https://evoracreative.com/assets/images/101581-video-1080-poster.jpg">
+<meta name="twitter:image" content="https://evoracreative.com/assets/images/og-evora.jpg">
 <meta name="twitter:image:alt" content="EVORA Studio — digital experiences for brands with something to say">
 <script type="application/ld+json">
 {
@@ -637,11 +638,17 @@ position: relative;
 height: 680px;
 overflow: hidden;
 }
-.featured-image > img {
+.featured-image > img,
+.featured-image > video {
+display: block;
+width: 100%;
 height: 100%;
 object-fit: cover;
+object-position: center;
+background: #000;
 }
-.featured-image > .featured-detail-image {
+.featured-image > .featured-detail-image,
+.featured-image > .featured-detail-video {
 position: absolute;
 width: 30%;
 height: auto;
@@ -1282,12 +1289,15 @@ padding:
 overflow: hidden;
 color: white;
 }
-.final img {
+.final img,
+.final video {
 position: absolute;
 inset: 0;
 width: 100%;
 height: 100%;
 object-fit: cover;
+object-position: center;
+background: #000;
 filter:
 brightness(.5)
 saturate(.7);
@@ -1336,6 +1346,24 @@ transform .9s ease;
 .reveal.visible {
 opacity: 1;
 transform: none;
+}
+/* =========================================
+TABLET
+========================================= */
+@media (max-width: 1024px) {
+.demo-grid,
+.service-grid,
+.connection-grid,
+.process-grid {
+grid-template-columns: 1fr 1fr;
+}
+.service:nth-child(2n),
+.step:nth-child(2n) {
+border-right: 0;
+}
+.email-form {
+grid-template-columns: 1fr;
+}
 }
 /* =========================================
 MOBILE
@@ -1848,26 +1876,25 @@ Patisserie
 Digital Experience
 </div>
 <h2>
-A pastry shop
-that feels
-irresistible.
+Websites
+you can
+step into.
 </h2>
 <p>
-A digital concept for a high-end dessert shop, combining refined visual storytelling, signature pastries and an online experience that feels as polished as the products themselves.
+EVORA also focuses on turning websites into immersive experiences — blending motion, storytelling and detail so visitors don't just browse: they explore, feel and remember.
 </p>
 </div>
 <div class="featured-image reveal">
-<img
-src="assets/images/luxury-patisserie.jpg"
-loading="lazy"
-decoding="async"
-alt="Luxury patisserie">
-<img
-class="featured-detail-image"
-src="assets/images/luxury-skincare-detail.jpg"
-loading="lazy"
-decoding="async"
-alt="Luxury skincare detail">
+<video
+class="featured-main-video"
+autoplay
+muted
+loop
+playsinline
+preload="metadata"
+aria-label="Video Project 2 — pastry shop showreel">
+<source src="assets/videos/video-project-2-crop.mp4" type="video/mp4">
+</video>
 </div>
 </div>
 </section>
@@ -2260,11 +2287,16 @@ into the world with confidence.
 FINAL
 ===================================== -->
 <section class="final">
-<img
-src="assets/images/evora-closing.jpg"
-loading="lazy"
-decoding="async"
-alt="EVORA closing image">
+<video
+class="final-video"
+autoplay
+muted
+loop
+playsinline
+preload="metadata"
+aria-label="EVORA closing showreel">
+<source src="assets/videos/video-project-1-crop.mp4" type="video/mp4">
+</video>
 <div class="final-copy reveal">
 <div class="eyebrow">
 EVORA STUDIO
@@ -2391,6 +2423,35 @@ reducedMotion.addListener(applyMotionPreference);
 }
 applyMotionPreference();
 syncHeroVideoState();
+}
+/* =========================================
+SECTION VIDEOS — REDUCED MOTION
+========================================= */
+const sectionVideos =
+document.querySelectorAll(
+".featured-image video, .final video"
+);
+if (sectionVideos.length) {
+const sectionReducedMotion =
+window.matchMedia("(prefers-reduced-motion: reduce)");
+const applySectionMotionPreference = () => {
+sectionVideos.forEach(video => {
+if (sectionReducedMotion.matches) {
+video.pause();
+} else {
+video.play().catch(() => {});
+}
+});
+};
+if (typeof sectionReducedMotion.addEventListener === "function") {
+sectionReducedMotion.addEventListener(
+"change",
+applySectionMotionPreference
+);
+} else if (typeof sectionReducedMotion.addListener === "function") {
+sectionReducedMotion.addListener(applySectionMotionPreference);
+}
+applySectionMotionPreference();
 }
 /* =========================================
 CONTACT FORM

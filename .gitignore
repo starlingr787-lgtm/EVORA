@@ -1,7 +1,8 @@
-﻿_originals/
-_probe.html
 index.original-*.html
+_originals/
+.vscode/
 Vega
-assets/videos/*.mov
-assets/videos/evora-hero.mp4
-assets/videos/*.pdf
+EVORA-deploy.zip
+assets/videos/Video Project 1.mp4
+assets/videos/Video Project 2.mp4
+assets/videos/101581-video-1080.mov
