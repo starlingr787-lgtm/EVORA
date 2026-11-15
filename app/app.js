@@ -35,7 +35,7 @@
     if (!PACK[lang]) PACK[lang] = (async () => {
       const [idx, buf] = await Promise.all([
         fetch(`audio/${lang}.json`).then(r => r.ok ? r.json() : Promise.reject()),
-        fetch(`audio/${lang}.pack`).then(r => r.ok ? r.arrayBuffer() : Promise.reject())
+        fetch(`audio/${lang}.mp3`).then(r => r.ok ? r.arrayBuffer() : Promise.reject())
       ]);
       return { idx, buf, urls: {} };
     })().catch(() => null);

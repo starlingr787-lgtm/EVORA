@@ -5,29 +5,52 @@ Para probarla en local: `cd app && python3 -m http.server` y abrir http://localh
 
 ## Qué incluye
 - **7 cursos**: inglés, francés, alemán, italiano, portugués, ruso y rumano.
-- **10 unidades por curso**, cada una una situación real (saludos, presentaciones, números, familia, comida, restaurante, viajes, ciudad, compras, días y horas). Las frases de cada unidad usan solo su contexto y su vocabulario, y las unidades siguientes repasan las anteriores.
-- **Mapa de niveles**: 5 niveles por unidad (palabras, frases, práctica, escucha y combina, prueba de unidad). Se desbloquean de uno en uno y se puntúan de 1 a 3 estrellas.
-- **Ejercicios**: opción múltiple, escribir la traducción, ordenar palabras, completar la frase, relacionar parejas y escucha. Los fallos se repiten al final de la lección.
-- **Ruso**: transcripción automática en letras latinas y se acepta escribir la respuesta en latino.
+- **2 niveles y 20 unidades por curso**:
+  - Principiante (A1, unidades 1-10): saludos, presentaciones, números, familia, comida, restaurante, viajes, ciudad, compras, días y horas.
+  - Intermedio (A2, unidades 11-20): rutina, casa, salud, trabajo, tiempo, ocio, pasado, futuro, opiniones y pedir ayuda.
+  - Al elegir un curso se escoge el nivel o se hace una prueba de 8 preguntas que recomienda uno. El nivel se puede cambiar desde el mapa.
+- **Mapa de niveles**: 5 niveles por unidad (palabras, frases, práctica, escucha y combina, prueba de unidad), desbloqueo uno a uno y 1 a 3 estrellas.
+- **Ejercicios**: opción múltiple, escribir, completar la frase, relacionar parejas, escucha y **rompecabezas de frases** (piezas con forma de puzle que se arrastran o se tocan a un tablero).
+- **Vocabulario diario**: palabras y frase del día según el curso y el nivel, con marca de "ya la sé", práctica rápida y lista de "mis palabras" con buscador.
+- **Ruso**: transcripción automática en letras latinas y se acepta escribir en latino.
 - **Identidad propia**: sin emojis. Iconos SVG propios (`icons.js`), insignias de idioma y mascota Lumi.
 
 ## Planes
 | | Estándar (gratis) | Premium (7,99 €/mes) |
 |---|---|---|
 | Cursos | 1 a elegir | los 7 |
-| Unidades | 1 a 3 de cada curso | las 10 |
+| Unidades | 1 a 3 de cada nivel | las 20 |
 | Vidas | 5 al día | ilimitadas |
-| Audio y ejercicios de escucha | no | sí |
+| Palabras del día | 5 | 10 |
+| Voz natural y ejercicios de escucha | no | sí |
 | Repaso de errores | no | sí |
 
+## Voz
+Las frases se reproducen con **locuciones neuronales pregeneradas** (`audio/<idioma>.mp3` + `audio/<idioma>.json`): un único MP3 por idioma con todas las frases concatenadas y un índice de posiciones. Si faltan, la app usa la mejor voz instalada en el navegador.
+Se generaron con [Piper](https://github.com/OHF-Voice/piper1-gpl) (voces `rhasspy/piper-voices`):
+
+| Idioma | Voz | Licencia del conjunto de datos |
+|---|---|---|
+| Inglés | en_GB-cori-high | Dominio público |
+| Francés | fr_FR-siwis-medium | CC BY 4.0 (Siwis, Universidad de Edimburgo) |
+| Alemán | de_DE-thorsten-high | CC0 |
+| Italiano | it_IT-serena-high | CC BY 4.0 (committa/serena-synthetic-it-27h) |
+| Portugués | pt_PT-tugão-medium | CC0 |
+| Ruso | ru_RU-denis-medium | CC0 |
+| Rumano | ro_RO-mihai-medium | CC0 |
+
+Las voces francesa e italiana exigen atribución (CC BY 4.0): mantén esta tabla visible en la app si la publicas. Antes de uso comercial, revisa las licencias vigentes de cada voz.
+Para regenerar el audio tras cambiar `data.js` o `data2.js` hay que repetir la síntesis con el mismo orden de claves (`<unidad>w<n>` para palabras y `<unidad>s<n>` para frases).
+
 ## Estructura
-- `data.js`: unidades en español y traducciones de cada curso. Para añadir contenido o idiomas se edita solo este archivo.
-- `exercises.js`: generación de los ejercicios de cada nivel.
+- `data.js`, `data2.js`: unidades en español y traducciones de cada curso. Para añadir contenido o idiomas se editan solo estos archivos.
+- `exercises.js`: generación de los ejercicios de cada nivel y de la prueba de nivel.
 - `icons.js`: iconos, insignias y mascota.
-- `app.js`: pantallas, mapa, reproductor de lecciones y planes.
+- `app.js`: pantallas, mapa, reproductor de lecciones, vocabulario y planes.
+- `audio/`: locuciones.
 
 ## Pendiente para producción
 - **Pagos reales**: el checkout es una simulación. Hay que integrar un procesador de pagos (por ejemplo Stripe) y validar la suscripción en servidor; ahora el plan vive en `localStorage` y se puede manipular.
 - Cuentas de usuario y sincronización del progreso entre dispositivos.
-- Revisión del contenido por hablantes nativos, sobre todo ruso y rumano.
-- El audio usa la síntesis de voz del navegador; la calidad y la disponibilidad de voces en ruso y rumano dependen del dispositivo.
+- Revisión del contenido y del audio por hablantes nativos, sobre todo ruso y rumano.
+- La calidad de las voces es buena pero sigue siendo síntesis: si se busca el máximo realismo, el audio puede regenerarse con un servicio de pago (ElevenLabs, Google, Azure) sin tocar el resto de la app.
