@@ -62,7 +62,9 @@ class GoogleProvider:
         self.key = os.environ.get("GOOGLE_TTS_API_KEY", "proxy-injected")
 
     def _call(self, path, body=None):
-        req = urllib.request.Request(self.URL + path, data=None if body is None else json.dumps(body).encode(),
+        # Con la clave en la variable de entorno se envía como parámetro ?key= (el proxy del entorno puede sustituir la cabecera).
+        url = self.URL + path + (("&" if "?" in path else "?") + "key=" + self.key if "GOOGLE_TTS_API_KEY" in os.environ else "")
+        req = urllib.request.Request(url, data=None if body is None else json.dumps(body).encode(),
                                      headers={"Content-Type": "application/json", "X-Goog-Api-Key": self.key})
         for attempt in range(5):
             try:
