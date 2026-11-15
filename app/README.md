@@ -74,7 +74,7 @@ Se generaron con [Piper](https://github.com/OHF-Voice/piper1-gpl) (voces `rhassp
 | Italiano | it_IT-serena-high | CC BY 4.0 (committa/serena-synthetic-it-27h) |
 | Portugués | pt_PT-tugão-medium | CC0 |
 | Ruso | ru_RU-denis-medium | CC0 |
-| Rumano | ro_RO-mihai-medium | CC0 |
+| Rumano | Google Cloud TTS `ro-RO-Chirp3-HD-Sulafat` (voz femenina de pago, audio pregenerado) | Términos de Google Cloud; sin atribución obligatoria, revisar antes de uso comercial |
 | Español (curso para angloparlantes) | es_MX-claude-high | Apache-2.0 |
 
 Las voces francesa e italiana exigen atribución (CC BY 4.0): mantén esta tabla visible en la app si la publicas. Antes de uso comercial, revisa las licencias vigentes de cada voz.
