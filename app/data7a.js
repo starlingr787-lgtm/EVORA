@@ -8,8 +8,8 @@ Con permiso|Pardon me|Permettez-moi|Gestatten|Con permesso|Com licença|Разр
 Bienvenido|Welcome|Bienvenue|Willkommen|Benvenuto|Bem-vindo|Добро пожаловать|Bine ai venit
 Señor|Sir|Monsieur|Herr|Signore|Senhor|Господин|Domn
 Señora|Madam|Madame|Frau|Signora|Senhora|Госпожа|Doamnă
-Bien|Good|Bien|Gut|Bene|Bem|Хорошо|Bine
-Mal|Bad|Mal|Schlecht|Male|Mal|Плохо|Rău
+Bien|Good|Bien|gut|Bene|Bem|Хорошо|Bine
+Mal|Bad|Mal|schlecht|Male|Mal|Плохо|Rău
 Felicidades|Congratulations|Félicitations|Glückwunsch|Congratulazioni|Parabéns|Поздравляю|Felicitări
 Buena suerte|Good luck|Bonne chance|Viel Glück|Buona fortuna|Boa sorte|Удачи|Baftă
 Hasta pronto|See you soon|À bientôt|Bis bald|A presto|Até breve|До скорого|Pe curând
@@ -35,10 +35,10 @@ Profesor|Teacher|Professeur|Lehrer|Insegnante|Professor|Учитель|Profesor
 Médico|Doctor|Médecin|Arzt|Medico|Médico|Врач|Medic
 Vecino|Neighbour|Voisin|Nachbar|Vicino|Vizinho|Сосед|Vecin
 Persona|Person|Personne|Person|Persona|Pessoa|Человек|Persoană
-Hablar|To speak|Parler|Sprechen|Parlare|Falar|Говорить|A vorbi
-Vivir|To live|Habiter|Wohnen|Abitare|Viver|Жить|A locui
-Trabajar|To work|Travailler|Arbeiten|Lavorare|Trabalhar|Работать|A lucra
-Estudiar|To study|Étudier|Studieren|Studiare|Estudar|Учиться|A studia
+Hablar|To speak|Parler|sprechen|Parlare|Falar|Говорить|A vorbi
+Vivir|To live|Habiter|wohnen|Abitare|Viver|Жить|A locui
+Trabajar|To work|Travailler|arbeiten|Lavorare|Trabalhar|Работать|A lucra
+Estudiar|To study|Étudier|studieren|Studiare|Estudar|Учиться|A studia
 `);
 addExtra(1, "s", `
 Mucho gusto, me llamo Luis.|Nice to meet you, my name is Luis.|Enchanté, je m'appelle Luis.|Freut mich, ich heiße Luis.|Piacere, mi chiamo Luis.|Prazer, chamo-me Luís.|Приятно познакомиться, меня зовут Луис.|Încântat, mă numesc Luis.
@@ -52,16 +52,16 @@ Trabajo en un hospital.|I work in a hospital.|Je travaille dans un hôpital.|Ich
 
 /* 2 Números */
 addExtra(2, "w", `
-Seis|Six|Six|Sechs|Sei|Seis|Шесть|Șase
-Siete|Seven|Sept|Sieben|Sette|Sete|Семь|Șapte
-Ocho|Eight|Huit|Acht|Otto|Oito|Восемь|Opt
-Nueve|Nine|Neuf|Neun|Nove|Nove|Девять|Nouă
-Quince|Fifteen|Quinze|Fünfzehn|Quindici|Quinze|Пятнадцать|Cincisprezece
-Treinta|Thirty|Trente|Dreißig|Trenta|Trinta|Тридцать|Treizeci
-Cincuenta|Fifty|Cinquante|Fünfzig|Cinquanta|Cinquenta|Пятьдесят|Cincizeci
+Seis|Six|Six|sechs|Sei|Seis|Шесть|Șase
+Siete|Seven|Sept|sieben|Sette|Sete|Семь|Șapte
+Ocho|Eight|Huit|acht|Otto|Oito|Восемь|Opt
+Nueve|Nine|Neuf|neun|Nove|Nove|Девять|Nouă
+Quince|Fifteen|Quinze|fünfzehn|Quindici|Quinze|Пятнадцать|Cincisprezece
+Treinta|Thirty|Trente|dreißig|Trenta|Trinta|Тридцать|Treizeci
+Cincuenta|Fifty|Cinquante|fünfzig|Cinquanta|Cinquenta|Пятьдесят|Cincizeci
 Mil|One thousand|Mille|Tausend|Mille|Mil|Тысяча|Mie
 Cero|Zero|Zéro|Null|Zero|Zero|Ноль|Zero
-Primero|First|Premier|Erster|Primo|Primeiro|Первый|Primul
+Primero|First|Premier|erster|Primo|Primeiro|Первый|Primul
 Mitad|Half|Moitié|Hälfte|Metà|Metade|Половина|Jumătate
 Número|Number|Numéro|Nummer|Numero|Número|Номер|Număr
 `);
@@ -88,7 +88,7 @@ Bebé|Baby|Bébé|Baby|Neonato|Bebé|Малыш|Bebeluș
 Niño|Boy|Garçon|Junge|Bambino|Menino|Мальчик|Băiat
 Niña|Girl|Fillette|Mädchen|Bambina|Menina|Девочка|Fată
 Gemelo|Twin|Jumeau|Zwilling|Gemello|Gémeo|Близнец|Geamăn
-Soltero|Single|Célibataire|Ledig|Celibe|Solteiro|Холостой|Necăsătorit
+Soltero|Single|Célibataire|ledig|Celibe|Solteiro|Холостой|Necăsătorit
 `);
 addExtra(3, "s", `
 Mi esposo trabaja mucho.|My husband works a lot.|Mon mari travaille beaucoup.|Mein Mann arbeitet viel.|Mio marito lavora molto.|O meu marido trabalha muito.|Мой муж много работает.|Soțul meu muncește mult.
@@ -136,8 +136,8 @@ Cuchillo|Knife|Couteau|Messer|Coltello|Faca|Нож|Cuțit
 Servilleta|Napkin|Serviette|Serviette|Tovagliolo|Guardanapo|Салфетка|Șervețel
 Propina|Tip|Pourboire|Trinkgeld|Mancia|Gorjeta|Чаевые|Bacșiș
 Reserva|Reservation|Réservation|Reservierung|Prenotazione|Reserva|Бронь|Rezervare
-Sabroso|Tasty|Savoureux|Lecker|Saporito|Saboroso|Вкусный|Gustos
-Picante|Spicy|Épicé|Scharf|Piccante|Picante|Острый|Picant
+Sabroso|Tasty|Savoureux|lecker|Saporito|Saboroso|Вкусный|Gustos
+Picante|Spicy|Épicé|scharf|Piccante|Picante|Острый|Picant
 Bebida|Drink|Boisson|Getränk|Bevanda|Bebida|Напиток|Băutură
 `);
 addExtra(5, "s", `
@@ -212,12 +212,12 @@ Bolsa|Bag|Sac|Tasche|Borsa|Saco|Пакет|Pungă
 Descuento|Discount|Réduction|Rabatt|Sconto|Desconto|Скидка|Reducere
 Efectivo|Cash|Espèces|Bargeld|Contanti|Dinheiro vivo|Наличные|Numerar
 Recibo|Receipt|Reçu|Quittung|Scontrino|Recibo|Чек|Bon
-Probador|Fitting room|Cabine d'essayage|Umkleidekabine|Camerino|Gabinete de provas|Примерочная|Cabină de probă
+Probador|Fitting room|Cabine d'essayage|Umkleidekabine|Camerino|Provador|Примерочная|Cabină de probă
 Oferta|Sale|Soldes|Angebot|Offerta|Promoção|Акция|Ofertă
 `);
 addExtra(8, "s", `
 ¿Tiene esta camisa en otra talla?|Do you have this shirt in another size?|Avez-vous cette chemise dans une autre taille ?|Haben Sie dieses Hemd in einer anderen Größe?|Ha questa camicia in un'altra taglia?|Tem esta camisa noutro tamanho?|У вас есть эта рубашка другого размера?|Aveți această cămașă într-o altă mărime?
-¿Dónde está el probador?|Where is the fitting room?|Où est la cabine d'essayage ?|Wo ist die Umkleidekabine?|Dov'è il camerino?|Onde fica o gabinete de provas?|Где примерочная?|Unde este cabina de probă?
+¿Dónde está el probador?|Where is the fitting room?|Où est la cabine d'essayage ?|Wo ist die Umkleidekabine?|Dov'è il camerino?|Onde fica o provador?|Где примерочная?|Unde este cabina de probă?
 Busco un vestido azul.|I'm looking for a blue dress.|Je cherche une robe bleue.|Ich suche ein blaues Kleid.|Cerco un vestito blu.|Procuro um vestido azul.|Я ищу синее платье.|Caut o rochie albastră.
 ¿Hay algún descuento?|Is there any discount?|Y a-t-il une réduction ?|Gibt es einen Rabatt?|C'è qualche sconto?|Há algum desconto?|Есть ли скидка?|Există vreo reducere?
 Pago en efectivo.|I'll pay in cash.|Je paie en espèces.|Ich zahle bar.|Pago in contanti.|Pago em dinheiro.|Я заплачу наличными.|Plătesc în numerar.
@@ -235,8 +235,8 @@ Sábado|Saturday|Samedi|Samstag|Sabato|Sábado|Суббота|Sâmbătă
 Mes|Month|Mois|Monat|Mese|Mês|Месяц|Lună
 Minuto|Minute|Minute|Minute|Minuto|Minuto|Минута|Minut
 Noche|Night|Nuit|Nacht|Notte|Noite|Ночь|Noapte
-Tarde|Late|Tard|Spät|Tardi|Tarde|Поздно|Târziu
-Temprano|Early|Tôt|Früh|Presto|Cedo|Рано|Devreme
+Tarde|Late|Tard|spät|Tardi|Tarde|Поздно|Târziu
+Temprano|Early|Tôt|früh|Presto|Cedo|Рано|Devreme
 Fin de semana|Weekend|Week-end|Wochenende|Fine settimana|Fim de semana|Выходные|Weekend
 Siempre|Always|Toujours|Immer|Sempre|Sempre|Всегда|Mereu
 `);

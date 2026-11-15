@@ -2,15 +2,15 @@
 
 /* 20 Reservas y viajes */
 addExtra(20, "w", `
-Reservar|To book|Réserver|Buchen|Prenotare|Reservar|Бронировать|A rezerva
-Confirmar|To confirm|Confirmer|Bestätigen|Confermare|Confirmar|Подтверждать|A confirma
+Reservar|To book|Réserver|buchen|Prenotare|Reservar|Бронировать|A rezerva
+Confirmar|To confirm|Confirmer|bestätigen|Confermare|Confirmar|Подтверждать|A confirma
 Escala|Stopover|Escale|Zwischenstopp|Scalo|Escala|Пересадка|Escală
 Aduana|Customs|Douane|Zoll|Dogana|Alfândega|Таможня|Vamă
 Visa|Visa|Visa|Visum|Visto|Visto|Виза|Viză
 Tarifa|Fare|Tarif|Tarif|Tariffa|Tarifa|Тариф|Tarif
 Pasajero|Passenger|Passager|Passagier|Passeggero|Passageiro|Пассажир|Pasager
 Asiento|Seat|Siège|Sitzplatz|Posto|Lugar|Место|Loc
-Embarcar|To board|Embarquer|Einsteigen|Imbarcarsi|Embarcar|Садиться на борт|A se îmbarca
+Embarcar|To board|Embarquer|einsteigen|Imbarcarsi|Embarcar|Садиться на борт|A se îmbarca
 Seguro de viaje|Travel insurance|Assurance voyage|Reiseversicherung|Assicurazione di viaggio|Seguro de viagem|Туристическая страховка|Asigurare de călătorie
 Temporada alta|High season|Haute saison|Hauptsaison|Alta stagione|Época alta|Высокий сезон|Sezon de vârf
 Excursión|Excursion|Excursion|Ausflug|Escursione|Excursão|Экскурсия|Excursie
@@ -32,12 +32,12 @@ Profesor|Professor|Professeur|Professor|Professore|Professor|Профессор|
 Clase|Class|Cours|Unterricht|Lezione|Aula|Занятие|Oră de curs
 Tarea|Homework|Devoirs|Hausaufgabe|Compiti|Trabalho de casa|Домашнее задание|Temă
 Biblioteca|Library|Bibliothèque|Bibliothek|Biblioteca|Biblioteca|Библиотека|Bibliotecă
-Aprobar|To pass|Réussir|Bestehen|Superare|Passar|Сдать|A promova
-Suspender|To fail|Échouer|Durchfallen|Bocciare|Chumbar|Провалить|A pica
+Aprobar|To pass|Réussir|bestehen|Superare|Passar|Сдать|A promova
+Suspender|To fail|Échouer|durchfallen|Bocciare|Chumbar|Провалить|A pica
 Nota|Grade|Note|Note|Voto|Nota|Оценка|Notă
 Curso|Course|Formation|Kurs|Corso|Curso|Курс|Curs
 Investigación|Research|Recherche|Forschung|Ricerca|Investigação|Исследование|Cercetare
-Título|Title|Titre|Titel|Titolo|Título|Степень|Titlu
+Título|Qualification|Titre universitaire|Abschluss|Titolo di studio|Título académico|Квалификация|Titlu academic
 Aula|Classroom|Salle de classe|Klassenzimmer|Aula|Sala de aula|Аудитория|Sală de clasă
 `);
 addExtra(21, "s", `
@@ -61,9 +61,9 @@ Cargador|Charger|Chargeur|Ladegerät|Caricabatterie|Carregador|Зарядное 
 Batería|Battery|Batterie|Akku|Batteria|Bateria|Аккумулятор|Baterie
 Archivo|File|Fichier|Datei|File|Ficheiro|Файл|Fișier
 Internet|Internet|Internet|Internet|Internet|Internet|Интернет|Internet
-Buscar|To search|Chercher|Suchen|Cercare|Procurar|Искать|A căuta
-Publicar|To post|Publier|Veröffentlichen|Pubblicare|Publicar|Публиковать|A publica
-Instalar|To install|Installer|Installieren|Installare|Instalar|Устанавливать|A instala
+Buscar|To search|Chercher|suchen|Cercare|Procurar|Искать|A căuta
+Publicar|To post|Publier|veröffentlichen|Pubblicare|Publicar|Публиковать|A publica
+Instalar|To install|Installer|installieren|Installare|Instalar|Устанавливать|A instala
 `);
 addExtra(22, "s", `
 Mi celular se quedó sin batería.|My phone ran out of battery.|Mon portable n'a plus de batterie.|Mein Handy hat keinen Akku mehr.|Il mio cellulare è senza batteria.|O meu telemóvel ficou sem bateria.|У моего телефона села батарея.|Telefonul meu a rămas fără baterie.
@@ -79,16 +79,16 @@ El archivo es demasiado grande para enviarlo.|The file is too big to send.|Le fi
 addExtra(23, "w", `
 Peso|Weight|Poids|Gewicht|Peso|Peso|Вес|Greutate
 Vitamina|Vitamin|Vitamine|Vitamin|Vitamina|Vitamina|Витамин|Vitamină
-Saludable|Healthy|Sain|Gesund|Sano|Saudável|Здоровый|Sănătos
-Entrenar|To train|S'entraîner|Trainieren|Allenarsi|Treinar|Тренироваться|A se antrena
-Meditar|To meditate|Méditer|Meditieren|Meditare|Meditar|Медитировать|A medita
-Fumar|To smoke|Fumer|Rauchen|Fumare|Fumar|Курить|A fuma
-Alimentación|Nutrition|Alimentation|Nahrung|Alimentazione|Alimentação|Питание|Alimentație
-Equilibrado|Balanced|Équilibré|Ausgewogen|Equilibrato|Equilibrado|Сбалансированный|Echilibrat
+Saludable|Healthy|Sain|gesund|Sano|Saudável|Здоровый|Sănătos
+Entrenar|To train|S'entraîner|trainieren|Allenarsi|Treinar|Тренироваться|A se antrena
+Meditar|To meditate|Méditer|meditieren|Meditare|Meditar|Медитировать|A medita
+Fumar|To smoke|Fumer|rauchen|Fumare|Fumar|Курить|A fuma
+Alimentación|Nutrition|Alimentation|Ernährung|Alimentazione|Alimentação|Питание|Alimentație
+Equilibrado|Balanced|Équilibré|ausgewogen|Equilibrato|Equilibrado|Сбалансированный|Echilibrat
 Salud|Health|Santé|Gesundheit|Salute|Saúde|Здоровье|Sănătate
 Músculo|Muscle|Muscle|Muskel|Muscolo|Músculo|Мышца|Mușchi
-Estirar|To stretch|S'étirer|Dehnen|Fare stretching|Alongar|Растягиваться|A face stretching
-Respirar|To breathe|Respirer|Atmen|Respirare|Respirar|Дышать|A respira
+Estirar|To stretch|S'étirer|dehnen|Fare stretching|Alongar|Растягиваться|A face stretching
+Respirar|To breathe|Respirer|atmen|Respirare|Respirar|Дышать|A respira
 `);
 addExtra(23, "s", `
 Quiero bajar de peso poco a poco.|I want to lose weight little by little.|Je veux perdre du poids petit à petit.|Ich möchte nach und nach abnehmen.|Voglio perdere peso a poco a poco.|Quero perder peso aos poucos.|Я хочу постепенно похудеть.|Vreau să slăbesc treptat.
@@ -107,9 +107,9 @@ Electricidad|Electricity|Électricité|Strom|Elettricità|Eletricidade|Элек�
 Bosque|Forest|Forêt|Wald|Bosco|Floresta|Лес|Pădure
 Río|River|Rivière|Fluss|Fiume|Rio|Река|Râu
 Árbol|Tree|Arbre|Baum|Albero|Árvore|Дерево|Copac
-Reutilizar|To reuse|Réutiliser|Wiederverwenden|Riutilizzare|Reutilizar|Использовать повторно|A refolosi
-Reducir|To reduce|Réduire|Reduzieren|Ridurre|Reduzir|Сокращать|A reduce
-Proteger|To protect|Protéger|Schützen|Proteggere|Proteger|Защищать|A proteja
+Reutilizar|To reuse|Réutiliser|wiederverwenden|Riutilizzare|Reutilizar|Использовать повторно|A refolosi
+Reducir|To reduce|Réduire|reduzieren|Ridurre|Reduzir|Сокращать|A reduce
+Proteger|To protect|Protéger|schützen|Proteggere|Proteger|Защищать|A proteja
 Transporte público|Public transport|Transports en commun|Öffentliche Verkehrsmittel|Trasporto pubblico|Transportes públicos|Общественный транспорт|Transport public
 Energía solar|Solar energy|Énergie solaire|Solarenergie|Energia solare|Energia solar|Солнечная энергия|Energie solară
 Recurso|Resource|Ressource|Ressource|Risorsa|Recurso|Ресурс|Resursă
@@ -138,7 +138,7 @@ Teatro|Theatre|Théâtre|Theater|Teatro|Teatro|Театр|Teatru
 Pintura|Painting|Peinture|Gemälde|Pittura|Pintura|Живопись|Pictură
 Patrimonio|Heritage|Patrimoine|Erbe|Patrimonio|Património|Наследие|Patrimoniu
 Orgullo|Pride|Fierté|Stolz|Orgoglio|Orgulho|Гордость|Mândrie
-Heredar|To inherit|Hériter|Erben|Ereditare|Herdar|Наследовать|A moșteni
+Heredar|To inherit|Hériter|erben|Ereditare|Herdar|Наследовать|A moșteni
 `);
 addExtra(25, "s", `
 Mi cumpleaños se celebra con toda la familia.|My birthday is celebrated with the whole family.|Mon anniversaire se fête avec toute la famille.|Meinen Geburtstag feiere ich mit der ganzen Familie.|Il mio compleanno si festeggia con tutta la famiglia.|O meu aniversário celebra-se com toda a família.|Мой день рождения празднуют всей семьёй.|Ziua mea de naștere se sărbătorește cu toată familia.
@@ -153,15 +153,15 @@ Es importante cuidar el patrimonio de un país.|It is important to look after a 
 /* 26 Amistad y consejos */
 addExtra(26, "w", `
 Amistad|Friendship|Amitié|Freundschaft|Amicizia|Amizade|Дружба|Prietenie
-Honesto|Honest|Honnête|Ehrlich|Onesto|Honesto|Честный|Sincer
-Mentir|To lie|Mentir|Lügen|Mentire|Mentir|Лгать|A minți
+Honesto|Honest|Honnête|ehrlich|Onesto|Honesto|Честный|Sincer
+Mentir|To lie|Mentir|lügen|Mentire|Mentir|Лгать|A minți
 Verdad|Truth|Vérité|Wahrheit|Verità|Verdade|Правда|Adevăr
 Respeto|Respect|Respect|Respekt|Rispetto|Respeito|Уважение|Respect
 Paciencia|Patience|Patience|Geduld|Pazienza|Paciência|Терпение|Răbdare
-Escuchar|To listen|Écouter|Zuhören|Ascoltare|Ouvir|Слушать|A asculta
-Compartir|To share|Partager|Teilen|Condividere|Partilhar|Делиться|A împărtăși
+Escuchar|To listen|Écouter|zuhören|Ascoltare|Ouvir|Слушать|A asculta
+Compartir|To share|Partager|teilen|Condividere|Partilhar|Делиться|A împărtăși
 Leal|Loyal|Loyal|Loyal|Leale|Leal|Верный|Loial
-Pelea|Quarrel|Brouille|Zank|Litigio|Briga|Конфликт|Conflict
+Pelea|Quarrel|Brouille|Zank|Lite|Briga|Конфликт|Conflict
 Solución|Solution|Solution|Lösung|Soluzione|Solução|Решение|Soluție
 Cariño|Affection|Affection|Zuneigung|Affetto|Carinho|Привязанность|Afecțiune
 `);
@@ -205,10 +205,10 @@ addExtra(28, "w", `
 Juventud|Youth|Jeunesse|Jugend|Giovinezza|Juventude|Юность|Tinerețe
 Escuela|School|École|Schule|Scuola|Escola|Школа|Școală
 Pueblo|Village|Village|Dorf|Paesino|Aldeia|Деревня|Sat
-Aprender|To learn|Apprendre|Lernen|Imparare|Aprender|Учиться|A învăța
-Cambiar|To change|Changer|Ändern|Cambiare|Mudar|Менять|A schimba
-Extrañar|To miss|Manquer|Vermissen|Mancare|Sentir saudades|Скучать|A-i fi dor
-Recordar|To remember|Se souvenir|Sich erinnern|Ricordare|Lembrar|Помнить|A-și aminti
+Aprender|To learn|Apprendre|lernen|Imparare|Aprender|Учиться|A învăța
+Cambiar|To change|Changer|ändern|Cambiare|Mudar|Менять|A schimba
+Extrañar|To miss|Manquer|vermissen|Mancare|Sentir saudades|Скучать|A-i fi dor
+Recordar|To remember|Se souvenir|sich erinnern|Ricordare|Lembrar|Помнить|A-și aminti
 Sorpresa|Surprise|Surprise|Überraschung|Sorpresa|Surpresa|Сюрприз|Surpriză
 Anécdota|Anecdote|Anecdote|Anekdote|Aneddoto|Anedota|Случай|Anecdotă
 Momento|Moment|Moment|Moment|Momento|Momento|Момент|Moment
@@ -230,8 +230,8 @@ addExtra(29, "w", `
 Ambición|Ambition|Ambition|Ehrgeiz|Ambizione|Ambição|Амбиции|Ambiție
 Talento|Talent|Talent|Talent|Talento|Talento|Талант|Talent
 Fracaso|Failure|Échec|Misserfolg|Fallimento|Fracasso|Неудача|Eșec
-Intentar|To try|Essayer|Versuchen|Provare|Tentar|Пытаться|A încerca
-Soñar|To dream|Rêver|Träumen|Sognare|Sonhar|Мечтать|A visa
+Intentar|To try|Essayer|versuchen|Provare|Tentar|Пытаться|A încerca
+Soñar|To dream|Rêver|träumen|Sognare|Sonhar|Мечтать|A visa
 Libertad|Freedom|Liberté|Freiheit|Libertà|Liberdade|Свобода|Libertate
 Felicidad|Happiness|Bonheur|Glück|Felicità|Felicidade|Счастье|Fericire
 Condición|Condition|Condition|Bedingung|Condizione|Condição|Условие|Condiție

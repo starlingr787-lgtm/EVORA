@@ -2,16 +2,16 @@
 
 /* 10 Rutina diaria */
 addExtra(10, "w", `
-Desayunar|To have breakfast|Prendre le petit-déjeuner|Frühstücken|Fare colazione|Tomar o pequeno-almoço|Завтракать|A lua micul dejun
-Almorzar|To have lunch|Déjeuner|Zu Mittag essen|Pranzare|Almoçar|Обедать|A lua prânzul
-Cenar|To have dinner|Dîner|Zu Abend essen|Cenare|Jantar|Ужинать|A cina
-Salir|To leave|Sortir|Ausgehen|Uscire|Sair|Выходить|A ieși
-Llegar|To arrive|Arriver|Ankommen|Arrivare|Chegar|Приходить|A ajunge
-Limpiar|To clean|Nettoyer|Putzen|Pulire|Limpar|Убирать|A curăța
-Despertarse|To wake up|Se réveiller|Aufwachen|Svegliarsi|Acordar|Просыпаться|A se trezi
+Desayunar|To have breakfast|Prendre le petit-déjeuner|frühstücken|Fare colazione|Tomar o pequeno-almoço|Завтракать|A lua micul dejun
+Almorzar|To have lunch|Déjeuner|zu Mittag essen|Pranzare|Almoçar|Обедать|A lua prânzul
+Cenar|To have dinner|Dîner|zu Abend essen|Cenare|Jantar|Ужинать|A cina
+Salir|To leave|Sortir|ausgehen|Uscire|Sair|Выходить|A ieși
+Llegar|To arrive|Arriver|ankommen|Arrivare|Chegar|Приходить|A ajunge
+Limpiar|To clean|Nettoyer|putzen|Pulire|Limpar|Убирать|A curăța
+Despertarse|To wake up|Se réveiller|aufwachen|Svegliarsi|Acordar|Просыпаться|A se trezi
 Rutina|Routine|Routine|Routine|Routine|Rotina|Распорядок дня|Rutină
-Leer|To read|Lire|Lesen|Leggere|Ler|Читать|A citi
-Caminar|To walk|Marcher|Gehen|Camminare|Caminhar|Ходить|A merge pe jos
+Leer|To read|Lire|lesen|Leggere|Ler|Читать|A citi
+Caminar|To walk|Marcher|gehen|Camminare|Caminhar|Ходить|A merge pe jos
 Lavarse los dientes|To brush your teeth|Se brosser les dents|Zähne putzen|Lavarsi i denti|Lavar os dentes|Чистить зубы|A se spăla pe dinți
 Hacer ejercicio|To exercise|Faire de l'exercice|Sport treiben|Fare esercizio|Fazer exercício|Заниматься спортом|A face mișcare
 `);
@@ -63,7 +63,7 @@ Tos|Cough|Toux|Husten|Tosse|Tosse|Кашель|Tuse
 Resfriado|Cold|Rhume|Erkältung|Raffreddore|Constipação|Простуда|Răceală
 Cita|Appointment|Rendez-vous|Termin|Appuntamento|Consulta|Приём|Programare
 Receta|Prescription|Ordonnance|Rezept|Ricetta|Receita|Рецепт|Rețetă
-Enfermo|Ill|Malade|Krank|Malato|Doente|Больной|Bolnav
+Enfermo|Ill|Malade|krank|Malato|Doente|Больной|Bolnav
 `);
 addExtra(12, "s", `
 Me duele la espalda.|My back hurts.|J'ai mal au dos.|Mein Rücken tut weh.|Mi fa male la schiena.|Dói-me as costas.|У меня болит спина.|Mă doare spatele.
@@ -111,8 +111,8 @@ Invierno|Winter|Hiver|Winter|Inverno|Inverno|Зима|Iarnă
 Verano|Summer|Été|Sommer|Estate|Verão|Лето|Vară
 Otoño|Autumn|Automne|Herbst|Autunno|Outono|Осень|Toamnă
 Primavera|Spring|Printemps|Frühling|Primavera|Primavera|Весна|Primăvară
-Nublado|Cloudy|Nuageux|Bewölkt|Nuvoloso|Nublado|Облачно|Înnorat
-Soleado|Sunny|Ensoleillé|Sonnig|Soleggiato|Soalheiro|Солнечно|Însorit
+Nublado|Cloudy|Nuageux|bewölkt|Nuvoloso|Nublado|Облачно|Înnorat
+Soleado|Sunny|Ensoleillé|sonnig|Soleggiato|Soalheiro|Солнечно|Însorit
 Estación|Season|Saison|Jahreszeit|Stagione|Estação|Время года|Anotimp
 `);
 addExtra(14, "s", `
@@ -131,11 +131,11 @@ Concierto|Concert|Concert|Konzert|Concerto|Concerto|Концерт|Concert
 Juego|Game|Jeu|Spiel|Gioco|Jogo|Игра|Joc
 Baile|Dance|Danse|Tanz|Ballo|Dança|Танец|Dans
 Serie|TV series|Série|Serie|Serie TV|Série|Сериал|Serial
-Cantar|To sing|Chanter|Singen|Cantare|Cantar|Петь|A cânta
-Bailar|To dance|Danser|Tanzen|Ballare|Dançar|Танцевать|A dansa
-Nadar|To swim|Nager|Schwimmen|Nuotare|Nadar|Плавать|A înota
-Correr|To run|Courir|Laufen|Correre|Correr|Бегать|A alerga
-Jugar|To play|Jouer|Spielen|Giocare|Jogar|Играть|A juca
+Cantar|To sing|Chanter|singen|Cantare|Cantar|Петь|A cânta
+Bailar|To dance|Danser|tanzen|Ballare|Dançar|Танцевать|A dansa
+Nadar|To swim|Nager|schwimmen|Nuotare|Nadar|Плавать|A înota
+Correr|To run|Courir|laufen|Correre|Correr|Бегать|A alerga
+Jugar|To play|Jouer|spielen|Giocare|Jogar|Играть|A juca
 Pasatiempo|Hobby|Passe-temps|Hobby|Passatempo|Passatempo|Хобби|Hobby
 Gimnasio|Gym|Salle de sport|Fitnessstudio|Palestra|Ginásio|Спортзал|Sală de sport
 Tiempo libre|Free time|Temps libre|Freizeit|Tempo libero|Tempo livre|Свободное время|Timp liber
@@ -163,7 +163,7 @@ Todavía|Still|Encore|Noch|Ancora|Ainda|Ещё|Încă
 Recuerdo|Memory|Souvenir|Erinnerung|Ricordo|Recordação|Воспоминание|Amintire
 Historia|Story|Histoire|Geschichte|Storia|História|История|Poveste
 Cuando|When|Quand|Als|Quando|Quando|Когда|Când
-Último|Last|Dernier|Letzter|Ultimo|Último|Последний|Ultimul
+Último|Last|Dernier|letzter|Ultimo|Último|Последний|Ultimul
 `);
 addExtra(16, "s", `
 Anteayer visité a mis abuelos.|The day before yesterday I visited my grandparents.|Avant-hier, j'ai rendu visite à mes grands-parents.|Vorgestern habe ich meine Großeltern besucht.|L'altro ieri ho visitato i miei nonni.|Anteontem visitei os meus avós.|Позавчера я навестил бабушку и дедушку.|Alaltăieri am vizitat bunicii.
@@ -177,21 +177,21 @@ Por fin terminé el trabajo.|At last I finished the work.|J'ai enfin terminé le
 
 /* 17 Planes de futuro */
 addExtra(17, "w", `
-Meta|Goal|Objectif|Ziel|Obiettivo|Meta|Цель|Țel
-Próximo|Next|Prochain|Nächster|Prossimo|Próximo|Следующий|Următorul
-Decidir|To decide|Décider|Entscheiden|Decidere|Decidir|Решать|A hotărî
-Esperar|To hope|Espérer|Hoffen|Sperare|Esperar|Надеяться|A spera
-Ahorrar|To save|Économiser|Sparen|Risparmiare|Poupar|Копить|A economisi
-Mudarse|To move house|Déménager|Umziehen|Traslocare|Mudar de casa|Переезжать|A se muta
-Empezar|To start|Commencer|Anfangen|Iniziare|Começar|Начинать|A începe
-Terminar|To finish|Terminer|Beenden|Finire|Terminar|Заканчивать|A termina
-Posible|Possible|Possible|Möglich|Possibile|Possível|Возможный|Posibil
-Seguro|Sure|Sûr|Sicher|Sicuro|Seguro|Уверенный|Sigur
+Meta|Goal|Objectif|Ziel|Obiettivo|Meta|Цель|Scop
+Próximo|Next|Prochain|nächster|Prossimo|Próximo|Следующий|Următorul
+Decidir|To decide|Décider|entscheiden|Decidere|Decidir|Решать|A hotărî
+Esperar|To hope|Espérer|hoffen|Sperare|Esperar|Надеяться|A spera
+Ahorrar|To save|Économiser|sparen|Risparmiare|Poupar|Копить|A economisi
+Mudarse|To move house|Déménager|umziehen|Traslocare|Mudar de casa|Переезжать|A se muta
+Empezar|To start|Commencer|anfangen|Iniziare|Começar|Начинать|A începe
+Terminar|To finish|Terminer|beenden|Finire|Terminar|Заканчивать|A termina
+Posible|Possible|Possible|möglich|Possibile|Possível|Возможный|Posibil
+Seguro|Sure|Sûr|sicher|Sicuro|Seguro|Уверенный|Sigur
 Invitación|Invitation|Invitation|Einladung|Invito|Convite|Приглашение|Invitație
 Oportunidad|Opportunity|Occasion|Gelegenheit|Opportunità|Oportunidade|Возможность|Oportunitate
 `);
 addExtra(17, "s", `
-Mi meta es hablar inglés bien.|My goal is to speak English well.|Mon objectif est de bien parler anglais.|Mein Ziel ist es, gut Englisch zu sprechen.|Il mio obiettivo è parlare bene l'inglese.|O meu objetivo é falar bem inglês.|Моя цель — хорошо говорить по-английски.|Țelul meu este să vorbesc bine engleza.
+Mi meta es hablar inglés bien.|My goal is to speak English well.|Mon objectif est de bien parler anglais.|Mein Ziel ist es, gut Englisch zu sprechen.|Il mio obiettivo è parlare bene l'inglese.|O meu objetivo é falar bem inglês.|Моя цель — хорошо говорить по-английски.|Scopul meu este să vorbesc bine engleza.
 Voy a ahorrar para el viaje.|I am going to save for the trip.|Je vais économiser pour le voyage.|Ich werde für die Reise sparen.|Risparmierò per il viaggio.|Vou poupar para a viagem.|Я буду копить на поездку.|Voi economisi pentru călătorie.
 Espero ganar un mejor sueldo.|I hope to earn a better salary.|J'espère gagner un meilleur salaire.|Ich hoffe, ein besseres Gehalt zu verdienen.|Spero di guadagnare uno stipendio migliore.|Espero ganhar um melhor ordenado.|Я надеюсь получать зарплату побольше.|Sper să câștig un salariu mai bun.
 El próximo mes me voy a mudar.|Next month I am going to move.|Le mois prochain, je vais déménager.|Nächsten Monat ziehe ich um.|Il mese prossimo mi trasferisco.|No próximo mês vou mudar de casa.|В следующем месяце я перееду.|Luna viitoare mă mut.
@@ -202,16 +202,16 @@ Gracias por la invitación, voy a ir.|Thank you for the invitation, I will come.
 
 /* 18 Opiniones */
 addExtra(18, "w", `
-Alegre|Cheerful|Joyeux|Fröhlich|Allegro|Alegre|Радостный|Vesel
+Alegre|Cheerful|Joyeux|fröhlich|Allegro|Alegre|Радостный|Vesel
 Preocupado|Worried|Inquiet|Besorgt|Preoccupato|Preocupado|Обеспокоенный|Îngrijorat
-Asustado|Scared|Effrayé|Verängstigt|Spaventato|Assustado|Испуганный|Speriat
-Emocionado|Excited|Enthousiaste|Aufgeregt|Emozionato|Entusiasmado|Взволнованный|Entuziasmat
-Tranquilo|Calm|Calme|Ruhig|Tranquillo|Calmo|Спокойный|Calm
-Interesante|Interesting|Intéressant|Interessant|Interessante|Interessante|Интересный|Interesant
-Divertido|Fun|Amusant|Lustig|Divertente|Divertido|Весёлый|Amuzant
-Difícil|Difficult|Difficile|Schwierig|Difficile|Difícil|Трудный|Greu
-Fácil|Easy|Facile|Einfach|Facile|Fácil|Лёгкий|Ușor
-Importante|Important|Important|Wichtig|Importante|Importante|Важный|Important
+Asustado|Scared|Effrayé|verängstigt|Spaventato|Assustado|Испуганный|Speriat
+Emocionado|Excited|Enthousiaste|aufgeregt|Emozionato|Entusiasmado|Взволнованный|Entuziasmat
+Tranquilo|Calm|Calme|ruhig|Tranquillo|Calmo|Спокойный|Calm
+Interesante|Interesting|Intéressant|interessant|Interessante|Interessante|Интересный|Interesant
+Divertido|Fun|Amusant|lustig|Divertente|Divertido|Весёлый|Amuzant
+Difícil|Difficult|Difficile|schwierig|Difficile|Difícil|Трудный|Greu
+Fácil|Easy|Facile|einfach|Facile|Fácil|Лёгкий|Ușor
+Importante|Important|Important|wichtig|Importante|Importante|Важный|Important
 Opinión|Opinion|Opinion|Meinung|Opinione|Opinião|Мнение|Părere
 Idea|Idea|Idée|Idee|Idea|Ideia|Идея|Idee
 `);
@@ -233,11 +233,11 @@ Bomberos|Fire brigade|Pompiers|Feuerwehr|Vigili del fuoco|Bombeiros|Пожарн
 Accidente|Accident|Accident|Unfall|Incidente|Acidente|Авария|Accident
 Herido|Injured|Blessé|Verletzt|Ferito|Ferido|Раненый|Rănit
 Robo|Robbery|Vol|Raub|Furto|Roubo|Ограбление|Furt
-Perder|To lose|Perdre|Verlieren|Perdere|Perder|Терять|A pierde
-Encontrar|To find|Trouver|Finden|Trovare|Encontrar|Находить|A găsi
-Urgente|Urgent|Urgent|Dringend|Urgente|Urgente|Срочно|Urgent
-Repetir|To repeat|Répéter|Wiederholen|Ripetere|Repetir|Повторять|A repeta
-Entender|To understand|Comprendre|Verstehen|Capire|Perceber|Понимать|A înțelege
+Perder|To lose|Perdre|verlieren|Perdere|Perder|Терять|A pierde
+Encontrar|To find|Trouver|finden|Trovare|Encontrar|Находить|A găsi
+Urgente|Urgent|Urgent|dringend|Urgente|Urgente|Срочно|Urgent
+Repetir|To repeat|Répéter|wiederholen|Ripetere|Repetir|Повторять|A repeta
+Entender|To understand|Comprendre|verstehen|Capire|Perceber|Понимать|A înțelege
 Cuidado|Careful|Attention|Vorsicht|Attenzione|Cuidado|Осторожно|Atenție
 `);
 addExtra(19, "s", `
