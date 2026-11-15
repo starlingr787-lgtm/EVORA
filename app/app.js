@@ -10,7 +10,7 @@
   /* ---------- Estado ---------- */
   let S = load();
   function load() {
-    const d = { plan: "standard", lang: null, xp: 0, streak: 0, lastDay: null, hearts: 5, heartsDay: today(), progress: {}, mistakes: {}, cefr: {}, daily: {}, tab: "learn", pick: false, vtab: "today" };
+    const d = { plan: "standard", lang: null, xp: 0, streak: 0, lastDay: null, hearts: 5, heartsDay: today(), progress: {}, mistakes: {}, cefr: {}, daily: {}, tab: "learn", pick: false, vtab: "today", mute: false };
     try {
       const old = JSON.parse(localStorage.getItem(KEY) || localStorage.getItem("lingo-state-v2")) || {};
       Object.assign(d, old);
@@ -22,11 +22,57 @@
   const prem = () => S.plan === "premium";
   const unitOpen = ui => prem() || (ui - EX.lvStart(ui)) < PLANS.standard.units;
   const stars = (ui, li, lang = S.lang) => (S.progress[lang] || {})[ui + "-" + li] || 0;
-  const doneCount = (lang, range) => Object.keys(S.progress[lang] || {}).filter(k => !range || (+k.split("-")[0] >= range.from && +k.split("-")[0] < range.to)).length;
+  const doneCount = (lang, range) => Object.keys(S.progress[lang] || {}).filter(k => { const [u, l] = k.split("-").map(Number); return l < NL && (!range || (u >= range.from && u < range.to)); }).length;
   const cefrOf = lang => CEFR.find(c => c.id === S.cefr[lang]) || null;
   let levelPickFor = null;
 
   const app = $("#app"), modal = $("#modal"), playerEl = $("#player");
+
+  /* ---------- Sonido y efectos ("jugo") ---------- */
+  const sfx = (() => {
+    let ctx;
+    const get = () => {
+      if (S.mute) return null;
+      if (!ctx) { try { ctx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} }
+      if (ctx && ctx.state === "suspended") ctx.resume();
+      return ctx;
+    };
+    const tone = (f, t0, dur, type = "sine", vol = .12) => {
+      const c = get(); if (!c) return;
+      const o = c.createOscillator(), g = c.createGain(), t = c.currentTime + t0;
+      o.type = type; o.frequency.value = f;
+      g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(vol, t + .012); g.gain.exponentialRampToValueAtTime(.0001, t + dur);
+      o.connect(g); g.connect(c.destination); o.start(t); o.stop(t + dur + .03);
+    };
+    const sc = [523.25, 587.33, 659.25, 783.99, 880, 1046.5, 1174.66, 1318.5];
+    return {
+      pop: i => tone(sc[i % sc.length], 0, .16, "triangle", .14),
+      back: () => tone(330, 0, .09, "sine", .08),
+      swap: () => { tone(440, 0, .07, "square", .045); tone(660, .05, .09, "square", .045); },
+      ok: () => { tone(659.25, 0, .12, "triangle", .12); tone(880, .08, .18, "triangle", .12); },
+      win: () => [0, 2, 4, 5, 7].forEach((k, n) => tone(sc[k], n * .08, .24, "triangle", .13)),
+      bad: () => { tone(196, 0, .16, "sawtooth", .06); tone(155, .1, .22, "sawtooth", .06); }
+    };
+  })();
+  const vibrate = p => { try { if (!S.mute && navigator.vibrate) navigator.vibrate(p); } catch (e) {} };
+  function fxLayer() {
+    let l = $("#fx");
+    if (!l) { l = document.createElement("div"); l.id = "fx"; document.body.appendChild(l); }
+    return l;
+  }
+  function fxBurst(x, y, n = 10, colors, spread = 70) {
+    const cols = colors || ["#ffb703", "#ff6b4a", "#0f9d94", "#7a5af8", "#3e7bfa", "#e5447a"], layer = fxLayer();
+    for (let k = 0; k < n; k++) {
+      const b = document.createElement("i"), ang = Math.random() * Math.PI * 2, dist = spread * (.45 + Math.random() * .8);
+      b.className = Math.random() < .5 ? "sq" : "ci";
+      b.style.cssText = `left:${x}px;top:${y}px;--dx:${Math.cos(ang) * dist}px;--dy:${Math.sin(ang) * dist - 24}px;--r:${Math.floor(Math.random() * 540)}deg;background:${cols[k % cols.length]}`;
+      layer.appendChild(b); setTimeout(() => b.remove(), 950);
+    }
+  }
+  function fxToast(text) {
+    const t = document.createElement("div"); t.className = "fx-toast"; t.innerHTML = text;
+    fxLayer().appendChild(t); setTimeout(() => t.remove(), 1500);
+  }
 
   /* ---------- Audio: locuciones grabadas + voz del navegador de respaldo ---------- */
   const PACK = {};
@@ -152,6 +198,7 @@
 
   /* ---------- Mapa de niveles ---------- */
   function nodeState(ui, li) {
+    if (li === NL) return stars(ui, li) > 0 ? "done" : "situ";
     if (!unitOpen(ui)) return "prem";
     if (stars(ui, li) > 0) return "done";
     const start = EX.lvStart(ui), idx = (ui - start) * NL + li;
@@ -170,8 +217,9 @@
 
     for (let ui = lv.from; ui < lv.to; ui++) {
       const U = UNITS[ui], un = ui - lv.from;
-      const H = NL * 98 + 10;
-      const pts = Array.from({ length: NL }, (_, li) => ({ x: 50 + 25 * Math.sin((un * NL + li) * 1.15 + .4), y: li * 98 + 52 }));
+      const NN = NL + (EX.hasSituation(ui) ? 1 : 0);
+      const H = NN * 98 + 10;
+      const pts = Array.from({ length: NN }, (_, li) => ({ x: 50 + 25 * Math.sin((un * NL + li) * 1.15 + .4), y: li * 98 + 52 }));
       let d = `M${pts[0].x} ${pts[0].y}`;
       for (let i = 1; i < pts.length; i++) { const m = (pts[i - 1].y + pts[i].y) / 2; d += ` C${pts[i - 1].x} ${m},${pts[i].x} ${m},${pts[i].x} ${pts[i].y}`; }
       const locked = !unitOpen(ui);
@@ -181,9 +229,10 @@
           <svg viewBox="0 0 100 ${H}" preserveAspectRatio="none"><path d="${d}" vector-effect="non-scaling-stroke"/></svg>
           ${pts.map((p, li) => {
             const st = nodeState(ui, li), s = stars(ui, li);
-            const icon = st === "locked" || st === "prem" ? "lock" : LV[li].icon;
-            return `<button class="node ${st} ${li === NL - 1 ? "big" : ""}" style="left:${p.x}%;top:${p.y}px" data-ui="${ui}" data-li="${li}" aria-label="${LV[li].name}">
-              ${st === "current" ? `<span class="go">Empezar</span>` : ""}
+            const LL = li === NL ? { name: "Situación", icon: "bolt" } : LV[li];
+            const icon = st === "locked" || st === "prem" ? "lock" : LL.icon;
+            return `<button class="node ${st} ${li === NL - 1 || li === NL ? "big" : ""}" style="left:${p.x}%;top:${p.y}px" data-ui="${ui}" data-li="${li}" aria-label="${LL.name}">
+              ${st === "current" ? `<span class="go">Empezar</span>` : st === "situ" ? `<span class="go free">Situación &middot; Gratis</span>` : ""}
               <span class="disc">${ic(icon, st === "done" || st === "current" ? "solid-lite" : "")}</span>
               ${st === "done" ? `<span class="nstars">${[1, 2, 3].map(n => ic("star", "solid " + (n <= s ? "on" : "off"))).join("")}</span>` : ""}
             </button>`;
@@ -198,7 +247,32 @@
   }
 
   /* ---------- Hoja de nivel ---------- */
+  function openSituation(ui) {
+    const s = stars(ui, NL);
+    modal.hidden = false;
+    modal.innerHTML = `<div class="box center"><div class="sheet-ic situ">${ic("bolt")}</div>
+      <span class="ulabel">Unidad ${ui - EX.lvStart(ui) + 1} &middot; ${UNITS[ui].title}</span><h2>Situación</h2>
+      <p class="muted">Rompecabezas vivo: cambia el tono de la frase hasta que encaje. Después calma a un personaje con las piezas adecuadas.</p>
+      <p class="fb-note ok-note">${ic("check")}<span>Gratis para todos los planes.</span></p>
+      ${s ? `<div class="nstars lg">${[1, 2, 3].map(n => ic("star", "solid " + (n <= s ? "on" : "off"))).join("")}</div>` : ""}
+      <div class="row center"><button class="btn ghost" id="cancel">Cerrar</button><button class="btn" id="start">${s ? "Repetir" : "Empezar"}</button></div></div>`;
+    $("#cancel").onclick = closeModal;
+    $("#start").onclick = () => { closeModal(); startSituation(ui); };
+  }
+  function startSituation(ui) {
+    const ex = EX.situation(S.lang, ui);
+    const go = () => startPlayer({ kind: "situation", ui, li: NL, ex, lang: S.lang });
+    shell();
+    $("#stage").innerHTML = `<h2 class="ex-title">El color es el tono</h2>
+      <p class="muted">Cada pieza tiene el color del registro con el que se dice. Elegir bien el tono cambia cómo te responde la gente.</p>
+      <ul class="tone-legend">${["formal", "informal", "urgente"].map(t => `<li><span class="tone-chip t-${t}">${ic(TONES[t].icon)}${TONES[t].name}</span><span class="muted">${TONES[t].use}</span></li>`).join("")}</ul>
+      <p class="muted small">Primero verás 4 frases que cambian al tocar un tono. Después, una escena para calmar a un personaje.</p>`;
+    $("#foot").className = "p-foot"; $("#pBtn").textContent = "Empezar"; $("#pBtn").disabled = false; $("#pBtn").onclick = go;
+    $("#pBar").style.width = "0%";
+  }
+
   function openLevel(ui, li) {
+    if (li === NL) return openSituation(ui);
     const st = nodeState(ui, li);
     if (st === "prem") return openPlans("Esta unidad es Premium.");
     if (st === "locked") {
@@ -253,11 +327,21 @@
     playerEl.innerHTML = `
       <div class="p-top"><button class="icon-btn" id="pExit" aria-label="Salir">${ic("x")}</button>
         <div class="p-bar"><i id="pBar"></i></div>
+        <div class="p-combo" id="pCombo" hidden>${ic("flame", "solid")}<b></b></div>
+        <button class="icon-btn" id="pMute" aria-label="Sonido">${ic(S.mute ? "mute" : "speaker")}</button>
         <div class="p-hearts">${ic("heart", "solid")}<b id="pHearts"></b></div></div>
       <div class="p-body"><div class="stage" id="stage"></div></div>
       <div class="p-foot" id="foot"><div class="fb" id="fb"></div><button class="btn" id="pBtn">Comprobar</button></div>`;
     $("#pExit").onclick = confirmExit;
+    $("#pMute").onclick = () => { S.mute = !S.mute; save(); $("#pMute").innerHTML = ic(S.mute ? "mute" : "speaker"); };
     $("#pHearts").innerHTML = prem() ? "&infin;" : S.hearts;
+  }
+  function updateCombo() {
+    const c = $("#pCombo"); if (!c || !P) return;
+    const n = P.combo || 0;
+    c.hidden = n < 2; c.querySelector("b").textContent = "x" + n;
+    c.classList.remove("bump"); void c.offsetWidth; c.classList.add("bump");
+    if ([3, 5, 8, 12].includes(n)) fxToast(`${ic("flame", "solid")} Racha x${n}`);
   }
 
   function confirmExit() {
@@ -274,16 +358,16 @@
     render();
   }
 
-  const freeKind = () => P && (P.kind === "placement" || P.kind === "daily");
+  const freeKind = () => P && (P.kind === "placement" || P.kind === "daily" || P.kind === "situation");
 
   function startPlayer(cfg) {
-    P = { ...cfg, q: [...cfg.ex], i: 0, wrong: 0, correct: 0, retries: new Map(), locked: false, check: null };
+    P = { ...cfg, q: [...cfg.ex], i: 0, wrong: 0, correct: 0, retries: new Map(), locked: false, check: null, combo: 0, teardown: null };
     shell();
     if (freeKind()) $(".p-hearts").style.visibility = "hidden";
     renderEx();
   }
 
-  const setReady = r => { const b = $("#pBtn"); if (b && !P.locked) b.disabled = !r; };
+  const setReady = r => { const b = $("#pBtn"); if (b && !P.locked) { b.disabled = !r; b.classList.toggle("pulse", !!r); } };
   const tg = text => EX.tgt(text, P.lang);
 
   function audioBlock() {
@@ -302,13 +386,14 @@
   function bindBubbleSpeak(text) { const b = $("#pSpk"); if (b) b.onclick = () => speak(text, P.lang); }
 
   function renderEx() {
+    if (P.teardown) { P.teardown(); P.teardown = null; }
     const ex = P.ex = P.q[P.i];
     P.locked = false; P.check = null;
     $("#pBar").style.width = Math.round(P.i / P.q.length * 100) + "%";
     $("#pHearts").innerHTML = prem() ? "&infin;" : S.hearts;
     $("#foot").className = "p-foot"; $("#fb").innerHTML = "";
     const btn = $("#pBtn"); btn.textContent = "Comprobar"; btn.disabled = true; btn.onclick = onMain;
-    ({ mc: exMC, type: exType, bank: exBank, fill: exFill, match: exMatch }[ex.type])(ex);
+    ({ mc: exMC, type: exType, bank: exBank, fill: exFill, match: exMatch, tone: exTone, scene: exScene }[ex.type])(ex);
   }
 
   /* --- opción múltiple --- */
@@ -358,12 +443,15 @@
     if (!first) d += `V${m + KR}A${KR} ${KR} 0 1 0 0 ${m - KR}`;
     return d + "Z";
   }
+  let pzUid = 0;
   function shapePiece(el) {
     const svg = el.querySelector("svg"); if (!svg) return;
     const w = el.offsetWidth, h = el.offsetHeight;
-    const d = pzPath(w, h, el.classList.contains("first"), el.classList.contains("last"));
+    const d = pzPath(w, h, el.classList.contains("first"), el.classList.contains("last")), id = "pc" + (++pzUid);
     svg.setAttribute("width", w); svg.setAttribute("height", h); svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
-    svg.innerHTML = `<path class="sh" d="${d}" transform="translate(0 4)"/><path class="fl" d="${d}"/>`;
+    svg.innerHTML = `<defs><clipPath id="${id}"><path d="${d}"/></clipPath></defs>
+      <path class="sh" d="${d}" transform="translate(0 5)"/><path class="fl" d="${d}"/>
+      <g clip-path="url(#${id})"><rect class="gl" x="-2" y="0" width="${w + 4}" height="${h * .46}"/><rect class="gl2" x="-2" y="${h * .8}" width="${w + 4}" height="${h * .2}"/></g>`;
   }
 
   function exBank(ex) {
@@ -376,24 +464,37 @@
       <div class="bank" id="bank" aria-label="Piezas"></div>`;
     if (ex.audio) bindAudio(ex.audio); else if (ex.promptTarget) bindBubbleSpeak(ex.prompt);
 
-    const piece = (i, cls) => `<button type="button" class="pz ${cls}" style="--i:${i}" data-i="${i}"><svg class="pzs" aria-hidden="true"></svg><span class="pzt">${txt(i)}</span></button>`;
+    let landed = -1;
+    const piece = (i, cls) => `<button type="button" class="pz c${i % 8} ${cls}" style="--i:${i};--rot:${(i * 37 % 7) - 3}deg;--d:${(i * 0.37).toFixed(2)}s" data-i="${i}"><svg class="pzs" aria-hidden="true"></svg><span class="pzt">${txt(i)}</span></button>`;
     const draw = () => {
       $("#board").innerHTML = slots.map((pi, s) => {
         const pos = (s === 0 ? "first " : "") + (s === N - 1 ? "last" : "");
-        return `<div class="slot" data-s="${s}">${pi >= 0 ? piece(pi, pos) : `<span class="pz empty ${pos}"><svg class="pzs" aria-hidden="true"></svg></span>`}</div>`;
+        return `<div class="slot" data-s="${s}">${pi >= 0 ? piece(pi, pos + (s === landed ? " landed" : "")) : `<span class="pz empty ${pos}"><svg class="pzs" aria-hidden="true"></svg></span>`}</div>`;
       }).join("");
       $("#bank").innerHTML = ex.bank.map((w, i) => slots.includes(i)
         ? `<span class="pz ghost" style="--i:${i}"><svg class="pzs" aria-hidden="true"></svg><span class="pzt">${txt(i)}</span></span>`
         : piece(i, "")).join("");
       $$("#board .pz, #bank .pz").forEach(shapePiece);
       setReady(slots.every(x => x >= 0));
+      if (landed >= 0) {
+        const el = $(`#board .slot[data-s="${landed}"] .pz`);
+        if (el) { const r = el.getBoundingClientRect(); fxBurst(r.left + r.width / 2, r.top + r.height / 2, 7, undefined, 38); }
+        sfx.pop(slots.filter(x => x >= 0).length - 1); vibrate(8);
+        landed = -1;
+      }
     };
     draw();
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => P && P.ex === ex && $$("#board .pz, #bank .pz").forEach(shapePiece));
 
+    const place = (i, to) => { slots[to] = i; landed = to; };
     const tap = (i, from) => {
-      if (from >= 0) slots[from] = -1;
-      else { const e = slots.indexOf(-1); if (e >= 0) slots[e] = i; }
+      if (from >= 0) { slots[from] = -1; sfx.back(); }
+      else { const e = slots.indexOf(-1); if (e >= 0) place(i, e); }
+    };
+    const nearest = (x, y) => {
+      let best = null, bd = 95;
+      $$("#board .slot").forEach(s => { const r = s.getBoundingClientRect(), dd = Math.hypot(x - (r.left + r.width / 2), y - (r.top + r.height / 2)); if (dd < bd) { bd = dd; best = s; } });
+      return best;
     };
     let drag = null;
     const stage = $("#stage");
@@ -406,7 +507,7 @@
       const el = e.target.closest(".pz[data-i]");
       if (!el || P.locked || (e.button && e.button !== 0)) return;
       const sl = el.closest(".slot");
-      drag = { i: +el.dataset.i, from: sl ? +sl.dataset.s : -1, x0: e.clientX, y0: e.clientY, moved: false, el, ghost: null };
+      drag = { i: +el.dataset.i, from: sl ? +sl.dataset.s : -1, x0: e.clientX, y0: e.clientY, lx: e.clientX, moved: false, el, ghost: null };
       window.addEventListener("pointermove", onMove); window.addEventListener("pointerup", onUp); window.addEventListener("pointercancel", onCancel);
     };
     const onMove = e => {
@@ -414,11 +515,13 @@
       if (!drag.moved && Math.hypot(e.clientX - drag.x0, e.clientY - drag.y0) > 8) {
         drag.moved = true;
         const g = drag.el.cloneNode(true); g.classList.add("dragging"); g.removeAttribute("data-i");
-        document.body.appendChild(g); drag.ghost = g; drag.el.classList.add("lifting");
+        document.body.appendChild(g); drag.ghost = g; drag.el.classList.add("lifting"); sfx.back();
       }
       if (drag.moved) {
+        const tilt = Math.max(-16, Math.min(16, (e.clientX - drag.lx) * .8)); drag.lx = e.clientX;
         drag.ghost.style.left = e.clientX + "px"; drag.ghost.style.top = e.clientY + "px";
-        const t = document.elementFromPoint(e.clientX, e.clientY), s = t && t.closest(".slot");
+        drag.ghost.style.transform = `translate(-50%,-60%) scale(1.12) rotate(${tilt}deg)`;
+        const s = nearest(e.clientX, e.clientY);
         $$(".slot.over").forEach(x => x.classList.remove("over")); if (s) s.classList.add("over");
       }
     };
@@ -428,23 +531,25 @@
       if (!d.moved) tap(d.i, d.from);
       else {
         const t = document.elementFromPoint(e.clientX, e.clientY);
-        const s = t && t.closest(".slot"), inBank = t && t.closest("#bank");
+        const s = nearest(e.clientX, e.clientY), inBank = t && t.closest("#bank");
         if (s) {
           const to = +s.dataset.s, occ = slots[to];
           if (d.from >= 0) slots[d.from] = occ;
-          slots[to] = d.i;
-        } else if (inBank && d.from >= 0) slots[d.from] = -1;
+          place(d.i, to);
+        } else if (inBank && d.from >= 0) { slots[d.from] = -1; sfx.back(); }
       }
       draw();
     };
     const onCancel = () => { cleanup(); drag = null; draw(); };
-    stage.addEventListener("pointerdown", onDown);
-    stage.addEventListener("click", e => { // teclado: Enter / espacio
+    const onClick = e => { // teclado: Enter / espacio
       if (e.detail !== 0 || P.locked) return;
       const el = e.target.closest(".pz[data-i]"); if (!el) return;
       const sl = el.closest(".slot"); tap(+el.dataset.i, sl ? +sl.dataset.s : -1); draw();
       const nx = $(`.pz[data-i="${el.dataset.i}"]`); if (nx) nx.focus();
-    });
+    };
+    stage.addEventListener("pointerdown", onDown);
+    stage.addEventListener("click", onClick);
+    P.teardown = () => { stage.removeEventListener("pointerdown", onDown); stage.removeEventListener("click", onClick); cleanup(); };
 
     P.check = () => slots.some(x => x < 0) ? null : {
       ok: EX.norm(slots.map(i => ex.bank[i]).join(" ")) === EX.norm(ex.answerText),
@@ -454,11 +559,97 @@
         slots.forEach((pi, s) => {
           const good = EX.norm(EX.core(ex.bank[pi])) === EX.norm(EX.core(ex.answerTokens[s]));
           if (!good) all = false;
-          const el = $(`.slot[data-s="${s}"] .pz`); if (el) el.classList.add(good ? "ok" : "bad");
+          const el = $(`.slot[data-s="${s}"] .pz`); if (el) { el.classList.add(good ? "ok" : "bad"); el.style.animationDelay = (s * 70) + "ms"; }
         });
         if (all) $("#board").classList.add("solved");
       }
     };
+  }
+
+  /* --- rompecabezas vivo: el color es el tono --- */
+  function exTone(ex) {
+    const order = ["formal", "informal"]; let cur = ex.start, busy = false;
+    $("#stage").innerHTML = `<h2 class="ex-title">${ex.title}</h2>
+      <div class="sit-card">${ic("sparkle")}<div><span class="ulabel">Situación</span><b>${esc(ex.situation)}</b><span class="muted small">Toca un tono hasta que la frase encaje.</span></div></div>
+      <div class="tone-board-wrap"><div class="board live" id="tboard"></div><button class="spk sm" id="tspk" aria-label="Escuchar">${ic("speaker")}</button></div>
+      <div class="tone-cap" id="tcap"></div>
+      <div class="tone-pick" id="tpick">${order.map(t => `<button class="tone-btn t-${t}" data-t="${t}">${ic(TONES[t].icon)}<span>${TONES[t].name}</span></button>`).join("")}</div>`;
+    const caption = () => {
+      const T = TONES[cur];
+      $("#tcap").innerHTML = `<span class="tone-chip t-${cur}">${ic(T.icon)}${T.name}</span><span class="muted"> ${T.use}</span><div class="tone-es">Significa: ${esc(ex.variants[cur].es)}</div>`;
+    };
+    const renderBoard = anim => {
+      const tk = EX.tokens(ex.variants[cur].t);
+      $("#tboard").innerHTML = tk.map((w, i) => `<span class="pz t-${cur} ${i === 0 ? "first " : ""}${i === tk.length - 1 ? "last" : ""} ${anim ? "flip-in" : ""}" style="animation-delay:${i * 50}ms"><svg class="pzs" aria-hidden="true"></svg><span class="pzt">${tg(w)}</span></span>`).join("");
+      $$("#tboard .pz").forEach(shapePiece);
+      $$("#tpick .tone-btn").forEach(b => b.classList.toggle("on", b.dataset.t === cur));
+      caption();
+    };
+    renderBoard(false);
+    $("#tspk").onclick = () => speak(ex.variants[cur].t, P.lang);
+    $$("#tpick .tone-btn").forEach(b => b.onclick = () => {
+      const t = b.dataset.t; if (busy || P.locked || t === cur) return;
+      busy = true;
+      const ps = $$("#tboard .pz"); ps.forEach((p, i) => { p.style.animation = `flipOut .16s ${i * 35}ms ease-in forwards`; });
+      sfx.swap(); vibrate(8);
+      setTimeout(() => { cur = t; renderBoard(true); busy = false; const r = $("#tboard").getBoundingClientRect(); fxBurst(r.left + r.width / 2, r.top + r.height / 2, 10, [`var(--t-${t})`], 90); }, ps.length * 35 + 170);
+    });
+    setReady(true);
+    P.check = () => busy ? null : {
+      ok: cur === ex.target, showOk: true,
+      correct: `<span class="tone-chip t-${ex.target}">${ic(TONES[ex.target].icon)}${TONES[ex.target].name}</span> ${TONES[ex.target].use}`,
+      mark: () => $$("#tpick .tone-btn").forEach(b => { if (b.dataset.t === ex.target) b.classList.add("ok"); else if (b.dataset.t === cur) b.classList.add("bad"); })
+    };
+  }
+
+  /* --- escena: calmar a un personaje --- */
+  function exScene(ex) {
+    let turn = 0, mood = ex.start, busy = false;
+    const face = m => m < 35 ? "angry" : m < 60 ? "annoyed" : m < 80 ? "neutral" : "happy";
+    $("#stage").innerHTML = `<h2 class="ex-title">${esc(ex.title)}</h2><p class="muted scene-intro">${esc(ex.intro)}</p>
+      <div class="char-row"><div class="char" id="char"></div><div class="char-info"><b>${esc(ex.who)}</b>
+        <div class="mood" role="meter" aria-label="Ánimo" aria-valuemin="0" aria-valuemax="100"><i id="mfill"></i><span class="goal" style="left:${ex.goal}%"></span><em id="mdelta"></em></div>
+        <div class="mood-labels"><span>Enfadado</span><span>Tranquilo</span></div></div></div>
+      <div class="bubble big" id="cline"></div>
+      <div class="turn-dots" id="tdots"></div>
+      <div class="scene-opts" id="sopts"></div>`;
+    const paint = delta => {
+      $("#char").innerHTML = person(face(mood), ex.hue, 96);
+      const f = $("#mfill"); f.style.width = mood + "%"; f.className = mood >= ex.goal ? "hi" : mood >= 50 ? "mid" : "lo";
+      const dl = $("#mdelta");
+      if (delta) { dl.textContent = (delta > 0 ? "+" : "") + delta; dl.className = (delta > 0 ? "up" : "down") + " show"; setTimeout(() => dl.classList.remove("show"), 900); }
+    };
+    const setBtn = (text, dis, fn) => { const b = $("#pBtn"); b.textContent = text; b.disabled = dis; b.onclick = fn; b.classList.remove("pulse"); };
+    const drawTurn = () => {
+      busy = false; const t = ex.turns[turn];
+      $("#foot").className = "p-foot"; $("#fb").innerHTML = "";
+      $("#cline").innerHTML = `<button class="spk sm" id="cspk" aria-label="Escuchar">${ic("speaker")}</button><div><span>${tg(t.say.t)}</span><small class="muted">${esc(t.say.es)}</small></div>`;
+      $("#cspk").onclick = () => speak(t.say.t, P.lang);
+      $("#tdots").innerHTML = ex.turns.map((_, i) => `<i class="${i < turn ? "done" : i === turn ? "cur" : ""}"></i>`).join("");
+      const opts = EX.shuffle(t.opts.map((o, k) => ({ ...o, k })));
+      $("#sopts").innerHTML = opts.map(o => `<button type="button" class="pz wide t-${o.tone}" data-k="${o.k}"><svg class="pzs" aria-hidden="true"></svg><span class="pzt"><span class="otone">${ic(TONES[o.tone].icon)}${TONES[o.tone].name}</span><b>${tg(o.t)}</b><small>${esc(o.es)}</small></span></button>`).join("");
+      $$("#sopts .pz").forEach(shapePiece);
+      $$("#sopts .pz").forEach(b => b.onclick = () => choose(t.opts[+b.dataset.k], b));
+      setBtn("Elige una pieza", true, onMain);
+    };
+    const choose = (o, btn) => {
+      if (busy) return; busy = true;
+      mood = Math.max(0, Math.min(100, mood + o.d)); paint(o.d);
+      $$("#sopts .pz").forEach(x => { if (x === btn) x.classList.add(o.d > 0 ? "ok" : "bad"); else x.classList.add("dim"); shapePiece(x); });
+      o.d > 0 ? sfx.ok() : sfx.bad(); vibrate(o.d > 0 ? [10, 20, 10] : 25);
+      const r = btn.getBoundingClientRect(); fxBurst(r.left + r.width / 2, r.top + r.height / 2, o.d > 0 ? 16 : 6, o.d > 0 ? undefined : ["#e5484d"], 80);
+      const last = turn === ex.turns.length - 1;
+      $("#foot").className = "p-foot " + (o.d > 0 ? "ok" : "bad");
+      $("#fb").innerHTML = `<div class="fb-in"><span class="fb-ic">${ic(o.d > 0 ? "check" : "x")}</span><div><b>${o.d > 0 ? "Esto lo calma" : "Esto lo molesta"} (${o.d > 0 ? "+" : ""}${o.d})</b><div class="fb-ans">${esc(o.why)}</div></div></div>`;
+      setBtn(last ? "Ver resultado" : "Continuar", false, () => {
+        if (!last) { turn++; drawTurn(); return; }
+        const ok = mood >= ex.goal;
+        $("#pBtn").onclick = onMain;
+        reveal(ok, `Ánimo final: ${mood}%. ${ok ? "Has desactivado la situación con el tono adecuado." : "Aún sigue molesto. Prueba con otro tono."}`, { msg: "Aún no se ha calmado", okMsg: "¡Lo has calmado!", showOk: true });
+      });
+      $("#pBtn").focus();
+    };
+    paint(0); drawTurn();
   }
 
   /* --- completar --- */
@@ -512,7 +703,7 @@
     const r = P.check && P.check();
     if (!r) return;
     if (r.mark) r.mark();
-    reveal(r.ok, r.correct);
+    reveal(r.ok, r.correct, { showOk: r.showOk });
   }
 
   const PRAISE = ["¡Muy bien!", "¡Correcto!", "¡Excelente!", "¡Así se hace!", "¡Perfecto!"];
@@ -530,6 +721,7 @@
   function reveal(ok, correctHTML, o = {}) {
     P.locked = true;
     const ex = P.ex;
+    P.combo = ok ? (P.combo || 0) + 1 : 0;
     if (ok) { P.correct++; if (P.kind === "review") forget(ex.item); }
     else {
       P.wrong++;
@@ -539,12 +731,23 @@
       if (!o.noRetry && P.kind !== "placement" && n < 2) { P.retries.set(ex, n + 1); P.q.push(ex); }
     }
     save(); renderTop();
+    const praise = o.okMsg || (P.kind === "placement" ? "Respuesta registrada" : PRAISE[Math.floor(Math.random() * PRAISE.length)]);
     $("#foot").className = "p-foot " + (ok ? "ok" : "bad");
     $("#fb").innerHTML = ok
-      ? `<div class="fb-in"><span class="fb-ic">${ic("check")}</span><div><b>${P.kind === "placement" ? "Respuesta registrada" : PRAISE[Math.floor(Math.random() * PRAISE.length)]}</b></div></div>`
+      ? `<div class="fb-in"><span class="fb-ic">${ic("check")}</span><div><b>${praise}</b>${P.combo >= 3 ? `<span class="combo-note">${ic("flame", "solid")} Racha x${P.combo}</span>` : ""}${o.showOk && correctHTML ? `<div class="fb-ans">${correctHTML}</div>` : ""}</div></div>`
       : `<div class="fb-in"><span class="fb-ic">${ic("x")}</span><div><b>${o.msg || "Respuesta correcta"}</b>${correctHTML ? `<div class="fb-ans">${correctHTML}</div>` : ""}</div></div>`;
-    const btn = $("#pBtn"); btn.textContent = "Continuar"; btn.disabled = false; btn.focus();
+    const btn = $("#pBtn"); btn.textContent = "Continuar"; btn.disabled = false; btn.classList.remove("pulse"); btn.focus();
     $("#pBar").style.width = Math.round((P.i + 1) / P.q.length * 100) + "%";
+    // jugo: mascota, sonido, confeti y racha
+    const sm = $(".say .mascot"); if (sm) sm.outerHTML = mascot(ok ? "cheer" : "sad", 64);
+    if (ok) {
+      if (ex.type === "bank") {
+        sfx.win(); const b = $("#board");
+        if (b) { const r = b.getBoundingClientRect(); fxBurst(r.left + r.width / 2, r.top + r.height / 2, 30, undefined, 150); }
+      } else sfx.ok();
+      vibrate([12, 30, 12]);
+    } else { sfx.bad(); vibrate(35); }
+    updateCombo();
   }
 
   function next() {
@@ -572,6 +775,11 @@
       p[k] = Math.max(p[k] || 0, star);
       title = P.li === NL - 1 ? "Unidad completada" : "Nivel completado";
       if (P.li === NL - 1) extra = `<p class="muted">Has terminado la unidad ${P.ui - EX.lvStart(P.ui) + 1}: ${UNITS[P.ui].title}.</p>`;
+    } else if (P.kind === "situation") {
+      const p = (S.progress[P.lang] = S.progress[P.lang] || {}), k = P.ui + "-" + NL;
+      p[k] = Math.max(p[k] || 0, star);
+      title = "Situación superada";
+      extra = `<p class="muted">Has elegido el tono adecuado en la unidad ${P.ui - EX.lvStart(P.ui) + 1}.</p>`;
     } else if (P.kind === "daily") {
       title = "Vocabulario de hoy repasado";
       dailyRec().practiced = true;
@@ -580,7 +788,7 @@
     viewLearn.scrolled = false;
     playerEl.innerHTML = `<div class="p-body"><div class="stage center result">
       ${mascot("cheer", 150)}<h1>${title}</h1>${extra}
-      ${P.kind === "level" ? `<div class="nstars lg">${[1, 2, 3].map(n => ic("star", "solid " + (n <= star ? "on" : "off"))).join("")}</div>` : ""}
+      ${P.kind === "level" || P.kind === "situation" ? `<div class="nstars lg">${[1, 2, 3].map(n => ic("star", "solid " + (n <= star ? "on" : "off"))).join("")}</div>` : ""}
       <div class="res-stats"><div class="rs xp">${ic("star", "solid")}<b>+${xp}</b><span>XP</span></div>
         <div class="rs acc">${ic("check")}<b>${acc}%</b><span>Precisión</span></div></div></div></div>
       <div class="p-foot"><button class="btn" id="done">Continuar</button></div>`;

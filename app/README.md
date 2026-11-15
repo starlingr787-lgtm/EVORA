@@ -11,8 +11,13 @@ Para probarla en local: `cd app && python3 -m http.server` y abrir http://localh
   - Al elegir un curso se escoge el nivel o se hace una prueba de 8 preguntas que recomienda uno. El nivel se puede cambiar desde el mapa.
 - **Mapa de niveles**: 5 niveles por unidad (palabras, frases, práctica, escucha y combina, prueba de unidad), desbloqueo uno a uno y 1 a 3 estrellas.
 - **Ejercicios**: opción múltiple, escribir, completar la frase, relacionar parejas, escucha y **rompecabezas de frases** (piezas con forma de puzle que se arrastran o se tocan a un tablero).
+- **Situaciones** (nodo especial del mapa en las unidades 1 y 6, gratis para todos los planes y siempre desbloqueado):
+  - *Rompecabezas vivo*: cada pieza tiene el color de su registro (formal azul, informal naranja, urgente rojo, neutro verde) con icono y etiqueta. Al tocar otro tono la frase entera cambia a su variante, con animación, y hay que elegir el tono que encaja con la situación.
+  - *Escena para calmar a un personaje*: 3 turnos con medidor de ánimo. Cada respuesta es una pieza con su tono y una explicación en español de por qué calma o molesta.
+  - Las variantes de tono están escritas a mano (no se generan) para no producir gramática rota. Hace falta revisión de hablantes nativos antes de publicar.
 - **Vocabulario diario**: palabras y frase del día según el curso y el nivel, con marca de "ya la sé", práctica rápida y lista de "mis palabras" con buscador.
 - **Ruso**: transcripción automática en letras latinas y se acepta escribir en latino.
+- **Rompecabezas con "jugo"**: piezas con brillo y borde en relieve, flotan en el banco, se arrastran con inclinación e imán al hueco más cercano, aterrizan con rebote y chispas, suenan en escala musical (sonidos sintetizados, sin archivos), vibran en móviles, encajan en ola con confeti al acertar y suman racha. El sonido se silencia desde el reproductor y se respeta `prefers-reduced-motion`.
 - **Identidad propia**: sin emojis. Iconos SVG propios (`icons.js`), insignias de idioma y mascota Lumi.
 
 ## Planes
@@ -24,6 +29,7 @@ Para probarla en local: `cd app && python3 -m http.server` y abrir http://localh
 | Palabras del día | 5 | 10 |
 | Voz natural y ejercicios de escucha | no | sí |
 | Repaso de errores | no | sí |
+| Situaciones (tono y escenas) | sí | sí |
 
 ## Voz
 Las frases se reproducen con **locuciones neuronales pregeneradas** (`audio/<idioma>.mp3` + `audio/<idioma>.json`): un único MP3 por idioma con todas las frases concatenadas y un índice de posiciones. Si faltan, la app usa la mejor voz instalada en el navegador.
@@ -40,9 +46,10 @@ Se generaron con [Piper](https://github.com/OHF-Voice/piper1-gpl) (voces `rhassp
 | Rumano | ro_RO-mihai-medium | CC0 |
 
 Las voces francesa e italiana exigen atribución (CC BY 4.0): mantén esta tabla visible en la app si la publicas. Antes de uso comercial, revisa las licencias vigentes de cada voz.
-Para regenerar el audio tras cambiar `data.js` o `data2.js` hay que repetir la síntesis con el mismo orden de claves (`<unidad>w<n>` para palabras y `<unidad>s<n>` para frases).
+Para regenerar el audio tras cambiar `data.js` o `data2.js` hay que repetir la síntesis con el mismo orden de claves (`<unidad>w<n>` para palabras, `<unidad>s<n>` para frases y las de `extraClips()` en `data3.js` para situaciones).
 
 ## Estructura
+- `data3.js`: situaciones (tonos, rompecabezas vivo y escenas) y la lista de textos que necesitan audio.
 - `data.js`, `data2.js`: unidades en español y traducciones de cada curso. Para añadir contenido o idiomas se editan solo estos archivos.
 - `exercises.js`: generación de los ejercicios de cada nivel y de la prueba de nivel.
 - `icons.js`: iconos, insignias y mascota.

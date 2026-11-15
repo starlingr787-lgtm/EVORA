@@ -30,6 +30,8 @@
     clock: `<circle cx="12" cy="12" r="8.500"/><path${N} d="M12 7v5.500l3.500 2"/>`,
     play: '<path d="M8 5.500v13l11-6.500z"/>',
     bolt: '<path d="M13 2.500L5 13.500h6l-1 8 8-11h-6z"/>',
+    tie: '<path d="M9 3h6l-1.500 4 2 11-3.500 3-3.500-3 2-11z"/>',
+    mute: `<path d="M4 9.500h3.500L12 6v12l-4.500-3.500H4z"/><path${N} d="M16 9.500l5 5M21 9.500l-5 5"/>`,
     sun: `<circle cx="12" cy="12" r="4"/><path${N} d="M12 3v2M12 19v2M3 12h2M19 12h2M5.600 5.600L7 7M17 17l1.400 1.400M18.400 5.600L17 7M7 17l-1.400 1.400"/>`,
     home: `<path d="M4 11l8-7 8 7v9H4z"/><path${N} d="M10 20v-6h4v6"/>`,
     cross: '<path d="M9 4h6v5h5v6h-5v5H9v-5H4V9h5z"/>',
@@ -76,5 +78,33 @@
       ${eyes}${beak}
       <circle cx="33" cy="70" r="6" class="mc"/><circle cx="87" cy="70" r="6" class="mc"/>
     </svg>`;
+  };
+
+  /* Personaje de las escenas. mood: angry | annoyed | neutral | happy */
+  window.person = (mood = "neutral", hue = 200, px = 110) => {
+    const skin = "#f1c7a3";
+    const brows = {
+      angry: '<path d="M36 47l16 6M84 47l-16 6" class="pk"/>',
+      annoyed: '<path d="M36 50l16 2M84 50l-16 2" class="pk"/>',
+      neutral: '<path d="M37 49h15M68 49h15" class="pk"/>',
+      happy: '<path d="M36 48q8-5 16 0M68 48q8-5 16 0" class="pk"/>'
+    }[mood];
+    const mouth = {
+      angry: '<path d="M47 86q13-11 26 0" class="pk"/>',
+      annoyed: '<path d="M50 84h20" class="pk"/>',
+      neutral: '<path d="M50 80q10 6 20 0" class="pk"/>',
+      happy: '<path d="M44 78q16 18 32 0z" style="fill:#fff" class="pk"/>'
+    }[mood];
+    const eyes = mood === "happy"
+      ? '<path d="M40 63q6-8 12 0M68 63q6-8 12 0" class="pk"/>'
+      : '<circle cx="46" cy="63" r="4.500" class="pp"/><circle cx="74" cy="63" r="4.500" class="pp"/>';
+    const blush = mood === "angry" ? '<circle cx="36" cy="75" r="6" style="fill:#ff4d3a;opacity:.35"/><circle cx="84" cy="75" r="6" style="fill:#ff4d3a;opacity:.35"/>' : '';
+    return `<svg class="person" width="${px}" height="${px}" viewBox="0 0 120 120" role="img" aria-label="Personaje">
+      <path d="M10 122q0-28 32-32h36q32 4 32 32z" style="fill:hsl(${hue} 55% 50%)"/>
+      <rect x="52" y="84" width="16" height="14" style="fill:${skin}"/>
+      <ellipse cx="60" cy="52" rx="38" ry="40" style="fill:hsl(${hue} 40% 24%)"/>
+      <ellipse cx="60" cy="63" rx="31" ry="34" style="fill:${skin}"/>
+      <path d="M28 56q4-32 32-32t32 32q-14-16-32-16T28 56z" style="fill:hsl(${hue} 40% 24%)"/>
+      ${blush}${brows}${eyes}${mouth}</svg>`;
   };
 })();

@@ -219,9 +219,33 @@
     if (!CLIPIDX[lang]) {
       const m = CLIPIDX[lang] = {};
       COURSES[lang].t.forEach((t, u) => { t[0].forEach((x, i) => { m[x] = m[x] || `${u}w${i}`; }); t[1].forEach((x, i) => { m[x] = m[x] || `${u}s${i}`; }); });
+      if (window.extraClips) extraClips(lang).forEach(([k, x]) => { m[x] = m[x] || k; });
     }
     return CLIPIDX[lang][text];
   }
+
+  /* ---------- Situaciones ---------- */
+  const hasSituation = ui => (window.LIVE || []).some(p => p.unit === ui);
+  function liveSet(lang, ui) {
+    const all = [];
+    LIVE.filter(p => p.unit === ui).forEach(p => [0, 1].forEach(k => all.push({
+      type: "tone", title: "Rompecabezas vivo", idea: p.idea, situation: p.sit[k],
+      target: k === 0 ? "formal" : "informal", start: k === 0 ? "informal" : "formal",
+      variants: { formal: { t: p.t[lang][0], es: p.es[0] }, informal: { t: p.t[lang][1], es: p.es[1] } }
+    })));
+    return pick(all, 4);
+  }
+  function sceneEx(lang, ui) {
+    const s = SCENES.find(x => x.unit === ui), T = s.t[lang];
+    return {
+      type: "scene", title: s.title, who: s.who, hue: s.hue, start: s.start, goal: s.goal, intro: s.intro,
+      turns: s.turns.map((tu, i) => ({
+        say: { es: tu.es, t: T[i][0] },
+        opts: tu.opts.map((o, j) => ({ tone: o.tone, d: o.d, es: o.es, t: T[i][j + 1], why: o.why }))
+      }))
+    };
+  }
+  const situation = (lang, ui) => [...liveSet(lang, ui), sceneEx(lang, ui)];
 
   /* Texto de la lengua destino con transcripción para el ruso */
   const tgt = (text, lang, small = true) => {
@@ -229,5 +253,5 @@
     return lang === "ru" && small ? `${e}<small class="tr">${translit(text)}</small>` : e;
   };
 
-  window.EX = { build, reviewSet, placement, practiceWords, clipKey, unit, LEVELS, norm, translit, tgt, shuffle, tokens, core, lvStart };
+  window.EX = { situation, hasSituation, build, reviewSet, placement, practiceWords, clipKey, unit, LEVELS, norm, translit, tgt, shuffle, tokens, core, lvStart };
 })();
