@@ -223,18 +223,21 @@
     if (!prem() && S.hearts <= 0) return outOfHearts();
     const ex = EX.build(S.lang, ui, li, { listen: prem() && canSpeak });
     const go = () => startPlayer({ kind: "level", ui, li, ex, lang: S.lang });
-    if (li <= 1) intro(ui, li, go); else go();
+    if (li <= 1) intro(ui, li, go, ex.sample); else go();
   }
 
   /* ---------- Introducción de palabras/frases ---------- */
-  function intro(ui, li, then) {
+  function intro(ui, li, then, sample) {
     const U = EX.unit(S.lang, ui), items = li === 0 ? U.words : U.sents;
     shell();
     $("#stage").innerHTML = `<h2 class="ex-title">${li === 0 ? "Palabras nuevas" : "Frases de la situación"}</h2>
       <p class="muted">${U.ctx}</p>
       <ul class="intro">${items.map((x, i) => `<li><button class="spk sm" data-i="${i}" aria-label="Escuchar">${ic("speaker")}</button>
-        <div><b>${EX.tgt(x.t, S.lang)}</b><span class="muted">${esc(x.es)}</span></div></li>`).join("")}</ul>`;
-    $$(".intro .spk").forEach(b => b.onclick = () => speak(items[+b.dataset.i].t, S.lang));
+        <div><b>${EX.tgt(x.t, S.lang)}</b><span class="muted">${esc(x.es)}</span></div></li>`).join("")}</ul>
+      ${sample ? `<h3 class="vgroup">Dos frases para componer como un puzle</h3><ul class="intro">${sample.map((x, i) => `<li><button class="spk sm" data-j="${i}" aria-label="Escuchar">${ic("speaker")}</button>
+        <div><b>${EX.tgt(x.t, S.lang)}</b><span class="muted">${esc(x.es)}</span></div></li>`).join("")}</ul>` : ""}`;
+    $$(".intro .spk[data-i]").forEach(b => b.onclick = () => speak(items[+b.dataset.i].t, S.lang));
+    $$(".intro .spk[data-j]").forEach(b => b.onclick = () => speak(sample[+b.dataset.j].t, S.lang));
     $("#foot").className = "p-foot";
     $("#pBtn").textContent = "Empezar"; $("#pBtn").disabled = false;
     $("#pBtn").onclick = then;

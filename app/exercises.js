@@ -113,7 +113,7 @@
 
   /* ---------- Construcción de niveles ---------- */
   const LEVELS = [
-    { name: "Palabras nuevas", icon: "book", desc: "Aprende el vocabulario de la unidad" },
+    { name: "Palabras nuevas", icon: "book", desc: "Vocabulario de la unidad y tus primeras frases en rompecabezas" },
     { name: "Frases útiles", icon: "chat", desc: "Frases de la situación, paso a paso" },
     { name: "Práctica", icon: "pen", desc: "Completa, escribe y relaciona" },
     { name: "Escucha y combina", icon: "speaker", desc: "Oído y escritura (audio con Premium)" },
@@ -128,8 +128,10 @@
     let ex = [];
     if (li === 0) {
       sw.forEach((w, i) => ex.push(mc(w, W, i % 2 ? "rev" : "fwd")));
-      ex.push(match(sw.slice(0, 4)), match(sw.slice(4, 8)));
-      ex = [...shuffle(ex.filter(e => e.type === "mc")), ...ex.filter(e => e.type === "match")];
+      const demo = pick(S, 2); // dos frases de ejemplo: ya desde el primer nivel hay rompecabezas
+      const mcs = shuffle(ex.filter(e => e.type === "mc"));
+      ex = [...mcs.slice(0, 4), bank(demo[0], S, "fwd"), ...mcs.slice(4), bank(demo[1], S, "fwd"), match(sw.slice(0, 4)), match(sw.slice(4, 8))];
+      ex.sample = demo;
     } else if (li === 1) {
       ex = [
         ...ss.map(s => mc(s, S, "rev")),
