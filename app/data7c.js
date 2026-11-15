@@ -29,7 +29,7 @@ Contraté un seguro de viaje antes de salir.|I took out travel insurance before 
 addExtra(21, "w", `
 Carrera|Degree course|Filière|Studiengang|Corso di laurea|Licenciatura|Специальность|Specializare
 Profesor|Professor|Professeur|Professor|Professore|Professor|Профессор|Profesor
-Clase|Class|Cours|Unterricht|Lezione|Aula|Занятие|Oră
+Clase|Class|Cours|Unterricht|Lezione|Aula|Занятие|Oră de curs
 Tarea|Homework|Devoirs|Hausaufgabe|Compiti|Trabalho de casa|Домашнее задание|Temă
 Biblioteca|Library|Bibliothèque|Bibliothek|Biblioteca|Biblioteca|Библиотека|Bibliotecă
 Aprobar|To pass|Réussir|Bestehen|Superare|Passar|Сдать|A promova
@@ -47,7 +47,7 @@ Tengo que entregar la tarea mañana.|I have to hand in the homework tomorrow.|Je
 Pasé el examen con buena nota.|I passed the exam with a good grade.|J'ai réussi l'examen avec une bonne note.|Ich habe die Prüfung mit einer guten Note bestanden.|Ho superato l'esame con un buon voto.|Passei no exame com uma boa nota.|Я сдал экзамен с хорошей оценкой.|Am promovat examenul cu o notă bună.
 Paso muchas horas en la biblioteca.|I spend many hours in the library.|Je passe beaucoup d'heures à la bibliothèque.|Ich verbringe viele Stunden in der Bibliothek.|Passo molte ore in biblioteca.|Passo muitas horas na biblioteca.|Я провожу много часов в библиотеке.|Petrec multe ore în bibliotecă.
 Me inscribí en un curso de inglés.|I enrolled on an English course.|Je me suis inscrit à un cours d'anglais.|Ich habe mich für einen Englischkurs angemeldet.|Mi sono iscritto a un corso di inglese.|Inscrevi-me num curso de inglês.|Я записался на курс английского.|M-am înscris la un curs de engleză.
-Mi investigación trata sobre el medio ambiente.|My research is about the environment.|Ma recherche porte sur l'environnement.|Meine Forschung handelt von der Umwelt.|La mia ricerca riguarda l'ambiente.|A minha investigação é sobre o ambiente.|Моё исследование посвящено окружающей среде.|Cercetarea mea este despre mediu.
+Mi investigación trata sobre el medio ambiente.|My research is about the environment.|Ma recherche porte sur l'environnement.|Meine Forschung handelt von der Umwelt.|La mia ricerca riguarda l'ambiente.|A minha investigação é sobre o ambiente.|Моё исследование посвящено окружающей среде.|Cercetarea mea este despre mediul înconjurător.
 `);
 
 /* 22 Tecnología y medios */
@@ -91,7 +91,7 @@ Estirar|To stretch|S'étirer|Dehnen|Fare stretching|Alongar|Растягиват
 Respirar|To breathe|Respirer|Atmen|Respirare|Respirar|Дышать|A respira
 `);
 addExtra(23, "s", `
-Quiero bajar de peso poco a poco.|I want to lose weight little by little.|Je veux perdre du poids petit à petit.|Ich möchte nach und nach abnehmen.|Voglio perdere peso a poco a poco.|Quero perder peso aos poucos.|Я хочу постепенно похудеть.|Vreau să slăbesc puțin câte puțin.
+Quiero bajar de peso poco a poco.|I want to lose weight little by little.|Je veux perdre du poids petit à petit.|Ich möchte nach und nach abnehmen.|Voglio perdere peso a poco a poco.|Quero perder peso aos poucos.|Я хочу постепенно похудеть.|Vreau să slăbesc treptat.
 Entreno en el parque por las mañanas.|I train in the park in the mornings.|Je m'entraîne au parc le matin.|Ich trainiere morgens im Park.|Mi alleno al parco la mattina.|Treino no parque de manhã.|Я тренируюсь в парке по утрам.|Mă antrenez în parc dimineața.
 Medito diez minutos al día.|I meditate for ten minutes a day.|Je médite dix minutes par jour.|Ich meditiere zehn Minuten am Tag.|Medito dieci minuti al giorno.|Medito dez minutos por dia.|Я медитирую десять минут в день.|Meditez zece minute pe zi.
 Dejé de fumar hace un año.|I gave up smoking a year ago.|J'ai arrêté de fumer il y a un an.|Ich habe vor einem Jahr mit dem Rauchen aufgehört.|Ho smesso di fumare un anno fa.|Deixei de fumar há um ano.|Я бросил курить год назад.|Am renunțat la fumat acum un an.
@@ -132,7 +132,7 @@ Boda|Wedding|Mariage|Hochzeit|Matrimonio|Casamento|Свадьба|Nuntă
 Navidad|Christmas|Noël|Weihnachten|Natale|Natal|Рождество|Crăciun
 Año Nuevo|New Year|Nouvel An|Neujahr|Capodanno|Ano Novo|Новый год|Anul Nou
 Desfile|Parade|Défilé|Umzug|Sfilata|Desfile|Шествие|Paradă
-Artesanía|Handicraft|Artisanat|Kunsthandwerk|Artigianato|Artesanato|Ремесло|Meșteșug
+Artesanía|Handicraft|Artisanat|Kunsthandwerk|Artigianato|Artesanato|Ремесло|Artizanat
 Leyenda|Legend|Légende|Legende|Leggenda|Lenda|Легенда|Legendă
 Teatro|Theatre|Théâtre|Theater|Teatro|Teatro|Театр|Teatru
 Pintura|Painting|Peinture|Gemälde|Pittura|Pintura|Живопись|Pictură
@@ -145,8 +145,8 @@ Mi cumpleaños se celebra con toda la familia.|My birthday is celebrated with th
 Fuimos a una boda muy bonita.|We went to a very beautiful wedding.|Nous sommes allés à un très beau mariage.|Wir waren auf einer sehr schönen Hochzeit.|Siamo andati a un matrimonio molto bello.|Fomos a um casamento muito bonito.|Мы были на очень красивой свадьбе.|Am fost la o nuntă foarte frumoasă.
 En Navidad nos reunimos todos.|At Christmas we all get together.|À Noël, nous nous réunissons tous.|An Weihnachten kommen wir alle zusammen.|A Natale ci riuniamo tutti.|No Natal reunimo-nos todos.|На Рождество мы все собираемся вместе.|De Crăciun ne adunăm cu toții.
 Cada año hay un desfile en el centro.|Every year there is a parade in the centre.|Chaque année, il y a un défilé dans le centre.|Jedes Jahr gibt es im Zentrum einen Umzug.|Ogni anno c'è una sfilata in centro.|Todos os anos há um desfile no centro.|Каждый год в центре проходит шествие.|În fiecare an este o paradă în centru.
-Esta artesanía se hace a mano.|This handicraft is made by hand.|Cet artisanat est fait à la main.|Dieses Kunsthandwerk wird von Hand gemacht.|Questo artigianato è fatto a mano.|Este artesanato é feito à mão.|Это ремесло делается вручную.|Acest meșteșug se face manual.
-Mi abuela me contó una leyenda antigua.|My grandmother told me an ancient legend.|Ma grand-mère m'a raconté une ancienne légende.|Meine Großmutter hat mir eine alte Legende erzählt.|Mia nonna mi ha raccontato un'antica leggenda.|A minha avó contou-me uma lenda antiga.|Бабушка рассказала мне старинную легенду.|Bunica mi-a spus o legendă veche.
+Esta artesanía se hace a mano.|This handicraft is made by hand.|Cet artisanat est fait à la main.|Dieses Kunsthandwerk wird von Hand gemacht.|Questo artigianato è fatto a mano.|Este artesanato é feito à mão.|Это ремесло делается вручную.|Acest obiect artizanal este făcut de mână.
+Mi abuela me contó una leyenda antigua.|My grandmother told me an ancient legend.|Ma grand-mère m'a raconté une ancienne légende.|Meine Großmutter hat mir eine alte Legende erzählt.|Mia nonna mi ha raccontato un'antica leggenda.|A minha avó contou-me uma lenda antiga.|Бабушка рассказала мне старинную легенду.|Bunica mi-a povestit o legendă veche.
 Es importante cuidar el patrimonio de un país.|It is important to look after a country's heritage.|Il est important de protéger le patrimoine d'un pays.|Es ist wichtig, das Erbe eines Landes zu schützen.|È importante proteggere il patrimonio di un paese.|É importante cuidar do património de um país.|Важно беречь наследие страны.|Este important să protejăm patrimoniul unei țări.
 `);
 

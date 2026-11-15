@@ -23,7 +23,7 @@ window.LIVE = [
     t: { en: ["Goodbye, have a good day.", "Bye! See you later!"], fr: ["Au revoir, bonne journée.", "Salut ! À plus !"],
          de: ["Auf Wiedersehen, einen schönen Tag noch.", "Tschüss! Bis später!"], it: ["Arrivederci, buona giornata.", "Ciao! A dopo!"],
          pt: ["Adeus, tenha um bom dia.", "Tchau! Até logo!"], ru: ["До свидания, хорошего дня.", "Пока! До скорого!"],
-         ro: ["La revedere, o zi bună.", "Pa! Pe curând!"] } },
+         ro: ["La revedere, să aveți o zi bună.", "Pa! Pe curând!"] } },
   { unit: 0, id: "C", idea: "Dar las gracias",
     es: ["Muchas gracias por su ayuda.", "¡Gracias por la ayuda!"],
     sit: ["Das las gracias a un médico.", "Das las gracias a tu hermana."],
@@ -97,7 +97,7 @@ window.SCENES = [
            ["Я ждала тебя очень долго.", "Ты права, это моя вина.", "Да ладно, ерунда!", "Приношу вам искренние извинения."],
            ["Ну ладно, что будем делать?", "Я угощаю тебя кофе.", "Можем сходить в кино.", "Поторопись, мы уходим!"]],
       ro: [["Ai întârziat!", "Îmi pare foarte rău, Ana.", "Hai, repede!", "Vă rog să scuzați întârzierea."],
-           ["Te-am așteptat mult timp.", "Ai dreptate, a fost vina mea.", "Nu e mare lucru!", "Vă prezint scuzele mele sincere."],
+           ["Te-am așteptat mult timp.", "Ai dreptate, a fost vina mea.", "Nu e mare lucru!", "Vă cer scuze sincere."],
            ["Bine, și acum ce facem?", "Te invit la o cafea.", "Putem merge la cinema.", "Grăbește-te, plecăm!"]]
     } },
 
@@ -136,9 +136,9 @@ window.SCENES = [
       ru: [["Сейчас не могу! У меня много столиков.", "Извините, я не спешу.", "Я жду уже час!", "Спокойно, ничего страшного."],
            ["Хорошо. Что будете заказывать?", "Я бы хотел кофе, пожалуйста.", "Мне кофе, спасибо.", "Быстро, кофе!"],
            ["Сейчас. Что-нибудь ещё?", "Счёт, пожалуйста.", "Больше ничего, спасибо.", "Я ухожу, счёт!"]],
-      ro: [["Acum nu pot! Am multe mese.", "Scuzați-mă, nu e nicio grabă.", "Aștept de o oră!", "Liniștit, nicio problemă."],
+      ro: [["Acum nu pot! Am multe mese.", "Scuzați-mă, nu e nicio grabă.", "Aștept de o oră!", "Stai liniștit, nicio problemă."],
            ["Bine. Ce doriți?", "Aș dori o cafea, vă rog.", "O cafea pentru mine, mulțumesc.", "Repede, o cafea!"],
-           ["Imediat. Altceva?", "Nota de plată, vă rog.", "Nimic altceva, mulțumesc.", "Plec acum, nota de plată!"]]
+           ["Imediat. Mai doriți ceva?", "Nota de plată, vă rog.", "Nimic altceva, mulțumesc.", "Plec acum, nota de plată!"]]
     } }
 ];
 

@@ -181,13 +181,13 @@ UNITS.push(
       [["Tradiție", "Datină", "Festival", "Expoziție", "Concert", "A sărbători", "Cadou", "Invitat"],
        ["În țara mea este tradiție să cinăm în familie.", "În fiecare vară are loc un festival de muzică.", "Am fost la o expoziție de artă foarte interesantă.", "Invitații au sosit cu cadouri pentru toți.", "Mi-ar plăcea să cunosc datinile țării tale."]],
       [["Sfat", "Încredere", "Ceartă", "A ierta", "A sprijini", "Secret", "A înțelege", "Dezamăgire"],
-       ["Îți dau un sfat: vorbește cu el calm.", "Ar trebui să-ți ceri tu scuze mai întâi.", "Am avut o ceartă, dar am rezolvat-o.", "Prietenii buni se sprijină în momentele dificile.", "Mi se pare că nu îți spune tot adevărul."]],
+       ["Îți dau un sfat: vorbește cu el calm.", "Ar trebui să-i ceri tu scuze mai întâi.", "Am avut o ceartă, dar am rezolvat-o.", "Prietenii buni se sprijină în momentele dificile.", "Mi se pare că nu îți spune tot adevărul."]],
       [["Bancă", "Bancomat", "Împrumut", "Factură", "Impozit", "Colet", "Formular", "Semnătură"],
        ["Vreau să deschid un cont la această bancă.", "Bancomatul nu-mi dă înapoi cardul.", "Unde trebuie să semnez formularul?", "Trebuie să trimit acest colet în străinătate.", "Am plătit factura de curent online."]],
       [["Copilărie", "Amintire", "Experiență", "Aventură", "A crește", "A se muta", "A descoperi", "A uita"],
-       ["Când eram copil, locuiam într-un sat mic.", "Nu voi uita niciodată prima mea călătorie în străinătate.", "Am locuit în trei orașe diferite.", "Am descoperit această muzică în urmă cu mulți ani.", "Bunicii mei îmi povesteau povești în fiecare seară."]],
+       ["Când eram copil, locuiam într-un sat mic.", "Nu voi uita niciodată prima mea călătorie în străinătate.", "Am locuit în trei orașe diferite.", "Am descoperit această muzică în urmă cu mulți ani.", "Bunicii mei îmi spuneau povești în fiecare seară."]],
       [["Obiectiv", "Efort", "Succes", "Oportunitate", "Decizie", "Risc", "A reuși", "A-și imagina"],
-       ["Dacă aș avea mai mult timp, aș învăța o altă limbă.", "Mi-ar plăcea să locuiesc în străinătate într-o zi.", "Cu efort, îți vei atinge obiectivele.", "Dacă plouă mâine, rămânem acasă.", "Nu te teme să iei decizii dificile."]]
+       ["Dacă aș avea mai mult timp, aș învăța o altă limbă.", "Mi-ar plăcea să locuiesc în străinătate într-o bună zi.", "Cu efort, îți vei atinge obiectivele.", "Dacă plouă mâine, rămânem acasă.", "Nu-ți fie teamă să iei decizii dificile."]]
     ]
   };
   for (const k in T) COURSES[k].t.push(...T[k]);

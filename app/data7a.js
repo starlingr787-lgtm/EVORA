@@ -2,16 +2,16 @@
 
 /* 0 Primeros saludos */
 addExtra(0, "w", `
-Perdón|Sorry|Pardon|Verzeihung|Scusa|Desculpa|Прости|Scuze
+Perdón|Sorry|Pardon|Verzeihung|Scusa|Desculpa|Прости|Pardon
 Disculpe|Excuse me|Excusez-moi|Entschuldigen Sie|Scusi|Desculpe|Извините|Scuzați-mă
-Con permiso|Pardon me|Permettez-moi|Gestatten|Con permesso|Com licença|Разрешите|Permiteți-mi
+Con permiso|Pardon me|Permettez-moi|Gestatten|Con permesso|Com licença|Разрешите|Permiteți
 Bienvenido|Welcome|Bienvenue|Willkommen|Benvenuto|Bem-vindo|Добро пожаловать|Bine ai venit
 Señor|Sir|Monsieur|Herr|Signore|Senhor|Господин|Domn
 Señora|Madam|Madame|Frau|Signora|Senhora|Госпожа|Doamnă
 Bien|Good|Bien|Gut|Bene|Bem|Хорошо|Bine
 Mal|Bad|Mal|Schlecht|Male|Mal|Плохо|Rău
 Felicidades|Congratulations|Félicitations|Glückwunsch|Congratulazioni|Parabéns|Поздравляю|Felicitări
-Buena suerte|Good luck|Bonne chance|Viel Glück|Buona fortuna|Boa sorte|Удачи|Succes
+Buena suerte|Good luck|Bonne chance|Viel Glück|Buona fortuna|Boa sorte|Удачи|Baftă
 Hasta pronto|See you soon|À bientôt|Bis bald|A presto|Até breve|До скорого|Pe curând
 Salud|Cheers|Santé|Prost|Salute|Saúde|За здоровье|Noroc
 `);
@@ -19,10 +19,10 @@ addExtra(0, "s", `
 Buenas tardes, ¿cómo está usted?|Good afternoon, how are you?|Bonjour, comment allez-vous ?|Guten Tag, wie geht es Ihnen?|Buon pomeriggio, come sta?|Boa tarde, como está?|Добрый день, как вы поживаете?|Bună ziua, ce mai faceți?
 Me alegra verte.|Nice to see you.|Content de te voir.|Schön, dich zu sehen.|Mi fa piacere vederti.|Alegro-me por te ver.|Рад тебя видеть.|Mă bucur să te văd.
 Bienvenido a mi casa.|Welcome to my home.|Bienvenue chez moi.|Willkommen in meinem Zuhause.|Benvenuto a casa mia.|Bem-vindo à minha casa.|Добро пожаловать в мой дом.|Bine ai venit la mine acasă.
-Muchas gracias por tu ayuda.|Thank you very much for your help.|Merci beaucoup pour ton aide.|Vielen Dank für deine Hilfe.|Grazie mille per il tuo aiuto.|Muito obrigado pela tua ajuda.|Большое спасибо за твою помощь.|Mulțumesc mult pentru ajutor.
-Perdón, no te oí bien.|Sorry, I didn't hear you properly.|Pardon, je ne t'ai pas bien entendu.|Entschuldigung, ich habe dich nicht gut verstanden.|Scusa, non ti ho sentito bene.|Desculpa, não te ouvi bem.|Прости, я тебя плохо услышал.|Scuze, nu te-am auzit bine.
-Que tengas un buen día.|Have a nice day.|Bonne journée.|Schönen Tag noch.|Buona giornata.|Tem um bom dia.|Хорошего дня.|O zi bună.
-Hasta mañana, que descanses.|See you tomorrow, sleep well.|À demain, dors bien.|Bis morgen, schlaf gut.|A domani, dormi bene.|Até amanhã, dorme bem.|До завтра, спокойной ночи.|Pe mâine, somn ușor.
+Muchas gracias por tu ayuda.|Thank you very much for your help.|Merci beaucoup pour ton aide.|Vielen Dank für deine Hilfe.|Grazie mille per il tuo aiuto.|Muito obrigado pela tua ajuda.|Большое спасибо за твою помощь.|Mulțumesc mult pentru ajutorul tău.
+Perdón, no te oí bien.|Sorry, I didn't hear you properly.|Pardon, je ne t'ai pas bien entendu.|Entschuldigung, ich habe dich nicht gut verstanden.|Scusa, non ti ho sentito bene.|Desculpa, não te ouvi bem.|Прости, я тебя плохо услышал.|Pardon, nu te-am auzit bine.
+Que tengas un buen día.|Have a nice day.|Bonne journée.|Schönen Tag noch.|Buona giornata.|Tem um bom dia.|Хорошего дня.|Să ai o zi bună.
+Hasta mañana, que descanses.|See you tomorrow, sleep well.|À demain, dors bien.|Bis morgen, schlaf gut.|A domani, dormi bene.|Até amanhã, dorme bem.|До завтра, спокойной ночи.|Pe mâine, odihnește-te bine.
 `);
 
 /* 1 Presentaciones */
@@ -121,7 +121,7 @@ Me gusta el té con azúcar.|I like tea with sugar.|J'aime le thé avec du sucre
 La sopa está muy caliente.|The soup is very hot.|La soupe est très chaude.|Die Suppe ist sehr heiß.|La zuppa è molto calda.|A sopa está muito quente.|Суп очень горячий.|Supa este foarte fierbinte.
 No me gusta el pescado.|I don't like fish.|Je n'aime pas le poisson.|Ich mag keinen Fisch.|Non mi piace il pesce.|Não gosto de peixe.|Я не люблю рыбу.|Nu îmi place peștele.
 Desayuno pan con huevo.|I have bread and eggs for breakfast.|Je prends du pain avec un œuf au petit-déjeuner.|Zum Frühstück esse ich Brot mit Ei.|A colazione mangio pane e uova.|Ao pequeno-almoço como pão com ovo.|На завтрак я ем хлеб с яйцом.|La micul dejun mănânc pâine cu ou.
-¿Puedo tomar un vaso de jugo?|Can I have a glass of juice?|Puis-je avoir un verre de jus ?|Kann ich ein Glas Saft haben?|Posso avere un bicchiere di succo?|Posso tomar um copo de sumo?|Можно мне стакан сока?|Pot să primesc un pahar de suc?
+¿Puedo tomar un vaso de jugo?|Can I have a glass of juice?|Puis-je avoir un verre de jus ?|Kann ich ein Glas Saft haben?|Posso avere un bicchiere di succo?|Posso tomar um copo de sumo?|Можно мне стакан сока?|Pot să iau un pahar de suc?
 Esta ensalada está muy rica.|This salad is very tasty.|Cette salade est très bonne.|Dieser Salat ist sehr lecker.|Questa insalata è molto buona.|Esta salada está muito boa.|Этот салат очень вкусный.|Salata asta este foarte gustoasă.
 `);
 
@@ -193,7 +193,7 @@ Camino|Road|Route|Weg|Cammino|Caminho|Дорога|Drum
 addExtra(7, "s", `
 La farmacia está en la esquina.|The pharmacy is on the corner.|La pharmacie est au coin.|Die Apotheke ist an der Ecke.|La farmacia è all'angolo.|A farmácia fica na esquina.|Аптека находится на углу.|Farmacia este la colț.
 Cruza el puente y sigue derecho.|Cross the bridge and keep going straight.|Traverse le pont et continue tout droit.|Überquere die Brücke und geh geradeaus weiter.|Attraversa il ponte e vai dritto.|Atravessa a ponte e segue em frente.|Перейди мост и иди прямо.|Traversează podul și mergi drept înainte.
-¿Hay un banco por aquí?|Is there a bank around here?|Y a-t-il une banque par ici ?|Gibt es hier in der Nähe eine Bank?|C'è una banca qui vicino?|Há um banco por aqui?|Здесь поблизости есть банк?|Este o bancă pe aici?
+¿Hay un banco por aquí?|Is there a bank around here?|Y a-t-il une banque par ici ?|Gibt es hier in der Nähe eine Bank?|C'è una banca qui vicino?|Há um banco por aqui?|Здесь поблизости есть банк?|Este vreo bancă prin apropiere?
 Toma el metro hasta la plaza.|Take the underground to the square.|Prends le métro jusqu'à la place.|Nimm die U-Bahn bis zum Platz.|Prendi la metropolitana fino alla piazza.|Apanha o metro até à praça.|Поезжай на метро до площади.|Ia metroul până la piață.
 El parque está al lado de la iglesia.|The park is next to the church.|Le parc est à côté de l'église.|Der Park ist neben der Kirche.|Il parco è accanto alla chiesa.|O parque fica ao lado da igreja.|Парк находится рядом с церковью.|Parcul este lângă biserică.
 ¿Cómo llego al hospital?|How do I get to the hospital?|Comment aller à l'hôpital ?|Wie komme ich zum Krankenhaus?|Come arrivo all'ospedale?|Como chego ao hospital?|Как мне добраться до больницы?|Cum ajung la spital?
@@ -222,7 +222,7 @@ Busco un vestido azul.|I'm looking for a blue dress.|Je cherche une robe bleue.|
 ¿Hay algún descuento?|Is there any discount?|Y a-t-il une réduction ?|Gibt es einen Rabatt?|C'è qualche sconto?|Há algum desconto?|Есть ли скидка?|Există vreo reducere?
 Pago en efectivo.|I'll pay in cash.|Je paie en espèces.|Ich zahle bar.|Pago in contanti.|Pago em dinheiro.|Я заплачу наличными.|Plătesc în numerar.
 ¿Me da el recibo, por favor?|Could I have the receipt, please?|Puis-je avoir le reçu, s'il vous plaît ?|Kann ich bitte die Quittung haben?|Mi dà lo scontrino, per favore?|Pode dar-me o recibo, por favor?|Вы не дадите мне чек, пожалуйста?|Îmi puteți da bonul, vă rog?
-Esta chaqueta me queda grande.|This jacket is too big for me.|Cette veste est trop grande pour moi.|Diese Jacke ist mir zu groß.|Questa giacca mi sta grande.|Este casaco fica-me grande.|Эта куртка мне велика.|Jacheta aceasta îmi este mare.
+Esta chaqueta me queda grande.|This jacket is too big for me.|Cette veste est trop grande pour moi.|Diese Jacke ist mir zu groß.|Questa giacca mi sta grande.|Este casaco fica-me grande.|Эта куртка мне велика.|Jacheta aceasta îmi vine prea mare.
 `);
 
 /* 9 Días y horas */
@@ -242,9 +242,9 @@ Siempre|Always|Toujours|Immer|Sempre|Sempre|Всегда|Mereu
 `);
 addExtra(9, "s", `
 La reunión es el martes a las diez.|The meeting is on Tuesday at ten.|La réunion est mardi à dix heures.|Die Besprechung ist am Dienstag um zehn Uhr.|La riunione è martedì alle dieci.|A reunião é na terça-feira às dez.|Встреча во вторник в десять.|Ședința este marți la ora zece.
-Me levanto temprano todos los días.|I get up early every day.|Je me lève tôt tous les jours.|Ich stehe jeden Tag früh auf.|Mi alzo presto ogni giorno.|Levanto-me cedo todos os dias.|Я встаю рано каждый день.|Mă trezesc devreme în fiecare zi.
+Me levanto temprano todos los días.|I get up early every day.|Je me lève tôt tous les jours.|Ich stehe jeden Tag früh auf.|Mi alzo presto ogni giorno.|Levanto-me cedo todos os dias.|Я встаю рано каждый день.|Mă scol devreme în fiecare zi.
 El sábado no trabajo.|I don't work on Saturday.|Je ne travaille pas le samedi.|Am Samstag arbeite ich nicht.|Il sabato non lavoro.|Ao sábado não trabalho.|В субботу я не работаю.|Sâmbăta nu lucrez.
-Son las ocho y media.|It is half past eight.|Il est huit heures et demie.|Es ist halb neun.|Sono le otto e mezza.|São oito e meia.|Сейчас половина девятого.|Este opt și jumătate.
+Son las ocho y media.|It is half past eight.|Il est huit heures et demie.|Es ist halb neun.|Sono le otto e mezza.|São oito e meia.|Сейчас половина девятого.|Este ora opt și jumătate.
 ¿Nos vemos el viernes por la noche?|Shall we meet on Friday night?|On se voit vendredi soir ?|Treffen wir uns am Freitagabend?|Ci vediamo venerdì sera?|Vemo-nos na sexta-feira à noite?|Увидимся в пятницу вечером?|Ne vedem vineri seara?
 Siempre llego a tiempo.|I always arrive on time.|J'arrive toujours à l'heure.|Ich komme immer pünktlich.|Arrivo sempre in orario.|Chego sempre a horas.|Я всегда прихожу вовремя.|Ajung mereu la timp.
 El concierto es el próximo mes.|The concert is next month.|Le concert a lieu le mois prochain.|Das Konzert ist nächsten Monat.|Il concerto è il mese prossimo.|O concerto é no próximo mês.|Концерт будет в следующем месяце.|Concertul este luna viitoare.

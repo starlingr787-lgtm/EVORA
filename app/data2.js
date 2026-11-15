@@ -167,8 +167,8 @@ UNITS.push(
        ["Вы можете мне помочь, пожалуйста?", "Я потерял паспорт.", "Говори медленнее, пожалуйста.", "Вызовите врача.", "Никаких проблем нет."]]
     ],
     ro: [
-      [["A se trezi", "A lucra", "A găti", "A studia", "A se întoarce", "A dormi", "A se odihni", "A face duș"],
-       ["Mă trezesc la ora șapte.", "Lucrez într-un birou.", "Mă întorc acasă după-amiaza.", "Gătesc cu familia mea.", "Mă culc la ora unsprezece."]],
+      [["A se scula", "A lucra", "A găti", "A studia", "A se întoarce", "A dormi", "A se odihni", "A face duș"],
+       ["Mă scol la ora șapte.", "Lucrez într-un birou.", "Mă întorc acasă după-amiaza.", "Gătesc cu familia mea.", "Mă culc la ora unsprezece."]],
       [["Casă", "Cameră", "Bucătărie", "Baie", "Pat", "Fereastră", "Ușă", "Cheie"],
        ["Locuiesc într-un apartament mic.", "Camera mea are o fereastră mare.", "Unde este cheia?", "Bucătăria este curată.", "Închide ușa, te rog."]],
       [["Cap", "Mână", "Stomac", "Doctor", "Medicament", "Febră", "Durere", "Farmacie"],

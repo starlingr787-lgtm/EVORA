@@ -8,15 +8,15 @@ Cenar|To have dinner|Dîner|Zu Abend essen|Cenare|Jantar|Ужинать|A cina
 Salir|To leave|Sortir|Ausgehen|Uscire|Sair|Выходить|A ieși
 Llegar|To arrive|Arriver|Ankommen|Arrivare|Chegar|Приходить|A ajunge
 Limpiar|To clean|Nettoyer|Putzen|Pulire|Limpar|Убирать|A curăța
-Despertarse|To wake up|Se réveiller|Aufwachen|Svegliarsi|Acordar|Просыпаться|A se deștepta
+Despertarse|To wake up|Se réveiller|Aufwachen|Svegliarsi|Acordar|Просыпаться|A se trezi
 Rutina|Routine|Routine|Routine|Routine|Rotina|Распорядок дня|Rutină
 Leer|To read|Lire|Lesen|Leggere|Ler|Читать|A citi
-Caminar|To walk|Marcher|Gehen|Camminare|Caminhar|Ходить|A merge
+Caminar|To walk|Marcher|Gehen|Camminare|Caminhar|Ходить|A merge pe jos
 Lavarse los dientes|To brush your teeth|Se brosser les dents|Zähne putzen|Lavarsi i denti|Lavar os dentes|Чистить зубы|A se spăla pe dinți
 Hacer ejercicio|To exercise|Faire de l'exercice|Sport treiben|Fare esercizio|Fazer exercício|Заниматься спортом|A face mișcare
 `);
 addExtra(10, "s", `
-Desayuno a las siete y media.|I have breakfast at half past seven.|Je prends le petit-déjeuner à sept heures et demie.|Ich frühstücke um halb acht.|Faccio colazione alle sette e mezza.|Tomo o pequeno-almoço às sete e meia.|Я завтракаю в половине восьмого.|Iau micul dejun la șapte și jumătate.
+Desayuno a las siete y media.|I have breakfast at half past seven.|Je prends le petit-déjeuner à sept heures et demie.|Ich frühstücke um halb acht.|Faccio colazione alle sette e mezza.|Tomo o pequeno-almoço às sete e meia.|Я завтракаю в половине восьмого.|Iau micul dejun la ora șapte și jumătate.
 Salgo de casa a las ocho.|I leave home at eight.|Je sors de chez moi à huit heures.|Ich verlasse das Haus um acht Uhr.|Esco di casa alle otto.|Saio de casa às oito.|Я выхожу из дома в восемь.|Plec de acasă la ora opt.
 Llego al trabajo en autobús.|I get to work by bus.|J'arrive au travail en bus.|Ich komme mit dem Bus zur Arbeit.|Arrivo al lavoro in autobus.|Chego ao trabalho de autocarro.|Я добираюсь до работы на автобусе.|Ajung la serviciu cu autobuzul.
 Después del trabajo hago ejercicio.|After work I exercise.|Après le travail, je fais de l'exercice.|Nach der Arbeit treibe ich Sport.|Dopo il lavoro faccio esercizio.|Depois do trabalho faço exercício.|После работы я занимаюсь спортом.|După serviciu fac mișcare.
@@ -42,12 +42,12 @@ Alfombra|Rug|Tapis|Teppich|Tappeto|Tapete|Ковёр|Covor
 `);
 addExtra(11, "s", `
 La sala es grande y luminosa.|The living room is big and bright.|Le salon est grand et lumineux.|Das Wohnzimmer ist groß und hell.|Il soggiorno è grande e luminoso.|A sala é grande e luminosa.|Гостиная большая и светлая.|Livingul este mare și luminos.
-Hay un sofá frente a la ventana.|There is a sofa in front of the window.|Il y a un canapé devant la fenêtre.|Vor dem Fenster steht ein Sofa.|C'è un divano davanti alla finestra.|Há um sofá em frente à janela.|Перед окном стоит диван.|Este o canapea în fața ferestrei.
+Hay un sofá frente a la ventana.|There is a sofa in front of the window.|Il y a un canapé devant la fenêtre.|Vor dem Fenster steht ein Sofa.|C'è un divano davanti alla finestra.|Há um sofá em frente à janela.|Перед окном стоит диван.|Există o canapea în fața ferestrei.
 Mi casa tiene un jardín pequeño.|My house has a small garden.|Ma maison a un petit jardin.|Mein Haus hat einen kleinen Garten.|La mia casa ha un piccolo giardino.|A minha casa tem um jardim pequeno.|У моего дома небольшой сад.|Casa mea are o grădină mică.
 La lámpara está sobre la mesa.|The lamp is on the table.|La lampe est sur la table.|Die Lampe steht auf dem Tisch.|La lampada è sul tavolo.|O candeeiro está em cima da mesa.|Лампа стоит на столе.|Lampa este pe masă.
 Guardo la ropa en el armario.|I keep my clothes in the wardrobe.|Je range mes vêtements dans l'armoire.|Ich bewahre meine Kleidung im Schrank auf.|Tengo i vestiti nell'armadio.|Guardo a roupa no armário.|Я храню одежду в шкафу.|Îmi țin hainele în dulap.
 ¿Dónde está el refrigerador?|Where is the fridge?|Où est le réfrigérateur ?|Wo ist der Kühlschrank?|Dov'è il frigorifero?|Onde fica o frigorífico?|Где холодильник?|Unde este frigiderul?
-Subo la escalera hasta mi habitación.|I go up the stairs to my room.|Je monte l'escalier jusqu'à ma chambre.|Ich gehe die Treppe zu meinem Zimmer hinauf.|Salgo le scale fino alla mia camera.|Subo a escada até ao meu quarto.|Я поднимаюсь по лестнице в свою комнату.|Urc scara până la camera mea.
+Subo la escalera hasta mi habitación.|I go up the stairs to my room.|Je monte l'escalier jusqu'à ma chambre.|Ich gehe die Treppe zu meinem Zimmer hinauf.|Salgo le scale fino alla mia camera.|Subo a escada até ao meu quarto.|Я поднимаюсь по лестнице в свою комнату.|Urc scările până în camera mea.
 `);
 
 /* 12 Salud */
@@ -135,7 +135,7 @@ Cantar|To sing|Chanter|Singen|Cantare|Cantar|Петь|A cânta
 Bailar|To dance|Danser|Tanzen|Ballare|Dançar|Танцевать|A dansa
 Nadar|To swim|Nager|Schwimmen|Nuotare|Nadar|Плавать|A înota
 Correr|To run|Courir|Laufen|Correre|Correr|Бегать|A alerga
-Jugar|To play|Jouer|Spielen|Giocare|Jogar|Играть|A se juca
+Jugar|To play|Jouer|Spielen|Giocare|Jogar|Играть|A juca
 Pasatiempo|Hobby|Passe-temps|Hobby|Passatempo|Passatempo|Хобби|Hobby
 Gimnasio|Gym|Salle de sport|Fitnessstudio|Palestra|Ginásio|Спортзал|Sală de sport
 Tiempo libre|Free time|Temps libre|Freizeit|Tempo libero|Tempo livre|Свободное время|Timp liber
@@ -177,7 +177,7 @@ Por fin terminé el trabajo.|At last I finished the work.|J'ai enfin terminé le
 
 /* 17 Planes de futuro */
 addExtra(17, "w", `
-Meta|Goal|Objectif|Ziel|Obiettivo|Meta|Цель|Obiectiv
+Meta|Goal|Objectif|Ziel|Obiettivo|Meta|Цель|Țel
 Próximo|Next|Prochain|Nächster|Prossimo|Próximo|Следующий|Următorul
 Decidir|To decide|Décider|Entscheiden|Decidere|Decidir|Решать|A hotărî
 Esperar|To hope|Espérer|Hoffen|Sperare|Esperar|Надеяться|A spera
@@ -191,7 +191,7 @@ Invitación|Invitation|Invitation|Einladung|Invito|Convite|Приглашени�
 Oportunidad|Opportunity|Occasion|Gelegenheit|Opportunità|Oportunidade|Возможность|Oportunitate
 `);
 addExtra(17, "s", `
-Mi meta es hablar inglés bien.|My goal is to speak English well.|Mon objectif est de bien parler anglais.|Mein Ziel ist es, gut Englisch zu sprechen.|Il mio obiettivo è parlare bene l'inglese.|O meu objetivo é falar bem inglês.|Моя цель — хорошо говорить по-английски.|Obiectivul meu este să vorbesc bine engleza.
+Mi meta es hablar inglés bien.|My goal is to speak English well.|Mon objectif est de bien parler anglais.|Mein Ziel ist es, gut Englisch zu sprechen.|Il mio obiettivo è parlare bene l'inglese.|O meu objetivo é falar bem inglês.|Моя цель — хорошо говорить по-английски.|Țelul meu este să vorbesc bine engleza.
 Voy a ahorrar para el viaje.|I am going to save for the trip.|Je vais économiser pour le voyage.|Ich werde für die Reise sparen.|Risparmierò per il viaggio.|Vou poupar para a viagem.|Я буду копить на поездку.|Voi economisi pentru călătorie.
 Espero ganar un mejor sueldo.|I hope to earn a better salary.|J'espère gagner un meilleur salaire.|Ich hoffe, ein besseres Gehalt zu verdienen.|Spero di guadagnare uno stipendio migliore.|Espero ganhar um melhor ordenado.|Я надеюсь получать зарплату побольше.|Sper să câștig un salariu mai bun.
 El próximo mes me voy a mudar.|Next month I am going to move.|Le mois prochain, je vais déménager.|Nächsten Monat ziehe ich um.|Il mese prossimo mi trasferisco.|No próximo mês vou mudar de casa.|В следующем месяце я перееду.|Luna viitoare mă mut.
@@ -205,7 +205,7 @@ addExtra(18, "w", `
 Alegre|Cheerful|Joyeux|Fröhlich|Allegro|Alegre|Радостный|Vesel
 Preocupado|Worried|Inquiet|Besorgt|Preoccupato|Preocupado|Обеспокоенный|Îngrijorat
 Asustado|Scared|Effrayé|Verängstigt|Spaventato|Assustado|Испуганный|Speriat
-Emocionado|Excited|Enthousiaste|Aufgeregt|Emozionato|Entusiasmado|Взволнованный|Emoționat
+Emocionado|Excited|Enthousiaste|Aufgeregt|Emozionato|Entusiasmado|Взволнованный|Entuziasmat
 Tranquilo|Calm|Calme|Ruhig|Tranquillo|Calmo|Спокойный|Calm
 Interesante|Interesting|Intéressant|Interessant|Interessante|Interessante|Интересный|Interesant
 Divertido|Fun|Amusant|Lustig|Divertente|Divertido|Весёлый|Amuzant
@@ -216,12 +216,12 @@ Opinión|Opinion|Opinion|Meinung|Opinione|Opinião|Мнение|Părere
 Idea|Idea|Idée|Idee|Idea|Ideia|Идея|Idee
 `);
 addExtra(18, "s", `
-Estoy preocupado por el examen.|I am worried about the exam.|Je suis inquiet pour l'examen.|Ich mache mir Sorgen wegen der Prüfung.|Sono preoccupato per l'esame.|Estou preocupado com o exame.|Я беспокоюсь из-за экзамена.|Sunt îngrijorat pentru examen.
+Estoy preocupado por el examen.|I am worried about the exam.|Je suis inquiet pour l'examen.|Ich mache mir Sorgen wegen der Prüfung.|Sono preoccupato per l'esame.|Estou preocupado com o exame.|Я беспокоюсь из-за экзамена.|Sunt îngrijorat din cauza examenului.
 Esta película es muy interesante.|This film is very interesting.|Ce film est très intéressant.|Dieser Film ist sehr interessant.|Questo film è molto interessante.|Este filme é muito interessante.|Этот фильм очень интересный.|Filmul acesta este foarte interesant.
 Me parece muy difícil.|It seems very difficult to me.|Cela me semble très difficile.|Das scheint mir sehr schwierig.|Mi sembra molto difficile.|Parece-me muito difícil.|Мне это кажется очень трудным.|Mi se pare foarte greu.
 En mi opinión, es una buena idea.|In my opinion, it is a good idea.|À mon avis, c'est une bonne idée.|Meiner Meinung nach ist das eine gute Idee.|Secondo me, è una buona idea.|Na minha opinião, é uma boa ideia.|По-моему, это хорошая идея.|După părerea mea, este o idee bună.
-Me da miedo volar.|I am afraid of flying.|J'ai peur de prendre l'avion.|Ich habe Angst vor dem Fliegen.|Ho paura di volare.|Tenho medo de voar.|Я боюсь летать.|Mi-e frică să zbor.
-Estoy muy emocionado por el viaje.|I am very excited about the trip.|Je suis très enthousiaste pour le voyage.|Ich bin sehr aufgeregt wegen der Reise.|Sono molto emozionato per il viaggio.|Estou muito entusiasmado com a viagem.|Я очень взволнован поездкой.|Sunt foarte emoționat pentru călătorie.
+Me da miedo volar.|I am afraid of flying.|J'ai peur de prendre l'avion.|Ich habe Angst vor dem Fliegen.|Ho paura di volare.|Tenho medo de voar.|Я боюсь летать.|Mi-e frică să zbor cu avionul.
+Estoy muy emocionado por el viaje.|I am very excited about the trip.|Je suis très enthousiaste pour le voyage.|Ich bin sehr aufgeregt wegen der Reise.|Sono molto emozionato per il viaggio.|Estou muito entusiasmado com a viagem.|Я очень взволнован поездкой.|Sunt foarte entuziasmat de călătorie.
 ¿Te parece bien si salimos temprano?|Is it all right with you if we leave early?|Est-ce que ça te va si nous partons tôt ?|Ist es dir recht, wenn wir früh losfahren?|Ti va bene se partiamo presto?|Concordas se sairmos cedo?|Тебя устроит, если мы выедем пораньше?|Ești de acord să plecăm devreme?
 `);
 
