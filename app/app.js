@@ -630,15 +630,15 @@
   }
   const rrect = (x, y, w, h, r) => `M${x + r} ${y}H${x + w - r}Q${x + w} ${y} ${x + w} ${y + r}V${y + h - r}Q${x + w} ${y + h} ${x + w - r} ${y + h}H${x + r}Q${x} ${y + h} ${x} ${y + h - r}V${y + r}Q${x} ${y} ${x + r} ${y}Z`;
 
-  function pzMarkup(skin, w, h, first, last, cid, empty) {
+  function pzMarkup(skin, w, h, first, last, cid, empty, compact) {
     const clip = d => `<defs><clipPath id="${cid}"><path d="${d}"/></clipPath></defs>`;
     if (skin === "candy") {
       const r = Math.min(h * .44, 20), ew = Math.min(15, h * .3), d = rrect(0, 0, w, h, r);
       if (empty) return `<path class="fl" d="${d}"/>`;
       const stripes = Array.from({ length: Math.ceil((w + h) / 15) }, (_, i) => `<path d="M${i * 15 - h} ${h}l${h * .62} ${-h}"/>`).join("");
       return `${clip(d)}
-        <path class="wrap" d="M3 ${h * .3}L${-ew} ${h * .02}Q${-ew * .4} ${h * .5} ${-ew} ${h * .98}L3 ${h * .7}Z"/><path class="wrap" d="M${w - 3} ${h * .3}L${w + ew} ${h * .02}Q${w + ew * .4} ${h * .5} ${w + ew} ${h * .98}L${w - 3} ${h * .7}Z"/>
-        <path class="wl" d="M-1 ${h * .2}L${-ew * .7} ${h * .5}L-1 ${h * .8}M${w + 1} ${h * .2}L${w + ew * .7} ${h * .5}L${w + 1} ${h * .8}"/>
+        ${compact ? "" : `<path class="wrap" d="M3 ${h * .3}L${-ew} ${h * .02}Q${-ew * .4} ${h * .5} ${-ew} ${h * .98}L3 ${h * .7}Z"/><path class="wrap" d="M${w - 3} ${h * .3}L${w + ew} ${h * .02}Q${w + ew * .4} ${h * .5} ${w + ew} ${h * .98}L${w - 3} ${h * .7}Z"/>
+        <path class="wl" d="M-1 ${h * .2}L${-ew * .7} ${h * .5}L-1 ${h * .8}M${w + 1} ${h * .2}L${w + ew * .7} ${h * .5}L${w + 1} ${h * .8}"/>`}
         <path class="sh" d="${d}" transform="translate(0 5)"/><path class="fl" d="${d}"/>
         <g clip-path="url(#${cid})"><g class="stripe">${stripes}</g><ellipse class="spec" cx="${w * .27}" cy="${h * .24}" rx="${Math.max(10, w * .17)}" ry="${h * .1}"/><rect class="shade" x="0" y="${h * .72}" width="${w}" height="${h * .28}"/></g>`;
     }
@@ -679,7 +679,7 @@
     if (el._sk === key) return; // la forma no cambió: no se toca el DOM
     el._sk = key; el._cid = el._cid || "pc" + (++pzUid);
     svg.setAttribute("width", w); svg.setAttribute("height", h); svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
-    svg.innerHTML = pzMarkup(skin, w, h, first, last, el._cid, empty);
+    svg.innerHTML = pzMarkup(skin, w, h, first, last, el._cid, empty, el.classList.contains("wide"));
   }
 
   function exBank(ex) {
