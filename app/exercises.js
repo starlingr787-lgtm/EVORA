@@ -21,9 +21,12 @@
       sents: u.s.map((es, i) => ({ es, t: t[1][i], k: "s" }))
     };
   }
+  const lvStart = ui => (CEFR.find(c => ui >= c.from && ui < c.to) || CEFR[0]).from;
   const prevWords = (lang, ui) => {
+    let from = lvStart(ui);
+    if (from === ui && ui > 0) from = Math.max(0, ui - 3);
     let out = [];
-    for (let i = 0; i < ui; i++) out = out.concat(unit(lang, i).words);
+    for (let i = from; i < ui; i++) out = out.concat(unit(lang, i).words);
     return out;
   };
 
@@ -189,11 +192,40 @@
     return shuffle(ex);
   }
 
+
+  /* Prueba de nivel: mezcla de unidades finales del nivel Principiante */
+  function placement(lang) {
+    const ex = [];
+    const pickUnit = (a, b) => unit(lang, a + Math.floor(Math.random() * (b - a + 1)));
+    for (let i = 0; i < 3; i++) { const u = pickUnit(3, 9); ex.push(mc(pick(u.words, 1)[0], u.words, "rev")); }
+    for (let i = 0; i < 2; i++) { const u = pickUnit(4, 9); ex.push(type(pick(u.words, 1)[0])); }
+    for (let i = 0; i < 3; i++) { const u = pickUnit(5, 9); ex.push(bank(pick(u.sents, 1)[0], u.sents, "fwd")); }
+    return ex;
+  }
+
+  /* Práctica de las palabras del día */
+  function practiceWords(lang, words, pool) {
+    const ex = [];
+    shuffle(words).forEach((w, i) => ex.push(i % 3 === 0 ? mc(w, pool, "fwd") : i % 3 === 1 ? mc(w, pool, "rev") : type(w)));
+    if (words.length >= 4) ex.push(match(pick(words, Math.min(5, words.length))));
+    return ex;
+  }
+
+  /* Clave de audio de cada texto (para las locuciones grabadas) */
+  const CLIPIDX = {};
+  function clipKey(lang, text) {
+    if (!CLIPIDX[lang]) {
+      const m = CLIPIDX[lang] = {};
+      COURSES[lang].t.forEach((t, u) => { t[0].forEach((x, i) => { m[x] = m[x] || `${u}w${i}`; }); t[1].forEach((x, i) => { m[x] = m[x] || `${u}s${i}`; }); });
+    }
+    return CLIPIDX[lang][text];
+  }
+
   /* Texto de la lengua destino con transcripción para el ruso */
   const tgt = (text, lang, small = true) => {
     const e = String(text).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
     return lang === "ru" && small ? `${e}<small class="tr">${translit(text)}</small>` : e;
   };
 
-  window.EX = { build, reviewSet, unit, LEVELS, norm, translit, tgt, shuffle, tokens, core };
+  window.EX = { build, reviewSet, placement, practiceWords, clipKey, unit, LEVELS, norm, translit, tgt, shuffle, tokens, core, lvStart };
 })();

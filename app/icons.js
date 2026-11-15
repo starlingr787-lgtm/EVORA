@@ -29,7 +29,21 @@
     bag: `<path d="M5 8h14l-1 12H6z"/><path${N} d="M9 8V6.500a3 3 0 0 1 6 0V8"/>`,
     clock: `<circle cx="12" cy="12" r="8.500"/><path${N} d="M12 7v5.500l3.500 2"/>`,
     play: '<path d="M8 5.500v13l11-6.500z"/>',
-    bolt: '<path d="M13 2.500L5 13.500h6l-1 8 8-11h-6z"/>'
+    bolt: '<path d="M13 2.500L5 13.500h6l-1 8 8-11h-6z"/>',
+    sun: `<circle cx="12" cy="12" r="4"/><path${N} d="M12 3v2M12 19v2M3 12h2M19 12h2M5.600 5.600L7 7M17 17l1.400 1.400M18.400 5.600L17 7M7 17l-1.400 1.400"/>`,
+    home: `<path d="M4 11l8-7 8 7v9H4z"/><path${N} d="M10 20v-6h4v6"/>`,
+    cross: '<path d="M9 4h6v5h5v6h-5v5H9v-5H4V9h5z"/>',
+    briefcase: `<rect x="3.500" y="7.500" width="17" height="12" rx="2.500"/><path${N} d="M9 7.500V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.500M3.500 13h17"/>`,
+    cloud: '<path d="M7 18a4 4 0 0 1-.6-7.900A5.500 5.500 0 0 1 17 9.500 4.300 4.300 0 0 1 17 18z"/>',
+    note: `<path${N} d="M9 18V6l10-2v12"/><circle cx="7" cy="18" r="2.500"/><circle cx="17" cy="16" r="2.500"/>`,
+    rewind: '<path d="M11 6L4 12l7 6zM20 6l-7 6 7 6z"/>',
+    flag: `<path${N} d="M5 21V4"/><path d="M5 4h12l-2.500 4L17 12H5z"/>`,
+    face: `<circle cx="12" cy="12" r="8.500"/><path${N} d="M8.500 14.500a4.500 4.500 0 0 0 7 0M9 9.500h.01M15 9.500h.01"/>`,
+    help: `<circle cx="12" cy="12" r="8.500"/><circle cx="12" cy="12" r="3.500"/><path${N} d="M6 6l3.500 3.500M18 6l-3.500 3.500M6 18l3.500-3.500M18 18l-3.500-3.500"/>`,
+    list: `<path${N} d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/>`,
+    sparkle: '<path d="M12 3l1.800 5.200L19 10l-5.200 1.800L12 17l-1.800-5.200L5 10l5.200-1.800z"/>',
+    target: `<circle cx="12" cy="12" r="8.500"/><circle cx="12" cy="12" r="4.500"/><circle cx="12" cy="12" r="1"/>`,
+    search: `<circle cx="11" cy="11" r="6.500"/><path${N} d="M16 16l4.500 4.500"/>`
   };
   window.ic = (name, cls = "") =>
     `<svg class="ic ${cls}" viewBox="0 0 24 24" aria-hidden="true">${I[name] || ""}</svg>`;
