@@ -192,9 +192,18 @@ UNITS.push(
   for (const k in T) COURSES[k].t.push(...T[k]);
 
   /* Niveles del curso: cada nivel agrupa 10 unidades */
+  /* Sesiones del curso. Cada sesión agrupa 10 unidades (50 niveles) y apunta a un nivel del MCER.
+     goal: lo que podrás hacer al terminar (basado en los descriptores globales del Consejo de Europa). */
   window.CEFR = [
-    { id: "A1", name: "Principiante", from: 0, to: 10, desc: "Empiezo desde cero o sé muy poco.", topics: "Saludos, números, comida, viajes y compras" },
-    { id: "A2", name: "Intermedio", from: 10, to: 20, desc: "Ya sé frases básicas y quiero hablar de mi día a día.", topics: "Rutina, trabajo, salud, pasado, planes y opiniones" }
+    { id: "A1", name: "Principiante", from: 0, to: 10, desc: "Empiezo desde cero o sé muy poco.",
+      topics: "Saludos, números, comida, viajes y compras",
+      goal: "Presentarte, saludar y pedir cosas básicas con frases muy sencillas." },
+    { id: "A2", name: "Elemental", from: 10, to: 20, desc: "Ya sé frases básicas y quiero hablar de mi día a día.",
+      topics: "Rutina, trabajo, salud, pasado, planes y opiniones",
+      goal: "Hablar de tu rutina, tu entorno y tareas cotidianas con frases sencillas." },
+    { id: "B1", name: "Intermedio", from: 20, to: 30, desc: "Me defiendo en viajes y quiero contar experiencias y dar mi opinión.",
+      topics: "Viajes con imprevistos, estudios, hábitos, consejos, trámites y condicionales",
+      goal: "Desenvolverte en la mayoría de situaciones de un viaje, contar experiencias y explicar tus planes y opiniones." }
   ];
   PLANS.standard.units = 3; // unidades gratis por nivel
 })();

@@ -5,10 +5,11 @@ Para probarla en local: `cd app && python3 -m http.server` y abrir http://localh
 
 ## Qué incluye
 - **7 cursos**: inglés, francés, alemán, italiano, portugués, ruso y rumano.
-- **2 niveles y 20 unidades por curso**:
-  - Principiante (A1, unidades 1-10): saludos, presentaciones, números, familia, comida, restaurante, viajes, ciudad, compras, días y horas.
-  - Intermedio (A2, unidades 11-20): rutina, casa, salud, trabajo, tiempo, ocio, pasado, futuro, opiniones y pedir ayuda.
-  - Al elegir un curso se escoge el nivel o se hace una prueba de 8 preguntas que recomienda uno. El nivel se puede cambiar desde el mapa.
+- **3 sesiones y 30 unidades por curso** (cada sesión = 10 unidades de 5 niveles = 50 niveles del mapa):
+  - Sesión 1, Principiante (A1, unidades 1-10): saludos, presentaciones, números, familia, comida, restaurante, viajes, ciudad, compras, días y horas.
+  - Sesión 2, Elemental (A2, unidades 11-20): rutina, casa, salud, trabajo, tiempo, ocio, pasado, futuro, opiniones y pedir ayuda.
+  - Sesión 3, Intermedio (B1, unidades 21-30): reservas y viajes con imprevistos, estudios, tecnología, hábitos, medio ambiente, cultura, consejos, trámites, experiencias y condicionales.
+  - Al elegir un curso se escoge la sesión de partida o se hace una prueba de 8 preguntas que recomienda una. Las sesiones posteriores se desbloquean aprobando la **prueba de sesión** de la anterior (o saltando con ella).
 - **Mapa de niveles**: 5 niveles por unidad (palabras, frases, práctica, escucha y combina, prueba de unidad), desbloqueo uno a uno y 1 a 3 estrellas.
 - **Ejercicios**: opción múltiple, escribir, completar la frase, relacionar parejas, escucha y **rompecabezas de frases** (piezas con forma de puzle que se arrastran o se tocan a un tablero).
 - **Situaciones** (nodo especial del mapa en las unidades 1 y 6, gratis para todos los planes y siempre desbloqueado):
@@ -20,11 +21,34 @@ Para probarla en local: `cd app && python3 -m http.server` y abrir http://localh
 - **Rompecabezas con "jugo"**: piezas con brillo y borde en relieve, flotan en el banco, se arrastran con inclinación e imán al hueco más cercano, aterrizan con rebote y chispas, suenan en escala musical (sonidos sintetizados, sin archivos), vibran en móviles, encajan en ola con confeti al acertar y suman racha. El sonido se silencia desde el reproductor y se respeta `prefers-reduced-motion`.
 - **Identidad propia**: sin emojis. Iconos SVG propios (`icons.js`), insignias de idioma y mascota Lumi.
 
+## Cómo se decide que subes de nivel (investigación)
+Resumen de lo que dicen las fuentes y de cómo lo aplica la app. Nada de esto es un examen oficial: la app es una guía.
+
+**Lo que se sabe**
+- El MCER (Consejo de Europa) define los niveles por lo que puedes *hacer* (descriptores "puedo..."), no por un número de palabras. [Descriptores oficiales](https://www.coe.int/en/web/common-european-framework-reference-languages/level-descriptions).
+- Horas de clase acumuladas orientativas de Cambridge: A1 90-100, A2 180-200, B1 350-400, B2 500-600, C1 700-800. [Cambridge English](https://support.cambridgeenglish.org/hc/en-gb/articles/202838506-Guided-learning-hours). Son horas guiadas, aparte del estudio personal.
+- Vocabulario de referencia, que varía mucho según la fuente:
+  - Inglés (Milton, 5.000 lemas más frecuentes): A1 menos de 1.500, A2 1.500-2.500, B1 2.750-3.250, B2 3.250-3.750. [Milton](http://eurosla.org/monographs/EM02/Milton.pdf). Es una estimación de investigación, no una cuota oficial.
+  - Alemán (Goethe-Institut): la lista de A1 tiene unas 650 palabras (se espera dominar activamente la mitad) y la de B1 unas 2.400 unidades. [Wortliste B1](https://www.goethe.de/pro/relaunch/prf/da/Goethe-Zertifikat_B1_Wortliste.pdf).
+  - Ruso (TORFL): A1 hasta 780 unidades; A2 hasta 1.300 según una fuente (no confirmado en una segunda). No pude verificar las cifras de B1.
+  - Francés, italiano, portugués y rumano: no encontré cifras oficiales por nivel.
+- Comprensión lectora: se necesita conocer alrededor del 95 % de las palabras de un texto para una comprensión mínima y cerca del 98 % para una comprensión cómoda (Laufer; Hu y Nation). Eso explica por qué el vocabulario manda al subir de nivel, aunque dependa del texto. [Resumen](https://files.eric.ed.gov/fulltext/EJ887873.pdf).
+- Umbral de dominio: el 80-90 % de aciertos antes de avanzar viene del aprendizaje de dominio de Bloom y de guías de repaso espaciado (80-85 % para frases, 90-95 % para vocabulario concreto). No encontré un estudio que valide un corte exacto para vocabulario de idiomas.
+- Duolingo afirma que sus cursos se alinean con el MCER y que casi todos los principales llegan ya hasta B2; no publica una tabla oficial de unidad a nivel.
+
+**Qué hace la app con eso**
+1. Una sesión equivale a un tramo del MCER (A1, A2, B1) y muestra su objetivo "puedes..." basado en los descriptores globales.
+2. El **dominio de la sesión** es el porcentaje de estrellas obtenidas (3 estrellas = 0 fallos en el nivel) sobre las unidades abiertas del plan.
+3. La **prueba de sesión** tiene 20 preguntas de un solo intento, repartidas entre las unidades de la sesión. Se aprueba con 16 aciertos (80 %), la pauta del aprendizaje de dominio. Al aprobar se desbloquea y se ofrece la siguiente sesión. Si no, se listan las unidades con más fallos.
+4. No es estricto: se puede elegir la sesión de partida y saltar a otra aprobando la prueba de la anterior.
+
+**Límite importante**: cada unidad enseña 8 palabras y 5 frases, es decir unas 80 palabras por sesión. Eso queda muy por debajo del vocabulario de referencia de cada nivel (centenares de palabras). Las etiquetas A1/A2/B1 indican los *temas y funciones* que se trabajan, no una cobertura completa del nivel. Para acercarse a esas cifras habría que subir el número de palabras por unidad.
+
 ## Planes
 | | Estándar (gratis) | Premium (7,99 €/mes) |
 |---|---|---|
 | Cursos | 1 a elegir | los 7 |
-| Unidades | 1 a 3 de cada nivel | las 20 |
+| Unidades | 1 a 3 de cada sesión | las 30 |
 | Vidas | 5 al día | ilimitadas |
 | Palabras del día | 5 | 10 |
 | Voz natural y ejercicios de escucha | no | sí |

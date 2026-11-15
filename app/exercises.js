@@ -195,6 +195,19 @@
   }
 
 
+  /* Prueba de sesión: n preguntas repartidas entre las unidades abiertas, todas de un solo intento */
+  function exam(lang, units, n = 20) {
+    const kinds = ["wmc", "sbank", "wtype", "sfill", "wmcf", "smc"], ex = [];
+    for (let i = 0; i < n; i++) {
+      const ui = units[i % units.length], u = unit(lang, ui), k = kinds[(i + Math.floor(i / units.length)) % kinds.length];
+      const w = pick(u.words, 1)[0], sn = pick(u.sents, 1)[0];
+      const e = k === "wmc" ? mc(w, u.words, "rev") : k === "sbank" ? bank(sn, u.sents, "fwd") : k === "wtype" ? type(w)
+        : k === "sfill" ? fill(sn, u.sents) : k === "wmcf" ? mc(w, u.words, "fwd") : mc(sn, u.sents, "rev");
+      e.ui = ui; ex.push(e);
+    }
+    return shuffle(ex);
+  }
+
   /* Prueba de nivel: mezcla de unidades finales del nivel Principiante */
   function placement(lang) {
     const ex = [];
@@ -253,5 +266,5 @@
     return lang === "ru" && small ? `${e}<small class="tr">${translit(text)}</small>` : e;
   };
 
-  window.EX = { situation, hasSituation, build, reviewSet, placement, practiceWords, clipKey, unit, LEVELS, norm, translit, tgt, shuffle, tokens, core, lvStart };
+  window.EX = { exam, situation, hasSituation, build, reviewSet, placement, practiceWords, clipKey, unit, LEVELS, norm, translit, tgt, shuffle, tokens, core, lvStart };
 })();

@@ -10,7 +10,7 @@
   /* ---------- Estado ---------- */
   let S = load();
   function load() {
-    const d = { plan: "standard", lang: null, xp: 0, streak: 0, lastDay: null, hearts: 5, heartsDay: today(), progress: {}, mistakes: {}, cefr: {}, daily: {}, tab: "learn", pick: false, vtab: "today", mute: false };
+    const d = { plan: "standard", lang: null, xp: 0, streak: 0, lastDay: null, hearts: 5, heartsDay: today(), progress: {}, mistakes: {}, cefr: {}, daily: {}, tab: "learn", pick: false, vtab: "today", mute: false, unlocked: {}, exams: {} };
     try {
       const old = JSON.parse(localStorage.getItem(KEY) || localStorage.getItem("lingo-state-v2")) || {};
       Object.assign(d, old);
@@ -25,6 +25,17 @@
   const doneCount = (lang, range) => Object.keys(S.progress[lang] || {}).filter(k => { const [u, l] = k.split("-").map(Number); return l < NL && (!range || (u >= range.from && u < range.to)); }).length;
   const cefrOf = lang => CEFR.find(c => c.id === S.cefr[lang]) || null;
   let levelPickFor = null;
+  const EXAM_N = 20, EXAM_PASS = 0.8;
+  const cefrIdx = id => CEFR.findIndex(c => c.id === id);
+  const unlockedIdx = lang => Math.max(S.unlocked[lang] ?? -1, cefrIdx(S.cefr[lang]));
+  const wordsSeen = lang => Object.keys(S.progress[lang] || {}).filter(k => k.endsWith("-0")).length * 8;
+  const sessionsDone = lang => Object.values(S.exams[lang] || {}).filter(v => v > 0).length;
+  const examUnits = idx => { const out = []; for (let ui = CEFR[idx].from; ui < CEFR[idx].to; ui++) if (unitOpen(ui)) out.push(ui); return out; };
+  function sessionStats(lang, idx) {
+    const units = examUnits(idx); let tests = 0, sum = 0;
+    units.forEach(ui => { if (stars(ui, NL - 1, lang) > 0) tests++; for (let li = 0; li < NL; li++) sum += stars(ui, li, lang); });
+    return { open: units.length, tests, mastery: Math.round(sum / Math.max(1, units.length * NL * 3) * 100) };
+  }
 
   const app = $("#app"), modal = $("#modal"), playerEl = $("#player");
 
@@ -165,7 +176,7 @@
         const n = doneCount(k), c = cefrOf(k);
         return `<button class="course-card ${S.lang === k ? "cur" : ""} ${locked ? "locked" : ""}" data-k="${k}">
           ${langBadge(k, "lg")}<b>${COURSES[k].name}</b>
-          <span class="muted">${locked ? "Solo Premium" : c ? c.name + " &middot; " + n + " niveles" : "20 unidades"}</span>
+          <span class="muted">${locked ? "Solo Premium" : c ? c.name + " &middot; " + n + " niveles" : "30 unidades"}</span>
           ${locked ? ic("lock", "corner") : ""}</button>`;
       }).join("")}</div>
       ${S.lang ? `<div class="center"><button class="btn ghost" id="cancelPick">Volver al curso</button></div>` : ""}`;
@@ -193,7 +204,7 @@
     $("#placement").onclick = () => startPlayer({ kind: "placement", lang, ex: EX.placement(lang) });
   }
   function chooseLevel(lang, id) {
-    S.cefr[lang] = id; levelPickFor = null; S.tab = "learn"; viewLearn.scrolled = false; save(); render(); window.scrollTo(0, 0);
+    S.cefr[lang] = id; S.unlocked[lang] = Math.max(S.unlocked[lang] ?? -1, cefrIdx(id)); levelPickFor = null; S.tab = "learn"; viewLearn.scrolled = false; save(); render(); window.scrollTo(0, 0);
   }
 
   /* ---------- Mapa de niveles ---------- */
@@ -210,10 +221,15 @@
   function viewLearn() {
     const C = COURSES[S.lang], lv = cefrOf(S.lang);
     const total = (lv.to - lv.from) * NL, done = doneCount(S.lang, lv), pct = Math.round(done / total * 100);
+    const lvIdx = cefrIdx(lv.id), unl = unlockedIdx(S.lang), st = sessionStats(S.lang, lvIdx);
     let html = `<div class="course-head"><div><span class="muted">Curso de</span><h1>${C.name}</h1></div>
       <div class="ring" style="--p:${pct}"><b>${pct}%</b></div></div>
-      <div class="seg" role="tablist" aria-label="Nivel">${CEFR.map(c => `<button role="tab" data-c="${c.id}" class="${c.id === lv.id ? "on" : ""}">${c.name}<small>${c.id}</small></button>`).join("")}</div>`;
-    if (!prem()) html += `<div class="note-card"><div>${ic("crown", "gold")}</div><div><b>Plan Estándar</b><span>Unidades 1 a ${PLANS.standard.units} de cada nivel y ${PLANS.standard.hearts} vidas al día.</span></div><button class="btn sm prem" id="upg">Mejorar</button></div>`;
+      <div class="seg" role="tablist" aria-label="Sesión">${CEFR.map((c, i) => `<button role="tab" data-c="${c.id}" data-i="${i}" class="${c.id === lv.id ? "on" : ""} ${i > unl ? "locked" : ""}">${i > unl ? ic("lock") : ""}${c.name}<small>${c.id}</small></button>`).join("")}</div>
+      <div class="session-head"><div class="sh-badge">${lv.id}</div>
+        <div class="grow"><span class="ulabel muted">Sesión ${lvIdx + 1} de ${CEFR.length}</span><b>${lv.name}</b><span class="muted small">${lv.goal}</span></div>
+        <button class="icon-btn" id="howBtn" aria-label="Cómo subes de nivel">${ic("help")}</button></div>
+      <div class="mastery"><div class="bar"><i style="width:${st.mastery}%"></i></div><span class="muted small">Dominio de la sesión: <b>${st.mastery} %</b> &middot; Pruebas de unidad: ${st.tests}/${st.open}</span></div>`;
+    if (!prem()) html += `<div class="note-card"><div>${ic("crown", "gold")}</div><div><b>Plan Estándar</b><span>Unidades 1 a ${PLANS.standard.units} de cada sesión y ${PLANS.standard.hearts} vidas al día.</span></div><button class="btn sm prem" id="upg">Mejorar</button></div>`;
 
     for (let ui = lv.from; ui < lv.to; ui++) {
       const U = UNITS[ui], un = ui - lv.from;
@@ -239,14 +255,93 @@
           }).join("")}
         </div></section>`;
     }
+    const next = CEFR[lvIdx + 1], exS = (S.exams[S.lang] || {})[lv.id] || 0, ready = st.tests === st.open && st.open > 0;
+    html += `<section class="exam-card ${exS ? "done" : ""}"><div class="se-ic">${ic("trophy")}</div>
+      <div class="grow"><b>Prueba de sesión ${lv.id}</b>
+        <span class="muted">${next ? `Aprueba con ${EXAM_PASS * 100} % para pasar a ${next.name} (${next.id}).` : "Es la última sesión disponible. La siguiente llegará pronto."}</span>
+        <small class="muted">${ready ? "Ya puedes hacerla." : "Recomendado: completa antes las pruebas de unidad."}</small>
+        ${exS ? `<div class="nstars">${[1, 2, 3].map(n => ic("star", "solid " + (n <= exS ? "on" : "off"))).join("")}</div>` : ""}</div>
+      <button class="btn sm ${ready ? "" : "ghost"}" id="examBtn">${exS ? "Repetir" : ready ? "Empezar" : "Hacerla ya"}</button></section>`;
     app.innerHTML = html;
     const u = $("#upg"); if (u) u.onclick = () => openPlans();
-    $$(".seg button").forEach(b => b.onclick = () => chooseLevel(S.lang, b.dataset.c));
+    $("#examBtn").onclick = () => startExam(lvIdx);
+    $("#howBtn").onclick = openHow;
+    $$(".seg button").forEach(b => b.onclick = () => { const i = +b.dataset.i; if (i > unl) return openSessionLocked(i); chooseLevel(S.lang, b.dataset.c); });
     $$(".node").forEach(n => n.onclick = () => openLevel(+n.dataset.ui, +n.dataset.li));
-    if (!viewLearn.scrolled) { viewLearn.scrolled = true; const c = $(".node.current"); if (c) setTimeout(() => c.scrollIntoView({ block: "center" }), 30); }
+    if (!viewLearn.scrolled) { viewLearn.scrolled = true; const c = $(".node.current"); if (c && done > 0) setTimeout(() => c.scrollIntoView({ block: "center" }), 30); }
   }
 
   /* ---------- Hoja de nivel ---------- */
+  function openSessionLocked(i) {
+    const c = CEFR[i], prev = CEFR[i - 1];
+    modal.hidden = false;
+    modal.innerHTML = `<div class="box center">${mascot("think", 90)}<h2>Sesión ${c.id} bloqueada</h2>
+      <p class="muted">Se desbloquea al aprobar la prueba de la sesión ${prev.id} (${prev.name}). Si ya dominas ese nivel, puedes hacerla ahora y saltar.</p>
+      <div class="row center"><button class="btn ghost" id="cl">Cerrar</button><button class="btn" id="goExam">Prueba ${prev.id}</button></div></div>`;
+    $("#cl").onclick = closeModal;
+    $("#goExam").onclick = () => { closeModal(); startExam(i - 1); };
+  }
+  function openHow() {
+    modal.hidden = false;
+    modal.innerHTML = `<div class="box">
+      <div class="row between"><h2>¿Cómo subes de nivel?</h2><button class="icon-btn" id="x" aria-label="Cerrar">${ic("x")}</button></div>
+      <ol class="how">
+        <li><b>Completa las unidades.</b> Cada sesión tiene 10 unidades de 5 niveles. Las estrellas miden tus aciertos a la primera.</li>
+        <li><b>Dominio de la sesión.</b> Es el porcentaje de estrellas que llevas. Cuanto más alto, más seguro estás.</li>
+        <li><b>Prueba de sesión.</b> ${EXAM_N} preguntas de un solo intento. Con ${Math.ceil(EXAM_N * EXAM_PASS)} aciertos (${EXAM_PASS * 100} %) pasas a la siguiente sesión. Si no, te decimos qué unidades repasar.</li>
+        <li><b>Tú decides.</b> Puedes elegir tu nivel al empezar y saltar de sesión aprobando su prueba. No es un examen oficial, sino una guía.</li>
+      </ol>
+      <h3>De dónde sale esto</h3>
+      <ul class="how-src">
+        <li>El MCER define los niveles por lo que puedes <i>hacer</i>, no por un número de palabras. <a href="https://www.coe.int/en/web/common-european-framework-reference-languages/level-descriptions" target="_blank" rel="noopener">Consejo de Europa</a></li>
+        <li>Horas de clase acumuladas orientativas: A1 90-100, A2 180-200, B1 350-400, B2 500-600. <a href="https://support.cambridgeenglish.org/hc/en-gb/articles/202838506-Guided-learning-hours" target="_blank" rel="noopener">Cambridge English</a></li>
+        <li>Vocabulario de referencia: A1 unas 650 palabras y B1 unas 2.400 (Goethe-Institut). En inglés, A2 1.500-2.500 y B1 2.750-3.250 (<a href="http://eurosla.org/monographs/EM02/Milton.pdf" target="_blank" rel="noopener">Milton</a>).</li>
+        <li>El umbral del 80 % viene del aprendizaje de dominio (Bloom). Es una pauta habitual, no un corte validado para vocabulario.</li>
+      </ul>
+      <p class="muted small">Lingo cubre una parte de cada nivel: úsala junto a lectura, series y conversación.</p></div>`;
+    $("#x").onclick = closeModal;
+  }
+  function startExam(idx) {
+    const c = CEFR[idx], units = examUnits(idx);
+    const ex = EX.exam(S.lang, units, EXAM_N);
+    shell(); $(".p-hearts").style.visibility = "hidden";
+    $("#stage").innerHTML = `<div class="center result">${mascot("think", 120)}<h1>Prueba de sesión ${c.id}</h1>
+      <p class="muted">${EXAM_N} preguntas de las unidades de ${c.name}. Un solo intento por pregunta y sin vidas. Necesitas ${Math.ceil(EXAM_N * EXAM_PASS)} aciertos (${EXAM_PASS * 100} %) para pasar a la siguiente sesión.</p>
+      <p class="muted small">Si no la apruebas, te diremos qué unidades repasar. Puedes repetirla.</p></div>`;
+    $("#foot").className = "p-foot"; $("#pBtn").textContent = "Empezar"; $("#pBtn").disabled = false;
+    $("#pBtn").onclick = () => startPlayer({ kind: "exam", cidx: idx, ex, lang: S.lang });
+    $("#pBar").style.width = "0%";
+  }
+  function finishExam() {
+    const idx = P.cidx, c = CEFR[idx], next = CEFR[idx + 1], total = P.q.length, lang = P.lang;
+    const allowed = Math.floor(total * (1 - EXAM_PASS)), ok = P.wrong <= allowed, acc = Math.round(P.correct / total * 100);
+    if (ok) {
+      const star = P.wrong <= 1 ? 3 : P.wrong <= 2 ? 2 : 1, ex = (S.exams[lang] = S.exams[lang] || {});
+      ex[c.id] = Math.max(ex[c.id] || 0, star);
+      if (next) S.unlocked[lang] = Math.max(S.unlocked[lang] ?? -1, idx + 1);
+      const xp = 50 + P.correct * 2; S.xp += xp; touchStreak(); save(); renderTop();
+      playerEl.innerHTML = `<div class="p-body"><div class="stage center result">
+        ${mascot("cheer", 150)}<h1>¡Sesión ${c.id} superada!</h1>
+        <div class="nstars lg">${[1, 2, 3].map(n => ic("star", "solid " + (n <= star ? "on" : "off"))).join("")}</div>
+        <p class="muted">${next ? `Subes a <b>${next.name} (${next.id})</b>: ${next.goal}` : "Has completado todas las sesiones disponibles. La siguiente llegará pronto."}</p>
+        <div class="res-stats"><div class="rs xp">${ic("star", "solid")}<b>+${xp}</b><span>XP</span></div><div class="rs acc">${ic("check")}<b>${acc}%</b><span>Aciertos</span></div></div></div></div>
+        <div class="p-foot">${next ? `<button class="btn ghost" id="stay">Seguir aquí</button><button class="btn" id="up">Ir a ${next.name}</button>` : `<button class="btn" id="stay">Continuar</button>`}</div>`;
+      sfx.win(); fxBurst(innerWidth / 2, innerHeight / 3, 46, undefined, 220);
+      $("#stay").onclick = closePlayer;
+      if (next) $("#up").onclick = () => { chooseLevel(lang, next.id); closePlayer(); };
+    } else {
+      const miss = Object.entries(P.missUnits || {}).sort((x, y) => y[1] - x[1]).slice(0, 3).map(([u]) => UNITS[+u].title);
+      save(); renderTop();
+      playerEl.innerHTML = `<div class="p-body"><div class="stage center result">
+        ${mascot("happy", 130)}<h1>Aún no, pero vas bien</h1>
+        <p class="muted">${P.correct} de ${total} aciertos (${acc} %). Necesitas ${total - allowed}.</p>
+        ${miss.length ? `<p><b>Te conviene repasar:</b></p><ul class="tone-legend">${miss.map(m => `<li><span class="tone-chip t-neutro">${ic("book")}${esc(m)}</span></li>`).join("")}</ul>` : ""}</div></div>
+        <div class="p-foot"><button class="btn ghost" id="back">Volver al mapa</button><button class="btn" id="again">Intentarlo otra vez</button></div>`;
+      $("#back").onclick = closePlayer;
+      $("#again").onclick = () => { closePlayer(); startExam(idx); };
+    }
+  }
+
   function openSituation(ui) {
     const s = stars(ui, NL);
     modal.hidden = false;
@@ -358,7 +453,7 @@
     render();
   }
 
-  const freeKind = () => P && (P.kind === "placement" || P.kind === "daily" || P.kind === "situation");
+  const freeKind = () => P && (P.kind === "placement" || P.kind === "daily" || P.kind === "situation" || P.kind === "exam");
 
   function startPlayer(cfg) {
     P = { ...cfg, q: [...cfg.ex], i: 0, wrong: 0, correct: 0, retries: new Map(), locked: false, check: null, combo: 0, teardown: null };
@@ -728,7 +823,8 @@
       if (!prem() && !freeKind()) { S.hearts = Math.max(0, S.hearts - 1); $("#pHearts").textContent = S.hearts; }
       if (!o.skipRemember) remember(ex.item);
       const n = P.retries.get(ex) || 0;
-      if (!o.noRetry && P.kind !== "placement" && n < 2) { P.retries.set(ex, n + 1); P.q.push(ex); }
+      if (ex.ui != null) { P.missUnits = P.missUnits || {}; P.missUnits[ex.ui] = (P.missUnits[ex.ui] || 0) + 1; }
+      if (!o.noRetry && P.kind !== "placement" && P.kind !== "exam" && n < 2) { P.retries.set(ex, n + 1); P.q.push(ex); }
     }
     save(); renderTop();
     const praise = o.okMsg || (P.kind === "placement" ? "Respuesta registrada" : PRAISE[Math.floor(Math.random() * PRAISE.length)]);
@@ -765,6 +861,7 @@
 
   function finish() {
     if (P.kind === "placement") return finishPlacement();
+    if (P.kind === "exam") return finishExam();
     const star = P.wrong === 0 ? 3 : P.wrong <= 2 ? 2 : 1;
     const total = P.correct + P.wrong, acc = Math.round(P.correct / Math.max(1, total) * 100);
     const xp = P.correct * 2 + 10 + (P.wrong === 0 ? 5 : 0);
@@ -928,6 +1025,8 @@
         <div class="stat">${ic("star", "solid")}<b>${S.xp}</b><span>XP total</span></div>
         <div class="stat">${ic("heart", "solid")}<b>${prem() ? "&infin;" : S.hearts}</b><span>Vidas hoy</span></div>
         <div class="stat">${ic("trophy")}<b>${Object.keys(COURSES).reduce((n, k) => n + doneCount(k), 0)}</b><span>Niveles</span></div>
+        <div class="stat">${ic("book")}<b>${S.lang ? wordsSeen(S.lang) : 0}</b><span>Palabras vistas</span></div>
+        <div class="stat">${ic("crown")}<b>${S.lang ? sessionsDone(S.lang) : 0}</b><span>Sesiones superadas</span></div>
       </div>
       <h2>Mis cursos</h2>
       ${started.length ? started.map(k => { const p = Math.round(doneCount(k) / (UNITS.length * NL) * 100), c = cefrOf(k);
@@ -946,11 +1045,11 @@
       ${msg ? `<p class="fb-note">${ic("crown")}<span>${esc(msg)}</span></p>` : ""}
       <div class="plans">
         <div class="plan ${S.plan === "standard" ? "current" : ""}"><h3>Estándar</h3><div class="price">Gratis</div>
-          <ul>${f(1, "1 curso de idioma a tu elección")}${f(1, "Nivel Principiante e Intermedio")}${f(1, "Unidades 1 a 3 de cada nivel (30 niveles)")}${f(1, "5 vidas al día")}${f(1, "5 palabras del día")}${f(1, "Rompecabezas, escritura y parejas")}${f(0, "Voz natural y ejercicios de escucha")}${f(0, "Repaso de errores")}${f(0, "Los 7 cursos")}</ul>
+          <ul>${f(1, "1 curso de idioma a tu elección")}${f(1, "3 sesiones: A1, A2 y B1")}${f(1, "Unidades 1 a 3 de cada sesión (45 niveles)")}${f(1, "5 vidas al día")}${f(1, "5 palabras del día")}${f(1, "Rompecabezas, escritura y parejas")}${f(0, "Voz natural y ejercicios de escucha")}${f(0, "Repaso de errores")}${f(0, "Los 7 cursos")}</ul>
           <button class="btn ghost" id="pStd" ${S.plan === "standard" ? "disabled" : ""}>${S.plan === "standard" ? "Tu plan actual" : "Volver a Estándar"}</button></div>
         <div class="plan featured ${prem() ? "current" : ""}"><span class="ribbon">${ic("crown", "solid")}Más completo</span><h3>Premium</h3>
           <div class="price">7,99 &euro;<small>/mes</small></div><div class="muted small">o 59,99 &euro; al año</div>
-          <ul>${f(1, "Los 7 cursos, cambia cuando quieras")}${f(1, "20 unidades por curso (100 niveles)")}${f(1, "Vidas ilimitadas")}${f(1, "10 palabras del día")}${f(1, "Voz natural en todas las frases")}${f(1, "Ejercicios de escucha")}${f(1, "Repaso inteligente de errores")}</ul>
+          <ul>${f(1, "Los 7 cursos, cambia cuando quieras")}${f(1, "30 unidades por curso (150 niveles)")}${f(1, "Vidas ilimitadas")}${f(1, "10 palabras del día")}${f(1, "Voz natural en todas las frases")}${f(1, "Ejercicios de escucha")}${f(1, "Repaso inteligente de errores")}</ul>
           <button class="btn prem" id="pPre" ${prem() ? "disabled" : ""}>${prem() ? "Tu plan actual" : "Hazte Premium"}</button></div>
       </div></div>`;
     $("#x").onclick = closeModal;
