@@ -1,0 +1,57 @@
+:root{--bg:#f6f7fb;--card:#fff;--ink:#1e2433;--muted:#6b7385;--green:#58b845;--green-d:#3f9a2f;--gold:#f5b301;--red:#e5484d;--line:#e3e6ee;--prem:#7c4dff}
+@media (prefers-color-scheme:dark){:root{--bg:#12151c;--card:#1b2030;--ink:#eef1f8;--muted:#99a1b5;--line:#2a3045}}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.5 system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+.top{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5;flex-wrap:wrap;gap:8px}
+.brand{font-weight:800;font-size:20px;color:var(--green-d)}
+.stats{display:flex;gap:12px;align-items:center;font-weight:700}
+main{max-width:760px;margin:0 auto;padding:20px 16px 60px}
+h1,h2{margin:.2em 0 .5em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:14px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.tile{cursor:pointer;text-align:center;padding:18px 10px;border-radius:16px;background:var(--card);border:2px solid var(--line);font:inherit;color:inherit}
+.tile:hover{border-color:var(--green)}
+.tile .big{font-size:36px;display:block}
+.tile.locked{opacity:.55}
+button{font:inherit;cursor:pointer}
+.btn{background:var(--green);color:#fff;border:0;border-bottom:4px solid var(--green-d);padding:12px 22px;border-radius:14px;font-weight:800;text-transform:uppercase;letter-spacing:.5px}
+.btn:active{transform:translateY(2px);border-bottom-width:2px}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--line);border-bottom-width:4px}
+.btn.prem{background:var(--prem);border-bottom-color:#5632c4}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.badge{border:0;border-radius:99px;padding:4px 12px;font-weight:800;background:var(--line);color:var(--ink)}
+.badge.prem{background:var(--prem);color:#fff}
+.lesson{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:14px 16px;margin-bottom:10px;border-radius:16px;border:2px solid var(--line);background:var(--card);color:inherit}
+.lesson:hover{border-color:var(--green)}
+.lesson .ic{font-size:30px}
+.lesson small{color:var(--muted);display:block}
+.lesson.locked{opacity:.6}
+.bar{height:12px;background:var(--line);border-radius:99px;overflow:hidden;margin:10px 0 20px}
+.bar>i{display:block;height:100%;background:var(--green);transition:width .3s}
+.q{font-size:24px;font-weight:800;margin:10px 0 18px}
+.opts{display:grid;gap:10px}
+.opt{padding:14px;border-radius:14px;border:2px solid var(--line);background:var(--card);color:inherit;text-align:left;font-weight:600}
+.opt:hover{border-color:var(--green)}
+.opt.ok{border-color:var(--green);background:rgba(88,184,69,.15)}
+.opt.bad{border-color:var(--red);background:rgba(229,72,77,.15)}
+input.ans{width:100%;padding:14px;border-radius:14px;border:2px solid var(--line);background:var(--card);color:inherit;font:inherit;font-size:18px}
+.fb{margin-top:14px;padding:12px 14px;border-radius:12px;font-weight:700}
+.fb.ok{background:rgba(88,184,69,.18);color:var(--green-d)}
+.fb.bad{background:rgba(229,72,77,.15);color:var(--red)}
+.flash{min-height:150px;display:grid;place-items:center;text-align:center;font-size:28px;font-weight:800;cursor:pointer;user-select:none}
+.flash small{display:block;font-size:13px;color:var(--muted);font-weight:500}
+.plans{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.plan{border:2px solid var(--line);border-radius:18px;padding:20px;background:var(--card)}
+.plan.featured{border-color:var(--prem)}
+.plan.current{outline:3px solid var(--green)}
+.plan h3{margin:0}.plan .price{font-size:28px;font-weight:800;margin:6px 0}
+.plan ul{padding:0;list-style:none;margin:12px 0 16px}.plan li{padding:3px 0}
+.plan li.no{color:var(--muted);text-decoration:line-through}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:grid;place-items:center;z-index:20;padding:16px}
+.modal[hidden]{display:none}
+.modal .box{background:var(--card);border-radius:18px;padding:22px;max-width:420px;width:100%}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.muted{color:var(--muted)}
+.center{text-align:center}
+.tabs{display:flex;gap:8px;margin-bottom:16px}
+.tabs .btn{padding:8px 16px;font-size:13px}
