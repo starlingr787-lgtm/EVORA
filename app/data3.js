@@ -19,7 +19,7 @@ window.LIVE = [
          ro: ["Bună dimineața, ce mai faceți?", "Salut! Ce faci?"] } },
   { unit: 0, id: "B", idea: "Despedirse",
     es: ["Adiós, que tenga un buen día.", "¡Chao! ¡Hasta luego!"],
-    sit: ["Te despides de un cliente importante.", "Te despides de tus compañeros de piso."],
+    sit: ["Te despides de un cliente importante.", "Te despides de tus compañeros de casa."],
     t: { en: ["Goodbye, have a good day.", "Bye! See you later!"], fr: ["Au revoir, bonne journée.", "Salut ! À plus !"],
          de: ["Auf Wiedersehen, einen schönen Tag noch.", "Tschüss! Bis später!"], it: ["Arrivederci, buona giornata.", "Ciao! A dopo!"],
          pt: ["Adeus, tenha um bom dia.", "Tchau! Até logo!"], ru: ["До свидания, хорошего дня.", "Пока! До скорого!"],
@@ -42,8 +42,8 @@ window.LIVE = [
          ru: ["Извините, не могли бы вы принести нам счёт, пожалуйста?", "Эй, счёт, пожалуйста!"],
          ro: ["Scuzați-mă, ați putea să ne aduceți nota de plată, vă rog?", "Hei, nota de plată, te rog!"] } },
   { unit: 5, id: "E", idea: "Pedir un café",
-    es: ["Quisiera un café, por favor.", "Un café para mí, gracias."],
-    sit: ["Pides un café a un camarero que no conoces.", "Pides un café en tu bar de siempre."],
+    es: ["Quisiera un café, por favor.", "¡Un café para mí, gracias!"],
+    sit: ["Pides un café a un mesero que no conoces.", "Pides un café en tu bar de siempre."],
     t: { en: ["I would like a coffee, please.", "Coffee for me, thanks!"], fr: ["Je voudrais un café, s'il vous plaît.", "Un café pour moi, merci !"],
          de: ["Ich hätte gern einen Kaffee, bitte.", "Einen Kaffee für mich, danke!"], it: ["Vorrei un caffè, per favore.", "Un caffè per me, grazie!"],
          pt: ["Queria um café, por favor.", "Um café para mim, obrigado!"], ru: ["Я бы хотел кофе, пожалуйста.", "Мне кофе, спасибо!"],
@@ -62,17 +62,17 @@ window.LIVE = [
 
 window.SCENES = [
   { unit: 0, title: "Llegas tarde", who: "Ana", hue: 330, start: 20, goal: 80,
-    intro: "Has llegado 30 minutos tarde a una cita con Ana y está enfadada. Calma la situación con el tono adecuado.",
+    intro: "Has llegado 30 minutos tarde a una cita con Ana y está enojada. Calma la situación con el tono adecuado.",
     turns: [
       { es: "¡Llegas tarde!", opts: [
         { tone: "informal", d: 35, es: "Lo siento mucho, Ana.", why: "Pedir perdón con calidez y por su nombre calma a una amiga." },
-        { tone: "urgente", d: -25, es: "¡Vamos, rápido!", why: "Meter prisa a alguien enfadada la irrita más." },
+        { tone: "urgente", d: -25, es: "¡Vamos, rápido!", why: "Presionar a alguien enojada la irrita más." },
         { tone: "formal", d: 5, es: "Disculpe la demora.", why: "Es correcto, pero demasiado frío para una amiga." }] },
       { es: "Te estuve esperando mucho tiempo.", opts: [
         { tone: "informal", d: 30, es: "Tienes razón, fue mi culpa.", why: "Reconocer el error sin excusas es lo que más calma." },
-        { tone: "urgente", d: -25, es: "¡No es para tanto!", why: "Quitarle importancia a su enfado lo empeora." },
+        { tone: "urgente", d: -25, es: "¡No es para tanto!", why: "Quitarle importancia a su enojo lo empeora." },
         { tone: "formal", d: 5, es: "Le pido disculpas sinceras.", why: "Suena a trato de oficina, no a amistad." }] },
-      { es: "Bueno... ¿qué hacemos ahora?", opts: [
+      { es: "Bueno, ¿qué hacemos ahora?", opts: [
         { tone: "informal", d: 30, es: "Te invito a un café.", why: "Un gesto cercano para compensar cierra bien la pelea." },
         { tone: "neutro", d: 15, es: "Podemos ir al cine.", why: "Es una propuesta correcta, pero sin gesto personal." },
         { tone: "urgente", d: -20, es: "¡Date prisa, nos vamos!", why: "Dar órdenes justo ahora rompe el buen ambiente." }] }
@@ -80,34 +80,34 @@ window.SCENES = [
     t: {
       en: [["You're late!", "I'm so sorry, Ana.", "Come on, hurry up!", "Please excuse the delay."],
            ["I've been waiting for you for a long time.", "You're right, it was my fault.", "It's not a big deal!", "I offer you my sincere apologies."],
-           ["Well... what do we do now?", "Let me buy you a coffee.", "We could go to the cinema.", "Hurry up, we're leaving!"]],
+           ["Well, what do we do now?", "Let me buy you a coffee.", "We could go to the cinema.", "Hurry up, we're leaving!"]],
       fr: [["Tu es en retard !", "Je suis vraiment désolé, Ana.", "Allez, dépêche-toi !", "Veuillez excuser mon retard."],
            ["Je t'attends depuis longtemps.", "Tu as raison, c'est ma faute.", "Ce n'est pas si grave !", "Je vous présente mes sincères excuses."],
-           ["Bon... que fait-on maintenant ?", "Je t'offre un café.", "On pourrait aller au cinéma.", "Dépêche-toi, on y va !"]],
+           ["Bon, que fait-on maintenant ?", "Je t'offre un café.", "On pourrait aller au cinéma.", "Dépêche-toi, on y va !"]],
       de: [["Du kommst zu spät!", "Es tut mir so leid, Ana.", "Komm schon, beeil dich!", "Entschuldigen Sie die Verspätung."],
            ["Ich warte schon sehr lange auf dich.", "Du hast recht, es war meine Schuld.", "Das ist doch nicht schlimm!", "Ich bitte Sie aufrichtig um Entschuldigung."],
-           ["Also... was machen wir jetzt?", "Ich lade dich auf einen Kaffee ein.", "Wir könnten ins Kino gehen.", "Beeil dich, wir gehen!"]],
+           ["Also, was machen wir jetzt?", "Ich lade dich auf einen Kaffee ein.", "Wir könnten ins Kino gehen.", "Beeil dich, wir gehen!"]],
       it: [["Sei in ritardo!", "Mi dispiace tantissimo, Ana.", "Dai, sbrigati!", "Mi scusi per il ritardo."],
            ["Ti ho aspettato per molto tempo.", "Hai ragione, è stata colpa mia.", "Non è mica una tragedia!", "Le porgo le mie sincere scuse."],
-           ["Va bene... e adesso che facciamo?", "Ti offro un caffè.", "Possiamo andare al cinema.", "Sbrigati, andiamo!"]],
+           ["Va bene, e adesso che facciamo?", "Ti offro un caffè.", "Possiamo andare al cinema.", "Sbrigati, andiamo!"]],
       pt: [["Chegaste tarde!", "Lamento muito, Ana.", "Anda, despacha-te!", "Peço desculpa pela demora."],
            ["Estive à tua espera muito tempo.", "Tens razão, foi culpa minha.", "Não é caso para tanto!", "Apresento-lhe as minhas sinceras desculpas."],
-           ["Bem... e agora, o que fazemos?", "Pago-te um café.", "Podemos ir ao cinema.", "Despacha-te, vamos embora!"]],
+           ["Bem, e agora, o que fazemos?", "Pago-te um café.", "Podemos ir ao cinema.", "Despacha-te, vamos embora!"]],
       ru: [["Ты опоздал!", "Мне очень жаль, Ана.", "Давай, быстрее!", "Прошу прощения за задержку."],
            ["Я ждала тебя очень долго.", "Ты права, это моя вина.", "Да ладно, ерунда!", "Приношу вам искренние извинения."],
-           ["Ну ладно... что будем делать?", "Я угощаю тебя кофе.", "Можем сходить в кино.", "Поторопись, мы уходим!"]],
+           ["Ну ладно, что будем делать?", "Я угощаю тебя кофе.", "Можем сходить в кино.", "Поторопись, мы уходим!"]],
       ro: [["Ai întârziat!", "Îmi pare foarte rău, Ana.", "Hai, repede!", "Vă rog să scuzați întârzierea."],
            ["Te-am așteptat mult timp.", "Ai dreptate, a fost vina mea.", "Nu e mare lucru!", "Vă prezint scuzele mele sincere."],
-           ["Bine... și acum ce facem?", "Te invit la o cafea.", "Putem merge la cinema.", "Grăbește-te, plecăm!"]]
+           ["Bine, și acum ce facem?", "Te invit la o cafea.", "Putem merge la cinema.", "Grăbește-te, plecăm!"]]
     } },
 
-  { unit: 5, title: "El camarero agobiado", who: "El camarero", hue: 28, start: 25, goal: 80,
-    intro: "El restaurante está lleno y el camarero va con prisa y de mal humor. Tranquilízalo con el tono adecuado.",
+  { unit: 5, title: "El mesero agobiado", who: "El mesero", hue: 28, start: 25, goal: 80,
+    intro: "El restaurante está lleno y el mesero va con prisa y de mal humor. Tranquilízalo con el tono adecuado.",
     turns: [
       { es: "¡Ahora no puedo! Tengo muchas mesas.", opts: [
         { tone: "formal", d: 30, es: "Disculpe, no hay prisa.", why: "Un trato respetuoso le da espacio y baja la tensión." },
-        { tone: "urgente", d: -30, es: "¡Llevo una hora esperando!", why: "Reclamar a gritos a alguien estresado lo enfada más." },
-        { tone: "informal", d: 5, es: "Tranqui, no pasa nada.", why: "Es amable, pero con un desconocido suena demasiado confiado." }] },
+        { tone: "urgente", d: -30, es: "¡Llevo una hora esperando!", why: "Reclamar a gritos a alguien estresado lo enoja más." },
+        { tone: "informal", d: 5, es: "Tranquilo, no pasa nada.", why: "Es amable, pero con un desconocido suena demasiado confiado." }] },
       { es: "Está bien. ¿Qué desea?", opts: [
         { tone: "formal", d: 30, es: "Quisiera un café, por favor.", why: "Pedir con cortesía es lo esperado en un restaurante." },
         { tone: "informal", d: 15, es: "Un café para mí, gracias.", why: "Es cordial y claro, aunque algo informal." },
@@ -115,7 +115,7 @@ window.SCENES = [
       { es: "Enseguida. ¿Algo más?", opts: [
         { tone: "formal", d: 25, es: "La cuenta, por favor.", why: "Breve y cortés: justo lo que pide la situación." },
         { tone: "informal", d: 20, es: "Nada más, gracias.", why: "Es educado y le quita trabajo." },
-        { tone: "urgente", d: -25, es: "¡Me voy ya, la cuenta!", why: "Meter prisa al final deja mal sabor de boca." }] }
+        { tone: "urgente", d: -25, es: "¡Me voy ya, la cuenta!", why: "Presionar al final deja mal sabor de boca." }] }
     ],
     t: {
       en: [["I can't right now! I have so many tables.", "Excuse me, there's no rush.", "I've been waiting for an hour!", "Relax, no worries."],

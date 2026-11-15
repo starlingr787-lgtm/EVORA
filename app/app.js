@@ -3,7 +3,7 @@
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const KEY = "lingo-state-v3";
-  const AUDIO_V = "20251115"; // súbela cuando regeneres los audios (rompe la caché del navegador)
+  const AUDIO_V = "20261115b"; // súbela cuando regeneres los audios (rompe la caché del navegador)
   const today = () => new Date().toISOString().slice(0, 10);
   const LV = EX.LEVELS, NL = LV.length;
   const canSpeak = "speechSynthesis" in window;
@@ -403,7 +403,7 @@
       <p class="muted">${U.ctx}</p>
       <ul class="intro">${items.map((x, i) => `<li><button class="spk sm" data-i="${i}" aria-label="Escuchar">${ic("speaker")}</button>
         <div><b>${EX.tgt(x.t, S.lang)}</b><span class="muted">${esc(x.es)}</span></div></li>`).join("")}</ul>
-      ${sample ? `<h3 class="vgroup">Dos frases para componer como un puzle</h3><ul class="intro">${sample.map((x, i) => `<li><button class="spk sm" data-j="${i}" aria-label="Escuchar">${ic("speaker")}</button>
+      ${sample ? `<h3 class="vgroup">Dos frases para componer como un rompecabezas</h3><ul class="intro">${sample.map((x, i) => `<li><button class="spk sm" data-j="${i}" aria-label="Escuchar">${ic("speaker")}</button>
         <div><b>${EX.tgt(x.t, S.lang)}</b><span class="muted">${esc(x.es)}</span></div></li>`).join("")}</ul>` : ""}`;
     $$(".intro .spk[data-i]").forEach(b => b.onclick = () => speak(items[+b.dataset.i].t, S.lang));
     $$(".intro .spk[data-j]").forEach(b => b.onclick = () => speak(sample[+b.dataset.j].t, S.lang));
@@ -720,7 +720,7 @@
     $("#stage").innerHTML = `<h2 class="ex-title">${esc(ex.title)}</h2><p class="muted scene-intro">${esc(ex.intro)}</p>
       <div class="char-row"><div class="char" id="char"></div><div class="char-info"><b>${esc(ex.who)}</b>
         <div class="mood" role="meter" aria-label="Ánimo" aria-valuemin="0" aria-valuemax="100"><i id="mfill"></i><span class="goal" style="left:${ex.goal}%"></span><em id="mdelta"></em></div>
-        <div class="mood-labels"><span>Enfadado</span><span>Tranquilo</span></div></div></div>
+        <div class="mood-labels"><span>Enojado</span><span>Tranquilo</span></div></div></div>
       <div class="bubble big" id="cline"></div>
       <div class="turn-dots" id="tdots"></div>
       <div class="scene-opts" id="sopts"></div>`;
@@ -1067,7 +1067,7 @@
   }
   function checkout() {
     modal.innerHTML = `<div class="box center">${mascot("happy", 90)}<h2>Pago de demostración</h2>
-      <p class="muted">No se cobra nada ni se guardan datos de tarjeta. Para cobrar de verdad hay que conectar un procesador de pagos (ver README).</p>
+      <p class="muted">No se cobra nada ni se guardan datos de tarjeta. Para cobrar de verdad hay que conectar un procesador de pagos.</p>
       <div class="row center"><button class="btn ghost" id="no">Cancelar</button><button class="btn prem" id="pay">Activar Premium</button></div></div>`;
     $("#no").onclick = closeModal;
     $("#pay").onclick = () => { S.plan = "premium"; save(); closeModal(); if (S.lang) loadPack(S.lang); if (P) closePlayer(); else render(); };
