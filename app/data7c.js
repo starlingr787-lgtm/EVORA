@@ -159,7 +159,7 @@ Verdad|Truth|Vérité|Wahrheit|Verità|Verdade|Правда|Adevăr
 Respeto|Respect|Respect|Respekt|Rispetto|Respeito|Уважение|Respect
 Paciencia|Patience|Patience|Geduld|Pazienza|Paciência|Терпение|Răbdare
 Escuchar|To listen|Écouter|Zuhören|Ascoltare|Ouvir|Слушать|A asculta
-Compartir|To share|Partager|Teilen|Condividere|Partilhar|Делиться|A împărți
+Compartir|To share|Partager|Teilen|Condividere|Partilhar|Делиться|A împărtăși
 Leal|Loyal|Loyal|Loyal|Leale|Leal|Верный|Loial
 Pelea|Quarrel|Brouille|Zank|Litigio|Briga|Конфликт|Conflict
 Solución|Solution|Solution|Lösung|Soluzione|Solução|Решение|Soluție
@@ -170,7 +170,7 @@ La amistad es muy importante para mí.|Friendship is very important to me.|L'ami
 Siempre dice la verdad.|He always tells the truth.|Il dit toujours la vérité.|Er sagt immer die Wahrheit.|Dice sempre la verità.|Ele diz sempre a verdade.|Он всегда говорит правду.|El spune mereu adevărul.
 Necesitas tener más paciencia.|You need to be more patient.|Tu dois avoir plus de patience.|Du musst mehr Geduld haben.|Devi avere più pazienza.|Tens de ter mais paciência.|Тебе нужно быть терпеливее.|Trebuie să ai mai multă răbdare.
 Me gusta escuchar a mis amigos.|I like listening to my friends.|J'aime écouter mes amis.|Ich höre meinen Freunden gern zu.|Mi piace ascoltare i miei amici.|Gosto de ouvir os meus amigos.|Мне нравится слушать своих друзей.|Îmi place să îmi ascult prietenii.
-Compartimos todo con mucha confianza.|We share everything with great trust.|Nous partageons tout en toute confiance.|Wir teilen alles mit großem Vertrauen.|Condividiamo tutto con molta fiducia.|Partilhamos tudo com muita confiança.|Мы делимся всем с большим доверием.|Împărțim totul cu multă încredere.
+Compartimos todo con mucha confianza.|We share everything with great trust.|Nous partageons tout en toute confiance.|Wir teilen alles mit großem Vertrauen.|Condividiamo tutto con molta fiducia.|Partilhamos tudo com muita confiança.|Мы делимся всем с большим доверием.|Împărtășim totul cu multă încredere.
 Busquemos una solución juntos.|Let's look for a solution together.|Cherchons une solution ensemble.|Lass uns gemeinsam eine Lösung suchen.|Cerchiamo una soluzione insieme.|Vamos procurar uma solução juntos.|Давай вместе найдём решение.|Să căutăm o soluție împreună.
 ¿Por qué me mentiste?|Why did you lie to me?|Pourquoi m'as-tu menti ?|Warum hast du mich angelogen?|Perché mi hai mentito?|Porque é que me mentiste?|Почему ты мне солгал?|De ce m-ai mințit?
 `);
