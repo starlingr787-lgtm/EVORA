@@ -3,7 +3,7 @@
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const KEY = "lingo-state-v3";
-  const AUDIO_V = "20261115d"; // súbela cuando regeneres los audios (rompe la caché del navegador)
+  const AUDIO_V = "20261115e"; // súbela cuando regeneres los audios (rompe la caché del navegador)
   const today = () => new Date().toISOString().slice(0, 10);
   const LV = EX.LEVELS, NL = LV.length;
   const canSpeak = "speechSynthesis" in window;
@@ -233,8 +233,8 @@
     if (!prem()) html += `<div class="note-card"><div>${ic("crown", "gold")}</div><div><b>Plan Estándar</b><span>Unidades 1 a ${PLANS.standard.units} de cada sesión y ${PLANS.standard.hearts} vidas al día.</span></div><button class="btn sm prem" id="upg">Mejorar</button></div>`;
 
     for (let ui = lv.from; ui < lv.to; ui++) {
-      const U = UNITS[ui], un = ui - lv.from;
-      const NN = NL + (EX.hasSituation(ui) ? 1 : 0);
+      const U = { ...UNITS[ui], title: unitTitle(S.lang, ui), ctx: unitCtx(S.lang, ui) }, un = ui - lv.from;
+      const NN = NL + (EX.hasSituation(ui, S.lang) ? 1 : 0);
       const H = NN * 98 + 10;
       const pts = Array.from({ length: NN }, (_, li) => ({ x: 50 + 25 * Math.sin((un * NL + li) * 1.15 + .4), y: li * 98 + 52 }));
       let d = `M${pts[0].x} ${pts[0].y}`;
@@ -330,7 +330,7 @@
       $("#stay").onclick = closePlayer;
       if (next) $("#up").onclick = () => { chooseLevel(lang, next.id); closePlayer(); };
     } else {
-      const miss = R.weakUnits.map(u => UNITS[u].title);
+      const miss = R.weakUnits.map(u => unitTitle(P.lang, u));
       save(); renderTop();
       playerEl.innerHTML = `<div class="p-body"><div class="stage center result">
         ${mascot("happy", 130)}<h1>Aún no, pero vas bien</h1>
@@ -346,7 +346,7 @@
     const s = stars(ui, NL);
     modal.hidden = false;
     modal.innerHTML = `<div class="box center"><div class="sheet-ic situ">${ic("bolt")}</div>
-      <span class="ulabel">Unidad ${ui - EX.lvStart(ui) + 1} &middot; ${UNITS[ui].title}</span><h2>Situación</h2>
+      <span class="ulabel">Unidad ${ui - EX.lvStart(ui) + 1} &middot; ${unitTitle(S.lang, ui)}</span><h2>Situación</h2>
       <p class="muted">Rompecabezas vivo: cambia el tono de la frase hasta que encaje. Después calma a un personaje con las piezas adecuadas.</p>
       <p class="fb-note ok-note">${ic("check")}<span>Gratis para todos los planes.</span></p>
       ${s ? `<div class="nstars lg">${[1, 2, 3].map(n => ic("star", "solid " + (n <= s ? "on" : "off"))).join("")}</div>` : ""}
@@ -379,7 +379,7 @@
     const note = li === 3 && !prem() ? `<p class="fb-note">${ic("lock")}<span>El audio es Premium. Haremos ejercicios de escritura.</span></p>` : "";
     modal.hidden = false;
     modal.innerHTML = `<div class="box center"><div class="sheet-ic">${ic(L.icon)}</div>
-      <span class="ulabel">Unidad ${un + 1} &middot; ${UNITS[ui].title}</span><h2>${L.name}</h2><p class="muted">${L.desc}</p>${note}
+      <span class="ulabel">Unidad ${un + 1} &middot; ${unitTitle(S.lang, ui)}</span><h2>${L.name}</h2><p class="muted">${L.desc}</p>${note}
       ${s ? `<div class="nstars lg">${[1, 2, 3].map(n => ic("star", "solid " + (n <= s ? "on" : "off"))).join("")}</div>` : ""}
       <div class="row center"><button class="btn ghost" id="cancel">Cerrar</button><button class="btn" id="start">${s ? "Repetir" : "Empezar"}</button></div></div>`;
     $("#cancel").onclick = closeModal;
@@ -876,7 +876,7 @@
       const p = (S.progress[P.lang] = S.progress[P.lang] || {}), k = P.ui + "-" + P.li;
       p[k] = Math.max(p[k] || 0, star);
       title = P.li === NL - 1 ? "Unidad completada" : "Nivel completado";
-      if (P.li === NL - 1) extra = `<p class="muted">Has terminado la unidad ${P.ui - EX.lvStart(P.ui) + 1}: ${UNITS[P.ui].title}.</p>`;
+      if (P.li === NL - 1) extra = `<p class="muted">Has terminado la unidad ${P.ui - EX.lvStart(P.ui) + 1}: ${unitTitle(P.lang, P.ui)}.</p>`;
     } else if (P.kind === "situation") {
       const p = (S.progress[P.lang] = S.progress[P.lang] || {}), k = P.ui + "-" + NL;
       p[k] = Math.max(p[k] || 0, star);
@@ -960,6 +960,7 @@
   /* ---------- Diccionario: vocabulario suelto fuera de las unidades, gratis con límites ---------- */
   const DICT_FREE_N = 2; // prácticas gratis al día en el plan Estándar
   let dictCat = null;
+  const dictName = c => (S.lang && window.LEARN && LEARN[S.lang] ? LEARN[S.lang].dictNames[c.id] : c.name);
   function dictUsage() {
     if (S.dictDay !== today()) { S.dictDay = today(); S.dictUsed = 0; }
     return S.dictUsed;
@@ -980,7 +981,7 @@
           <div class="ring" style="--p:${Math.round(known / Math.max(1, words.length) * 100)}"><b>${known}/${words.length}</b></div></div>
         <ul class="intro daily">${words.map((w, i) => `<li class="${rec.known.includes(w.t) ? "known" : ""}">
           <button class="spk sm" data-t="${esc(w.t)}" aria-label="Escuchar">${ic("speaker")}</button>
-          <div class="grow"><b>${EX.tgt(w.t, lang)}</b><span class="muted">${esc(w.es)} &middot; ${esc(UNITS[w.ui].title)}</span></div>
+          <div class="grow"><b>${EX.tgt(w.t, lang)}</b><span class="muted">${esc(w.es)} &middot; ${esc(unitTitle(lang, w.ui))}</span></div>
           <button class="know" data-i="${i}" aria-pressed="${rec.known.includes(w.t)}" aria-label="Marcar como aprendida">${ic("check")}<span>Ya la sé</span></button></li>`).join("")}</ul>
         ${phrase ? `<div class="card phrase"><span class="ulabel muted">Frase del día</span>
           <div class="row"><button class="spk sm" data-t="${esc(phrase.t)}" aria-label="Escuchar">${ic("speaker")}</button><div class="grow"><b>${EX.tgt(phrase.t, lang)}</b><span class="muted">${esc(phrase.es)}</span></div></div></div>` : ""}
@@ -1008,14 +1009,14 @@
       } else if (dictCat) {
         const c = DICT_CATS.find(x => x.id === dictCat), items = EX.dictItems(lang, dictCat);
         body = `<button class="btn ghost sm" id="dictBack">${ic("back")} Categorías</button>
-          <div class="card daily-head"><div><span class="ulabel muted">Diccionario</span><h2>${ic(c.icon)} ${esc(c.name)}</h2><p class="muted small">${items.length} palabras</p></div></div>
+          <div class="card daily-head"><div><span class="ulabel muted">Diccionario</span><h2>${ic(c.icon)} ${esc(dictName(c))}</h2><p class="muted small">${items.length} palabras</p></div></div>
           <ul class="intro">${items.map(rowHTML).join("")}</ul>
           ${limitNote}
           <div class="center"><button class="btn ${left > 0 ? "" : "ghost"}" id="dictPractice">${left > 0 ? "Practicar esta categoría" : "Ver Premium"}</button></div>`;
       } else {
         body = `<label class="search">${ic("search")}<input id="dq" type="search" placeholder="Buscar una palabra, p. ej. cebolla" autocomplete="off" value=""></label>
           <p class="muted small">Vocabulario de uso diario, fuera de las unidades. Explóralo libremente; practicar tiene un límite gratis.</p>
-          <div class="course-grid">${DICT_CATS.map(c => `<button class="course-card" data-cat="${c.id}"><span class="cat-ic">${ic(c.icon)}</span><b>${esc(c.name)}</b><span class="muted">${c.w.length} palabras</span></button>`).join("")}</div>
+          <div class="course-grid">${DICT_CATS.map(c => `<button class="course-card" data-cat="${c.id}"><span class="cat-ic">${ic(c.icon)}</span><b>${esc(dictName(c))}</b><span class="muted">${c.w.length} palabras</span></button>`).join("")}</div>
           ${limitNote}`;
       }
     }
@@ -1090,7 +1091,8 @@
       <div class="center" style="margin-top:20px"><button class="btn ${prem() ? "ghost" : "prem"}" id="pl">${prem() ? "Gestionar plan" : "Mejorar a Premium"}</button></div>
       <p class="credits">Voces generadas con <a href="https://github.com/OHF-Voice/piper1-gpl" target="_blank" rel="noopener">Piper</a>.
         Francés: «Siwis French Speech Synthesis Database», Universidad de Edimburgo — <a href="https://datashare.ed.ac.uk/handle/10283/2353" target="_blank" rel="noopener">CC BY 4.0</a>.
-        Italiano: «serena-synthetic-it-27h», committa — <a href="https://huggingface.co/datasets/committa/serena-synthetic-it-27h" target="_blank" rel="noopener">CC BY 4.0</a>.</p>`;
+        Italiano: «serena-synthetic-it-27h», committa — <a href="https://huggingface.co/datasets/committa/serena-synthetic-it-27h" target="_blank" rel="noopener">CC BY 4.0</a>.
+        Español: voz «claude» (es_MX) de rhasspy/piper-voices — Apache-2.0.</p>`;
     $("#pl").onclick = () => openPlans();
   }
 

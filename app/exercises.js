@@ -15,6 +15,12 @@
 
   function unit(lang, ui) {
     const u = UNITS[ui], t = COURSES[lang].t[ui];
+    /* Curso para angloparlantes: el texto de partida (campo es) es el inglés y el destino (t) es el español. */
+    if (COURSES[lang].learn) {
+      const e = COURSES[LEARN[lang].prompt].t[ui];
+      return { ...u, title: unitTitle(lang, ui), ctx: unitCtx(lang, ui),
+        words: u.w.map((x, i) => ({ es: e[0][i], t: x, k: "w" })), sents: u.s.map((x, i) => ({ es: e[1][i], t: x, k: "s" })) };
+    }
     return {
       ...u,
       words: u.w.map((es, i) => ({ es, t: t[0][i], k: "w" })),
@@ -238,7 +244,7 @@
   }
 
   /* ---------- Situaciones ---------- */
-  const hasSituation = ui => (window.LIVE || []).some(p => p.unit === ui);
+  const hasSituation = (ui, lang) => !(lang && COURSES[lang].learn) && (window.LIVE || []).some(p => p.unit === ui);
   function liveSet(lang, ui) {
     const all = [];
     LIVE.filter(p => p.unit === ui).forEach(p => [0, 1].forEach(k => all.push({
@@ -263,9 +269,13 @@
   /* ---------- Diccionario ---------- */
   const dictItems = (lang, catId) => {
     const c = DICT_CATS.find(x => x.id === catId);
-    return c.w.map((es, i) => ({ es, t: c.t[lang][i], k: "w" }));
+    return dictWords(lang, c);
   };
-  const dictAll = lang => DICT_CATS.flatMap(c => c.w.map((es, i) => ({ es, t: c.t[lang][i], k: "w" })));
+  /* En el curso de español la partida es el inglés del diccionario y el destino es el español. */
+  const dictWords = (lang, c) => COURSES[lang].learn
+    ? c.w.map((x, i) => ({ es: c.t[LEARN[lang].prompt][i], t: x, k: "w" }))
+    : c.w.map((es, i) => ({ es, t: c.t[lang][i], k: "w" }));
+  const dictAll = lang => DICT_CATS.flatMap(c => dictWords(lang, c));
   const dictSearch = (lang, q) => {
     const n = norm(q);
     return dictAll(lang).filter(x => norm(x.t).includes(n) || norm(x.es).includes(n));

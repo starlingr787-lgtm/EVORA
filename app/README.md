@@ -20,6 +20,7 @@ Para probarla en local: `cd app && python3 -m http.server` y abrir http://localh
 - **Repaso espaciado (Premium)**: cada fallo crea una tarjeta que reaparece con el algoritmo SM-2 simplificado (intervalos de 1 día, 3 días y luego ×facilidad; un fallo la devuelve a 1 día). La pestaña Repaso muestra las pendientes de hoy y las que están en seguimiento. Lógica pura en `engine.js` (`srs*`).
 - **Diccionario (gratis con límite)**: 6 categorías de 10 palabras (comida, animales, colores, cuerpo, casa, naturaleza) con audio, buscador y práctica. Plan Estándar: 2 prácticas al día; Premium: ilimitadas. Datos en `data5.js`.
 - **Español neutro**: el contenido en español evita regionalismos de España (`tests/content.test.js` lo comprueba).
+- **Curso de Español (para angloparlantes)**: 8.º curso, con las mismas 30 unidades. La partida (lo que se lee en la pregunta) es el inglés que ya existía y el destino es el español neutro de `UNITS` (`data6.js`; `exercises.js` invierte el par en `unit()`). Usa voz mexicana (la más cercana al español neutro). Sin situaciones de tono todavía. **Limitación:** los menús y mensajes de la app siguen en español, así que falta internacionalizar la interfaz para que un angloparlante lo use sin ayuda. Títulos en inglés pendientes de revisión nativa.
 - **Ruso**: transcripción automática en letras latinas y se acepta escribir en latino.
 - **Rompecabezas con "jugo"**: piezas con brillo y borde en relieve, flotan en el banco, se arrastran con inclinación e imán al hueco más cercano, aterrizan con rebote y chispas, suenan en escala musical (sonidos sintetizados, sin archivos), vibran en móviles, encajan en ola con confeti al acertar y suman racha. El sonido se silencia desde el reproductor y se respeta `prefers-reduced-motion`.
 - **Identidad propia**: sin emojis. Iconos SVG propios (`icons.js`), insignias de idioma y mascota Lumi.
@@ -71,6 +72,7 @@ Se generaron con [Piper](https://github.com/OHF-Voice/piper1-gpl) (voces `rhassp
 | Portugués | pt_PT-tugão-medium | CC0 |
 | Ruso | ru_RU-denis-medium | CC0 |
 | Rumano | ro_RO-mihai-medium | CC0 |
+| Español (curso para angloparlantes) | es_MX-claude-high | Apache-2.0 |
 
 Las voces francesa e italiana exigen atribución (CC BY 4.0): mantén esta tabla visible en la app si la publicas. Antes de uso comercial, revisa las licencias vigentes de cada voz.
 **Control de calidad de la voz.** `tools/tts/verify.py` transcribe cada clip con Whisper y puntúa el parecido. Esa medida es poco fiable en palabras sueltas de menos de 1 s (alucina "uh, uh…" o escribe "4." en vez de "Four"), por lo que una puntuación baja en clips cortos no implica mala voz (p. ej. el 0,674 del portugués es un artefacto de medición, no se tocó). El rumano sí mejoró de forma real con el método "mejor de N". Sigue pendiente la escucha por hablantes nativos.

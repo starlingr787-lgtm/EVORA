@@ -145,6 +145,7 @@ window.SCENES = [
 /* Claves de audio de las situaciones: [clave, texto] para un idioma */
 window.extraClips = lang => {
   const out = [];
+  if (COURSES[lang].learn) { if (window.DICT_CATS) DICT_CATS.forEach((c, ci) => c.w.forEach((x, i) => out.push([`D${ci}w${i}`, x]))); return out; }
   LIVE.forEach(p => p.t[lang].forEach((x, i) => out.push([`L${p.unit}${p.id}${i}`, x])));
   SCENES.forEach(s => s.t[lang].forEach((turn, ti) => turn.forEach((x, j) => out.push([`S${s.unit}${ti}${j}`, x]))));
   if (window.DICT_CATS) DICT_CATS.forEach((c, ci) => c.t[lang].forEach((x, i) => out.push([`D${ci}w${i}`, x])));

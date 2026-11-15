@@ -3,8 +3,8 @@
 const vm = require("vm"), fs = require("fs"), path = require("path");
 const dir = path.join(__dirname, "..");
 const ctx = {}; ctx.window = ctx; vm.createContext(ctx);
-for (const f of ["data", "data2", "data3", "data4", "data5"]) vm.runInContext(fs.readFileSync(path.join(dir, f + ".js"), "utf8"), ctx);
-const { UNITS, COURSES, LIVE, SCENES, DICT_CATS } = ctx;
+for (const f of ["data", "data2", "data3", "data4", "data5", "data6"]) vm.runInContext(fs.readFileSync(path.join(dir, f + ".js"), "utf8"), ctx);
+const { UNITS, COURSES, LIVE, SCENES, DICT_CATS, LEARN } = ctx;
 
 const errors = [];
 const bad = (where, msg, text) => errors.push(`${where}: ${msg}${text ? "  «" + text + "»" : ""}`);
@@ -80,6 +80,13 @@ for (const l in COURSES) COURSES[l].t.forEach((t, u) => {
   [["palabras", t[0]], ["frases", t[1]]].forEach(([n, arr]) => { const seen = new Set(); arr.forEach(x => { if (seen.has(norm(x)) && !(l === "pt" && u === 3)) bad(`${l} u${u}`, `${n} repetidas dentro de la unidad`, x); seen.add(norm(x)); }); });
 });
 SCENES.forEach(s => s.turns.forEach(t => t.opts.forEach(o => { if (!(o.d >= -30 && o.d <= 35)) bad("scene", "puntos de ánimo fuera de rango", o.es); })));
+/* Curso de español para angloparlantes: textos de partida en inglés */
+for (const l in LEARN) {
+  const L = LEARN[l];
+  if (L.titles.length !== 30 || L.ctx.length !== 30) bad("learn", "se esperaban 30 títulos y 30 contextos");
+  [...L.titles, ...L.ctx, ...Object.values(L.dictNames)].forEach(x => { if (/[áéíóúñ¿¡]/i.test(x)) bad("learn." + l, "texto en español dentro del texto de partida en inglés", x); if (/\s{2,}|^\s|\s$/.test(x)) bad("learn." + l, "espacios", x); });
+  DICT_CATS.forEach(c => { if (!L.dictNames[c.id]) bad("learn." + l, "falta el nombre del diccionario", c.id); });
+}
 if (DICT_CATS.length !== 6) bad("dict", `se esperaban 6 categorías y hay ${DICT_CATS.length}`);
 DICT_CATS.forEach(c => {
   const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");

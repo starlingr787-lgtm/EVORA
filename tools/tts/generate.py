@@ -25,6 +25,7 @@ MODELS = Path(os.environ.get("TTS_MODELS_DIR", ROOT / "tools" / "tts" / "models"
 VOICES = {  # voz elegida por idioma (todas con licencia que permite uso comercial; ver README de la app)
     "en": "piper:en_GB-cori-high", "fr": "piper:fr_FR-siwis-medium", "de": "piper:de_DE-thorsten-high",
     "it": "piper:it_IT-serena-high", "pt": "piper:pt_PT-tugão-medium", "ru": "piper:ru_RU-denis-medium", "ro": "piper:ro_RO-mihai-medium",
+    "es": "piper:es_MX-claude-high",
 }
 SETTINGS = {"length_scale": 1.08}
 FILTER = ("silenceremove=start_periods=1:start_threshold=-48dB:start_silence=0.05,areverse,"
