@@ -49,7 +49,7 @@ Resumen de lo que dicen las fuentes y de cómo lo aplica la app. Nada de esto es
 3. La **prueba de sesión** tiene 20 preguntas de un solo intento, repartidas entre las unidades de la sesión. Se aprueba con 16 aciertos (80 %), la pauta del aprendizaje de dominio. Al aprobar se desbloquea y se ofrece la siguiente sesión. Si no, se listan las unidades con más fallos.
 4. No es estricto: se puede elegir la sesión de partida y saltar a otra aprobando la prueba de la anterior.
 
-**Límite importante**: cada unidad enseña 8 palabras y 5 frases, es decir unas 80 palabras por sesión. Eso queda muy por debajo del vocabulario de referencia de cada nivel (centenares de palabras). Las etiquetas A1/A2/B1 indican los *temas y funciones* que se trabajan, no una cobertura completa del nivel. Para acercarse a esas cifras habría que subir el número de palabras por unidad.
+**Límite importante**: cada unidad enseña ahora 20 palabras y 12 frases (antes 8 y 5), es decir unas 200 palabras y 120 frases por sesión y 600 palabras por curso (más 60 del diccionario). Sigue por debajo del vocabulario de referencia (A1 unas 650 palabras; B1 unas 2.400), así que no se puede afirmar que Lingo cubra un nivel completo: las etiquetas A1/A2/B1 indican *temas y funciones* trabajados. Tampoco hay todavía explicaciones de gramática. Para acercarse a esas cifras habría que seguir ampliando (el contenido se añade solo en `data7a/b/c.js`, ver `extra.js`).
 
 ## Planes
 | | Estándar (gratis) | Premium (7,99 €/mes) |
@@ -79,7 +79,7 @@ Se generaron con [Piper](https://github.com/OHF-Voice/piper1-gpl) (voces `rhassp
 
 Las voces francesa e italiana exigen atribución (CC BY 4.0): mantén esta tabla visible en la app si la publicas. Antes de uso comercial, revisa las licencias vigentes de cada voz.
 **Control de calidad de la voz.** `tools/tts/verify.py` transcribe cada clip con Whisper y puntúa el parecido. Esa medida es poco fiable en palabras sueltas de menos de 1 s (alucina "uh, uh…" o escribe "4." en vez de "Four"), por lo que una puntuación baja en clips cortos no implica mala voz (p. ej. el 0,674 del portugués es un artefacto de medición, no se tocó). El rumano sí mejoró de forma real con el método "mejor de N". Sigue pendiente la escucha por hablantes nativos.
-Para regenerar el audio tras cambiar `data.js` o `data2.js` hay que repetir la síntesis con el mismo orden de claves (`<unidad>w<n>` para palabras, `<unidad>s<n>` para frases y las de `extraClips()` en `data3.js` para situaciones).
+El contenido ampliado vive en `extra.js` (cargador) y `data7a.js`, `data7b.js`, `data7c.js` (una línea por elemento con las 8 lenguas en columnas `es|en|fr|de|it|pt|ru|ro`); se añade AL FINAL de cada unidad, así los 8 elementos originales y sus claves de audio no cambian. Las lecciones tienen un tope de preguntas (`MAX_Q_*` en `exercises.js`) aunque la unidad tenga mucho contenido; la pantalla de introducción muestra todo y cada intento sortea elementos distintos. Para regenerar el audio tras cambiar `data.js`, `data2.js` o los `data7*.js` hay que repetir la síntesis con el mismo orden de claves (`<unidad>w<n>` para palabras, `<unidad>s<n>` para frases y las de `extraClips()` en `data3.js` para situaciones).
 
 ## Seguridad y arquitectura
 **Claves y costes**

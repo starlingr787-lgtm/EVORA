@@ -123,6 +123,9 @@
     { name: "Prueba de la unidad", icon: "trophy", desc: "Demuestra todo lo aprendido" }
   ];
 
+  /* Tope de preguntas por lección: las unidades pueden tener decenas de elementos, pero cada nivel sigue siendo corto.
+     La pantalla de introducción muestra TODO el contenido; cada intento sortea elementos distintos. */
+  const MAX_Q_WORDS = 10, MAX_Q_SENTS = 8, MAX_Q_BANK = 6, MAX_Q_FILL = 6;
   function build(lang, ui, li, opts) {
     const U = unit(lang, ui), W = U.words, S = U.sents, all = [...W, ...S];
     const prev = prevWords(lang, ui);
@@ -130,21 +133,21 @@
     const sw = shuffle(W), ss = shuffle(S);
     let ex = [];
     if (li === 0) {
-      sw.forEach((w, i) => ex.push(mc(w, W, i % 2 ? "rev" : "fwd")));
+      sw.slice(0, MAX_Q_WORDS).forEach((w, i) => ex.push(mc(w, W, i % 2 ? "rev" : "fwd")));
       const demo = pick(S, 2); // dos frases de ejemplo: ya desde el primer nivel hay rompecabezas
       const mcs = shuffle(ex.filter(e => e.type === "mc"));
       ex = [...mcs.slice(0, 4), bank(demo[0], S, "fwd"), ...mcs.slice(4), bank(demo[1], S, "fwd"), match(sw.slice(0, 4)), match(sw.slice(4, 8))];
       ex.sample = demo;
     } else if (li === 1) {
       ex = [
-        ...ss.map(s => mc(s, S, "rev")),
-        ...shuffle(S).map(s => bank(s, S, "fwd")),
+        ...ss.slice(0, MAX_Q_SENTS).map(s => mc(s, S, "rev")),
+        ...shuffle(S).slice(0, MAX_Q_BANK).map(s => bank(s, S, "fwd")),
         ...pick(S, 2).map(s => bank(s, S, "rev"))
       ];
     } else if (li === 2) {
       ex = [
         ...shuffle([
-          ...S.map(s => fill(s, S)),
+          ...pick(S, MAX_Q_FILL).map(s => fill(s, S)),
           ...pick(W, 4).map(w => type(w)),
           ...pick(S, 2).map(s => bank(s, S, "rev")),
           ...review(2)

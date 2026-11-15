@@ -2,7 +2,7 @@
 const vm = require("vm"), fs = require("fs"), path = require("path"), assert = require("assert");
 const dir = path.join(__dirname, "..");
 const ctx = {}; ctx.window = ctx; vm.createContext(ctx);
-for (const f of ["data", "data2", "data3", "data4", "data5", "data6", "exercises", "engine"]) vm.runInContext(fs.readFileSync(path.join(dir, f + ".js"), "utf8"), ctx);
+for (const f of ["data", "data2", "data3", "data4", "extra", "data7a", "data7b", "data7c", "data5", "data6", "exercises", "engine"]) vm.runInContext(fs.readFileSync(path.join(dir, f + ".js"), "utf8"), ctx);
 const { EX, Engine, COURSES, UNITS } = ctx;
 let n = 0; const test = (name, fn) => { fn(); n++; console.log("ok  " + name); };
 const json = o => JSON.parse(JSON.stringify(o));
@@ -131,9 +131,13 @@ test("instantánea para multijugador: JSON mínimo sin la cola de ejercicios", (
   const s = Engine.sessionNew({ kind: "level", lang: "en", ex: EX.build("en", 0, 0, {}) }), snap = Engine.snapshot(s);
   eq(json(snap), snap); assert(!("q" in snap)); assert(JSON.stringify(snap).length < 200);
 });
-test("contenido: 30 unidades con 8 palabras y 5 frases en los 7 idiomas", () => {
+test("contenido: 30 unidades con 20 palabras y 12 frases en los 8 idiomas, alineadas con el español", () => {
   assert.strictEqual(UNITS.length, 30);
-  for (const l in COURSES) { assert.strictEqual(COURSES[l].t.length, 30, l); COURSES[l].t.forEach((t, u) => { assert.strictEqual(t[0].length, 8, l + u); assert.strictEqual(t[1].length, 5, l + u); }); }
+  UNITS.forEach((u, i) => { assert.strictEqual(u.w.length, 20, "es w" + i); assert.strictEqual(u.s.length, 12, "es s" + i); });
+  for (const l in COURSES) { assert.strictEqual(COURSES[l].t.length, 30, l); COURSES[l].t.forEach((t, u) => { assert.strictEqual(t[0].length, UNITS[u].w.length, l + " w" + u); assert.strictEqual(t[1].length, UNITS[u].s.length, l + " s" + u); }); }
+});
+test("niveles: ninguna lección supera el tope de preguntas aunque la unidad tenga mucho contenido", () => {
+  for (const ui of [0, 15, 29]) for (let li = 0; li < 5; li++) { const n = EX.build("de", ui, li, { listen: li === 3 }).length; assert(n >= 8 && n <= 26, `unidad ${ui} nivel ${li}: ${n} ejercicios`); }
 });
 
 console.log(`\n${n} pruebas correctas`);
