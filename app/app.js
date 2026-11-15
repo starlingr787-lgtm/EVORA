@@ -3,7 +3,7 @@
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const KEY = "lingo-state-v3";
-  const AUDIO_V = "20261115k"; // súbela cuando regeneres los audios (rompe la caché del navegador)
+  const AUDIO_V = "20261115l"; // súbela cuando regeneres los audios (rompe la caché del navegador)
   const today = () => new Date().toISOString().slice(0, 10);
   const LV = EX.LEVELS, NL = LV.length;
   const canSpeak = "speechSynthesis" in window;
@@ -258,7 +258,7 @@
         const n = doneCount(k), c = cefrOf(k);
         return `<button class="course-card ${S.lang === k ? "cur" : ""} ${locked ? "locked" : ""} ${same ? "same" : ""}" data-k="${k}">
           ${langBadge(k, "lg")}<b>${COURSES[k].name}</b>
-          <span class="muted">${same ? "Es tu idioma base" : locked ? "Solo Premium" : c ? c.name + " &middot; " + n + " niveles" : "30 unidades"}</span>
+          <span class="muted">${same ? "Es tu idioma base" : locked ? "Solo Premium" : c ? c.name + " &middot; " + n + " niveles" : UNITS.length + " unidades"}</span>
           ${locked ? ic("lock", "corner") : ""}</button>`;
       }).join("")}</div>
       ${S.lang ? `<div class="center"><button class="btn ghost" id="cancelPick">Volver al curso</button></div>` : ""}`;
@@ -1290,11 +1290,11 @@
       ${msg ? `<p class="fb-note">${ic("crown")}<span>${esc(msg)}</span></p>` : ""}
       <div class="plans">
         <div class="plan ${S.plan === "standard" ? "current" : ""}"><h3>Estándar</h3><div class="price">Gratis</div>
-          <ul>${f(1, "1 curso de idioma a tu elección")}${f(1, "3 sesiones: A1, A2 y B1")}${f(1, "Unidades 1 a 3 de cada sesión (45 niveles)")}${f(1, "5 vidas al día")}${f(1, "5 palabras del día")}${f(1, "Rompecabezas, escritura y parejas")}${f(0, "Voz natural y ejercicios de escucha")}${f(0, "Repaso de errores")}${f(0, "Todos los idiomas y cualquier combinación")}</ul>
+          <ul>${f(1, "1 curso de idioma a tu elección")}${f(1, "5 sesiones: A1, A2, B1, B2 y C1")}${f(1, "Unidades 1 a 3 de cada sesión (75 niveles)")}${f(1, "5 vidas al día")}${f(1, "5 palabras del día")}${f(1, "Rompecabezas, escritura y parejas")}${f(0, "Voz natural y ejercicios de escucha")}${f(0, "Repaso de errores")}${f(0, "Todos los idiomas y cualquier combinación")}</ul>
           <button class="btn ghost" id="pStd" ${S.plan === "standard" ? "disabled" : ""}>${S.plan === "standard" ? "Tu plan actual" : "Volver a Estándar"}</button></div>
         <div class="plan featured ${prem() ? "current" : ""}"><span class="ribbon">${ic("crown", "solid")}Más completo</span><h3>Premium</h3>
           <div class="price">7,99 &euro;<small>/mes</small></div><div class="muted small">o 59,99 &euro; al año</div>
-          <ul>${f(1, "Todos los idiomas y cualquier combinación, cambia cuando quieras")}${f(1, "30 unidades por curso (150 niveles)")}${f(1, "Vidas ilimitadas")}${f(1, "10 palabras del día")}${f(1, "Voz natural en todas las frases")}${f(1, "Ejercicios de escucha")}${f(1, "Repaso inteligente de errores")}</ul>
+          <ul>${f(1, "Todos los idiomas y cualquier combinación, cambia cuando quieras")}${f(1, "50 unidades por curso (250 niveles)")}${f(1, "Vidas ilimitadas")}${f(1, "10 palabras del día")}${f(1, "Voz natural en todas las frases")}${f(1, "Ejercicios de escucha")}${f(1, "Repaso inteligente de errores")}</ul>
           <button class="btn prem" id="pPre" ${prem() ? "disabled" : ""}>${prem() ? "Tu plan actual" : "Hazte Premium"}</button></div>
       </div></div>`;
     $("#x").onclick = closeModal;

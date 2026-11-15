@@ -5,10 +5,11 @@ Para probarla en local: `cd app && python3 -m http.server` y abrir http://localh
 
 ## Qué incluye
 - **7 cursos**: inglés, francés, alemán, italiano, portugués, ruso y rumano.
-- **3 sesiones y 30 unidades por curso** (cada sesión = 10 unidades de 5 niveles = 50 niveles del mapa):
+- **5 sesiones y 50 unidades por curso** (cada sesión = 10 unidades de 5 niveles = 50 niveles del mapa):
   - Sesión 1, Principiante (A1, unidades 1-10): saludos, presentaciones, números, familia, comida, restaurante, viajes, ciudad, compras, días y horas.
   - Sesión 2, Elemental (A2, unidades 11-20): rutina, casa, salud, trabajo, tiempo, ocio, pasado, futuro, opiniones y pedir ayuda.
   - Sesión 3, Intermedio (B1, unidades 21-30): reservas y viajes con imprevistos, estudios, tecnología, hábitos, medio ambiente, cultura, consejos, trámites, experiencias y condicionales.
+  - Sesión 4, Intermedio alto (B2, unidades 31-40) y Sesión 5, Avanzado (C1, unidades 41-50): debate, entrevistas, noticias, salud, ciencia, viajes, vivienda, finanzas, medios, quejas; economía, política, ética, arte, historia, lenguaje, derecho, empresa, medio ambiente y matices. **Contenido inicial e incompleto: solo 8 palabras y 5 frases por unidad** (el resto de unidades tiene 20 y 12); se irá ampliando. Los textos nuevos salen de DeepL con revisión manual de sentidos, sin revisión de hablantes nativos. El audio del rumano de estas unidades aún no está generado (usa la voz del navegador).
   - Al elegir un curso se escoge la sesión de partida o se hace una prueba de 8 preguntas que recomienda una. Las sesiones posteriores se desbloquean aprobando la **prueba de sesión** de la anterior (o saltando con ella).
 - **Mapa de niveles**: 5 niveles por unidad (palabras, frases, práctica, escucha y combina, prueba de unidad), desbloqueo uno a uno y 1 a 3 estrellas.
 - **Ejercicios**: opción múltiple, escribir, completar la frase, relacionar parejas, escucha y **rompecabezas de frases** (piezas con forma de puzle que se arrastran o se tocan a un tablero).
@@ -47,7 +48,7 @@ Resumen de lo que dicen las fuentes y de cómo lo aplica la app. Nada de esto es
 - Duolingo afirma que sus cursos se alinean con el MCER y que casi todos los principales llegan ya hasta B2; no publica una tabla oficial de unidad a nivel.
 
 **Qué hace la app con eso**
-1. Una sesión equivale a un tramo del MCER (A1, A2, B1) y muestra su objetivo "puedes..." basado en los descriptores globales.
+1. Una sesión equivale a un tramo del MCER (A1, A2, B1, B2, C1) y muestra su objetivo "puedes..." basado en los descriptores globales.
 2. El **dominio de la sesión** es el porcentaje de estrellas obtenidas (3 estrellas = 0 fallos en el nivel) sobre las unidades abiertas del plan.
 3. La **prueba de sesión** tiene 20 preguntas de un solo intento, repartidas entre las unidades de la sesión. Se aprueba con 16 aciertos (80 %), la pauta del aprendizaje de dominio. Al aprobar se desbloquea y se ofrece la siguiente sesión. Si no, se listan las unidades con más fallos.
 4. No es estricto: se puede elegir la sesión de partida y saltar a otra aprobando la prueba de la anterior.

@@ -203,7 +203,13 @@ UNITS.push(
       goal: "Hablar de tu rutina, tu entorno y tareas cotidianas con frases sencillas." },
     { id: "B1", name: "Intermedio", from: 20, to: 30, desc: "Me defiendo en viajes y quiero contar experiencias y dar mi opinión.",
       topics: "Viajes con imprevistos, estudios, hábitos, consejos, trámites y condicionales",
-      goal: "Desenvolverte en la mayoría de situaciones de un viaje, contar experiencias y explicar tus planes y opiniones." }
+      goal: "Desenvolverte en la mayoría de situaciones de un viaje, contar experiencias y explicar tus planes y opiniones." },
+    { id: "B2", name: "Intermedio alto", from: 30, to: 40, desc: "Me comunico con fluidez en temas conocidos y defiendo mi opinión.",
+      topics: "Trabajo y carrera, noticias y sociedad, salud y bienestar, ciencia y tecnología, medios, debate y argumentación",
+      goal: "Participar con fluidez en conversaciones, entender textos complejos y argumentar tu punto de vista." },
+    { id: "C1", name: "Avanzado", from: 40, to: 50, desc: "Me expreso con soltura y entiendo textos exigentes.",
+      topics: "Economía, política, ciencia, cultura, matices y registro formal",
+      goal: "Expresarte con espontaneidad, comprender textos largos y exigentes, y usar el idioma con flexibilidad en lo académico y profesional." }
   ];
   PLANS.standard.units = 3; // unidades gratis por nivel
 })();

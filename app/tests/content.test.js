@@ -3,7 +3,7 @@
 const vm = require("vm"), fs = require("fs"), path = require("path");
 const dir = path.join(__dirname, "..");
 const ctx = {}; ctx.window = ctx; vm.createContext(ctx);
-for (const f of ["data", "data2", "data3", "data4", "extra", "data7a", "data7b", "data7c", "data5", "data6"]) vm.runInContext(fs.readFileSync(path.join(dir, f + ".js"), "utf8"), ctx);
+for (const f of ["data", "data2", "data3", "data4", "extra", "data7a", "data7b", "data7c", "data8", "data5", "data6"]) vm.runInContext(fs.readFileSync(path.join(dir, f + ".js"), "utf8"), ctx);
 const { UNITS, COURSES, LIVE, SCENES, DICT_CATS, LEARN } = ctx;
 
 const errors = [];
@@ -74,7 +74,7 @@ for (const it of items) {
 }
 
 /* Estructura */
-if (UNITS.length !== 30) bad("data", `se esperaban 30 unidades y hay ${UNITS.length}`);
+if (UNITS.length !== 50) bad("data", `se esperaban 50 unidades y hay ${UNITS.length}`);
 for (const l in COURSES) COURSES[l].t.forEach((t, u) => {
   const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
   [["palabras", t[0]], ["frases", t[1]]].forEach(([n, arr]) => { const seen = new Set(); arr.forEach(x => { if (seen.has(norm(x)) && !(l === "pt" && u === 3)) bad(`${l} u${u}`, `${n} repetidas dentro de la unidad`, x); seen.add(norm(x)); }); });
@@ -83,7 +83,7 @@ SCENES.forEach(s => s.turns.forEach(t => t.opts.forEach(o => { if (!(o.d >= -30 
 /* Curso de español para angloparlantes: textos de partida en inglés */
 for (const l in LEARN) {
   const L = LEARN[l];
-  if (L.titles.length !== 30 || L.ctx.length !== 30) bad("learn", "se esperaban 30 títulos y 30 contextos");
+  if (L.titles.length !== 50 || L.ctx.length !== 50) bad("learn", "se esperaban 50 títulos y 50 contextos");
   [...L.titles, ...L.ctx, ...Object.values(L.dictNames)].forEach(x => { if (/[áéíóúñ¿¡]/i.test(x)) bad("learn." + l, "texto en español dentro del texto de partida en inglés", x); if (/\s{2,}|^\s|\s$/.test(x)) bad("learn." + l, "espacios", x); });
   DICT_CATS.forEach(c => { if (!L.dictNames[c.id]) bad("learn." + l, "falta el nombre del diccionario", c.id); });
 }
