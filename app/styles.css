@@ -401,3 +401,10 @@ body.is-dragging .bank .pz{animation-play-state:paused}
 .board,.bank{contain:layout style}
 .cell{display:inline-flex}
 .slot.full .pz.empty{display:none}
+
+/* Idioma base */
+.native-pick{display:grid;gap:10px;margin-bottom:14px}
+.native-chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:2px solid var(--line);border-bottom-width:4px;border-radius:999px;background:var(--card);color:var(--ink);padding:6px 14px;font-weight:800;font-size:15px;cursor:pointer}
+.chip.on{background:var(--teal);border-color:var(--teal-d);color:#fff}
+.course-card.same{opacity:.7}

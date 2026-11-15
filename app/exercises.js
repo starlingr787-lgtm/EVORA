@@ -13,18 +13,15 @@
   const tokens = s => s.split(/\s+/).filter(t => /[\p{L}\p{N}]/u.test(t));
   const core = t => t.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, "");
 
+  /* Idioma base: el de las preguntas (campo es de cada elemento). El idioma a aprender es lang. */
+  let NATIVE = "es";
+  const setNative = n => { NATIVE = n; };
   function unit(lang, ui) {
-    const u = UNITS[ui], t = COURSES[lang].t[ui];
-    /* Curso para angloparlantes: el texto de partida (campo es) es el inglés y el destino (t) es el español. */
-    if (COURSES[lang].learn) {
-      const e = COURSES[LEARN[lang].prompt].t[ui];
-      return { ...u, title: unitTitle(lang, ui), ctx: unitCtx(lang, ui),
-        words: u.w.map((x, i) => ({ es: e[0][i], t: x, k: "w" })), sents: u.s.map((x, i) => ({ es: e[1][i], t: x, k: "s" })) };
-    }
+    const u = UNITS[ui], t = COURSES[lang].t[ui], e = COURSES[NATIVE].t[ui];
     return {
-      ...u,
-      words: u.w.map((es, i) => ({ es, t: t[0][i], k: "w" })),
-      sents: u.s.map((es, i) => ({ es, t: t[1][i], k: "s" }))
+      ...u, title: unitTitle(NATIVE, ui), ctx: unitCtx(NATIVE, ui),
+      words: t[0].map((x, i) => ({ es: e[0][i], t: x, k: "w" })),
+      sents: t[1].map((x, i) => ({ es: e[1][i], t: x, k: "s" }))
     };
   }
   const lvStart = ui => (CEFR.find(c => ui >= c.from && ui < c.to) || CEFR[0]).from;
@@ -244,7 +241,7 @@
   }
 
   /* ---------- Situaciones ---------- */
-  const hasSituation = (ui, lang) => !(lang && COURSES[lang].learn) && (window.LIVE || []).some(p => p.unit === ui);
+  const hasSituation = (ui, lang) => NATIVE === "es" && lang !== "es" && (window.LIVE || []).some(p => p.unit === ui);
   function liveSet(lang, ui) {
     const all = [];
     LIVE.filter(p => p.unit === ui).forEach(p => [0, 1].forEach(k => all.push({
@@ -267,14 +264,10 @@
   const situation = (lang, ui) => [...liveSet(lang, ui), sceneEx(lang, ui)];
 
   /* ---------- Diccionario ---------- */
-  const dictItems = (lang, catId) => {
-    const c = DICT_CATS.find(x => x.id === catId);
-    return dictWords(lang, c);
-  };
-  /* En el curso de español la partida es el inglés del diccionario y el destino es el español. */
-  const dictWords = (lang, c) => COURSES[lang].learn
-    ? c.w.map((x, i) => ({ es: c.t[LEARN[lang].prompt][i], t: x, k: "w" }))
-    : c.w.map((es, i) => ({ es, t: c.t[lang][i], k: "w" }));
+  const dictItems = (lang, catId) => dictWords(lang, DICT_CATS.find(x => x.id === catId));
+  /* Palabras del diccionario en idioma base e idioma a aprender (el español está en c.w, el resto en c.t). */
+  const dictOf = (l, c) => (l === "es" ? c.w : c.t[l]);
+  const dictWords = (lang, c) => { const src = dictOf(NATIVE, c), tgt = dictOf(lang, c); return tgt.map((x, i) => ({ es: src[i], t: x, k: "w" })); };
   const dictAll = lang => DICT_CATS.flatMap(c => dictWords(lang, c));
   const dictSearch = (lang, q) => {
     const n = norm(q);
@@ -287,5 +280,5 @@
     return lang === "ru" && small ? `${e}<small class="tr">${translit(text)}</small>` : e;
   };
 
-  window.EX = { exam, situation, hasSituation, build, reviewSet, placement, practiceWords, dictItems, dictAll, dictSearch, clipKey, unit, LEVELS, norm, translit, tgt, shuffle, tokens, core, lvStart };
+  window.EX = { setNative, exam, situation, hasSituation, build, reviewSet, placement, practiceWords, dictItems, dictAll, dictSearch, clipKey, unit, LEVELS, norm, translit, tgt, shuffle, tokens, core, lvStart };
 })();

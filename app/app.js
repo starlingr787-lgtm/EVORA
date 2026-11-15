@@ -11,14 +11,19 @@
   /* ---------- Estado ---------- */
   let S = load();
   function load() {
-    const d = { plan: "standard", lang: null, xp: 0, streak: 0, lastDay: null, hearts: 5, heartsDay: today(), progress: {}, srs: {}, cefr: {}, daily: {}, dictDay: null, dictUsed: 0, tab: "learn", pick: false, vtab: "today", mute: false, unlocked: {}, exams: {} };
+    const d = { plan: "standard", lang: null, xp: 0, streak: 0, lastDay: null, hearts: 5, heartsDay: today(), progress: {}, srs: {}, cefr: {}, daily: {}, dictDay: null, dictUsed: 0, tab: "learn", native: "es", ui: null, pick: false, vtab: "today", mute: false, unlocked: {}, exams: {} };
     try {
       const old = JSON.parse(localStorage.getItem(KEY) || localStorage.getItem("lingo-state-v2")) || {};
       Object.assign(d, old);
     } catch (e) {}
     if (d.heartsDay !== today()) { d.hearts = 5; d.heartsDay = today(); }
+    if (!COURSES[d.native]) d.native = "es";
+    if (d.lang === d.native) d.lang = null;
     return d;
   }
+  /* Idioma base (preguntas) e idioma de la interfaz: español si el base es español; si no, inglés (o el que se elija en el perfil). */
+  const applyLangs = () => { EX.setNative(S.native); window.__uiLang = S.ui || (S.native === "es" ? "es" : "en"); };
+  applyLangs();
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
   const prem = () => S.plan === "premium";
   const unitOpen = ui => prem() || (ui - EX.lvStart(ui)) < PLANS.standard.units;
@@ -167,27 +172,40 @@
   }
 
   /* ---------- Cursos y nivel ---------- */
+  const LANG_ORDER = ["es", "en", "fr", "de", "it", "pt", "ru", "ro"].filter(k => COURSES[k]);
   function viewCourses() {
+    const nat = S.native;
     app.innerHTML = `
       <div class="hero-pick">${mascot("happy", 84)}
         <div><h1>¿Qué idioma quieres aprender?</h1>
-        <p class="muted">${prem() ? "Con Premium puedes cambiar de curso cuando quieras." : "Con el plan Estándar eliges 1 curso. Premium desbloquea los 7."}</p></div></div>
-      <div class="course-grid">${Object.keys(COURSES).map(k => {
+        <p class="muted">${prem() ? "Con Premium puedes cambiar de curso cuando quieras." : "Con el plan Estándar eliges 1 curso. Premium desbloquea todos."}</p></div></div>
+      <div class="card native-pick"><b>Las preguntas se leen en</b>
+        <div class="native-chips" role="group" aria-label="Idioma base">${LANG_ORDER.map(k => `<button class="chip ${k === nat ? "on" : ""}" data-n="${k}" aria-pressed="${k === nat}">${COURSES[k].name}</button>`).join("")}</div>
+        <span class="muted small">Elige tu idioma base y el idioma que quieres aprender: cualquier combinación funciona.</span></div>
+      <div class="course-grid">${LANG_ORDER.map(k => {
         const locked = !prem() && S.lang && S.lang !== k;
+        const same = k === nat;
         const n = doneCount(k), c = cefrOf(k);
-        return `<button class="course-card ${S.lang === k ? "cur" : ""} ${locked ? "locked" : ""}" data-k="${k}">
+        return `<button class="course-card ${S.lang === k ? "cur" : ""} ${locked ? "locked" : ""} ${same ? "same" : ""}" data-k="${k}">
           ${langBadge(k, "lg")}<b>${COURSES[k].name}</b>
-          <span class="muted">${locked ? "Solo Premium" : c ? c.name + " &middot; " + n + " niveles" : "30 unidades"}</span>
+          <span class="muted">${same ? "Es tu idioma base" : locked ? "Solo Premium" : c ? c.name + " &middot; " + n + " niveles" : "30 unidades"}</span>
           ${locked ? ic("lock", "corner") : ""}</button>`;
       }).join("")}</div>
       ${S.lang ? `<div class="center"><button class="btn ghost" id="cancelPick">Volver al curso</button></div>` : ""}`;
+    $$(".native-chips .chip").forEach(b => b.onclick = () => { setNative(b.dataset.n); viewCourses(); });
     $$(".course-card").forEach(b => b.onclick = () => {
       const k = b.dataset.k;
       if (!prem() && S.lang && S.lang !== k) return openPlans("Aprender más de un idioma es una función Premium.");
+      /* Elegir el mismo idioma que el base: el base pasa a inglés (o a español si se elige inglés) para poder aprenderlo. */
+      if (k === S.native) setNative(k === "en" ? "es" : "en");
       S.lang = k; S.pick = false; S.tab = "learn"; levelPickFor = cefrOf(k) ? null : k; save(); render();
       if (prem()) loadPack(k);
     });
     const c = $("#cancelPick"); if (c) c.onclick = () => { S.pick = false; save(); render(); };
+  }
+  function setNative(n) {
+    S.native = n; if (S.lang === n) S.lang = null;
+    S.ui = null; applyLangs(); save();
   }
 
   function viewLevelPick() {
@@ -820,12 +838,12 @@
   const PRAISE = ["¡Muy bien!", "¡Correcto!", "¡Excelente!", "¡Así se hace!", "¡Perfecto!"];
   /* Repaso espaciado (SM-2 simplificado, Engine.srs*): cada palabra o frase aprendida tiene su propia
      tarjeta con una fecha de repaso. Acertar la aleja en el tiempo; fallar la pone otra vez para hoy. */
-  const srsKey = item => `${item.k}|${item.es}|${item.t}`;
+  const srsKey = item => `${item.k}|${item.t}`;
   function srsTouch(item, ok) {
     if (!item || freeKind()) return;
     const lang = P.lang, bucket = (S.srs[lang] = S.srs[lang] || {}), key = srsKey(item), now = Date.now();
     const card = bucket[key] || Engine.srsNew(key, { es: item.es, t: item.t, k: item.k }, now);
-    bucket[key] = Engine.srsGrade(card, ok, now);
+    bucket[key] = { ...Engine.srsGrade(card, ok, now), es: item.es };
   }
 
   function reveal(ok, correctHTML, o = {}) {
@@ -960,7 +978,7 @@
   /* ---------- Diccionario: vocabulario suelto fuera de las unidades, gratis con límites ---------- */
   const DICT_FREE_N = 2; // prácticas gratis al día en el plan Estándar
   let dictCat = null;
-  const dictName = c => (S.lang && window.LEARN && LEARN[S.lang] ? LEARN[S.lang].dictNames[c.id] : c.name);
+  const dictName = c => (uiLang() === "en" ? LEARN.en.dictNames[c.id] : c.name);
   function dictUsage() {
     if (S.dictDay !== today()) { S.dictDay = today(); S.dictUsed = 0; }
     return S.dictUsed;
@@ -1105,11 +1123,11 @@
       ${msg ? `<p class="fb-note">${ic("crown")}<span>${esc(msg)}</span></p>` : ""}
       <div class="plans">
         <div class="plan ${S.plan === "standard" ? "current" : ""}"><h3>Estándar</h3><div class="price">Gratis</div>
-          <ul>${f(1, "1 curso de idioma a tu elección")}${f(1, "3 sesiones: A1, A2 y B1")}${f(1, "Unidades 1 a 3 de cada sesión (45 niveles)")}${f(1, "5 vidas al día")}${f(1, "5 palabras del día")}${f(1, "Rompecabezas, escritura y parejas")}${f(0, "Voz natural y ejercicios de escucha")}${f(0, "Repaso de errores")}${f(0, "Los 7 cursos")}</ul>
+          <ul>${f(1, "1 curso de idioma a tu elección")}${f(1, "3 sesiones: A1, A2 y B1")}${f(1, "Unidades 1 a 3 de cada sesión (45 niveles)")}${f(1, "5 vidas al día")}${f(1, "5 palabras del día")}${f(1, "Rompecabezas, escritura y parejas")}${f(0, "Voz natural y ejercicios de escucha")}${f(0, "Repaso de errores")}${f(0, "Todos los idiomas y cualquier combinación")}</ul>
           <button class="btn ghost" id="pStd" ${S.plan === "standard" ? "disabled" : ""}>${S.plan === "standard" ? "Tu plan actual" : "Volver a Estándar"}</button></div>
         <div class="plan featured ${prem() ? "current" : ""}"><span class="ribbon">${ic("crown", "solid")}Más completo</span><h3>Premium</h3>
           <div class="price">7,99 &euro;<small>/mes</small></div><div class="muted small">o 59,99 &euro; al año</div>
-          <ul>${f(1, "Los 7 cursos, cambia cuando quieras")}${f(1, "30 unidades por curso (150 niveles)")}${f(1, "Vidas ilimitadas")}${f(1, "10 palabras del día")}${f(1, "Voz natural en todas las frases")}${f(1, "Ejercicios de escucha")}${f(1, "Repaso inteligente de errores")}</ul>
+          <ul>${f(1, "Todos los idiomas y cualquier combinación, cambia cuando quieras")}${f(1, "30 unidades por curso (150 niveles)")}${f(1, "Vidas ilimitadas")}${f(1, "10 palabras del día")}${f(1, "Voz natural en todas las frases")}${f(1, "Ejercicios de escucha")}${f(1, "Repaso inteligente de errores")}</ul>
           <button class="btn prem" id="pPre" ${prem() ? "disabled" : ""}>${prem() ? "Tu plan actual" : "Hazte Premium"}</button></div>
       </div></div>`;
     $("#x").onclick = closeModal;

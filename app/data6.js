@@ -1,11 +1,9 @@
-/* Curso "Español" para angloparlantes.
-   Reutiliza las 30 unidades: el idioma de partida (lo que se lee en la pregunta) es el inglés que ya existe en
-   COURSES.en y el destino es el español neutro de UNITS. Aquí solo se añaden los textos que no tenían versión en inglés
-   (títulos, contexto y nombres del diccionario). La interfaz de la app sigue en español: pendiente de internacionalizar.
-   Hace falta revisión de un hablante nativo de inglés para los títulos. */
+/* Pares de idiomas: cualquier idioma base (el de las preguntas) y cualquier idioma a aprender, de los 8 (es, en, fr, de, it, pt, ru, ro).
+   Todas las frases existen ya en los 8 idiomas, así que no hay que traducir nada para combinar pares.
+   Aquí se añade el español como idioma a aprender (sus textos son los de UNITS) y los textos de interfaz y títulos en inglés.
+   Los títulos en inglés necesitan revisión de un hablante nativo. */
 window.LEARN = {
-  es: {
-    prompt: "en",
+  en: {
     titles: ["First greetings", "Introductions", "Numbers", "Family", "Food and drink", "At the restaurant", "Travel", "In the city", "Shopping", "Days and times",
       "Daily routine", "At home", "Health", "Work", "The weather", "Free time", "Telling the past", "Future plans", "Opinions", "Asking for help",
       "Bookings and trips", "Studies", "Technology and media", "Healthy habits", "The environment", "Culture and traditions", "Friendship and advice", "Money and paperwork", "Experiences and memories", "Dreams and conditions"],
@@ -25,7 +23,8 @@ window.LEARN = {
   }
 };
 /* Curso virtual: los textos destino son el español de las unidades. */
-COURSES.es = { name: "Español", code: "ES", color: "#c2255c", speech: "es-MX", learn: true, t: UNITS.map(u => [u.w, u.s]) };
-/* Título y contexto de una unidad según el curso (en los cursos para hispanohablantes salen de UNITS). */
-window.unitTitle = (lang, ui) => (LEARN[lang] ? LEARN[lang].titles[ui] : UNITS[ui].title);
-window.unitCtx = (lang, ui) => (LEARN[lang] ? LEARN[lang].ctx[ui] : UNITS[ui].ctx);
+COURSES.es = { name: "Español", code: "ES", color: "#c2255c", speech: "es-MX", t: UNITS.map(u => [u.w, u.s]) };
+/* Idioma de la interfaz: español si el idioma base es español; en cualquier otro caso, inglés. Se puede cambiar en el perfil. */
+window.uiLang = () => (window.__uiLang || "es");
+window.unitTitle = (lang, ui) => (uiLang() === "en" ? LEARN.en.titles[ui] : UNITS[ui].title);
+window.unitCtx = (lang, ui) => (uiLang() === "en" ? LEARN.en.ctx[ui] : UNITS[ui].ctx);
