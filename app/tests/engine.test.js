@@ -2,7 +2,7 @@
 const vm = require("vm"), fs = require("fs"), path = require("path"), assert = require("assert");
 const dir = path.join(__dirname, "..");
 const ctx = {}; ctx.window = ctx; vm.createContext(ctx);
-for (const f of ["data", "data2", "data3", "data4", "exercises", "engine"]) vm.runInContext(fs.readFileSync(path.join(dir, f + ".js"), "utf8"), ctx);
+for (const f of ["data", "data2", "data3", "data4", "data5", "data6", "exercises", "engine"]) vm.runInContext(fs.readFileSync(path.join(dir, f + ".js"), "utf8"), ctx);
 const { EX, Engine, COURSES, UNITS } = ctx;
 let n = 0; const test = (name, fn) => { fn(); n++; console.log("ok  " + name); };
 const json = o => JSON.parse(JSON.stringify(o));
