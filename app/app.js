@@ -640,7 +640,7 @@
         ${compact ? "" : `<path class="wrap" d="M3 ${h * .3}L${-ew} ${h * .02}Q${-ew * .4} ${h * .5} ${-ew} ${h * .98}L3 ${h * .7}Z"/><path class="wrap" d="M${w - 3} ${h * .3}L${w + ew} ${h * .02}Q${w + ew * .4} ${h * .5} ${w + ew} ${h * .98}L${w - 3} ${h * .7}Z"/>
         <path class="wl" d="M-1 ${h * .2}L${-ew * .7} ${h * .5}L-1 ${h * .8}M${w + 1} ${h * .2}L${w + ew * .7} ${h * .5}L${w + 1} ${h * .8}"/>`}
         <path class="sh" d="${d}" transform="translate(0 5)"/><path class="fl" d="${d}"/>
-        <g clip-path="url(#${cid})"><g class="stripe">${stripes}</g><ellipse class="spec" cx="${w * .27}" cy="${h * .24}" rx="${Math.max(10, w * .17)}" ry="${h * .1}"/><rect class="shade" x="0" y="${h * .72}" width="${w}" height="${h * .28}"/></g>`;
+        <g clip-path="url(#${cid})"><g class="stripe">${stripes}</g>${compact ? "" : `<ellipse class="spec" cx="${w * .27}" cy="${h * .24}" rx="${Math.max(10, w * .17)}" ry="${h * .1}"/>`}<rect class="shade" x="0" y="${h * .72}" width="${w}" height="${h * .28}"/></g>`;
     }
     if (skin === "mandala") {
       const d = scallopPath(w, h), r = h / 2 - 1.5, rp = r * .5;
