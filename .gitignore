@@ -10,3 +10,4 @@ assets/videos/101581-video-1080.mov
 # herramientas de voz: modelos y temporales (pesan cientos de MB)
 tools/tts/models/
 tools/tts/.work/
+__pycache__/
