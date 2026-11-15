@@ -260,11 +260,22 @@
   }
   const situation = (lang, ui) => [...liveSet(lang, ui), sceneEx(lang, ui)];
 
+  /* ---------- Diccionario ---------- */
+  const dictItems = (lang, catId) => {
+    const c = DICT_CATS.find(x => x.id === catId);
+    return c.w.map((es, i) => ({ es, t: c.t[lang][i], k: "w" }));
+  };
+  const dictAll = lang => DICT_CATS.flatMap(c => c.w.map((es, i) => ({ es, t: c.t[lang][i], k: "w" })));
+  const dictSearch = (lang, q) => {
+    const n = norm(q);
+    return dictAll(lang).filter(x => norm(x.t).includes(n) || norm(x.es).includes(n));
+  };
+
   /* Texto de la lengua destino con transcripción para el ruso */
   const tgt = (text, lang, small = true) => {
     const e = String(text).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
     return lang === "ru" && small ? `${e}<small class="tr">${translit(text)}</small>` : e;
   };
 
-  window.EX = { exam, situation, hasSituation, build, reviewSet, placement, practiceWords, clipKey, unit, LEVELS, norm, translit, tgt, shuffle, tokens, core, lvStart };
+  window.EX = { exam, situation, hasSituation, build, reviewSet, placement, practiceWords, dictItems, dictAll, dictSearch, clipKey, unit, LEVELS, norm, translit, tgt, shuffle, tokens, core, lvStart };
 })();

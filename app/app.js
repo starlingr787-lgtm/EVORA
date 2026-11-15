@@ -11,7 +11,7 @@
   /* ---------- Estado ---------- */
   let S = load();
   function load() {
-    const d = { plan: "standard", lang: null, xp: 0, streak: 0, lastDay: null, hearts: 5, heartsDay: today(), progress: {}, srs: {}, cefr: {}, daily: {}, tab: "learn", pick: false, vtab: "today", mute: false, unlocked: {}, exams: {} };
+    const d = { plan: "standard", lang: null, xp: 0, streak: 0, lastDay: null, hearts: 5, heartsDay: today(), progress: {}, srs: {}, cefr: {}, daily: {}, dictDay: null, dictUsed: 0, tab: "learn", pick: false, vtab: "today", mute: false, unlocked: {}, exams: {} };
     try {
       const old = JSON.parse(localStorage.getItem(KEY) || localStorage.getItem("lingo-state-v2")) || {};
       Object.assign(d, old);
@@ -455,7 +455,7 @@
     render();
   }
 
-  const freeKind = () => P && (P.kind === "placement" || P.kind === "daily" || P.kind === "situation" || P.kind === "exam");
+  const freeKind = () => P && (P.kind === "placement" || P.kind === "daily" || P.kind === "situation" || P.kind === "exam" || P.kind === "dict");
 
   function startPlayer(cfg) {
     P = Engine.sessionNew(cfg); H.check = null; H.teardown = null;
@@ -885,6 +885,9 @@
     } else if (P.kind === "daily") {
       title = "Vocabulario de hoy repasado";
       dailyRec().practiced = true;
+    } else if (P.kind === "dict") {
+      title = "Categoría practicada";
+      dictUsage(); S.dictUsed++;
     }
     save(); renderTop();
     viewLearn.scrolled = false;
@@ -954,6 +957,15 @@
   function todayWords() { return seeded(levelPool("w"), dailyKey() + "w").slice(0, dailyN()); }
   function todayPhrase() { return seeded(levelPool("s"), dailyKey() + "s")[0]; }
 
+  /* ---------- Diccionario: vocabulario suelto fuera de las unidades, gratis con límites ---------- */
+  const DICT_FREE_N = 2; // prácticas gratis al día en el plan Estándar
+  let dictCat = null;
+  function dictUsage() {
+    if (S.dictDay !== today()) { S.dictDay = today(); S.dictUsed = 0; }
+    return S.dictUsed;
+  }
+  const dictLeft = () => prem() ? Infinity : Math.max(0, DICT_FREE_N - dictUsage());
+
   function viewVocab() {
     const lang = S.lang;
     const rowHTML = x => `<li><button class="spk sm" data-t="${esc(x.t)}" aria-label="Escuchar">${ic("speaker")}</button>
@@ -974,7 +986,7 @@
           <div class="row"><button class="spk sm" data-t="${esc(phrase.t)}" aria-label="Escuchar">${ic("speaker")}</button><div class="grow"><b>${EX.tgt(phrase.t, lang)}</b><span class="muted">${esc(phrase.es)}</span></div></div></div>` : ""}
         <div class="center"><button class="btn" id="practice">${rec.practiced ? "Repasar otra vez" : "Practicar las palabras de hoy"}</button>
           ${rec.practiced ? `<p class="muted small">${ic("check")} Ya repasaste el vocabulario de hoy.</p>` : ""}</div>`;
-    } else {
+    } else if (S.vtab === "mine") {
       const raw = $("#vq") ? $("#vq").value : "", q = EX.norm(raw);
       const groups = [];
       CEFR.forEach(c => { for (let ui = c.from; ui < c.to; ui++) {
@@ -985,10 +997,31 @@
       } });
       body = `<label class="search">${ic("search")}<input id="vq" type="search" placeholder="Buscar en mis palabras" autocomplete="off" value="${esc(raw)}"></label>
         ${groups.length ? groups.join("") : `<div class="empty">${mascot("think", 100)}<p class="muted">${q ? "No hay resultados." : "Aquí aparecerán las palabras y frases de los niveles que completes."}</p></div>`}`;
+    } else {
+      const raw = $("#dq") ? $("#dq").value : "", q = EX.norm(raw);
+      const left = dictLeft();
+      const limitNote = prem() ? "" : `<p class="muted small">${ic("lock")} Plan Estándar: ${left > 0 ? `${left} de ${DICT_FREE_N} prácticas gratis hoy.` : "Sin prácticas gratis hoy. Vuelven mañana."}</p>`;
+      if (raw) {
+        const found = EX.dictSearch(lang, raw);
+        body = `<label class="search">${ic("search")}<input id="dq" type="search" placeholder="Buscar una palabra, p. ej. cebolla" autocomplete="off" value="${esc(raw)}"></label>
+          ${found.length ? `<ul class="intro">${found.map(rowHTML).join("")}</ul>` : `<div class="empty">${mascot("think", 100)}<p class="muted">No hay resultados.</p></div>`}`;
+      } else if (dictCat) {
+        const c = DICT_CATS.find(x => x.id === dictCat), items = EX.dictItems(lang, dictCat);
+        body = `<button class="btn ghost sm" id="dictBack">${ic("back")} Categorías</button>
+          <div class="card daily-head"><div><span class="ulabel muted">Diccionario</span><h2>${ic(c.icon)} ${esc(c.name)}</h2><p class="muted small">${items.length} palabras</p></div></div>
+          <ul class="intro">${items.map(rowHTML).join("")}</ul>
+          ${limitNote}
+          <div class="center"><button class="btn ${left > 0 ? "" : "ghost"}" id="dictPractice">${left > 0 ? "Practicar esta categoría" : "Ver Premium"}</button></div>`;
+      } else {
+        body = `<label class="search">${ic("search")}<input id="dq" type="search" placeholder="Buscar una palabra, p. ej. cebolla" autocomplete="off" value=""></label>
+          <p class="muted small">Vocabulario de uso diario, fuera de las unidades. Explóralo libremente; practicar tiene un límite gratis.</p>
+          <div class="course-grid">${DICT_CATS.map(c => `<button class="course-card" data-cat="${c.id}"><span class="cat-ic">${ic(c.icon)}</span><b>${esc(c.name)}</b><span class="muted">${c.w.length} palabras</span></button>`).join("")}</div>
+          ${limitNote}`;
+      }
     }
     app.innerHTML = `<h1>Vocabulario</h1>
-      <div class="seg two"><button data-v="today" class="${S.vtab === "today" ? "on" : ""}">Hoy</button><button data-v="mine" class="${S.vtab === "mine" ? "on" : ""}">Mis palabras</button></div>${body}`;
-    $$(".seg button").forEach(b => b.onclick = () => { S.vtab = b.dataset.v; save(); viewVocab(); });
+      <div class="seg"><button data-v="today" class="${S.vtab === "today" ? "on" : ""}">Hoy</button><button data-v="mine" class="${S.vtab === "mine" ? "on" : ""}">Mis palabras</button><button data-v="dict" class="${S.vtab === "dict" ? "on" : ""}">Diccionario</button></div>${body}`;
+    $$(".seg button").forEach(b => b.onclick = () => { S.vtab = b.dataset.v; dictCat = null; save(); viewVocab(); });
     $$("[data-t]").forEach(b => b.onclick = () => speak(b.dataset.t, lang));
     $$(".know").forEach(b => b.onclick = () => {
       const w = todayWords()[+b.dataset.i], r = dailyRec(), at = r.known.indexOf(w.t);
@@ -1001,6 +1034,15 @@
       startPlayer({ kind: "daily", lang, ex: EX.practiceWords(lang, words, pool.length >= 6 ? pool : words) });
     };
     const vq = $("#vq"); if (vq) vq.oninput = () => { const v = vq.value; viewVocab(); const n = $("#vq"); n.focus(); n.setSelectionRange(v.length, v.length); };
+    const dq = $("#dq"); if (dq) dq.oninput = () => { const v = dq.value; viewVocab(); const n = $("#dq"); if (n) { n.focus(); n.setSelectionRange(v.length, v.length); } };
+    $$(".course-card[data-cat]").forEach(b => b.onclick = () => { dictCat = b.dataset.cat; viewVocab(); });
+    const db = $("#dictBack"); if (db) db.onclick = () => { dictCat = null; viewVocab(); };
+    const dp = $("#dictPractice");
+    if (dp) dp.onclick = () => {
+      if (dictLeft() <= 0) return openPlans("Hoy ya usaste tus prácticas gratis del diccionario.");
+      const items = EX.dictItems(lang, dictCat);
+      startPlayer({ kind: "dict", lang, ex: EX.practiceWords(lang, items, EX.dictAll(lang)) });
+    };
   }
 
   /* ---------- Repaso ---------- */

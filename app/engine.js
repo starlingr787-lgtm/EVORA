@@ -11,7 +11,7 @@
 (() => {
   const VERSION = 1;
   const RULES = { examN: 20, examPass: 0.8, retryMax: 2, moodMin: 0, moodMax: 100 };
-  const FREE_KINDS = ["placement", "daily", "situation", "exam"]; // no gastan vidas ni guardan errores
+  const FREE_KINDS = ["placement", "daily", "situation", "exam", "dict"]; // no gastan vidas ni guardan errores
   const NO_RETRY_KINDS = ["placement", "exam"];
 
   /* ============================== Puzzle ============================== */

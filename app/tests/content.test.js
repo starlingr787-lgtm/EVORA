@@ -3,8 +3,8 @@
 const vm = require("vm"), fs = require("fs"), path = require("path");
 const dir = path.join(__dirname, "..");
 const ctx = {}; ctx.window = ctx; vm.createContext(ctx);
-for (const f of ["data", "data2", "data3", "data4"]) vm.runInContext(fs.readFileSync(path.join(dir, f + ".js"), "utf8"), ctx);
-const { UNITS, COURSES, LIVE, SCENES } = ctx;
+for (const f of ["data", "data2", "data3", "data4", "data5"]) vm.runInContext(fs.readFileSync(path.join(dir, f + ".js"), "utf8"), ctx);
+const { UNITS, COURSES, LIVE, SCENES, DICT_CATS } = ctx;
 
 const errors = [];
 const bad = (where, msg, text) => errors.push(`${where}: ${msg}${text ? "  «" + text + "»" : ""}`);
@@ -35,6 +35,11 @@ SCENES.forEach(s => {
       t.opts.forEach((o, j) => items.push({ lang: l, where: `${l} scene${ti}.o${j}`, text: s.t[l][ti][j + 1], es: o.es, kind: "s" }));
     }
   });
+});
+DICT_CATS.forEach(c => {
+  c.w.forEach((x, i) => items.push({ lang: "es", where: `dict.${c.id}.w${i}`, text: x, kind: "w" }));
+  items.push({ lang: "es", where: `dict.${c.id}.name`, text: c.name, kind: "w" });
+  for (const l in c.t) c.t[l].forEach((x, i) => items.push({ lang: l, where: `${l} dict.${c.id}.w${i}`, text: x, es: c.w[i], kind: "w" }));
 });
 
 const EMOJI = /[\u{1F000}-\u{1FAFF}☀-➿️]/u;
@@ -75,6 +80,16 @@ for (const l in COURSES) COURSES[l].t.forEach((t, u) => {
   [["palabras", t[0]], ["frases", t[1]]].forEach(([n, arr]) => { const seen = new Set(); arr.forEach(x => { if (seen.has(norm(x)) && !(l === "pt" && u === 3)) bad(`${l} u${u}`, `${n} repetidas dentro de la unidad`, x); seen.add(norm(x)); }); });
 });
 SCENES.forEach(s => s.turns.forEach(t => t.opts.forEach(o => { if (!(o.d >= -30 && o.d <= 35)) bad("scene", "puntos de ánimo fuera de rango", o.es); })));
+if (DICT_CATS.length !== 6) bad("dict", `se esperaban 6 categorías y hay ${DICT_CATS.length}`);
+DICT_CATS.forEach(c => {
+  const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  if (c.w.length !== 10) bad(`dict.${c.id}`, `se esperaban 10 palabras y hay ${c.w.length}`);
+  const seenEs = new Set(); c.w.forEach(x => { if (seenEs.has(norm(x))) bad(`dict.${c.id}`, "palabra repetida en español", x); seenEs.add(norm(x)); });
+  for (const l in c.t) {
+    if (c.t[l].length !== c.w.length) bad(`${l} dict.${c.id}`, `${c.t[l].length} traducciones para ${c.w.length} palabras`);
+    const seen = new Set(); c.t[l].forEach(x => { if (seen.has(norm(x))) bad(`${l} dict.${c.id}`, "palabra repetida", x); seen.add(norm(x)); });
+  }
+});
 
 if (errors.length) { console.log(errors.join("\n")); console.log(`\n${errors.length} problemas de contenido`); process.exit(1); }
 console.log(`Contenido correcto (${items.length} textos revisados)`);
