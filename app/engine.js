@@ -116,6 +116,27 @@
   }
   const placementLevel = s => (s.wrong <= 2 ? "A2" : "A1");
 
+  /* ============================== Repaso espaciado (SRS) ============================== */
+  /* Algoritmo SM-2 simplificado. Tarjeta: { key, ease, interval (días), due (fecha epoch ms), reps, lapses, ...extra }
+     `extra` es contenido de la app (es/t/k) que el motor no interpreta, solo transporta. */
+  const DAY_MS = 86400000;
+  const SRS_EASE_START = 2.5, SRS_EASE_MIN = 1.3, SRS_EASE_UP = 0.1, SRS_EASE_DOWN = 0.2;
+  function srsNew(key, extra, now) {
+    return { key, ease: SRS_EASE_START, interval: 0, due: now, reps: 0, lapses: 0, ...extra };
+  }
+  function srsGrade(card, ok, now) {
+    if (ok) {
+      const reps = card.reps + 1, ease = Math.min(3, card.ease + SRS_EASE_UP);
+      const interval = reps === 1 ? 1 : reps === 2 ? 3 : Math.round(card.interval * ease);
+      return { ...card, reps, ease, interval, due: now + interval * DAY_MS };
+    }
+    return { ...card, reps: 0, lapses: card.lapses + 1, ease: Math.max(SRS_EASE_MIN, card.ease - SRS_EASE_DOWN), interval: 1, due: now };
+  }
+  const srsDue = (card, now) => card.due <= now;
+  const srsDueCards = (cards, now, limit = Infinity) =>
+    cards.filter(c => srsDue(c, now)).sort((a, b) => a.due - b.due).slice(0, limit);
+  const srsNextDue = cards => cards.length ? Math.min(...cards.map(c => c.due)) : null;
+
   /* ============================== Escena ============================== */
   const moodClamp = m => Math.max(RULES.moodMin, Math.min(RULES.moodMax, m));
   const moodStep = (mood, delta) => moodClamp(mood + delta);
@@ -124,5 +145,6 @@
 
   window.Engine = { VERSION, RULES, puzzleNew, puzzleReduce, puzzleBank, puzzleFull, puzzleCheck,
     checkMC, checkFill, checkTone, checkType, sessionNew, isFree, current, sessionRecord, sessionAdvance, sessionDone, progress, snapshot,
-    summary, examResult, placementLevel, moodStep, moodFace, sceneWon };
+    summary, examResult, placementLevel, moodStep, moodFace, sceneWon,
+    DAY_MS, srsNew, srsGrade, srsDue, srsDueCards, srsNextDue };
 })();

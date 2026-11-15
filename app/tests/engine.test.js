@@ -95,6 +95,38 @@ test("escena: el ánimo se limita a 0-100 y hay caras por tramo", () => {
   eq([20, 40, 70, 90].map(Engine.moodFace), ["angry", "annoyed", "neutral", "happy"]);
   assert(Engine.sceneWon(80, 80)); assert(!Engine.sceneWon(79, 80));
 });
+test("SRS: una tarjeta nueva está disponible de inmediato y crece con cada acierto", () => {
+  const now = 1000000;
+  let c = Engine.srsNew("k1", { es: "Hola", t: "Hi" }, now);
+  eq(json(c), c); assert(Engine.srsDue(c, now));
+  c = Engine.srsGrade(c, true, now); assert.strictEqual(c.interval, 1); assert.strictEqual(c.due, now + Engine.DAY_MS);
+  assert(!Engine.srsDue(c, now + Engine.DAY_MS - 1)); assert(Engine.srsDue(c, now + Engine.DAY_MS));
+  c = Engine.srsGrade(c, true, now + Engine.DAY_MS); assert.strictEqual(c.interval, 3);
+  const prevEase = c.ease;
+  c = Engine.srsGrade(c, true, now + 4 * Engine.DAY_MS); assert(c.interval > 3, "el intervalo sigue creciendo"); assert(c.ease >= prevEase);
+});
+test("SRS: un fallo reinicia la racha, baja la facilidad y vuelve a ponerla para hoy", () => {
+  const now = 1000000;
+  let c = Engine.srsNew("k2", {}, now);
+  c = Engine.srsGrade(c, true, now); c = Engine.srsGrade(c, true, now + Engine.DAY_MS); // reps=2, interval=3
+  const big = Engine.srsGrade(c, true, now + 4 * Engine.DAY_MS);
+  const fail = Engine.srsGrade(big, false, now + 100 * Engine.DAY_MS);
+  assert.strictEqual(fail.reps, 0); assert.strictEqual(fail.lapses, 1); assert(fail.ease < big.ease); assert(Engine.srsDue(fail, now + 100 * Engine.DAY_MS));
+});
+test("SRS: el reductor es puro y no muta la tarjeta anterior", () => {
+  const now = 5; const c = Engine.srsNew("k3", {}, now), before = JSON.stringify(c);
+  Engine.srsGrade(c, true, now); assert.strictEqual(JSON.stringify(c), before);
+});
+test("SRS: las tarjetas pendientes salen ordenadas por las más atrasadas y respetan el límite", () => {
+  const now = 1000;
+  const cards = [{ key: "a", due: now - 5 }, { key: "b", due: now - 50 }, { key: "c", due: now + 10 }, { key: "d", due: now }];
+  const due = Engine.srsDueCards(cards, now);
+  assert.deepStrictEqual(due.map(c => c.key), ["b", "a", "d"]);
+  assert.strictEqual(Engine.srsDueCards(cards, now, 1).length, 1);
+  assert.strictEqual(Engine.srsNextDue(cards), now - 50);
+  assert.strictEqual(Engine.srsNextDue([]), null);
+});
+
 test("instantánea para multijugador: JSON mínimo sin la cola de ejercicios", () => {
   const s = Engine.sessionNew({ kind: "level", lang: "en", ex: EX.build("en", 0, 0, {}) }), snap = Engine.snapshot(s);
   eq(json(snap), snap); assert(!("q" in snap)); assert(JSON.stringify(snap).length < 200);

@@ -11,7 +11,7 @@
   /* ---------- Estado ---------- */
   let S = load();
   function load() {
-    const d = { plan: "standard", lang: null, xp: 0, streak: 0, lastDay: null, hearts: 5, heartsDay: today(), progress: {}, mistakes: {}, cefr: {}, daily: {}, tab: "learn", pick: false, vtab: "today", mute: false, unlocked: {}, exams: {} };
+    const d = { plan: "standard", lang: null, xp: 0, streak: 0, lastDay: null, hearts: 5, heartsDay: today(), progress: {}, srs: {}, cefr: {}, daily: {}, tab: "learn", pick: false, vtab: "today", mute: false, unlocked: {}, exams: {} };
     try {
       const old = JSON.parse(localStorage.getItem(KEY) || localStorage.getItem("lingo-state-v2")) || {};
       Object.assign(d, old);
@@ -796,7 +796,7 @@
       if (a.dataset.id === b.dataset.id) {
         [a, b].forEach(x => { x.classList.add("done"); x.disabled = true; });
         if (--left === 0) {
-          if (!freeKind()) missed.forEach(id => remember(ex.items[+id]));
+          missed.forEach(id => srsTouch(ex.items[+id], false));
           reveal(miss === 0, "", { noRetry: true, skipRemember: true, msg: miss === 0 ? null : "Casi. Repasa estas parejas." });
         }
       } else {
@@ -818,25 +818,21 @@
   }
 
   const PRAISE = ["¡Muy bien!", "¡Correcto!", "¡Excelente!", "¡Así se hace!", "¡Perfecto!"];
-  function remember(item) {
+  /* Repaso espaciado (SM-2 simplificado, Engine.srs*): cada palabra o frase aprendida tiene su propia
+     tarjeta con una fecha de repaso. Acertar la aleja en el tiempo; fallar la pone otra vez para hoy. */
+  const srsKey = item => `${item.k}|${item.es}|${item.t}`;
+  function srsTouch(item, ok) {
     if (!item || freeKind()) return;
-    const m = (S.mistakes[P.lang] = S.mistakes[P.lang] || []);
-    if (!m.some(x => x.es === item.es && x.t === item.t)) m.unshift({ es: item.es, t: item.t, k: item.k });
-    S.mistakes[P.lang] = m.slice(0, 40);
-  }
-  function forget(item) {
-    if (!item || !S.mistakes[P.lang]) return;
-    S.mistakes[P.lang] = S.mistakes[P.lang].filter(x => !(x.es === item.es && x.t === item.t));
+    const lang = P.lang, bucket = (S.srs[lang] = S.srs[lang] || {}), key = srsKey(item), now = Date.now();
+    const card = bucket[key] || Engine.srsNew(key, { es: item.es, t: item.t, k: item.k }, now);
+    bucket[key] = Engine.srsGrade(card, ok, now);
   }
 
   function reveal(ok, correctHTML, o = {}) {
     const ex = P.ex, r = Engine.sessionRecord(P, { ok, noRetry: o.noRetry });
     P = { ...r.session, ex, locked: true };
-    if (ok) { if (P.kind === "review") forget(ex.item); }
-    else {
-      if (r.effects.heartLoss && !prem()) { S.hearts = Math.max(0, S.hearts - 1); $("#pHearts").textContent = S.hearts; }
-      if (!o.skipRemember) remember(ex.item);
-    }
+    if (!o.skipRemember) srsTouch(ex.item, ok);
+    if (!ok && r.effects.heartLoss && !prem()) { S.hearts = Math.max(0, S.hearts - 1); $("#pHearts").textContent = S.hearts; }
     save(); renderTop();
     const praise = o.okMsg || (P.kind === "placement" ? "Respuesta registrada" : PRAISE[Math.floor(Math.random() * PRAISE.length)]);
     $("#foot").className = "p-foot " + (ok ? "ok" : "bad");
@@ -1008,20 +1004,28 @@
   }
 
   /* ---------- Repaso ---------- */
+  const fmtRelDay = ms => { const d = Math.ceil((ms - Date.now()) / Engine.DAY_MS); return d <= 0 ? "hoy" : d === 1 ? "mañana" : `en ${d} días`; };
   function viewReview() {
-    const m = (S.mistakes[S.lang] || []);
     if (!prem()) {
-      app.innerHTML = `<div class="empty">${mascot("think", 110)}<h1>Repaso de errores</h1>
-        <p class="muted">Lumi recuerda lo que fallas y crea una práctica solo con eso. Es una función Premium.</p>
+      app.innerHTML = `<div class="empty">${mascot("think", 110)}<h1>Repaso espaciado</h1>
+        <p class="muted">Lumi guarda cada palabra con su propia fecha de repaso: acertar la aleja en el tiempo, fallar la trae de vuelta para hoy. Es una función Premium.</p>
         <button class="btn prem" id="up">Ver Premium</button></div>`;
       $("#up").onclick = () => openPlans(); return;
     }
-    app.innerHTML = `<h1>Repaso de errores</h1>
-      ${m.length ? `<div class="card"><p>Tienes <b>${m.length}</b> ${m.length === 1 ? "elemento" : "elementos"} para repasar en ${COURSES[S.lang].name.toLowerCase()}.</p>
-        <button class="btn" id="go">Practicar ahora</button></div>
-        <ul class="intro">${m.slice(0, 12).map(x => `<li><div><b>${EX.tgt(x.t, S.lang)}</b><span class="muted">${esc(x.es)}</span></div></li>`).join("")}</ul>`
-      : `<div class="empty">${mascot("happy", 110)}<p class="muted">No tienes errores pendientes. Sigue avanzando por el mapa.</p></div>`}`;
-    const g = $("#go"); if (g) g.onclick = () => startPlayer({ kind: "review", lang: S.lang, ex: EX.reviewSet(S.lang, m) });
+    const all = Object.values(S.srs[S.lang] || {}), due = Engine.srsDueCards(all, Date.now());
+    app.innerHTML = `<h1>Repaso espaciado</h1>
+      <div class="stat-grid">
+        <div class="stat">${ic("flame", "solid")}<b>${due.length}</b><span>Pendientes hoy</span></div>
+        <div class="stat">${ic("book")}<b>${all.length}</b><span>En seguimiento</span></div>
+      </div>
+      ${due.length
+        ? `<div class="card"><p>Tienes <b>${due.length}</b> ${due.length === 1 ? "elemento" : "elementos"} listos para repasar en ${COURSES[S.lang].name.toLowerCase()}.</p>
+            <button class="btn" id="go">Practicar ahora</button></div>
+            <ul class="intro">${due.slice(0, 12).map(x => `<li><div><b>${EX.tgt(x.t, S.lang)}</b><span class="muted">${esc(x.es)}</span></div></li>`).join("")}</ul>`
+        : all.length
+          ? `<div class="empty">${mascot("happy", 110)}<p class="muted">Estás al día. El próximo repaso toca ${fmtRelDay(Engine.srsNextDue(all))}.</p></div>`
+          : `<div class="empty">${mascot("happy", 110)}<p class="muted">Aquí aparecerán, con su propia fecha de repaso, las palabras y frases que vayas practicando por el mapa.</p></div>`}`;
+    const g = $("#go"); if (g) g.onclick = () => startPlayer({ kind: "review", lang: S.lang, ex: EX.reviewSet(S.lang, due) });
   }
 
   /* ---------- Perfil ---------- */
@@ -1041,7 +1045,10 @@
       ${started.length ? started.map(k => { const p = Math.round(doneCount(k) / (UNITS.length * NL) * 100), c = cefrOf(k);
         return `<div class="card row-card">${langBadge(k, "sm")}<div class="grow"><b>${COURSES[k].name}</b>${c ? `<span class="muted small"> &middot; ${c.name}</span>` : ""}<div class="bar"><i style="width:${p}%"></i></div></div><span class="muted">${p}%</span></div>`; }).join("")
         : `<p class="muted">Todavía no has completado ningún nivel.</p>`}
-      <div class="center" style="margin-top:20px"><button class="btn ${prem() ? "ghost" : "prem"}" id="pl">${prem() ? "Gestionar plan" : "Mejorar a Premium"}</button></div>`;
+      <div class="center" style="margin-top:20px"><button class="btn ${prem() ? "ghost" : "prem"}" id="pl">${prem() ? "Gestionar plan" : "Mejorar a Premium"}</button></div>
+      <p class="credits">Voces generadas con <a href="https://github.com/OHF-Voice/piper1-gpl" target="_blank" rel="noopener">Piper</a>.
+        Francés: «Siwis French Speech Synthesis Database», Universidad de Edimburgo — <a href="https://datashare.ed.ac.uk/handle/10283/2353" target="_blank" rel="noopener">CC BY 4.0</a>.
+        Italiano: «serena-synthetic-it-27h», committa — <a href="https://huggingface.co/datasets/committa/serena-synthetic-it-27h" target="_blank" rel="noopener">CC BY 4.0</a>.</p>`;
     $("#pl").onclick = () => openPlans();
   }
 

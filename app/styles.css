@@ -374,6 +374,9 @@ ol.how{padding-left:20px;display:grid;gap:10px;margin:12px 0}
 .how-src a{color:var(--teal-d);font-weight:800}
 @media (prefers-color-scheme:dark){.how-src a{color:var(--teal)}}
 .box h3{margin:14px 0 6px;font-size:16px}
+.credits{margin-top:18px;font-size:12px;color:var(--muted);line-height:1.6;text-align:center}
+.credits a{color:var(--teal-d);font-weight:700}
+@media (prefers-color-scheme:dark){.credits a{color:var(--teal)}}
 
 /* ---------- Rendimiento: animaciones solo con transform y opacity ---------- */
 .node .disc{position:relative}
