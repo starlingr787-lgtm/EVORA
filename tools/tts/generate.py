@@ -103,6 +103,7 @@ def atomic_write(path, data, mode="wb"):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--only", default=",".join(VOICES)); ap.add_argument("--dry-run", action="store_true"); ap.add_argument("--adopt", action="store_true")
+    ap.add_argument("--set", default="", help="\"w\" = paquete de palabras sueltas (audio/<idioma>-w.*)")
     ap.add_argument("--list-voices", metavar="CODIGO", help="lista las voces de Google para un idioma (p. ej. ro-RO)")
     ap.add_argument("--samples", metavar="LANG", help="genera muestras (.work/samples/<voz>/) con las voces de --voices para elegir")
     ap.add_argument("--voices", default="", help="voces de Google separadas por comas, para --samples")
@@ -120,12 +121,13 @@ def main():
             for n, t in enumerate(picks): atomic_write(d / f"{n}.mp3", to_mp3(prov.synthesize(t)))
             print(v, len(picks), "muestras"); json.dump(picks, open(WORK / "samples" / "frases.json", "w"), ensure_ascii=False)
         return
-    texts_file = WORK / "texts.json"
+    suffix = "-" + args.set if args.set else ""
+    texts_file = WORK / ("texts-w.json" if args.set == "w" else "texts.json")
     if not texts_file.exists():
         sys.exit("Falta tools/tts/.work/texts.json: ejecuta antes  node tools/tts/export_texts.js")
     texts = json.load(open(texts_file))
     for lang in args.only.split(","):
-        idx_f, meta_f, pack_f = AUDIO / f"{lang}.json", AUDIO / f"{lang}.meta.json", AUDIO / f"{lang}.mp3"
+        idx_f, meta_f, pack_f = AUDIO / f"{lang}{suffix}.json", AUDIO / f"{lang}{suffix}.meta.json", AUDIO / f"{lang}{suffix}.mp3"
         idx = json.load(open(idx_f)) if idx_f.exists() else {}
         meta = json.load(open(meta_f)) if meta_f.exists() else {}
         blob = pack_f.read_bytes() if pack_f.exists() else b""

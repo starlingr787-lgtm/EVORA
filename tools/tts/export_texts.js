@@ -14,6 +14,23 @@ for (const lang in ctx.COURSES) {
   ctx.extraClips(lang).forEach(([k, x]) => add(k, x));
   out[lang] = keys;
 }
+/* Paquete de palabras: cada palabra distinta (en minúsculas, sin signos) de todas las frases de cada idioma.
+   Clave "w:<palabra>". La app lo usa al tocar una pieza del rompecabezas. */
+const core = t => t.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, "");
+const toks = s => s.split(/\s+/).map(x => core(x).toLowerCase()).filter(x => /[\p{L}\p{N}]/u.test(x));
+const words = {};
+for (const lang in ctx.COURSES) {
+  const set = new Set(), add = s => toks(s).forEach(x => set.add(x));
+  ctx.COURSES[lang].t.forEach(t => t[1].forEach(add));
+  ctx.LIVE.forEach(p => (lang === "es" ? p.es : p.t[lang]).forEach(add));
+  ctx.SCENES.forEach(sc => {
+    if (lang === "es") sc.turns.forEach(tu => { add(tu.es); tu.opts.forEach(o => add(o.es)); });
+    else sc.t[lang].forEach(tn => tn.forEach(add));
+  });
+  words[lang] = Object.fromEntries([...set].sort().map(w => ["w:" + w, w]));
+}
 fs.mkdirSync(work, { recursive: true });
+fs.writeFileSync(path.join(work, "texts-w.json"), JSON.stringify(words));
+console.log("palabras:", Object.fromEntries(Object.entries(words).map(([l, k]) => [l, Object.keys(k).length])));
 fs.writeFileSync(path.join(work, "texts.json"), JSON.stringify(out));
 console.log(Object.fromEntries(Object.entries(out).map(([l, k]) => [l, Object.keys(k).length])));

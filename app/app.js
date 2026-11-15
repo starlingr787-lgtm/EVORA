@@ -11,7 +11,7 @@
   /* ---------- Estado ---------- */
   let S = load();
   function load() {
-    const d = { plan: "standard", lang: null, xp: 0, streak: 0, lastDay: null, hearts: 5, heartsDay: today(), progress: {}, srs: {}, cefr: {}, daily: {}, dictDay: null, dictUsed: 0, tab: "learn", native: "es", ui: null, pick: false, vtab: "today", mute: false, unlocked: {}, exams: {} };
+    const d = { plan: "standard", lang: null, xp: 0, streak: 0, lastDay: null, hearts: 5, heartsDay: today(), progress: {}, srs: {}, cefr: {}, daily: {}, dictDay: null, dictUsed: 0, tab: "learn", native: "es", ui: null, skin: "standard", pick: false, vtab: "today", mute: false, unlocked: {}, exams: {} };
     try {
       const old = JSON.parse(localStorage.getItem(KEY) || localStorage.getItem("lingo-state-v2")) || {};
       Object.assign(d, old);
@@ -104,6 +104,19 @@
     })().catch(() => null);
     return PACK[lang];
   }
+  /* Palabras sueltas: al tocar una pieza se pronuncia su palabra. Paquete audio/<idioma>-w.* (se carga la primera vez que hace falta).
+     Plan Premium: voz natural pregrabada. Sin clip, o plan Estándar: voz del navegador, sin avisos que interrumpan el juego. */
+  const WPACK = {};
+  function loadWordPack(lang) {
+    if (!WPACK[lang]) WPACK[lang] = (async () => {
+      const [idx, buf] = await Promise.all([
+        fetch(`audio/${lang}-w.json?v=${AUDIO_V}`).then(r => r.ok ? r.json() : Promise.reject()),
+        fetch(`audio/${lang}-w.mp3?v=${AUDIO_V}`).then(r => r.ok ? r.arrayBuffer() : Promise.reject())
+      ]);
+      return { idx, buf, urls: {} };
+    })().catch(() => null);
+    return WPACK[lang];
+  }
   let voices = [];
   if (canSpeak) { const lv = () => { voices = speechSynthesis.getVoices(); }; lv(); speechSynthesis.addEventListener && speechSynthesis.addEventListener("voiceschanged", lv); }
   function bestVoice(lang) {
@@ -122,6 +135,24 @@
     return best;
   }
   function stopAudio() { if (curAudio) { curAudio.pause(); curAudio = null; } if (canSpeak) speechSynthesis.cancel(); }
+  async function speakWord(text, lang) {
+    const w = EX.core(text); if (!w || S.mute) return;
+    stopAudio();
+    if (prem()) {
+      const pk = await loadWordPack(lang), key = "w:" + w.toLowerCase();
+      if (pk && pk.idx[key]) {
+        try {
+          let url = pk.urls[key];
+          if (!url) { const [o, l] = pk.idx[key]; url = pk.urls[key] = URL.createObjectURL(new Blob([pk.buf.slice(o, o + l)], { type: "audio/mpeg" })); }
+          const a = new Audio(url); curAudio = a; await a.play(); return;
+        } catch (e) {}
+      }
+    }
+    if (!canSpeak) return;
+    const u = new SpeechSynthesisUtterance(w), v = bestVoice(lang);
+    u.lang = COURSES[lang].speech; if (v) u.voice = v; u.rate = .9;
+    speechSynthesis.speak(u);
+  }
   async function speak(text, lang, rate = 1) {
     if (!prem()) return openPlans("El audio con voz natural es una función Premium.");
     stopAudio();
@@ -164,7 +195,18 @@
     S.tab = b.dataset.tab; S.pick = false; levelPickFor = null; save(); render(); window.scrollTo(0, 0);
   });
 
+  /* Tocar al mapache: reacciona unos segundos y vuelve a su gesto. */
+  document.addEventListener("click", e => {
+    const m = e.target.closest && e.target.closest("svg.mascot"); if (!m || m.closest("button") || m._busy) return;
+    const cur = (m.getAttribute("class").match(/m-(\w+)/) || [])[1] || "happy", px = m.getAttribute("width");
+    const pool = MASCOT_MOODS.filter(x => x !== cur && x !== "sad"), pick = pool[Math.floor(Math.random() * pool.length)];
+    const tmp = document.createElement("div"); tmp.innerHTML = mascot(pick, px); const n = tmp.firstElementChild; n._busy = true;
+    m.replaceWith(n); sfx.pop && sfx.pop(2);
+    setTimeout(() => { if (n.isConnected) { const t2 = document.createElement("div"); t2.innerHTML = mascot(cur, px); n.replaceWith(t2.firstElementChild); } }, 2200);
+  });
+
   function render() {
+    applySkin();
     renderTop();
     if (!S.lang || S.pick) return viewCourses();
     if (levelPickFor || !cefrOf(S.lang)) { levelPickFor = S.lang; return viewLevelPick(); }
@@ -548,27 +590,96 @@
   }
 
   /* --- rompecabezas de frases --- */
+  /* --- estilos de las piezas ---
+     Cada estilo dibuja el SVG de la pieza (forma, sombra, relleno y adornos) con las mismas clases base (sh, fl) y los colores
+     de la pieza (--pf relleno, --ps borde). "standard" es gratis; el resto es Premium. */
+  const SKINS = [
+    { id: "standard", name: "Clásico" },
+    { id: "candy", name: "Caramelos" },
+    { id: "mandala", name: "Mándala" },
+    { id: "bubble", name: "Burbujas de agua" },
+    { id: "choco", name: "Barras de chocolate" }
+  ];
+  const skinId = () => (prem() && SKINS.some(s => s.id === S.skin) ? S.skin : "standard");
+  function applySkin() {
+    const b = document.body; b.className = b.className.replace(/\bskin-\S+/g, "").trim(); b.classList.add("skin-" + skinId());
+  }
+
   const KR = 8; // radio de la pestaña del puzle
   function pzPath(w, h, first, last) {
-    const m = h / 2;
-    let d = `M0 0H${w}`;
+    const m = h / 2, r = 7;
+    let d = `M${r} 0H${w - r}Q${w} 0 ${w} ${r}`;
     if (!last) d += `V${m - KR}A${KR} ${KR} 0 1 1 ${w} ${m + KR}`;
-    d += `V${h}H0`;
+    d += `V${h - r}Q${w} ${h} ${w - r} ${h}H${r}Q0 ${h} 0 ${h - r}`;
     if (!first) d += `V${m + KR}A${KR} ${KR} 0 1 0 0 ${m - KR}`;
+    return d + `V${r}Q0 0 ${r} 0Z`;
+  }
+  /* Contorno de estadio con el borde en festón (mándala). Se recorre en sentido horario y cada festón es un arco hacia fuera. */
+  function scallopPath(w, h) {
+    const r = h / 2 - 1.5, straight = Math.max(0, w - 2 * r), arc = Math.PI * r, total = 2 * straight + 2 * arc;
+    const n = Math.max(14, Math.round(total / 9.5)), pt = i => {
+      const s = (i % n) / n * total;
+      if (s < straight) return [r + s, 1.5];
+      if (s < straight + arc) { const a = -Math.PI / 2 + (s - straight) / r; return [w - r + r * Math.cos(a), h / 2 + r * Math.sin(a)]; }
+      if (s < 2 * straight + arc) return [w - r - (s - straight - arc), h - 1.5];
+      const a = Math.PI / 2 + (s - 2 * straight - arc) / r; return [r + r * Math.cos(a), h / 2 + r * Math.sin(a)];
+    };
+    const f = v => v.toFixed(1); let p = pt(0), d = `M${f(p[0])} ${f(p[1])}`;
+    for (let i = 1; i <= n; i++) { const q = pt(i), rr = Math.hypot(q[0] - p[0], q[1] - p[1]) * .56; d += `A${f(rr)} ${f(rr)} 0 0 1 ${f(q[0])} ${f(q[1])}`; p = q; }
     return d + "Z";
   }
+  const rrect = (x, y, w, h, r) => `M${x + r} ${y}H${x + w - r}Q${x + w} ${y} ${x + w} ${y + r}V${y + h - r}Q${x + w} ${y + h} ${x + w - r} ${y + h}H${x + r}Q${x} ${y + h} ${x} ${y + h - r}V${y + r}Q${x} ${y} ${x + r} ${y}Z`;
+
+  function pzMarkup(skin, w, h, first, last, cid, empty) {
+    const clip = d => `<defs><clipPath id="${cid}"><path d="${d}"/></clipPath></defs>`;
+    if (skin === "candy") {
+      const r = Math.min(h * .44, 20), ew = Math.min(15, h * .3), d = rrect(0, 0, w, h, r);
+      if (empty) return `<path class="fl" d="${d}"/>`;
+      const stripes = Array.from({ length: Math.ceil((w + h) / 15) }, (_, i) => `<path d="M${i * 15 - h} ${h}l${h * .62} ${-h}"/>`).join("");
+      return `${clip(d)}
+        <path class="wrap" d="M3 ${h * .3}L${-ew} ${h * .02}Q${-ew * .4} ${h * .5} ${-ew} ${h * .98}L3 ${h * .7}Z"/><path class="wrap" d="M${w - 3} ${h * .3}L${w + ew} ${h * .02}Q${w + ew * .4} ${h * .5} ${w + ew} ${h * .98}L${w - 3} ${h * .7}Z"/>
+        <path class="wl" d="M-1 ${h * .2}L${-ew * .7} ${h * .5}L-1 ${h * .8}M${w + 1} ${h * .2}L${w + ew * .7} ${h * .5}L${w + 1} ${h * .8}"/>
+        <path class="sh" d="${d}" transform="translate(0 5)"/><path class="fl" d="${d}"/>
+        <g clip-path="url(#${cid})"><g class="stripe">${stripes}</g><ellipse class="spec" cx="${w * .27}" cy="${h * .24}" rx="${Math.max(10, w * .17)}" ry="${h * .1}"/><rect class="shade" x="0" y="${h * .72}" width="${w}" height="${h * .28}"/></g>`;
+    }
+    if (skin === "mandala") {
+      const d = scallopPath(w, h), r = h / 2 - 1.5, rp = r * .5;
+      if (empty) return `<path class="fl" d="${d}"/>`;
+      const rosette = cx => `<g transform="translate(${cx} ${h / 2})" class="ros">${Array.from({ length: 8 }, (_, k) => `<ellipse cx="0" cy="${-rp * .52}" rx="${rp * .17}" ry="${rp * .5}" transform="rotate(${k * 45})"/>`).join("")}<circle r="${rp * .16}"/></g>`;
+      return `${clip(d)}<path class="sh" d="${d}" transform="translate(0 5)"/><path class="fl" d="${d}"/>
+        <g clip-path="url(#${cid})"><path class="ring" d="${rrect(5, 5, w - 10, h - 10, (h - 10) / 2)}"/>${rosette(r * .62 + 4)}${w > 2 * r + 30 ? rosette(w - r * .62 - 4) : ""}<ellipse class="spec" cx="${w * .5}" cy="${h * .18}" rx="${w * .3}" ry="${h * .08}"/></g>`;
+    }
+    if (skin === "bubble") {
+      const d = rrect(0, 0, w, h, h / 2);
+      if (empty) return `<path class="fl" d="${d}"/>`;
+      return `<defs><radialGradient id="${cid}r" cx=".34" cy=".26" r=".9"><stop offset="0" style="stop-color:var(--pf)" stop-opacity=".1"/><stop offset=".62" style="stop-color:var(--pf)" stop-opacity=".3"/><stop offset=".9" style="stop-color:var(--pf)" stop-opacity=".62"/><stop offset="1" style="stop-color:var(--ps)" stop-opacity=".9"/></radialGradient></defs>
+        <ellipse class="bsh" cx="${w / 2}" cy="${h + 3}" rx="${w * .42}" ry="3.5"/><path d="${d}" fill="url(#${cid}r)" class="bub"/>
+        <path class="rim" d="${d}"/><path class="rim2" d="M${h * .5} ${h - 5}Q${w / 2} ${h + 1} ${w - h * .5} ${h - 5}"/><ellipse class="hl" cx="${w * .24}" cy="${h * .27}" rx="${Math.max(8, w * .13)}" ry="${h * .11}" transform="rotate(-14 ${w * .24} ${h * .27})"/><circle class="hl2" cx="${w * .84}" cy="${h * .73}" r="${Math.max(2, h * .07)}"/>`;
+    }
+    if (skin === "choco") {
+      const d = rrect(0, 0, w, h, 8);
+      if (empty) return `<path class="fl" d="${d}"/>`;
+      const n = Math.max(1, Math.round(w / (h * 1.1))), pw = (w - 8) / n;
+      const panels = Array.from({ length: n }, (_, i) => { const x = 4 + i * pw + 3, ww = pw - 6; return `<path class="panel" d="${rrect(x, 6, ww, h - 12, 5)}"/><path class="phl" d="M${x + 4} 9.5H${x + ww - 6}"/>`; }).join("");
+      return `${clip(d)}<path class="sh" d="${d}" transform="translate(0 5)"/><path class="fl" d="${d}"/><g clip-path="url(#${cid})">${panels}</g>`;
+    }
+    const d = pzPath(w, h, first, last);
+    if (empty) return `<path class="fl" d="${d}"/>`;
+    return `${clip(d)}<defs><linearGradient id="${cid}g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".4"/><stop offset=".5" stop-color="#fff" stop-opacity=".03"/><stop offset="1" stop-color="#000" stop-opacity=".18"/></linearGradient></defs>
+      <path class="sh" d="${d}" transform="translate(0 5)"/><path class="fl" d="${d}"/>
+      <g clip-path="url(#${cid})"><rect class="gx" x="-2" y="0" width="${w + 4}" height="${h}" fill="url(#${cid}g)"/><path class="edge" d="${d}"/><path class="top" d="M10 3.200H${w - 10}"/></g>`;
+  }
+
   let pzUid = 0;
-  function shapePiece(el) {
+  function shapePiece(el, forceSkin) {
     const svg = el.querySelector("svg"); if (!svg) return;
-    const w = el.offsetWidth, h = el.offsetHeight, first = el.classList.contains("first"), last = el.classList.contains("last");
-    const key = w + "x" + h + (first ? "f" : "") + (last ? "l" : "");
+    const skin = (typeof forceSkin === "string" && forceSkin) || skinId(), w = el.offsetWidth, h = el.offsetHeight, first = el.classList.contains("first"), last = el.classList.contains("last");
+    const empty = el.classList.contains("empty");
+    const key = skin + w + "x" + h + (first ? "f" : "") + (last ? "l" : "") + (empty ? "e" : "");
     if (el._sk === key) return; // la forma no cambió: no se toca el DOM
     el._sk = key; el._cid = el._cid || "pc" + (++pzUid);
-    const d = pzPath(w, h, first, last);
     svg.setAttribute("width", w); svg.setAttribute("height", h); svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
-    svg.innerHTML = `<defs><clipPath id="${el._cid}"><path d="${d}"/></clipPath></defs>
-      <path class="sh" d="${d}" transform="translate(0 5)"/><path class="fl" d="${d}"/>
-      <g clip-path="url(#${el._cid})"><rect class="gl" x="-2" y="0" width="${w + 4}" height="${h * .46}"/><rect class="gl2" x="-2" y="${h * .8}" width="${w + 4}" height="${h * .2}"/></g>`;
+    svg.innerHTML = pzMarkup(skin, w, h, first, last, el._cid, empty);
   }
 
   function exBank(ex) {
@@ -581,6 +692,9 @@
       <div class="bank" id="bank" aria-label="Piezas"></div>`;
     if (ex.audio) bindAudio(ex.audio); else if (ex.promptTarget) bindBubbleSpeak(ex.prompt);
     const boardEl = $("#board"), bankEl = $("#bank");
+    const wordLang = ex.bankTarget ? P.lang : S.native;
+    if (prem()) loadWordPack(wordLang); // precarga del paquete de palabras
+    const sayPiece = i => speakWord(ex.bank[i], wordLang);
 
     // Construcción única: cada pieza es un nodo que solo se MUEVE entre huecos y banco.
     const pieces = ex.bank.map((_, i) => {
@@ -668,15 +782,15 @@
       const target = moved ? (d.moved ? nearest(d.px, d.py) : (rects = slotEls.map(({ d: sd }) => { const r = sd.getBoundingClientRect(); return { cx: r.left + r.width / 2, cy: r.top + r.height / 2 }; }), nearest(d.px, d.py))) : -1;
       const t = moved ? document.elementFromPoint(d.px, d.py) : null;
       stop(); drag = null;
-      if (!moved) { dispatch({ type: "TAP", piece: d.i, from: d.from }); if (d.from >= 0) sfx.back(); }
-      else if (target >= 0) dispatch({ type: "DROP", piece: d.i, from: d.from, to: target });
+      if (!moved) { dispatch({ type: "TAP", piece: d.i, from: d.from }); if (d.from >= 0) sfx.back(); sayPiece(d.i); }
+      else if (target >= 0) { dispatch({ type: "DROP", piece: d.i, from: d.from, to: target }); sayPiece(d.i); }
       else if (t && t.closest("#bank") && d.from >= 0) { dispatch({ type: "DROP", piece: d.i, from: d.from, to: null }); sfx.back(); }
     };
     const onCancel = () => { stop(); drag = null; };
     const onClick = e => { // teclado: Enter / espacio
       if (e.detail !== 0 || P.locked) return;
       const el = e.target.closest(".pz[data-i]"); if (!el) return;
-      dispatch({ type: "TAP", piece: +el.dataset.i, from: el._slot }); el.focus();
+      dispatch({ type: "TAP", piece: +el.dataset.i, from: el._slot }); el.focus(); sayPiece(+el.dataset.i);
     };
     const stage = $("#stage");
     stage.addEventListener("pointerdown", onDown); stage.addEventListener("click", onClick);
@@ -860,7 +974,7 @@
     const btn = $("#pBtn"); btn.textContent = "Continuar"; btn.disabled = false; btn.classList.remove("pulse"); btn.focus();
     setBar((P.i + 1) / P.q.length);
     // jugo: mascota, sonido, confeti y racha
-    const sm = $(".say .mascot"); if (sm) sm.outerHTML = mascot(ok ? "cheer" : "sad", 64);
+    const sm = $(".say .mascot"); if (sm) sm.outerHTML = mascot(!ok ? "sad" : P.combo >= 5 ? "wow" : P.combo >= 3 ? "love" : Math.random() < .2 ? "wink" : "cheer", 64);
     if (ok) {
       if (ex.type === "bank") {
         sfx.win(); const b = $("#board");
@@ -1084,15 +1198,16 @@
             <button class="btn" id="go">Practicar ahora</button></div>
             <ul class="intro">${due.slice(0, 12).map(x => `<li><div><b>${EX.tgt(x.t, S.lang)}</b><span class="muted">${esc(x.es)}</span></div></li>`).join("")}</ul>`
         : all.length
-          ? `<div class="empty">${mascot("happy", 110)}<p class="muted">Estás al día. El próximo repaso toca ${fmtRelDay(Engine.srsNextDue(all))}.</p></div>`
+          ? `<div class="empty">${mascot("sleepy", 110)}<p class="muted">Estás al día. El próximo repaso toca ${fmtRelDay(Engine.srsNextDue(all))}.</p></div>`
           : `<div class="empty">${mascot("happy", 110)}<p class="muted">Aquí aparecerán, con su propia fecha de repaso, las palabras y frases que vayas practicando por el mapa.</p></div>`}`;
     const g = $("#go"); if (g) g.onclick = () => startPlayer({ kind: "review", lang: S.lang, ex: EX.reviewSet(S.lang, due) });
   }
 
   /* ---------- Perfil ---------- */
   function viewProfile() {
+    const skinSample = S.lang ? esc(EX.unit(S.lang, 0).words[0].t) : "Lingo";
     const started = Object.keys(COURSES).filter(k => doneCount(k) > 0);
-    app.innerHTML = `<div class="profile-head">${mascot(prem() ? "cheer" : "happy", 100)}
+    app.innerHTML = `<div class="profile-head">${mascot(prem() ? "wink" : "happy", 100)}
         <div><h1>Tu perfil</h1><span class="badge ${prem() ? "prem" : ""}">${ic(prem() ? "crown" : "book")}${PLANS[S.plan].name}</span></div></div>
       <div class="stat-grid">
         <div class="stat">${ic("flame", "solid")}<b>${S.streak}</b><span>Días de racha</span></div>
@@ -1107,6 +1222,10 @@
         return `<div class="card row-card">${langBadge(k, "sm")}<div class="grow"><b>${COURSES[k].name}</b>${c ? `<span class="muted small"> &middot; ${c.name}</span>` : ""}<div class="bar"><i style="width:${p}%"></i></div></div><span class="muted">${p}%</span></div>`; }).join("")
         : `<p class="muted">Todavía no has completado ningún nivel.</p>`}
       <div class="center" style="margin-top:20px"><button class="btn ${prem() ? "ghost" : "prem"}" id="pl">${prem() ? "Gestionar plan" : "Mejorar a Premium"}</button></div>
+      <div class="card skin-pick"><b>Estilo de las piezas</b>${prem() ? "" : `<span class="muted small">El estilo Clásico es gratis; los demás son Premium.</span>`}
+        <div class="skin-grid">${SKINS.map((k, n) => `<button type="button" class="skin-opt ${skinId() === k.id ? "on" : ""} ${k.id !== "standard" && !prem() ? "locked" : ""}" data-skin="${k.id}" aria-pressed="${skinId() === k.id}">
+          <span class="skin-prev"><span class="pz c${(n * 3 + 1) % 8} skinprev" data-skin="${k.id}"><svg class="pzs" aria-hidden="true"></svg><span class="pzt">${skinSample}</span></span></span>
+          <b>${k.name}</b>${k.id !== "standard" && !prem() ? ic("lock", "corner") : ""}</button>`).join("")}</div></div>
       <div class="card native-pick"><b>Idioma de la interfaz</b>
         <div class="native-chips" data-notr role="group" aria-label="Idioma de la interfaz">${[["es", "Español"], ["en", "English"]].map(([k, n]) => `<button class="chip ${uiLang() === k ? "on" : ""}" data-ui="${k}" aria-pressed="${uiLang() === k}">${n}</button>`).join("")}</div></div>
       <p class="credits">Voces generadas con <a href="https://github.com/OHF-Voice/piper1-gpl" target="_blank" rel="noopener">Piper</a>.
@@ -1116,6 +1235,12 @@
         Rumano: Google Cloud Text-to-Speech (voz Chirp 3 HD).</p>`;
     $("#pl").onclick = () => openPlans();
     $$(".native-chips .chip[data-ui]").forEach(b => b.onclick = () => { S.ui = b.dataset.ui; applyLangs(); save(); render(); });
+    $$(".skinprev").forEach(el => shapePiece(el, el.dataset.skin));
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => $$(".skinprev").forEach(el => { el._sk = null; shapePiece(el, el.dataset.skin); }));
+    $$(".skin-opt").forEach(b => b.onclick = () => {
+      if (b.dataset.skin !== "standard" && !prem()) return openPlans("Los estilos de piezas son una función Premium.");
+      S.skin = b.dataset.skin; save(); applySkin(); viewProfile();
+    });
   }
 
   /* ---------- Planes ---------- */
@@ -1139,7 +1264,7 @@
     $("#pPre").onclick = checkout;
   }
   function checkout() {
-    modal.innerHTML = `<div class="box center">${mascot("happy", 90)}<h2>Pago de demostración</h2>
+    modal.innerHTML = `<div class="box center">${mascot("love", 90)}<h2>Pago de demostración</h2>
       <p class="muted">No se cobra nada ni se guardan datos de tarjeta. Para cobrar de verdad hay que conectar un procesador de pagos.</p>
       <div class="row center"><button class="btn ghost" id="no">Cancelar</button><button class="btn prem" id="pay">Activar Premium</button></div></div>`;
     $("#no").onclick = closeModal;

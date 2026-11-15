@@ -1,4 +1,4 @@
-/* Set de iconos propio de Lingo (sustituye a los emojis) y mascota "Lumi".
+/* Set de iconos propio de Lingo (sustituye a los emojis) y mascota (un mapache).
    Todo es SVG en una rejilla de 24x24, trazo redondeado y relleno translúcido. */
 (() => {
   const N = ' fill="none"';
@@ -61,27 +61,71 @@
     return `<span class="lb ${size}" style="--c:${c.color}"><span>${c.code}</span></span>`;
   };
 
-  /* Mascota Lumi. mood: happy | cheer | sad | think */
+  /* Mascota: un mapache. mood: happy | cheer | sad | think | wow | wink | sleepy | love
+     Dibujo propio en SVG (120x120). Las partes son grupos con clase (r-tail, r-body, r-arms, r-head, r-eyes) para animarlas con CSS. */
+  window.MASCOT_MOODS = ["happy", "cheer", "sad", "think", "wow", "wink", "sleepy", "love"];
   window.mascot = (mood = "happy", px = 120) => {
-    const eyes = {
-      happy: '<path d="M38 56q8-10 16 0M66 56q8-10 16 0" class="mk"/>',
-      cheer: '<path d="M38 56q8-10 16 0M66 56q8-10 16 0" class="mk"/>',
-      sad: '<circle cx="46" cy="58" r="10" fill="#fff"/><circle cx="74" cy="58" r="10" fill="#fff"/><circle cx="46" cy="61" r="5" class="mp"/><circle cx="74" cy="61" r="5" class="mp"/><path d="M36 53l16-7M84 53l-16-7" class="mk"/>',
-      think: '<circle cx="46" cy="56" r="10" fill="#fff"/><circle cx="74" cy="56" r="10" fill="#fff"/><circle cx="49" cy="53" r="5" class="mp"/><circle cx="77" cy="53" r="5" class="mp"/>'
-    }[mood] || "";
-    const wingL = mood === "cheer" ? 'transform="rotate(-42 22 90)"' : "";
-    const wingR = mood === "cheer" ? 'transform="rotate(42 98 90)"' : "";
-    const beak = mood === "sad"
-      ? '<path d="M52 74L68 74L60 66z" class="mb"/>'
-      : '<path d="M52 66L68 66L60 77z" class="mb"/>';
-    return `<svg class="mascot" width="${px}" height="${px}" viewBox="0 0 120 120" role="img" aria-label="Lumi">
-      <rect x="40" y="104" width="14" height="8" rx="4" class="mb"/><rect x="66" y="104" width="14" height="8" rx="4" class="mb"/>
-      <path d="M48 24l4-12 8 10 8-10 4 12z" class="md"/>
-      <ellipse cx="60" cy="68" rx="42" ry="40" class="mt"/>
-      <ellipse cx="22" cy="72" rx="9" ry="19" class="md" ${wingL}/><ellipse cx="98" cy="72" rx="9" ry="19" class="md" ${wingR}/>
-      <ellipse cx="60" cy="82" rx="25" ry="22" class="mw"/>
-      ${eyes}${beak}
-      <circle cx="33" cy="70" r="6" class="mc"/><circle cx="87" cy="70" r="6" class="mc"/>
+    if (!window.MASCOT_MOODS.includes(mood)) mood = "happy";
+    const open = (dx = 0, dy = 1, r = 7.5, pr = 3.8) =>
+      `<circle cx="45" cy="54" r="${r}" fill="#fff"/><circle cx="75" cy="54" r="${r}" fill="#fff"/>` +
+      `<circle cx="${45 + dx}" cy="${54 + dy}" r="${pr}" class="rn"/><circle cx="${75 + dx}" cy="${54 + dy}" r="${pr}" class="rn"/>` +
+      `<circle cx="${46.4 + dx}" cy="${52.4 + dy}" r="1.3" fill="#fff"/><circle cx="${76.4 + dx}" cy="${52.4 + dy}" r="1.3" fill="#fff"/>`;
+    const heart = (cx, cy, s = 1) => `<path d="M${cx} ${cy + 6 * s}C${cx - 11 * s} ${cy - 1 * s} ${cx - 6 * s} ${cy - 8 * s} ${cx} ${cy - 3 * s}C${cx + 6 * s} ${cy - 8 * s} ${cx + 11 * s} ${cy - 1 * s} ${cx} ${cy + 6 * s}Z" class="rh"/>`;
+    const smile = '<path d="M51 70q9 9 18 0" class="rm"/>';
+    const openMouth = '<path d="M50 69q10 15 20 0z" class="rmo"/><path d="M55 76q5 5 10 0q-5-3-10 0z" class="rp"/>';
+    let eyes, mouth, brows = "", extra = "", arms = "arms-down", blink = true;
+    switch (mood) {
+      case "cheer":
+        eyes = '<path d="M37 57q8-11 16 0M67 57q8-11 16 0" class="rk"/>'; mouth = openMouth; arms = "arms-up"; blink = false;
+        extra = '<g class="r-sparks"><path d="M14 30l2.5 6 6 2.500-6 2.500L14 47l-2.500-6-6-2.500 6-2.500z" class="ry"/><path d="M104 22l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" class="ry"/><circle cx="100" cy="52" r="3" class="rp"/><circle cx="18" cy="60" r="3" class="rp"/></g>'; break;
+      case "sad":
+        eyes = open(0, 3, 7.5, 4); mouth = '<path d="M52 75q8-7 16 0" class="rm"/>';
+        brows = '<path d="M36 47L51 41M84 47L69 41" class="rb"/>';
+        extra = '<path d="M36 62q-4 7 0 10q4-3 0-10z" class="rt"/>'; break;
+      case "think":
+        eyes = open(3, -3); mouth = '<path d="M54 72h11" class="rm"/>'; brows = '<path d="M36 44l14-3M70 41l14 3" class="rb"/>'; arms = "arms-chin";
+        extra = '<g class="r-think"><circle cx="97" cy="30" r="3" fill="#cfd6dd"/><circle cx="104" cy="20" r="4.500" fill="#cfd6dd"/><ellipse cx="108" cy="8" rx="9" ry="6.500" fill="#cfd6dd"/></g>'; break;
+      case "wow":
+        eyes = open(0, 0, 9, 3.2); mouth = '<ellipse cx="60" cy="74" rx="5" ry="7" class="rmo"/>'; brows = '<path d="M35 41q8-6 16 0M69 41q8-6 16 0" class="rb"/>';
+        extra = '<g class="r-sparks"><path d="M104 12v14M104 31v3" class="rex"/><path d="M14 18l6 8M20 12l-2 6" class="rex"/></g>'; arms = "arms-up"; break;
+      case "wink":
+        eyes = '<circle cx="45" cy="54" r="7.500" fill="#fff"/><circle cx="45" cy="55" r="3.800" class="rn"/><circle cx="46.400" cy="53.400" r="1.300" fill="#fff"/><path d="M67 56q8-10 16 0" class="rk"/>';
+        mouth = '<path d="M50 69q10 12 20 0z" class="rmo"/><path d="M56 75q4 4 8 0q-4-2-8 0z" class="rp"/>'; blink = false; break;
+      case "sleepy":
+        eyes = '<path d="M37 54q8 7 16 0M67 54q8 7 16 0" class="rk"/>'; mouth = '<ellipse cx="60" cy="73" rx="3" ry="2.500" class="rmo"/>'; blink = false;
+        extra = '<g class="r-zzz"><text x="97" y="26" class="rz" font-size="16">z</text><text x="106" y="12" class="rz" font-size="12">z</text></g>'; break;
+      case "love":
+        eyes = heart(45, 54, .85) + heart(75, 54, .85); mouth = smile; blink = false;
+        extra = `<g class="r-hearts">${heart(100, 26, .8)}${heart(18, 38, .6)}</g>`; break;
+      default:
+        eyes = open(0, 1); mouth = smile;
+    }
+    const arm = {
+      "arms-down": '<ellipse cx="34" cy="94" rx="6.500" ry="13" class="rg2" transform="rotate(10 34 94)"/><ellipse cx="86" cy="94" rx="6.500" ry="13" class="rg2" transform="rotate(-10 86 94)"/><circle cx="31" cy="106" r="5.500" class="rd"/><circle cx="89" cy="106" r="5.500" class="rd"/>',
+      "arms-up": '<ellipse cx="30" cy="84" rx="6.500" ry="14" class="rg2" transform="rotate(-38 30 84)"/><ellipse cx="90" cy="84" rx="6.500" ry="14" class="rg2" transform="rotate(38 90 84)"/><circle cx="20" cy="70" r="5.500" class="rd"/><circle cx="100" cy="70" r="5.500" class="rd"/>',
+      "arms-chin": '<ellipse cx="34" cy="94" rx="6.500" ry="13" class="rg2" transform="rotate(10 34 94)"/><ellipse cx="82" cy="86" rx="6.500" ry="13" class="rg2" transform="rotate(32 82 86)"/><circle cx="73" cy="76" r="5.500" class="rd"/><circle cx="31" cy="106" r="5.500" class="rd"/>'
+    }[arms];
+    const droop = mood === "sad" ? ' transform="rotate(14 31 28)"' : "";
+    const droopR = mood === "sad" ? ' transform="rotate(-14 89 28)"' : "";
+    return `<svg class="mascot m-${mood}" width="${px}" height="${px}" viewBox="0 0 120 120" role="img" aria-label="Mapache">
+      <g class="r-tail"><ellipse cx="96" cy="88" rx="13" ry="27" class="rg2" transform="rotate(34 96 88)"/><path d="M87 70q10 4 16-1M91 82q10 4 17-1M95 94q9 3 16-2" class="rs"/></g>
+      <g class="r-body"><ellipse cx="60" cy="92" rx="27" ry="23" class="rg"/><ellipse cx="60" cy="97" rx="16" ry="14" class="rl"/><ellipse cx="46" cy="112" rx="10" ry="5.500" class="rd"/><ellipse cx="74" cy="112" rx="10" ry="5.500" class="rd"/></g>
+      <g class="r-arms">${arm}</g>
+      <g class="r-head">
+        <g${droop}><path d="M30 38L25 12Q40 11 50 27z" class="rg"/><path d="M33 33L31 19Q39 20 45 28z" class="rp"/></g>
+        <g${droopR}><path d="M90 38L95 12Q80 11 70 27z" class="rg"/><path d="M87 33L89 19Q81 20 75 28z" class="rp"/></g>
+        <ellipse cx="60" cy="54" rx="37" ry="31" class="rg"/>
+        <path d="M60 26Q52 38 55 49H65Q68 38 60 26z" class="rl"/>
+        <ellipse cx="60" cy="67" rx="20" ry="15" class="rl"/>
+        <path d="M24 51Q38 41 52 52Q60 47 68 52Q82 41 96 51Q94 68 77 68Q66 66 60 59Q54 66 43 68Q26 68 24 51z" class="rd"/>
+        <g class="${blink ? "r-eyes" : ""}">${eyes}</g>
+        ${brows}
+        <ellipse cx="60" cy="64.500" rx="5.500" ry="4" class="rn"/>
+        <path d="M60 68.500v1.500" class="rm"/>
+        ${mouth}
+        <circle cx="34" cy="68" r="5.500" class="rp" opacity=".55"/><circle cx="86" cy="68" r="5.500" class="rp" opacity=".55"/>
+      </g>
+      ${extra}
     </svg>`;
   };
 
