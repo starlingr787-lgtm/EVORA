@@ -1,4 +1,4 @@
-/* Lingo — identidad propia: laguna (teal) + coral + oro, mascota Lumi, iconos SVG propios */
+/* Rocco — identidad propia: laguna (teal) + coral + oro, mascota Rocco, iconos SVG propios */
 :root{
   --bg:#f2f6f7;--card:#fff;--ink:#12213a;--muted:#5d6b80;--line:#dce4e9;
   --teal:#0f9d94;--teal-d:#0a7a73;--teal-l:#d7f3f0;
@@ -409,31 +409,7 @@ body.is-dragging .bank .pz{animation-play-state:paused}
 .chip.on{background:var(--teal);border-color:var(--teal-d);color:#fff}
 .course-card.same{opacity:.7}
 
-/* Mascota: mapache */
-.mascot .rg{fill:#a1abb6}.mascot .rg2{fill:#8a95a1}.mascot .rl{fill:#f1f3f6}.mascot .rd{fill:#2c3541}.mascot .rn{fill:#151b22}
-.mascot .rp{fill:#ee9fb2}.mascot .ry{fill:#ffc933}.mascot .rh{fill:#ff5d7a}.mascot .rt{fill:#5bb8ff}.mascot .rmo{fill:#3a1f2a}
-.mascot .rs{fill:none;stroke:#2c3541;stroke-width:5;stroke-linecap:round}
-.mascot .rk{fill:none;stroke:#fff;stroke-width:3.2;stroke-linecap:round}
-.mascot .rm{fill:none;stroke:#151b22;stroke-width:2.6;stroke-linecap:round}
-.mascot .rb{fill:none;stroke:#3a4553;stroke-width:3;stroke-linecap:round}
-.mascot .rex{fill:none;stroke:#ffc933;stroke-width:4;stroke-linecap:round}
-.mascot .rz{fill:#9fb0c0;font-weight:900;font-family:system-ui,sans-serif}
-.mascot .r-tail{transform-origin:84px 96px;animation:r-wag 2.6s ease-in-out infinite}
-.mascot .r-eyes{transform-origin:60px 54px;animation:r-blink 5.2s infinite}
-.mascot .r-head{transform-origin:60px 82px}
-.mascot.m-think .r-head{transform:rotate(-5deg)}
-.mascot.m-sad .r-head{transform:translateY(3px) rotate(4deg)}
-.mascot.m-sad .r-tail{animation:none;transform:rotate(18deg)}
-.mascot.m-cheer,.mascot.m-wow{animation:r-hop .8s ease-in-out 3}
-.mascot.m-love .r-hearts,.mascot.m-sleepy .r-zzz,.mascot.m-cheer .r-sparks,.mascot.m-wow .r-sparks{animation:r-float 2.2s ease-in-out infinite}
-.mascot.m-think .r-think{animation:r-float 2.6s ease-in-out infinite}
-.mascot.m-sleepy .r-head{transform:rotate(6deg)}
-.mascot.react{animation:r-hop .6s ease-in-out 2}
-@keyframes r-wag{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(7deg)}}
-@keyframes r-blink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.08)}}
-@keyframes r-hop{0%,100%{transform:translateY(0)}40%{transform:translateY(-9px) rotate(-2deg)}70%{transform:translateY(0) rotate(2deg)}}
-@keyframes r-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-@media (prefers-reduced-motion:reduce){.mascot,.mascot *{animation:none!important}}
+
 
 /* Estilos de pieza */
 .pzs .gx{pointer-events:none}
@@ -474,3 +450,69 @@ body.skin-choco .pz.c6:not(.ok):not(.bad):not(.skinprev){--pf:#7ea35a;--ps:#4c6c
 .skinprev[data-skin="mandala"]{padding-inline:36px;min-height:54px}
 .skinprev[data-skin="bubble"]{padding-inline:26px;min-height:54px;color:var(--ink);text-shadow:0 0 5px rgba(255,255,255,.85),0 0 2px rgba(255,255,255,.9)}
 .skinprev[data-skin="choco"]{padding-inline:20px;min-height:54px;--pf:#8b5334;--ps:#54301b}
+
+/* Rocco */
+.mascot.rocco{overflow:visible}
+.rocco .rd{fill:#232830}.rocco .rd2{fill:#262b33}.rocco .rhl{fill:#fff;opacity:.12}
+.rocco .rn{fill:#12161b}.rocco .rnhl{fill:#fff;opacity:.55}
+.rocco .rp{fill:#e48ea5}.rocco .rear{fill:#d49aa0}.rocco .rpale{fill:none;stroke:#eef0f3;stroke-width:3;stroke-linecap:round;opacity:.85}
+.rocco .rblaze{fill:#eceff2;opacity:.8}.rocco .rtuft{opacity:.95}
+.rocco .rfur path{fill:none;stroke:#68717f;stroke-width:1.6;stroke-linecap:round;opacity:.35}
+.rocco .rmedge{fill:none;stroke:#59616d;stroke-width:5;stroke-linecap:round;opacity:.28}
+.rocco .rshadow{fill:#000;opacity:.12}
+.rocco .rarm{fill:none;stroke:#8c95a3;stroke-width:17;stroke-linecap:round}.rocco .rarm2{fill:none;stroke:#b3bac5;stroke-width:5;stroke-linecap:round;opacity:.6}
+.rocco .rtoes{stroke:#12161b;stroke-width:1.5;stroke-linecap:round;opacity:.55}
+.rocco .rring2{fill:none;stroke:#2a2f38;stroke-width:12}.rocco .rtedge{fill:none;stroke:#fff;stroke-width:3;opacity:.12}
+.rocco .rk{fill:none;stroke:#eef1f5;stroke-width:4;stroke-linecap:round}
+.rocco .rb{fill:none;stroke:#e9edf1;stroke-width:3.4;stroke-linecap:round;opacity:.9}
+.rocco .rm{fill:none;stroke:#12161b;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.rocco .rmo{fill:#3a1c26}.rocco .rteeth{fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;opacity:.9}
+.rocco .rwh{fill:none;stroke:#fff;stroke-width:1.3;stroke-linecap:round;opacity:.75}
+.rocco .rring{fill:none;stroke:#fff;stroke-width:1.5;opacity:.35}
+.rocco .rlid{fill:#8d96a3;opacity:.95}
+.rocco .rh{fill:#ff5d7a}.rocco .ry{fill:#ffc933}.rocco .rt{fill:#5bb8ff}
+.rocco .rex{fill:none;stroke:#ffc933;stroke-width:5;stroke-linecap:round}
+.rocco .rz{fill:#9fb0c0;font-weight:900;font-family:system-ui,sans-serif}
+.rocco .rq{fill:#5d6a78;font:900 14px system-ui,sans-serif}.rocco .rq2{fill:#ffc933;font:900 26px system-ui,sans-serif}
+.rocco .rchl{fill:none;stroke:#2e170d;stroke-width:1.6;opacity:.7}.rocco .rfoil{fill:#cfd5dc}.rocco .rcr{fill:#6a3b22}
+.rocco .rmug{fill:#f3efe9;stroke:#cfc8bd;stroke-width:1.5}.rocco .rmugh{fill:none;stroke:#e8e2d8;stroke-width:4;stroke-linecap:round}.rocco .rcoffee{fill:#6b3f23}
+.rocco .rsteam{fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;opacity:.75}.rocco .rfoam{fill:none;stroke:#fff;stroke-width:5;stroke-linecap:round;opacity:.5}
+/* animación */
+.rocco .r-body{transform-origin:100px 200px;animation:r-breathe 3.8s ease-in-out infinite}
+.rocco .r-head{transform-origin:100px 140px;animation:r-bob 3.8s ease-in-out infinite}
+.rocco .r-tail{transform-origin:130px 170px;animation:r-wag 3.2s ease-in-out infinite}
+.rocco .r-eyes{transform-origin:100px 92px;animation:r-blink 5.4s infinite}
+.rocco.c-tilt .r-head{transform:rotate(-7deg);animation:none}
+.rocco.c-droop .r-head{transform:translateY(5px) rotate(4deg);animation:none}.rocco.c-droop .r-tail{animation:none;transform:rotate(14deg)}
+.rocco.c-proud .r-head{transform:translateY(-3px) rotate(-3deg);animation:none}
+.rocco.c-nod .r-head{transform-origin:100px 140px;animation:r-nod 3.6s ease-in-out infinite}
+.rocco.c-yawn .r-head{transform:translateY(-3px) rotate(-6deg);animation:none}
+.rocco.c-hop{animation:r-hop .8s ease-in-out 3}
+.rocco .r-chew{transform-origin:100px 122px;animation:r-chew .45s ease-in-out infinite}
+.rocco .r-eat{animation:r-munch .9s ease-in-out infinite}.rocco .r-crumbs{animation:r-fall 1.4s linear infinite}
+.rocco .r-wash{animation:r-rub .5s ease-in-out infinite}.rocco .r-drops{animation:r-fall 1.2s linear infinite}
+.rocco .r-steam{animation:r-float 2.4s ease-in-out infinite}
+.rocco .r-sparks,.rocco .r-hearts,.rocco .r-zzz,.rocco .r-think{animation:r-float 2.4s ease-in-out infinite}
+.mascot.react{animation:r-hop .6s ease-in-out 2}
+@keyframes r-breathe{0%,100%{transform:scale(1,1)}50%{transform:scale(1.015,1.025)}}
+@keyframes r-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.500px)}}
+@keyframes r-wag{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(6deg)}}
+@keyframes r-blink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.08)}}
+@keyframes r-nod{0%,100%{transform:rotate(3deg)}50%{transform:rotate(9deg) translateY(4px)}}
+@keyframes r-hop{0%,100%{transform:translateY(0)}40%{transform:translateY(-12px) rotate(-2deg)}70%{transform:translateY(0) rotate(2deg)}}
+@keyframes r-chew{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.55)}}
+@keyframes r-munch{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes r-rub{0%,100%{transform:translateX(-4px)}50%{transform:translateX(4px)}}
+@keyframes r-fall{0%{transform:translateY(-6px);opacity:0}30%{opacity:1}100%{transform:translateY(12px);opacity:0}}
+@keyframes r-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@media (prefers-reduced-motion:reduce){.mascot,.mascot *{animation:none!important}}
+
+/* Rocco: comentarios y compañero del mapa */
+.rocco-line{display:block;font-weight:700;font-size:13px;color:var(--muted);margin-top:2px;line-height:1.3}
+.rocco-line.big{font-size:16px;color:var(--ink);margin:6px auto 2px;max-width:30ch;text-align:center}
+#roccoPal{position:fixed;left:max(8px,env(safe-area-inset-left,0px));bottom:calc(78px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;align-items:flex-end;gap:4px;pointer-events:none;max-width:calc(100vw - 16px)}
+#roccoPal .mascot{pointer-events:auto;cursor:pointer;margin:0;flex:none}
+#roccoPal .rb-bubble{pointer-events:auto;max-width:200px;background:var(--card);border:2px solid var(--line);border-radius:14px 14px 14px 4px;padding:8px 12px;font-weight:800;font-size:14px;line-height:1.3;color:var(--ink);box-shadow:var(--shadow);margin-bottom:34px}
+#roccoPal.in{animation:rpal-in .45s cubic-bezier(.3,1.4,.5,1) both}#roccoPal.out{animation:rpal-out .4s ease-in both}
+@keyframes rpal-in{from{transform:translateY(120px);opacity:0}to{transform:none;opacity:1}}
+@keyframes rpal-out{to{transform:translateY(120px);opacity:0}}

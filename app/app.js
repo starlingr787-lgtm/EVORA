@@ -11,7 +11,7 @@
   /* ---------- Estado ---------- */
   let S = load();
   function load() {
-    const d = { plan: "standard", lang: null, xp: 0, streak: 0, lastDay: null, hearts: 5, heartsDay: today(), progress: {}, srs: {}, cefr: {}, daily: {}, dictDay: null, dictUsed: 0, tab: "learn", native: "es", ui: null, skin: "standard", pick: false, vtab: "today", mute: false, unlocked: {}, exams: {} };
+    const d = { plan: "standard", lang: null, xp: 0, streak: 0, lastDay: null, hearts: 5, heartsDay: today(), progress: {}, srs: {}, cefr: {}, daily: {}, dictDay: null, dictUsed: 0, tab: "learn", native: "es", ui: null, skin: "standard", rocco: true, pick: false, vtab: "today", mute: false, unlocked: {}, exams: {} };
     try {
       const old = JSON.parse(localStorage.getItem(KEY) || localStorage.getItem("lingo-state-v2")) || {};
       Object.assign(d, old);
@@ -176,7 +176,7 @@
   function renderTop() {
     const C = S.lang && COURSES[S.lang];
     $("#top").innerHTML = `
-      <div class="brand">${mascot("happy", 34)}<span>Lingo</span></div>
+      <div class="brand">${mascot("happy", 34)}<span>Rocco</span></div>
       ${C ? `<button class="course-chip" id="chipCourse">${langBadge(S.lang, "sm")}<span>${C.name}</span></button>` : "<span></span>"}
       <div class="stats">
         <span class="st flame" title="Racha de días">${ic("flame", "solid")}${S.streak}</span>
@@ -205,7 +205,35 @@
     setTimeout(() => { if (n.isConnected) { const t2 = document.createElement("div"); t2.innerHTML = mascot(cur, px); n.replaceWith(t2.firstElementChild); } }, 2200);
   });
 
-  function render() {
+  /* ---------- Rocco en el mapa ----------
+     Aparece unos segundos de vez en cuando, hace algo al azar (comer chocolate, lavarse las patas, tomar café...) y a veces comenta.
+     No aparece en las lecciones, no insiste y se desactiva en Perfil. */
+  let palT = null, palFirst = true;
+  function palStop() { clearTimeout(palT); const e = $("#roccoPal"); if (e) { clearTimeout(e._t); e.remove(); } }
+  function palShow(mood, line, ms = 8000) {
+    let el = $("#roccoPal");
+    if (!el) { el = document.createElement("div"); el.id = "roccoPal"; document.body.appendChild(el); }
+    el.className = "in"; el.innerHTML = mascot(mood, 84) + (line ? `<div class="rb-bubble">${esc(line)}</div>` : "");
+    clearTimeout(el._t); el._t = setTimeout(() => { el.className = "out"; setTimeout(() => { if (el.className === "out") el.remove(); }, 450); }, ms);
+  }
+  function palGreeting() {
+    let away = 0; try { away = S.lastDay ? Math.floor((Date.now() - new Date(S.lastDay).getTime()) / 86400000) : 0; } catch (e) {}
+    const h = new Date().getHours();
+    return away >= 3 ? "back" : h < 5 ? "greetNight" : h < 12 ? "greetMorning" : h < 19 ? "greetAfternoon" : h < 23 ? "greetEvening" : "greetNight";
+  }
+  function palLoop(first) {
+    clearTimeout(palT);
+    if (S.rocco === false || S.tab !== "learn" || !S.lang || P) return;
+    palT = setTimeout(() => {
+      if (document.hidden || P || !modal.hidden) return palLoop(false);
+      if (first) { const ev = palGreeting(); palShow(ev === "back" ? "love" : "wink", roccoSay(ev), 7000); palFirst = false; }
+      else { const act = MASCOT_ACTIVITIES[Math.floor(Math.random() * MASCOT_ACTIVITIES.length)]; palShow(act, Math.random() < .6 ? roccoSay(act) : "", 8000); }
+      palLoop(false);
+    }, first ? 3500 : 45000 + Math.random() * 30000);
+  }
+  function render() { palStop(); render0(); if (S.tab === "learn" && S.lang && !S.pick && !levelPickFor) palLoop(palFirst); }
+
+  function render0() {
     applySkin();
     renderTop();
     if (!S.lang || S.pick) return viewCourses();
@@ -359,7 +387,7 @@
         <li>Vocabulario de referencia: A1 unas 650 palabras y B1 unas 2.400 (Goethe-Institut). En inglés, A2 1.500-2.500 y B1 2.750-3.250 (<a href="http://eurosla.org/monographs/EM02/Milton.pdf" target="_blank" rel="noopener">Milton</a>).</li>
         <li>El umbral del 80 % viene del aprendizaje de dominio (Bloom). Es una pauta habitual, no un corte validado para vocabulario.</li>
       </ul>
-      <p class="muted small">Lingo cubre una parte de cada nivel: úsala junto a lectura, series y conversación.</p></div>`;
+      <p class="muted small">Rocco cubre una parte de cada nivel: úsala junto a lectura, series y conversación.</p></div>`;
     $("#x").onclick = closeModal;
   }
   function startExam(idx) {
@@ -381,7 +409,7 @@
       if (next) S.unlocked[lang] = Math.max(S.unlocked[lang] ?? -1, idx + 1);
       S.xp += R.xp; touchStreak(); save(); renderTop();
       playerEl.innerHTML = `<div class="p-body"><div class="stage center result">
-        ${mascot("cheer", 150)}<h1>¡Sesión ${c.id} superada!</h1>
+        ${mascot("cheer", 150)}<h1>¡Sesión ${c.id} superada!</h1>${rocLn("examPass")}
         <div class="nstars lg">${[1, 2, 3].map(n => ic("star", "solid " + (n <= R.stars ? "on" : "off"))).join("")}</div>
         <p class="muted">${next ? `Subes a <b>${next.name} (${next.id})</b>: ${next.goal}` : "Has completado todas las sesiones disponibles. La siguiente llegará pronto."}</p>
         <div class="res-stats"><div class="rs xp">${ic("star", "solid")}<b>+${R.xp}</b><span>XP</span></div><div class="rs acc">${ic("check")}<b>${R.accuracy}%</b><span>Aciertos</span></div></div></div></div>
@@ -393,7 +421,7 @@
       const miss = R.weakUnits.map(u => unitTitle(P.lang, u));
       save(); renderTop();
       playerEl.innerHTML = `<div class="p-body"><div class="stage center result">
-        ${mascot("happy", 130)}<h1>Aún no, pero vas bien</h1>
+        ${mascot("happy", 130)}<h1>Aún no, pero vas bien</h1>${rocLn("examFail")}
         <p class="muted">${P.correct} de ${R.total} aciertos (${R.accuracy} %). Necesitas ${R.need}.</p>
         ${miss.length ? `<p><b>Te conviene repasar:</b></p><ul class="tone-legend">${miss.map(m => `<li><span class="tone-chip t-neutro">${ic("book")}${esc(m)}</span></li>`).join("")}</ul>` : ""}</div></div>
         <div class="p-foot"><button class="btn ghost" id="back">Volver al mapa</button><button class="btn" id="again">Intentarlo otra vez</button></div>`;
@@ -518,6 +546,7 @@
   const freeKind = () => P && (P.kind === "placement" || P.kind === "daily" || P.kind === "situation" || P.kind === "exam" || P.kind === "dict");
 
   function startPlayer(cfg) {
+    palStop();
     P = Engine.sessionNew(cfg); H.check = null; H.teardown = null;
     shell();
     if (freeKind()) $(".p-hearts").style.visibility = "hidden";
@@ -960,17 +989,22 @@
     bucket[key] = { ...Engine.srsGrade(card, ok, now), es: item.es };
   }
 
+  let missRun = 0;
+  const rocLn = ev => (S.rocco === false ? "" : `<p class="rocco-line big">${esc(roccoSay(ev))}</p>`);
   function reveal(ok, correctHTML, o = {}) {
     const ex = P.ex, r = Engine.sessionRecord(P, { ok, noRetry: o.noRetry });
     P = { ...r.session, ex, locked: true };
     if (!o.skipRemember) srsTouch(ex.item, ok);
     if (!ok && r.effects.heartLoss && !prem()) { S.hearts = Math.max(0, S.hearts - 1); $("#pHearts").textContent = S.hearts; }
     save(); renderTop();
+    if (ok) missRun = 0; else missRun++;
+    const rsay = ok ? ({ 3: "streak3", 5: "streak5", 8: "streak8" }[P.combo] || (Math.random() < .25 ? "correct" : null)) : (missRun >= 2 ? "wrong2" : Math.random() < .75 ? "wrong" : null);
+    const rl = rsay && S.rocco !== false ? `<span class="rocco-line">${esc(roccoSay(rsay))}</span>` : "";
     const praise = o.okMsg || (P.kind === "placement" ? "Respuesta registrada" : PRAISE[Math.floor(Math.random() * PRAISE.length)]);
     $("#foot").className = "p-foot " + (ok ? "ok" : "bad");
     $("#fb").innerHTML = ok
-      ? `<div class="fb-in"><span class="fb-ic">${ic("check")}</span><div><b>${praise}</b>${P.combo >= 3 ? `<span class="combo-note">${ic("flame", "solid")} Racha x${P.combo}</span>` : ""}${o.showOk && correctHTML ? `<div class="fb-ans">${correctHTML}</div>` : ""}</div></div>`
-      : `<div class="fb-in"><span class="fb-ic">${ic("x")}</span><div><b>${o.msg || "Respuesta correcta"}</b>${correctHTML ? `<div class="fb-ans">${correctHTML}</div>` : ""}</div></div>`;
+      ? `<div class="fb-in"><span class="fb-ic">${ic("check")}</span><div><b>${praise}</b>${rl}${P.combo >= 3 ? `<span class="combo-note">${ic("flame", "solid")} Racha x${P.combo}</span>` : ""}${o.showOk && correctHTML ? `<div class="fb-ans">${correctHTML}</div>` : ""}</div></div>`
+      : `<div class="fb-in"><span class="fb-ic">${ic("x")}</span><div><b>${o.msg || "Respuesta correcta"}</b>${rl}${correctHTML ? `<div class="fb-ans">${correctHTML}</div>` : ""}</div></div>`;
     const btn = $("#pBtn"); btn.textContent = "Continuar"; btn.disabled = false; btn.classList.remove("pulse"); btn.focus();
     setBar((P.i + 1) / P.q.length);
     // jugo: mascota, sonido, confeti y racha
@@ -1023,8 +1057,9 @@
     }
     save(); renderTop();
     viewLearn.scrolled = false;
+    { const pc = $("#pCombo"); if (pc) pc.hidden = true; }
     playerEl.innerHTML = `<div class="p-body"><div class="stage center result">
-      ${mascot("cheer", 150)}<h1>${title}</h1>${extra}
+      ${mascot(star === 3 || acc >= 90 ? "proud" : star === 2 || acc >= 70 ? "cheer" : "happy", 150)}<h1>${title}</h1>${rocLn((P.kind === "level" || P.kind === "situation" ? star : acc >= 90 ? 3 : acc >= 70 ? 2 : 1) === 3 ? "done3" : (P.kind === "level" || P.kind === "situation" ? star : acc >= 70 ? 2 : 1) === 2 ? "done2" : "done1")}${extra}
       ${P.kind === "level" || P.kind === "situation" ? `<div class="nstars lg">${[1, 2, 3].map(n => ic("star", "solid " + (n <= star ? "on" : "off"))).join("")}</div>` : ""}
       <div class="res-stats"><div class="rs xp">${ic("star", "solid")}<b>+${xp}</b><span>XP</span></div>
         <div class="rs acc">${ic("check")}<b>${acc}%</b><span>Precisión</span></div></div></div></div>
@@ -1044,7 +1079,7 @@
 
   function outOfHearts() {
     shell();
-    $("#stage").innerHTML = `<div class="center result">${mascot("sad", 150)}<h1>Te has quedado sin vidas</h1>
+    $("#stage").innerHTML = `<div class="center result">${mascot("sad", 150)}<h1>Te has quedado sin vidas</h1>${rocLn("noHearts")}
       <p class="muted">Con el plan Estándar tienes ${PLANS.standard.hearts} vidas al día. Se recuperan mañana. Premium te da vidas ilimitadas.</p></div>`;
     $("#foot").className = "p-foot";
     $("#fb").innerHTML = `<button class="btn ghost" id="oh-x">Salir</button>`;
@@ -1183,7 +1218,7 @@
   function viewReview() {
     if (!prem()) {
       app.innerHTML = `<div class="empty">${mascot("think", 110)}<h1>Repaso espaciado</h1>
-        <p class="muted">Lumi guarda cada palabra con su propia fecha de repaso: acertar la aleja en el tiempo, fallar la trae de vuelta para hoy. Es una función Premium.</p>
+        <p class="muted">Rocco guarda cada palabra con su propia fecha de repaso: acertar la aleja en el tiempo, fallar la trae de vuelta para hoy. Es una función Premium.</p>
         <button class="btn prem" id="up">Ver Premium</button></div>`;
       $("#up").onclick = () => openPlans(); return;
     }
@@ -1205,7 +1240,7 @@
 
   /* ---------- Perfil ---------- */
   function viewProfile() {
-    const skinSample = S.lang ? esc(EX.unit(S.lang, 0).words[0].t) : "Lingo";
+    const skinSample = S.lang ? esc(EX.unit(S.lang, 0).words[0].t) : "Rocco";
     const started = Object.keys(COURSES).filter(k => doneCount(k) > 0);
     app.innerHTML = `<div class="profile-head">${mascot(prem() ? "wink" : "happy", 100)}
         <div><h1>Tu perfil</h1><span class="badge ${prem() ? "prem" : ""}">${ic(prem() ? "crown" : "book")}${PLANS[S.plan].name}</span></div></div>
@@ -1226,6 +1261,8 @@
         <div class="skin-grid">${SKINS.map((k, n) => `<button type="button" class="skin-opt ${skinId() === k.id ? "on" : ""} ${k.id !== "standard" && !prem() ? "locked" : ""}" data-skin="${k.id}" aria-pressed="${skinId() === k.id}">
           <span class="skin-prev"><span class="pz c${(n * 3 + 1) % 8} skinprev" data-skin="${k.id}"><svg class="pzs" aria-hidden="true"></svg><span class="pzt">${skinSample}</span></span></span>
           <b>${k.name}</b>${k.id !== "standard" && !prem() ? ic("lock", "corner") : ""}</button>`).join("")}</div></div>
+      <div class="card native-pick"><b>Rocco te acompaña</b><span class="muted small">Aparece a veces en el mapa con comentarios y pequeñas animaciones. Puedes desactivarlo.</span>
+        <div class="native-chips" role="group" aria-label="Rocco te acompaña">${[[1, "Activado"], [0, "Desactivado"]].map(([v, n]) => `<button class="chip ${(S.rocco !== false) === !!v ? "on" : ""}" data-rocco="${v}" aria-pressed="${(S.rocco !== false) === !!v}">${n}</button>`).join("")}</div></div>
       <div class="card native-pick"><b>Idioma de la interfaz</b>
         <div class="native-chips" data-notr role="group" aria-label="Idioma de la interfaz">${[["es", "Español"], ["en", "English"]].map(([k, n]) => `<button class="chip ${uiLang() === k ? "on" : ""}" data-ui="${k}" aria-pressed="${uiLang() === k}">${n}</button>`).join("")}</div></div>
       <p class="credits">Voces generadas con <a href="https://github.com/OHF-Voice/piper1-gpl" target="_blank" rel="noopener">Piper</a>.
@@ -1235,6 +1272,7 @@
         Rumano: Google Cloud Text-to-Speech (voz Chirp 3 HD).</p>`;
     $("#pl").onclick = () => openPlans();
     $$(".native-chips .chip[data-ui]").forEach(b => b.onclick = () => { S.ui = b.dataset.ui; applyLangs(); save(); render(); });
+    $$(".chip[data-rocco]").forEach(b => b.onclick = () => { S.rocco = b.dataset.rocco === "1"; save(); palStop(); viewProfile(); });
     $$(".skinprev").forEach(el => shapePiece(el, el.dataset.skin));
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => $$(".skinprev").forEach(el => { el._sk = null; shapePiece(el, el.dataset.skin); }));
     $$(".skin-opt").forEach(b => b.onclick = () => {

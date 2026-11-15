@@ -1,4 +1,4 @@
-# Herramientas de voz de Lingo
+# Herramientas de voz de Rocco
 
 La app **no llama a ningún motor de voz en tiempo real**: reproduce MP3 ya generados (`app/audio/<idioma>.mp3` + `<idioma>.json`).
 Así no hay claves en el navegador ni gasto por uso. Estas herramientas generan y verifican esos audios.

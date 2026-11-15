@@ -9,7 +9,7 @@
   const EN = {
     /* Navegación y general */
     "Aprender": "Learn", "Vocabulario": "Vocabulary", "Repaso": "Review", "Perfil": "Profile", "Planes": "Plans",
-    "Navegación": "Navigation", "Lingo — Aprende idiomas": "Lingo — Learn languages",
+    "Navegación": "Navigation", "Rocco — Aprende idiomas": "Rocco — Learn languages",
     "Cerrar": "Close", "Cancelar": "Cancel", "Entendido": "Got it", "Continuar": "Continue", "Seguir": "Keep going", "Salir": "Quit", "Mejorar": "Upgrade",
     "Empezar": "Start", "Repetir": "Repeat", "Comprobar": "Check", "Lento": "Slow", "Sonido": "Sound", "Escuchar": "Listen", "Escuchar despacio": "Listen slowly",
     "Puntos de experiencia": "Experience points", "Racha de días": "Day streak", "Vidas": "Lives",
@@ -62,7 +62,7 @@
     "Cambridge English": "Cambridge English",
     "Vocabulario de referencia: A1 unas 650 palabras y B1 unas 2.400 (Goethe-Institut). En inglés, A2 1.500-2.500 y B1 2.750-3.250 (": "Reference vocabulary: A1 about 650 words and B1 about 2,400 (Goethe-Institut). In English, A2 1,500-2,500 and B1 2,750-3,250 (",
     "El umbral del 80 % viene del aprendizaje de dominio (Bloom). Es una pauta habitual, no un corte validado para vocabulario.": "The 80% threshold comes from mastery learning (Bloom). It is a common rule of thumb, not a validated cut-off for vocabulary.",
-    "Lingo cubre una parte de cada nivel: úsala junto a lectura, series y conversación.": "Lingo covers part of each level: use it alongside reading, shows and conversation.",
+    "Rocco cubre una parte de cada nivel: úsala junto a lectura, series y conversación.": "Rocco covers part of each level: use it alongside reading, shows and conversation.",
     /* Prueba de sesión */
     "{2} preguntas de las unidades de {3}. Un solo intento por pregunta y sin vidas. Necesitas {4} aciertos ({5} %) para pasar a la siguiente sesión.": "{2} questions from the {3} units. One attempt per question and no lives. You need {4} correct ({5}%) to move to the next session.",
     "Si no la apruebas, te diremos qué unidades repasar. Puedes repetirla.": "If you do not pass, we will tell you which units to review. You can retake it.",
@@ -118,7 +118,7 @@
     "Practicar esta categoría": "Practise this category", "Ver Premium": "See Premium", "Hoy ya usaste tus prácticas gratis del diccionario.": "You have already used today's free dictionary practices.",
     "palabras": "words", "{0} palabras": "{0} words",
     /* Repaso */
-    "Repaso espaciado": "Spaced review", "Lumi guarda cada palabra con su propia fecha de repaso: acertar la aleja en el tiempo, fallar la trae de vuelta para hoy. Es una función Premium.": "Lumi keeps each word with its own review date: getting it right pushes it further away, getting it wrong brings it back today. This is a Premium feature.",
+    "Repaso espaciado": "Spaced review", "Rocco guarda cada palabra con su propia fecha de repaso: acertar la aleja en el tiempo, fallar la trae de vuelta para hoy. Es una función Premium.": "Rocco keeps each word with its own review date: getting it right pushes it further away, getting it wrong brings it back today. This is a Premium feature.",
     "Pendientes hoy": "Due today", "En seguimiento": "Being tracked", "{1} listos para repasar en {2}.": "{1} ready to review in {2}.", "Tienes": "You have", "elemento": "item", "elementos": "items",
     "Practicar ahora": "Practise now", "Estás al día. El próximo repaso toca {1}.": "You are up to date. Your next review is {1}.",
     "Aquí aparecerán, con su propia fecha de repaso, las palabras y frases que vayas practicando por el mapa.": "The words and phrases you practise on the map will appear here, each with its own review date.",
@@ -137,6 +137,8 @@
     "No se cobra nada ni se guardan datos de tarjeta. Para cobrar de verdad hay que conectar un procesador de pagos.": "Nothing is charged and no card details are stored. To charge for real, a payment processor must be connected.",
     "Activar Premium": "Activate Premium",
     "El mesero": "The waiter",
+    "Rocco te acompaña": "Rocco keeps you company", "Aparece a veces en el mapa con comentarios y pequeñas animaciones. Puedes desactivarlo.": "He sometimes shows up on the map with comments and little animations. You can turn him off.",
+    "Activado": "On", "Desactivado": "Off",
     "Estilo de las piezas": "Piece style", "Clásico": "Classic", "Caramelos": "Candy", "Mándala": "Mandala", "Burbujas de agua": "Water bubbles", "Barras de chocolate": "Chocolate bars",
     "El estilo Clásico es gratis; los demás son Premium.": "The Classic style is free; the others are Premium.",
     "Los estilos de piezas son una función Premium.": "Piece styles are a Premium feature.",
@@ -239,7 +241,7 @@
           else if (r.type === "characterData") node(r.target);
           else if (r.type === "attributes") node(r.target);
         }
-        if (document.title !== "Lingo — Learn languages" && /Aprende/.test(document.title)) document.title = tr(document.title);
+        if (document.title !== "Rocco — Learn languages" && /Aprende/.test(document.title)) document.title = tr(document.title);
       }
     } finally { busy = false; if (obs) obs.takeRecords(); }
   }

@@ -1,4 +1,4 @@
-/* Motor de juego de Lingo: lógica pura, SIN acceso al DOM, al audio ni a localStorage.
+/* Motor de juego de Rocco: lógica pura, SIN acceso al DOM, al audio ni a localStorage.
    Todo el estado es JSON simple (números, textos, listas y objetos), así que se puede guardar,
    enviar por red o sincronizar con WebSockets (p. ej. un futuro modo multijugador) sin reescribir nada.
 

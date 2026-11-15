@@ -13,7 +13,7 @@ ctx.window = ctx; vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(dir, "i18n.js"), "utf8"), ctx);
 const { I18N } = ctx;
 
-const NO_UI = /^([MLHVQAZCSTmlhvqazcst0-9 ,.\-]+|[#.][\w\-.#:\[\]="\s>]*|V[AH0-9 ]*|translate.*|flipOut.*|speechSynthesis|viewBox|NFD|TAP|DROP|RESET|Enter|BUTTON|INPUT|pz c|pz empty|btn prem|Lingo|Piper|XP|CC BY 4\.0|Premium|· Premium|Cambridge English|Milton|English|scaleX.*)$/;
+const NO_UI = /^([MLHVQAZCSTmlhvqazcst0-9 ,.\-]+|[#.][\w\-.#:\[\]="\s>]*|V[AH0-9 ]*|translate.*|flipOut.*|speechSynthesis|viewBox|NFD|TAP|DROP|RESET|Enter|BUTTON|INPUT|pz c|pz empty|btn prem|Lingo|Rocco|roccoPal|greet\w+|exam(Pass|Fail)|noHearts|Piper|XP|CC BY 4\.0|Premium|· Premium|Cambridge English|Milton|English|scaleX.*)$/;
 const missing = [];
 const seen = new Set();
 const check = (t, f) => {
