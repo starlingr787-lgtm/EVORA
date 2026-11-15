@@ -16,7 +16,7 @@ Uso:
   python tools/tts/generate.py --only ro,fr       # limita a algunos idiomas
 Modelos Piper: TTS_MODELS_DIR (por defecto tools/tts/models) con <idioma>.onnx y <idioma>.onnx.json.
 """
-import argparse, hashlib, io, json, os, subprocess, sys, wave
+import argparse, base64, hashlib, io, json, os, subprocess, sys, time, urllib.error, urllib.request, wave
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -50,6 +50,39 @@ class PiperProvider:
         return buf.getvalue()
 
 
+class GoogleProvider:
+    """Google Cloud Text-to-Speech (voces neuronales de pago, con capa gratuita mensual).
+    La clave NUNCA va en el código: variable de entorno GOOGLE_TTS_API_KEY, o inyectada por el proxy del entorno.
+    Voz: "google:<nombre>", p. ej. google:ro-RO-Chirp3-HD-Aoede. Lista de voces: python generate.py --list-voices ro-RO"""
+    URL = "https://texttospeech.googleapis.com/v1/"
+
+    def __init__(self, lang, voice=None):
+        self.voice = voice or VOICES[lang].split(":", 1)[1]
+        self.lang_code = "-".join(self.voice.split("-")[:2])
+        self.key = os.environ.get("GOOGLE_TTS_API_KEY", "proxy-injected")
+
+    def _call(self, path, body=None):
+        req = urllib.request.Request(self.URL + path, data=None if body is None else json.dumps(body).encode(),
+                                     headers={"Content-Type": "application/json", "X-Goog-Api-Key": self.key})
+        for attempt in range(5):
+            try:
+                with urllib.request.urlopen(req, timeout=60) as r:
+                    return json.load(r)
+            except urllib.error.HTTPError as e:
+                if e.code in (429, 500, 503) and attempt < 4:
+                    time.sleep(2 ** attempt); continue
+                sys.exit(f"Google TTS {e.code}: {e.read().decode()[:300]}")
+
+    def synthesize(self, text):
+        out = self._call("text:synthesize", {"input": {"text": text}, "voice": {"languageCode": self.lang_code, "name": self.voice},
+                                             "audioConfig": {"audioEncoding": "LINEAR16", "sampleRateHertz": 22050}})
+        return base64.b64decode(out["audioContent"])
+
+
+def provider_for(lang):
+    return GoogleProvider(lang) if VOICES[lang].startswith("google:") else PiperProvider(lang)
+
+
 def to_mp3(wav):
     p = subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-f", "wav", "-i", "pipe:0", "-af", FILTER, "-ac", "1", "-ar", "22050",
                         "-c:a", "libmp3lame", "-b:a", "40k", "-write_xing", "0", "-id3v2_version", "0", "-f", "mp3", "pipe:1"], input=wav, capture_output=True)
@@ -68,7 +101,23 @@ def atomic_write(path, data, mode="wb"):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--only", default=",".join(VOICES)); ap.add_argument("--dry-run", action="store_true"); ap.add_argument("--adopt", action="store_true")
+    ap.add_argument("--list-voices", metavar="CODIGO", help="lista las voces de Google para un idioma (p. ej. ro-RO)")
+    ap.add_argument("--samples", metavar="LANG", help="genera muestras (.work/samples/<voz>/) con las voces de --voices para elegir")
+    ap.add_argument("--voices", default="", help="voces de Google separadas por comas, para --samples")
     args = ap.parse_args()
+    if args.list_voices:
+        res = GoogleProvider("ro", voice=args.list_voices + "-x")._call("voices?languageCode=" + args.list_voices)
+        for v in res.get("voices", []): print(v["name"], v["ssmlGender"], v["naturalSampleRateHertz"])
+        return
+    if args.samples:
+        WORK.mkdir(parents=True, exist_ok=True)
+        phrases = json.load(open(WORK / "texts.json"))[args.samples]
+        picks = [phrases[k] for k in ("1w0", "3s0", "5s1", "10s4", "20s3", "28s6", "29s5") if k in phrases] or list(phrases.values())[:6]
+        for v in [x for x in args.voices.split(",") if x]:
+            d = WORK / "samples" / v; d.mkdir(parents=True, exist_ok=True); prov = GoogleProvider(args.samples, voice=v)
+            for n, t in enumerate(picks): atomic_write(d / f"{n}.mp3", to_mp3(prov.synthesize(t)))
+            print(v, len(picks), "muestras"); json.dump(picks, open(WORK / "samples" / "frases.json", "w"), ensure_ascii=False)
+        return
     texts_file = WORK / "texts.json"
     if not texts_file.exists():
         sys.exit("Falta tools/tts/.work/texts.json: ejecuta antes  node tools/tts/export_texts.js")
@@ -89,7 +138,7 @@ def main():
             continue
         fresh = {}
         if todo:
-            prov = PiperProvider(lang)
+            prov = provider_for(lang)
             for n, k in enumerate(todo, 1):
                 fresh[k] = to_mp3(prov.synthesize(want[k]))
                 if n % 25 == 0: print(f"  {lang} {n}/{len(todo)}", flush=True)

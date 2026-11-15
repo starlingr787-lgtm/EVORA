@@ -27,3 +27,11 @@ La primera vez, si ya existen audios, ejecuta `generate.py --adopt` para registr
 - Se implementa como otro proveedor con el mismo método `synthesize(text) -> wav` en `generate.py`.
 - La caché por hash ya garantiza que cada frase se paga una sola vez.
 - Los precios y las licencias de salida varían por proveedor: revísalos antes de publicar audio generado.
+
+## Voz de pago para un idioma (Google Cloud Text-to-Speech)
+`generate.py` admite voces de Google con el prefijo `google:` en `VOICES` (p. ej. `"ro": "google:ro-RO-Chirp3-HD-Aoede"`). Solo cambia el idioma indicado; el resto sigue con Piper.
+- La clave va en la variable de entorno `GOOGLE_TTS_API_KEY` (o como secreto de red del entorno con la cabecera `x-goog-api-key` para `texttospeech.googleapis.com`). Nunca en el repositorio ni en `app/`.
+- `python tools/tts/generate.py --list-voices ro-RO` lista las voces disponibles.
+- `python tools/tts/generate.py --samples ro --voices ro-RO-Chirp3-HD-Aoede,ro-RO-Wavenet-A` crea muestras en `tools/tts/.work/samples/` para elegir de oído.
+- El hash de cada clip incluye la voz, así que al cambiarla se regenera todo el idioma y solo ese idioma. Cada frase se sintetiza una sola vez.
+- Coste: el texto rumano completo son unos 15.600 caracteres, dentro de las capas gratuitas habituales. Revisa precios y términos de uso del audio antes de publicar.
