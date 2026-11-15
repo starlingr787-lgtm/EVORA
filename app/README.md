@@ -72,13 +72,36 @@ Se generaron con [Piper](https://github.com/OHF-Voice/piper1-gpl) (voces `rhassp
 Las voces francesa e italiana exigen atribución (CC BY 4.0): mantén esta tabla visible en la app si la publicas. Antes de uso comercial, revisa las licencias vigentes de cada voz.
 Para regenerar el audio tras cambiar `data.js` o `data2.js` hay que repetir la síntesis con el mismo orden de claves (`<unidad>w<n>` para palabras, `<unidad>s<n>` para frases y las de `extraClips()` en `data3.js` para situaciones).
 
+## Seguridad y arquitectura
+**Claves y costes**
+- No hay ninguna clave de API en el código del navegador. La app solo hace `fetch` de sus propios audios.
+- Los audios se generan fuera de línea con `tools/tts/` (caché por contenido: una frase no se vuelve a sintetizar si no cambia). Cualquier clave de un motor de pago viviría solo en variables de entorno del equipo o del CI.
+- `vercel.json` añade, solo para `/app/`, una política CSP estricta (sin scripts de terceros ni `eval`), `nosniff`, `Referrer-Policy` y `Permissions-Policy`, y caché de un año para los audios (se invalida cambiando `AUDIO_V` en `app/app.js`).
+- Todo texto que llega a `innerHTML` pasa por `esc()` (el contenido es propio; el único texto libre del usuario, el buscador y las respuestas, se escapa).
+
+**Riesgos que siguen abiertos (necesitan backend)**
+- El plan Premium se guarda en `localStorage`: cualquiera puede activarlo desde la consola. Hay que validar la suscripción en servidor (webhooks del procesador de pagos) antes de cobrar.
+- Los audios son archivos públicos: quien conozca la URL puede descargarlos sin ser Premium. Para protegerlos hay que servirlos desde una función de borde que compruebe un token de suscripción.
+
+**Motor de juego** (`engine.js`): lógica pura y sin DOM, probada con `node app/tests/engine.test.js`.
+- Estado de la sesión y del puzle como JSON simple: piezas por id (`slots: [3, null, 0]`), acciones `TAP`/`DROP`/`RESET` y un reductor puro `puzzleReduce(estado, acción)`.
+- `Engine.snapshot()` produce una instantánea mínima (`kind`, `i`, `correct`, `wrong`, `combo`) pensada para enviarse por WebSocket en un futuro modo multijugador; el cliente actual y uno multijugador compartirían las mismas reglas.
+- La interfaz (`app.js`) solo traduce eventos en acciones y pinta el estado.
+
+**Rendimiento de animaciones**
+- El tablero se construye una vez y cada pieza es un nodo que solo se mueve entre huecos y banco. No se reconstruye el DOM al mover una pieza.
+- El arrastre usa `transform: translate3d` dentro de `requestAnimationFrame`, con las posiciones de los huecos medidas una sola vez al empezar.
+- Las animaciones continuas usan solo `transform` y `opacity` (anillos, brillo, barra de progreso, destello del tablero). La forma SVG de cada pieza se cachea.
+- Medido con el mismo guion (2 toques y 1 arrastre): nodos DOM tocados 96 a 18-28, layouts 118-121 a 13-19.
+
 ## Estructura
 - `data3.js`: situaciones (tonos, rompecabezas vivo y escenas) y la lista de textos que necesitan audio.
 - `data.js`, `data2.js`: unidades en español y traducciones de cada curso. Para añadir contenido o idiomas se editan solo estos archivos.
+- `engine.js`: motor de juego puro (puzle, sesión, reglas, escena) y `tests/engine.test.js`.
 - `exercises.js`: generación de los ejercicios de cada nivel y de la prueba de nivel.
 - `icons.js`: iconos, insignias y mascota.
 - `app.js`: pantallas, mapa, reproductor de lecciones, vocabulario y planes.
-- `audio/`: locuciones.
+- `audio/`: locuciones (generadas con `../tools/tts/`).
 
 ## Pendiente para producción
 - **Pagos reales**: el checkout es una simulación. Hay que integrar un procesador de pagos (por ejemplo Stripe) y validar la suscripción en servidor; ahora el plan vive en `localStorage` y se puede manipular.

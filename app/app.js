@@ -3,6 +3,7 @@
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const KEY = "lingo-state-v3";
+  const AUDIO_V = "20251115"; // súbela cuando regeneres los audios (rompe la caché del navegador)
   const today = () => new Date().toISOString().slice(0, 10);
   const LV = EX.LEVELS, NL = LV.length;
   const canSpeak = "speechSynthesis" in window;
@@ -25,7 +26,7 @@
   const doneCount = (lang, range) => Object.keys(S.progress[lang] || {}).filter(k => { const [u, l] = k.split("-").map(Number); return l < NL && (!range || (u >= range.from && u < range.to)); }).length;
   const cefrOf = lang => CEFR.find(c => c.id === S.cefr[lang]) || null;
   let levelPickFor = null;
-  const EXAM_N = 20, EXAM_PASS = 0.8;
+  const EXAM_N = Engine.RULES.examN, EXAM_PASS = Engine.RULES.examPass;
   const cefrIdx = id => CEFR.findIndex(c => c.id === id);
   const unlockedIdx = lang => Math.max(S.unlocked[lang] ?? -1, cefrIdx(S.cefr[lang]));
   const wordsSeen = lang => Object.keys(S.progress[lang] || {}).filter(k => k.endsWith("-0")).length * 8;
@@ -91,8 +92,8 @@
   function loadPack(lang) {
     if (!PACK[lang]) PACK[lang] = (async () => {
       const [idx, buf] = await Promise.all([
-        fetch(`audio/${lang}.json`).then(r => r.ok ? r.json() : Promise.reject()),
-        fetch(`audio/${lang}.mp3`).then(r => r.ok ? r.arrayBuffer() : Promise.reject())
+        fetch(`audio/${lang}.json?v=${AUDIO_V}`).then(r => r.ok ? r.json() : Promise.reject()),
+        fetch(`audio/${lang}.mp3?v=${AUDIO_V}`).then(r => r.ok ? r.arrayBuffer() : Promise.reject())
       ]);
       return { idx, buf, urls: {} };
     })().catch(() => null);
@@ -310,31 +311,30 @@
       <p class="muted small">Si no la apruebas, te diremos qué unidades repasar. Puedes repetirla.</p></div>`;
     $("#foot").className = "p-foot"; $("#pBtn").textContent = "Empezar"; $("#pBtn").disabled = false;
     $("#pBtn").onclick = () => startPlayer({ kind: "exam", cidx: idx, ex, lang: S.lang });
-    $("#pBar").style.width = "0%";
+    setBar(0);
   }
   function finishExam() {
-    const idx = P.cidx, c = CEFR[idx], next = CEFR[idx + 1], total = P.q.length, lang = P.lang;
-    const allowed = Math.floor(total * (1 - EXAM_PASS)), ok = P.wrong <= allowed, acc = Math.round(P.correct / total * 100);
-    if (ok) {
-      const star = P.wrong <= 1 ? 3 : P.wrong <= 2 ? 2 : 1, ex = (S.exams[lang] = S.exams[lang] || {});
-      ex[c.id] = Math.max(ex[c.id] || 0, star);
+    const idx = P.cidx, c = CEFR[idx], next = CEFR[idx + 1], lang = P.lang, R = Engine.examResult(P);
+    if (R.ok) {
+      const ex = (S.exams[lang] = S.exams[lang] || {});
+      ex[c.id] = Math.max(ex[c.id] || 0, R.stars);
       if (next) S.unlocked[lang] = Math.max(S.unlocked[lang] ?? -1, idx + 1);
-      const xp = 50 + P.correct * 2; S.xp += xp; touchStreak(); save(); renderTop();
+      S.xp += R.xp; touchStreak(); save(); renderTop();
       playerEl.innerHTML = `<div class="p-body"><div class="stage center result">
         ${mascot("cheer", 150)}<h1>¡Sesión ${c.id} superada!</h1>
-        <div class="nstars lg">${[1, 2, 3].map(n => ic("star", "solid " + (n <= star ? "on" : "off"))).join("")}</div>
+        <div class="nstars lg">${[1, 2, 3].map(n => ic("star", "solid " + (n <= R.stars ? "on" : "off"))).join("")}</div>
         <p class="muted">${next ? `Subes a <b>${next.name} (${next.id})</b>: ${next.goal}` : "Has completado todas las sesiones disponibles. La siguiente llegará pronto."}</p>
-        <div class="res-stats"><div class="rs xp">${ic("star", "solid")}<b>+${xp}</b><span>XP</span></div><div class="rs acc">${ic("check")}<b>${acc}%</b><span>Aciertos</span></div></div></div></div>
+        <div class="res-stats"><div class="rs xp">${ic("star", "solid")}<b>+${R.xp}</b><span>XP</span></div><div class="rs acc">${ic("check")}<b>${R.accuracy}%</b><span>Aciertos</span></div></div></div></div>
         <div class="p-foot">${next ? `<button class="btn ghost" id="stay">Seguir aquí</button><button class="btn" id="up">Ir a ${next.name}</button>` : `<button class="btn" id="stay">Continuar</button>`}</div>`;
       sfx.win(); fxBurst(innerWidth / 2, innerHeight / 3, 46, undefined, 220);
       $("#stay").onclick = closePlayer;
       if (next) $("#up").onclick = () => { chooseLevel(lang, next.id); closePlayer(); };
     } else {
-      const miss = Object.entries(P.missUnits || {}).sort((x, y) => y[1] - x[1]).slice(0, 3).map(([u]) => UNITS[+u].title);
+      const miss = R.weakUnits.map(u => UNITS[u].title);
       save(); renderTop();
       playerEl.innerHTML = `<div class="p-body"><div class="stage center result">
         ${mascot("happy", 130)}<h1>Aún no, pero vas bien</h1>
-        <p class="muted">${P.correct} de ${total} aciertos (${acc} %). Necesitas ${total - allowed}.</p>
+        <p class="muted">${P.correct} de ${R.total} aciertos (${R.accuracy} %). Necesitas ${R.need}.</p>
         ${miss.length ? `<p><b>Te conviene repasar:</b></p><ul class="tone-legend">${miss.map(m => `<li><span class="tone-chip t-neutro">${ic("book")}${esc(m)}</span></li>`).join("")}</ul>` : ""}</div></div>
         <div class="p-foot"><button class="btn ghost" id="back">Volver al mapa</button><button class="btn" id="again">Intentarlo otra vez</button></div>`;
       $("#back").onclick = closePlayer;
@@ -363,7 +363,7 @@
       <ul class="tone-legend">${["formal", "informal", "urgente"].map(t => `<li><span class="tone-chip t-${t}">${ic(TONES[t].icon)}${TONES[t].name}</span><span class="muted">${TONES[t].use}</span></li>`).join("")}</ul>
       <p class="muted small">Primero verás 4 frases que cambian al tocar un tono. Después, una escena para calmar a un personaje.</p>`;
     $("#foot").className = "p-foot"; $("#pBtn").textContent = "Empezar"; $("#pBtn").disabled = false; $("#pBtn").onclick = go;
-    $("#pBar").style.width = "0%";
+    setBar(0);
   }
 
   function openLevel(ui, li) {
@@ -410,11 +410,13 @@
     $("#foot").className = "p-foot";
     $("#pBtn").textContent = "Empezar"; $("#pBtn").disabled = false;
     $("#pBtn").onclick = then;
-    $("#pBar").style.width = "0%";
+    setBar(0);
   }
 
   /* ---------- Reproductor de ejercicios ---------- */
-  let P = null;
+  let P = null; // sesión de juego: JSON puro, la gestiona Engine (engine.js)
+  const H = { check: null, teardown: null }; // manejadores de UI de la pregunta actual (no serializables)
+  const setBar = f => { const b = $("#pBar"); if (b) b.style.transform = `scaleX(${Math.max(0, Math.min(1, f))})`; };
   window.__lingo = { get P() { return P; }, get S() { return S; } };
 
   function shell() {
@@ -456,7 +458,7 @@
   const freeKind = () => P && (P.kind === "placement" || P.kind === "daily" || P.kind === "situation" || P.kind === "exam");
 
   function startPlayer(cfg) {
-    P = { ...cfg, q: [...cfg.ex], i: 0, wrong: 0, correct: 0, retries: new Map(), locked: false, check: null, combo: 0, teardown: null };
+    P = Engine.sessionNew(cfg); H.check = null; H.teardown = null;
     shell();
     if (freeKind()) $(".p-hearts").style.visibility = "hidden";
     renderEx();
@@ -481,10 +483,10 @@
   function bindBubbleSpeak(text) { const b = $("#pSpk"); if (b) b.onclick = () => speak(text, P.lang); }
 
   function renderEx() {
-    if (P.teardown) { P.teardown(); P.teardown = null; }
+    if (H.teardown) { H.teardown(); H.teardown = null; }
     const ex = P.ex = P.q[P.i];
-    P.locked = false; P.check = null;
-    $("#pBar").style.width = Math.round(P.i / P.q.length * 100) + "%";
+    P.locked = false; H.check = null;
+    setBar(Engine.progress(P));
     $("#pHearts").innerHTML = prem() ? "&infin;" : S.hearts;
     $("#foot").className = "p-foot"; $("#fb").innerHTML = "";
     const btn = $("#pBtn"); btn.textContent = "Comprobar"; btn.disabled = true; btn.onclick = onMain;
@@ -503,7 +505,7 @@
       if (P.locked) return; sel = +b.dataset.k;
       $$(".opt").forEach(x => x.classList.toggle("sel", x === b)); setReady(true);
     });
-    P.check = () => sel < 0 ? null : { ok: ex.options[sel] === ex.answer, correct: ex.optTarget ? tg(ex.answer) : esc(ex.answer), mark: () => {
+    H.check = () => sel < 0 ? null : { ok: Engine.checkMC(ex, sel).ok, correct: ex.optTarget ? tg(ex.answer) : esc(ex.answer), mark: () => {
       $$(".opt").forEach(x => { const t = ex.options[+x.dataset.k]; if (t === ex.answer) x.classList.add("ok"); else if (+x.dataset.k === sel) x.classList.add("bad"); });
     } };
   }
@@ -521,10 +523,9 @@
     const inp = $("#in"); inp.focus();
     inp.oninput = () => setReady(inp.value.trim().length > 0);
     $$(".spec .chip-w").forEach(b => b.onclick = () => { inp.value += b.textContent; inp.focus(); setReady(true); });
-    P.check = () => {
-      const v = EX.norm(inp.value); if (!v) return null;
-      const acc = [EX.norm(ex.answer)]; if (L === "ru") acc.push(EX.norm(EX.translit(ex.answer)));
-      return { ok: acc.includes(v), correct: tg(ex.answer) };
+    H.check = () => {
+      const r = Engine.checkType(ex, inp.value, L); if (!r) return null;
+      return { ok: r.ok, correct: tg(ex.answer) };
     };
   }
 
@@ -541,123 +542,138 @@
   let pzUid = 0;
   function shapePiece(el) {
     const svg = el.querySelector("svg"); if (!svg) return;
-    const w = el.offsetWidth, h = el.offsetHeight;
-    const d = pzPath(w, h, el.classList.contains("first"), el.classList.contains("last")), id = "pc" + (++pzUid);
+    const w = el.offsetWidth, h = el.offsetHeight, first = el.classList.contains("first"), last = el.classList.contains("last");
+    const key = w + "x" + h + (first ? "f" : "") + (last ? "l" : "");
+    if (el._sk === key) return; // la forma no cambió: no se toca el DOM
+    el._sk = key; el._cid = el._cid || "pc" + (++pzUid);
+    const d = pzPath(w, h, first, last);
     svg.setAttribute("width", w); svg.setAttribute("height", h); svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
-    svg.innerHTML = `<defs><clipPath id="${id}"><path d="${d}"/></clipPath></defs>
+    svg.innerHTML = `<defs><clipPath id="${el._cid}"><path d="${d}"/></clipPath></defs>
       <path class="sh" d="${d}" transform="translate(0 5)"/><path class="fl" d="${d}"/>
-      <g clip-path="url(#${id})"><rect class="gl" x="-2" y="0" width="${w + 4}" height="${h * .46}"/><rect class="gl2" x="-2" y="${h * .8}" width="${w + 4}" height="${h * .2}"/></g>`;
+      <g clip-path="url(#${el._cid})"><rect class="gl" x="-2" y="0" width="${w + 4}" height="${h * .46}"/><rect class="gl2" x="-2" y="${h * .8}" width="${w + 4}" height="${h * .2}"/></g>`;
   }
 
   function exBank(ex) {
-    const N = ex.answerTokens.length, slots = Array(N).fill(-1);
-    const txt = i => ex.bankTarget ? tg(ex.bank[i]) : esc(ex.bank[i]);
+    let st = Engine.puzzleNew(ex);
+    const N = st.n, txt = i => ex.bankTarget ? tg(ex.bank[i]) : esc(ex.bank[i]);
     $("#stage").innerHTML = `<h2 class="ex-title">${ex.title}</h2>
       ${ex.audio ? audioBlock() : bubble(ex.promptTarget ? tg(ex.prompt) : esc(ex.prompt), ex.promptTarget)}
       <p class="muted small puzzle-hint">Arrastra las piezas al tablero, o tócalas.</p>
       <div class="board" id="board" aria-label="Tablero"></div>
       <div class="bank" id="bank" aria-label="Piezas"></div>`;
     if (ex.audio) bindAudio(ex.audio); else if (ex.promptTarget) bindBubbleSpeak(ex.prompt);
+    const boardEl = $("#board"), bankEl = $("#bank");
 
-    let landed = -1;
-    const piece = (i, cls) => `<button type="button" class="pz c${i % 8} ${cls}" style="--i:${i};--rot:${(i * 37 % 7) - 3}deg;--d:${(i * 0.37).toFixed(2)}s" data-i="${i}"><svg class="pzs" aria-hidden="true"></svg><span class="pzt">${txt(i)}</span></button>`;
-    const draw = () => {
-      $("#board").innerHTML = slots.map((pi, s) => {
-        const pos = (s === 0 ? "first " : "") + (s === N - 1 ? "last" : "");
-        return `<div class="slot" data-s="${s}">${pi >= 0 ? piece(pi, pos + (s === landed ? " landed" : "")) : `<span class="pz empty ${pos}"><svg class="pzs" aria-hidden="true"></svg></span>`}</div>`;
-      }).join("");
-      $("#bank").innerHTML = ex.bank.map((w, i) => slots.includes(i)
-        ? `<span class="pz ghost" style="--i:${i}"><svg class="pzs" aria-hidden="true"></svg><span class="pzt">${txt(i)}</span></span>`
-        : piece(i, "")).join("");
-      $$("#board .pz, #bank .pz").forEach(shapePiece);
-      setReady(slots.every(x => x >= 0));
-      if (landed >= 0) {
-        const el = $(`#board .slot[data-s="${landed}"] .pz`);
-        if (el) { const r = el.getBoundingClientRect(); fxBurst(r.left + r.width / 2, r.top + r.height / 2, 7, undefined, 38); }
-        sfx.pop(slots.filter(x => x >= 0).length - 1); vibrate(8);
-        landed = -1;
+    // Construcción única: cada pieza es un nodo que solo se MUEVE entre huecos y banco.
+    const pieces = ex.bank.map((_, i) => {
+      const el = document.createElement("button");
+      el.type = "button"; el.className = "pz c" + (i % 8); el.dataset.i = i; el._slot = -1;
+      el.style.cssText = `--i:${i};--rot:${(i * 37 % 7) - 3}deg;--d:${(i * .37).toFixed(2)}s`;
+      el.innerHTML = `<svg class="pzs" aria-hidden="true"></svg><span class="pzt">${txt(i)}</span>`;
+      return el;
+    });
+    const cells = pieces.map(el => { const c = document.createElement("span"); c.className = "cell"; c.appendChild(el); bankEl.appendChild(c); return c; });
+    const slotEls = Array.from({ length: N }, (_, s) => {
+      const d = document.createElement("div"); d.className = "slot"; d.dataset.s = s;
+      const e = document.createElement("span"); e.className = "pz empty" + (s === 0 ? " first" : "") + (s === N - 1 ? " last" : "");
+      e.innerHTML = '<svg class="pzs" aria-hidden="true"></svg>'; d.appendChild(e); boardEl.appendChild(d);
+      return { d, e };
+    });
+    const reshape = () => { pieces.forEach(el => { el._sk = null; shapePiece(el); }); slotEls.forEach(({ e }) => { e._sk = null; shapePiece(e); });
+      cells.forEach((c, i) => { if (pieces[i]._slot < 0) { c.style.minWidth = pieces[i].offsetWidth + "px"; c.style.minHeight = pieces[i].offsetHeight + 4 + "px"; } }); };
+    reshape();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => P && P.ex === ex && reshape());
+
+    // Pinta solo lo que cambió respecto al estado anterior.
+    const render = () => {
+      const at = new Map(); st.slots.forEach((pi, s) => { if (pi !== null) at.set(pi, s); });
+      pieces.forEach((el, i) => {
+        const s = at.has(i) ? at.get(i) : -1;
+        if (el._slot === s) return;
+        el._slot = s; el.classList.remove("first", "last", "landed");
+        if (s >= 0) { if (s === 0) el.classList.add("first"); if (s === N - 1) el.classList.add("last"); slotEls[s].d.appendChild(el); }
+        else cells[i].appendChild(el);
+      });
+      slotEls.forEach(({ d }, s) => d.classList.toggle("full", st.slots[s] !== null));
+      pieces.forEach(shapePiece);
+      setReady(Engine.puzzleFull(st));
+      if (st.last) {
+        const el = pieces[st.slots[st.last.slot]];
+        if (el) {
+          el.classList.add("landed"); el.addEventListener("animationend", () => el.classList.remove("landed"), { once: true });
+          const r = el.getBoundingClientRect(); fxBurst(r.left + r.width / 2, r.top + r.height / 2, 7, undefined, 38);
+          sfx.pop(st.slots.filter(x => x !== null).length - 1); vibrate(8);
+        }
       }
     };
-    draw();
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => P && P.ex === ex && $$("#board .pz, #bank .pz").forEach(shapePiece));
+    const dispatch = action => { st = Engine.puzzleReduce(st, action); render(); st = { ...st, last: null }; };
+    render();
 
-    const place = (i, to) => { slots[to] = i; landed = to; };
-    const tap = (i, from) => {
-      if (from >= 0) { slots[from] = -1; sfx.back(); }
-      else { const e = slots.indexOf(-1); if (e >= 0) place(i, e); }
-    };
+    // Arrastre: posiciones de los huecos medidas una sola vez, movimiento con transform en requestAnimationFrame.
+    let drag = null, rects = [], over = -1;
     const nearest = (x, y) => {
-      let best = null, bd = 95;
-      $$("#board .slot").forEach(s => { const r = s.getBoundingClientRect(), dd = Math.hypot(x - (r.left + r.width / 2), y - (r.top + r.height / 2)); if (dd < bd) { bd = dd; best = s; } });
+      let best = -1, bd = 95;
+      rects.forEach((r, s) => { const dd = Math.hypot(x - r.cx, y - r.cy); if (dd < bd) { bd = dd; best = s; } });
       return best;
     };
-    let drag = null;
-    const stage = $("#stage");
-    const cleanup = () => {
+    const setOver = s => { if (s === over) return; if (over >= 0) slotEls[over].d.classList.remove("over"); over = s; if (s >= 0) slotEls[s].d.classList.add("over"); };
+    const frame = () => {
+      if (!drag) return; drag.raf = 0;
+      if (!drag.moved && Math.hypot(drag.px - drag.x0, drag.py - drag.y0) > 8) {
+        drag.moved = true;
+        rects = slotEls.map(({ d }) => { const r = d.getBoundingClientRect(); return { cx: r.left + r.width / 2, cy: r.top + r.height / 2 }; });
+        const g = drag.el.cloneNode(true); g.classList.add("dragging"); g.removeAttribute("data-i");
+        document.body.appendChild(g); drag.ghost = g; drag.el.classList.add("lifting"); document.body.classList.add("is-dragging"); sfx.back();
+      }
+      if (drag.moved) {
+        const tilt = Math.max(-16, Math.min(16, (drag.px - drag.lx) * .8)); drag.lx = drag.px;
+        drag.ghost.style.transform = `translate3d(${drag.px}px,${drag.py}px,0) translate(-50%,-60%) scale(1.12) rotate(${tilt}deg)`;
+        setOver(nearest(drag.px, drag.py));
+      }
+    };
+    const stop = () => {
       window.removeEventListener("pointermove", onMove); window.removeEventListener("pointerup", onUp); window.removeEventListener("pointercancel", onCancel);
-      if (drag && drag.ghost) drag.ghost.remove();
-      $$(".slot.over").forEach(x => x.classList.remove("over"));
+      if (drag) { if (drag.raf) cancelAnimationFrame(drag.raf); if (drag.ghost) drag.ghost.remove(); drag.el.classList.remove("lifting"); }
+      setOver(-1); document.body.classList.remove("is-dragging");
     };
     const onDown = e => {
       const el = e.target.closest(".pz[data-i]");
       if (!el || P.locked || (e.button && e.button !== 0)) return;
-      const sl = el.closest(".slot");
-      drag = { i: +el.dataset.i, from: sl ? +sl.dataset.s : -1, x0: e.clientX, y0: e.clientY, lx: e.clientX, moved: false, el, ghost: null };
+      drag = { i: +el.dataset.i, from: el._slot, x0: e.clientX, y0: e.clientY, px: e.clientX, py: e.clientY, lx: e.clientX, moved: false, el, ghost: null, raf: 0 };
       window.addEventListener("pointermove", onMove); window.addEventListener("pointerup", onUp); window.addEventListener("pointercancel", onCancel);
     };
-    const onMove = e => {
-      if (!drag) return;
-      if (!drag.moved && Math.hypot(e.clientX - drag.x0, e.clientY - drag.y0) > 8) {
-        drag.moved = true;
-        const g = drag.el.cloneNode(true); g.classList.add("dragging"); g.removeAttribute("data-i");
-        document.body.appendChild(g); drag.ghost = g; drag.el.classList.add("lifting"); sfx.back();
-      }
-      if (drag.moved) {
-        const tilt = Math.max(-16, Math.min(16, (e.clientX - drag.lx) * .8)); drag.lx = e.clientX;
-        drag.ghost.style.left = e.clientX + "px"; drag.ghost.style.top = e.clientY + "px";
-        drag.ghost.style.transform = `translate(-50%,-60%) scale(1.12) rotate(${tilt}deg)`;
-        const s = nearest(e.clientX, e.clientY);
-        $$(".slot.over").forEach(x => x.classList.remove("over")); if (s) s.classList.add("over");
-      }
-    };
+    const onMove = e => { if (!drag) return; drag.px = e.clientX; drag.py = e.clientY; if (!drag.raf) drag.raf = requestAnimationFrame(frame); };
     const onUp = e => {
       if (!drag) return;
-      const d = drag; cleanup(); drag = null;
-      if (!d.moved) tap(d.i, d.from);
-      else {
-        const t = document.elementFromPoint(e.clientX, e.clientY);
-        const s = nearest(e.clientX, e.clientY), inBank = t && t.closest("#bank");
-        if (s) {
-          const to = +s.dataset.s, occ = slots[to];
-          if (d.from >= 0) slots[d.from] = occ;
-          place(d.i, to);
-        } else if (inBank && d.from >= 0) { slots[d.from] = -1; sfx.back(); }
-      }
-      draw();
+      drag.px = e.clientX; drag.py = e.clientY;
+      const d = drag, moved = d.moved || Math.hypot(d.px - d.x0, d.py - d.y0) > 8;
+      const target = moved ? (d.moved ? nearest(d.px, d.py) : (rects = slotEls.map(({ d: sd }) => { const r = sd.getBoundingClientRect(); return { cx: r.left + r.width / 2, cy: r.top + r.height / 2 }; }), nearest(d.px, d.py))) : -1;
+      const t = moved ? document.elementFromPoint(d.px, d.py) : null;
+      stop(); drag = null;
+      if (!moved) { dispatch({ type: "TAP", piece: d.i, from: d.from }); if (d.from >= 0) sfx.back(); }
+      else if (target >= 0) dispatch({ type: "DROP", piece: d.i, from: d.from, to: target });
+      else if (t && t.closest("#bank") && d.from >= 0) { dispatch({ type: "DROP", piece: d.i, from: d.from, to: null }); sfx.back(); }
     };
-    const onCancel = () => { cleanup(); drag = null; draw(); };
+    const onCancel = () => { stop(); drag = null; };
     const onClick = e => { // teclado: Enter / espacio
       if (e.detail !== 0 || P.locked) return;
       const el = e.target.closest(".pz[data-i]"); if (!el) return;
-      const sl = el.closest(".slot"); tap(+el.dataset.i, sl ? +sl.dataset.s : -1); draw();
-      const nx = $(`.pz[data-i="${el.dataset.i}"]`); if (nx) nx.focus();
+      dispatch({ type: "TAP", piece: +el.dataset.i, from: el._slot }); el.focus();
     };
-    stage.addEventListener("pointerdown", onDown);
-    stage.addEventListener("click", onClick);
-    P.teardown = () => { stage.removeEventListener("pointerdown", onDown); stage.removeEventListener("click", onClick); cleanup(); };
+    const stage = $("#stage");
+    stage.addEventListener("pointerdown", onDown); stage.addEventListener("click", onClick);
+    H.teardown = () => { stage.removeEventListener("pointerdown", onDown); stage.removeEventListener("click", onClick); stop(); drag = null; };
 
-    P.check = () => slots.some(x => x < 0) ? null : {
-      ok: EX.norm(slots.map(i => ex.bank[i]).join(" ")) === EX.norm(ex.answerText),
-      correct: ex.bankTarget ? tg(ex.answerText) : esc(ex.answerText),
-      mark: () => {
-        let all = true;
-        slots.forEach((pi, s) => {
-          const good = EX.norm(EX.core(ex.bank[pi])) === EX.norm(EX.core(ex.answerTokens[s]));
-          if (!good) all = false;
-          const el = $(`.slot[data-s="${s}"] .pz`); if (el) { el.classList.add(good ? "ok" : "bad"); el.style.animationDelay = (s * 70) + "ms"; }
-        });
-        if (all) $("#board").classList.add("solved");
-      }
+    H.check = () => {
+      if (!Engine.puzzleFull(st)) return null;
+      const r = Engine.puzzleCheck(st, ex); st = r.state;
+      return {
+        ok: r.ok, correct: ex.bankTarget ? tg(ex.answerText) : esc(ex.answerText),
+        mark: () => {
+          st.marks.forEach((good, s) => { const el = pieces[st.slots[s]]; el.classList.add(good ? "ok" : "bad"); el.style.animationDelay = (s * 70) + "ms"; });
+          if (r.ok) boardEl.classList.add("solved");
+        }
+      };
     };
   }
 
@@ -690,8 +706,8 @@
       setTimeout(() => { cur = t; renderBoard(true); busy = false; const r = $("#tboard").getBoundingClientRect(); fxBurst(r.left + r.width / 2, r.top + r.height / 2, 10, [`var(--t-${t})`], 90); }, ps.length * 35 + 170);
     });
     setReady(true);
-    P.check = () => busy ? null : {
-      ok: cur === ex.target, showOk: true,
+    H.check = () => busy ? null : {
+      ok: Engine.checkTone(ex, cur).ok, showOk: true,
       correct: `<span class="tone-chip t-${ex.target}">${ic(TONES[ex.target].icon)}${TONES[ex.target].name}</span> ${TONES[ex.target].use}`,
       mark: () => $$("#tpick .tone-btn").forEach(b => { if (b.dataset.t === ex.target) b.classList.add("ok"); else if (b.dataset.t === cur) b.classList.add("bad"); })
     };
@@ -700,7 +716,7 @@
   /* --- escena: calmar a un personaje --- */
   function exScene(ex) {
     let turn = 0, mood = ex.start, busy = false;
-    const face = m => m < 35 ? "angry" : m < 60 ? "annoyed" : m < 80 ? "neutral" : "happy";
+    const face = Engine.moodFace;
     $("#stage").innerHTML = `<h2 class="ex-title">${esc(ex.title)}</h2><p class="muted scene-intro">${esc(ex.intro)}</p>
       <div class="char-row"><div class="char" id="char"></div><div class="char-info"><b>${esc(ex.who)}</b>
         <div class="mood" role="meter" aria-label="Ánimo" aria-valuemin="0" aria-valuemax="100"><i id="mfill"></i><span class="goal" style="left:${ex.goal}%"></span><em id="mdelta"></em></div>
@@ -710,7 +726,7 @@
       <div class="scene-opts" id="sopts"></div>`;
     const paint = delta => {
       $("#char").innerHTML = person(face(mood), ex.hue, 96);
-      const f = $("#mfill"); f.style.width = mood + "%"; f.className = mood >= ex.goal ? "hi" : mood >= 50 ? "mid" : "lo";
+      const f = $("#mfill"); f.style.transform = `scaleX(${mood / 100})`; f.className = mood >= ex.goal ? "hi" : mood >= 50 ? "mid" : "lo";
       const dl = $("#mdelta");
       if (delta) { dl.textContent = (delta > 0 ? "+" : "") + delta; dl.className = (delta > 0 ? "up" : "down") + " show"; setTimeout(() => dl.classList.remove("show"), 900); }
     };
@@ -729,7 +745,7 @@
     };
     const choose = (o, btn) => {
       if (busy) return; busy = true;
-      mood = Math.max(0, Math.min(100, mood + o.d)); paint(o.d);
+      mood = Engine.moodStep(mood, o.d); paint(o.d);
       $$("#sopts .pz").forEach(x => { if (x === btn) x.classList.add(o.d > 0 ? "ok" : "bad"); else x.classList.add("dim"); shapePiece(x); });
       o.d > 0 ? sfx.ok() : sfx.bad(); vibrate(o.d > 0 ? [10, 20, 10] : 25);
       const r = btn.getBoundingClientRect(); fxBurst(r.left + r.width / 2, r.top + r.height / 2, o.d > 0 ? 16 : 6, o.d > 0 ? undefined : ["#e5484d"], 80);
@@ -738,7 +754,7 @@
       $("#fb").innerHTML = `<div class="fb-in"><span class="fb-ic">${ic(o.d > 0 ? "check" : "x")}</span><div><b>${o.d > 0 ? "Esto lo calma" : "Esto lo molesta"} (${o.d > 0 ? "+" : ""}${o.d})</b><div class="fb-ans">${esc(o.why)}</div></div></div>`;
       setBtn(last ? "Ver resultado" : "Continuar", false, () => {
         if (!last) { turn++; drawTurn(); return; }
-        const ok = mood >= ex.goal;
+        const ok = Engine.sceneWon(mood, ex.goal);
         $("#pBtn").onclick = onMain;
         reveal(ok, `Ánimo final: ${mood}%. ${ok ? "Has desactivado la situación con el tono adecuado." : "Aún sigue molesto. Prueba con otro tono."}`, { msg: "Aún no se ha calmado", okMsg: "¡Lo has calmado!", showOk: true });
       });
@@ -759,7 +775,7 @@
       $$(".opt").forEach(x => x.classList.toggle("sel", x === b));
       $("#blank").textContent = ex.options[sel]; $("#blank").classList.add("filled"); setReady(true);
     });
-    P.check = () => sel < 0 ? null : { ok: EX.norm(ex.options[sel]) === EX.norm(ex.answer), correct: tg(ex.full), mark: () => {
+    H.check = () => sel < 0 ? null : { ok: Engine.checkFill(ex, sel).ok, correct: tg(ex.full), mark: () => {
       $$(".opt").forEach(x => { const t = ex.options[+x.dataset.k]; if (EX.norm(t) === EX.norm(ex.answer)) x.classList.add("ok"); else if (+x.dataset.k === sel) x.classList.add("bad"); });
     } };
   }
@@ -795,7 +811,7 @@
   function onMain() {
     if (!P) return;
     if (P.locked) return next();
-    const r = P.check && P.check();
+    const r = H.check && H.check();
     if (!r) return;
     if (r.mark) r.mark();
     reveal(r.ok, r.correct, { showOk: r.showOk });
@@ -814,17 +830,12 @@
   }
 
   function reveal(ok, correctHTML, o = {}) {
-    P.locked = true;
-    const ex = P.ex;
-    P.combo = ok ? (P.combo || 0) + 1 : 0;
-    if (ok) { P.correct++; if (P.kind === "review") forget(ex.item); }
+    const ex = P.ex, r = Engine.sessionRecord(P, { ok, noRetry: o.noRetry });
+    P = { ...r.session, ex, locked: true };
+    if (ok) { if (P.kind === "review") forget(ex.item); }
     else {
-      P.wrong++;
-      if (!prem() && !freeKind()) { S.hearts = Math.max(0, S.hearts - 1); $("#pHearts").textContent = S.hearts; }
+      if (r.effects.heartLoss && !prem()) { S.hearts = Math.max(0, S.hearts - 1); $("#pHearts").textContent = S.hearts; }
       if (!o.skipRemember) remember(ex.item);
-      const n = P.retries.get(ex) || 0;
-      if (ex.ui != null) { P.missUnits = P.missUnits || {}; P.missUnits[ex.ui] = (P.missUnits[ex.ui] || 0) + 1; }
-      if (!o.noRetry && P.kind !== "placement" && P.kind !== "exam" && n < 2) { P.retries.set(ex, n + 1); P.q.push(ex); }
     }
     save(); renderTop();
     const praise = o.okMsg || (P.kind === "placement" ? "Respuesta registrada" : PRAISE[Math.floor(Math.random() * PRAISE.length)]);
@@ -833,13 +844,13 @@
       ? `<div class="fb-in"><span class="fb-ic">${ic("check")}</span><div><b>${praise}</b>${P.combo >= 3 ? `<span class="combo-note">${ic("flame", "solid")} Racha x${P.combo}</span>` : ""}${o.showOk && correctHTML ? `<div class="fb-ans">${correctHTML}</div>` : ""}</div></div>`
       : `<div class="fb-in"><span class="fb-ic">${ic("x")}</span><div><b>${o.msg || "Respuesta correcta"}</b>${correctHTML ? `<div class="fb-ans">${correctHTML}</div>` : ""}</div></div>`;
     const btn = $("#pBtn"); btn.textContent = "Continuar"; btn.disabled = false; btn.classList.remove("pulse"); btn.focus();
-    $("#pBar").style.width = Math.round((P.i + 1) / P.q.length * 100) + "%";
+    setBar((P.i + 1) / P.q.length);
     // jugo: mascota, sonido, confeti y racha
     const sm = $(".say .mascot"); if (sm) sm.outerHTML = mascot(ok ? "cheer" : "sad", 64);
     if (ok) {
       if (ex.type === "bank") {
         sfx.win(); const b = $("#board");
-        if (b) { const r = b.getBoundingClientRect(); fxBurst(r.left + r.width / 2, r.top + r.height / 2, 30, undefined, 150); }
+        if (b) { const rc = b.getBoundingClientRect(); fxBurst(rc.left + rc.width / 2, rc.top + rc.height / 2, 30, undefined, 150); }
       } else sfx.ok();
       vibrate([12, 30, 12]);
     } else { sfx.bad(); vibrate(35); }
@@ -848,8 +859,8 @@
 
   function next() {
     if (!prem() && !freeKind() && S.hearts <= 0) return outOfHearts();
-    P.i++;
-    if (P.i >= P.q.length) return finish();
+    P = Engine.sessionAdvance(P);
+    if (Engine.sessionDone(P)) return finish();
     renderEx();
   }
 
@@ -862,9 +873,7 @@
   function finish() {
     if (P.kind === "placement") return finishPlacement();
     if (P.kind === "exam") return finishExam();
-    const star = P.wrong === 0 ? 3 : P.wrong <= 2 ? 2 : 1;
-    const total = P.correct + P.wrong, acc = Math.round(P.correct / Math.max(1, total) * 100);
-    const xp = P.correct * 2 + 10 + (P.wrong === 0 ? 5 : 0);
+    const sm = Engine.summary(P), star = sm.stars, acc = sm.accuracy, xp = sm.xp;
     S.xp += xp; touchStreak();
     let title = "Repaso completado", extra = "";
     if (P.kind === "level") {
@@ -893,7 +902,7 @@
   }
 
   function finishPlacement() {
-    const lang = P.lang, rec = P.wrong <= 2 ? "A2" : "A1", lv = CEFR.find(c => c.id === rec), other = CEFR.find(c => c.id !== rec);
+    const lang = P.lang, rec = Engine.placementLevel(P), lv = CEFR.find(c => c.id === rec), other = CEFR.find(c => c.id !== rec);
     playerEl.innerHTML = `<div class="p-body"><div class="stage center result">
       ${mascot(rec === "A2" ? "cheer" : "happy", 140)}<h1>Te recomendamos: ${lv.name}</h1>
       <p class="muted">${P.correct} de ${P.correct + P.wrong} respuestas correctas a la primera. ${rec === "A2" ? "Dominas lo básico: empieza con rutina, trabajo, salud y planes." : "Empieza por lo esencial y sube de nivel cuando quieras."}</p></div></div>
@@ -911,7 +920,7 @@
     const b = $("#pBtn"); b.textContent = "Probar Premium"; b.className = "btn prem"; b.disabled = false;
     b.onclick = () => { closePlayer(); openPlans(); };
     $("#oh-x").onclick = closePlayer;
-    $("#pBar").style.width = "0%";
+    setBar(0);
   }
 
   document.addEventListener("keydown", e => {

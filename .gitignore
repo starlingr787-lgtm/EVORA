@@ -6,3 +6,7 @@ EVORA-deploy.zip
 assets/videos/Video Project 1.mp4
 assets/videos/Video Project 2.mp4
 assets/videos/101581-video-1080.mov
+
+# herramientas de voz: modelos y temporales (pesan cientos de MB)
+tools/tts/models/
+tools/tts/.work/
