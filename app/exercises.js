@@ -72,7 +72,7 @@
     }
     return {
       type: "bank", item, dir, audio: audio ? item.t : null,
-      title: audio ? "Escribe lo que oyes" : (fwd ? "Traduce esta frase" : "Traduce al español"),
+      title: audio ? "Escribe lo que oyes" : (fwd ? "Traduce esta frase" : "Traduce al " + COURSES[NATIVE].name.toLowerCase()),
       prompt: audio ? null : (fwd ? item.es : item.t), promptTarget: !fwd && !audio,
       answerText: item[f], answerTokens: ans, bank: shuffle([...ans, ...extra]), bankTarget: fwd
     };
@@ -241,23 +241,26 @@
   }
 
   /* ---------- Situaciones ---------- */
-  const hasSituation = (ui, lang) => NATIVE === "es" && lang !== "es" && (window.LIVE || []).some(p => p.unit === ui);
+  const hasSituation = (ui, lang) => lang !== NATIVE && (window.LIVE || []).some(p => p.unit === ui);
+  /* Frase de una situación en un idioma: el español está en p.es / turns, el resto en p.t / s.t */
+  const liveTxt = (p, l, k) => (l === "es" ? p.es[k] : p.t[l][k]);
+  const sceneTxt = (s, l, ti, j) => (l === "es" ? (j === 0 ? s.turns[ti].es : s.turns[ti].opts[j - 1].es) : s.t[l][ti][j]);
   function liveSet(lang, ui) {
     const all = [];
     LIVE.filter(p => p.unit === ui).forEach(p => [0, 1].forEach(k => all.push({
       type: "tone", title: "Rompecabezas vivo", idea: p.idea, situation: p.sit[k],
       target: k === 0 ? "formal" : "informal", start: k === 0 ? "informal" : "formal",
-      variants: { formal: { t: p.t[lang][0], es: p.es[0] }, informal: { t: p.t[lang][1], es: p.es[1] } }
+      variants: { formal: { t: liveTxt(p, lang, 0), es: liveTxt(p, NATIVE, 0) }, informal: { t: liveTxt(p, lang, 1), es: liveTxt(p, NATIVE, 1) } }
     })));
     return pick(all, 4);
   }
   function sceneEx(lang, ui) {
-    const s = SCENES.find(x => x.unit === ui), T = s.t[lang];
+    const s = SCENES.find(x => x.unit === ui);
     return {
       type: "scene", title: s.title, who: s.who, hue: s.hue, start: s.start, goal: s.goal, intro: s.intro,
       turns: s.turns.map((tu, i) => ({
-        say: { es: tu.es, t: T[i][0] },
-        opts: tu.opts.map((o, j) => ({ tone: o.tone, d: o.d, es: o.es, t: T[i][j + 1], why: o.why }))
+        say: { es: sceneTxt(s, NATIVE, i, 0), t: sceneTxt(s, lang, i, 0) },
+        opts: tu.opts.map((o, j) => ({ tone: o.tone, d: o.d, es: sceneTxt(s, NATIVE, i, j + 1), t: sceneTxt(s, lang, i, j + 1), why: o.why }))
       }))
     };
   }

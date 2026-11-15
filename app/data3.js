@@ -145,6 +145,10 @@ window.SCENES = [
 /* Claves de audio de las situaciones: [clave, texto] para un idioma */
 window.extraClips = lang => {
   const out = [];
+  if (lang === "es") {
+    LIVE.forEach(p => p.es.forEach((x, i) => out.push([`L${p.unit}${p.id}${i}`, x])));
+    SCENES.forEach(s => s.turns.forEach((tu, ti) => { out.push([`S${s.unit}${ti}0`, tu.es]); tu.opts.forEach((o, j) => out.push([`S${s.unit}${ti}${j + 1}`, o.es])); }));
+  }
   if (lang === "es") { if (window.DICT_CATS) DICT_CATS.forEach((c, ci) => c.w.forEach((x, i) => out.push([`D${ci}w${i}`, x]))); return out; }
   LIVE.forEach(p => p.t[lang].forEach((x, i) => out.push([`L${p.unit}${p.id}${i}`, x])));
   SCENES.forEach(s => s.t[lang].forEach((turn, ti) => turn.forEach((x, j) => out.push([`S${s.unit}${ti}${j}`, x]))));

@@ -3,7 +3,7 @@
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const KEY = "lingo-state-v3";
-  const AUDIO_V = "20261115e"; // súbela cuando regeneres los audios (rompe la caché del navegador)
+  const AUDIO_V = "20261115f"; // súbela cuando regeneres los audios (rompe la caché del navegador)
   const today = () => new Date().toISOString().slice(0, 10);
   const LV = EX.LEVELS, NL = LV.length;
   const canSpeak = "speechSynthesis" in window;
@@ -993,7 +993,7 @@
     if (S.vtab === "today") {
       const words = todayWords(), phrase = todayPhrase(), rec = dailyRec();
       const known = words.filter(w => rec.known.includes(w.t)).length;
-      const date = new Date().toLocaleDateString("es", { weekday: "long", day: "numeric", month: "long" });
+      const date = new Date().toLocaleDateString(uiLang(), { weekday: "long", day: "numeric", month: "long" });
       body = `<div class="card daily-head"><div><span class="ulabel muted">${esc(date)}</span><h2>Palabras de hoy</h2>
           <p class="muted small">${cefrOf(lang).name} &middot; ${words.length} palabras${prem() ? "" : " (Premium: 10 al día)"}</p></div>
           <div class="ring" style="--p:${Math.round(known / Math.max(1, words.length) * 100)}"><b>${known}/${words.length}</b></div></div>
@@ -1107,11 +1107,14 @@
         return `<div class="card row-card">${langBadge(k, "sm")}<div class="grow"><b>${COURSES[k].name}</b>${c ? `<span class="muted small"> &middot; ${c.name}</span>` : ""}<div class="bar"><i style="width:${p}%"></i></div></div><span class="muted">${p}%</span></div>`; }).join("")
         : `<p class="muted">Todavía no has completado ningún nivel.</p>`}
       <div class="center" style="margin-top:20px"><button class="btn ${prem() ? "ghost" : "prem"}" id="pl">${prem() ? "Gestionar plan" : "Mejorar a Premium"}</button></div>
+      <div class="card native-pick"><b>Idioma de la interfaz</b>
+        <div class="native-chips" data-notr role="group" aria-label="Idioma de la interfaz">${[["es", "Español"], ["en", "English"]].map(([k, n]) => `<button class="chip ${uiLang() === k ? "on" : ""}" data-ui="${k}" aria-pressed="${uiLang() === k}">${n}</button>`).join("")}</div></div>
       <p class="credits">Voces generadas con <a href="https://github.com/OHF-Voice/piper1-gpl" target="_blank" rel="noopener">Piper</a>.
         Francés: «Siwis French Speech Synthesis Database», Universidad de Edimburgo — <a href="https://datashare.ed.ac.uk/handle/10283/2353" target="_blank" rel="noopener">CC BY 4.0</a>.
         Italiano: «serena-synthetic-it-27h», committa — <a href="https://huggingface.co/datasets/committa/serena-synthetic-it-27h" target="_blank" rel="noopener">CC BY 4.0</a>.
         Español: voz «claude» (es_MX) de rhasspy/piper-voices — Apache-2.0.</p>`;
     $("#pl").onclick = () => openPlans();
+    $$(".native-chips .chip[data-ui]").forEach(b => b.onclick = () => { S.ui = b.dataset.ui; applyLangs(); save(); render(); });
   }
 
   /* ---------- Planes ---------- */
