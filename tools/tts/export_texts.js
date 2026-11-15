@@ -5,7 +5,7 @@
 const vm = require("vm"), fs = require("fs"), path = require("path");
 const app = path.join(__dirname, "..", "..", "app"), work = path.join(__dirname, ".work");
 const ctx = {}; ctx.window = ctx; vm.createContext(ctx);
-for (const f of ["data", "data2", "data3", "data4"]) vm.runInContext(fs.readFileSync(path.join(app, f + ".js"), "utf8"), ctx);
+for (const f of ["data", "data2", "data3", "data4", "data5"]) vm.runInContext(fs.readFileSync(path.join(app, f + ".js"), "utf8"), ctx);
 const out = {};
 for (const lang in ctx.COURSES) {
   const seen = {}, keys = {};

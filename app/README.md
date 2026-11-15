@@ -17,6 +17,9 @@ Para probarla en local: `cd app && python3 -m http.server` y abrir http://localh
   - *Escena para calmar a un personaje*: 3 turnos con medidor de ánimo. Cada respuesta es una pieza con su tono y una explicación en español de por qué calma o molesta.
   - Las variantes de tono están escritas a mano (no se generan) para no producir gramática rota. Hace falta revisión de hablantes nativos antes de publicar.
 - **Vocabulario diario**: palabras y frase del día según el curso y el nivel, con marca de "ya la sé", práctica rápida y lista de "mis palabras" con buscador.
+- **Repaso espaciado (Premium)**: cada fallo crea una tarjeta que reaparece con el algoritmo SM-2 simplificado (intervalos de 1 día, 3 días y luego ×facilidad; un fallo la devuelve a 1 día). La pestaña Repaso muestra las pendientes de hoy y las que están en seguimiento. Lógica pura en `engine.js` (`srs*`).
+- **Diccionario (gratis con límite)**: 6 categorías de 10 palabras (comida, animales, colores, cuerpo, casa, naturaleza) con audio, buscador y práctica. Plan Estándar: 2 prácticas al día; Premium: ilimitadas. Datos en `data5.js`.
+- **Español neutro**: el contenido en español evita regionalismos de España (`tests/content.test.js` lo comprueba).
 - **Ruso**: transcripción automática en letras latinas y se acepta escribir en latino.
 - **Rompecabezas con "jugo"**: piezas con brillo y borde en relieve, flotan en el banco, se arrastran con inclinación e imán al hueco más cercano, aterrizan con rebote y chispas, suenan en escala musical (sonidos sintetizados, sin archivos), vibran en móviles, encajan en ola con confeti al acertar y suman racha. El sonido se silencia desde el reproductor y se respeta `prefers-reduced-motion`.
 - **Identidad propia**: sin emojis. Iconos SVG propios (`icons.js`), insignias de idioma y mascota Lumi.
@@ -70,6 +73,7 @@ Se generaron con [Piper](https://github.com/OHF-Voice/piper1-gpl) (voces `rhassp
 | Rumano | ro_RO-mihai-medium | CC0 |
 
 Las voces francesa e italiana exigen atribución (CC BY 4.0): mantén esta tabla visible en la app si la publicas. Antes de uso comercial, revisa las licencias vigentes de cada voz.
+**Control de calidad de la voz.** `tools/tts/verify.py` transcribe cada clip con Whisper y puntúa el parecido. Esa medida es poco fiable en palabras sueltas de menos de 1 s (alucina "uh, uh…" o escribe "4." en vez de "Four"), por lo que una puntuación baja en clips cortos no implica mala voz (p. ej. el 0,674 del portugués es un artefacto de medición, no se tocó). El rumano sí mejoró de forma real con el método "mejor de N". Sigue pendiente la escucha por hablantes nativos.
 Para regenerar el audio tras cambiar `data.js` o `data2.js` hay que repetir la síntesis con el mismo orden de claves (`<unidad>w<n>` para palabras, `<unidad>s<n>` para frases y las de `extraClips()` en `data3.js` para situaciones).
 
 ## Seguridad y arquitectura
@@ -97,7 +101,8 @@ Para regenerar el audio tras cambiar `data.js` o `data2.js` hay que repetir la s
 ## Estructura
 - `data3.js`: situaciones (tonos, rompecabezas vivo y escenas) y la lista de textos que necesitan audio.
 - `data.js`, `data2.js`: unidades en español y traducciones de cada curso. Para añadir contenido o idiomas se editan solo estos archivos.
-- `engine.js`: motor de juego puro (puzle, sesión, reglas, escena) y `tests/engine.test.js`.
+- `data5.js`: categorías del diccionario.
+- `engine.js`: motor de juego puro (puzle, sesión, reglas, escena, repaso espaciado) y `tests/engine.test.js`.
 - `exercises.js`: generación de los ejercicios de cada nivel y de la prueba de nivel.
 - `icons.js`: iconos, insignias y mascota.
 - `app.js`: pantallas, mapa, reproductor de lecciones, vocabulario y planes.
