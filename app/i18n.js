@@ -196,6 +196,7 @@
     ". Italiano: «serena-synthetic-it-27h», committa —": ". Italian: «serena-synthetic-it-27h», committa —",
     ". Español: voz «claude» (es_MX) de rhasspy/piper-voices — Apache-2.0. Rumano: Google Cloud Text-to-Speech (voz Chirp 3 HD).": ". Spanish: voice «claude» (es_MX) from rhasspy/piper-voices — Apache-2.0. Romanian: Google Cloud Text-to-Speech (Chirp 3 HD voice)."
   };
+  Object.assign(EN, window.EN_EXTRA || {}); /* textos de situaciones añadidos en data14.js y data15.js */
 
   /* Compilación: sin huecos -> búsqueda exacta; con huecos -> expresión regular. Se ignoran huecos al principio o al final (suelen ser iconos). */
   const strip = s => s.replace(/^(\{\d+\}\s*)+|(\s*\{\d+\})+$/g, "").trim();

@@ -267,7 +267,7 @@
       }))
     };
   }
-  const situation = (lang, ui) => [...liveSet(lang, ui), sceneEx(lang, ui)];
+  const situation = (lang, ui) => [...liveSet(lang, ui), ...(SCENES.some(x => x.unit === ui) ? [sceneEx(lang, ui)] : [])];
 
   /* ---------- Diccionario ---------- */
   const dictItems = (lang, catId) => dictWords(lang, DICT_CATS.find(x => x.id === catId));
