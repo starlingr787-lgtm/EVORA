@@ -3,7 +3,7 @@
 const vm = require("vm"), fs = require("fs"), path = require("path");
 const dir = path.join(__dirname, "..");
 const ctx = {}; ctx.window = ctx; vm.createContext(ctx);
-for (const f of ["data", "data2", "data3", "data4", "extra", "data7a", "data7b", "data7c", "data8", "data9", "data10", "data11", "data12", "data13", "data14", "data15", "data5", "data6"]) vm.runInContext(fs.readFileSync(path.join(dir, f + ".js"), "utf8"), ctx);
+for (const f of ["data", "data2", "data3", "data4", "extra", "data7a", "data7b", "data7c", "data8", "data9", "data10", "data11", "data12", "data13", "data14", "data15", "data5", "data6", "data16"]) vm.runInContext(fs.readFileSync(path.join(dir, f + ".js"), "utf8"), ctx);
 const { UNITS, COURSES, LIVE, SCENES, DICT_CATS, LEARN } = ctx;
 
 const errors = [];
@@ -90,7 +90,7 @@ for (const l in LEARN) {
 if (DICT_CATS.length !== 6) bad("dict", `se esperaban 6 categorías y hay ${DICT_CATS.length}`);
 DICT_CATS.forEach(c => {
   const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
-  if (c.w.length !== 10) bad(`dict.${c.id}`, `se esperaban 10 palabras y hay ${c.w.length}`);
+  if (c.w.length !== 60) bad(`dict.${c.id}`, `se esperaban 60 palabras y hay ${c.w.length}`);
   const seenEs = new Set(); c.w.forEach(x => { if (seenEs.has(norm(x))) bad(`dict.${c.id}`, "palabra repetida en español", x); seenEs.add(norm(x)); });
   for (const l in c.t) {
     if (c.t[l].length !== c.w.length) bad(`${l} dict.${c.id}`, `${c.t[l].length} traducciones para ${c.w.length} palabras`);
