@@ -30,7 +30,7 @@ Zapatos|Shoes|Chaussures|Schuhe|Scarpe|Sapatos|Туфли|Pantofi
 Botas|Boots|Bottes|Stiefel|Stivali|Botas|Сапоги|Cizme
 Sandalias|Sandals|Sandales|Sandalen|Sandali|Sandálias|Сандалии|Sandale
 Zapatos deportivos|Trainers|Baskets|Turnschuhe|Scarpe da ginnastica|Sapatilhas|Кроссовки|Adidași
-Gorra|Cap|Casquette|Schirmmütze|Berretto|Boné|Кепка|Șapcă
+Gorra|Cap|Casquette|Schirmmütze|Cappellino|Boné|Кепка|Șapcă
 Sombrero|Hat|Chapeau|Hut|Cappello|Chapéu|Шляпа|Pălărie
 Bufanda|Scarf|Écharpe|Schal|Sciarpa|Cachecol|Шарф|Fular
 Guantes|Gloves|Gants|Handschuhe|Guanti|Luvas|Перчатки|Mănuși
@@ -65,7 +65,7 @@ Blusa|Blouse|Chemisier|Bluse|Camicetta|Blusa|Блузка|Bluză
 Pantalón corto|Shorts|Short|Shorts|Pantaloncini|Calções|Шорты|Pantaloni scurți
 Mallas|Leggings|Legging|Leggings|Leggings|Leggings|Легинсы|Colanți
 Delantal|Apron|Tablier|Schürze|Grembiule|Avental|Фартук|Șorț
-Bata|Dressing gown|Robe de chambre|Bademantel|Vestaglia|Roupão|Халат|Halat
+Bata de baño|Bathrobe|Peignoir|Bademantel|Accappatoio|Roupão|Банный халат|Halat de baie
 Uniforme|Uniform|Uniforme|Uniform|Divisa|Uniforme|Униформа|Uniformă
 Impermeable|Raincoat|Imperméable|Regenmantel|Impermeabile|Impermeável|Дождевик|Pelerină de ploaie
 Medias|Stockings|Bas|Strümpfe|Calze|Meias|Чулки|Ciorapi
@@ -73,7 +73,7 @@ Tacones|High heels|Talons hauts|Absatzschuhe|Tacchi alti|Saltos altos|Туфли
 Pañuelo|Handkerchief|Mouchoir|Taschentuch|Fazzoletto|Lenço|Платок|Batistă
 Billetera|Wallet|Portefeuille|Geldbeutel|Portafoglio|Carteira|Кошелёк|Portofel
 Gorro|Woolly hat|Bonnet|Mütze|Cuffia|Gorro|Шапка|Căciulă
-Disfraz|Fancy dress|Déguisement|Kostüm|Maschera|Fantasia|Маскарадный костюм|Costum de carnaval
+Disfraz|Fancy dress|Déguisement|Kostüm|Maschera|Fato de carnaval|Маскарадный костюм|Costum de carnaval
 Pantuflas|Slippers|Pantoufles|Hausschuhe|Pantofole|Pantufas|Тапочки|Papuci de casă
 `);
 
@@ -171,7 +171,7 @@ Auxiliar de vuelo|Flight attendant|Hôtesse de l'air|Flugbegleiter|Assistente di
 Cajero|Cashier|Caissier|Kassierer|Cassiere|Caixa|Кассир|Casier
 Vendedor|Salesperson|Vendeur|Verkäufer|Commesso|Vendedor|Продавец|Vânzător
 Secretario|Secretary|Secrétaire|Sekretär|Segretario|Secretário|Секретарь|Secretar
-Contador|Accountant|Comptable|Buchhalter|Contabile|Contabilista|Бухгалтер|Contabil
+Contador público|Accountant|Comptable|Buchhalter|Contabile|Contabilista|Бухгалтер|Contabil
 Gerente|Manager|Gérant|Manager|Responsabile|Gerente|Менеджер|Manager
 Director|Director|Directeur|Direktor|Direttore|Diretor|Директор|Director
 Jefe|Boss|Patron|Chef|Capo|Chefe|Начальник|Șef
@@ -234,7 +234,7 @@ Niña|Girl|Fillette|Mädchen|Bambina|Menina|Девочка|Fată
 Hijos|Children|Enfants|Kinder|Figli|Filhos|Дети|Copii
 Padres|Parents|Parents|Eltern|Genitori|Pais|Родители|Părinți
 Hermanos|Siblings|Frères et sœurs|Geschwister|Fratelli|Irmãos|Братья и сёстры|Frați
-Gemelos|Twins|Jumeaux|Zwillinge|Gemelli|Gémeos|Близнецы|Gemeni
+Hermanos gemelos|Twins|Jumeaux|Zwillinge|Gemelli|Gémeos|Близнецы|Gemeni
 Familia|Family|Famille|Familie|Famiglia|Família|Семья|Familie
 Pariente|Relative|Membre de la famille|Verwandter|Parente|Parente|Родственник|Rudă
 Antepasados|Ancestors|Ancêtres|Vorfahren|Antenati|Antepassados|Предки|Strămoși
@@ -244,7 +244,7 @@ Viuda|Widow|Veuve|Witwe|Vedova|Viúva|Вдова|Văduvă
 Soltero|Single|Célibataire|Ledig|Celibe|Solteiro|Холостой|Necăsătorit
 Casado|Married|Marié|Verheiratet|Sposato|Casado|Женатый|Căsătorit
 Divorciado|Divorced|Divorcé|Geschieden|Divorziato|Divorciado|Разведённый|Divorțat
-Compañero|Partner|Partenaire|Partner|Compagno|Companheiro|Партнёр|Partener
+Pareja|Partner|Partenaire|Partner|Compagno|Companheiro|Партнёр|Partener
 Amigo|Friend|Ami|Freund|Amico|Amigo|Друг|Prieten
 Amiga|Female friend|Amie|Freundin|Amica|Amiga|Подруга|Prietenă
 Vecino|Neighbour|Voisin|Nachbar|Vicino|Vizinho|Сосед|Vecin
@@ -291,7 +291,7 @@ Universidad|University|Université|Universität|Università|Universidade|Уни�
 Hospital|Hospital|Hôpital|Krankenhaus|Ospedale|Hospital|Больница|Spital
 Farmacia|Pharmacy|Pharmacie|Apotheke|Farmacia|Farmácia|Аптека|Farmacie
 Banco|Bank|Banque|Bank|Banca|Banco|Банк|Bancă
-Correo|Post office|Bureau de poste|Postamt|Ufficio postale|Correios|Почта|Poștă
+Oficina de correos|Post office|Bureau de poste|Postamt|Ufficio postale|Correios|Почта|Poștă
 Comisaría|Police station|Commissariat|Polizeiwache|Commissariato|Esquadra|Полицейский участок|Secție de poliție
 Ayuntamiento|Town hall|Mairie|Rathaus|Municipio|Câmara municipal|Мэрия|Primărie
 Mercado|Market|Marché|Markt|Mercato|Mercado|Рынок|Piață de alimente
@@ -313,12 +313,12 @@ Oficina|Office|Bureau|Büro|Ufficio|Escritório|Офис|Birou
 Cárcel|Prison|Prison|Gefängnis|Prigione|Prisão|Тюрьма|Închisoare
 Cementerio|Cemetery|Cimetière|Friedhof|Cimitero|Cemitério|Кладбище|Cimitir
 Puente|Bridge|Pont|Brücke|Ponte|Ponte|Мост|Pod
-Fuente|Fountain|Fontaine|Brunnen|Fontana|Fonte|Фонтан|Fântână
+Fuente de agua|Fountain|Fontaine|Brunnen|Fontana|Fonte|Фонтан|Fântână
 Monumento|Monument|Monument|Denkmal|Monumento|Monumento|Памятник|Monument
 Estatua|Statue|Statue|Statue|Statua|Estátua|Статуя|Statuie
 Torre|Tower|Tour|Turm|Torre|Torre|Башня|Turn
 Muralla|City wall|Muraille|Stadtmauer|Mura|Muralha|Крепостная стена|Zid de apărare
-Cuadra|Block|Pâté de maisons|Häuserblock|Isolato|Quarteirão|Квартал|Cvartal
+Manzana de casas|Block|Pâté de maisons|Häuserblock|Isolato|Quarteirão|Квартал|Cvartal
 Basura|Rubbish|Ordures|Müll|Spazzatura|Lixo|Мусор|Gunoi
 Papelera|Bin|Poubelle|Mülleimer|Cestino|Caixote do lixo|Урна|Coș de gunoi
 Farola|Streetlamp|Réverbère|Straßenlaterne|Lampione|Candeeiro de rua|Фонарь|Felinar
@@ -371,7 +371,7 @@ Seguidor|Follower|Abonné|Follower|Seguace|Seguidor|Подписчик|Urmărito
 Publicación|Post|Publication|Beitrag|Post|Publicação|Публикация|Postare
 Comentario|Comment|Commentaire|Kommentar|Commento|Comentário|Комментарий|Comentariu
 Descargar|Download|Télécharger|Herunterladen|Scaricare|Descarregar|Скачать|A descărca
-Subir|Upload|Téléverser|Hochladen|Caricare|Carregar|Загрузить|A încărca
+Subir un archivo|Upload a file|Téléverser un fichier|Eine Datei hochladen|Caricare un file|Carregar um ficheiro|Загрузить файл|A încărca un fișier
 Guardar|Save|Enregistrer|Speichern|Salvare|Guardar|Сохранить|A salva
 Borrar|Delete|Supprimer|Löschen|Eliminare|Apagar|Удалить|A șterge
 Copiar|Copy|Copier|Kopieren|Copiare|Copiar|Копировать|A copia
