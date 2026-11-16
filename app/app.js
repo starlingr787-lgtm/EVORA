@@ -94,27 +94,26 @@
   /* ---------- Audio: locuciones grabadas + voz del navegador de respaldo ---------- */
   const PACK = {};
   let curAudio = null;
+  /* Un paquete es un índice json (clip -> [inicio, largo] en bytes) y un mp3 con todos los clips pegados.
+     Si el mp3 es muy grande puede venir en trozos (<base>.mp3, <base>.p2.mp3...): el índice lo indica con "_parts". */
+  async function fetchPack(base) {
+    const idx = await fetch(`audio/${base}.json?v=${AUDIO_V}`).then(r => r.ok ? r.json() : Promise.reject());
+    const n = idx._parts || 1; delete idx._parts;
+    const parts = await Promise.all(Array.from({ length: n }, (_, i) => fetch(`audio/${base}${i ? ".p" + (i + 1) : ""}.mp3?v=${AUDIO_V}`).then(r => r.ok ? r.arrayBuffer() : Promise.reject())));
+    if (n === 1) return { idx, buf: parts[0], urls: {} };
+    const all = new Uint8Array(parts.reduce((t, b) => t + b.byteLength, 0)); let o = 0;
+    parts.forEach(b => { all.set(new Uint8Array(b), o); o += b.byteLength; });
+    return { idx, buf: all.buffer, urls: {} };
+  }
   function loadPack(lang) {
-    if (!PACK[lang]) PACK[lang] = (async () => {
-      const [idx, buf] = await Promise.all([
-        fetch(`audio/${lang}.json?v=${AUDIO_V}`).then(r => r.ok ? r.json() : Promise.reject()),
-        fetch(`audio/${lang}.mp3?v=${AUDIO_V}`).then(r => r.ok ? r.arrayBuffer() : Promise.reject())
-      ]);
-      return { idx, buf, urls: {} };
-    })().catch(() => null);
+    if (!PACK[lang]) PACK[lang] = fetchPack(lang).catch(() => null);
     return PACK[lang];
   }
   /* Palabras sueltas: al tocar una pieza se pronuncia su palabra. Paquete audio/<idioma>-w.* (se carga la primera vez que hace falta).
      Plan Premium: voz natural pregrabada. Sin clip, o plan Estándar: voz del navegador, sin avisos que interrumpan el juego. */
   const WPACK = {};
   function loadWordPack(lang) {
-    if (!WPACK[lang]) WPACK[lang] = (async () => {
-      const [idx, buf] = await Promise.all([
-        fetch(`audio/${lang}-w.json?v=${AUDIO_V}`).then(r => r.ok ? r.json() : Promise.reject()),
-        fetch(`audio/${lang}-w.mp3?v=${AUDIO_V}`).then(r => r.ok ? r.arrayBuffer() : Promise.reject())
-      ]);
-      return { idx, buf, urls: {} };
-    })().catch(() => null);
+    if (!WPACK[lang]) WPACK[lang] = fetchPack(lang + "-w").catch(() => null);
     return WPACK[lang];
   }
   let voices = [];
