@@ -712,6 +712,147 @@ en|38|w|Feature|Report
 en|38|s|Before sharing, it is a good idea to check the source.|Before sharing, it's a good idea to check the source.
 en|38|s|It is best to be wary of sensationalist headlines.|It's best to be wary of sensationalist headlines.
 pt|38|s|Os algoritmos mostram-nos aquilo em que já pensamos.|Os algoritmos mostram-nos aquilo que já pensamos.
+es|39|w|Reclamación|Reclamo
+es|39|s|Quisiera presentar una reclamación formal.|Quisiera presentar un reclamo formal.
+fr|39|w|Excuse|Excuses
+de|39|w|Rückgaberecht|Rückgabebedingungen
+de|39|s|Laut ihrem Rückgaberecht bieten sie nur eine Teilrückerstattung an.|Laut ihren Rückgabebedingungen bieten sie nur eine Teilrückerstattung an.
+de|39|w|eskalieren|weiterleiten
+de|39|s|Wenn sie es nicht lösen, eskaliere ich die Beschwerde an die Geschäftsleitung.|Wenn sie es nicht lösen, leite ich die Beschwerde an die Geschäftsleitung weiter.
+pt|39|w|Escalar|Encaminhar
+pt|39|s|Se não resolverem, escalarei a reclamação à administração.|Se não resolverem, encaminharei a reclamação para a administração.
+ro|39|w|A escalada|A înainta
+ro|39|s|Dacă nu o rezolvă, voi escalada reclamația către conducere.|Dacă nu o rezolvă, voi înainta reclamația conducerii.
+ru|39|w|Передать выше|Передать руководству
+es|39|w|Escalar|Elevar
+es|39|s|Si no lo resuelven, escalaré la queja a la gerencia.|Si no lo resuelven, elevaré la queja a la gerencia.
+en|39|s|I would like to make a formal complaint.|I'd like to make a formal complaint.
+en|39|s|I am willing to reach an agreement.|I'm willing to reach an agreement.
+ro|39|s|Vreau să vorbesc cu persoana responsabilă.|Aș dori să vorbesc cu responsabilul.
+pt|39|s|Quero falar com o responsável.|Queria falar com o responsável.
+en|39|s|I do not accept that condition.|I don't accept that condition.
+ro|39|s|Am primit un serviciu prost în magazin.|Am fost servit prost în magazin.
+ru|39|s|Мою оферту отклонили, но сделали встречное предложение.|Моё предложение отклонили, но сделали встречное.
+de|40|w|Öffentlicher Sektor|öffentlicher Sektor
+ru|40|s|Правительство ввело политику экономии.|Правительство ввело политику жёсткой экономии.
+pt|40|w|Crescimento acelerado|Boom
+fr|40|s|Les exportations ont baissé de 5 %.|Les exportations ont baissé de cinq pour cent.
+ru|40|s|Уровень безработицы снизился впервые за годы.|Уровень безработицы снизился впервые за многие годы.
+ro|40|s|Rata șomajului a scăzut pentru prima dată în ani.|Rata șomajului a scăzut pentru prima dată după mulți ani.
+en|40|s|The government applied an austerity policy.|The government introduced an austerity policy.
+de|41|w|Bürgerschaft|Staatsbürgerschaft
+ru|41|w|Воздержание от голосования|Неявка на выборы
+ru|41|s|Доля воздержавшихся была выше, чем на прошлых выборах.|Неявка избирателей была выше, чем на прошлых выборах.
+en|41|s|The mayor announced new works in the city.|The mayor announced new building works in the city.
+ru|41|s|Мэр объявил о новых работах в городе.|Мэр объявил о новых строительных работах в городе.
+en|41|s|Every voter should get informed before choosing.|Every voter should be well informed before choosing.
+ru|41|s|Каждый избиратель должен информироваться перед выбором.|Каждый избиратель должен изучить информацию, прежде чем сделать выбор.
+en|41|s|Diplomacy avoided a bigger conflict.|Diplomacy averted a wider conflict.
+ro|41|s|Senatul a adoptat legea cu majoritate.|Senatul a adoptat legea cu majoritate de voturi.
+fr|42|w|Avantage thérapeutique|Bénéfice
+de|42|w|Klinische Studie|klinische Studie
+de|42|w|Genetischer Code|genetischer Code
+de|42|w|Gentechnisch veränderte Lebensmittel|gentechnisch veränderte Lebensmittel
+de|42|w|Algorithmische Verzerrung|algorithmische Verzerrung
+de|42|w|Informierte Einwilligung|informierte Einwilligung
+de|42|w|Künstliche Befruchtung|künstliche Befruchtung
+it|42|w|Pregiudizio algoritmico|Bias algoritmico
+en|42|s|The benefits do not justify every risk.|The benefits do not justify just any risk.
+ru|42|s|Выгоды не оправдывают любой риск.|Польза не оправдывает любой риск.
+es|42|s|La edición genética abre posibilidades y riesgos.|La edición genética abre posibilidades, pero también implica riesgos.
+en|42|s|Gene editing opens up possibilities and risks.|Gene editing opens up possibilities, but also carries risks.
+fr|42|s|L'édition génétique ouvre des possibilités et des risques.|L'édition génétique ouvre des possibilités, mais comporte aussi des risques.
+de|42|s|Die Genom-Editierung eröffnet Möglichkeiten und Risiken.|Die Genom-Editierung eröffnet Möglichkeiten, birgt aber auch Risiken.
+it|42|s|L'editing genetico apre possibilità e rischi.|L'editing genetico apre possibilità, ma comporta anche dei rischi.
+pt|42|s|A edição genética abre possibilidades e riscos.|A edição genética abre possibilidades, mas também implica riscos.
+ru|42|s|Редактирование генома открывает возможности и несёт риски.|Редактирование генома открывает возможности, но несёт и риски.
+ro|42|s|Editarea genetică deschide posibilități și riscuri.|Editarea genetică deschide posibilități, dar implică și riscuri.
+ro|42|s|Supravegherea în masă amenință confidențialitatea.|Supravegherea în masă amenință viața privată.
+ro|42|s|A declarat un conflict de interese înainte de a-și da cu părerea.|A declarat un conflict de interese înainte de a-și exprima opinia.
+ru|43|w|Художник-живописец|Художник
+ru|43|s|Его стиль нарушает традиционные нормы.|Его стиль порывает с традиционными нормами.
+ro|43|s|Stilul său încalcă normele tradiționale.|Stilul său rupe cu normele tradiționale.
+ru|43|s|Этот холст принадлежит художнику прошлого века.|Этот холст принадлежит кисти художника прошлого века.
+en|43|s|The painter made a portrait of the queen.|The painter painted a portrait of the queen.
+ru|43|s|Рецензия хвалила сценарий и режиссуру.|В рецензии похвалили сценарий и режиссуру.
+ro|43|s|Romanul respectiv a fost tradus în peste treizeci de limbi.|Acel roman a fost tradus în peste treizeci de limbi.
+de|44|s|Die Akten enthüllen bisher unbekannte Fakten.|Die Archive enthüllen bisher unbekannte Fakten.
+it|44|s|I documenti rivelano informazioni finora sconosciute.|Gli archivi rivelano informazioni finora sconosciute.
+ru|44|s|Документы раскрывают неизвестные факты.|Архивы раскрывают ранее неизвестные факты.
+ro|44|s|Documentele dezvăluie informații necunoscute.|Arhivele dezvăluie informații necunoscute până acum.
+es|44|s|La memoria histórica ayuda a evitar que se repitan.|La memoria histórica ayuda a evitar que la historia se repita.
+en|44|s|Historical memory helps to prevent such events from happening again.|Historical memory helps to prevent history from repeating itself.
+fr|44|s|La mémoire historique permet d'éviter que cela ne se reproduise.|La mémoire historique aide à éviter que l'histoire ne se répète.
+de|44|s|Das historische Gedächtnis hilft, eine Wiederholung zu verhindern.|Das historische Gedächtnis hilft zu verhindern, dass sich die Geschichte wiederholt.
+it|44|s|La memoria storica contribuisce a evitare che tali eventi si ripetano.|La memoria storica aiuta a evitare che la storia si ripeta.
+pt|44|s|A memória histórica ajuda a evitar que se repitam.|A memória histórica ajuda a evitar que a história se repita.
+ru|44|s|Историческая память помогает не допустить их повторения.|Историческая память помогает не допустить повторения истории.
+ro|44|s|Memoria istorică contribuie la prevenirea repetării acestor evenimente.|Memoria istorică ajută ca istoria să nu se repete.
+en|44|s|The allies won the victory after years of war.|The allies achieved victory after years of war.
+de|45|w|Jargon|Slang
+ro|45|s|Ironia lui a trecut neobservată pentru mulți.|Multora le-a scăpat ironia lui.
+ru|45|s|Его ирония осталась незамеченной для многих.|Многие не заметили его иронии.
+en|45|s|You need to adapt your tone to the person you're speaking to.|You need to adapt your register to the person you're speaking to.
+de|45|s|Das war eine beschönigende Formulierung, keine Lüge.|Das war ein Euphemismus, keine Lüge.
+ru|45|s|Внимательное слушание позволяет избежать многих недоразумений.|Если слушать внимательно, можно избежать многих недоразумений.
+pt|45|s|Disse-o em tom de brincadeira, mas eles levaram-no a sério.|Disse-o a brincar, mas levaram-no a sério.
+ru|45|s|Чтобы говорить свободно, нужна большая практика.|Чтобы говорить свободно, нужно много практики.
+ro|46|w|Hotărâre|Sentință
+de|46|w|Bestechung|Bestechungsgeld
+de|46|s|Der Richter lehnte die Bestechung ab und meldete den Fall.|Der Richter lehnte das Bestechungsgeld ab und meldete den Fall.
+it|46|w|Ordine del giudice|Ordinanza del giudice
+en|46|s|The court handed down its judgement yesterday morning.|The court handed down its ruling yesterday morning.
+ru|46|s|Договор должен быть выполнен во всех его условиях.|Договор должен быть исполнен в полном объёме.
+ru|46|s|Он получил компенсацию за причиненный ущерб.|Он получил компенсацию за причинённый ущерб.
+de|46|s|Der Angeklagte plädierte auf „nicht schuldig“.|Der Angeklagte plädierte auf nicht schuldig.
+ru|46|s|Жюри совещалось в течение двух дней.|Присяжные совещались два дня.
+ro|46|s|Poliția l-a arestat pe suspect.|Poliția l-a reținut pe suspect.
+ru|46|s|Судья отказался от взятки и сообщил о деле.|Судья отказался от взятки и заявил о случившемся.
+ro|46|s|A primit eliberare condiționată pentru bună purtare.|A fost eliberat condiționat pentru bună purtare.
+ro|46|s|Procuratura a solicitat o pedeapsă de cinci ani de închisoare.|Parchetul a cerut o pedeapsă de cinci ani de închisoare.
+ro|47|w|Lider|Manager
+ru|47|w|Внедрять новое|Внедрять инновации
+ro|47|w|Filială|Sucursală
+ro|47|s|Compania va deschide o filială în străinătate.|Compania va deschide o sucursală în străinătate.
+ru|47|w|Доходы компании|Прибыль
+ro|47|w|Câștiguri|Profit
+de|47|w|Verwaltung|Management
+fr|47|s|Notre objectif est de doubler notre chiffre d'affaires cette année.|Notre objectif est de doubler nos ventes cette année.
+ru|47|s|Наша цель — удвоить объем продаж в этом году.|Наша цель — удвоить объём продаж в этом году.
+ru|47|s|Нам удалось сократить расходы, не уволив никого.|Нам удалось сократить расходы, никого не уволив.
+en|47|s|The meeting will serve to set priorities.|The purpose of the meeting is to set priorities.
+de|47|s|Das Treffen dient dazu, Prioritäten festzulegen.|Die Besprechung dient dazu, Prioritäten festzulegen.
+it|47|s|L'incontro servirà a stabilire le priorità.|La riunione servirà a stabilire le priorità.
+ru|47|s|Эта встреча позволит определить приоритеты.|Совещание поможет определить приоритеты.
+ro|47|s|Întâlnirea va servi la stabilirea priorităților.|Ședința va servi la stabilirea priorităților.
+de|47|s|Es ist von entscheidender Bedeutung, die Mitarbeiter zu motivieren.|Es ist entscheidend, die Mitarbeiter zu motivieren.
+en|47|s|The company is set to open a branch abroad.|The company will open a branch abroad.
+en|47|s|Competition reduced our market share.|The competition reduced our market share.
+ru|47|s|Конкуренция сократила нашу долю рынка.|Из-за конкуренции наша доля рынка сократилась.
+ru|47|s|Его видение изменило корпоративную культуру компании.|Его видение изменило культуру компании.
+de|48|w|Fossiler Brennstoff|fossiler Brennstoff
+de|48|w|Nachhaltige Entwicklung|nachhaltige Entwicklung
+ro|48|w|Amprenta de carbon|Amprentă de carbon
+en|48|s|Reducing emissions is a global priority.|Reducing emissions is a global emergency.
+de|48|s|Die Reduzierung der Emissionen ist eine globale Dringlichkeit.|Die Senkung der Emissionen ist weltweit dringend notwendig.
+ru|48|s|Сокращение выбросов — это глобальная задача, требующая неотложного решения.|Сокращение выбросов — неотложная глобальная задача.
+ru|48|s|Переработка отходов не решает проблему.|Одной переработки отходов недостаточно, чтобы решить проблему.
+en|48|s|Glaciers melt every year.|The glaciers are melting year after year.
+ru|48|s|Лесовосстановление помогает вернуть леса.|Лесовосстановление помогает восстановить леса.
+fr|48|s|Ils ont interdit le plastique à usage unique dans la ville.|Le plastique à usage unique a été interdit dans la ville.
+ru|48|s|Экономика замкнутого цикла стремится использовать отходы.|Экономика замкнутого цикла направлена на повторное использование отходов.
+fr|49|w|Recherché|Alambiqué
+en|49|s|I prefer clear language to flowery language.|I prefer clear language to convoluted language.
+de|49|s|Ich ziehe eine klare Sprache einer blumigen vor.|Ich ziehe eine klare Sprache einer gekünstelten vor.
+ru|49|s|Я предпочитаю ясный язык, а не вычурный.|Я предпочитаю ясный язык витиеватому.
+ru|49|w|Иронический|Ироничный
+ru|49|w|Весомый|Категоричный
+ru|49|s|Следует переформулировать эту фразу, выразив её более вежливо.|Лучше переформулировать эту фразу повежливее.
+ru|49|s|Я постарался не выразиться так прямо.|Я постарался не говорить этого так прямо.
+ru|49|s|Сообщение было вежливым, но решительным.|Сообщение было вежливым, но твёрдым.
+ru|49|s|Его снисходительный тон меня раздражил.|Меня задел его снисходительный тон.
+ru|49|s|Это был грубый и ненужный ответ.|Это был грубый и ничем не оправданный ответ.
+en|49|s|It was a rude and unnecessary reply.|It was a rude and uncalled-for reply.
 `;
   window.FIXES_MISSING = [];
   FIX.trim().split("\n").forEach(line => {
