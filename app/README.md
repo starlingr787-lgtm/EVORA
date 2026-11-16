@@ -126,3 +126,9 @@ El contenido ampliado vive en `extra.js` (cargador) y `data7a.js`, `data7b.js`, 
 - Cuentas de usuario y sincronización del progreso entre dispositivos.
 - Revisión del contenido y del audio por hablantes nativos, sobre todo ruso y rumano.
 - La calidad de las voces es buena pero sigue siendo síntesis: si se busca el máximo realismo, el audio puede regenerarse con un servicio de pago (ElevenLabs, Google, Azure) sin tocar el resto de la app.
+
+## Audio repartido por sesión
+La app no descarga todo el audio de un idioma: cada idioma tiene un índice pequeño (`audio/<idioma>.json`, clip -> [inicio, largo, trozo]) y un mp3 por sesión (`<idioma>-s0.mp3` a `-s4.mp3` = A1 a C1) más uno para el diccionario (`-s5`). Al empezar una lección se descarga solo el trozo de su sesión (unos 4-5 MB) en vez de los ~25 MB del idioma completo. Lo mismo para las palabras sueltas (`<idioma>-w-s*.mp3`).
+- Los paquetes COMPLETOS que usa el generador están en `tools/tts/packs/` (los mp3 no se suben a git). Si faltan, `python tools/tts/packs.py join` los reconstruye desde `app/audio`.
+- `generate.py` reparte los trozos solo al terminar de generar. `python tools/tts/packs.py split` repite el reparto a mano.
+- `node app/tests/audio.test.js` comprueba que todos los clips apuntan a trozos que existen.

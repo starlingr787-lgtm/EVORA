@@ -35,3 +35,6 @@ La primera vez, si ya existen audios, ejecuta `generate.py --adopt` para registr
 - `python tools/tts/generate.py --samples ro --voices ro-RO-Chirp3-HD-Aoede,ro-RO-Wavenet-A` crea muestras en `tools/tts/.work/samples/` para elegir de oído.
 - El hash de cada clip incluye la voz, así que al cambiarla se regenera todo el idioma y solo ese idioma. Cada frase se sintetiza una sola vez.
 - Coste: el texto rumano completo son unos 15.600 caracteres, dentro de las capas gratuitas habituales. Revisa precios y términos de uso del audio antes de publicar.
+
+## Paquetes completos y repartidos
+`generate.py` trabaja con paquetes completos en `tools/tts/packs/` (mp3 sin versionar) y, al terminar, `packs.py` los reparte por sesión en `app/audio/` (lo que sirve la app). Antes de generar, ejecuta `node tools/tts/export_texts.js`: además de los textos escribe `.work/units-w.json`, que sirve para repartir las palabras sueltas por sesión. Si borras `tools/tts/packs/*.mp3`, `python tools/tts/packs.py join` los recupera desde `app/audio`.

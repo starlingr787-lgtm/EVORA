@@ -18,9 +18,11 @@ Modelos Piper: TTS_MODELS_DIR (por defecto tools/tts/models) con <idioma>.onnx y
 """
 import argparse, base64, hashlib, io, json, os, subprocess, sys, time, urllib.error, urllib.request, wave
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import packs
 
 ROOT = Path(__file__).resolve().parents[2]
-AUDIO, WORK = ROOT / "app" / "audio", ROOT / "tools" / "tts" / ".work"
+AUDIO, WORK = ROOT / "tools" / "tts" / "packs", ROOT / "tools" / "tts" / ".work"  # paquetes COMPLETOS; la app sirve los repartidos (packs.py)
 MODELS = Path(os.environ.get("TTS_MODELS_DIR", ROOT / "tools" / "tts" / "models"))
 VOICES = {  # voz elegida por idioma (todas con licencia que permite uso comercial; ver README de la app)
     "en": "piper:en_GB-cori-high", "fr": "piper:fr_FR-siwis-medium", "de": "piper:de_DE-thorsten-high",
@@ -127,6 +129,7 @@ def main():
         sys.exit("Falta tools/tts/.work/texts.json: ejecuta antes  node tools/tts/export_texts.js")
     texts = json.load(open(texts_file))
     for lang in args.only.split(","):
+        if not (AUDIO / f"{lang}{suffix}.mp3").exists(): packs.join_one(f"{lang}{suffix}")  # recupera el completo desde app/audio
         idx_f, meta_f, pack_f = AUDIO / f"{lang}{suffix}.json", AUDIO / f"{lang}{suffix}.meta.json", AUDIO / f"{lang}{suffix}.mp3"
         idx = json.load(open(idx_f)) if idx_f.exists() else {}
         meta = json.load(open(meta_f)) if meta_f.exists() else {}
@@ -153,6 +156,7 @@ def main():
             else: continue
             new_idx[k] = [len(out), len(data)]; new_meta[k] = clip_hash(lang, want[k]); out += data
         atomic_write(pack_f, bytes(out)); atomic_write(idx_f, json.dumps(new_idx, separators=(",", ":")), "w"); atomic_write(meta_f, json.dumps(new_meta, separators=(",", ":")), "w")
+        packs.split_one(f"{lang}{suffix}")
         print(f"  {lang}: escrito ({len(out) // 1024} KB). Recuerda subir AUDIO_V en app/app.js para renovar la caché del navegador.")
 
 

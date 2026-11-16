@@ -3,7 +3,7 @@
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const KEY = "lingo-state-v3";
-  const AUDIO_V = "20261116d"; // súbela cuando regeneres los audios (rompe la caché del navegador)
+  const AUDIO_V = "20261116e"; // súbela cuando regeneres los audios (rompe la caché del navegador)
   const today = () => new Date().toISOString().slice(0, 10);
   const LV = EX.LEVELS, NL = LV.length;
   const canSpeak = "speechSynthesis" in window;
@@ -92,24 +92,36 @@
   }
 
   /* ---------- Audio: locuciones grabadas + voz del navegador de respaldo ---------- */
-  const PACK = {};
-  let curAudio = null;
-  /* Un paquete es un índice json (clip -> [inicio, largo] en bytes) y un mp3 con todos los clips pegados.
-     Si el mp3 es muy grande puede venir en trozos (<base>.mp3, <base>.p2.mp3...): el índice lo indica con "_parts". */
+  /* Un paquete de audio es un índice json (clip -> [inicio, largo, trozo]) y varios mp3 con los clips pegados, uno por sesión
+     (<base>-s0.mp3 ... -s4.mp3) y otro para el diccionario (-s5). Solo se descarga el trozo que se necesita (tools/tts/packs.py). */
+  const UNITS_PER_SESSION = 10;
   async function fetchPack(base) {
     const idx = await fetch(`audio/${base}.json?v=${AUDIO_V}`).then(r => r.ok ? r.json() : Promise.reject());
-    const n = idx._parts || 1; delete idx._parts;
-    const parts = await Promise.all(Array.from({ length: n }, (_, i) => fetch(`audio/${base}${i ? ".p" + (i + 1) : ""}.mp3?v=${AUDIO_V}`).then(r => r.ok ? r.arrayBuffer() : Promise.reject())));
-    if (n === 1) return { idx, buf: parts[0], urls: {} };
-    const all = new Uint8Array(parts.reduce((t, b) => t + b.byteLength, 0)); let o = 0;
-    parts.forEach(b => { all.set(new Uint8Array(b), o); o += b.byteLength; });
-    return { idx, buf: all.buffer, urls: {} };
+    return { base, idx, bufs: {}, urls: {} };
   }
+  function packBuf(pk, p) {
+    if (!pk.bufs[p]) pk.bufs[p] = fetch(`audio/${pk.base}-s${p}.mp3?v=${AUDIO_V}`).then(r => r.ok ? r.arrayBuffer() : Promise.reject()).catch(() => { delete pk.bufs[p]; return null; });
+    return pk.bufs[p];
+  }
+  async function clipUrl(pk, key) {
+    if (pk.urls[key]) return pk.urls[key];
+    const [o, l, p] = pk.idx[key], buf = await packBuf(pk, p);
+    if (!buf) return null;
+    return (pk.urls[key] = URL.createObjectURL(new Blob([buf.slice(o, o + l)], { type: "audio/mpeg" })));
+  }
+  const PACK = {};
+  let curAudio = null;
   function loadPack(lang) {
     if (!PACK[lang]) PACK[lang] = fetchPack(lang).catch(() => null);
     return PACK[lang];
   }
-  /* Palabras sueltas: al tocar una pieza se pronuncia su palabra. Paquete audio/<idioma>-w.* (se carga la primera vez que hace falta).
+  /* Precarga el audio de la sesión de una unidad (se llama al empezar una lección). */
+  function warmSession(lang, unit) {
+    if (!prem() || !lang || unit == null) return;
+    const s = Math.min(Math.floor(unit / UNITS_PER_SESSION), 4);
+    loadPack(lang).then(pk => { if (pk) packBuf(pk, s); });
+  }
+  /* Palabras sueltas: al tocar una pieza se pronuncia su palabra. Paquete audio/<idioma>-w.* (el índice se carga la primera vez que hace falta).
      Plan Premium: voz natural pregrabada. Sin clip, o plan Estándar: voz del navegador, sin avisos que interrumpan el juego. */
   const WPACK = {};
   function loadWordPack(lang) {
@@ -141,9 +153,8 @@
       const pk = await loadWordPack(lang), key = "w:" + w.toLowerCase();
       if (pk && pk.idx[key]) {
         try {
-          let url = pk.urls[key];
-          if (!url) { const [o, l] = pk.idx[key]; url = pk.urls[key] = URL.createObjectURL(new Blob([pk.buf.slice(o, o + l)], { type: "audio/mpeg" })); }
-          const a = new Audio(url); curAudio = a; await a.play(); return;
+          const url = await clipUrl(pk, key);
+          if (url) { const a = new Audio(url); curAudio = a; await a.play(); return; }
         } catch (e) {}
       }
     }
@@ -158,10 +169,8 @@
     const key = EX.clipKey(lang, text), pk = key ? await loadPack(lang) : null;
     if (pk && pk.idx[key]) {
       try {
-        let url = pk.urls[key];
-        if (!url) { const [o, l] = pk.idx[key]; url = pk.urls[key] = URL.createObjectURL(new Blob([pk.buf.slice(o, o + l)], { type: "audio/mpeg" })); }
-        const a = new Audio(url); a.playbackRate = rate; a.preservesPitch = true;
-        curAudio = a; await a.play(); return;
+        const url = await clipUrl(pk, key);
+        if (url) { const a = new Audio(url); a.playbackRate = rate; a.preservesPitch = true; curAudio = a; await a.play(); return; }
       } catch (e) {}
     }
     if (!canSpeak) return;
@@ -547,6 +556,7 @@
   function startPlayer(cfg) {
     palStop();
     P = Engine.sessionNew(cfg); H.check = null; H.teardown = null;
+    warmSession(cfg.lang, cfg.ui);
     shell();
     if (freeKind()) $(".p-hearts").style.visibility = "hidden";
     renderEx();

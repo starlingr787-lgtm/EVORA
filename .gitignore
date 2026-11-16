@@ -11,3 +11,7 @@ assets/videos/101581-video-1080.mov
 tools/tts/models/
 tools/tts/.work/
 __pycache__/
+
+# paquetes de audio completos (se reconstruyen con: python tools/tts/packs.py join)
+tools/tts/packs/*.mp3
+tools/tts/.work/

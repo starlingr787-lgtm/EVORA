@@ -30,6 +30,22 @@ for (const lang in ctx.COURSES) {
   words[lang] = Object.fromEntries([...set].sort().map(w => ["w:" + w, w]));
 }
 fs.mkdirSync(work, { recursive: true });
+/* Unidad donde aparece por primera vez cada palabra: sirve para repartir el paquete de palabras por sesión (tools/tts/packs.py). */
+const firstUnit = {};
+for (const lang in ctx.COURSES) {
+  const fu = {}, mark = (s, u) => toks(s).forEach(x => { const k = "w:" + x; if (!(k in fu)) fu[k] = u; });
+  const byUnit = {};
+  ctx.COURSES[lang].t.forEach((t, u) => { (byUnit[u] = byUnit[u] || []).push(...t[1]); });
+  ctx.LIVE.forEach(p => (byUnit[p.unit] = byUnit[p.unit] || []).push(...(lang === "es" ? p.es : p.t[lang])));
+  ctx.SCENES.forEach(sc => {
+    const L = (byUnit[sc.unit] = byUnit[sc.unit] || []);
+    if (lang === "es") sc.turns.forEach(tu => { L.push(tu.es); tu.opts.forEach(o => L.push(o.es)); });
+    else sc.t[lang].forEach(tn => tn.forEach(x => L.push(x)));
+  });
+  Object.keys(byUnit).map(Number).sort((a, b) => a - b).forEach(u => byUnit[u].forEach(x => mark(x, u)));
+  firstUnit[lang] = fu;
+}
+fs.writeFileSync(path.join(work, "units-w.json"), JSON.stringify(firstUnit));
 fs.writeFileSync(path.join(work, "texts-w.json"), JSON.stringify(words));
 console.log("palabras:", Object.fromEntries(Object.entries(words).map(([l, k]) => [l, Object.keys(k).length])));
 fs.writeFileSync(path.join(work, "texts.json"), JSON.stringify(out));
