@@ -177,7 +177,7 @@ Estos zapatos me quedan pequeños.|These shoes are too small for me.|Ces chaussu
 
   /* 9 Días y horas */
   W(9, `
-Madrugada|Early morning|Petit matin|Morgengrauen|Alba|Madrugada|Раннее утро|Zori
+Madrugada|Early morning|Petit matin|Morgengrauen|Primo mattino|Madrugada|Раннее утро|Zori
 Mediodía|Midday|Midi|Mittag|Mezzogiorno|Meio-dia|Полдень|Amiază
 Medianoche|Midnight|Minuit|Mitternacht|Mezzanotte|Meia-noite|Полночь|Miezul nopții
 Calendario|Calendar|Calendrier|Kalender|Calendario|Calendário|Календарь|Calendar
