@@ -2,7 +2,7 @@
 const vm = require("vm"), fs = require("fs"), path = require("path"), assert = require("assert");
 const dir = path.join(__dirname, "..");
 const ctx = {}; ctx.window = ctx; vm.createContext(ctx);
-for (const f of ["data", "data2", "data3", "data4", "extra", "data7a", "data7b", "data7c", "data8", "data9", "data10", "data11", "data12", "data13", "data14", "data15", "data5", "data6", "data16", "exercises", "engine"]) vm.runInContext(fs.readFileSync(path.join(dir, f + ".js"), "utf8"), ctx);
+for (const f of ["data", "data2", "data3", "data4", "extra", "data7a", "data7b", "data7c", "data8", "data9", "data10", "data11", "data12", "data13", "data14", "data15", "data17", "data18", "data19", "data5", "data6", "data16", "exercises", "engine"]) vm.runInContext(fs.readFileSync(path.join(dir, f + ".js"), "utf8"), ctx);
 const { EX, Engine, COURSES, UNITS } = ctx;
 let n = 0; const test = (name, fn) => { fn(); n++; console.log("ok  " + name); };
 const json = o => JSON.parse(JSON.stringify(o));
@@ -131,9 +131,9 @@ test("instantánea para multijugador: JSON mínimo sin la cola de ejercicios", (
   const s = Engine.sessionNew({ kind: "level", lang: "en", ex: EX.build("en", 0, 0, {}) }), snap = Engine.snapshot(s);
   eq(json(snap), snap); assert(!("q" in snap)); assert(JSON.stringify(snap).length < 200);
 });
-test("contenido: 50 unidades (A1-B1: 34 palabras y 21 frases; B2-C1: 26 y 16) en los 8 idiomas, alineadas con el español", () => {
+test("contenido: 50 unidades (34 palabras y 21 frases) en los 8 idiomas, alineadas con el español", () => {
   assert.strictEqual(UNITS.length, 50);
-  UNITS.forEach((u, i) => { assert.strictEqual(u.w.length, i < 30 ? 34 : 26, "es w" + i); assert.strictEqual(u.s.length, i < 30 ? 21 : 16, "es s" + i); });
+  UNITS.forEach((u, i) => { assert.strictEqual(u.w.length, 34, "es w" + i); assert.strictEqual(u.s.length, 21, "es s" + i); });
   for (const l in COURSES) { assert.strictEqual(COURSES[l].t.length, 50, l); COURSES[l].t.forEach((t, u) => { assert.strictEqual(t[0].length, UNITS[u].w.length, l + " w" + u); assert.strictEqual(t[1].length, UNITS[u].s.length, l + " s" + u); }); }
 });
 test("niveles: ninguna lección supera el tope de preguntas aunque la unidad tenga mucho contenido", () => {

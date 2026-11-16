@@ -10,7 +10,7 @@ try { ts = require("typescript"); } catch (e) { try { ts = require(path.join(req
 const doc = { body: null, addEventListener() {}, title: "" };
 const ctx = { window: null, document: doc, MutationObserver: class { observe() {} takeRecords() { return []; } }, NodeFilter: {} };
 ctx.window = ctx; vm.createContext(ctx);
-for (const f of ["data14", "data15"]) if (fs.existsSync(path.join(dir, f + ".js"))) vm.runInContext(fs.readFileSync(path.join(dir, f + ".js"), "utf8"), ctx);
+for (const f of ["data14", "data15", "data19"]) if (fs.existsSync(path.join(dir, f + ".js"))) vm.runInContext(fs.readFileSync(path.join(dir, f + ".js"), "utf8"), ctx);
 vm.runInContext(fs.readFileSync(path.join(dir, "i18n.js"), "utf8"), ctx);
 const { I18N } = ctx;
 
@@ -39,7 +39,7 @@ for (const f of ["app.js", "exercises.js", "engine.js"]) {
 }
 /* Textos explicativos de las situaciones (están en data3.js) */
 const dctx = {}; dctx.window = dctx; vm.createContext(dctx);
-for (const f of ["data", "data2", "data3", "data14", "data15"]) if (fs.existsSync(path.join(dir, f + ".js"))) vm.runInContext(fs.readFileSync(path.join(dir, f + ".js"), "utf8"), dctx);
+for (const f of ["data", "data2", "data3", "data14", "data15", "data19"]) if (fs.existsSync(path.join(dir, f + ".js"))) vm.runInContext(fs.readFileSync(path.join(dir, f + ".js"), "utf8"), dctx);
 const sit = [];
 dctx.LIVE.forEach(p => sit.push(p.idea, ...p.sit));
 dctx.SCENES.forEach(sc => { sit.push(sc.title, sc.intro, ...(sc.who === "Ana" ? [] : [sc.who])); sc.turns.forEach(t => t.opts.forEach(o => sit.push(o.why))); });
