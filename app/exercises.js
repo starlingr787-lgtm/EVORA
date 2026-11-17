@@ -44,8 +44,10 @@
     return out;
   }
 
-  const mc = (item, pool, dir) => {
-    const fwd = dir === "fwd"; // fwd: ves español, eliges idioma destino
+  /* Opción múltiple: siempre ves el texto en el idioma que aprendes y eliges el significado entre opciones en tu idioma base
+     (el parámetro dir se mantiene por compatibilidad, pero ya no se ofrece la opción inversa con opciones en el idioma aprendido). */
+  const mc = (item, pool, dirIgnored) => {
+    const dir = "rev", fwd = false;
     const f = fwd ? "t" : "es";
     return {
       type: "mc", item, dir,
