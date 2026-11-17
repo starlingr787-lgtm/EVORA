@@ -633,5 +633,591 @@ Segunda oportunidad|Second chance|Seconde chance|zweite Chance|Seconda opportuni
 Sueño cumplido|Dream come true|Rêve devenu réalité|erfüllter Traum|Sogno avverato|Sonho realizado|Исполнившаяся мечта|Vis împlinit
 `);
 
+  /* 30 · Opinar y debatir (60 palabras) */
+  more(30, `
+Afirmar|To claim|Affirmer|behaupten|Affermare|Afirmar|Утверждать|A afirma
+Admitir|To admit|Admettre|zugeben|Ammettere|Admitir|Признавать|A admite
+Discrepar|To disagree|Diverger|abweichen|Dissentire|Discordar|Расходиться во мнениях|A fi în dezacord
+Estar de acuerdo|To agree|Être d'accord|einverstanden sein|Essere d'accordo|Estar de acordo|Соглашаться|A fi de acord
+Matizar|To qualify|Nuancer|differenzieren|Sfumare|Matizar|Уточнять|A nuanța
+Insistir|To insist|Insister|bestehen|Insistere|Insistir|Настаивать|A insista
+Aclarar|To clarify|Clarifier|klarstellen|Chiarire|Esclarecer|Прояснять|A clarifica
+Resumir|To sum up|Résumer|zusammenfassen|Riassumere|Resumir|Подытоживать|A rezuma
+Concluir|To conclude|Conclure|schlussfolgern|Concludere|Concluir|Заключать|A concluziona
+Deducir|To deduce|Déduire|ableiten|Dedurre|Deduzir|Выводить|A deduce
+Suponer|To assume|Supposer|annehmen|Supporre|Supor|Предполагать|A presupune
+Dudar|To doubt|Douter|zweifeln|Dubitare|Duvidar|Сомневаться|A se îndoi
+Sospechar|To suspect|Soupçonner|vermuten|Sospettare|Suspeitar|Подозревать|A bănui
+Evidencia|Evidence|Preuve|Beleg|Evidenza|Evidência|Доказательство|Dovadă
+Dato|Data|Donnée|Angabe|Dato|Dado|Данные|Informație
+Hecho|Fact|Fait|Tatsache|Fatto|Facto|Факт|Fapt
+Ejemplo|Example|Exemple|Beispiel|Esempio|Exemplo|Пример|Exemplu
+Causa|Cause|Cause|Ursache|Causa|Causa|Причина|Cauză
+Consecuencia|Consequence|Conséquence|Folge|Conseguenza|Consequência|Последствие|Consecință
+Motivo|Reason|Motif|Grund|Motivo|Motivo|Мотив|Motiv
+Lógica|Logic|Logique|Logik|Logica|Lógica|Логика|Logică
+Razonable|Reasonable|Raisonnable|vernünftig|Ragionevole|Razoável|Разумный|Rezonabil
+Absurdo|Absurd|Absurde|absurd|Assurdo|Absurdo|Абсурдный|Absurd
+Evidente|Obvious|Évident|offensichtlich|Evidente|Evidente|Очевидный|Evident
+Cierto|True|Vrai|wahr|Vero|Verdadeiro|Верный|Adevărat
+Dudoso|Doubtful|Douteux|zweifelhaft|Dubbio|Duvidoso|Сомнительный|Îndoielnic
+Convincente|Convincing|Convaincant|überzeugend|Convincente|Convincente|Убедительный|Convingător
+Persuasivo|Persuasive|Persuasif|überredend|Persuasivo|Persuasivo|Убеждающий|Persuasiv
+Subjetivo|Subjective|Subjectif|subjektiv|Soggettivo|Subjetivo|Субъективный|Subiectiv
+Objetivo|Objective|Objectif|objektiv|Oggettivo|Objetivo|Объективный|Obiectiv
+Parcial|Biased|Partial|parteiisch|Parziale|Parcial|Пристрастный|Părtinitor
+Radical|Radical|Radical|radikal|Radicale|Radical|Радикальный|Radical
+Moderado|Moderate|Modéré|gemäßigt|Moderato|Moderado|Умеренный|Moderat
+Tolerante|Tolerant|Tolérant|tolerant|Tollerante|Tolerante|Терпимый|Tolerant
+Intolerante|Intolerant|Intolérant|intolerant|Intollerante|Intolerante|Нетерпимый|Intolerant
+Extremista|Extremist|Extrémiste|Extremist|Estremista|Extremista|Экстремист|Extremist
+Mayoría|Majority|Majorité|Mehrheit|Maggioranza|Maioria|Большинство|Majoritate
+Minoría|Minority|Minorité|Minderheit|Minoranza|Minoria|Меньшинство|Minoritate
+Votación|Vote|Vote|Abstimmung|Votazione|Votação|Голосование|Vot
+Propuesta|Proposal|Proposition|Vorschlag|Proposta|Proposta|Предложение|Propunere
+Alternativa|Alternative|Alternative|Alternative|Alternativa|Alternativa|Альтернатива|Alternativă
+Compromiso|Compromise|Compromis|Kompromiss|Compromesso|Compromisso|Компромисс|Compromis
+Mediador|Mediator|Médiateur|Vermittler|Mediatore|Mediador|Посредник|Mediator
+Turno de palabra|Speaking turn|Tour de parole|Redezeit|Turno di parola|Vez de falar|Очередь выступать|Rândul la cuvânt
+Tema|Topic|Sujet|Thema|Tema|Tema|Тема|Temă
+Cuestión|Issue|Question|Frage|Questione|Questão|Вопрос|Chestiune
+Dilema|Dilemma|Dilemme|Dilemma|Dilemma|Dilema|Дилемма|Dilemă
+Oponerse|To oppose|S'opposer|sich widersetzen|Opporsi|Opor-se|Выступать против|A se opune
+Ceder|To give in|Céder|nachgeben|Cedere|Ceder|Уступать|A ceda
+Exagerar|To exaggerate|Exagérer|übertreiben|Esagerare|Exagerar|Преувеличивать|A exagera
+Generalizar|To generalise|Généraliser|verallgemeinern|Generalizzare|Generalizar|Обобщать|A generaliza
+Demostrar|To demonstrate|Démontrer|beweisen|Dimostrare|Demonstrar|Доказывать|A demonstra
+Ejemplificar|To illustrate|Illustrer|veranschaulichen|Esemplificare|Exemplificar|Иллюстрировать|A exemplifica
+Dar la razón|To concede the point|Donner raison|Recht geben|Dare ragione|Dar razão|Признать правоту|A da dreptate
+`);
+
+  /* 31 · Entrevista y carrera (61 palabras) */
+  more(31, `
+Solicitar empleo|To apply for a job|Postuler à un emploi|sich bewerben|Candidarsi a un lavoro|Candidatar-se a um emprego|Подавать заявку на работу|A aplica pentru un loc de muncă
+Carta de presentación|Cover letter|Lettre de motivation|Anschreiben|Lettera di presentazione|Carta de apresentação|Сопроводительное письмо|Scrisoare de intenție
+Perfil profesional|Professional profile|Profil professionnel|Berufsprofil|Profilo professionale|Perfil profissional|Профессиональный профиль|Profil profesional
+Formación académica|Education|Études|Ausbildung|Formazione|Formação académica|Образование|Studii
+Conocimientos|Knowledge|Connaissances|Kenntnisse|Conoscenze|Conhecimentos|Знания|Cunoștințe
+Competencias|Skills|Compétences|Kompetenzen|Competenze|Competências|Компетенции|Competențe
+Cualidad|Quality|Qualité|Eigenschaft|Qualità|Qualidade|Качество|Calitate
+Motivación|Motivation|Motivation|Motivation|Motivazione|Motivação|Мотивация|Motivație
+Expectativas|Expectations|Attentes|Erwartungen|Aspettative|Expectativas|Ожидания|Așteptări
+Pretensión salarial|Salary expectations|Prétentions salariales|Gehaltsvorstellung|Aspettative salariali|Pretensões salariais|Ожидаемая зарплата|Pretenții salariale
+Bono|Bonus|Prime|Bonus|Bonus|Bónus|Премия|Bonus
+Vacaciones pagadas|Paid holiday|Congés payés|bezahlter Urlaub|Ferie retribuite|Férias pagas|Оплачиваемый отпуск|Concediu plătit
+Contrato temporal|Fixed-term contract|Contrat à durée déterminée|befristeter Vertrag|Contratto a termine|Contrato a termo|Срочный договор|Contract pe perioadă determinată
+Jornada completa|Full-time|Temps plein|Vollzeit|Tempo pieno|Tempo inteiro|Полная занятость|Normă întreagă
+Media jornada|Part-time|Temps partiel|Teilzeit|Part-time|Meio período|Неполная занятость|Normă parțială
+Horas extra|Overtime|Heures supplémentaires|Überstunden|Straordinari|Horas extra|Сверхурочные|Ore suplimentare
+Turno|Shift|Roulement|Schicht|Turno|Turno|Смена|Tură
+Oficina|Office|Bureau|Büro|Ufficio|Escritório|Офис|Birou
+Departamento|Department|Service|Abteilung|Reparto|Departamento|Отдел|Departament
+Gerente|Manager|Responsable|Leiter|Responsabile|Gerente|Менеджер|Manager
+Supervisor|Supervisor|Superviseur|Vorgesetzter|Supervisore|Supervisor|Руководитель группы|Supervizor
+Colega|Colleague|Collègue|Kollege|Collega|Colega|Коллега|Coleg
+Becario|Intern|Stagiaire|Praktikant|Stagista|Estagiário|Стажёр|Stagiar
+Autónomo|Self-employed|Indépendant|selbstständig|Lavoratore autonomo|Trabalhador independente|Самозанятый|Liber profesionist
+Emprendedor|Entrepreneur|Entrepreneur|Unternehmer|Imprenditore|Empreendedor|Предприниматель|Antreprenor
+Desempleo|Unemployment|Chômage|Arbeitslosigkeit|Disoccupazione|Desemprego|Безработица|Șomaj
+Buscar trabajo|To look for a job|Chercher du travail|Arbeit suchen|Cercare lavoro|Procurar emprego|Искать работу|A căuta un loc de muncă
+Bolsa de trabajo|Job board|Site d'offres d'emploi|Jobbörse|Bacheca di lavoro|Portal de emprego|Биржа вакансий|Platformă de joburi
+Red de contactos|Network of contacts|Réseau de contacts|Kontaktnetzwerk|Rete di contatti|Rede de contactos|Круг контактов|Rețea de contacte
+Feria de empleo|Job fair|Salon de l'emploi|Jobmesse|Fiera del lavoro|Feira de emprego|Ярмарка вакансий|Târg de joburi
+Prueba técnica|Technical test|Test technique|Fachtest|Test tecnico|Teste técnico|Техническое задание|Test tehnic
+Segunda entrevista|Second interview|Deuxième entretien|zweites Vorstellungsgespräch|Secondo colloquio|Segunda entrevista|Второе собеседование|A doua interviu
+Rechazo|Rejection|Refus|Absage|Rifiuto|Rejeição|Отказ|Respingere
+Aceptar la oferta|To accept the offer|Accepter l'offre|das Angebot annehmen|Accettare l'offerta|Aceitar a oferta|Принять предложение|A accepta oferta
+Preaviso|Notice period|Préavis|Kündigungsfrist|Preavviso|Aviso prévio|Срок уведомления|Preaviz
+Carta de renuncia|Resignation letter|Lettre de démission|Kündigungsschreiben|Lettera di dimissioni|Carta de demissão|Заявление об увольнении|Scrisoare de demisie
+Liquidación|Severance pay|Solde de tout compte|Abfindung|Liquidazione|Indemnização|Выходное пособие|Compensație de concediere
+Jubilación|Retirement|Retraite|Ruhestand|Pensionamento|Reforma|Выход на пенсию|Pensionare
+Baja por enfermedad|Sick leave|Arrêt maladie|Krankmeldung|Congedo per malattia|Baixa por doença|Больничный|Concediu medical
+Ascender|To be promoted|Être promu|befördert werden|Essere promosso|Ser promovido|Получить повышение|A fi promovat
+Delegar|To delegate|Déléguer|delegieren|Delegare|Delegar|Делегировать|A delega
+Cumplir objetivos|To meet targets|Atteindre les objectifs|Ziele erreichen|Raggiungere gli obiettivi|Cumprir objetivos|Выполнять цели|A îndeplini obiective
+Cumplir plazos|To meet deadlines|Respecter les délais|Fristen einhalten|Rispettare le scadenze|Cumprir prazos|Соблюдать сроки|A respecta termenele
+Trabajar bajo presión|To work under pressure|Travailler sous pression|unter Druck arbeiten|Lavorare sotto pressione|Trabalhar sob pressão|Работать под давлением|A lucra sub presiune
+Iniciativa|Initiative|Initiative|Initiative|Iniziativa|Iniciativa|Инициатива|Inițiativă
+Responsabilidad|Responsibility|Responsabilité|Verantwortung|Responsabilità|Responsabilidade|Ответственность|Responsabilitate
+Puntualidad|Punctuality|Ponctualité|Pünktlichkeit|Puntualità|Pontualidade|Пунктуальность|Punctualitate
+Adaptabilidad|Adaptability|Adaptabilité|Anpassungsfähigkeit|Adattabilità|Adaptabilidade|Адаптивность|Adaptabilitate
+Comunicación|Communication|Communication|Kommunikation|Comunicazione|Comunicação|Коммуникация|Comunicare
+Negociación|Negotiation|Négociation|Verhandlung|Negoziazione|Negociação|Переговоры|Negociere
+Atención al detalle|Attention to detail|Souci du détail|Liebe zum Detail|Attenzione ai dettagli|Atenção ao detalhe|Внимание к деталям|Atenție la detalii
+Experiencia previa|Previous experience|Expérience préalable|Vorerfahrung|Esperienza precedente|Experiência prévia|Предыдущий опыт|Experiență anterioară
+Carta de recomendación|Letter of recommendation|Lettre de recommandation|Empfehlungsschreiben|Lettera di raccomandazione|Carta de recomendação|Рекомендательное письмо|Scrisoare de recomandare
+Vacante|Vacancy|Poste vacant|freie Stelle|Posto vacante|Vaga|Вакансия|Post vacant
+Plantilla|Staff|Personnel|Belegschaft|Organico|Quadro de pessoal|Штат|Personal
+Empleador|Employer|Employeur|Arbeitgeber|Datore di lavoro|Empregador|Работодатель|Angajator
+Empleado|Employee|Employé|Arbeitnehmer|Dipendente|Funcionário|Работник|Angajat
+Sindicato|Trade union|Syndicat|Gewerkschaft|Sindacato|Sindicato|Профсоюз|Sindicat
+Convenio colectivo|Collective agreement|Convention collective|Tarifvertrag|Contratto collettivo|Convenção coletiva|Коллективный договор|Contract colectiv
+`);
+
+  /* 32 · Noticias y sociedad (58 palabras) */
+  more(32, `
+Gobierno|Government|Gouvernement|Regierung|Governo|Governo|Правительство|Guvern
+Parlamento|Parliament|Parlement|Parlament|Parlamento|Parlamento|Парламент|Parlament
+Elecciones|Elections|Élections|Wahlen|Elezioni|Eleições|Выборы|Alegeri
+Votante|Voter|Électeur|Wähler|Elettore|Eleitor|Избиратель|Alegător
+Partido político|Political party|Parti politique|politische Partei|Partito politico|Partido político|Политическая партия|Partid politic
+Oposición|Opposition|Opposition|Opposition|Opposizione|Oposição|Оппозиция|Opoziție
+Presidente|President|Président|Präsident|Presidente|Presidente|Президент|Președinte
+Ministro|Minister|Ministre|Minister|Ministro|Ministro|Министр|Ministru
+Alcalde|Mayor|Maire|Bürgermeister|Sindaco|Presidente da câmara|Мэр|Primar
+Corrupción|Corruption|Corruption|Korruption|Corruzione|Corrupção|Коррупция|Corupție
+Justicia|Justice|Justice|Justiz|Giustizia|Justiça|Правосудие|Justiție
+Juicio|Trial|Procès|Prozess|Processo|Julgamento|Судебный процесс|Proces
+Sentencia|Ruling|Jugement|Urteil|Sentenza|Sentença|Приговор|Sentință
+Delito|Crime|Délit|Straftat|Reato|Crime|Преступление|Infracțiune
+Policía|Police|Police|Polizei|Polizia|Polícia|Полиция|Poliție
+Seguridad|Security|Sécurité|Sicherheit|Sicurezza|Segurança|Безопасность|Securitate
+Violencia|Violence|Violence|Gewalt|Violenza|Violência|Насилие|Violență
+Conflicto|Conflict|Conflit|Konflikt|Conflitto|Conflito|Конфликт|Conflict
+Guerra|War|Guerre|Krieg|Guerra|Guerra|Война|Război
+Paz|Peace|Paix|Frieden|Pace|Paz|Мир|Pace
+Acuerdo|Agreement|Accord|Abkommen|Accordo|Acordo|Соглашение|Acord
+Sanción|Sanction|Sanction|Sanktion|Sanzione|Sanção|Санкция|Sancțiune
+Economía|Economy|Économie|Wirtschaft|Economia|Economia|Экономика|Economie
+Desempleo|Unemployment|Chômage|Arbeitslosigkeit|Disoccupazione|Desemprego|Безработица|Șomaj
+Inflación|Inflation|Inflation|Inflation|Inflazione|Inflação|Инфляция|Inflație
+Salario mínimo|Minimum wage|Salaire minimum|Mindestlohn|Salario minimo|Salário mínimo|Минимальная зарплата|Salariu minim
+Subida de precios|Price rise|Hausse des prix|Preisanstieg|Aumento dei prezzi|Subida de preços|Рост цен|Creștere a prețurilor
+Recorte|Cutback|Réduction|Kürzung|Taglio|Corte|Сокращение|Reducere
+Presupuesto público|Public budget|Budget public|öffentlicher Haushalt|Bilancio pubblico|Orçamento público|Государственный бюджет|Buget public
+Impuestos|Taxes|Impôts|Steuern|Tasse|Impostos|Налоги|Taxe
+Vivienda|Housing|Logement|Wohnraum|Alloggio|Habitação|Жильё|Locuințe
+Sanidad pública|Public healthcare|Santé publique|öffentliches Gesundheitswesen|Sanità pubblica|Saúde pública|Государственная медицина|Sănătate publică
+Educación pública|Public education|Éducation publique|öffentliches Bildungswesen|Istruzione pubblica|Educação pública|Государственное образование|Educație publică
+Pensiones|Pensions|Retraites|Renten|Pensioni|Pensões|Пенсии|Pensii
+Servicios sociales|Social services|Services sociaux|Sozialdienste|Servizi sociali|Serviços sociais|Социальные службы|Servicii sociale
+Discriminación|Discrimination|Discrimination|Diskriminierung|Discriminazione|Discriminação|Дискриминация|Discriminare
+Racismo|Racism|Racisme|Rassismus|Razzismo|Racismo|Расизм|Rasism
+Igualdad de género|Gender equality|Égalité des sexes|Gleichberechtigung|Parità di genere|Igualdade de género|Гендерное равенство|Egalitate de gen
+Derechos humanos|Human rights|Droits de l'homme|Menschenrechte|Diritti umani|Direitos humanos|Права человека|Drepturile omului
+Libertad|Freedom|Liberté|Freiheit|Libertà|Liberdade|Свобода|Libertate
+Democracia|Democracy|Démocratie|Demokratie|Democrazia|Democracia|Демократия|Democrație
+Dictadura|Dictatorship|Dictature|Diktatur|Dittatura|Ditadura|Диктатура|Dictatură
+Protesta|Protest|Protestation|Protest|Protesta|Protesto|Протест|Protest
+Voluntario|Volunteer|Bénévole|Freiwilliger|Volontario|Voluntário|Волонтёр|Voluntar
+ONG|NGO|ONG|NGO|ONG|ONG|НКО|ONG
+Donación|Donation|Don|Spende|Donazione|Doação|Пожертвование|Donație
+Solidaridad|Solidarity|Solidarité|Solidarität|Solidarietà|Solidariedade|Солидарность|Solidaritate
+Emergencia|Emergency|Urgence|Notfall|Emergenza|Emergência|Чрезвычайная ситуация|Urgență
+Terremoto|Earthquake|Tremblement de terre|Erdbeben|Terremoto|Sismo|Землетрясение|Cutremur
+Incendio|Fire|Incendie|Brand|Incendio|Incêndio|Пожар|Incendiu
+Inundación|Flood|Inondation|Überschwemmung|Alluvione|Inundação|Наводнение|Inundație
+Sequía|Drought|Sécheresse|Dürre|Siccità|Seca|Засуха|Secetă
+Evacuación|Evacuation|Évacuation|Evakuierung|Evacuazione|Evacuação|Эвакуация|Evacuare
+Rescate|Rescue|Sauvetage|Rettung|Salvataggio|Resgate|Спасение|Salvare
+Damnificado|Person affected|Sinistré|Betroffener|Sfollato|Desalojado|Пострадавший|Sinistrat
+Medios de comunicación|Media|Médias|Medien|Mezzi di comunicazione|Meios de comunicação|СМИ|Mass-media
+Prensa|Press|Presse|Presse|Stampa|Imprensa|Пресса|Presă
+Opinión pública|Public opinion|Opinion publique|öffentliche Meinung|Opinione pubblica|Opinião pública|Общественное мнение|Opinie publică
+`);
+
+  /* 33 · Salud y bienestar (56 palabras) */
+  more(33, `
+Médico de cabecera|GP|Médecin généraliste|Hausarzt|Medico di base|Médico de família|Терапевт|Medic de familie
+Pediatra|Paediatrician|Pédiatre|Kinderarzt|Pediatra|Pediatra|Педиатр|Pediatru
+Dentista|Dentist|Dentiste|Zahnarzt|Dentista|Dentista|Стоматолог|Dentist
+Enfermero|Nurse|Infirmier|Krankenpfleger|Infermiere|Enfermeiro|Медбрат|Asistent medical
+Farmacia|Pharmacy|Pharmacie|Apotheke|Farmacia|Farmácia|Аптека|Farmacie
+Medicamento|Medicine|Médicament|Medikament|Farmaco|Medicamento|Лекарство|Medicament
+Pastilla|Pill|Comprimé|Tablette|Pastiglia|Comprimido|Таблетка|Pastilă
+Jarabe|Syrup|Sirop|Hustensaft|Sciroppo|Xarope|Сироп|Sirop
+Pomada|Ointment|Pommade|Salbe|Pomata|Pomada|Мазь|Unguent
+Inyección|Injection|Injection|Spritze|Iniezione|Injeção|Укол|Injecție
+Venda|Bandage|Bandage|Verband|Benda|Ligadura|Бинт|Bandaj
+Termómetro|Thermometer|Thermomètre|Thermometer|Termometro|Termómetro|Термометр|Termometru
+Fiebre|Fever|Fièvre|Fieber|Febbre|Febre|Температура|Febră
+Tos|Cough|Toux|Husten|Tosse|Tosse|Кашель|Tuse
+Resfriado|Cold|Rhume|Erkältung|Raffreddore|Constipação|Простуда|Răceală
+Gripe|Flu|Grippe|Grippe|Influenza|Gripe|Грипп|Gripă
+Dolor de cabeza|Headache|Mal de tête|Kopfschmerzen|Mal di testa|Dor de cabeça|Головная боль|Durere de cap
+Dolor de estómago|Stomach ache|Mal au ventre|Bauchschmerzen|Mal di stomaco|Dor de barriga|Боль в животе|Durere de stomac
+Náuseas|Nausea|Nausées|Übelkeit|Nausea|Náuseas|Тошнота|Greață
+Mareo|Dizziness|Vertige|Schwindel|Capogiro|Tontura|Головокружение|Amețeală
+Erupción|Rash|Éruption cutanée|Hautausschlag|Eruzione cutanea|Erupção cutânea|Сыпь|Erupție cutanată
+Picadura|Sting|Piqûre|Stich|Puntura|Picada|Укус|Înțepătură
+Quemadura|Burn|Brûlure|Verbrennung|Ustione|Queimadura|Ожог|Arsură
+Herida|Wound|Plaie|Wunde|Ferita|Ferida|Рана|Rană
+Fractura|Fracture|Fracture|Bruch|Frattura|Fratura|Перелом|Fractură
+Esguince|Sprain|Entorse|Verstauchung|Distorsione|Entorse|Растяжение|Entorsă
+Radiografía|X-ray|Radiographie|Röntgenbild|Radiografia|Radiografia|Рентген|Radiografie
+Ecografía|Ultrasound|Échographie|Ultraschall|Ecografia|Ecografia|УЗИ|Ecografie
+Análisis de sangre|Blood test|Prise de sang|Bluttest|Esame del sangue|Análises ao sangue|Анализ крови|Analize de sânge
+Resultado|Result|Résultat|Ergebnis|Risultato|Resultado|Результат|Rezultat
+Consulta|Appointment|Consultation|Sprechstunde|Visita|Consulta|Приём|Consultație
+Ambulancia|Ambulance|Ambulance|Krankenwagen|Ambulanza|Ambulância|Скорая помощь|Ambulanță
+Quirófano|Operating theatre|Bloc opératoire|Operationssaal|Sala operatoria|Bloco operatório|Операционная|Sală de operații
+Anestesia|Anaesthesia|Anesthésie|Narkose|Anestesia|Anestesia|Анестезия|Anestezie
+Operar|To operate|Opérer|operieren|Operare|Operar|Оперировать|A opera
+Recetar|To prescribe|Prescrire|verschreiben|Prescrivere|Receitar|Выписывать|A prescrie
+Recuperarse|To recover|Se rétablir|sich erholen|Riprendersi|Recuperar|Выздоравливать|A-și reveni
+Contagioso|Contagious|Contagieux|ansteckend|Contagioso|Contagioso|Заразный|Contagios
+Efectos secundarios|Side effects|Effets secondaires|Nebenwirkungen|Effetti collaterali|Efeitos secundários|Побочные эффекты|Efecte secundare
+Prospecto|Leaflet|Notice|Beipackzettel|Foglietto illustrativo|Folheto informativo|Инструкция|Prospect
+Seguro médico|Health insurance|Assurance maladie|Krankenversicherung|Assicurazione sanitaria|Seguro de saúde|Медицинская страховка|Asigurare medicală
+Historial médico|Medical history|Dossier médical|Krankengeschichte|Anamnesi|Historial clínico|История болезни|Istoric medical
+Asma|Asthma|Asthme|Asthma|Asma|Asma|Астма|Astm
+Presión alta|High blood pressure|Hypertension|Bluthochdruck|Pressione alta|Tensão alta|Высокое давление|Tensiune mare
+Embarazo|Pregnancy|Grossesse|Schwangerschaft|Gravidanza|Gravidez|Беременность|Sarcină
+Parto|Childbirth|Accouchement|Geburt|Parto|Parto|Роды|Naștere
+Primeros auxilios|First aid|Premiers secours|Erste Hilfe|Primo soccorso|Primeiros socorros|Первая помощь|Prim ajutor
+Descansar|To rest|Se reposer|sich ausruhen|Riposare|Descansar|Отдыхать|A se odihni
+Hidratarse|To stay hydrated|S'hydrater|ausreichend trinken|Idratarsi|Hidratar-se|Пить достаточно воды|A se hidrata
+Guardar reposo|To stay in bed|Rester au repos|Bettruhe einhalten|Stare a riposo|Guardar repouso|Соблюдать постельный режим|A sta în repaus
+Tomar la temperatura|To take your temperature|Prendre sa température|Fieber messen|Misurare la febbre|Medir a febre|Измерить температуру|A-și lua temperatura
+Pedir cita|To make an appointment|Prendre rendez-vous|einen Termin vereinbaren|Prendere appuntamento|Marcar consulta|Записаться на приём|A face o programare
+Estar en forma|To be fit|Être en forme|fit sein|Essere in forma|Estar em forma|Быть в форме|A fi în formă
+Salud pública|Public health|Santé publique|öffentliche Gesundheit|Salute pubblica|Saúde pública|Общественное здравоохранение|Sănătate publică
+`);
+
+  /* 34 · Ciencia y tecnología (56 palabras) */
+  more(34, `
+Científico|Scientist|Scientifique|Wissenschaftler|Scienziato|Cientista|Учёный|Om de știință
+Investigador|Researcher|Chercheur|Forscher|Ricercatore|Investigador|Исследователь|Cercetător
+Estudio|Study|Étude|Studie|Studio|Estudo|Научная работа|Studiu
+Método científico|Scientific method|Méthode scientifique|wissenschaftliche Methode|Metodo scientifico|Método científico|Научный метод|Metodă științifică
+Observación|Observation|Observation|Beobachtung|Osservazione|Observação|Наблюдение|Observație
+Muestra|Sample|Échantillon|Probe|Campione|Amostra|Образец|Probă
+Variable|Variable|Variable|Variable|Variabile|Variável|Переменная|Variabilă
+Modelo|Model|Modèle|Modell|Modello|Modelo|Модель|Model
+Simulación|Simulation|Simulation|Simulation|Simulazione|Simulação|Моделирование|Simulare
+Genética|Genetics|Génétique|Genetik|Genetica|Genética|Генетика|Genetică
+ADN|DNA|ADN|DNA|DNA|ADN|ДНК|ADN
+Célula|Cell|Cellule|Zelle|Cellula|Célula|Клетка|Celulă
+Átomo|Atom|Atome|Atom|Atomo|Átomo|Атом|Atom
+Molécula|Molecule|Molécule|Molekül|Molecola|Molécula|Молекула|Moleculă
+Gravedad|Gravity|Gravité|Schwerkraft|Gravità|Gravidade|Гравитация|Gravitație
+Electricidad|Electricity|Électricité|Elektrizität|Elettricità|Eletricidade|Электричество|Electricitate
+Energía renovable|Renewable energy|Énergie renouvelable|erneuerbare Energie|Energia rinnovabile|Energia renovável|Возобновляемая энергия|Energie regenerabilă
+Medicina|Medicine|Médecine|Medizin|Medicina|Medicina|Медицина|Medicină
+Virus|Virus|Virus|Virus|Virus|Vírus|Вирус|Virus
+Bacteria|Bacterium|Bactérie|Bakterie|Batterio|Bactéria|Бактерия|Bacterie
+Ingeniería genética|Genetic engineering|Génie génétique|Gentechnik|Ingegneria genetica|Engenharia genética|Генная инженерия|Inginerie genetică
+Espacio|Space|Espace|Weltraum|Spazio|Espaço|Космос|Spațiu
+Galaxia|Galaxy|Galaxie|Galaxie|Galassia|Galáxia|Галактика|Galaxie
+Astronauta|Astronaut|Astronaute|Astronaut|Astronauta|Astronauta|Космонавт|Astronaut
+Cohete|Rocket|Fusée|Rakete|Razzo|Foguetão|Ракета|Rachetă
+Estación espacial|Space station|Station spatiale|Raumstation|Stazione spaziale|Estação espacial|Космическая станция|Stație spațială
+Misión|Mission|Mission|Mission|Missione|Missão|Миссия|Misiune
+Red|Network|Réseau|Netzwerk|Rete|Rede|Сеть|Rețea
+Servidor|Server|Serveur|Server|Server|Servidor|Сервер|Server
+Base de datos|Database|Base de données|Datenbank|Database|Base de dados|База данных|Bază de date
+Programador|Programmer|Programmeur|Programmierer|Programmatore|Programador|Программист|Programator
+Programación|Programming|Programmation|Programmierung|Programmazione|Programação|Программирование|Programare
+Lenguaje de programación|Programming language|Langage de programmation|Programmiersprache|Linguaggio di programmazione|Linguagem de programação|Язык программирования|Limbaj de programare
+Dron|Drone|Drone|Drohne|Drone|Drone|Дрон|Dronă
+Impresora 3D|3D printer|Imprimante 3D|3D-Drucker|Stampante 3D|Impressora 3D|Принтер для трёхмерной печати|Imprimantă 3D
+Auto eléctrico|Electric car|Voiture électrique|Elektroauto|Auto elettrica|Carro elétrico|Электромобиль|Mașină electrică
+Auto autónomo|Self-driving car|Voiture autonome|selbstfahrendes Auto|Auto a guida autonoma|Carro autónomo|Беспилотный автомобиль|Mașină autonomă
+Cadena de bloques|Blockchain|Chaîne de blocs|Blockchain|Blockchain|Blockchain|Блокчейн|Blockchain
+Macrodatos|Big data|Mégadonnées|Big Data|Big data|Big data|Большие данные|Big data
+Aprendizaje automático|Machine learning|Apprentissage automatique|maschinelles Lernen|Apprendimento automatico|Aprendizagem automática|Машинное обучение|Învățare automată
+Reconocimiento facial|Facial recognition|Reconnaissance faciale|Gesichtserkennung|Riconoscimento facciale|Reconhecimento facial|Распознавание лиц|Recunoaștere facială
+Vigilancia|Surveillance|Surveillance|Überwachung|Sorveglianza|Vigilância|Слежка|Supraveghere
+Ética|Ethics|Éthique|Ethik|Etica|Ética|Этика|Etică
+Brecha digital|Digital divide|Fracture numérique|digitale Kluft|Divario digitale|Fosso digital|Цифровое неравенство|Decalaj digital
+Descubrir|To discover|Découvrir|entdecken|Scoprire|Descobrir|Открывать|A descoperi
+Inventar|To invent|Inventer|erfinden|Inventare|Inventar|Изобретать|A inventa
+Desarrollar|To develop|Développer|entwickeln|Sviluppare|Desenvolver|Разрабатывать|A dezvolta
+Medir|To measure|Mesurer|messen|Misurare|Medir|Измерять|A măsura
+Comprobar|To verify|Vérifier|überprüfen|Verificare|Comprovar|Проверять|A verifica
+Analizar|To analyse|Analyser|analysieren|Analizzare|Analisar|Анализировать|A analiza
+Programar|To programme|Programmer|programmieren|Programmare|Programar|Программировать|A programa
+Piratear|To hack|Pirater|hacken|Hackerare|Piratear|Взламывать|A sparge (un sistem)
+Sustituir|To replace|Remplacer|ersetzen|Sostituire|Substituir|Заменять|A înlocui
+Dependencia|Dependence|Dépendance|Abhängigkeit|Dipendenza|Dependência|Зависимость|Dependență
+Riesgo|Risk|Risque|Risiko|Rischio|Risco|Риск|Risc
+Beneficio|Benefit|Avantage|Nutzen|Beneficio|Benefício|Польза|Beneficiu
+`);
+
+  /* 35 · Viajes y culturas (55 palabras) */
+  more(35, `
+Viajero|Traveller|Voyageur|Reisender|Viaggiatore|Viajante|Путешественник|Călător
+Aventura|Adventure|Aventure|Abenteuer|Avventura|Aventura|Приключение|Aventură
+Brújula|Compass|Boussole|Kompass|Bussola|Bússola|Компас|Busolă
+Creencia|Belief|Croyance|Glaube|Credenza|Crença|Верование|Credință
+Religión|Religion|Religion|Religion|Religione|Religião|Религия|Religie
+Festival|Festival|Festival|Festival|Festival|Festival|Фестиваль|Festival
+Folclore|Folklore|Folklore|Folklore|Folclore|Folclore|Фольклор|Folclor
+Artesanía|Handicrafts|Artisanat|Kunsthandwerk|Artigianato|Artesanato|Народные промыслы|Artizanat
+Mercado|Market|Marché|Markt|Mercato|Mercado|Рынок|Piață
+Cocina tradicional|Traditional cuisine|Cuisine traditionnelle|traditionelle Küche|Cucina tradizionale|Cozinha tradicional|Традиционная кухня|Bucătărie tradițională
+Plato típico|Local dish|Plat typique|typisches Gericht|Piatto tipico|Prato típico|Местное блюдо|Fel tipic
+Especialidad|Speciality|Spécialité|Spezialität|Specialità|Especialidade|Фирменное блюдо|Specialitate
+Menú del día|Set menu|Menu du jour|Tagesmenü|Menù del giorno|Prato do dia|Комплексный обед|Meniul zilei
+Propina|Tip|Pourboire|Trinkgeld|Mancia|Gorjeta|Чаевые|Bacșiș
+Saludo|Greeting|Salutation|Gruß|Saluto|Cumprimento|Приветствие|Salut
+Beso en la mejilla|Kiss on the cheek|Bise|Wangenkuss|Bacio sulla guancia|Beijo na cara|Поцелуй в щёку|Sărut pe obraz
+Apretón de manos|Handshake|Poignée de main|Handschlag|Stretta di mano|Aperto de mão|Рукопожатие|Strângere de mână
+Reverencia|Bow|Révérence|Verbeugung|Inchino|Vénia|Поклон|Plecăciune
+Modales|Manners|Manières|Manieren|Buone maniere|Boas maneiras|Манеры|Maniere
+Cortesía|Courtesy|Courtoisie|Höflichkeit|Cortesia|Cortesia|Вежливость|Politețe
+Malentendido cultural|Cultural misunderstanding|Malentendu culturel|kulturelles Missverständnis|Malinteso culturale|Mal-entendido cultural|Культурное недоразумение|Neînțelegere culturală
+Barrera del idioma|Language barrier|Barrière de la langue|Sprachbarriere|Barriera linguistica|Barreira linguística|Языковой барьер|Barieră lingvistică
+Acento|Accent|Accent|Akzent|Accento|Sotaque|Акцент|Accent
+Guía de conversación|Phrasebook|Guide de conversation|Sprachführer|Frasario|Guia de conversação|Разговорник|Ghid de conversație
+Inmersión lingüística|Language immersion|Immersion linguistique|Sprachimmersion|Immersione linguistica|Imersão linguística|Языковое погружение|Imersiune lingvistică
+Familia anfitriona|Host family|Famille d'accueil|Gastfamilie|Famiglia ospitante|Família de acolhimento|Принимающая семья|Familie gazdă
+Intercambio de idiomas|Language exchange|Échange linguistique|Sprachaustausch|Scambio linguistico|Intercâmbio de línguas|Языковой обмен|Schimb lingvistic
+Voluntariado|Volunteering|Bénévolat|Freiwilligenarbeit|Volontariato|Voluntariado|Волонтёрство|Voluntariat
+Beca|Scholarship|Bourse|Stipendium|Borsa di studio|Bolsa de estudo|Стипендия|Bursă
+Estudiar en el extranjero|To study abroad|Étudier à l'étranger|im Ausland studieren|Studiare all'estero|Estudar no estrangeiro|Учиться за границей|A studia în străinătate
+Visa de estudiante|Student visa|Visa étudiant|Studentenvisum|Visto per studenti|Visto de estudante|Студенческая виза|Viză de student
+Residencia|Residence|Résidence|Wohnsitz|Residenza|Residência|Место жительства|Reședință
+Adaptarse|To adapt|S'adapter|sich anpassen|Adattarsi|Adaptar-se|Адаптироваться|A se adapta
+Integrarse|To integrate|S'intégrer|sich integrieren|Integrarsi|Integrar-se|Интегрироваться|A se integra
+Extrañar|To miss|Manquer|vermissen|Mancare|Ter saudades|Скучать|A-i fi dor
+Nostalgia|Homesickness|Mal du pays|Heimweh|Nostalgia|Saudade|Тоска по дому|Dor de casă
+Ciudad antigua|Old town|Vieille ville|Altstadt|Centro storico|Cidade velha|Старый город|Oraș vechi
+Monumento|Monument|Monument|Denkmal|Monumento|Monumento|Памятник|Monument
+Museo|Museum|Musée|Museum|Museo|Museu|Музей|Muzeu
+Iglesia|Church|Église|Kirche|Chiesa|Igreja|Церковь|Biserică
+Mirador|Viewpoint|Point de vue|Aussichtspunkt|Punto panoramico|Miradouro|Смотровая площадка|Punct de belvedere
+Sendero|Trail|Sentier|Wanderweg|Sentiero|Trilho|Тропа|Potecă
+Parque natural|Nature park|Parc naturel|Naturpark|Parco naturale|Parque natural|Природный парк|Parc natural
+Costa|Coast|Côte|Küste|Costa|Costa|Побережье|Coastă
+Isla|Island|Île|Insel|Isola|Ilha|Остров|Insulă
+Clima|Climate|Climat|Klima|Clima|Clima|Климат|Climă
+Temporada baja|Low season|Basse saison|Nebensaison|Bassa stagione|Época baixa|Низкий сезон|Extrasezon
+Oferta turística|Tourist offer|Offre touristique|Touristenangebot|Offerta turistica|Oferta turística|Туристическое предложение|Ofertă turistică
+Agencia de viajes|Travel agency|Agence de voyages|Reisebüro|Agenzia di viaggi|Agência de viagens|Турагентство|Agenție de turism
+Descubrir|To discover|Découvrir|entdecken|Scoprire|Descobrir|Открывать для себя|A descoperi
+Respetar|To respect|Respecter|respektieren|Rispettare|Respeitar|Уважать|A respecta
+Compartir|To share|Partager|teilen|Condividere|Partilhar|Делиться|A împărtăși
+`);
+
+  /* 36 · Vivienda y ciudad (56 palabras) */
+  more(36, `
+Casa|House|Maison|Haus|Casa|Casa|Дом|Casă
+Habitación|Room|Pièce|Zimmer|Stanza|Divisão|Комната|Cameră
+Salón|Living room|Salon|Wohnzimmer|Soggiorno|Sala de estar|Гостиная|Living
+Cocina|Kitchen|Cuisine|Küche|Cucina|Cozinha|Кухня|Bucătărie
+Baño|Bathroom|Salle de bain|Badezimmer|Bagno|Casa de banho|Ванная|Baie
+Dormitorio|Bedroom|Chambre|Schlafzimmer|Camera da letto|Quarto|Спальня|Dormitor
+Terraza|Terrace|Terrasse|Terrasse|Terrazza|Terraço|Терраса|Terasă
+Balcón|Balcony|Balcon|Balkon|Balcone|Varanda|Балкон|Balcon
+Jardín|Garden|Jardin|Garten|Giardino|Jardim|Сад|Grădină
+Piscina|Swimming pool|Piscine|Schwimmbad|Piscina|Piscina|Бассейн|Piscină
+Portero|Concierge|Concierge|Hausmeister|Portiere|Porteiro|Консьерж|Portar
+Escalera|Stairs|Escalier|Treppe|Scala|Escada|Лестница|Scară
+Planta|Storey|Étage|Stockwerk|Piano|Andar|Этаж|Etaj
+Techo|Ceiling|Plafond|Decke|Soffitto|Teto|Потолок|Tavan
+Pared|Wall|Mur|Wand|Parete|Parede|Стена|Perete
+Suelo|Floor|Sol|Boden|Pavimento|Chão|Пол|Podea
+Ventana|Window|Fenêtre|Fenster|Finestra|Janela|Окно|Fereastră
+Puerta|Door|Porte|Tür|Porta|Porta|Дверь|Ușă
+Llave|Key|Clé|Schlüssel|Chiave|Chave|Ключ|Cheie
+Timbre|Doorbell|Sonnette|Klingel|Campanello|Campainha|Дверной звонок|Sonerie
+Buzón|Letterbox|Boîte aux lettres|Briefkasten|Cassetta delle lettere|Caixa de correio|Почтовый ящик|Cutie poștală
+Electrodomésticos|Appliances|Électroménager|Haushaltsgeräte|Elettrodomestici|Eletrodomésticos|Бытовая техника|Electrocasnice
+Lavadora|Washing machine|Machine à laver|Waschmaschine|Lavatrice|Máquina de lavar roupa|Стиральная машина|Mașină de spălat
+Refrigerador|Fridge|Réfrigérateur|Kühlschrank|Frigorifero|Frigorífico|Холодильник|Frigider
+Horno|Oven|Four|Backofen|Forno|Forno|Духовка|Cuptor
+Lavavajillas|Dishwasher|Lave-vaisselle|Geschirrspüler|Lavastoviglie|Máquina de lavar loução|Посудомоечная машина|Mașină de spălat vase
+Estufa|Cooker|Cuisinière|Herd|Fornello|Fogão|Плита|Aragaz
+Muebles|Furniture|Meubles|Möbel|Mobili|Mobiliário|Мебель|Mobilă
+Sofá|Sofa|Canapé|Sofa|Divano|Sofá|Диван|Canapea
+Estantería|Bookcase|Étagère|Regal|Libreria|Estante|Книжный шкаф|Bibliotecă
+Armario|Wardrobe|Armoire|Schrank|Armadio|Armário|Шкаф|Dulap
+Colchón|Mattress|Matelas|Matratze|Materasso|Colchão|Матрас|Saltea
+Cortinas|Curtains|Rideaux|Vorhänge|Tende|Cortinas|Шторы|Perdele
+Alfombra|Rug|Tapis|Teppich|Tappeto|Tapete|Ковёр|Covor
+Decoración|Decoration|Décoration|Einrichtung|Arredamento|Decoração|Интерьер|Decor
+Pintar|To paint|Peindre|streichen|Dipingere|Pintar|Красить|A vopsi
+Limpiar|To clean|Nettoyer|putzen|Pulire|Limpar|Убирать|A curăța
+Ordenar|To tidy|Ranger|aufräumen|Mettere in ordine|Arrumar|Наводить порядок|A face ordine
+Reparar|To repair|Réparer|reparieren|Riparare|Reparar|Чинить|A repara
+Fuga|Leak|Fuite|Leck|Perdita|Fuga|Протечка|Scurgere
+Humedad|Damp|Humidité|Feuchtigkeit|Umidità|Humidade|Сырость|Umezeală
+Ruidoso|Noisy|Bruyant|laut|Rumoroso|Barulhento|Шумный|Zgomotos
+Tranquilo|Quiet|Calme|ruhig|Tranquillo|Tranquilo|Тихий|Liniștit
+Luminoso|Bright|Lumineux|hell|Luminoso|Luminoso|Светлый|Luminos
+Espacioso|Spacious|Spacieux|geräumig|Spazioso|Espaçoso|Просторный|Spațios
+Céntrico|Central|Central|zentral|Centrale|Central|Расположенный в центре|Central
+Alquiler mensual|Monthly rent|Loyer mensuel|Monatsmiete|Affitto mensile|Renda mensal|Ежемесячная арендная плата|Chirie lunară
+Mudarse|To move|Déménager|umziehen|Traslocare|Mudar-se|Переезжать|A se muta
+Vista|View|Vue|Aussicht|Vista|Vista|Вид|Priveliște
+Periferia|Suburbs|Banlieue|Stadtrand|Periferia|Periferia|Окраина|Periferie
+Plaza|Square|Place|Platz|Piazza|Praça|Площадь|Piață
+Calle peatonal|Pedestrian street|Rue piétonne|Fußgängerzone|Via pedonale|Rua pedonal|Пешеходная улица|Stradă pietonală
+`);
+
+  /* 37 · Finanzas personales (57 palabras) */
+  more(37, `
+Dinero|Money|Argent|Geld|Soldi|Dinheiro|Деньги|Bani
+Efectivo|Cash|Espèces|Bargeld|Contanti|Dinheiro vivo|Наличные|Numerar
+Tarjeta de débito|Debit card|Carte de débit|Girokarte|Carta di debito|Cartão de débito|Дебетовая карта|Card de debit
+Cajero automático|Cash machine|Distributeur de billets|Geldautomat|Bancomat|Multibanco|Банкомат|Bancomat
+Transferencia|Transfer|Virement|Überweisung|Bonifico|Transferência|Перевод|Transfer bancar
+Saldo|Balance|Solde|Kontostand|Saldo|Saldo|Остаток на счёте|Sold
+Comisión|Fee|Commission|Gebühr|Commissione|Comissão|Комиссия|Comision
+Descubierto|Overdraft|Découvert|Überziehung|Scoperto|Descoberto|Овердрафт|Descoperit de cont
+Sueldo|Salary|Salaire|Gehalt|Stipendio|Ordenado|Зарплата|Salariu
+Nómina|Payslip|Fiche de paie|Gehaltsabrechnung|Busta paga|Recibo de vencimento|Расчётный листок|Fluturaș de salariu
+Gastos mensuales|Monthly expenses|Dépenses mensuelles|monatliche Ausgaben|Spese mensili|Despesas mensais|Ежемесячные расходы|Cheltuieli lunare
+Ahorrar|To save|Épargner|sparen|Risparmiare|Poupar|Копить|A economisa
+Gastar|To spend|Dépenser|ausgeben|Spendere|Gastar|Тратить|A cheltui
+Invertir|To invest|Investir|investieren|Investire|Investir|Инвестировать|A investi
+Prestar|To lend|Prêter|verleihen|Prestare|Emprestar|Одалживать|A împrumuta
+Endeudarse|To get into debt|S'endetter|sich verschulden|Indebitarsi|Endividar-se|Влезать в долги|A se îndatora
+Pagar a plazos|To pay in instalments|Payer en plusieurs fois|in Raten zahlen|Pagare a rate|Pagar a prestações|Платить в рассрочку|A plăti în rate
+Tasa de interés|Interest rate|Taux d'intérêt|Zinssatz|Tasso d'interesse|Taxa de juro|Процентная ставка|Rată a dobânzii
+Hipoteca|Mortgage|Crédit immobilier|Hypothek|Mutuo|Crédito à habitação|Ипотека|Ipotecă
+Solvencia|Solvency|Solvabilité|Zahlungsfähigkeit|Solvibilità|Solvência|Платёжеспособность|Solvabilitate
+Aval|Guarantor|Garant|Bürge|Garante|Fiador|Поручитель|Garant
+Impuesto sobre la renta|Income tax|Impôt sur le revenu|Einkommensteuer|Imposta sul reddito|Imposto sobre o rendimento|Подоходный налог|Impozit pe venit
+IVA|VAT|TVA|Mehrwertsteuer|IVA|IVA|НДС|TVA
+Factura|Invoice|Facture|Rechnung|Fattura|Fatura|Счёт-фактура|Factură
+Deducción|Deduction|Déduction|Abzug|Detrazione|Dedução|Вычет|Deducere
+Reembolso|Refund|Remboursement|Rückerstattung|Rimborso|Reembolso|Возврат|Rambursare
+Plan de pensiones|Pension plan|Plan de retraite|Rentenplan|Piano pensionistico|Plano de reforma|Пенсионный план|Plan de pensii
+Seguro de vida|Life insurance|Assurance-vie|Lebensversicherung|Assicurazione sulla vita|Seguro de vida|Страхование жизни|Asigurare de viață
+Seguro de salud|Health insurance|Assurance santé|Krankenversicherung|Assicurazione sanitaria|Seguro de saúde|Медицинская страховка|Asigurare de sănătate
+Póliza|Policy|Contrat d'assurance|Police|Polizza|Apólice|Полис|Poliță
+Franquicia|Excess|Franchise|Selbstbeteiligung|Franchigia|Franquia|Франшиза|Franșiză
+Bono|Bond|Obligation|Anleihe|Obbligazione|Obrigação|Облигация|Obligațiune
+Inversor|Investor|Investisseur|Anleger|Investitore|Investidor|Инвестор|Investitor
+Rentabilidad|Return|Rentabilité|Rendite|Rendimento|Rentabilidade|Доходность|Randament
+Cartera de inversión|Investment portfolio|Portefeuille d'investissement|Anlageportfolio|Portafoglio di investimento|Carteira de investimentos|Инвестиционный портфель|Portofoliu de investiții
+Diversificar|To diversify|Diversifier|diversifizieren|Diversificare|Diversificar|Диверсифицировать|A diversifica
+Quiebra|Bankruptcy|Faillite|Insolvenz|Fallimento|Falência|Банкротство|Faliment
+Crisis económica|Economic crisis|Crise économique|Wirtschaftskrise|Crisi economica|Crise económica|Экономический кризис|Criză economică
+Recesión|Recession|Récession|Rezession|Recessione|Recessão|Рецессия|Recesiune
+Costo de la vida|Cost of living|Coût de la vie|Lebenshaltungskosten|Costo della vita|Custo de vida|Стоимость жизни|Costul vieții
+Poder adquisitivo|Purchasing power|Pouvoir d'achat|Kaufkraft|Potere d'acquisto|Poder de compra|Покупательная способность|Putere de cumpărare
+Rebajas|Sales|Soldes|Ausverkauf|Saldi|Saldos|Распродажа|Reduceri
+Ofertas|Special offers|Offres|Angebote|Offerte|Ofertas|Специальные предложения|Oferte
+Cupón|Voucher|Bon de réduction|Gutschein|Buono sconto|Cupão|Купон|Cupon
+Comparar precios|To compare prices|Comparer les prix|Preise vergleichen|Confrontare i prezzi|Comparar preços|Сравнивать цены|A compara prețurile
+Regatear|To haggle|Marchander|feilschen|Contrattare|Pechinchar|Торговаться|A se tocmi
+Gasto innecesario|Unnecessary spending|Dépense inutile|unnötige Ausgabe|Spesa inutile|Despesa desnecessária|Лишняя трата|Cheltuială inutilă
+Compra impulsiva|Impulse buy|Achat impulsif|Impulskauf|Acquisto impulsivo|Compra por impulso|Импульсивная покупка|Cumpărătură impulsivă
+Phishing|Phishing|Hameçonnage|Phishing|Phishing|Phishing|Фишинг|Phishing
+Contraseña|Password|Mot de passe|Passwort|Password|Palavra-passe|Пароль|Parolă
+Código de seguridad|Security code|Code de sécurité|Sicherheitscode|Codice di sicurezza|Código de segurança|Код безопасности|Cod de securitate
+Bloquear|To block|Bloquer|sperren|Bloccare|Bloquear|Блокировать|A bloca
+`);
+
+  /* 38 · Medios y redes (57 palabras) */
+  more(38, `
+Periódico|Newspaper|Journal|Zeitung|Giornale|Jornal|Газета|Ziar
+Revista|Magazine|Magazine|Zeitschrift|Rivista|Revista|Журнал|Revistă
+Noticiero|News bulletin|Journal télévisé|Nachrichtensendung|Telegiornale|Telejornal|Выпуск новостей|Buletin de știri
+Radio|Radio|Radio|Radio|Radio|Rádio|Радио|Radio
+Canal|Channel|Chaîne|Sender|Canale|Canal|Канал|Canal
+Programa|Programme|Émission|Sendung|Programma|Programa|Передача|Emisiune
+Serie|Series|Série|Serie|Serie|Série|Сериал|Serial
+Plataforma|Platform|Plateforme|Plattform|Piattaforma|Plataforma|Платформа|Platformă
+Red social|Social network|Réseau social|soziales Netzwerk|Social network|Rede social|Социальная сеть|Rețea socială
+Perfil|Profile|Profil|Profil|Profilo|Perfil|Профиль|Profil
+Cuenta|Account|Compte|Konto|Account|Conta|Аккаунт|Cont
+Seguir|To follow|Suivre|folgen|Seguire|Seguir|Подписываться|A urmări
+Compartir|To share|Partager|teilen|Condividere|Partilhar|Делиться|A distribui
+Dar me gusta|To like|Aimer|liken|Mettere mi piace|Gostar|Ставить лайк|A aprecia
+Comentar|To comment|Commenter|kommentieren|Commentare|Comentar|Комментировать|A comenta
+Etiquetar|To tag|Taguer|markieren|Taggare|Etiquetar|Отмечать|A eticheta
+Reaccionar|To react|Réagir|reagieren|Reagire|Reagir|Реагировать|A reacționa
+Hilo|Thread|Fil de discussion|Thread|Thread|Fio|Ветка обсуждения|Fir de discuție
+Mensaje directo|Direct message|Message privé|Direktnachricht|Messaggio diretto|Mensagem direta|Личное сообщение|Mesaj direct
+Historia|Story|Story|Story|Storia|Story|Сториз|Story
+Hashtag|Hashtag|Hashtag|Hashtag|Hashtag|Hashtag|Хештег|Hashtag
+Tendencia|Trend|Tendance|Trend|Tendenza|Tendência|Тренд|Tendință
+Contenido|Content|Contenu|Inhalt|Contenuto|Conteúdo|Контент|Conținut
+Creador de contenido|Content creator|Créateur de contenu|Content-Creator|Creatore di contenuti|Criador de conteúdo|Создатель контента|Creator de conținut
+Visualización|View|Vue|Aufruf|Visualizzazione|Visualização|Просмотр|Vizualizare
+Algoritmo|Algorithm|Algorithme|Algorithmus|Algoritmo|Algoritmo|Алгоритм|Algoritm
+Titular|Headline|Titre|Schlagzeile|Titolo|Título|Заголовок|Titlu
+Artículo de opinión|Opinion piece|Tribune|Meinungsbeitrag|Articolo d'opinione|Artigo de opinião|Колонка автора|Articol de opinie
+Entrevista|Interview|Interview|Interview|Intervista|Entrevista|Интервью|Interviu
+Fuente|Source|Source|Quelle|Fonte|Fonte|Источник|Sursă
+Dato|Fact|Donnée|Angabe|Dato|Dado|Факт|Date
+Estadística|Statistic|Statistique|Statistik|Statistica|Estatística|Статистика|Statistică
+Contraste de fuentes|Cross-checking|Recoupement des sources|Quellenabgleich|Verifica incrociata|Confronto de fontes|Сверка источников|Verificarea surselor
+Rumor|Rumour|Rumeur|Gerücht|Voce|Rumor|Слух|Zvon
+Manipulación|Manipulation|Manipulation|Manipulation|Manipolazione|Manipulação|Манипуляция|Manipulare
+Propaganda|Propaganda|Propagande|Propaganda|Propaganda|Propaganda|Пропаганда|Propagandă
+Polarización|Polarisation|Polarisation|Polarisierung|Polarizzazione|Polarização|Поляризация|Polarizare
+Discurso de odio|Hate speech|Discours de haine|Hassrede|Discorso d'odio|Discurso de ódio|Язык вражды|Discurs al urii
+Acoso en línea|Online harassment|Harcèlement en ligne|Cybermobbing|Molestie online|Assédio online|Травля в интернете|Hărțuire online
+Privacidad|Privacy|Vie privée|Datenschutz|Privacy|Privacidade|Конфиденциальность|Confidențialitate
+Datos personales|Personal data|Données personnelles|persönliche Daten|Dati personali|Dados pessoais|Персональные данные|Date personale
+Consentimiento|Consent|Consentement|Einwilligung|Consenso|Consentimento|Согласие|Consimțământ
+Huella digital|Digital footprint|Empreinte numérique|digitaler Fußabdruck|Impronta digitale|Pegada digital|Цифровой след|Amprentă digitală
+Adicción|Addiction|Dépendance|Sucht|Dipendenza|Vício|Зависимость|Dependență
+Tiempo de pantalla|Screen time|Temps d'écran|Bildschirmzeit|Tempo di utilizzo dello schermo|Tempo de ecrã|Экранное время|Timp petrecut pe ecran
+Desconectar|To disconnect|Se déconnecter|abschalten|Disconnettersi|Desligar-se|Отключиться|A se deconecta
+Informarse|To keep informed|S'informer|sich informieren|Informarsi|Informar-se|Следить за новостями|A se informa
+Difundir|To spread|Diffuser|verbreiten|Diffondere|Difundir|Распространять|A răspândi
+Desmentir|To deny|Démentir|dementieren|Smentire|Desmentir|Опровергать|A dezminți
+Denunciar|To report|Signaler|melden|Segnalare|Denunciar|Жаловаться|A raporta
+Bloquear|To block|Bloquer|blockieren|Bloccare|Bloquear|Блокировать|A bloca
+Opinar|To give an opinion|Donner son avis|seine Meinung äußern|Esprimere un'opinione|Opinar|Высказывать мнение|A-și spune părerea
+Debate público|Public debate|Débat public|öffentliche Debatte|Dibattito pubblico|Debate público|Публичные дебаты|Dezbatere publică
+Ciudadanía digital|Digital citizenship|Citoyenneté numérique|digitale Bürgerschaft|Cittadinanza digitale|Cidadania digital|Цифровая гражданственность|Cetățenie digitală
+`);
+
+  /* 39 · Quejas y negociación (62 palabras) */
+  more(39, `
+Quejarse|To complain|Se plaindre|sich beschweren|Lamentarsi|Queixar-se|Жаловаться|A se plânge
+Cliente|Customer|Client|Kunde|Cliente|Cliente|Клиент|Client
+Servicio|Service|Service|Dienst|Servizio|Serviço|Услуга|Serviciu
+Producto|Product|Produit|Produkt|Prodotto|Produto|Товар|Produs
+Calidad|Quality|Qualité|Qualität|Qualità|Qualidade|Качество|Calitate
+Precio|Price|Prix|Preis|Prezzo|Preço|Цена|Preț
+Pedido|Order|Commande|Bestellung|Ordine|Encomenda|Заказ|Comandă
+Entrega|Delivery|Livraison|Lieferung|Consegna|Entrega|Доставка|Livrare
+Seguimiento|Tracking|Suivi|Sendungsverfolgung|Tracciamento|Rastreamento|Отслеживание|Urmărire
+Pérdida|Loss|Perte|Verlust|Perdita|Perda|Потеря|Pierdere
+Daño|Damage|Dommage|Schaden|Danno|Dano|Повреждение|Daună
+Error|Mistake|Erreur|Fehler|Errore|Erro|Ошибка|Eroare
+Cobro indebido|Incorrect charge|Prélèvement indu|ungerechtfertigte Abbuchung|Addebito non dovuto|Cobrança indevida|Необоснованное списание|Taxare nejustificată
+Cambio|Exchange|Échange|Umtausch|Cambio|Troca|Обмен|Schimb
+Cambiar|To exchange|Échanger|umtauschen|Cambiare|Trocar|Обменивать|A schimba
+Devolver|To return|Rendre|zurückgeben|Restituire|Devolver|Возвращать|A returna
+Plazo de devolución|Return period|Délai de retractation|Rückgabefrist|Termine di reso|Prazo de devolução|Срок возврата|Termen de returnare
+Libro de reclamaciones|Complaints book|Registre de réclamations|Beschwerdebuch|Registro dei reclami|Livro de reclamações|Книга жалоб|Condică de reclamații
+Servicio técnico|Technical support|Service technique|Kundendienst|Assistenza tecnica|Assistência técnica|Техническая поддержка|Asistență tehnică
+Atención telefónica|Phone support|Assistance téléphonique|Telefonsupport|Assistenza telefonica|Atendimento telefónico|Поддержка по телефону|Asistență telefonică
+Espera|Wait|Attente|Wartezeit|Attesa|Espera|Ожидание|Așteptare
+Gerente|Manager|Directeur|Geschäftsführer|Direttore|Gerente|Управляющий|Manager
+Supervisor|Supervisor|Superviseur|Vorgesetzter|Supervisore|Supervisor|Руководитель|Supervizor
+Tono|Tone|Ton|Ton|Tono|Tom|Тон|Ton
+Cortés|Polite|Poli|höflich|Cortese|Cortês|Вежливый|Politicos
+Firme|Firm|Ferme|bestimmt|Fermo|Firme|Твёрдый|Ferm
+Educado|Courteous|Courtois|zuvorkommend|Educato|Educado|Воспитанный|Manierat
+Agresivo|Aggressive|Agressif|aggressiv|Aggressivo|Agressivo|Агрессивный|Agresiv
+Calmarse|To calm down|Se calmer|sich beruhigen|Calmarsi|Acalmar-se|Успокаиваться|A se calma
+Exigir|To demand|Exiger|fordern|Esigere|Exigir|Требовать|A cere
+Ofrecer|To offer|Offrir|anbieten|Offrire|Oferecer|Предлагать|A oferi
+Aceptar|To accept|Accepter|akzeptieren|Accettare|Aceitar|Принимать|A accepta
+Cumplir|To fulfil|Respecter|einhalten|Rispettare|Cumprir|Выполнять|A respecta
+Incumplir|To breach|Ne pas respecter|verletzen|Violare|Incumprir|Нарушать|A încălca
+Respetar|To honour|Honorer|erfüllen|Onorare|Honrar|Соблюдать|A onora
+Garantizar|To guarantee|Garantir|garantieren|Garantire|Garantir|Гарантировать|A garanta
+Asumir|To take responsibility for|Assumer|übernehmen|Assumere|Assumir|Брать на себя|A-și asuma
+Disculparse|To apologise|S'excuser|sich entschuldigen|Scusarsi|Pedir desculpa|Извиняться|A-și cere scuze
+Lamentar|To regret|Regretter|bedauern|Rammaricarsi|Lamentar|Сожалеть|A regreta
+Ceder|To give way|Céder|nachgeben|Cedere|Ceder|Идти на уступки|A ceda
+Llegar a un acuerdo|To reach an agreement|Parvenir à un accord|sich einigen|Raggiungere un accordo|Chegar a acordo|Прийти к соглашению|A ajunge la un acord
+Punto medio|Middle ground|Juste milieu|Mittelweg|Via di mezzo|Meio-termo|Золотая середина|Cale de mijloc
+Regatear|To haggle|Marchander|feilschen|Contrattare|Pechinchar|Торговаться|A se tocmi
+Precio final|Final price|Prix final|Endpreis|Prezzo finale|Preço final|Окончательная цена|Preț final
+Descuento|Discount|Remise|Preisnachlass|Sconto|Desconto|Скидка|Reducere
+Gratis|Free|Gratuit|kostenlos|Gratis|Grátis|Бесплатно|Gratuit
+Obsequio|Gift|Cadeau|Zugabe|Omaggio|Brinde|Подарок|Cadou
+Cupón de descuento|Discount voucher|Bon de réduction|Rabattgutschein|Buono sconto|Cupão de desconto|Купон на скидку|Cupon de reducere
+Denuncia|Formal complaint|Plainte|Anzeige|Denuncia|Denúncia|Заявление|Reclamație oficială
+Defensa del consumidor|Consumer protection|Défense du consommateur|Verbraucherschutz|Tutela del consumatore|Defesa do consumidor|Защита прав потребителей|Protecția consumatorului
+Abogado|Lawyer|Avocat|Anwalt|Avvocato|Advogado|Юрист|Avocat
+Vía legal|Legal action|Voie légale|Rechtsweg|Via legale|Via legal|Судебный путь|Cale legală
+Reseña|Review|Avis|Bewertung|Recensione|Avaliação|Отзыв|Recenzie
+Recomendar|To recommend|Recommander|empfehlen|Raccomandare|Recomendar|Рекомендовать|A recomanda
+Fidelizar|To retain customers|Fidéliser|binden|Fidelizzare|Fidelizar|Удерживать клиентов|A fideliza
+`);
+
   window.MORE_WORDS = more;
 })();
