@@ -55,12 +55,12 @@
   window.ic = (name, cls = "") =>
     `<svg class="ic ${cls}" viewBox="0 0 24 24" aria-hidden="true">${I[name] || ""}</svg>`;
 
-  /* Banderas de los idiomas (SVG propio, 3:2). Inglés: Reino Unido (ortografía británica); español: México (español neutro latinoamericano);
-     portugués: Portugal (variante europea). */
+  /* Banderas de los idiomas (SVG propio, 3:2). Inglés: Reino Unido (ortografía británica); español: España;
+     portugués: Portugal (variante europea). (El texto en español es neutro latinoamericano, pero se pidió la bandera de España.) */
   const R = (x, y, w, h, c) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${c}"/>`;
   const FLAGS = {
     en: R(0, 0, 60, 40, "#012169") + `<path d="M0 0L60 40M60 0L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0L60 40M60 0L0 40" stroke="#C8102E" stroke-width="3"/><path d="M30 0V40M0 20H60" stroke="#fff" stroke-width="13"/><path d="M30 0V40M0 20H60" stroke="#C8102E" stroke-width="7.500"/>`,
-    es: R(0, 0, 20, 40, "#006847") + R(20, 0, 20, 40, "#fff") + R(40, 0, 20, 40, "#CE1126") + `<circle cx="30" cy="20" r="6" fill="#9a6b2f"/><circle cx="30" cy="20" r="3.800" fill="#3f8f4f"/>`,
+    es: R(0, 0, 60, 40, "#AA151B") + R(0, 10, 60, 20, "#F1BF00") + `<rect x="14" y="16" width="7" height="9" rx="2" fill="#AD1519" stroke="#8a6410" stroke-width="1"/><rect x="12" y="15" width="2.200" height="10" fill="#8a6410"/><rect x="21" y="15" width="2.200" height="10" fill="#8a6410"/>`,
     fr: R(0, 0, 20, 40, "#0055A4") + R(20, 0, 20, 40, "#fff") + R(40, 0, 20, 40, "#EF4135"),
     de: R(0, 0, 60, 13.400, "#000") + R(0, 13.300, 60, 13.400, "#DD0000") + R(0, 26.600, 60, 13.400, "#FFCE00"),
     it: R(0, 0, 20, 40, "#009246") + R(20, 0, 20, 40, "#fff") + R(40, 0, 20, 40, "#CE2B37"),
