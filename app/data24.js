@@ -1858,5 +1858,309 @@ Sonrisa|Smile|Sourire|Lächeln|Sorriso|Sorriso|Улыбка|Zâmbet
 Distancia personal|Personal space|Distance personnelle|persönlicher Abstand|Distanza personale|Distância pessoal|Личное пространство|Spațiu personal
 `);
 
+  /* 10 · Rutina diaria (30 palabras) */
+  more(10, `
+Mañana|Morning|Matin|Morgen|Mattina|Manhã|Утро|Dimineață
+Tarde|Afternoon|Après-midi|Nachmittag|Pomeriggio|Tarde|День|După-amiază
+Noche|Night|Nuit|Nacht|Notte|Noite|Ночь|Noapte
+Mediodía|Midday|Midi|Mittag|Mezzogiorno|Meio-dia|Полдень|Amiază
+Temprano|Early|Tôt|früh|Presto|Cedo|Рано|Devreme
+Todos los días|Every day|Tous les jours|jeden Tag|Ogni giorno|Todos os dias|Каждый день|În fiecare zi
+Siempre|Always|Toujours|immer|Sempre|Sempre|Всегда|Mereu
+Nunca|Never|Jamais|nie|Mai|Nunca|Никогда|Niciodată
+A veces|Sometimes|Parfois|manchmal|A volte|Às vezes|Иногда|Uneori
+Generalmente|Usually|Généralement|normalerweise|Di solito|Normalmente|Обычно|De obicei
+Primero|First|D'abord|zuerst|Prima|Primeiro|Сначала|Mai întâi
+Después|Then|Ensuite|danach|Dopo|Depois|Потом|Apoi
+Por la noche|In the evening|Le soir|abends|Di sera|À noite|Вечером|Seara
+Ir al trabajo|To go to work|Aller au travail|zur Arbeit gehen|Andare al lavoro|Ir para o trabalho|Идти на работу|A merge la serviciu
+Tomar el autobús|To take the bus|Prendre le bus|den Bus nehmen|Prendere l'autobus|Apanhar o autocarro|Ехать на автобусе|A lua autobuzul
+Tomar café|To have coffee|Prendre un café|Kaffee trinken|Prendere un caffè|Tomar café|Пить кофе|A bea cafea
+Comer|To eat|Manger|essen|Mangiare|Comer|Есть|A mânca
+Beber|To drink|Boire|trinken|Bere|Beber|Пить|A bea
+Hacer la cena|To make dinner|Préparer le dîner|das Abendessen machen|Preparare la cena|Fazer o jantar|Готовить ужин|A face cina
+Ver la televisión|To watch TV|Regarder la télévision|fernsehen|Guardare la televisione|Ver televisão|Смотреть телевизор|A se uita la televizor
+Hablar por teléfono|To talk on the phone|Parler au téléphone|telefonieren|Parlare al telefono|Falar ao telefone|Говорить по телефону|A vorbi la telefon
+Revisar el correo|To check email|Consulter ses e-mails|E-Mails prüfen|Controllare le email|Ver o email|Проверять почту|A verifica e-mailul
+Sacar la basura|To take out the rubbish|Sortir les poubelles|den Müll rausbringen|Portare fuori la spazzatura|Levar o lixo à rua|Выносить мусор|A scoate gunoiul
+Lavar la ropa|To do the laundry|Faire la lessive|Wäsche waschen|Fare il bucato|Lavar a roupa|Стирать бельё|A spăla rufe
+Planchar|To iron|Repasser|bügeln|Stirare|Passar a ferro|Гладить|A călca
+Pasear al perro|To walk the dog|Promener le chien|mit dem Hund spazieren gehen|Portare a spasso il cane|Passear o cão|Гулять с собакой|A plimba câinele
+Descansar un rato|To rest for a while|Se reposer un moment|sich kurz ausruhen|Riposare un po'|Descansar um pouco|Немного отдохнуть|A se odihni puțin
+Tener prisa|To be in a hurry|Être pressé|es eilig haben|Avere fretta|Ter pressa|Спешить|A se grăbi
+Llegar tarde|To be late|Arriver en retard|zu spät kommen|Arrivare tardi|Chegar atrasado|Опаздывать|A întârzia
+`);
+
+  /* 11 · En casa (30 palabras) */
+  more(11, `
+Apartamento|Flat|Appartement|Wohnung|Appartamento|Apartamento|Квартира|Apartament
+Edificio|Building|Immeuble|Gebäude|Edificio|Edifício|Здание|Clădire
+Comedor|Dining room|Salle à manger|Esszimmer|Sala da pranzo|Sala de jantar|Столовая|Sufragerie
+Pasillo|Hallway|Couloir|Flur|Corridoio|Corredor|Коридор|Hol
+Entrada|Entrance|Entrée|Eingang|Ingresso|Entrada|Прихожая|Intrare
+Garaje|Garage|Garage|Garage|Garage|Garagem|Гараж|Garaj
+Terraza|Terrace|Terrasse|Terrasse|Terrazza|Terraço|Терраса|Terasă
+Mesa|Table|Table|Tisch|Tavolo|Mesa|Стол|Masă
+Cuadro|Picture|Tableau|Bild|Quadro|Quadro|Картина|Tablou
+Reloj|Clock|Horloge|Uhr|Orologio|Relógio|Часы|Ceas
+Televisor|Television|Télévision|Fernseher|Televisore|Televisor|Телевизор|Televizor
+Radio|Radio|Radio|Radio|Radio|Rádio|Радио|Radio
+Teléfono|Phone|Téléphone|Telefon|Telefono|Telefone|Телефон|Telefon
+Computadora|Computer|Ordinateur|Computer|Computer|Computador|Компьютер|Calculator
+Lavavajillas|Dishwasher|Lave-vaisselle|Geschirrspüler|Lavastoviglie|Máquina de lavar loiça|Посудомоечная машина|Mașină de spălat vase
+Microondas|Microwave|Micro-ondes|Mikrowelle|Microonde|Micro-ondas|Микроволновая печь|Cuptor cu microunde
+Tostadora|Toaster|Grille-pain|Toaster|Tostapane|Torradeira|Тостер|Prăjitor de pâine
+Cafetera|Coffee maker|Cafetière|Kaffeemaschine|Macchina del caffè|Máquina de café|Кофеварка|Cafetieră
+Plato|Plate|Assiette|Teller|Piatto|Prato|Тарелка|Farfurie
+Vaso|Glass|Verre|Glas|Bicchiere|Copo|Стакан|Pahar
+Taza|Cup|Tasse|Tasse|Tazza|Chávena|Чашка|Ceașcă
+Cuchillo|Knife|Couteau|Messer|Coltello|Faca|Нож|Cuțit
+Tenedor|Fork|Fourchette|Gabel|Forchetta|Garfo|Вилка|Furculiță
+Cuchara|Spoon|Cuillère|Löffel|Cucchiaio|Colher|Ложка|Lingură
+Olla|Pot|Casserole|Topf|Pentola|Panela|Кастрюля|Oală
+Sartén|Frying pan|Poêle|Pfanne|Padella|Frigideira|Сковорода|Tigaie
+Basura|Rubbish|Poubelle|Müll|Spazzatura|Lixo|Мусор|Gunoi
+Escoba|Broom|Balai|Besen|Scopa|Vassoura|Веник|Mătură
+`);
+
+  /* 12 · Salud (30 palabras) */
+  more(12, `
+Dedo|Finger|Doigt|Finger|Dito|Dedo|Палец|Deget
+Pecho|Chest|Poitrine|Brust|Petto|Peito|Грудь|Piept
+Piel|Skin|Peau|Haut|Pelle|Pele|Кожа|Piele
+Hueso|Bone|Os|Knochen|Osso|Osso|Кость|Os
+Músculo|Muscle|Muscle|Muskel|Muscolo|Músculo|Мышца|Mușchi
+Cerebro|Brain|Cerveau|Gehirn|Cervello|Cérebro|Мозг|Creier
+Pulmón|Lung|Poumon|Lunge|Polmone|Pulmão|Лёгкое|Plămân
+Hospital|Hospital|Hôpital|Krankenhaus|Ospedale|Hospital|Больница|Spital
+Ambulancia|Ambulance|Ambulance|Krankenwagen|Ambulanza|Ambulância|Скорая помощь|Ambulanță
+Enfermero|Nurse|Infirmier|Krankenpfleger|Infermiere|Enfermeiro|Медбрат|Asistent medical
+Paciente|Patient|Patient|Patient|Paziente|Paciente|Пациент|Pacient
+Examen médico|Medical examination|Examen médical|ärztliche Untersuchung|Visita medica|Exame médico|Медицинский осмотр|Examen medical
+Síntoma|Symptom|Symptôme|Symptom|Sintomo|Sintoma|Симптом|Simptom
+Alergia|Allergy|Allergie|Allergie|Allergia|Alergia|Аллергия|Alergie
+Náuseas|Nausea|Nausées|Übelkeit|Nausea|Náuseas|Тошнота|Greață
+Cansancio|Tiredness|Fatigue|Müdigkeit|Stanchezza|Cansaço|Усталость|Oboseală
+Sueño|Sleepiness|Envie de dormir|Schläfrigkeit|Sonno|Sono|Сонливость|Somn
+Tomar la medicina|To take medicine|Prendre un médicament|Medikamente einnehmen|Prendere le medicine|Tomar o medicamento|Принимать лекарство|A lua medicamentul
+Guardar cama|To stay in bed|Rester au lit|im Bett bleiben|Restare a letto|Ficar de cama|Соблюдать постельный режим|A sta în pat
+Tener fiebre|To have a fever|Avoir de la fièvre|Fieber haben|Avere la febbre|Ter febre|Иметь температуру|A avea febră
+Tener tos|To have a cough|Avoir de la toux|Husten haben|Avere la tosse|Ter tosse|Кашлять|A avea tuse
+Me duele|It hurts|J'ai mal|Es tut weh|Mi fa male|Dói-me|У меня болит|Mă doare
+Estoy enfermo|I'm ill|Je suis malade|Ich bin krank|Sono malato|Estou doente|Я болен|Sunt bolnav
+Me siento mal|I feel unwell|Je me sens mal|Mir geht es schlecht|Mi sento male|Sinto-me mal|Мне плохо|Mă simt rău
+Necesito un médico|I need a doctor|J'ai besoin d'un médecin|Ich brauche einen Arzt|Ho bisogno di un medico|Preciso de um médico|Мне нужен врач|Am nevoie de un medic
+Urgencias|Emergency room|Urgences|Notaufnahme|Pronto soccorso|Urgência|Приёмное отделение|Urgențe
+`);
+
+  /* 13 · Trabajo (34 palabras) */
+  more(13, `
+Trabajo|Job|Travail|Arbeit|Lavoro|Trabalho|Работа|Loc de muncă
+Profesión|Profession|Profession|Beruf|Professione|Profissão|Профессия|Profesie
+Secretaria|Secretary|Secrétaire|Sekretärin|Segretaria|Secretária|Секретарь|Secretară
+Recepcionista|Receptionist|Réceptionniste|Empfangskraft|Receptionist|Rececionista|Администратор|Recepționer
+Vendedor|Salesperson|Vendeur|Verkäufer|Venditore|Vendedor|Продавец|Vânzător
+Cajero|Cashier|Caissier|Kassierer|Cassiere|Caixa|Кассир|Casier
+Mecánico|Mechanic|Mécanicien|Mechaniker|Meccanico|Mecânico|Механик|Mecanic
+Electricista|Electrician|Électricien|Elektriker|Elettricista|Eletricista|Электрик|Electrician
+Cocinero|Cook|Cuisinier|Koch|Cuoco|Cozinheiro|Повар|Bucătar
+Conductor|Driver|Conducteur|Fahrer|Autista|Motorista|Водитель|Șofer
+Maestro|Teacher|Instituteur|Lehrer|Maestro|Professor|Учитель|Învățător
+Doctor|Doctor|Docteur|Arzt|Dottore|Doutor|Доктор|Doctor
+Abogado|Lawyer|Avocat|Anwalt|Avvocato|Advogado|Юрист|Avocat
+Ingeniero|Engineer|Ingénieur|Ingenieur|Ingegnere|Engenheiro|Инженер|Inginer
+Contador|Accountant|Comptable|Buchhalter|Contabile|Contabilista|Бухгалтер|Contabil
+Teléfono|Phone|Téléphone|Telefon|Telefono|Telefone|Телефон|Telefon
+Silla de oficina|Office chair|Chaise de bureau|Bürostuhl|Sedia da ufficio|Cadeira de escritório|Офисное кресло|Scaun de birou
+Papel|Paper|Papier|Papier|Carta|Papel|Бумага|Hârtie
+Documento|Document|Document|Dokument|Documento|Documento|Документ|Document
+Llamada|Call|Appel|Anruf|Chiamata|Chamada|Звонок|Apel
+Mensaje|Message|Message|Nachricht|Messaggio|Mensagem|Сообщение|Mesaj
+Hora de entrada|Start time|Heure d'arrivée|Arbeitsbeginn|Orario di ingresso|Hora de entrada|Время прихода|Ora de intrare
+Hora de salida|Finishing time|Heure de départ|Feierabend|Orario di uscita|Hora de saída|Время ухода|Ora de ieșire
+Vacaciones|Holiday|Congés|Urlaub|Ferie|Férias|Отпуск|Concediu
+Día libre|Day off|Jour de congé|freier Tag|Giorno libero|Dia de folga|Выходной день|Zi liberă
+Trabajar desde casa|To work from home|Travailler à domicile|von zu Hause arbeiten|Lavorare da casa|Trabalhar a partir de casa|Работать из дома|A lucra de acasă
+Pedir un día libre|To ask for a day off|Demander un jour de congé|einen freien Tag beantragen|Chiedere un giorno libero|Pedir um dia de folga|Попросить выходной|A cere o zi liberă
+`);
+
+  /* 14 · El tiempo (30 palabras) */
+  more(14, `
+Clima|Climate|Climat|Klima|Clima|Clima|Климат|Climă
+Hace sol|It's sunny|Il y a du soleil|Die Sonne scheint|C'è il sole|Está sol|Светит солнце|E soare
+Está lloviendo|It's raining|Il pleut|Es regnet|Sta piovendo|Está a chover|Идёт дождь|Plouă
+Está nevando|It's snowing|Il neige|Es schneit|Sta nevicando|Está a nevar|Идёт снег|Ninge
+Hace viento|It's windy|Il y a du vent|Es ist windig|C'è vento|Está vento|Дует ветер|E vânt
+Hace frío|It's cold|Il fait froid|Es ist kalt|Fa freddo|Está frio|Холодно|E frig
+Hace calor|It's hot|Il fait chaud|Es ist heiß|Fa caldo|Está calor|Жарко|E cald
+Hace fresco|It's cool|Il fait frais|Es ist kühl|Fa fresco|Está fresco|Прохладно|E răcoare
+Templado|Mild|Doux|mild|Mite|Ameno|Мягкий|Blând
+Agradable|Pleasant|Agréable|angenehm|Piacevole|Agradável|Приятный|Plăcut
+Fuerte|Strong|Fort|stark|Forte|Forte|Сильный|Puternic
+Mojado|Wet|Mouillé|nass|Bagnato|Molhado|Мокрый|Ud
+Pronóstico del tiempo|Weather forecast|Prévisions météo|Wettervorhersage|Previsioni del tempo|Previsão do tempo|Прогноз погоды|Prognoza meteo
+Máxima|High|Maximale|Höchsttemperatur|Massima|Máxima|Максимум|Maximă
+Mínima|Low|Minimale|Tiefsttemperatur|Minima|Mínima|Минимум|Minimă
+Bajo cero|Below zero|En dessous de zéro|unter null|Sotto zero|Abaixo de zero|Ниже нуля|Sub zero
+Hielo|Ice|Glace|Eis|Ghiaccio|Gelo|Лёд|Gheață
+Sombra|Shade|Ombre|Schatten|Ombra|Sombra|Тень|Umbră
+Gafas de sol|Sunglasses|Lunettes de soleil|Sonnenbrille|Occhiali da sole|Óculos de sol|Солнцезащитные очки|Ochelari de soare
+Protector solar|Sunscreen|Crème solaire|Sonnencreme|Crema solare|Protetor solar|Солнцезащитный крем|Cremă de protecție solară
+Abrigo|Coat|Manteau|Mantel|Cappotto|Casaco|Пальто|Palton
+Impermeable|Raincoat|Imperméable|Regenmantel|Impermeabile|Impermeável|Дождевик|Pelerină de ploaie
+Botas de lluvia|Wellies|Bottes de pluie|Gummistiefel|Stivali da pioggia|Galochas|Резиновые сапоги|Cizme de cauciuc
+Sombrero|Hat|Chapeau|Hut|Cappello|Chapéu|Шляпа|Pălărie
+Clima seco|Dry climate|Climat sec|trockenes Klima|Clima secco|Clima seco|Сухой климат|Climă uscată
+Mes|Month|Mois|Monat|Mese|Mês|Месяц|Lună
+Hoy|Today|Aujourd'hui|heute|Oggi|Hoje|Сегодня|Azi
+Mañana|Tomorrow|Demain|morgen|Domani|Amanhã|Завтра|Mâine
+`);
+
+  /* 15 · Ocio (30 palabras) */
+  more(15, `
+Aficionado|Fan|Passionné|Liebhaber|Appassionato|Aficionado|Любитель|Pasionat
+Equipo|Team|Équipe|Mannschaft|Squadra|Equipa|Команда|Echipă
+Ganar|To win|Gagner|gewinnen|Vincere|Ganhar|Выигрывать|A câștiga
+Perder|To lose|Perdre|verlieren|Perdere|Perder|Проигрывать|A pierde
+Jugador|Player|Joueur|Spieler|Giocatore|Jogador|Игрок|Jucător
+Baloncesto|Basketball|Basket-ball|Basketball|Pallacanestro|Basquetebol|Баскетбол|Baschet
+Tenis|Tennis|Tennis|Tennis|Tennis|Ténis|Теннис|Tenis
+Ciclismo|Cycling|Cyclisme|Radsport|Ciclismo|Ciclismo|Велоспорт|Ciclism
+Montañismo|Mountaineering|Alpinisme|Bergsteigen|Alpinismo|Alpinismo|Альпинизм|Alpinism
+Playa|Beach|Plage|Strand|Spiaggia|Praia|Пляж|Plajă
+Piscina|Swimming pool|Piscine|Schwimmbad|Piscina|Piscina|Бассейн|Piscină
+Museo|Museum|Musée|Museum|Museo|Museu|Музей|Muzeu
+Teatro|Theatre|Théâtre|Theater|Teatro|Teatro|Театр|Teatru
+Exposición|Exhibition|Exposition|Ausstellung|Mostra|Exposição|Выставка|Expoziție
+Entrada|Ticket|Billet|Eintrittskarte|Biglietto|Bilhete|Билет|Bilet
+Guitarra|Guitar|Guitare|Gitarre|Chitarra|Guitarra|Гитара|Chitară
+Piano|Piano|Piano|Klavier|Pianoforte|Piano|Пианино|Pian
+Canción|Song|Chanson|Lied|Canzone|Canção|Песня|Cântec
+Coleccionar|To collect|Collectionner|sammeln|Collezionare|Colecionar|Коллекционировать|A colecționa
+Cocinar por gusto|To cook for fun|Cuisiner pour le plaisir|aus Spaß kochen|Cucinare per piacere|Cozinhar por gosto|Готовить для удовольствия|A găti pentru plăcere
+Ir de excursión|To go on a trip|Faire une excursion|einen Ausflug machen|Fare un'escursione|Ir de excursão|Ездить на экскурсию|A merge în excursie
+Quedar con amigos|To meet up with friends|Retrouver des amis|sich mit Freunden treffen|Vedersi con gli amici|Combinar com amigos|Встречаться с друзьями|A se întâlni cu prietenii
+Salir de noche|To go out in the evening|Sortir le soir|abends ausgehen|Uscire la sera|Sair à noite|Выходить вечером|A ieși seara
+Divertirse|To have fun|S'amuser|Spaß haben|Divertirsi|Divertir-se|Веселиться|A se distra
+Aburrirse|To get bored|S'ennuyer|sich langweilen|Annoiarsi|Aborrecer-se|Скучать|A se plictisi
+`);
+
+  /* 16 · Contar el pasado (29 palabras) */
+  more(16, `
+Ayer|Yesterday|Hier|gestern|Ieri|Ontem|Вчера|Ieri
+El mes pasado|Last month|Le mois dernier|letzten Monat|Il mese scorso|No mês passado|В прошлом месяце|Luna trecută
+Hace años|Years ago|Il y a des années|vor Jahren|Anni fa|Há anos|Много лет назад|Acum ani
+Por la mañana|In the morning|Le matin|am Morgen|Di mattina|De manhã|Утром|Dimineața
+Muchas veces|Many times|Plusieurs fois|oft|Molte volte|Muitas vezes|Много раз|De multe ori
+Nunca antes|Never before|Jamais auparavant|nie zuvor|Mai prima|Nunca antes|Никогда раньше|Niciodată înainte
+Fui|I went|Je suis allé|Ich bin gegangen|Sono andato|Fui|Я пошёл|Am mers
+Estuve|I was|J'ai été|Ich war|Sono stato|Estive|Я был|Am fost
+Tuve|I had|J'ai eu|Ich hatte|Ho avuto|Tive|У меня был|Am avut
+Hice|I did|J'ai fait|Ich habe gemacht|Ho fatto|Fiz|Я сделал|Am făcut
+Vi|I saw|J'ai vu|Ich habe gesehen|Ho visto|Vi|Я увидел|Am văzut
+Comí|I ate|J'ai mangé|Ich habe gegessen|Ho mangiato|Comi|Я поел|Am mâncat
+Compré|I bought|J'ai acheté|Ich habe gekauft|Ho comprato|Comprei|Я купил|Am cumpărat
+Viajé|I travelled|J'ai voyagé|Ich bin gereist|Ho viaggiato|Viajei|Я путешествовал|Am călătorit
+Conocí|I met|J'ai rencontré|Ich habe kennengelernt|Ho conosciuto|Conheci|Я познакомился|Am cunoscut
+Aprendí|I learned|J'ai appris|Ich habe gelernt|Ho imparato|Aprendi|Я выучил|Am învățat
+Me divertí|I had fun|Je me suis amusé|Ich hatte Spaß|Mi sono divertito|Diverti-me|Я повеселился|M-am distrat
+Me perdí|I got lost|Je me suis perdu|Ich habe mich verlaufen|Mi sono perso|Perdi-me|Я заблудился|M-am rătăcit
+Me caí|I fell|Je suis tombé|Ich bin gefallen|Sono caduto|Caí|Я упал|Am căzut
+Me enfermé|I fell ill|Je suis tombé malade|Ich bin krank geworden|Mi sono ammalato|Fiquei doente|Я заболел|M-am îmbolnăvit
+Terminé|I finished|J'ai fini|Ich bin fertig geworden|Ho finito|Terminei|Я закончил|Am terminat
+`);
+
+  /* 17 · Planes de futuro (28 palabras) */
+  more(17, `
+Mañana|Tomorrow|Demain|morgen|Domani|Amanhã|Завтра|Mâine
+La semana que viene|Next week|La semaine prochaine|nächste Woche|La settimana prossima|Na próxima semana|На следующей неделе|Săptămâna viitoare
+El mes que viene|Next month|Le mois prochain|nächsten Monat|Il mese prossimo|No próximo mês|В следующем месяце|Luna viitoare
+Este fin de semana|This weekend|Ce week-end|dieses Wochenende|Questo fine settimana|Neste fim de semana|В эти выходные|În acest weekend
+Voy a|I'm going to|Je vais|Ich werde|Sto per|Vou|Я собираюсь|O să
+Pienso|I'm thinking of|Je pense|Ich denke daran|Penso di|Penso|Я думаю|Mă gândesc să
+Quiero|I want|Je veux|Ich möchte|Voglio|Quero|Я хочу|Vreau
+Espero|I hope|J'espère|Ich hoffe|Spero|Espero|Я надеюсь|Sper
+Tengo que|I have to|Je dois|Ich muss|Devo|Tenho de|Я должен|Trebuie să
+Tengo ganas de|I feel like|J'ai envie de|Ich habe Lust auf|Ho voglia di|Tenho vontade de|Мне хочется|Am chef să
+Estoy pensando en|I'm thinking about|Je songe à|Ich denke über ... nach|Sto pensando a|Estou a pensar em|Я думаю о|Mă gândesc la
+Cita|Appointment|Rendez-vous|Termin|Appuntamento|Compromisso|Встреча|Programare
+Agenda|Diary|Agenda|Terminkalender|Agenda|Agenda|Ежедневник|Agendă
+Calendario|Calendar|Calendrier|Kalender|Calendario|Calendário|Календарь|Calendar
+Maleta|Suitcase|Valise|Koffer|Valigia|Mala|Чемодан|Valiză
+Hotel|Hotel|Hôtel|Hotel|Albergo|Hotel|Отель|Hotel
+Alquilar|To rent|Louer|mieten|Affittare|Alugar|Арендовать|A închiria
+Comprar|To buy|Acheter|kaufen|Comprare|Comprar|Покупать|A cumpăra
+Estudiar|To study|Étudier|lernen|Studiare|Estudar|Учиться|A studia
+Trabajar|To work|Travailler|arbeiten|Lavorare|Trabalhar|Работать|A lucra
+Casarse|To get married|Se marier|heiraten|Sposarsi|Casar-se|Жениться|A se căsători
+Cambiar de trabajo|To change jobs|Changer de travail|den Job wechseln|Cambiare lavoro|Mudar de emprego|Сменить работу|A-și schimba locul de muncă
+Aprender a conducir|To learn to drive|Apprendre à conduire|Autofahren lernen|Imparare a guidare|Aprender a conduzir|Научиться водить|A învăța să conduc
+Seguir adelante|To move on|Aller de l'avant|weitermachen|Andare avanti|Seguir em frente|Двигаться дальше|A merge mai departe
+Cumplir un sueño|To fulfil a dream|Réaliser un rêve|einen Traum verwirklichen|Realizzare un sogno|Realizar um sonho|Осуществить мечту|A împlini un vis
+`);
+
+  /* 18 · Opiniones (29 palabras) */
+  more(18, `
+Asombrado|Amazed|Étonné|erstaunt|Stupito|Espantado|Изумлённый|Uimit
+Desanimado|Down|Découragé|entmutigt|Scoraggiato|Desanimado|Подавленный|Descurajat
+Molesto|Annoyed|Agacé|genervt|Infastidito|Chateado|Раздражённый|Deranjat
+Relajado|Relaxed|Détendu|entspannt|Rilassato|Relaxado|Расслабленный|Relaxat
+Seguro|Confident|Sûr de soi|selbstsicher|Sicuro|Seguro|Уверенный|Sigur pe sine
+Inseguro|Insecure|Peu sûr de soi|unsicher|Insicuro|Inseguro|Неуверенный|Nesigur
+Solo|Lonely|Seul|einsam|Solo|Sozinho|Одинокий|Singur
+Cansado de|Tired of|Fatigué de|müde von|Stanco di|Cansado de|Уставший от|Obosit de
+Pienso que|I think that|Je pense que|Ich denke, dass|Penso che|Penso que|Я думаю, что|Cred că
+Creo que|I believe that|Je crois que|Ich glaube, dass|Credo che|Acho que|Я считаю, что|Consider că
+Me parece que|It seems to me that|Il me semble que|Mir scheint, dass|Mi sembra che|Parece-me que|Мне кажется, что|Mi se pare că
+En mi opinión|In my opinion|À mon avis|Meiner Meinung nach|Secondo me|Na minha opinião|На мой взгляд|După părerea mea
+Estoy de acuerdo|I agree|Je suis d'accord|Ich stimme zu|Sono d'accordo|Concordo|Я согласен|Sunt de acord
+No estoy de acuerdo|I disagree|Je ne suis pas d'accord|Ich bin nicht einverstanden|Non sono d'accordo|Não concordo|Я не согласен|Nu sunt de acord
+Tienes razón|You're right|Tu as raison|Du hast recht|Hai ragione|Tens razão|Ты прав|Ai dreptate
+Es verdad|It's true|C'est vrai|Das stimmt|È vero|É verdade|Это правда|E adevărat
+Es mentira|It's a lie|C'est faux|Das ist gelogen|È falso|É mentira|Это неправда|E fals
+Depende|It depends|Ça dépend|Das kommt darauf an|Dipende|Depende|Это зависит|Depinde
+Me gusta|I like it|J'aime|Es gefällt mir|Mi piace|Gosto|Мне нравится|Îmi place
+No me gusta|I don't like it|Je n'aime pas|Es gefällt mir nicht|Non mi piace|Não gosto|Мне не нравится|Nu-mi place
+Me encanta|I love it|J'adore|Ich liebe es|Mi piace moltissimo|Adoro|Я обожаю|Ador
+Prefiero|I prefer|Je préfère|Ich bevorzuge|Preferisco|Prefiro|Я предпочитаю|Prefer
+Me da igual|I don't mind|Ça m'est égal|Es ist mir egal|Mi è indifferente|É-me indiferente|Мне всё равно|Îmi este indiferent
+Merece la pena|It's worth it|Ça vaut la peine|Es lohnt sich|Vale la pena|Vale a pena|Это того стоит|Merită
+Es una pena|It's a pity|C'est dommage|Es ist schade|Peccato|É uma pena|Жаль|Păcat
+Me sorprende|It surprises me|Ça me surprend|Es überrascht mich|Mi sorprende|Surpreende-me|Меня это удивляет|Mă surprinde
+Me preocupa|It worries me|Ça m'inquiète|Es macht mir Sorgen|Mi preoccupa|Preocupa-me|Меня это беспокоит|Mă îngrijorează
+`);
+
+  /* 19 · Pedir ayuda (30 palabras) */
+  more(19, `
+Primeros auxilios|First aid|Premiers secours|Erste Hilfe|Primo soccorso|Primeiros socorros|Первая помощь|Prim ajutor
+Médico de urgencias|Emergency doctor|Médecin urgentiste|Notarzt|Medico d'urgenza|Médico de urgência|Врач скорой помощи|Medic de urgență
+Policía local|Local police|Police municipale|Ortspolizei|Polizia locale|Polícia municipal|Местная полиция|Poliția locală
+Comisaría|Police station|Commissariat|Polizeiwache|Commissariato|Esquadra|Полицейский участок|Secție de poliție
+Denunciar|To report|Porter plainte|anzeigen|Denunciare|Apresentar queixa|Заявить в полицию|A face o plângere
+Robar|To steal|Voler|stehlen|Rubare|Roubar|Красть|A fura
+Me robaron|I was robbed|On m'a volé|Ich wurde bestohlen|Mi hanno derubato|Roubaram-me|Меня обокрали|Am fost furat
+Perdí mi cartera|I lost my wallet|J'ai perdu mon portefeuille|Ich habe meine Brieftasche verloren|Ho perso il portafoglio|Perdi a carteira|Я потерял кошелёк|Mi-am pierdut portofelul
+Perdí el pasaporte|I lost my passport|J'ai perdu mon passeport|Ich habe meinen Reisepass verloren|Ho perso il passaporto|Perdi o passaporte|Я потерял паспорт|Mi-am pierdut pașaportul
+Me quedé sin batería|My battery died|Mon téléphone n'a plus de batterie|Mein Akku ist leer|Mi si è scaricata la batteria|Fiquei sem bateria|У меня села батарея|Mi s-a descărcat bateria
+Estoy perdido|I'm lost|Je suis perdu|Ich habe mich verlaufen|Mi sono perso|Estou perdido|Я заблудился|M-am rătăcit
+No entiendo|I don't understand|Je ne comprends pas|Ich verstehe nicht|Non capisco|Não percebo|Я не понимаю|Nu înțeleg
+¿Puede repetir?|Can you repeat that?|Pouvez-vous répéter ?|Können Sie das wiederholen?|Può ripetere?|Pode repetir?|Вы можете повторить?|Puteți repeta?
+Más despacio, por favor|More slowly, please|Plus lentement, s'il vous plaît|Langsamer, bitte|Più lentamente, per favore|Mais devagar, por favor|Помедленнее, пожалуйста|Mai rar, vă rog
+¿Habla inglés?|Do you speak English?|Parlez-vous anglais ?|Sprechen Sie Englisch?|Parla inglese?|Fala inglês?|Вы говорите по-английски?|Vorbiți engleza?
+¿Puede ayudarme?|Can you help me?|Pouvez-vous m'aider ?|Können Sie mir helfen?|Può aiutarmi?|Pode ajudar-me?|Вы можете мне помочь?|Mă puteți ajuta?
+Necesito ayuda|I need help|J'ai besoin d'aide|Ich brauche Hilfe|Ho bisogno di aiuto|Preciso de ajuda|Мне нужна помощь|Am nevoie de ajutor
+Llame a la policía|Call the police|Appelez la police|Rufen Sie die Polizei|Chiami la polizia|Chame a polícia|Вызовите полицию|Sunați la poliție
+Llame a una ambulancia|Call an ambulance|Appelez une ambulance|Rufen Sie einen Krankenwagen|Chiami un'ambulanza|Chame uma ambulância|Вызовите скорую|Sunați la ambulanță
+Hay un incendio|There's a fire|Il y a un incendie|Es brennt|C'è un incendio|Há um incêndio|Пожар|Este un incendiu
+Se cayó|He fell|Il est tombé|Er ist gestürzt|È caduto|Caiu|Он упал|A căzut
+Está inconsciente|He's unconscious|Il est inconscient|Er ist bewusstlos|È incosciente|Está inconsciente|Он без сознания|Este inconștient
+No respira|He's not breathing|Il ne respire pas|Er atmet nicht|Non respira|Não respira|Он не дышит|Nu respiră
+Me siento mal|I feel ill|Je me sens mal|Mir ist schlecht|Mi sento male|Sinto-me mal|Мне плохо|Mă simt rău
+Tengo una alergia|I have an allergy|J'ai une allergie|Ich habe eine Allergie|Ho un'allergia|Tenho uma alergia|У меня аллергия|Am o alergie
+Cerrado|Closed|Fermé|geschlossen|Chiuso|Fechado|Закрыто|Închis
+Aviso|Warning|Avertissement|Warnung|Avviso|Aviso|Предупреждение|Avertisment
+Prohibido|Forbidden|Interdit|verboten|Vietato|Proibido|Запрещено|Interzis
+`);
+
   window.MORE_WORDS = more;
 })();
