@@ -34,7 +34,7 @@
      ["Perfecto. ¿Paga con tarjeta o en efectivo?",
       ["formal", 30, "Con tarjeta, por favor. Muchas gracias.", "Pedir y agradecer con cortesía cierra bien la compra.", "Asking and thanking politely ends the purchase well."],
       ["informal", 10, "En efectivo.", "Es correcto, pero algo seco.", "It's correct, but a little curt."],
-      ["urgente", -20, "¡Rápido, tengo prisa!", "La prisa y el tono brusco no ayudan.", "Hurry and a rude tone don't help."]]],
+      ["urgente", -20, "¡Rápido, tengo prisa!", "La prisa y el tono brusco no ayudan.", "Rushing and a rude tone don't help."]]],
     `
 Good afternoon, are you looking for anything in particular?|Bonjour, vous cherchez quelque chose en particulier ?|Guten Tag, suchen Sie etwas Bestimmtes?|Buonasera, cerca qualcosa in particolare?|Boa tarde, procura algo em especial?|Добрый день, вы ищете что-то определённое?|Bună ziua, căutați ceva anume?
 Good afternoon, I'm just looking, thank you.|Bonjour, je regarde seulement, merci.|Guten Tag, ich schaue nur, danke.|Buonasera, do solo un'occhiata, grazie.|Boa tarde, estou só a ver, obrigado.|Добрый день, я просто смотрю, спасибо.|Bună ziua, doar mă uit, mulțumesc.
@@ -185,7 +185,7 @@ No way, this is unacceptable!|Pas question, c'est inacceptable !|Auf keinen Fall
      ["¿Por qué no lo ha terminado?",
       ["formal", 30, "Estuve enfermo toda la semana y no pude avanzar. Lo siento.", "Dar un motivo honesto genera comprensión.", "Giving an honest reason creates understanding."],
       ["informal", 5, "Es que tuve muchas cosas.", "Es vago y suena a excusa.", "It's vague and sounds like an excuse."],
-      ["urgente", -20, "¡El trabajo era demasiado largo!", "Culpar la tarea suena a reproche.", "Blaming the assignment sounds like a reproach."]],
+      ["urgente", -20, "¡El trabajo era demasiado largo!", "Culpar a la tarea suena a reproche.", "Blaming the assignment sounds like a reproach."]],
      ["Le doy tres días más. ¿Es suficiente?",
       ["formal", 30, "Sí, es suficiente. Muchas gracias por su comprensión.", "Agradecer con cortesía cierra bien la conversación.", "Thanking politely ends the conversation well."],
       ["informal", 10, "Sí, gracias.", "Es correcto, aunque breve.", "It's correct, though brief."],

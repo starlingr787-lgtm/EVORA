@@ -171,7 +171,7 @@
     "Felicitas al chef de un restaurante elegante.": "You congratulate the chef of an elegant restaurant.",
     "Le dices a tu amigo que cocinó muy bien.": "You tell your friend they cooked very well.",
     "Llegas tarde": "You are late",
-    "Has llegado 30 minutos tarde a una cita con Ana y está enojada. Calma la situación con el tono adecuado.": "You arrived 30 minutes late to a date with Ana and she is angry. Calm things down with the right tone.",
+    "Has llegado 30 minutos tarde a una cita con Ana y está enojada. Calma la situación con el tono adecuado.": "You arrived 30 minutes late to meet Ana and she is angry. Calm things down with the right tone.",
     "Pedir perdón con calidez y por su nombre calma a una amiga.": "Apologising warmly and by name calms a friend.",
     "Presionar a alguien enojada la irrita más.": "Pushing someone who is angry irritates her more.",
     "Es correcto, pero demasiado frío para una amiga.": "It is correct, but too cold for a friend.",

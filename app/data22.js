@@ -853,6 +853,324 @@ ru|49|s|Сообщение было вежливым, но решительны�
 ru|49|s|Его снисходительный тон меня раздражил.|Меня задел его снисходительный тон.
 ru|49|s|Это был грубый и ненужный ответ.|Это был грубый и ничем не оправданный ответ.
 en|49|s|It was a rude and unnecessary reply.|It was a rude and uncalled-for reply.
+ru|0A|l0|Доброе утро, как вы поживаете?|Доброе утро, как ваши дела?
+pt|0B|l1|Xau! Até logo!|Tchau! Até logo!
+ru|5E|l0|Я бы хотел кофе, пожалуйста.|Будьте добры, один кофе.
+en|2A|l0|Excuse me, how much does this watch cost?|Excuse me, how much is this watch?
+de|3B|l0|Darf ich Ihnen meinen Vater vorstellen, Herrn López.|Ich möchte Ihnen meinen Vater vorstellen, Herrn López.
+ro|3B|l0|Vă prezint pe tatăl meu, domnul López.|Vi-l prezint pe tatăl meu, domnul López.
+fr|4A|l0|Aimeriez-vous goûter un peu de soupe ?|Voudriez-vous goûter un peu de soupe ?
+fr|4B|l1|Non merci, sans moi.|Non merci, sans façon.
+de|4B|l1|Nein danke, ich verzichte.|Nein danke, ich passe.
+ro|4B|l1|Nu, mulțumesc, renunț.|Nu, mersi, eu zic pas.
+en|6A|l1|Hey, what time does the train go?|Hey, what time does the train leave?
+en|7B|l0|Pardon me, where is the nearest underground station?|Excuse me, where is the nearest underground station?
+pt|7B|l0|Perdoe, onde fica a estação de metro mais próxima?|Desculpe, onde fica a estação de metro mais próxima?
+ro|7B|l0|Iertați-mă, unde este cea mai apropiată stație de metrou?|Nu vă supărați, unde este cea mai apropiată stație de metrou?
+en|8B|l1|Got this shirt in a bigger one?|Have you got this shirt in a bigger size?
+de|8B|l0|Entschuldigung, haben Sie dieses Hemd in einer größeren Größe?|Entschuldigung, haben Sie dieses Hemd auch eine Nummer größer?
+de|8B|l1|Hast du dieses Hemd eine Nummer größer?|Hast du das Hemd auch in größer?
+ru|8B|l0|Извините, есть ли эта рубашка большего размера?|Извините, у вас есть эта рубашка большего размера?
+fr|9B|l0|Cela vous convient-il de nous retrouver mardi à dix heures ?|Cela vous conviendrait-il de nous réunir mardi à dix heures ?
+de|9B|l0|Würde es Ihnen passen, wenn wir uns Dienstag um zehn Uhr treffen?|Würde es Ihnen passen, wenn wir uns am Dienstag um zehn Uhr treffen?
+ro|9B|l0|Vi se potrivește să ne întâlnim marți la ora zece?|Vă convine să ne întâlnim marți la ora zece?
+pt|9B|l0|Parece-lhe bem encontrarmo-nos terça-feira às dez?|Parece-lhe bem reunirmo-nos na terça-feira às dez?
+en|11A|l1|Pass me the key?|Can you pass me the key?
+it|12A|l0|Dottore, ho molto mal di testa da ieri.|Dottore, ho un forte mal di testa da ieri.
+it|13B|l0|Mi scusi, potrebbe aiutarmi con questo rapporto?|Mi scusi, potrebbe aiutarmi con questa relazione?
+fr|14A|l0|Il fait une journée très agréable aujourd'hui, n'est-ce pas ?|Il fait très beau aujourd'hui, n'est-ce pas ?
+de|14A|l0|Heute ist ein sehr angenehmer Tag, nicht wahr?|Heute ist ein wirklich schöner Tag, nicht wahr?
+en|16B|l0|Allow me to tell you something curious that happened to me yesterday.|Allow me to tell you about something funny that happened to me yesterday.
+en|17A|l0|What plans do you have for the holidays?|What are your plans for the holidays?
+en|17A|l1|What are you up to for the holidays?|What are you doing for the holidays?
+en|17B|l0|I confirm that we will meet tomorrow at nine.|I can confirm that we will meet tomorrow at nine.
+de|17B|l0|Ich bestätige, dass wir uns morgen um neun Uhr treffen.|Hiermit bestätige ich unser Treffen morgen um neun Uhr.
+fr|18B|l0|Avec tout mon respect, je pense qu'il existe une autre option.|Avec tout le respect que je vous dois, je pense qu'il existe une autre option.
+fr|20A|l1|Salut ! Vous avez une chambre double ?|Bonjour ! Vous avez une chambre double ?
+it|20A|l0|Buon pomeriggio, vorrei prenotare una camera doppia.|Buongiorno, vorrei prenotare una camera doppia.
+it|20A|l1|Ciao! Avete una camera doppia?|Salve! Avete una camera doppia?
+ru|20A|l1|Привет! У вас есть двухместный номер?|Здравствуйте! У вас есть двухместный номер?
+ro|20A|l1|Salut! Aveți o cameră dublă?|Bună! Aveți o cameră dublă?
+en|21A|l0|Excuse me, professor, could you explain that again?|Excuse me, Professor, could you explain that again?
+fr|21A|l0|Excusez-moi, professeure, pourriez-vous réexpliquer cela ?|Excusez-moi, madame, pourriez-vous réexpliquer cela ?
+ro|21A|l0|Scuzați-mă, doamnă profesor, ați putea explica asta încă o dată?|Scuzați-mă, doamna profesoară, ați putea explica asta încă o dată?
+fr|21B|l0|Serait-il possible que vous me communiquiez vos notes ?|Vous serait-il possible de me transmettre vos notes ?
+en|23B|l0|Would you like to walk with me in the park tomorrow?|Would you like to go for a walk in the park with me tomorrow?
+en|23B|l1|Shall we walk in the park tomorrow?|Shall we go for a walk in the park tomorrow?
+fr|23B|l0|Aimeriez-vous marcher avec moi dans le parc demain ?|Aimeriez-vous vous promener avec moi au parc demain ?
+fr|23B|l1|On marche dans le parc demain ?|On va marcher au parc demain ?
+it|23B|l0|Le piacerebbe camminare con me nel parco domani?|Le andrebbe di fare una passeggiata con me al parco domani?
+it|23B|l1|Camminiamo nel parco domani?|Facciamo una passeggiata al parco domani?
+ro|23B|l0|Ați dori să mergeți mâine cu mine pe jos prin parc?|Ați dori să ne plimbăm mâine prin parc?
+ro|23B|l1|Mergem mâine pe jos prin parc?|Ne plimbăm mâine prin parc?
+en|24B|l0|Would you mind if we cycled to work?|How would you feel about cycling to work?
+en|24B|l1|Shall we cycle?|Shall we go by bike?
+fr|25A|l1|Qu'est-ce que cette tradition veut dire ?|Ça veut dire quoi, cette tradition ?
+ro|25B|l0|Va fi o onoare să vă avem la petrecerea mea.|Ar fi o onoare să veniți la petrecerea mea.
+it|25B|l0|Sarà un onore avere la Sua presenza alla mia festa.|Sarebbe un onore averLa alla mia festa.
+en|26A|l0|I offer you my sincerest apologies.|Please accept my sincerest apologies.
+ro|26A|l0|Vă cer cele mai sincere scuze.|Vă rog să primiți scuzele mele sincere.
+en|26B|l0|If you'll allow me, I would recommend speaking to her.|If I may, I would recommend speaking to her.
+fr|29A|l1|Qu'est-ce que tu veux réussir l'année prochaine ?|Qu'est-ce que tu veux accomplir l'année prochaine ?
+de|29B|l1|Eines Tages habe ich meine eigene Schule!|Eines Tages werde ich meine eigene Schule haben!
+fr|30A|l0|Avec tout mon respect, je ne suis pas d'accord avec votre approche.|Avec tout le respect que je vous dois, je ne partage pas votre approche.
+en|30B|l0|May I step in for a moment?|May I interject for a moment?
+ru|30B|l0|Позвольте мне вставить слово?|Позвольте мне сказать пару слов?
+it|32B|l1|Da dove l'hai preso?|Dove l'hai sentito?
+fr|32B|l1|Tu as sorti ça d'où ?|Tu sors ça d'où ?
+en|33A|l0|For a week I've had frequent dizzy spells.|I've been having frequent dizzy spells for a week.
+en|33B|l0|I would like to request a second medical opinion.|I would like to ask for a second opinion.
+ru|33B|l0|Я хотел бы получить второе медицинское заключение.|Я хотел бы получить второе врачебное мнение.
+en|35A|l0|Could you recommend a typical restaurant in the area?|Could you recommend a traditional local restaurant?
+en|35A|l1|Where can you eat well around here?|Where's good to eat around here?
+de|35A|l0|Könnten Sie mir ein typisches Restaurant in der Gegend empfehlen?|Könnten Sie mir ein Restaurant mit typischer regionaler Küche empfehlen?
+ru|35A|l0|Не могли бы вы порекомендовать типичный ресторан в этом районе?|Не могли бы вы порекомендовать ресторан местной кухни?
+ro|35A|l0|Mi-ați putea recomanda un restaurant tipic din zonă?|Mi-ați putea recomanda un restaurant cu specific local?
+es|35B|l0|Le agradezco sinceramente su hospitalidad.|Les agradezco sinceramente su hospitalidad.
+en|35B|l0|I sincerely thank you for your hospitality.|Thank you most sincerely for your hospitality.
+it|35B|l0|La ringrazio sinceramente per la Sua ospitalità.|Vi ringrazio sinceramente per la vostra ospitalità.
+pt|35B|l0|Agradeço-lhe sinceramente a sua hospitalidade.|Agradeço-lhes sinceramente a hospitalidade.
+pt|35B|l1|Mil obrigados por tudo, foram incríveis!|Muito obrigado por tudo, foram incríveis!
+fr|37B|l1|Merci, mais sans moi.|Merci, mais je passe mon tour.
+ro|37B|l1|Mulțumesc, dar renunț.|Mersi, dar eu zic pas.
+en|37B|l0|I appreciate the proposal, but I cannot accept it.|I appreciate the offer, but I'm afraid I can't accept it.
+pt|38A|l0|Essa informação é falsa e gostaria de esclarecer.|Essa informação é falsa e gostaria de o esclarecer.
+ro|38A|l0|Informația aceea este falsă și aș dori să clarific.|Informația aceea este falsă și aș dori să clarific acest lucru.
+ro|38A|l1|E o minciună, nu credeți.|E o minciună, nu credeți așa ceva.
+it|38A|l1|È una bugia, non ci credete.|È una bugia, non credeteci.
+it|38B|l1|Correggete, per favore.|Correggetelo, per favore.
+fr|39A|l1|On m'a facturé trop, vous pouvez vérifier ?|On m'a trop facturé, vous pouvez vérifier ?
+ro|39A|l0|Aș dori să contest o taxare nejustificată pe factura mea.|Aș dori să contest o sumă facturată greșit.
+ro|39A|l1|Mi-au luat prea mult, puteți verifica?|Mi s-a facturat prea mult, puteți verifica?
+fr|39B|l0|J'accepte votre proposition et vous remercie de votre prise en charge.|J'accepte votre proposition et je vous remercie d'avoir traité ma demande.
+it|39B|l0|Accetto la Sua proposta e La ringrazio per la gestione.|Accetto la Sua proposta e La ringrazio per l'assistenza.
+en|40B|l0|We regret to inform you that your position has been eliminated.|We regret to inform you that your position has been made redundant.
+es|41A|l0|Le pido su voto para construir un futuro mejor.|Les pido su voto para construir un futuro mejor.
+es|41A|l1|¡Vota por nosotros, lo vamos a hacer bien!|¡Voten por nosotros, lo vamos a hacer bien!
+en|41A|l0|I ask for your vote to build a better future.|I'm asking for your vote to build a better future.
+it|41A|l0|Le chiedo il Suo voto per costruire un futuro migliore.|Vi chiedo il vostro voto per costruire un futuro migliore.
+pt|41A|l0|Peço o seu voto para construirmos um futuro melhor.|Peço o vosso voto para construirmos um futuro melhor.
+ru|41A|l0|Прошу вашего голоса, чтобы построить лучшее будущее.|Прошу вас проголосовать за меня, чтобы вместе построить лучшее будущее.
+en|41B|l1|That law is badly made.|That law is badly written.
+pt|42A|l1|Animas-te a participar neste estudo?|Alinhas em participar neste estudo?
+ru|42B|l0|Это достижение ставит серьёзную этическую дилемму.|Это достижение ставит перед нами серьёзную этическую дилемму.
+ro|43A|l0|Această operă mi se pare un adevărat giuvaer.|Această operă mi se pare o adevărată bijuterie.
+it|43A|l0|Questa opera mi sembra un vero gioiello.|Quest'opera mi sembra un vero gioiello.
+pt|43B|l1|O final deixou-me algo frio.|O final deixou-me um pouco indiferente.
+en|43B|l0|In my opinion, the plot loses strength in the final act.|In my opinion, the plot loses momentum in the final act.
+de|46B|l0|Euer Ehren, ich erkläre, dass ich nicht anwesend war.|Herr Richter, ich erkläre, dass ich nicht anwesend war.
+ro|47A|l0|Permiteți-ne să prezentăm propunerea noastră de afaceri.|Permiteți-mi să vă prezint propunerea noastră de afaceri.
+en|47B|l1|Do you think I could move up?|Do you think I could get promoted?
+en|49A|l1|Better say it another way, okay?|Maybe say it a different way, okay?
+pt|49A|l1|Melhor dizeres de outra forma, está bem?|É melhor dizeres isso de outra forma, está bem?
+en|49B|l0|I thank you for your invitation, but I will be unable to attend.|Thank you for your invitation, but I will be unable to attend.
+en|0|c|I offer you my sincere apologies.|Please accept my sincere apologies.
+ro|0|c|Vă cer scuze sincere.|Vă cer sincer scuze.
+ru|0|c|Я угощаю тебя кофе.|Давай я угощу тебя кофе.
+ro|0|c|Te invit la o cafea.|Îți fac cinste cu o cafea.
+en|5|c|Excuse me, there's no rush.|Sorry, there's no rush.
+fr|5|c|Excusez-moi, il n'y a pas d'urgence.|Excusez-moi, rien ne presse.
+pt|5|c|Com licença, não há pressa.|Desculpe, não há pressa.
+ru|5|c|Я бы хотел кофе, пожалуйста.|Будьте добры, один кофе.
+ru|6|c|Извините, мой чемодан не прибыл.|Извините, мой чемодан не прилетел.
+ro|6|c|Vreau valiza mea imediat!|Îmi vreau valiza imediat!
+fr|6|c|C'est une valise noire, vous savez.|C'est une valise noire, tu vois.
+de|6|c|Es ist ein schwarzer Koffer, wissen Sie.|Es ist ein schwarzer Koffer, weißt du.
+it|6|c|È una valigia nera, sa.|È una valigia nera, sai.
+pt|6|c|É uma mala preta, sabe.|É uma mala preta, sabes.
+ru|6|c|Ну, чёрный чемодан, понимаете.|Ну, чёрный чемодан, понимаешь.
+ro|6|c|E o valiză neagră, știți.|E o valiză neagră, știi.
+de|12|c|Ich verstehe, gibt es noch eine andere freie Zeit?|Ich verstehe, haben Sie zu einer anderen Zeit noch etwas frei?
+de|12|c|Perfekt. Darf ich Ihren vollständigen Namen haben?|Perfekt. Wie ist Ihr vollständiger Name?
+ru|12|c|Отлично. Не назовёте ли своё полное имя?|Отлично. Как ваше полное имя?
+it|13|c|Questo rapporto ha un errore grave.|Questo report ha un errore grave.
+en|13|c|This report has a serious error.|There's a serious mistake in this report.
+it|26|c|Mi è dispiaciuto che tu abbia dimenticato il mio compleanno.|Ci sono rimasto male che ti sia dimenticato del mio compleanno.
+ro|26|c|M-a durut că ai uitat ziua mea.|M-a durut că ai uitat de ziua mea.
+en|26|c|I offer you my apologies.|Please accept my apologies.
+ru|26|c|Я ожидал хотя бы звонка.|Я ждал хотя бы звонка.
+ru|26|c|Я был очень занят, ничего страшного!|Я был очень занят, не делай из этого трагедию!
+ru|26|c|Можем сделать что-нибудь вместе.|Можем куда-нибудь сходить вместе.
+it|31|c|Ho cinque anni di esperienza nelle vendite e cerco di crescere.|Ho cinque anni di esperienza nelle vendite e voglio crescere professionalmente.
+ro|31|c|Am cinci ani de experiență în vânzări și caut să mă dezvolt.|Am cinci ani de experiență în vânzări și vreau să mă dezvolt profesional.
+pt|31|c|Tenho cinco anos de experiência em vendas e procuro crescer.|Tenho cinco anos de experiência em vendas e procuro evoluir.
+en|31|c|Well, I worked in several things, you know.|Well, I've done a bit of everything, you know.
+ro|31|c|Uneori sunt prea exigent cu mine însumi, dar mă îmbunătățesc.|Uneori sunt prea exigent cu mine însumi, dar lucrez la asta.
+en|31|c|Yes, what is the team I would work with like?|Yes, what's the team I'd be working with like?
+ru|31|c|Да, какая команда, с которой я буду работать?|Да, что вы можете рассказать о команде, с которой я буду работать?
+ro|39|c|Produsul dumneavoastră nu face nimic și îmi cer banii înapoi!|Produsul dumneavoastră nu e bun de nimic și îmi vreau banii înapoi!
+fr|39|c|Votre produit ne marche pas et j'exige mon argent !|Votre produit ne marche pas et j'exige d'être remboursé !
+it|39|c|Il vostro prodotto non funziona e voglio i miei soldi!|Il vostro prodotto non funziona e rivoglio i miei soldi!
+fr|39|c|Salut, écoutez, j'ai un problème.|Salut, écoute, j'ai un problème.
+de|39|c|Hallo, hören Sie, ich habe ein Problem.|Hallo, hör mal, ich habe ein Problem.
+it|39|c|Salve, senta, ho un problema.|Ciao, senti, ho un problema.
+pt|39|c|Olá, olhe, tenho um problema.|Olá, olha, tenho um problema.
+ru|39|c|Привет, послушайте, у меня проблема.|Привет, слушай, у меня проблема.
+ro|39|c|Salut, uitați, am o problemă.|Salut, uite, am o problemă.
+en|39|c|I prefer the refund, please. Thank you very much.|I'd prefer the refund, please. Thank you very much.
+de|39|c|Ich bevorzuge die Erstattung, bitte. Vielen Dank.|Ich hätte lieber die Erstattung, bitte. Vielen Dank.
+en|39|c|The refund is better.|I'd rather have the refund.
+ru|39|c|Предпочту возврат денег, пожалуйста. Большое спасибо.|Я бы предпочёл возврат денег, пожалуйста. Большое спасибо.
+es|39|c|¡Ni me haga perder más tiempo!|¡No me haga perder más tiempo!
+de|39|c|Lassen Sie mich nicht noch mehr Zeit verschwenden!|Verschwenden Sie nicht noch mehr von meiner Zeit!
+de|8|c|Ja, sie gefällt mir. Gibt es günstigere?|Ja, es gefällt mir. Gibt es günstigere?
+ru|8|c|Красивая, но сколько она стоит, пожалуйста?|Красивая, а сколько она стоит, не подскажете?
+en|11|c|Good morning, I've come to check the house. Is everything fine?|Good morning, I've come to check on the house. Is everything all right?
+fr|11|c|Bonjour, je viens vérifier la maison. Tout va bien ?|Bonjour, je viens jeter un œil à la maison. Tout va bien ?
+de|11|c|Guten Morgen, ich komme, um das Haus zu überprüfen. Ist alles in Ordnung?|Guten Morgen, ich komme, um nach dem Haus zu sehen. Ist alles in Ordnung?
+en|11|c|Everything is wrong and you do nothing!|Everything's broken and you never do anything!
+ro|11|c|Totul e prost și dumneavoastră nu faceți nimic!|Nimic nu merge și dumneavoastră nu faceți nimic!
+it|11|c|Tutto va male e lei non fa niente!|Non funziona niente e lei non fa nulla!
+fr|11|c|Tout va mal et vous ne faites rien !|Rien ne marche et vous ne faites rien !
+pt|11|c|Está tudo mal e o senhor não faz nada!|Está tudo estragado e o senhor não faz nada!
+pt|11|c|Eu arranjo amanhã de manhã, está bem para si?|Arranjo-a amanhã de manhã, pode ser?
+fr|11|c|Demain ? Ce doit être aujourd'hui !|Demain ? Il faut que ce soit aujourd'hui !
+ru|11|c|Завтра? Это нужно сегодня!|Завтра? Это нужно сделать сегодня!
+fr|15|c|Merci de m'inviter, mais samedi je ne peux pas.|Merci pour l'invitation, mais samedi je ne peux pas.
+en|15|c|What's up? Do you have another plan?|What's up? Do you have other plans?
+fr|15|c|Que se passe-t-il ? Tu as un autre plan ?|Qu'est-ce qui se passe ? Tu as autre chose de prévu ?
+de|15|c|Was ist los? Hast du einen anderen Plan?|Was ist los? Hast du schon was anderes vor?
+it|15|c|Che succede? Hai un altro programma?|Che succede? Hai altri programmi?
+ro|15|c|Ce s-a întâmplat? Ai alt plan?|Ce s-a întâmplat? Ai alte planuri?
+pt|15|c|O que se passa? Tens outro plano?|O que se passa? Tens outros planos?
+en|15|c|Yes, I have other things.|Yes, I've got other things on.
+fr|15|c|Oui, j'ai d'autres choses.|Oui, j'ai d'autres choses à faire.
+it|15|c|Sì, ho altre cose.|Sì, ho altro da fare.
+pt|15|c|Sim, tenho outras coisas.|Sim, tenho outras coisas para fazer.
+fr|15|c|D'accord, mais la prochaine fois, ne rate pas ça.|D'accord, mais la prochaine fois, tu viens.
+it|15|c|Promesso! Ci vediamo un altro giorno per un drink?|Promesso! Ci vediamo un altro giorno per bere qualcosa?
+it|15|c|Non farmi pressione!|Non mettermi pressione!
+en|19|c|Go straight for two streets and turn right.|Go straight on for two streets and turn right.
+it|19|c|Vada dritto per due strade e giri a destra.|Vada dritto per due isolati e giri a destra.
+it|19|c|Due strade? È lontanissimo!|Due isolati? È lontanissimo!
+ro|19|c|Mergeți drept două străzi și faceți dreapta.|Mergeți drept înainte două străzi și faceți la dreapta.
+ru|20|c|Простите, я не нахожу бронирования на ваше имя.|К сожалению, я не нахожу брони на ваше имя.
+en|20|c|Well, it must be there, look properly.|Well, it must be there, have a proper look.
+de|20|c|Na ja, sie muss da sein, schauen Sie richtig nach.|Na ja, sie muss da sein, schauen Sie noch mal genau nach.
+de|20|c|Hier ist sie, sie wurde für die Folgewoche gemacht. Das tut mir leid.|Hier ist sie, sie wurde für die Woche danach eingetragen. Das tut mir leid.
+en|20|c|I understand it was a mistake. Do you have any room available today?|I understand it was a mistake. Do you have any rooms available today?
+de|20|c|Wie inkompetent! Ich will mit dem Manager sprechen!|So eine Inkompetenz! Ich will mit dem Chef sprechen!
+fr|20|c|Oui, cela me convient. Pourriez-vous me faire une réduction pour le dérangement ?|Oui, cela me convient. Pourriez-vous me faire une réduction pour le désagrément ?
+en|21|c|Tell me, how can I help you?|Yes, how can I help you?
+ru|21|c|Скажите, чем я могу вам помочь?|Слушаю вас, чем могу помочь?
+fr|21|c|Professeur, j'aimerais vous demander un délai supplémentaire pour le devoir, si c'est possible.|Monsieur, j'aimerais vous demander un délai supplémentaire pour le devoir, si c'est possible.
+ru|21|c|Почему вы его не закончили?|Почему вы её не закончили?
+ro|21|c|De ce nu l-ați terminat?|De ce nu ați terminat-o?
+en|21|c|I was ill all week and couldn't make progress. I'm sorry.|I was ill all week and couldn't get anything done. I'm sorry.
+de|21|c|Ich war die ganze Woche krank und konnte nicht vorankommen. Es tut mir leid.|Ich war die ganze Woche krank und bin nicht vorangekommen. Es tut mir leid.
+ru|21|c|Я болел всю неделю и не смог продвинуться. Простите.|Я болел всю неделю и ничего не успел сделать. Простите.
+ro|21|c|Am fost bolnav toată săptămâna și nu am putut avansa. Îmi pare rău.|Am fost bolnav toată săptămâna și nu am reușit să avansez. Îmi pare rău.
+pt|21|c|É que tive muitas coisas.|É que tive muito que fazer.
+de|21|c|Ich gebe Ihnen drei Tage mehr. Reicht das?|Ich gebe Ihnen drei weitere Tage. Reicht das?
+en|27|c|Good morning, my card was blocked and I need help, please.|Good morning, my card has been blocked and I need help, please.
+ro|27|c|Banca dumneavoastră mi-a blocat cardul fără avertisment!|Banca dumneavoastră mi-a blocat cardul fără să mă anunțe!
+en|27|c|Can you give me your ID, please?|May I see your ID, please?
+it|27|c|Che bello, grazie.|Ottimo, grazie.
+pt|food|d|Quivi|Kiwi
+en|animals|d|Dove|Pigeon
+fr|animals|d|Colombe|Pigeon
+it|animals|d|Colomba|Piccione
+pt|animals|d|Pomba|Pombo
+de|colors|d|Orange|orange
+de|colors|d|Gold|golden
+de|colors|d|Silber|silbern
+de|colors|d|Himmelblau|himmelblau
+de|colors|d|Türkis|türkis
+de|colors|d|Beige|beige
+de|colors|d|Limettengrün|limettengrün
+de|colors|d|Flieder|fliederfarben
+de|colors|d|Fuchsia|fuchsia
+de|colors|d|Weinrot|weinrot
+de|colors|d|Cremefarben|cremefarben
+de|colors|d|Olivgrün|olivgrün
+de|colors|d|Smaragdgrün|smaragdgrün
+de|colors|d|Korallenrot|korallenrot
+de|colors|d|Indigo|indigoblau
+de|colors|d|Karmesinrot|karmesinrot
+de|colors|d|Scharlachrot|scharlachrot
+de|colors|d|Bernstein|bernsteinfarben
+de|colors|d|Marineblau|marineblau
+de|colors|d|Hellblau|hellblau
+de|colors|d|Hellgrün|hellgrün
+de|colors|d|Dunkelgrün|dunkelgrün
+de|colors|d|Hellgrau|hellgrau
+de|colors|d|Dunkelgrau|dunkelgrau
+de|colors|d|Blassrosa|blassrosa
+de|colors|d|Bronze|bronzefarben
+de|colors|d|Kupfer|kupferfarben
+de|colors|d|Elfenbein|elfenbeinfarben
+de|colors|d|Lavendel|lavendelfarben
+de|colors|d|Mint|mintgrün
+de|colors|d|Senf|senfgelb
+de|colors|d|Schokoladenbraun|schokoladenbraun
+ro|colors|d|Smarald|Verde smarald
+ro|colors|d|Coral|Corai
+ro|colors|d|Cupru|Arămiu
+en|colors|d|Dark-skinned|Dark-haired
+de|colors|d|dunkelhäutig|dunkelhaarig
+ru|colors|d|Смуглый|Темноволосый
+en|colors|d|Redhead|Red-haired
+fr|colors|d|Aux cheveux gris|Grisonnant
+ro|body|d|Încheietură|Încheietura mâinii
+it|body|d|Palmo|Palma
+fr|home|d|Chambre à coucher|Chambre
+pt|home|d|Quarto de dormir|Quarto
+ru|home|d|Метла|Веник
+en|nature|d|Lightning bolt|Lightning
+en|nature|d|Countryside|Field
+fr|nature|d|Campagne|Champ
+de|nature|d|Land|Feld
+it|nature|d|Campagna|Campo
+ro|nature|d|Rocă|Stâncă
+pt|clothes|d|Camiseta|T-shirt
+de|clothes|d|Schirmmütze|Kappe
+pt|clothes|d|Fecho|Fecho-éclair
+de|clothes|d|Absatzschuhe|Stöckelschuhe
+it|clothes|d|Cuffia|Berretto
+it|clothes|d|Maschera|Costume di carnevale
+en|transport|d|Small boat|Boat
+pt|transport|d|Cais|Plataforma
+it|transport|d|Conducente|Autista
+ru|transport|d|Шоссе|Дорога
+fr|transport|d|Feu de signalisation|Feu rouge
+pt|transport|d|Posto de gasolina|Bomba de gasolina
+fr|jobs|d|Hôtesse de l'air|Steward
+fr|jobs|d|Concepteur|Designer
+de|jobs|d|Reiseführer|Reiseleiter
+de|jobs|d|Athlet|Sportler
+fr|family|d|Épouse|Femme
+de|family|d|Fester Freund|fester Freund
+de|family|d|Feste Freundin|feste Freundin
+de|family|d|Ledig|ledig
+de|family|d|Verheiratet|verheiratet
+de|family|d|Geschieden|geschieden
+de|family|d|Junger Mensch|junger Mensch
+de|family|d|Älterer Mensch|älterer Mensch
+it|family|d|Celibe|Single
+it|family|d|Focolare|Casa
+ru|family|d|Домашний очаг|Дом
+de|city|d|Dom|Kathedrale
+ro|city|d|Fântână|Fântână arteziană
+it|city|d|CAP|Codice postale
+ro|tech|d|Dosar|Folder
+it|tech|d|Collegamento|Link
+it|tech|d|Seguace|Follower
+ru|tech|d|Печатать|Распечатать
+de|tech|d|Soziales Netzwerk|soziales Netzwerk
+de|tech|d|Künstliche Intelligenz|künstliche Intelligenz
+de|tech|d|Herunterladen|herunterladen
+de|tech|d|Eine Datei hochladen|eine Datei hochladen
+de|tech|d|Speichern|speichern
+de|tech|d|Löschen|löschen
+de|tech|d|Kopieren|kopieren
+de|tech|d|Einfügen|einfügen
+de|tech|d|Drucken|drucken
+de|tech|d|Einschalten|einschalten
+de|tech|d|Ausschalten|ausschalten
+de|tech|d|Verbinden|verbinden
+de|tech|d|Installieren|installieren
+de|tech|d|Aktualisieren|aktualisieren
+de|tech|d|Neu starten|neu starten
 `;
   window.FIXES_MISSING = [];
   FIX.trim().split("\n").forEach(line => {
