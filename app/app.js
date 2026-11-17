@@ -272,7 +272,7 @@
         <div><h1>¿Qué idioma quieres aprender?</h1>
         <p class="muted">${prem() ? "Con Premium puedes cambiar de curso cuando quieras." : "Con el plan Estándar eliges 1 curso. Premium desbloquea todos."}</p></div></div>
       <div class="card native-pick"><b>Las preguntas se leen en</b>
-        <div class="native-chips" role="group" aria-label="Idioma base">${LANG_ORDER.map(k => `<button class="chip ${k === nat ? "on" : ""}" data-n="${k}" aria-pressed="${k === nat}">${COURSES[k].name}</button>`).join("")}</div>
+        <div class="native-chips" role="group" aria-label="Idioma base">${LANG_ORDER.map(k => `<button class="chip ${k === nat ? "on" : ""}" data-n="${k}" aria-pressed="${k === nat}">${flagSvg(k)}${COURSES[k].name}</button>`).join("")}</div>
         <span class="muted small">Elige tu idioma base y el idioma que quieres aprender: cualquier combinación funciona.</span></div>
       <div class="course-grid">${LANG_ORDER.map(k => {
         const locked = !prem() && S.lang && S.lang !== k;

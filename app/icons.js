@@ -55,9 +55,23 @@
   window.ic = (name, cls = "") =>
     `<svg class="ic ${cls}" viewBox="0 0 24 24" aria-hidden="true">${I[name] || ""}</svg>`;
 
-  /* Insignia de idioma: reemplaza a las banderas */
+  /* Banderas de los idiomas (SVG propio, 3:2). Inglés: Reino Unido (ortografía británica); español: México (español neutro latinoamericano);
+     portugués: Portugal (variante europea). */
+  const R = (x, y, w, h, c) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${c}"/>`;
+  const FLAGS = {
+    en: R(0, 0, 60, 40, "#012169") + `<path d="M0 0L60 40M60 0L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0L60 40M60 0L0 40" stroke="#C8102E" stroke-width="3"/><path d="M30 0V40M0 20H60" stroke="#fff" stroke-width="13"/><path d="M30 0V40M0 20H60" stroke="#C8102E" stroke-width="7.500"/>`,
+    es: R(0, 0, 20, 40, "#006847") + R(20, 0, 20, 40, "#fff") + R(40, 0, 20, 40, "#CE1126") + `<circle cx="30" cy="20" r="6" fill="#9a6b2f"/><circle cx="30" cy="20" r="3.800" fill="#3f8f4f"/>`,
+    fr: R(0, 0, 20, 40, "#0055A4") + R(20, 0, 20, 40, "#fff") + R(40, 0, 20, 40, "#EF4135"),
+    de: R(0, 0, 60, 13.400, "#000") + R(0, 13.300, 60, 13.400, "#DD0000") + R(0, 26.600, 60, 13.400, "#FFCE00"),
+    it: R(0, 0, 20, 40, "#009246") + R(20, 0, 20, 40, "#fff") + R(40, 0, 20, 40, "#CE2B37"),
+    pt: R(0, 0, 24, 40, "#006600") + R(24, 0, 36, 40, "#FF0000") + `<circle cx="24" cy="20" r="8" fill="#FFD700"/><circle cx="24" cy="20" r="5.500" fill="#FF0000"/><circle cx="24" cy="20" r="3.200" fill="#fff"/>`,
+    ru: R(0, 0, 60, 13.400, "#fff") + R(0, 13.300, 60, 13.400, "#0039A6") + R(0, 26.600, 60, 13.400, "#D52B1E"),
+    ro: R(0, 0, 20, 40, "#002B7F") + R(20, 0, 20, 40, "#FCD116") + R(40, 0, 20, 40, "#CE1126")
+  };
+  window.flagSvg = key => FLAGS[key] ? `<svg class="flag" viewBox="0 0 60 40" aria-hidden="true">${FLAGS[key]}</svg>` : "";
   window.langBadge = (key, size = "") => {
     const c = COURSES[key];
+    if (FLAGS[key]) return `<span class="lb fl ${size}" role="img" aria-label="${c.name}">${window.flagSvg(key)}</span>`;
     return `<span class="lb ${size}" style="--c:${c.color}"><span>${c.code}</span></span>`;
   };
 
