@@ -56,7 +56,7 @@
     };
   };
 
-  const bank = (item, pool, dir, audio) => {
+  const bank = (item, pool, dir, audio, maxExtra) => {
     const fwd = dir === "fwd";
     const f = fwd ? "t" : "es";
     const ans = tokens(item[f]);
@@ -68,7 +68,7 @@
         const k = norm(core(tk));
         if (!ansN.has(k) && !extra.some(e => norm(core(e)) === k)) { extra.push(tk); break; }
       }
-      if (extra.length >= (ans.length > 3 ? 3 : 2)) break;
+      if (extra.length >= (maxExtra ?? (ans.length > 3 ? 3 : 2))) break;
     }
     return {
       type: "bank", item, dir, audio: audio ? item.t : null,
@@ -132,24 +132,31 @@
     const review = n => prev.length ? pick(prev, n).map(w => mc(w, prev.length > 8 ? prev : W.concat(prev), "fwd")) : [];
     const sw = shuffle(W), ss = shuffle(S);
     let ex = [];
+    /* Principiante (A1): rompecabezas más fáciles. Frases cortas (cada nivel admite un poco más),
+       solo 1 pieza sobrante (0 en el primer nivel) y más frases «al revés» (idioma que aprendes -> el tuyo), que son más fáciles. */
+    const A1 = lvStart(ui) === 0, MAXTOK = [4, 5, 6, 6, 7][li] || 7;
+    const short = n => { const ok = S.filter(x => tokens(x.t).length <= n && tokens(x.es).length <= n + 1); return ok.length >= 6 ? ok : S; };
+    const SP = A1 ? short(MAXTOK) : S;               // frases para rompecabezas
+    const XTRA = A1 ? (li === 0 ? 0 : 1) : undefined; // piezas sobrantes
+    const bk = (it, dir, audio) => bank(it, S, dir, audio, XTRA);
     if (li === 0) {
       sw.slice(0, MAX_Q_WORDS).forEach((w, i) => ex.push(mc(w, W, i % 2 ? "rev" : "fwd")));
-      const demo = pick(S, 2); // dos frases de ejemplo: ya desde el primer nivel hay rompecabezas
+      const demo = pick(SP, 2); // dos frases de ejemplo: ya desde el primer nivel hay rompecabezas
       const mcs = shuffle(ex.filter(e => e.type === "mc"));
-      ex = [...mcs.slice(0, 4), bank(demo[0], S, "fwd"), ...mcs.slice(4), bank(demo[1], S, "fwd"), match(sw.slice(0, 4)), match(sw.slice(4, 8))];
+      ex = [...mcs.slice(0, 4), bk(demo[0], "rev"), ...mcs.slice(4), bk(demo[1], "fwd"), match(sw.slice(0, 4)), match(sw.slice(4, 8))];
       ex.sample = demo;
     } else if (li === 1) {
       ex = [
         ...ss.slice(0, MAX_Q_SENTS).map(s => mc(s, S, "rev")),
-        ...shuffle(S).slice(0, MAX_Q_BANK).map(s => bank(s, S, "fwd")),
-        ...pick(S, 2).map(s => bank(s, S, "rev"))
+        ...(A1 ? [...pick(SP, 3).map(s => bk(s, "rev")), ...pick(SP, 4).map(s => bk(s, "fwd"))]
+               : [...shuffle(S).slice(0, MAX_Q_BANK).map(s => bank(s, S, "fwd")), ...pick(S, 2).map(s => bank(s, S, "rev"))])
       ];
     } else if (li === 2) {
       ex = [
         ...shuffle([
           ...pick(S, MAX_Q_FILL).map(s => fill(s, S)),
           ...pick(W, 4).map(w => type(w)),
-          ...pick(S, 2).map(s => bank(s, S, "rev")),
+          ...pick(SP, 2).map(s => bk(s, "rev")),
           ...review(2)
         ]),
         match(pick(W, 5))
@@ -159,13 +166,13 @@
         ex = shuffle([
           ...pick(W, 3).map(w => listenMC(w, W)),
           ...pick(W, 3).map(w => type(w, true)),
-          ...pick(S, 3).map(s => bank(s, S, "fwd", true)),
-          ...pick(S, 2).map(s => bank(s, S, "fwd")),
+          ...pick(SP, 3).map(s => bk(s, "fwd", true)),
+          ...pick(SP, 2).map(s => bk(s, "fwd")),
           fill(pick(S, 1)[0], S)
         ]);
       } else {
         ex = shuffle([
-          ...pick(S, 4).map(s => bank(s, S, "fwd")),
+          ...pick(SP, 4).map(s => bk(s, "fwd")),
           ...pick(W, 4).map(w => type(w)),
           ...pick(S, 2).map(s => mc(s, S, "fwd")),
           ...pick(S, 2).map(s => fill(s, S))
@@ -175,8 +182,8 @@
       ex = [
         ...shuffle([
           ...pick(W, 4).map(w => type(w)),
-          ...pick(S, 4).map(s => bank(s, S, "fwd")),
-          ...pick(S, 2).map(s => bank(s, S, "rev")),
+          ...pick(SP, 4).map(s => bk(s, "fwd")),
+          ...pick(SP, 2).map(s => bk(s, "rev")),
           ...pick(S, 2).map(s => fill(s, S)),
           mc(pick(W, 1)[0], W, "rev"),
           ...review(1)
