@@ -12,6 +12,25 @@
   window.MASCOT_ACTIVITIES = ["eat", "wash", "coffee", "yawn", "sleepy", "curious", "think", "sing", "bored"];
 
   let uid = 0;
+  /* Trazos de pelo: cada uno nace en un punto del volumen y sale hacia fuera. Se generan una vez, con semilla fija, y se reutilizan. */
+  const fur = (() => {
+    let a = 20260117; const rnd = () => { a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+    const make = (n, inside, dirFn, len, curve = 2) => {
+      const L = [], D = []; let k = 0, guard = 0;
+      while (k < n && guard++ < n * 40) {
+        const x = 20 + rnd() * 160, y = 20 + rnd() * 190; if (!inside(x, y)) continue;
+        const [dx, dy] = dirFn(x, y), l = len * (.7 + rnd() * .6), m = Math.hypot(dx, dy) || 1, ux = dx / m, uy = dy / m;
+        const x2 = x + ux * l, y2 = y + uy * l, cx = (x + x2) / 2 - uy * curve * (rnd() - .5) * 2, cy = (y + y2) / 2 + ux * curve * (rnd() - .5) * 2;
+        const d = `M${x.toFixed(1)} ${y.toFixed(1)}Q${cx.toFixed(1)} ${cy.toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}`;
+        (k % 2 ? D : L).push(d); k++;
+      }
+      return [L.join(""), D.join("")];
+    };
+    const head = make(130, (x, y) => ((x - 100) / 72) ** 2 + ((y - 92) / 60) ** 2 < 1, (x, y) => [x - 100, y - 84], 9);
+    const body = make(70, (x, y) => ((x - 100) / 50) ** 2 + ((y - 172) / 34) ** 2 < 1, (x, y) => [(x - 100) * .6, 1], 8);
+    const tail = make(70, (x, y) => ((x - 170) / 32) ** 2 + ((y - 128) / 70) ** 2 < 1, (x, y) => [x - 140, y - 150], 8);
+    return { head, body, tail };
+  })();
   const heart = (cx, cy, s = 1, cls = "rh") => `<path d="M${cx} ${cy + 7 * s}C${cx - 13 * s} ${cy - 1 * s} ${cx - 7 * s} ${cy - 10 * s} ${cx} ${cy - 4 * s}C${cx + 7 * s} ${cy - 10 * s} ${cx + 13 * s} ${cy - 1 * s} ${cx} ${cy + 7 * s}Z" class="${cls}"/>`;
   const paw = (x, y, rot = 0, s = 1) => `<g transform="translate(${x} ${y}) rotate(${rot}) scale(${s})" class="r-paw"><ellipse cx="0" cy="0" rx="11" ry="9.500" class="rd2"/><circle cx="-7" cy="-8" r="3.800" class="rd2"/><circle cx="-2.500" cy="-10.500" r="3.800" class="rd2"/><circle cx="2.500" cy="-10.500" r="3.800" class="rd2"/><circle cx="7" cy="-8" r="3.800" class="rd2"/><ellipse cx="-3" cy="-2" rx="4" ry="2.200" class="rhl"/></g>`;
   const arm = (x1, y1, x2, y2) => `<path d="M${x1} ${y1}L${x2} ${y2}" class="rarm"/><path d="M${x1 + 3} ${y1}L${x2 + 2} ${y2}" class="rarm2"/>`;
@@ -24,7 +43,7 @@
 
     /* ----- ojos ----- */
     const eyeOpen = (cx, cy, dx = 0, dy = 0, rx = 12.5, ry = 14) =>
-      `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${g("eye")}"/><circle cx="${cx + dx * .6}" cy="${cy + dy * .6}" r="${rx * .5}" class="rn"/>` +
+      `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${g("eye")}"/><circle cx="${cx + dx * .6}" cy="${cy + dy * .6}" r="${rx * .42}" class="rn"/><ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${g("lidsh")}"/><path d="M${cx - rx + 2} ${cy + ry * .55}Q${cx} ${cy + ry + 1} ${cx + rx - 2} ${cy + ry * .55}" class="reyelow"/>` +
       `<circle cx="${cx + dx + 4}" cy="${cy + dy - 5}" r="4.600" fill="#fff"/><circle cx="${cx + dx - 3.500}" cy="${cy + dy + 4.500}" r="2.300" fill="#fff" opacity=".85"/><circle cx="${cx + dx + 5.500}" cy="${cy + dy + 2}" r="1.100" fill="#fff" opacity=".9"/>`;
     const arc = (cx, cy, up = true) => `<path d="M${cx - 12} ${cy + 3}Q${cx} ${up ? cy - 14 : cy + 15} ${cx + 12} ${cy + 3}" class="rk"/>`;
     const starPath = (cx, cy, r) => { let d = ""; for (let i = 0; i < 10; i++) { const a = -Math.PI / 2 + i * Math.PI / 5, rr = i % 2 ? r * .45 : r; d += (i ? "L" : "M") + (cx + rr * Math.cos(a)).toFixed(1) + " " + (cy + rr * Math.sin(a)).toFixed(1); } return d + "Z"; };
@@ -168,18 +187,26 @@
         <radialGradient id="belly${u}" cx=".5" cy=".3" r=".85"><stop offset="0" stop-color="#fcf9f3"/><stop offset="1" stop-color="#d6cfc2"/></radialGradient>
         <linearGradient id="mask${u}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b424e"/><stop offset="1" stop-color="#141820"/></linearGradient>
         <radialGradient id="muz${u}" cx=".5" cy=".3" r=".8"><stop offset="0" stop-color="#fffdf9"/><stop offset="1" stop-color="#d9d2c5"/></radialGradient>
-        <radialGradient id="eye${u}" cx=".5" cy=".5" r=".55"><stop offset="0" stop-color="#150c06"/><stop offset=".62" stop-color="#3a2212"/><stop offset="1" stop-color="#94621f"/></radialGradient>
+        <radialGradient id="eye${u}" cx=".5" cy=".5" r=".55"><stop offset="0" stop-color="#0f0804"/><stop offset=".4" stop-color="#1a0e07"/><stop offset=".52" stop-color="#5b3513"/><stop offset=".78" stop-color="#b4782c"/><stop offset=".93" stop-color="#6a4016"/><stop offset="1" stop-color="#2a170a"/></radialGradient>
+        <linearGradient id="lidsh${u}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".55"/><stop offset=".5" stop-color="#000" stop-opacity="0"/></linearGradient>
+        <radialGradient id="nose${u}" cx=".4" cy=".3" r=".8"><stop offset="0" stop-color="#4a525d"/><stop offset=".5" stop-color="#262b33"/><stop offset="1" stop-color="#0d1015"/></radialGradient>
+        <radialGradient id="cheek${u}" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ff8fb1" stop-opacity=".75"/><stop offset="1" stop-color="#ff8fb1" stop-opacity="0"/></radialGradient>
+        <clipPath id="hc${u}"><path d="M100 32C140 32 168 56 170 90C172 120 142 148 100 148C58 148 28 120 30 90C32 56 60 32 100 32Z"/></clipPath>
+        <clipPath id="bc${u}"><path d="M52 198C40 160 60 132 100 130C140 132 160 160 148 198Z"/></clipPath>
         <linearGradient id="tail${u}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#bfc5ce"/><stop offset="1" stop-color="#7f8996"/></linearGradient>
         <linearGradient id="choc${u}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8a5535"/><stop offset="1" stop-color="#4f2c19"/></linearGradient>
         <clipPath id="tc${u}"><path d="M118 188C170 202 205 166 198 114C195 88 184 72 168 62C162 98 150 128 122 150Z"/></clipPath>
       </defs>
       <ellipse cx="100" cy="203" rx="60" ry="6" class="rshadow"/>
       <g class="r-tail"><path d="M118 188C170 202 205 166 198 114C195 88 184 72 168 62C162 98 150 128 122 150Z" fill="${g("tail")}"/>
-        <g clip-path="url(#tc${u})"><path d="M134 148Q150 176 146 204M156 130Q186 154 198 186M172 104Q198 116 206 148M168 80Q190 82 202 100" class="rring2"/><circle cx="178" cy="70" r="17" class="rd"/></g>
+        <g clip-path="url(#tc${u})"><path d="M134 148Q150 176 146 204M156 130Q186 154 198 186M172 104Q198 116 206 148M168 80Q190 82 202 100" class="rring2"/><circle cx="178" cy="70" r="17" class="rd"/><path d="${fur.tail[0]}" class="rfl"/><path d="${fur.tail[1]}" class="rfd"/></g>
         <path d="M122 150C152 128 164 98 168 62" class="rtedge"/></g>
       <g class="r-body">
         <path d="M52 198C40 160 60 132 100 130C140 132 160 160 148 198Z" fill="${g("fur")}"/>
+        <g clip-path="url(#bc${u})"><path d="${fur.body[0]}" class="rfl"/><path d="${fur.body[1]}" class="rfd"/></g>
         <ellipse cx="100" cy="170" rx="27" ry="32" fill="${g("belly")}"/>
+        <path d="M86 150Q92 158 90 168M100 148Q103 158 100 170M114 150Q108 158 110 168" class="rbellyfur"/>
+        <ellipse cx="100" cy="136" rx="40" ry="10" class="rchin"/>
         <ellipse cx="70" cy="200" rx="20" ry="9" class="rd2"/><ellipse cx="130" cy="200" rx="20" ry="9" class="rd2"/>
         <path d="M56 200v-3M64 202v-3M72 202v-3M78 200v-3M122 200v-3M128 202v-3M136 202v-3M144 200v-3" class="rtoes"/>
       </g>
@@ -188,7 +215,9 @@
         <path d="M60 58C46 34 56 14 76 20C86 24 90 36 88 46Z" fill="${g("fur")}"/><path d="M140 58C154 34 144 14 124 20C114 24 110 36 112 46Z" fill="${g("fur")}"/>
         <path d="M62 50C54 36 60 26 72 28C78 32 80 40 78 46Z" class="rear"/><path d="M138 50C146 36 140 26 128 28C122 32 120 40 122 46Z" class="rear"/>
         <path d="M56 38C54 28 62 20 74 22M144 38C146 28 138 20 126 22" class="rpale"/>
+        <path d="M66 46Q68 38 72 32M72 48Q75 40 79 36M134 46Q132 38 128 32M128 48Q125 40 121 36" class="rearfur"/>
         <path d="M100 32C140 32 168 56 170 90C172 120 142 148 100 148C58 148 28 120 30 90C32 56 60 32 100 32Z" fill="${g("head")}"/>
+        <g clip-path="url(#hc${u})"><path d="${fur.head[0]}" class="rfl"/><path d="${fur.head[1]}" class="rfd"/><ellipse cx="100" cy="44" rx="52" ry="14" class="rtop"/></g>
         <path d="M36 94Q22 98 20 110Q28 106 31 113Q24 121 31 128Q39 120 48 120ZM164 94Q178 98 180 110Q172 106 169 113Q176 121 169 128Q161 120 152 120Z" fill="url(#head${u})" class="rtuft"/>
         <g class="rfur">${furLines}</g>
         <path d="M100 34C92 46 91 64 95 84H105C109 64 108 46 100 34Z" class="rblaze"/>
@@ -197,10 +226,10 @@
         <ellipse cx="100" cy="116" rx="30" ry="25" fill="${g("muz")}"/>
         <g class="${blink}">${eyeSvg}</g>
         ${M.b ? brows[M.b] : ""}
-        <path d="M92 101Q100 95 108 101Q106 109 100 111.500Q94 109 92 101Z" class="rn"/><ellipse cx="96" cy="100" rx="3.600" ry="1.700" class="rnhl"/>
+        <path d="M91 101Q100 94 109 101Q107 110 100 112.500Q93 110 91 101Z" fill="${g("nose")}"/><ellipse cx="95.500" cy="99.500" rx="4.200" ry="2" class="rnhl"/><circle cx="103" cy="103" r="1.100" class="rnhl2"/>
         <g class="r-mouth">${mouths[M.m]}</g>
-        <path d="M78 114Q54 108 36 114M78 118Q56 120 38 130M78 110Q58 100 44 100M122 114Q146 108 164 114M122 118Q144 120 162 130M122 110Q142 100 156 100" class="rwh"/>
-        <ellipse cx="53" cy="115" rx="10" ry="6" class="rp rblush"/><ellipse cx="147" cy="115" rx="10" ry="6" class="rp rblush"/>${M.k ? extras[M.k] : ""}
+        <path d="M78 114Q54 106 34 112M78 118Q56 122 36 134M78 110Q58 98 44 96M122 114Q146 106 166 112M122 118Q144 122 164 134M122 110Q142 98 156 96" class="rwh"/><g class="rdots"><circle cx="82" cy="112" r="1.200"/><circle cx="86" cy="116" r="1.200"/><circle cx="84" cy="120" r="1.200"/><circle cx="118" cy="112" r="1.200"/><circle cx="114" cy="116" r="1.200"/><circle cx="116" cy="120" r="1.200"/></g>
+        <ellipse cx="53" cy="116" rx="15" ry="9" fill="${g("cheek")}"/><ellipse cx="147" cy="116" rx="15" ry="9" fill="${g("cheek")}"/>${M.k ? extras[M.k] : ""}
       </g>
       ${M.f ? front[M.f] : ""}
       ${M.x ? extras[M.x] : ""}
