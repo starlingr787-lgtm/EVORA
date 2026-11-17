@@ -15,7 +15,7 @@ Para probarla en local: `cd app && python3 -m http.server` y abrir http://localh
 - **Mapa de niveles**: 5 niveles por unidad (palabras, frases, práctica, escucha y combina, prueba de unidad), desbloqueo uno a uno y 1 a 3 estrellas.
 - **Ejercicios**: opción múltiple, escribir, completar la frase, relacionar parejas, escucha y **rompecabezas de frases** (piezas con forma de puzle que se arrastran o se tocan a un tablero).
 - **Situaciones** (nodo especial del mapa en las unidades 1 y 6, gratis para todos los planes y siempre desbloqueado):
-  - *Rompecabezas vivo*: cada pieza tiene el color de su registro (formal azul, informal naranja, urgente rojo, neutro verde) con icono y etiqueta. Al tocar otro tono la frase entera cambia a su variante, con animación, y hay que elegir el tono que encaja con la situación.
+  - *Escucha y une* (sustituye al antiguo «Rompecabezas vivo»): 3 rondas de parejas con audio. Tocas un altavoz, oyes la palabra o frase y buscas su significado; al acertar aparece escrita.
   - *Escena para calmar a un personaje*: 3 turnos con medidor de ánimo. Cada respuesta es una pieza con su tono y una explicación en español de por qué calma o molesta.
   - Las variantes de tono están escritas a mano (no se generan) para no producir gramática rota. Hace falta revisión de hablantes nativos antes de publicar.
 - **Vocabulario diario**: palabras y frase del día según el curso y el nivel, con marca de "ya la sé", práctica rápida y lista de "mis palabras" con buscador.

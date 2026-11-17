@@ -443,7 +443,7 @@
     modal.hidden = false;
     modal.innerHTML = `<div class="box center"><div class="sheet-ic situ">${ic("bolt")}</div>
       <span class="ulabel">Unidad ${ui - EX.lvStart(ui) + 1} &middot; ${unitTitle(S.lang, ui)}</span><h2>Situación</h2>
-      <p class="muted">Rompecabezas vivo: cambia el tono de la frase hasta que encaje. Después calma a un personaje con las piezas adecuadas.</p>
+      <p class="muted">Escucha y une: toca el altavoz, oye la frase y búscale su significado.</p>${EX.hasScene(ui) ? `<p class="muted">Después, una escena para calmar a un personaje.</p>` : ""}
       <p class="fb-note ok-note">${ic("check")}<span>Gratis para todos los planes.</span></p>
       ${s ? `<div class="nstars lg">${[1, 2, 3].map(n => ic("star", "solid " + (n <= s ? "on" : "off"))).join("")}</div>` : ""}
       <div class="row center"><button class="btn ghost" id="cancel">Cerrar</button><button class="btn" id="start">${s ? "Repetir" : "Empezar"}</button></div></div>`;
@@ -454,10 +454,11 @@
     const ex = EX.situation(S.lang, ui);
     const go = () => startPlayer({ kind: "situation", ui, li: NL, ex, lang: S.lang });
     shell();
-    $("#stage").innerHTML = `<h2 class="ex-title">El color es el tono</h2>
-      <p class="muted">Cada pieza tiene el color del registro con el que se dice. Elegir bien el tono cambia cómo te responde la gente.</p>
-      <ul class="tone-legend">${["formal", "informal", "urgente"].map(t => `<li><span class="tone-chip t-${t}">${ic(TONES[t].icon)}${TONES[t].name}</span><span class="muted">${TONES[t].use}</span></li>`).join("")}</ul>
-      <p class="muted small">Primero verás 4 frases que cambian al tocar un tono. Después, una escena para calmar a un personaje.</p>`;
+    const scene = EX.hasScene(ui);
+    $("#stage").innerHTML = `<h2 class="ex-title">Escucha y une</h2>
+      <p class="muted">Toca un altavoz para oír una palabra o una frase y búscale su significado. Al acertar, verás cómo se escribe.</p>
+      <p class="muted small">Son 3 rondas cortas.</p>${scene ? `<p class="muted small">Al final, una escena para calmar a un personaje.</p>` : ""}
+      ${scene ? `<ul class="tone-legend">${["formal", "informal", "urgente"].map(t => `<li><span class="tone-chip t-${t}">${ic(TONES[t].icon)}${TONES[t].name}</span><span class="muted">${TONES[t].use}</span></li>`).join("")}</ul><p class="muted small">En la escena, cada pieza tiene el color del tono con el que se dice.</p>` : ""}`;
     $("#foot").className = "p-foot"; $("#pBtn").textContent = "Empezar"; $("#pBtn").disabled = false; $("#pBtn").onclick = go;
     setBar(0);
   }
@@ -990,18 +991,21 @@
   /* --- relacionar parejas --- */
   function exMatch(ex) {
     const L = EX.shuffle(ex.pairs.map((p, i) => ({ id: i, v: p.t }))), R = EX.shuffle(ex.pairs.map((p, i) => ({ id: i, v: p.es })));
-    $("#stage").innerHTML = `<h2 class="ex-title">${ex.title}</h2>
-      <div class="match"><div class="mcol" id="mL">${L.map(x => `<button class="opt m" data-id="${x.id}" data-s="L">${tg(x.v)}</button>`).join("")}</div>
+    const lis = !!ex.listen;
+    $("#stage").innerHTML = `<h2 class="ex-title">${ex.title}</h2>${lis ? `<p class="muted small puzzle-hint">Toca un altavoz para oír la frase y luego su significado.</p>` : ""}
+      <div class="match"><div class="mcol" id="mL">${L.map(x => lis ? `<button class="opt m snd" data-id="${x.id}" data-s="L" aria-label="Escuchar">${ic("speaker")}</button>` : `<button class="opt m" data-id="${x.id}" data-s="L">${tg(x.v)}</button>`).join("")}</div>
       <div class="mcol" id="mR">${R.map(x => `<button class="opt m" data-id="${x.id}" data-s="R">${esc(x.v)}</button>`).join("")}</div></div>`;
     let selB = null, left = ex.pairs.length, miss = 0; const missed = new Set();
     $$(".opt.m").forEach(b => b.onclick = () => {
       if (P.locked || b.classList.contains("done")) return;
+      if (lis && b.dataset.s === "L") speak(ex.pairs[+b.dataset.id].t, P.lang);
       if (!selB || selB.dataset.s === b.dataset.s) {
         $$(".opt.m.sel").forEach(x => x.classList.remove("sel")); selB = b; b.classList.add("sel"); return;
       }
       const a = selB; selB = null; a.classList.remove("sel");
       if (a.dataset.id === b.dataset.id) {
         [a, b].forEach(x => { x.classList.add("done"); x.disabled = true; });
+        if (lis) { const l = a.dataset.s === "L" ? a : b; l.classList.add("shown"); l.innerHTML = tg(ex.pairs[+l.dataset.id].t); }
         if (--left === 0) {
           missed.forEach(id => srsTouch(ex.items[+id], false));
           reveal(miss === 0, "", { noRetry: true, skipRemember: true, msg: miss === 0 ? null : "Casi. Repasa estas parejas." });

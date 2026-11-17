@@ -563,3 +563,7 @@ body.skin-cotton .pz.c4:not(.ok):not(.bad):not(.skinprev){--pf:#ffcade;--ps:#f2a
 body.skin-cotton .pz.c6:not(.ok):not(.bad):not(.skinprev){--pf:#ffdcea;--ps:#f6b1cb}body.skin-cotton .pz.c7:not(.ok):not(.bad):not(.skinprev){--pf:#ffa9cb;--ps:#e97fa9}
 body.skin-cotton .pz:not(.empty):not(.ok):not(.bad):not(.skinprev){color:#8a2250;text-shadow:0 1px 0 rgba(255,255,255,.7)}
 .skinprev[data-skin="cotton"]{--pf:#ffc4da;--ps:#f29bbd;color:#8a2250;text-shadow:0 1px 0 rgba(255,255,255,.7)}
+
+/* Escucha y une */
+.opt.m.snd{display:grid;place-items:center;min-height:56px;color:var(--teal-d)}.opt.m.snd .ic{width:28px;height:28px}
+.opt.m.snd.shown{font-weight:800;font-size:16px;color:var(--ok)}

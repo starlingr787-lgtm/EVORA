@@ -276,7 +276,14 @@
       }))
     };
   }
-  const situation = (lang, ui) => [...liveSet(lang, ui), ...(SCENES.some(x => x.unit === ui) ? [sceneEx(lang, ui)] : [])];
+  /* Escucha y une: 3 rondas de parejas con audio (palabras, frases cortas y mezcla). Sustituye al antiguo «Rompecabezas vivo». */
+  function listenRounds(lang, ui) {
+    const U = unit(lang, ui), uniq = items => { const a = new Set(), b = new Set(); return items.filter(x => { const k1 = norm(x.es), k2 = norm(x.t); if (a.has(k1) || b.has(k2)) return false; a.add(k1); b.add(k2); return true; }); };
+    const words = uniq(shuffle(U.words.filter(w => tokens(w.t).length <= 2))), sents = uniq(shuffle(U.sents.filter(x => tokens(x.t).length <= 6)));
+    const round = (items, title) => ({ ...match(uniq(items)), title, listen: true });
+    return [round(words.slice(0, 4), "Escucha y une las palabras"), round(sents.slice(0, 4), "Escucha y une las frases"), round([...words.slice(4, 7), ...sents.slice(4, 6)], "Última ronda")];
+  }
+  const situation = (lang, ui) => [...listenRounds(lang, ui), ...(SCENES.some(x => x.unit === ui) ? [sceneEx(lang, ui)] : [])];
 
   /* ---------- Diccionario ---------- */
   const dictItems = (lang, catId) => dictWords(lang, DICT_CATS.find(x => x.id === catId));
@@ -295,5 +302,5 @@
     return lang === "ru" && small ? `${e}<small class="tr">${translit(text)}</small>` : e;
   };
 
-  window.EX = { setNative, exam, situation, hasSituation, build, reviewSet, placement, practiceWords, dictItems, dictAll, dictSearch, clipKey, unit, LEVELS, norm, translit, tgt, shuffle, tokens, core, lvStart };
+  window.EX = { setNative, exam, situation, hasSituation, hasScene: ui => (window.SCENES || []).some(x => x.unit === ui), build, reviewSet, placement, practiceWords, dictItems, dictAll, dictSearch, clipKey, unit, LEVELS, norm, translit, tgt, shuffle, tokens, core, lvStart };
 })();
