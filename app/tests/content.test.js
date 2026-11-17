@@ -3,7 +3,7 @@
 const vm = require("vm"), fs = require("fs"), path = require("path");
 const dir = path.join(__dirname, "..");
 const ctx = {}; ctx.window = ctx; vm.createContext(ctx);
-for (const f of ["data", "data2", "data3", "data4", "extra", "data7a", "data7b", "data7c", "data8", "data9", "data10", "data11", "data12", "data13", "data14", "data15", "data17", "data18", "data19", "data20", "data5", "data6", "data16", "data21", "data22", "data23", "data24"]) vm.runInContext(fs.readFileSync(path.join(dir, f + ".js"), "utf8"), ctx);
+for (const f of ["data", "data2", "data3", "data4", "extra", "data7a", "data7b", "data7c", "data8", "data9", "data10", "data11", "data12", "data13", "data14", "data15", "data17", "data18", "data19", "data20", "data5", "data6", "data16", "data21", "data22", "data23", "data24", "data25"]) vm.runInContext(fs.readFileSync(path.join(dir, f + ".js"), "utf8"), ctx);
 const { UNITS, COURSES, LIVE, SCENES, DICT_CATS, LEARN } = ctx;
 
 const errors = [];
@@ -87,7 +87,7 @@ for (const l in LEARN) {
   [...L.titles, ...L.ctx, ...Object.values(L.dictNames)].forEach(x => { if (/[áéíóúñ¿¡]/i.test(x)) bad("learn." + l, "texto en español dentro del texto de partida en inglés", x); if (/\s{2,}|^\s|\s$/.test(x)) bad("learn." + l, "espacios", x); });
   DICT_CATS.forEach(c => { if (!L.dictNames[c.id]) bad("learn." + l, "falta el nombre del diccionario", c.id); });
 }
-if (DICT_CATS.length !== 12) bad("dict", `se esperaban 12 categorías y hay ${DICT_CATS.length}`);
+if (DICT_CATS.length !== 20) bad("dict", `se esperaban 20 categorías y hay ${DICT_CATS.length}`);
 DICT_CATS.forEach(c => {
   const norm = s => s.toLowerCase(); // conserva los acentos: hay pares reales como avô / avó
   if (c.w.length !== 60) bad(`dict.${c.id}`, `se esperaban 60 palabras y hay ${c.w.length}`);
