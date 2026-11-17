@@ -86,6 +86,20 @@
       layer.appendChild(b); setTimeout(() => b.remove(), 950);
     }
   }
+  /* "+2 XP" que flota sobre el botón al acertar */
+  function xpPop(text) {
+    const b = $("#pBtn"); if (!b) return;
+    const r = b.getBoundingClientRect(), e = document.createElement("div");
+    e.className = "xp-pop"; e.innerHTML = `${ic("star", "solid")}<span>${text}</span><small>XP</small>`;
+    e.style.left = r.left + r.width / 2 + "px"; e.style.top = r.top - 8 + "px";
+    fxLayer().appendChild(e); setTimeout(() => e.remove(), 1100);
+  }
+  /* Número que sube de 0 al valor final */
+  function countUp(el, to, ms = 900) {
+    if (!el || matchMedia("(prefers-reduced-motion)").matches) return;
+    const t0 = performance.now(), step = t => { const k = Math.min(1, (t - t0) / ms), v = Math.round(to * (1 - Math.pow(1 - k, 3))); el.textContent = el.dataset.pre + v + (el.dataset.suf || ""); if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }
   function fxToast(text) {
     const t = document.createElement("div"); t.className = "fx-toast"; t.innerHTML = text;
     fxLayer().appendChild(t); setTimeout(() => t.remove(), 1500);
@@ -1064,7 +1078,7 @@
         sfx.win(); const b = $("#board");
         if (b) { const rc = b.getBoundingClientRect(); fxBurst(rc.left + rc.width / 2, rc.top + rc.height / 2, 30, undefined, 150); }
       } else sfx.ok();
-      vibrate([12, 30, 12]);
+      vibrate([12, 30, 12]); xpPop("+2");
     } else { sfx.bad(); vibrate(35); }
     updateCombo();
   }
@@ -1115,6 +1129,8 @@
         <div class="rs acc">${ic("check")}<b>${acc}%</b><span>Precisión</span></div></div></div></div>
       <div class="p-foot"><button class="btn" id="done">Continuar</button></div>`;
     $("#done").onclick = closePlayer;
+    { const xe = $(".rs.xp b"), ae = $(".rs.acc b"); if (xe) { xe.dataset.pre = "+"; countUp(xe, xp); } if (ae) { ae.dataset.suf = "%"; ae.dataset.pre = ""; countUp(ae, acc); }
+      if (acc >= 70 || star >= 2) { sfx.win(); [0, 220, 480].forEach((d, i) => setTimeout(() => fxBurst(innerWidth * (.25 + i * .25), innerHeight * .28, 38, undefined, 200), d)); } }
   }
 
   function finishPlacement() {
