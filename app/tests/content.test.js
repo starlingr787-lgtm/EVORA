@@ -3,7 +3,7 @@
 const vm = require("vm"), fs = require("fs"), path = require("path");
 const dir = path.join(__dirname, "..");
 const ctx = {}; ctx.window = ctx; vm.createContext(ctx);
-for (const f of ["data", "data2", "data3", "data4", "extra", "data7a", "data7b", "data7c", "data8", "data9", "data10", "data11", "data12", "data13", "data14", "data15", "data17", "data18", "data19", "data20", "data5", "data6", "data16", "data21", "data22"]) vm.runInContext(fs.readFileSync(path.join(dir, f + ".js"), "utf8"), ctx);
+for (const f of ["data", "data2", "data3", "data4", "extra", "data7a", "data7b", "data7c", "data8", "data9", "data10", "data11", "data12", "data13", "data14", "data15", "data17", "data18", "data19", "data20", "data5", "data6", "data16", "data21", "data22", "data23"]) vm.runInContext(fs.readFileSync(path.join(dir, f + ".js"), "utf8"), ctx);
 const { UNITS, COURSES, LIVE, SCENES, DICT_CATS, LEARN } = ctx;
 
 const errors = [];
@@ -99,5 +99,12 @@ DICT_CATS.forEach(c => {
 });
 
 (ctx.FIXES_MISSING || []).forEach(l => bad("data22", "corrección sin su texto original", l));
+
+/* Ejemplos en contexto (data23): una frase por palabra, completa en los 8 idiomas */
+Object.keys(ctx.EXAMPLES || {}).forEach(l => Object.keys(ctx.EXAMPLES[l]).forEach(u => {
+  const n = ctx.UNITS[+u].w.length;
+  if (ctx.EXAMPLES[l][u].length !== n) bad("data23", `unidad ${u} (${l}): ${ctx.EXAMPLES[l][u].length} ejemplos para ${n} palabras`, "");
+  ctx.EXAMPLES[l][u].forEach((t, i) => { if (!t || !t.trim()) bad("data23", `unidad ${u} (${l}) palabra ${i}: ejemplo vacío`, ""); });
+}));
 if (errors.length) { console.log(errors.join("\n")); console.log(`\n${errors.length} problemas de contenido`); process.exit(1); }
 console.log(`Contenido correcto (${items.length} textos revisados)`);

@@ -492,13 +492,18 @@
   }
 
   /* ---------- Introducción de palabras/frases ---------- */
+  /* Ejemplo en contexto de una palabra (data23): frase en el idioma que aprendes y su traducción al idioma base */
+  function exampleOf(ui, i) {
+    const E = window.EXAMPLES || {}, t = ((E[S.lang] || {})[ui] || [])[i], n = ((E[S.native] || {})[ui] || [])[i];
+    return t ? `<span class="ex"><i>${EX.tgt(t, S.lang)}</i>${n ? `<small>${esc(n)}</small>` : ""}</span>` : "";
+  }
   function intro(ui, li, then, sample) {
     const U = EX.unit(S.lang, ui), items = li === 0 ? U.words : U.sents;
     shell();
     $("#stage").innerHTML = `<h2 class="ex-title">${li === 0 ? "Palabras nuevas" : "Frases de la situación"}</h2>
       <p class="muted">${U.ctx}</p>
       <ul class="intro">${items.map((x, i) => `<li><button class="spk sm" data-i="${i}" aria-label="Escuchar">${ic("speaker")}</button>
-        <div><b>${EX.tgt(x.t, S.lang)}</b><span class="muted">${esc(x.es)}</span></div></li>`).join("")}</ul>
+        <div><b>${EX.tgt(x.t, S.lang)}</b><span class="muted">${esc(x.es)}</span>${li === 0 ? exampleOf(ui, i) : ""}</div></li>`).join("")}</ul>
       ${sample ? `<h3 class="vgroup">Dos frases para componer como un rompecabezas</h3><ul class="intro">${sample.map((x, i) => `<li><button class="spk sm" data-j="${i}" aria-label="Escuchar">${ic("speaker")}</button>
         <div><b>${EX.tgt(x.t, S.lang)}</b><span class="muted">${esc(x.es)}</span></div></li>`).join("")}</ul>` : ""}`;
     $$(".intro .spk[data-i]").forEach(b => b.onclick = () => speak(items[+b.dataset.i].t, S.lang));
