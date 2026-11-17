@@ -2162,5 +2162,495 @@ Aviso|Warning|Avertissement|Warnung|Avviso|Aviso|Предупреждение|Av
 Prohibido|Forbidden|Interdit|verboten|Vietato|Proibido|Запрещено|Interzis
 `);
 
+  /* 40 · Economía y trabajo (2) (44 palabras) */
+  more(40, `
+Liquidez|Liquidity|Liquidité|Liquidität|Liquidità|Liquidez|Ликвидность|Lichiditate
+Insolvencia|Insolvency|Insolvabilité|Zahlungsunfähigkeit|Insolvenza|Insolvência|Неплатёжеспособность|Insolvență
+Acreedor|Creditor|Créancier|Gläubiger|Creditore|Credor|Кредитор|Creditor
+Deudor|Debtor|Débiteur|Schuldner|Debitore|Devedor|Должник|Debitor
+Embargo|Seizure of assets|Saisie|Pfändung|Pignoramento|Penhora|Арест имущества|Sechestru
+Moratoria|Moratorium|Moratoire|Moratorium|Moratoria|Moratória|Мораторий|Moratoriu
+Prima de riesgo|Risk premium|Prime de risque|Risikoprämie|Premio per il rischio|Prémio de risco|Премия за риск|Primă de risc
+Bono soberano|Government bond|Obligation d'État|Staatsanleihe|Titolo di Stato|Obrigação do Tesouro|Государственная облигация|Obligațiune de stat
+Calificación crediticia|Credit rating|Notation de crédit|Bonitätsbewertung|Rating creditizio|Notação de crédito|Кредитный рейтинг|Rating de credit
+Política monetaria|Monetary policy|Politique monétaire|Geldpolitik|Politica monetaria|Política monetária|Денежно-кредитная политика|Politică monetară
+Política fiscal|Fiscal policy|Politique budgétaire|Fiskalpolitik|Politica fiscale|Política orçamental|Налогово-бюджетная политика|Politică fiscală
+Gasto público|Public spending|Dépenses publiques|Staatsausgaben|Spesa pubblica|Despesa pública|Государственные расходы|Cheltuieli publice
+Recaudación|Tax revenue|Recettes fiscales|Steueraufkommen|Gettito fiscale|Receita fiscal|Сбор налогов|Colectare fiscală
+Paraíso fiscal|Tax haven|Paradis fiscal|Steueroase|Paradiso fiscale|Paraíso fiscal|Налоговый рай|Paradis fiscal
+Blanqueo de capitales|Money laundering|Blanchiment d'argent|Geldwäsche|Riciclaggio di denaro|Branqueamento de capitais|Отмывание денег|Spălare de bani
+Oligopolio|Oligopoly|Oligopole|Oligopol|Oligopolio|Oligopólio|Олигополия|Oligopol
+Competencia desleal|Unfair competition|Concurrence déloyale|unlauterer Wettbewerb|Concorrenza sleale|Concorrência desleal|Недобросовестная конкуренция|Concurență neloială
+Regulación|Regulation|Réglementation|Regulierung|Regolamentazione|Regulação|Регулирование|Reglementare
+Privatización|Privatisation|Privatisation|Privatisierung|Privatizzazione|Privatização|Приватизация|Privatizare
+Nacionalización|Nationalisation|Nationalisation|Verstaatlichung|Nazionalizzazione|Nacionalização|Национализация|Naționalizare
+Embargo comercial|Trade embargo|Embargo commercial|Handelsembargo|Embargo commerciale|Embargo comercial|Торговое эмбарго|Embargo comercial
+Zona euro|Eurozone|Zone euro|Eurozone|Eurozona|Zona euro|Еврозона|Zona euro
+Cadena de valor|Value chain|Chaîne de valeur|Wertschöpfungskette|Catena del valore|Cadeia de valor|Цепочка создания стоимости|Lanț valoric
+Valor añadido|Added value|Valeur ajoutée|Mehrwert|Valore aggiunto|Valor acrescentado|Добавленная стоимость|Valoare adăugată
+Salario real|Real wage|Salaire réel|Reallohn|Salario reale|Salário real|Реальная заработная плата|Salariu real
+Economía digital|Digital economy|Économie numérique|Digitalwirtschaft|Economia digitale|Economia digital|Цифровая экономика|Economie digitală
+Economía colaborativa|Sharing economy|Économie collaborative|Sharing Economy|Economia collaborativa|Economia colaborativa|Экономика совместного потребления|Economie colaborativă
+Trabajo por encargo|Gig work|Travail à la tâche|Gelegenheitsarbeit|Lavoretti|Trabalho por conta de outrem|Подработка по заказам|Muncă ocazională
+Economías de escala|Economies of scale|Économies d'échelle|Skaleneffekte|Economie di scala|Economias de escala|Эффект масштаба|Economii de scală
+Externalidad|Externality|Externalité|externer Effekt|Esternalità|Externalidade|Внешний эффект|Externalitate
+Bien público|Public good|Bien public|öffentliches Gut|Bene pubblico|Bem público|Общественное благо|Bun public
+Crecimiento sostenible|Sustainable growth|Croissance durable|nachhaltiges Wachstum|Crescita sostenibile|Crescimento sustentável|Устойчивый рост|Creștere sustenabilă
+Brecha de género|Gender gap|Écart entre les sexes|Geschlechterlücke|Divario di genere|Disparidade de género|Гендерный разрыв|Decalaj de gen
+Jornada reducida|Reduced hours|Temps de travail réduit|verkürzte Arbeitszeit|Orario ridotto|Horário reduzido|Сокращённый рабочий день|Program redus
+Despido improcedente|Unfair dismissal|Licenciement abusif|ungerechtfertigte Kündigung|Licenziamento ingiustificato|Despedimento ilícito|Неправомерное увольнение|Concediere abuzivă
+Indemnización por despido|Redundancy pay|Indemnité de licenciement|Abfindung|Indennità di licenziamento|Indemnização por despedimento|Выходное пособие|Compensație de concediere
+Expediente de regulación|Collective redundancy|Plan social|Massenentlassung|Licenziamento collettivo|Despedimento coletivo|Массовое сокращение|Concediere colectivă
+Subempleo|Underemployment|Sous-emploi|Unterbeschäftigung|Sottoccupazione|Subemprego|Неполная занятость|Subocupare
+Desempleo juvenil|Youth unemployment|Chômage des jeunes|Jugendarbeitslosigkeit|Disoccupazione giovanile|Desemprego jovem|Молодёжная безработица|Șomaj în rândul tinerilor
+Fuga de cerebros|Brain drain|Fuite des cerveaux|Braindrain|Fuga di cervelli|Fuga de cérebros|Утечка мозгов|Exod de creiere
+Remesas|Remittances|Transferts de fonds|Rücküberweisungen|Rimesse|Remessas|Денежные переводы|Remitențe
+Ayuda al desarrollo|Development aid|Aide au développement|Entwicklungshilfe|Aiuti allo sviluppo|Ajuda ao desenvolvimento|Помощь в целях развития|Ajutor pentru dezvoltare
+Deuda externa|External debt|Dette extérieure|Auslandsverschuldung|Debito estero|Dívida externa|Внешний долг|Datorie externă
+Mercado emergente|Emerging market|Marché émergent|Schwellenmarkt|Mercato emergente|Mercado emergente|Развивающийся рынок|Piață emergentă
+`);
+
+  /* 41 · Política y sociedad (2) (48 palabras) */
+  more(41, `
+Legitimidad|Legitimacy|Légitimité|Legitimität|Legittimità|Legitimidade|Легитимность|Legitimitate
+Gobernabilidad|Governability|Gouvernabilité|Regierbarkeit|Governabilità|Governabilidade|Управляемость|Guvernabilitate
+Gobernanza|Governance|Gouvernance|Governance|Governance|Governança|Управление|Guvernanță
+Burocracia|Bureaucracy|Bureaucratie|Bürokratie|Burocrazia|Burocracia|Бюрократия|Birocrație
+Funcionario|Civil servant|Fonctionnaire|Beamter|Funzionario|Funcionário público|Государственный служащий|Funcționar public
+Administración pública|Public administration|Administration publique|öffentliche Verwaltung|Pubblica amministrazione|Administração pública|Государственное управление|Administrație publică
+Reforma electoral|Electoral reform|Réforme électorale|Wahlrechtsreform|Riforma elettorale|Reforma eleitoral|Избирательная реформа|Reformă electorală
+Censo electoral|Electoral roll|Liste électorale|Wählerverzeichnis|Liste elettorali|Cadernos eleitorais|Список избирателей|Listă electorală
+Voto útil|Tactical vote|Vote utile|taktische Wahl|Voto utile|Voto útil|Тактическое голосование|Vot util
+Mayoría simple|Simple majority|Majorité simple|einfache Mehrheit|Maggioranza semplice|Maioria simples|Простое большинство|Majoritate simplă
+Escaño|Seat|Siège|Sitz|Seggio|Assento|Место в парламенте|Loc în parlament
+Grupo parlamentario|Parliamentary group|Groupe parlementaire|Fraktion|Gruppo parlamentare|Grupo parlamentar|Парламентская фракция|Grup parlamentar
+Proyecto de ley|Bill|Projet de loi|Gesetzentwurf|Disegno di legge|Projeto de lei|Законопроект|Proiect de lege
+Enmienda|Amendment|Amendement|Änderungsantrag|Emendamento|Emenda|Поправка|Amendament
+Decreto|Decree|Décret|Verordnung|Decreto|Decreto|Указ|Decret
+Votación nominal|Roll-call vote|Vote nominal|namentliche Abstimmung|Votazione nominale|Votação nominal|Поимённое голосование|Vot nominal
+Abstenerse|To abstain|S'abstenir|sich enthalten|Astenersi|Abster-se|Воздержаться|A se abține
+Dimitir|To resign|Démissionner|zurücktreten|Dimettersi|Demitir-se|Уйти в отставку|A demisiona
+Destituir|To dismiss|Destituer|absetzen|Destituire|Destituir|Отстранить от должности|A destitui
+Juicio político|Impeachment|Destitution|Amtsenthebungsverfahren|Impeachment|Destituição|Импичмент|Punere sub acuzare
+Golpe de Estado|Coup d'état|Coup d'État|Staatsstreich|Colpo di Stato|Golpe de Estado|Государственный переворот|Lovitură de stat
+Régimen|Regime|Régime|Regime|Regime|Regime|Режим|Regim
+Autoritarismo|Authoritarianism|Autoritarisme|Autoritarismus|Autoritarismo|Autoritarismo|Авторитаризм|Autoritarism
+Totalitarismo|Totalitarianism|Totalitarisme|Totalitarismus|Totalitarismo|Totalitarismo|Тоталитаризм|Totalitarism
+Censura|Censorship|Censure|Zensur|Censura|Censura|Цензура|Cenzură
+Disidente|Dissident|Dissident|Dissident|Dissidente|Dissidente|Диссидент|Disident
+Exilio político|Political exile|Exil politique|politisches Exil|Esilio politico|Exílio político|Политическая эмиграция|Exil politic
+Asilo|Asylum|Asile|Asyl|Asilo|Asilo|Убежище|Azil
+Ciudadanía activa|Active citizenship|Citoyenneté active|aktive Bürgerschaft|Cittadinanza attiva|Cidadania ativa|Активная гражданская позиция|Cetățenie activă
+Participación ciudadana|Civic participation|Participation citoyenne|Bürgerbeteiligung|Partecipazione civica|Participação cívica|Гражданское участие|Participare civică
+Iniciativa popular|Popular initiative|Initiative populaire|Volksinitiative|Iniziativa popolare|Iniciativa popular|Народная инициатива|Inițiativă populară
+Consulta popular|Public consultation|Consultation populaire|Volksbefragung|Consultazione popolare|Consulta popular|Всенародный опрос|Consultare populară
+Plebiscito|Plebiscite|Plébiscite|Plebiszit|Plebiscito|Plebiscito|Плебисцит|Plebiscit
+Escrutinio público|Public scrutiny|Examen public|öffentliche Kontrolle|Controllo pubblico|Escrutínio público|Общественный контроль|Control public
+Rendición de cuentas|Accountability|Reddition de comptes|Rechenschaftspflicht|Responsabilità pubblica|Prestação de contas|Подотчётность|Răspundere publică
+Conflicto de intereses|Conflict of interest|Conflit d'intérêts|Interessenkonflikt|Conflitto di interessi|Conflito de interesses|Конфликт интересов|Conflict de interese
+Cabildeo|Lobbying|Lobbying|Lobbyarbeit|Lobbismo|Lobby|Лоббирование|Lobby
+Grupo de presión|Pressure group|Groupe de pression|Interessengruppe|Gruppo di pressione|Grupo de pressão|Группа давления|Grup de presiune
+Opinión pública|Public opinion|Opinion publique|öffentliche Meinung|Opinione pubblica|Opinião pública|Общественное мнение|Opinie publică
+Sondeo|Opinion poll|Sondage|Meinungsumfrage|Sondaggio|Sondagem|Опрос общественного мнения|Sondaj de opinie
+Propaganda|Propaganda|Propagande|Propaganda|Propaganda|Propaganda|Пропаганда|Propagandă
+Desinformación|Disinformation|Désinformation|Desinformation|Disinformazione|Desinformação|Дезинформация|Dezinformare
+Discurso político|Political speech|Discours politique|politische Rede|Discorso politico|Discurso político|Политическая речь|Discurs politic
+Promesa electoral|Election promise|Promesse électorale|Wahlversprechen|Promessa elettorale|Promessa eleitoral|Предвыборное обещание|Promisiune electorală
+Pacto de gobierno|Coalition agreement|Accord de gouvernement|Koalitionsvertrag|Patto di governo|Pacto de governo|Коалиционное соглашение|Acord de guvernare
+Cumbre internacional|International summit|Sommet international|internationaler Gipfel|Vertice internazionale|Cimeira internacional|Международный саммит|Summit internațional
+Organismo internacional|International body|Organisme international|internationale Organisation|Organismo internazionale|Organismo internacional|Международная организация|Organism internațional
+Soberanía nacional|National sovereignty|Souveraineté nationale|nationale Souveränität|Sovranità nazionale|Soberania nacional|Национальный суверенитет|Suveranitate națională
+`);
+
+  /* 42 · Ciencia y ética (2) (44 palabras) */
+  more(42, `
+Dilema moral|Moral dilemma|Dilemme moral|moralisches Dilemma|Dilemma morale|Dilema moral|Моральная дилемма|Dilemă morală
+Imperativo ético|Ethical imperative|Impératif éthique|ethischer Imperativ|Imperativo etico|Imperativo ético|Этический императив|Imperativ etic
+Valores|Values|Valeurs|Werte|Valori|Valores|Ценности|Valori
+Principio|Principle|Principe|Prinzip|Principio|Princípio|Принцип|Principiu
+Deontología|Professional ethics|Déontologie|Berufsethos|Deontologia|Deontologia|Профессиональная этика|Deontologie
+Juramento hipocrático|Hippocratic oath|Serment d'Hippocrate|Hippokratischer Eid|Giuramento di Ippocrate|Juramento de Hipócrates|Клятва Гиппократа|Jurământul lui Hipocrate
+Beneficencia|Beneficence|Bienfaisance|Wohltätigkeit|Beneficenza|Beneficência|Благотворительность|Beneficență
+No maleficencia|Non-maleficence|Non-malfaisance|Nichtschaden|Non maleficenza|Não maleficência|Непричинение вреда|Non-maleficiență
+Justicia distributiva|Distributive justice|Justice distributive|Verteilungsgerechtigkeit|Giustizia distributiva|Justiça distributiva|Распределительная справедливость|Justiție distributivă
+Equidad|Fairness|Équité|Gerechtigkeit|Equità|Equidade|Справедливость|Echitate
+Vulnerable|Vulnerable|Vulnérable|schutzbedürftig|Vulnerabile|Vulnerável|Уязвимый|Vulnerabil
+Menor de edad|Minor|Mineur|Minderjähriger|Minorenne|Menor|Несовершеннолетний|Minor
+Tutor legal|Legal guardian|Tuteur légal|gesetzlicher Vertreter|Tutore legale|Tutor legal|Законный опекун|Tutore legal
+Anonimato|Anonymity|Anonymat|Anonymität|Anonimato|Anonimato|Анонимность|Anonimat
+Trazabilidad|Traceability|Traçabilité|Rückverfolgbarkeit|Tracciabilità|Rastreabilidade|Прослеживаемость|Trasabilitate
+Biobanco|Biobank|Biobanque|Biobank|Biobanca|Biobanco|Биобанк|Biobancă
+Terapia experimental|Experimental therapy|Thérapie expérimentale|experimentelle Therapie|Terapia sperimentale|Terapia experimental|Экспериментальная терапия|Terapie experimentală
+Uso compasivo|Compassionate use|Usage compassionnel|Compassionate Use|Uso compassionevole|Uso compassivo|Применение по состраданию|Utilizare compasivă
+Diagnóstico precoz|Early diagnosis|Diagnostic précoce|Früherkennung|Diagnosi precoce|Diagnóstico precoce|Ранняя диагностика|Diagnostic precoce
+Cribado genético|Genetic screening|Dépistage génétique|Gentest|Screening genetico|Rastreio genético|Генетический скрининг|Screening genetic
+Predisposición|Predisposition|Prédisposition|Veranlagung|Predisposizione|Predisposição|Предрасположенность|Predispoziție
+Mutación|Mutation|Mutation|Mutation|Mutazione|Mutação|Мутация|Mutație
+Hereditario|Hereditary|Héréditaire|erblich|Ereditario|Hereditário|Наследственный|Ereditar
+Diseño de bebés|Designer babies|Bébés sur mesure|Designerbabys|Bambini su misura|Bebés à medida|Дизайнерские дети|Copii la comandă
+Gestación subrogada|Surrogacy|Gestation pour autrui|Leihmutterschaft|Maternità surrogata|Gestação de substituição|Суррогатное материнство|Maternitate surogat
+Fecundación in vitro|In vitro fertilisation|Fécondation in vitro|In-vitro-Fertilisation|Fecondazione in vitro|Fertilização in vitro|Экстракорпоральное оплодотворение|Fertilizare in vitro
+Aborto|Abortion|Avortement|Abtreibung|Aborto|Aborto|Аборт|Avort
+Muerte digna|Death with dignity|Mort dans la dignité|Sterben in Würde|Morte dignitosa|Morte digna|Достойная смерть|Moarte demnă
+Suicidio asistido|Assisted suicide|Suicide assisté|assistierter Suizid|Suicidio assistito|Suicídio assistido|Ассистированное самоубийство|Sinucidere asistată
+Obstinación terapéutica|Overtreatment|Acharnement thérapeutique|Übertherapie|Accanimento terapeutico|Obstinação terapêutica|Чрезмерное лечение|Încăpățânare terapeutică
+Investigación con animales|Animal research|Recherche animale|Tierforschung|Ricerca sugli animali|Investigação com animais|Исследования на животных|Cercetare pe animale
+Bienestar animal|Animal welfare|Bien-être animal|Tierschutz|Benessere animale|Bem-estar animal|Благополучие животных|Bunăstarea animalelor
+Alimentos modificados|Modified foods|Aliments modifiés|veränderte Lebensmittel|Alimenti modificati|Alimentos modificados|Модифицированные продукты|Alimente modificate
+Seguridad alimentaria|Food security|Sécurité alimentaire|Ernährungssicherheit|Sicurezza alimentare|Segurança alimentar|Продовольственная безопасность|Securitate alimentară
+Impacto ambiental|Environmental impact|Impact environnemental|Umweltauswirkung|Impatto ambientale|Impacto ambiental|Воздействие на окружающую среду|Impact asupra mediului
+Armas autónomas|Autonomous weapons|Armes autonomes|autonome Waffen|Armi autonome|Armas autónomas|Автономное оружие|Arme autonome
+Vigilancia masiva|Mass surveillance|Surveillance de masse|Massenüberwachung|Sorveglianza di massa|Vigilância em massa|Массовая слежка|Supraveghere în masă
+Derecho al olvido|Right to be forgotten|Droit à l'oubli|Recht auf Vergessenwerden|Diritto all'oblio|Direito ao esquecimento|Право на забвение|Dreptul de a fi uitat
+Brecha tecnológica|Technological gap|Fracture technologique|Technologiekluft|Divario tecnologico|Fosso tecnológico|Технологический разрыв|Decalaj tehnologic
+Transhumanismo|Transhumanism|Transhumanisme|Transhumanismus|Transumanesimo|Transumanismo|Трансгуманизм|Transumanism
+Conciencia artificial|Artificial consciousness|Conscience artificielle|künstliches Bewusstsein|Coscienza artificiale|Consciência artificial|Искусственное сознание|Conștiință artificială
+Responsabilidad compartida|Shared responsibility|Responsabilité partagée|geteilte Verantwortung|Responsabilità condivisa|Responsabilidade partilhada|Совместная ответственность|Responsabilitate comună
+Consecuencias imprevistas|Unintended consequences|Conséquences imprévues|unbeabsichtigte Folgen|Conseguenze impreviste|Consequências imprevistas|Непредвиденные последствия|Consecințe neprevăzute
+`);
+
+  /* 43 · Arte y literatura (2) (48 palabras) */
+  more(43, `
+Corriente artística|Art movement|Courant artistique|Kunstrichtung|Corrente artistica|Corrente artística|Художественное течение|Curent artistic
+Expresionismo|Expressionism|Expressionnisme|Expressionismus|Espressionismo|Expressionismo|Экспрессионизм|Expresionism
+Realismo mágico|Magical realism|Réalisme magique|magischer Realismus|Realismo magico|Realismo mágico|Магический реализм|Realism magic
+Vanguardias|Avant-garde movements|Avant-gardes|Avantgarden|Avanguardie|Vanguardas|Авангардные течения|Avangarde
+Neoclasicismo|Neoclassicism|Néoclassicisme|Neoklassizismus|Neoclassicismo|Neoclassicismo|Неоклассицизм|Neoclasicism
+Posmodernidad|Postmodernity|Postmodernité|Postmoderne|Postmodernità|Pós-modernidade|Постмодерн|Postmodernitate
+Belleza|Beauty|Beauté|Schönheit|Bellezza|Beleza|Красота|Frumusețe
+Sublime|Sublime|Sublime|erhaben|Sublime|Sublime|Возвышенный|Sublim
+Kitsch|Kitsch|Kitsch|Kitsch|Kitsch|Kitsch|Китч|Kitsch
+Perspectiva|Perspective|Perspective|Perspektive|Prospettiva|Perspetiva|Перспектива|Perspectivă
+Composición|Composition|Composition|Komposition|Composizione|Composição|Композиция|Compoziție
+Claroscuro|Chiaroscuro|Clair-obscur|Hell-Dunkel|Chiaroscuro|Claro-escuro|Светотень|Clarobscur
+Pincelada|Brushstroke|Coup de pinceau|Pinselstrich|Pennellata|Pincelada|Мазок|Tușă de pensulă
+Paleta|Palette|Palette|Palette|Tavolozza|Paleta|Палитра|Paletă
+Mural|Mural|Peinture murale|Wandgemälde|Murale|Mural|Фреска|Pictură murală
+Grabado|Engraving|Gravure|Gravur|Incisione|Gravura|Гравюра|Gravură
+Ilustración|Illustration|Illustration|Illustration|Illustrazione|Ilustração|Иллюстрация|Ilustrație
+Caricatura|Caricature|Caricature|Karikatur|Caricatura|Caricatura|Карикатура|Caricatură
+Cómic|Comic|Bande dessinée|Comic|Fumetto|Banda desenhada|Комикс|Benzi desenate
+Arte callejero|Street art|Art urbain|Straßenkunst|Street art|Arte de rua|Уличное искусство|Artă stradală
+Obra de arte|Work of art|Œuvre d'art|Kunstwerk|Opera d'arte|Obra de arte|Произведение искусства|Operă de artă
+Coleccionista|Collector|Collectionneur|Sammler|Collezionista|Colecionador|Коллекционер|Colecționar
+Patrimonio cultural|Cultural heritage|Patrimoine culturel|Kulturerbe|Patrimonio culturale|Património cultural|Культурное наследие|Patrimoniu cultural
+Género narrativo|Narrative genre|Genre narratif|Erzählgattung|Genere narrativo|Género narrativo|Повествовательный жанр|Gen narativ
+Novela negra|Crime novel|Roman noir|Kriminalroman|Romanzo giallo|Romance policial|Детектив|Roman polițist
+Ciencia ficción|Science fiction|Science-fiction|Science-Fiction|Fantascienza|Ficção científica|Научная фантастика|Science fiction
+Fantasía|Fantasy|Fantasy|Fantasy|Fantasy|Fantasia|Фэнтези|Fantasy
+Cuento de hadas|Fairy tale|Conte de fées|Märchen|Fiaba|Conto de fadas|Сказка|Basm
+Fábula|Fable|Fable|Fabel|Favola|Fábula|Басня|Fabulă
+Epopeya|Epic|Épopée|Epos|Epopea|Epopeia|Эпопея|Epopee
+Tragedia|Tragedy|Tragédie|Tragödie|Tragedia|Tragédia|Трагедия|Tragedie
+Comedia|Comedy|Comédie|Komödie|Commedia|Comédia|Комедия|Comedie
+Drama|Drama|Drame|Drama|Dramma|Drama|Драма|Dramă
+Monólogo|Monologue|Monologue|Monolog|Monologo|Monólogo|Монолог|Monolog
+Diálogo|Dialogue|Dialogue|Dialog|Dialogo|Diálogo|Диалог|Dialog
+Alegoría|Allegory|Allégorie|Allegorie|Allegoria|Alegoria|Аллегория|Alegorie
+Ironía|Irony|Ironie|Ironie|Ironia|Ironia|Ирония|Ironie
+Parodia|Parody|Parodie|Parodie|Parodia|Paródia|Пародия|Parodie
+Sátira|Satire|Satire|Satire|Satira|Sátira|Сатира|Satiră
+Rima|Rhyme|Rime|Reim|Rima|Rima|Рифма|Rimă
+Estrofa|Stanza|Strophe|Strophe|Strofa|Estrofe|Строфа|Strofă
+Soneto|Sonnet|Sonnet|Sonett|Sonetto|Soneto|Сонет|Sonet
+Prólogo|Preface|Préface|Vorwort|Prefazione|Prefácio|Предисловие|Prefață
+Bestseller|Bestseller|Best-seller|Bestseller|Bestseller|Bestseller|Бестселлер|Bestseller
+Premio literario|Literary prize|Prix littéraire|Literaturpreis|Premio letterario|Prémio literário|Литературная премия|Premiu literar
+Censura literaria|Literary censorship|Censure littéraire|literarische Zensur|Censura letteraria|Censura literária|Литературная цензура|Cenzură literară
+`);
+
+  /* 44 · Historia y memoria (2) (45 palabras) */
+  more(44, `
+Antigüedad clásica|Classical antiquity|Antiquité classique|klassische Antike|Antichità classica|Antiguidade clássica|Классическая античность|Antichitatea clasică
+Imperio romano|Roman Empire|Empire romain|Römisches Reich|Impero romano|Império Romano|Римская империя|Imperiul Roman
+Edad de Piedra|Stone Age|Âge de pierre|Steinzeit|Età della pietra|Idade da Pedra|Каменный век|Epoca de piatră
+Edad de Bronce|Bronze Age|Âge du bronze|Bronzezeit|Età del bronzo|Idade do Bronze|Бронзовый век|Epoca bronzului
+Feudalismo|Feudalism|Féodalité|Feudalismus|Feudalesimo|Feudalismo|Феодализм|Feudalism
+Cruzadas|Crusades|Croisades|Kreuzzüge|Crociate|Cruzadas|Крестовые походы|Cruciade
+Peste negra|Black Death|Peste noire|Schwarzer Tod|Peste nera|Peste Negra|Чёрная смерть|Ciuma neagră
+Ilustración|Enlightenment|Siècle des Lumières|Aufklärung|Illuminismo|Iluminismo|Просвещение|Iluminism
+Reforma protestante|Reformation|Réforme protestante|Reformation|Riforma protestante|Reforma Protestante|Реформация|Reforma protestantă
+Revolución francesa|French Revolution|Révolution française|Französische Revolution|Rivoluzione francese|Revolução Francesa|Французская революция|Revoluția Franceză
+Independencia americana|American independence|Indépendance américaine|amerikanische Unabhängigkeit|Indipendenza americana|Independência americana|Независимость Америки|Independența americană
+Imperialismo|Imperialism|Impérialisme|Imperialismus|Imperialismo|Imperialismo|Империализм|Imperialism
+Colonialismo|Colonialism|Colonialisme|Kolonialismus|Colonialismo|Colonialismo|Колониализм|Colonialism
+Descolonización|Decolonisation|Décolonisation|Entkolonialisierung|Decolonizzazione|Descolonização|Деколонизация|Decolonizare
+Trata de esclavos|Slave trade|Traite des esclaves|Sklavenhandel|Tratta degli schiavi|Tráfico de escravos|Работорговля|Comerț cu sclavi
+Abolicionismo|Abolitionism|Abolitionnisme|Abolitionismus|Abolizionismo|Abolicionismo|Аболиционизм|Aboliționism
+Primera Guerra Mundial|First World War|Première Guerre mondiale|Erster Weltkrieg|Prima guerra mondiale|Primeira Guerra Mundial|Первая мировая война|Primul Război Mondial
+Segunda Guerra Mundial|Second World War|Seconde Guerre mondiale|Zweiter Weltkrieg|Seconda guerra mondiale|Segunda Guerra Mundial|Вторая мировая война|Al Doilea Război Mondial
+Frente|Front|Front|Front|Fronte|Frente|Фронт|Front
+Trinchera|Trench|Tranchée|Schützengraben|Trincea|Trincheira|Окоп|Tranșee
+Bombardeo|Bombing|Bombardement|Bombardierung|Bombardamento|Bombardeamento|Бомбардировка|Bombardament
+Ocupación|Occupation|Occupation|Besatzung|Occupazione|Ocupação|Оккупация|Ocupație
+Campo de concentración|Concentration camp|Camp de concentration|Konzentrationslager|Campo di concentramento|Campo de concentração|Концентрационный лагерь|Lagăr de concentrare
+Bomba atómica|Atomic bomb|Bombe atomique|Atombombe|Bomba atomica|Bomba atómica|Атомная бомба|Bombă atomică
+Guerra de guerrillas|Guerrilla warfare|Guérilla|Guerillakrieg|Guerriglia|Guerrilha|Партизанская война|Război de gherilă
+Muro de Berlín|Berlin Wall|Mur de Berlin|Berliner Mauer|Muro di Berlino|Muro de Berlim|Берлинская стена|Zidul Berlinului
+Caída del comunismo|Fall of communism|Chute du communisme|Fall des Kommunismus|Caduta del comunismo|Queda do comunismo|Падение коммунизма|Căderea comunismului
+Transición democrática|Democratic transition|Transition démocratique|demokratischer Übergang|Transizione democratica|Transição democrática|Демократический переход|Tranziție democratică
+Memoria histórica|Historical memory|Mémoire historique|historisches Gedächtnis|Memoria storica|Memória histórica|Историческая память|Memorie istorică
+Víctimas|Victims|Victimes|Opfer|Vittime|Vítimas|Жертвы|Victime
+Verdugo|Perpetrator|Bourreau|Täter|Carnefice|Carrasco|Палач|Călău
+Reparación|Reparation|Réparation|Wiedergutmachung|Riparazione|Reparação|Возмещение ущерба|Reparație
+Comisión de la verdad|Truth commission|Commission de vérité|Wahrheitskommission|Commissione per la verità|Comissão da verdade|Комиссия по установлению истины|Comisie pentru adevăr
+Perdón|Forgiveness|Pardon|Vergebung|Perdono|Perdão|Прощение|Iertare
+Archivo histórico|Historical archive|Archives historiques|historisches Archiv|Archivio storico|Arquivo histórico|Исторический архив|Arhivă istorică
+Fuente primaria|Primary source|Source primaire|Primärquelle|Fonte primaria|Fonte primária|Первоисточник|Sursă primară
+Historiografía|Historiography|Historiographie|Geschichtsschreibung|Storiografia|Historiografia|Историография|Istoriografie
+Revisionismo|Revisionism|Révisionnisme|Revisionismus|Revisionismo|Revisionismo|Ревизионизм|Revizionism
+Mito|Myth|Mythe|Mythos|Mito|Mito|Миф|Mit
+Leyenda|Legend|Légende|Legende|Leggenda|Lenda|Легенда|Legendă
+Héroe|Hero|Héros|Held|Eroe|Herói|Герой|Erou
+Monumento conmemorativo|Memorial|Mémorial|Mahnmal|Monumento commemorativo|Memorial|Мемориал|Monument comemorativ
+Placa conmemorativa|Commemorative plaque|Plaque commémorative|Gedenktafel|Targa commemorativa|Placa comemorativa|Мемориальная доска|Placă comemorativă
+Minuto de silencio|Minute's silence|Minute de silence|Schweigeminute|Minuto di silenzio|Minuto de silêncio|Минута молчания|Un minut de reculegere
+Lección histórica|Lesson of history|Leçon de l'histoire|Lehre der Geschichte|Lezione della storia|Lição da história|Урок истории|Lecția istoriei
+`);
+
+  /* 45 · Lenguaje y comunicación (2) (49 palabras) */
+  more(45, `
+Comunicación|Communication|Communication|Kommunikation|Comunicazione|Comunicação|Коммуникация|Comunicare
+Emisor|Sender|Émetteur|Sender|Emittente|Emissor|Отправитель|Emițător
+Receptor|Receiver|Récepteur|Empfänger|Ricevente|Recetor|Получатель|Receptor
+Canal|Channel|Canal|Kanal|Canale|Canal|Канал|Canal
+Código|Code|Code|Code|Codice|Código|Код|Cod
+Ruido|Noise|Bruit|Störung|Rumore|Ruído|Помехи|Zgomot
+Retroalimentación|Feedback|Rétroaction|Rückmeldung|Retroazione|Retroalimentação|Обратная связь|Feedback
+Discurso|Discourse|Discours|Diskurs|Discorso|Discurso|Дискурс|Discurs
+Narrativa|Narrative|Récit|Erzählung|Narrazione|Narrativa|Нарратив|Narațiune
+Argumentación|Argumentation|Argumentation|Argumentation|Argomentazione|Argumentação|Аргументация|Argumentare
+Persuasión|Persuasion|Persuasion|Überzeugung|Persuasione|Persuasão|Убеждение|Persuasiune
+Retórica|Rhetoric|Rhétorique|Rhetorik|Retorica|Retórica|Риторика|Retorică
+Elocuencia|Eloquence|Éloquence|Redegewandtheit|Eloquenza|Eloquência|Красноречие|Elocvență
+Oratoria|Public speaking|Art oratoire|Redekunst|Oratoria|Oratória|Ораторское искусство|Oratorie
+Acentuación|Stress|Accentuation|Betonung|Accentazione|Acentuação|Ударение|Accentuare
+Sílaba|Syllable|Syllabe|Silbe|Sillaba|Sílaba|Слог|Silabă
+Fonética|Phonetics|Phonétique|Phonetik|Fonetica|Fonética|Фонетика|Fonetică
+Morfología|Morphology|Morphologie|Morphologie|Morfologia|Morfologia|Морфология|Morfologie
+Sintaxis|Syntax|Syntaxe|Syntax|Sintassi|Sintaxe|Синтаксис|Sintaxă
+Semántica|Semantics|Sémantique|Semantik|Semantica|Semântica|Семантика|Semantică
+Etimología|Etymology|Étymologie|Etymologie|Etimologia|Etimologia|Этимология|Etimologie
+Prefijo|Prefix|Préfixe|Präfix|Prefisso|Prefixo|Префикс|Prefix
+Sufijo|Suffix|Suffixe|Suffix|Suffisso|Sufixo|Суффикс|Sufix
+Raíz|Root|Racine|Wurzel|Radice|Raiz|Корень|Rădăcină
+Conjugación|Conjugation|Conjugaison|Konjugation|Coniugazione|Conjugação|Спряжение|Conjugare
+Tiempo verbal|Tense|Temps|Zeitform|Tempo verbale|Tempo verbal|Время глагола|Timp verbal
+Modo subjuntivo|Subjunctive mood|Mode subjonctif|Konjunktiv|Modo congiuntivo|Modo conjuntivo|Сослагательное наклонение|Mod conjunctiv
+Voz pasiva|Passive voice|Voix passive|Passiv|Forma passiva|Voz passiva|Страдательный залог|Diateză pasivă
+Pronombre|Pronoun|Pronom|Pronomen|Pronome|Pronome|Местоимение|Pronume
+Preposición|Preposition|Préposition|Präposition|Preposizione|Preposição|Предлог|Prepoziție
+Conjunción|Conjunction|Conjonction|Konjunktion|Congiunzione|Conjunção|Союз|Conjuncție
+Artículo|Article|Article|Artikel|Articolo|Artigo|Артикль|Articol
+Género gramatical|Grammatical gender|Genre grammatical|grammatisches Geschlecht|Genere grammaticale|Género gramatical|Грамматический род|Gen gramatical
+Plural|Plural|Pluriel|Plural|Plurale|Plural|Множественное число|Plural
+Singular|Singular|Singulier|Singular|Singolare|Singular|Единственное число|Singular
+Excepción|Exception|Exception|Ausnahme|Eccezione|Exceção|Исключение|Excepție
+Regla|Rule|Règle|Regel|Regola|Regra|Правило|Regulă
+Uso|Usage|Usage|Gebrauch|Uso|Uso|Употребление|Utilizare
+Norma lingüística|Language norm|Norme linguistique|Sprachnorm|Norma linguistica|Norma linguística|Языковая норма|Normă lingvistică
+Academia de la lengua|Language academy|Académie de la langue|Sprachakademie|Accademia della lingua|Academia da língua|Академия языка|Academia limbii
+Anglicismo|Anglicism|Anglicisme|Anglizismus|Anglicismo|Anglicismo|Англицизм|Anglicism
+Arcaísmo|Archaism|Archaïsme|Archaismus|Arcaismo|Arcaísmo|Архаизм|Arhaism
+Regionalismo|Regionalism|Régionalisme|Regionalismus|Regionalismo|Regionalismo|Регионализм|Regionalism
+Lenguaje formal|Formal language|Langage soutenu|gehobene Sprache|Linguaggio formale|Linguagem formal|Официальная речь|Limbaj formal
+Tabú lingüístico|Linguistic taboo|Tabou linguistique|sprachliches Tabu|Tabù linguistico|Tabu linguístico|Языковое табу|Tabu lingvistic
+Lenguaje de signos|Sign language|Langue des signes|Gebärdensprache|Lingua dei segni|Língua gestual|Язык жестов|Limbaj mimico-gestual
+Braille|Braille|Braille|Blindenschrift|Braille|Braille|Шрифт Брайля|Braille
+`);
+
+  /* 46 · Derecho y justicia (2) (49 palabras) */
+  more(46, `
+Estado de derecho|Rule of law|État de droit|Rechtsstaat|Stato di diritto|Estado de direito|Правовое государство|Stat de drept
+Seguridad jurídica|Legal certainty|Sécurité juridique|Rechtssicherheit|Certezza del diritto|Segurança jurídica|Правовая определённость|Securitate juridică
+Garantías|Safeguards|Garanties|Garantien|Garanzie|Garantias|Гарантии|Garanții
+Tutela judicial|Judicial protection|Protection judiciaire|gerichtlicher Rechtsschutz|Tutela giurisdizionale|Tutela judicial|Судебная защита|Protecție judiciară
+Proceso penal|Criminal proceedings|Procédure pénale|Strafverfahren|Processo penale|Processo penal|Уголовный процесс|Proces penal
+Proceso civil|Civil proceedings|Procédure civile|Zivilverfahren|Processo civile|Processo civil|Гражданский процесс|Proces civil
+Instrucción|Preliminary investigation|Instruction|Ermittlungsverfahren|Istruttoria|Instrução|Предварительное следствие|Instrucție
+Juez de instrucción|Investigating judge|Juge d'instruction|Ermittlungsrichter|Giudice istruttore|Juiz de instrução|Следственный судья|Judecător de instrucție
+Cargos|Charges|Chefs d'accusation|Anklagepunkte|Capi d'imputazione|Acusações|Пункты обвинения|Capete de acuzare
+Alegato|Closing argument|Plaidoirie|Plädoyer|Arringa|Alegação|Заключительная речь|Pledoarie
+Testimonio|Testimony|Témoignage|Zeugenaussage|Testimonianza|Testemunho|Свидетельские показания|Mărturie
+Perjurio|Perjury|Parjure|Meineid|Spergiuro|Perjúrio|Лжесвидетельство|Sperjur
+Malversación|Embezzlement|Détournement de fonds|Veruntreuung|Appropriazione indebita|Desvio de fundos|Растрата|Deturnare de fonduri
+Fraude|Fraud|Fraude|Betrug|Frode|Fraude|Мошенничество|Fraudă
+Estafa|Scam|Escroquerie|Schwindel|Truffa|Burla|Афера|Escrocherie
+Robo|Theft|Vol|Diebstahl|Furto|Roubo|Кража|Furt
+Hurto|Petty theft|Larcin|Ladendiebstahl|Furto lieve|Furto simples|Мелкая кража|Furt mărunt
+Asalto|Assault|Agression|Überfall|Aggressione|Assalto|Нападение|Atac
+Homicidio|Homicide|Homicide|Totschlag|Omicidio|Homicídio|Убийство|Omor
+Asesinato|Murder|Assassinat|Mord|Assassinio|Assassinato|Умышленное убийство|Asasinat
+Legítima defensa|Self-defence|Légitime défense|Notwehr|Legittima difesa|Legítima defesa|Необходимая оборона|Legitimă apărare
+Atenuante|Mitigating circumstance|Circonstance atténuante|Strafmilderungsgrund|Attenuante|Atenuante|Смягчающее обстоятельство|Circumstanță atenuantă
+Agravante|Aggravating circumstance|Circonstance aggravante|Strafverschärfungsgrund|Aggravante|Agravante|Отягчающее обстоятельство|Circumstanță agravantă
+Pena máxima|Maximum sentence|Peine maximale|Höchststrafe|Pena massima|Pena máxima|Максимальное наказание|Pedeapsă maximă
+Trabajos comunitarios|Community service|Travaux d'intérêt général|gemeinnützige Arbeit|Lavori socialmente utili|Trabalho comunitário|Общественные работы|Muncă în folosul comunității
+Libertad bajo fianza|Release on bail|Liberté sous caution|Freilassung gegen Kaution|Libertà su cauzione|Liberdade sob caução|Освобождение под залог|Eliberare pe cauțiune
+Orden de alejamiento|Restraining order|Ordonnance de protection|Kontaktverbot|Ordine di allontanamento|Ordem de afastamento|Запретительный приказ|Ordin de restricție
+Orden de detención|Arrest warrant|Mandat d'arrêt|Haftbefehl|Mandato d'arresto|Mandado de detenção|Ордер на арест|Mandat de arestare
+Orden de registro|Search warrant|Mandat de perquisition|Durchsuchungsbeschluss|Mandato di perquisizione|Mandado de busca|Ордер на обыск|Mandat de percheziție
+Extradición|Extradition|Extradition|Auslieferung|Estradizione|Extradição|Экстрадиция|Extrădare
+Cooperación judicial|Judicial cooperation|Coopération judiciaire|justizielle Zusammenarbeit|Cooperazione giudiziaria|Cooperação judiciária|Судебное сотрудничество|Cooperare judiciară
+Tribunal internacional|International court|Tribunal international|internationaler Gerichtshof|Tribunale internazionale|Tribunal internacional|Международный суд|Tribunal internațional
+Derecho internacional|International law|Droit international|Völkerrecht|Diritto internazionale|Direito internacional|Международное право|Drept internațional
+Derecho laboral|Labour law|Droit du travail|Arbeitsrecht|Diritto del lavoro|Direito do trabalho|Трудовое право|Dreptul muncii
+Derecho mercantil|Commercial law|Droit commercial|Handelsrecht|Diritto commerciale|Direito comercial|Торговое право|Drept comercial
+Propiedad privada|Private property|Propriété privée|Privateigentum|Proprietà privata|Propriedade privada|Частная собственность|Proprietate privată
+Derechos de autor|Copyright|Droits d'auteur|Urheberrecht|Diritto d'autore|Direitos de autor|Авторское право|Drepturi de autor
+Marca registrada|Registered trademark|Marque déposée|eingetragene Marke|Marchio registrato|Marca registada|Зарегистрированный товарный знак|Marcă înregistrată
+Licencia|Licence|Licence|Lizenz|Licenza|Licença|Лицензия|Licență
+Consentimiento|Consent|Consentement|Zustimmung|Consenso|Consentimento|Согласие|Consimțământ
+Cláusula|Clause|Clause|Klausel|Clausola|Cláusula|Пункт договора|Clauză
+Rescisión|Termination|Résiliation|Kündigung|Risoluzione|Rescisão|Расторжение|Reziliere
+Notificación judicial|Court notice|Notification judiciaire|gerichtliche Zustellung|Notifica giudiziaria|Notificação judicial|Судебное уведомление|Notificare judiciară
+Citación|Summons|Citation|Vorladung|Citazione|Citação|Повестка|Citație
+Abogado defensor|Defence lawyer|Avocat de la défense|Verteidiger|Avvocato difensore|Advogado de defesa|Защитник|Avocat apărător
+`);
+
+  /* 47 · Empresa y liderazgo (2) (46 palabras) */
+  more(47, `
+Modelo de negocio|Business model|Modèle économique|Geschäftsmodell|Modello di business|Modelo de negócio|Бизнес-модель|Model de afaceri
+Plan estratégico|Strategic plan|Plan stratégique|Strategieplan|Piano strategico|Plano estratégico|Стратегический план|Plan strategic
+Análisis de mercado|Market analysis|Analyse de marché|Marktanalyse|Analisi di mercato|Análise de mercado|Анализ рынка|Analiză de piață
+Competidores directos|Direct competitors|Concurrents directs|direkte Wettbewerber|Concorrenti diretti|Concorrentes diretos|Прямые конкуренты|Concurenți direcți
+Liderazgo transformador|Transformational leadership|Leadership transformationnel|transformationale Führung|Leadership trasformazionale|Liderança transformacional|Трансформационное лидерство|Leadership transformațional
+Estilo de gestión|Management style|Style de gestion|Führungsstil|Stile di gestione|Estilo de gestão|Стиль управления|Stil de management
+Delegación|Delegation|Délégation|Delegation|Delega|Delegação|Делегирование|Delegare
+Autonomía|Autonomy|Autonomie|Autonomie|Autonomia|Autonomia|Автономия|Autonomie
+Empoderamiento|Empowerment|Autonomisation|Ermächtigung|Empowerment|Capacitação|Расширение возможностей|Împuternicire
+Clima laboral|Work environment|Climat de travail|Betriebsklima|Clima aziendale|Clima de trabalho|Рабочая атмосфера|Climat de muncă
+Cohesión de equipo|Team cohesion|Cohésion d'équipe|Teamzusammenhalt|Coesione del team|Coesão da equipa|Сплочённость команды|Coeziunea echipei
+Reunión de seguimiento|Follow-up meeting|Réunion de suivi|Folgebesprechung|Riunione di aggiornamento|Reunião de acompanhamento|Контрольное совещание|Ședință de monitorizare
+Orden del día|Agenda|Ordre du jour|Tagesordnung|Ordine del giorno|Ordem de trabalhos|Повестка дня|Ordine de zi
+Acta|Minutes|Procès-verbal|Protokoll|Verbale|Ata|Протокол|Proces-verbal
+Informe anual|Annual report|Rapport annuel|Jahresbericht|Relazione annuale|Relatório anual|Годовой отчёт|Raport anual
+Cuenta de resultados|Profit and loss account|Compte de résultat|Gewinn- und Verlustrechnung|Conto economico|Demonstração de resultados|Отчёт о прибылях и убытках|Cont de profit și pierdere
+Flujo de caja|Cash flow|Flux de trésorerie|Cashflow|Flusso di cassa|Fluxo de caixa|Денежный поток|Flux de numerar
+Activos|Assets|Actifs|Vermögenswerte|Attività|Ativos|Активы|Active
+Pasivos|Liabilities|Passifs|Verbindlichkeiten|Passività|Passivos|Пассивы|Pasive
+Capital social|Share capital|Capital social|Grundkapital|Capitale sociale|Capital social|Уставный капитал|Capital social
+Junta de accionistas|Shareholders' meeting|Assemblée des actionnaires|Hauptversammlung|Assemblea degli azionisti|Assembleia de acionistas|Собрание акционеров|Adunarea acționarilor
+Fusión y adquisición|Merger and acquisition|Fusion-acquisition|Fusion und Übernahme|Fusione e acquisizione|Fusão e aquisição|Слияние и поглощение|Fuziune și achiziție
+Alianza estratégica|Strategic alliance|Alliance stratégique|strategische Allianz|Alleanza strategica|Aliança estratégica|Стратегический альянс|Alianță strategică
+Empresa conjunta|Joint venture|Coentreprise|Joint Venture|Joint venture|Empresa conjunta|Совместное предприятие|Societate mixtă
+Exportar|To export|Exporter|exportieren|Esportare|Exportar|Экспортировать|A exporta
+Importar|To import|Importer|importieren|Importare|Importar|Импортировать|A importa
+Expandirse|To expand|Se développer|expandieren|Espandersi|Expandir-se|Расширяться|A se extinde
+Internacionalización|Internationalisation|Internationalisation|Internationalisierung|Internazionalizzazione|Internacionalização|Интернационализация|Internaționalizare
+Franquiciar|To franchise|Franchiser|Franchise vergeben|Dare in franchising|Franquear|Продавать франшизу|A da în franciză
+Patentar|To patent|Breveter|patentieren|Brevettare|Patentear|Патентовать|A breveta
+Posicionar|To position|Positionner|positionieren|Posizionare|Posicionar|Позиционировать|A poziționa
+Lanzar|To launch|Lancer|auf den Markt bringen|Lanciare|Lançar|Запускать|A lansa
+Rediseñar|To redesign|Repenser|neu gestalten|Riprogettare|Redesenhar|Переработать|A reproiecta
+Optimizar|To optimise|Optimiser|optimieren|Ottimizzare|Otimizar|Оптимизировать|A optimiza
+Reducir costos|To cut costs|Réduire les coûts|Kosten senken|Ridurre i costi|Reduzir custos|Сокращать расходы|A reduce costurile
+Aumentar los ingresos|To increase revenue|Augmenter les revenus|Einnahmen steigern|Aumentare i ricavi|Aumentar as receitas|Увеличивать доходы|A crește veniturile
+Rentabilizar|To make profitable|Rentabiliser|rentabel machen|Rendere redditizio|Rentabilizar|Делать прибыльным|A rentabiliza
+Cumplir con la normativa|To comply with regulations|Respecter la réglementation|die Vorschriften einhalten|Rispettare la normativa|Cumprir a regulamentação|Соблюдать нормативы|A respecta reglementările
+Auditoría|Audit|Audit|Prüfung|Revisione contabile|Auditoria|Аудит|Audit
+Gestión de riesgos|Risk management|Gestion des risques|Risikomanagement|Gestione del rischio|Gestão de riscos|Управление рисками|Managementul riscurilor
+Continuidad del negocio|Business continuity|Continuité d'activité|Geschäftskontinuität|Continuità operativa|Continuidade do negócio|Непрерывность бизнеса|Continuitatea afacerii
+Transparencia|Transparency|Transparence|Transparenz|Trasparenza|Transparência|Прозрачность|Transparență
+Buen gobierno corporativo|Good corporate governance|Bonne gouvernance d'entreprise|gute Unternehmensführung|Buon governo societario|Boa governação empresarial|Корпоративное управление|Bună guvernanță corporativă
+Propósito|Purpose|Raison d'être|Unternehmenszweck|Scopo|Propósito|Цель компании|Scop
+Visión a largo plazo|Long-term vision|Vision à long terme|langfristige Vision|Visione a lungo termine|Visão a longo prazo|Долгосрочное видение|Viziune pe termen lung
+`);
+
+  /* 48 · Medio ambiente y futuro (2) (48 palabras) */
+  more(48, `
+Crisis ecológica|Ecological crisis|Crise écologique|ökologische Krise|Crisi ecologica|Crise ecológica|Экологический кризис|Criză ecologică
+Antropoceno|Anthropocene|Anthropocène|Anthropozän|Antropocene|Antropoceno|Антропоцен|Antropocen
+Sexta extinción|Sixth extinction|Sixième extinction|sechstes Massenaussterben|Sesta estinzione|Sexta extinção|Шестое вымирание|A șasea extincție
+Servicios ecosistémicos|Ecosystem services|Services écosystémiques|Ökosystemleistungen|Servizi ecosistemici|Serviços ecossistémicos|Экосистемные услуги|Servicii ecosistemice
+Polinizadores|Pollinators|Pollinisateurs|Bestäuber|Impollinatori|Polinizadores|Опылители|Polenizatori
+Abejas|Bees|Abeilles|Bienen|Api|Abelhas|Пчёлы|Albine
+Bosque tropical|Rainforest|Forêt tropicale|Regenwald|Foresta pluviale|Floresta tropical|Тропический лес|Pădure tropicală
+Amazonía|Amazon|Amazonie|Amazonas|Amazzonia|Amazónia|Амазония|Amazonia
+Pulmón del planeta|Lungs of the planet|Poumon de la planète|Lunge des Planeten|Polmone del pianeta|Pulmão do planeta|Лёгкие планеты|Plămânii planetei
+Tala ilegal|Illegal logging|Abattage illégal|illegaler Holzeinschlag|Disboscamento illegale|Abate ilegal|Незаконная вырубка|Defrișare ilegală
+Caza furtiva|Poaching|Braconnage|Wilderei|Bracconaggio|Caça furtiva|Браконьерство|Braconaj
+Tráfico de especies|Wildlife trafficking|Trafic d'espèces|Artenhandel|Traffico di specie|Tráfico de espécies|Торговля дикими животными|Trafic de specii
+Corredor ecológico|Wildlife corridor|Corridor écologique|Biotopverbund|Corridoio ecologico|Corredor ecológico|Экологический коридор|Coridor ecologic
+Cadena alimentaria|Food chain|Chaîne alimentaire|Nahrungskette|Catena alimentare|Cadeia alimentar|Пищевая цепь|Lanț trofic
+Depredador|Predator|Prédateur|Raubtier|Predatore|Predador|Хищник|Prădător
+Hibernación|Hibernation|Hibernation|Winterschlaf|Letargo|Hibernação|Спячка|Hibernare
+Migración animal|Animal migration|Migration animale|Tierwanderung|Migrazione animale|Migração animal|Миграция животных|Migrația animalelor
+Temperatura media|Average temperature|Température moyenne|Durchschnittstemperatur|Temperatura media|Temperatura média|Средняя температура|Temperatură medie
+Límite de 1,5 grados|1.5-degree limit|Limite de 1,5 degré|1,5-Grad-Grenze|Limite di 1,5 gradi|Limite de 1,5 graus|Предел в 1,5 градуса|Limita de 1,5 grade
+Punto de no retorno|Point of no return|Point de non-retour|Punkt ohne Wiederkehr|Punto di non ritorno|Ponto de não retorno|Точка невозврата|Punct de neîntoarcere
+Mitigación|Mitigation|Atténuation|Minderung|Mitigazione|Mitigação|Смягчение последствий|Atenuare
+Resiliencia|Resilience|Résilience|Resilienz|Resilienza|Resiliência|Устойчивость к потрясениям|Reziliență
+Energías limpias|Clean energy|Énergies propres|saubere Energien|Energie pulite|Energias limpas|Чистая энергия|Energii curate
+Parque eólico|Wind farm|Parc éolien|Windpark|Parco eolico|Parque eólico|Ветропарк|Parc eolian
+Central solar|Solar plant|Centrale solaire|Solarkraftwerk|Centrale solare|Central solar|Солнечная электростанция|Centrală solară
+Central nuclear|Nuclear power plant|Centrale nucléaire|Kernkraftwerk|Centrale nucleare|Central nuclear|Атомная электростанция|Centrală nucleară
+Red eléctrica|Power grid|Réseau électrique|Stromnetz|Rete elettrica|Rede elétrica|Электросеть|Rețea electrică
+Autoconsumo|Self-consumption|Autoconsommation|Eigenverbrauch|Autoconsumo|Autoconsumo|Собственное потребление|Autoconsum
+Batería|Battery|Batterie|Batterie|Batteria|Bateria|Аккумулятор|Baterie
+Movilidad eléctrica|Electric mobility|Mobilité électrique|Elektromobilität|Mobilità elettrica|Mobilidade elétrica|Электромобильность|Mobilitate electrică
+Punto de carga|Charging point|Borne de recharge|Ladestation|Punto di ricarica|Posto de carregamento|Зарядная станция|Stație de încărcare
+Transporte colectivo|Mass transit|Transport collectif|Massenverkehr|Trasporto collettivo|Transporte coletivo|Массовый транспорт|Transport în comun
+Ciudades inteligentes|Smart cities|Villes intelligentes|intelligente Städte|Città intelligenti|Cidades inteligentes|Умные города|Orașe inteligente
+Urbanismo sostenible|Sustainable urban planning|Urbanisme durable|nachhaltige Stadtplanung|Urbanistica sostenibile|Urbanismo sustentável|Устойчивое градостроительство|Urbanism sustenabil
+Huertos urbanos|Urban gardens|Jardins urbains|Stadtgärten|Orti urbani|Hortas urbanas|Городские огороды|Grădini urbane
+Techos verdes|Green roofs|Toits végétalisés|Gründächer|Tetti verdi|Telhados verdes|Зелёные крыши|Acoperișuri verzi
+Reducir, reutilizar y reciclar|Reduce, reuse and recycle|Réduire, réutiliser et recycler|Reduzieren, wiederverwenden und recyceln|Ridurre, riutilizzare e riciclare|Reduzir, reutilizar e reciclar|Сокращать, повторно использовать и перерабатывать|Reducere, reutilizare și reciclare
+Residuo cero|Zero waste|Zéro déchet|Zero Waste|Rifiuti zero|Desperdício zero|Ноль отходов|Zero deșeuri
+Productos de un solo uso|Single-use products|Produits à usage unique|Einwegprodukte|Prodotti monouso|Produtos descartáveis|Одноразовые изделия|Produse de unică folosință
+Segunda mano|Second-hand|Seconde main|Gebraucht|Di seconda mano|Em segunda mão|Б/у|La mâna a doua
+Reparar|To repair|Réparer|reparieren|Riparare|Reparar|Ремонтировать|A repara
+Huella hídrica|Water footprint|Empreinte hydrique|Wasserfußabdruck|Impronta idrica|Pegada hídrica|Водный след|Amprentă de apă
+Desalinización|Desalination|Dessalement|Entsalzung|Dissalazione|Dessalinização|Опреснение|Desalinizare
+Embalse|Reservoir|Réservoir|Stausee|Bacino idrico|Albufeira|Водохранилище|Lac de acumulare
+Acuífero|Aquifer|Aquifère|Grundwasserleiter|Falda acquifera|Aquífero|Водоносный горизонт|Acvifer
+Sobreexplotación|Overexploitation|Surexploitation|Übernutzung|Sfruttamento eccessivo|Sobre-exploração|Чрезмерная эксплуатация|Supraexploatare
+Seguridad hídrica|Water security|Sécurité hydrique|Wassersicherheit|Sicurezza idrica|Segurança hídrica|Водная безопасность|Securitate hidrică
+Futuro sostenible|Sustainable future|Avenir durable|nachhaltige Zukunft|Futuro sostenibile|Futuro sustentável|Устойчивое будущее|Viitor sustenabil
+`);
+
+  /* 49 · Matices y registro (2) (43 palabras) */
+  more(49, `
+Tono neutro|Neutral tone|Ton neutre|neutraler Ton|Tono neutro|Tom neutro|Нейтральный тон|Ton neutru
+Tono cercano|Friendly tone|Ton chaleureux|vertraulicher Ton|Tono cordiale|Tom próximo|Дружелюбный тон|Ton prietenos
+Tono distante|Distant tone|Ton distant|distanzierter Ton|Tono distaccato|Tom distante|Отстранённый тон|Ton distant
+Tono autoritario|Authoritative tone|Ton autoritaire|autoritärer Ton|Tono autoritario|Tom autoritário|Властный тон|Ton autoritar
+Tono irónico|Ironic tone|Ton ironique|ironischer Ton|Tono ironico|Tom irónico|Ироничный тон|Ton ironic
+Tono conciliador|Conciliatory tone|Ton conciliant|versöhnlicher Ton|Tono conciliante|Tom conciliador|Примирительный тон|Ton conciliant
+Medir las palabras|To weigh your words|Peser ses mots|seine Worte abwägen|Misurare le parole|Medir as palavras|Взвешивать слова|A-și cântări cuvintele
+Con tacto|Tactfully|Avec tact|taktvoll|Con tatto|Com tato|Тактично|Cu tact
+Sin rodeos|Without beating about the bush|Sans détour|ohne Umschweife|Senza giri di parole|Sem rodeios|Без обиняков|Fără ocolișuri
+Al pie de la letra|Literally|À la lettre|wortwörtlich|Alla lettera|Ao pé da letra|Буквально|Întocmai
+A medias|Half-heartedly|À moitié|halbherzig|A metà|Pela metade|Наполовину|Pe jumătate
+De forma velada|In a veiled way|De manière voilée|verschleiert|In modo velato|De forma velada|Завуалированно|Într-un mod voalat
+De manera explícita|Explicitly|De manière explicite|ausdrücklich|In modo esplicito|De forma explícita|Явно|În mod explicit
+Dar a entender|To imply|Laisser entendre|zu verstehen geben|Dare a intendere|Dar a entender|Давать понять|A da de înțeles
+Sobreentender|To take for granted|Sous-entendre|als selbstverständlich ansehen|Sottintendere|Subentender|Подразумевать|A subînțelege
+Poner en duda|To call into question|Mettre en doute|in Zweifel ziehen|Mettere in dubbio|Pôr em dúvida|Ставить под сомнение|A pune la îndoială
+Quitar hierro|To play down|Dédramatiser|herunterspielen|Sdrammatizzare|Desdramatizar|Преуменьшать|A minimiza
+Ser tajante|To be categorical|Être catégorique|kategorisch sein|Essere categorico|Ser categórico|Быть категоричным|A fi categoric
+Dejar claro|To make clear|Mettre au clair|klarstellen|Chiarire|Deixar claro|Ясно дать понять|A clarifica
+Disculpar|To excuse|Excuser|entschuldigen|Scusare|Desculpar|Извинять|A scuza
+Aceptar la crítica|To accept criticism|Accepter la critique|Kritik annehmen|Accettare le critiche|Aceitar a crítica|Принимать критику|A accepta critica
+Crítica constructiva|Constructive criticism|Critique constructive|konstruktive Kritik|Critica costruttiva|Crítica construtiva|Конструктивная критика|Critică constructivă
+Cumplido|Compliment|Compliment|Kompliment|Complimento|Elogio|Комплимент|Compliment
+Halago|Flattery|Flatterie|Schmeichelei|Adulazione|Lisonja|Лесть|Lingușire
+Reproche|Reproach|Reproche|Vorwurf|Rimprovero|Censura|Упрёк|Reproș
+Queja|Complaint|Plainte|Klage|Lamentela|Queixa|Жалоба|Plângere
+Sugerencia|Suggestion|Suggestion|Vorschlag|Suggerimento|Sugestão|Совет|Sugestie
+Consejo|Advice|Conseil|Rat|Consiglio|Conselho|Рекомендация|Sfat
+Orden|Order|Ordre|Befehl|Ordine|Ordem|Приказ|Ordin
+Petición|Request|Demande|Bitte|Richiesta|Pedido|Просьба|Cerere
+Invitación formal|Formal invitation|Invitation formelle|förmliche Einladung|Invito formale|Convite formal|Официальное приглашение|Invitație oficială
+Agradecimiento|Gratitude|Remerciement|Dank|Ringraziamento|Agradecimento|Благодарность|Mulțumire
+Pésame|Condolences|Condoléances|Beileid|Condoglianze|Pêsames|Соболезнования|Condoleanțe
+Felicitación|Congratulations|Félicitations|Glückwunsch|Congratulazioni|Felicitações|Поздравление|Felicitare
+Saludos cordiales|Kind regards|Cordialement|Mit freundlichen Grüßen|Cordiali saluti|Cumprimentos|С уважением|Cu stimă
+Atentamente|Yours sincerely|Veuillez agréer mes salutations|Hochachtungsvoll|Distinti saluti|Atenciosamente|С глубоким уважением|Cu respect
+Un abrazo|A hug|Je t'embrasse|Liebe Grüße|Un abbraccio|Um abraço|Обнимаю|O îmbrățișare
+Estimado|Dear|Cher|Sehr geehrter|Gentile|Caro|Уважаемый|Stimate
+Querido|My dear|Chéri|Lieber|Caro|Querido|Дорогой|Drag
+`);
+
   window.MORE_WORDS = more;
 })();
