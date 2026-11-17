@@ -3,13 +3,14 @@
    rocco(mood, px) devuelve el SVG; las partes son grupos con clase (r-tail, r-body, r-head, r-eyes, r-arms...) que animan los estilos de
    styles.css (respiración, parpadeo, cola, orejas, masticar, lavarse las patas...).
    Gestos: happy cheer sad think wow wink sleepy love proud curious focus oops eat wash yawn coffee
-   y los nuevos laugh cry angry shy dizzy starry cool kiss thumbsup wave party sick bored sing.
+   y los nuevos laugh cry angry shy dizzy starry cool kiss thumbsup wave party sick bored sing,
+   más los que usan objetos: phone music read laptop camera icecream balloon game.
    window.mascot es un alias para que el resto de la app siga llamando a mascot(mood, px). */
 (() => {
-  window.MASCOT_MOODS = ["happy", "cheer", "sad", "think", "wow", "wink", "sleepy", "love", "proud", "curious", "focus", "oops", "eat", "wash", "yawn", "coffee", "laugh", "cry", "angry", "shy", "dizzy", "starry", "cool", "kiss", "thumbsup", "wave", "party", "sick", "bored", "sing"];
+  window.MASCOT_MOODS = ["happy", "cheer", "sad", "think", "wow", "wink", "sleepy", "love", "proud", "curious", "focus", "oops", "eat", "wash", "yawn", "coffee", "laugh", "cry", "angry", "shy", "dizzy", "starry", "cool", "kiss", "thumbsup", "wave", "party", "sick", "bored", "sing", "phone", "music", "read", "laptop", "camera", "icecream", "balloon", "game"];
   /* Gestos para reacciones al tocar a Rocco (sin los que expresan tristeza) y actividades "al azar" que hace por su cuenta. */
   window.MASCOT_REACTIONS = ["wink", "love", "wow", "cheer", "proud", "curious", "yawn", "laugh", "shy", "kiss", "starry", "cool", "thumbsup", "wave", "party", "dizzy"];
-  window.MASCOT_ACTIVITIES = ["eat", "wash", "coffee", "yawn", "sleepy", "curious", "think", "sing", "bored"];
+  window.MASCOT_ACTIVITIES = ["eat", "wash", "coffee", "yawn", "sleepy", "curious", "think", "think", "sing", "bored", "phone", "music", "read", "laptop", "camera", "icecream", "balloon", "game"];
 
   let uid = 0;
   /* Trazos de pelo: cada uno nace en un punto del volumen y sale hacia fuera. Se generan una vez, con semilla fija, y se reutilizan. */
@@ -99,6 +100,7 @@
       up: arm(56, 152, 26, 108) + arm(144, 152, 174, 108) + paw(24, 100, -25) + paw(176, 100, 25),
       chin: arm(58, 150, 64, 178) + paw(64, 181, 10) + arm(142, 152, 118, 142),
       eat: "", wash: "", mug: arm(58, 150, 64, 178) + paw(64, 181, 10),
+      none: "",
       cheeks: arm(58, 152, 48, 122) + arm(142, 152, 152, 122) + paw(47, 117, -20) + paw(153, 117, 20),
       thumb: arm(142, 150, 136, 178) + paw(136, 181, -10) + arm(58, 152, 34, 128),
       wave: arm(142, 150, 136, 178) + paw(136, 181, -10) + `<g class="r-wave">${arm(56, 150, 26, 112)}${paw(24, 104, -20)}</g>`,
@@ -107,6 +109,21 @@
     const front = {
       chin: paw(112, 138, -60),
       thumb: `<g transform="translate(30 118)"><ellipse cx="0" cy="0" rx="12" ry="11" class="rd2"/><ellipse cx="1" cy="-15" rx="4.800" ry="9" class="rd2" transform="rotate(8)"/><path d="M-8 3h16M-8 -2h16" class="rtoes"/></g>`,
+      phone: `<g class="r-phone"><rect x="85" y="140" width="30" height="48" rx="6" class="rphone"/><rect x="88.500" y="144" width="23" height="38" rx="3" class="rscreen"/><path d="M92 152h14M92 158h10M92 164h13" class="rui"/><circle cx="96" cy="174" r="3" class="rheart"/></g>
+        ${arm(62, 152, 86, 160)}${arm(138, 152, 114, 160)}<g class="r-tapl">${paw(86, 162, 20)}</g><g class="r-tapr">${paw(114, 162, -20)}</g>`,
+      music: `<path d="M42 96C34 36 166 36 158 96" class="rband"/><ellipse cx="40" cy="102" rx="9" ry="14" class="rcup"/><ellipse cx="160" cy="102" rx="9" ry="14" class="rcup"/><ellipse cx="40" cy="102" rx="5" ry="9" class="rcup2"/><ellipse cx="160" cy="102" rx="5" ry="9" class="rcup2"/>`,
+      read: `<g class="r-book"><path d="M62 150Q81 141 100 150V190Q81 181 62 190Z" class="rbookp"/><path d="M138 150Q119 141 100 150V190Q119 181 138 190Z" class="rbookp"/><path d="M68 158Q81 153 94 158M68 166Q81 161 94 166M68 174Q81 169 94 174M106 158Q119 153 132 158M106 166Q119 161 132 166M106 174Q119 169 132 174" class="rtxt"/><path d="M62 190Q81 181 100 190Q119 181 138 190" class="rbookc"/></g>
+        ${arm(62, 152, 66, 168)}${arm(138, 152, 134, 168)}${paw(64, 172, 10)}${paw(136, 172, -10)}`,
+      laptop: `<g class="r-laptop"><rect x="64" y="140" width="72" height="42" rx="5" class="rlap"/><circle cx="100" cy="161" r="6" class="rlogo"/><path d="M58 182H142L136 189H64Z" class="rlap2"/></g>
+        ${arm(62, 152, 76, 178)}${arm(138, 152, 124, 178)}<g class="r-tapl">${paw(78, 180, 10)}</g><g class="r-tapr">${paw(122, 180, -10)}</g>`,
+      camera: `<g class="r-camera"><rect x="72" y="142" width="56" height="36" rx="7" class="rcam"/><rect x="82" y="136" width="20" height="9" rx="3" class="rcam"/><circle cx="100" cy="160" r="13" class="rcam2"/><circle cx="100" cy="160" r="9" class="rlens"/><circle cx="96" cy="156" r="3" class="rlenshl"/><rect x="112" y="146" width="10" height="6" rx="2" class="rflashb"/></g>
+        <path d="M122 140l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" class="rflash"/>${arm(62, 152, 76, 168)}${arm(138, 152, 124, 168)}${paw(74, 170, 10)}${paw(126, 170, -10)}`,
+      icecream: `<g class="r-ice"><path d="M130 148L146 148L138 186Z" class="rcone"/><path d="M133 154L142 164M139 152L135 168M143 154L134 163" class="rwaf"/><circle cx="138" cy="143" r="11" class="rice1"/><circle cx="138" cy="132" r="9" class="rice2"/><path d="M128 146q-2 8 1 10" class="rdrip"/></g>
+        ${arm(142, 154, 138, 160)}${paw(138, 158, -5)}`,
+      balloon: `<path d="M152 112Q164 78 162 52" class="rstring"/><g class="r-balloon"><ellipse cx="162" cy="36" rx="17" ry="21" class="rballoon"/><path d="M162 57l-4 6h8z" class="rballoon"/><ellipse cx="155" cy="28" rx="4" ry="7" class="rballhl"/></g>
+        ${arm(142, 152, 150, 118)}${paw(150, 112, 10)}`,
+      game: `<g class="r-game"><rect x="70" y="148" width="60" height="28" rx="13" class="rpad"/><path d="M84 156v12M78 162h12" class="rdpad"/><circle cx="116" cy="156" r="3.500" class="rbtn1"/><circle cx="123" cy="162" r="3.500" class="rbtn2"/><circle cx="109" cy="163" r="3.500" class="rbtn3"/></g>
+        ${arm(62, 152, 76, 166)}${arm(138, 152, 124, 166)}<g class="r-tapl">${paw(78, 168, 15)}</g><g class="r-tapr">${paw(122, 168, -15)}</g>`,
       hat: `<path d="M100 2L76 42H124Z" class="rhat"/><path d="M85 28L115 28M80 36L120 36" class="rhat2"/><circle cx="100" cy="4" r="6" class="rpom"/>`,
       eat: `<g class="r-eat">${arm(62, 152, 80, 142)}${arm(138, 152, 120, 142)}
         <g transform="rotate(-8 100 140)"><rect x="76" y="128" width="48" height="24" rx="4" fill="${g("choc")}"/><path d="M92 128V152M108 128V152M76 140H124" class="rchl"/><path d="M76 148H124V152Q100 155 76 152Z" class="rfoil"/><path d="M118 128l8 0l-2 8l-8-4z" fill="${g("choc")}"/></g>
@@ -171,7 +188,15 @@
       party: { e: "happy", m: "laugh", a: "up", f: "hat", x: "confetti", c: "hop" },
       sick: { e: "half", m: "wavy", b: "worry", a: "rest", x: "sick", c: "droop" },
       bored: { e: "half", m: "flat", a: "chin", f: "chin", c: "tilt" },
-      sing: { e: "happy", m: "o", a: "rest", x: "notes", c: "hop" }
+      sing: { e: "happy", m: "o", a: "rest", x: "notes", c: "hop" },
+      phone: { e: "open", look: [0, 6], m: "smile", a: "none", f: "phone", x: "hearts", c: "tilt" },
+      music: { e: "happy", m: "smile", a: "rest", f: "music", x: "notes", c: "nod" },
+      read: { e: "open", look: [0, 7], m: "flat", b: "raise", a: "none", f: "read", c: "tilt" },
+      laptop: { e: "open", look: [0, 6], m: "smirk", b: "down", a: "none", f: "laptop" },
+      camera: { e: "wink", m: "grin", a: "none", f: "camera" },
+      icecream: { e: "happy", m: "grin", a: "rest", f: "icecream", x: "shine" },
+      balloon: { e: "open", look: [4, -4], m: "smile", a: "rest", f: "balloon", c: "tilt" },
+      game: { e: "open", look: [0, 6], m: "grin", b: "down", a: "none", f: "game", c: "tilt" }
     }[mood];
     const eyeSvg = M.e === "open" ? eyes.open(...(M.look || [0, 1])) : eyes[M.e]();
     const blink = M.e === "open" ? "r-eyes" : "";
@@ -267,7 +292,15 @@
       think: ["Hmm… ¿qué palabra tocará hoy?", "Pensando en frases bonitas."],
       curious: ["¿Qué habrá en la siguiente unidad?", "Huele a palabra nueva."],
       sing: ["La la la… ¡practicando pronunciación!", "Cantar ayuda a recordar las palabras.", "♪ Una palabra, dos palabras… ♪"],
-      bored: ["Uf, qué quietud. ¿Hacemos algo?", "Cuéntame, ¿qué palabra toca hoy?"]
+      bored: ["Uf, qué quietud. ¿Hacemos algo?", "Cuéntame, ¿qué palabra toca hoy?"],
+      phone: ["Mirando el móvil… solo un minuto.", "Me escribió una ardilla. Dice que estudie.", "Mensajes sin leer: cero. Paz."],
+      music: ["Con música las palabras se pegan mejor.", "♪ Esta canción es para aprender ♪", "Un ratito de música y seguimos."],
+      read: ["Leyendo un cuento corto. ¿Quieres?", "Un libro al día mantiene lejos el aburrimiento.", "Shh, que llego al final del capítulo."],
+      laptop: ["Apuntando palabras nuevas en mi cuaderno digital.", "Trabajando… bueno, más o menos.", "Tecleando como un profesional."],
+      camera: ["¡Sonríe! Foto para el recuerdo.", "Foto de la unidad de hoy. Quedó bonita.", "Click. Otra más para mi álbum."],
+      icecream: ["Helado de fresa. Para pensar mejor.", "Uno de vainilla también cabía.", "Se derrite rápido, ¡mira!"],
+      balloon: ["Un globo para celebrar que estás aquí.", "Si lo suelto, ¿sube hasta la siguiente unidad?", "Mi globo y yo estamos de paseo."],
+      game: ["Un nivel más y vuelvo a estudiar. Lo juro.", "Esto también entrena los reflejos.", "¡Nueva marca personal!"]
     },
     en: {
       correct: ["Nicely done!", "That was clean.", "Well played.", "Right on target!", "You had that one.", "I like how you think."],
@@ -296,7 +329,15 @@
       think: ["Hmm… which word will it be today?", "Thinking of pretty sentences."],
       curious: ["What's in the next unit?", "Smells like a new word."],
       sing: ["La la la… practising pronunciation!", "Singing helps you remember words.", "♪ One word, two words… ♪"],
-      bored: ["Phew, so quiet. Shall we do something?", "Tell me, which word is it today?"]
+      bored: ["Phew, so quiet. Shall we do something?", "Tell me, which word is it today?"],
+      phone: ["Checking my phone… just a minute.", "A squirrel texted me. It says to study.", "Unread messages: zero. Peace."],
+      music: ["Words stick better with music.", "♪ This song is for learning ♪", "A little music, then we carry on."],
+      read: ["Reading a short story. Want to join?", "A book a day keeps boredom away.", "Shh, I'm nearly at the end of the chapter."],
+      laptop: ["Writing down new words in my digital notebook.", "Working… well, more or less.", "Typing like a pro."],
+      camera: ["Smile! A photo for the memories.", "A photo of today's unit. It came out nice.", "Click. Another one for my album."],
+      icecream: ["Strawberry ice cream. For better thinking.", "A vanilla one would fit too.", "It's melting fast, look!"],
+      balloon: ["A balloon to celebrate that you're here.", "If I let go, will it float to the next unit?", "My balloon and I are out for a walk."],
+      game: ["One more level and I'm back to studying. I swear.", "This trains reflexes too.", "New personal best!"]
     }
   };
   const lastSay = {};

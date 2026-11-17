@@ -269,7 +269,7 @@
 
   /* Tocar al mapache: reacciona unos segundos y vuelve a su gesto. */
   document.addEventListener("click", e => {
-    const m = e.target.closest && e.target.closest("svg.mascot"); if (!m || m.closest("button") || m._busy) return;
+    const m = e.target.closest && e.target.closest("svg.mascot"); if (!m || m.closest("button") || m.closest("#roccoPal") || m._busy) return;
     const cur = (m.getAttribute("class").match(/m-(\w+)/) || [])[1] || "happy", px = m.getAttribute("width");
     const pool = MASCOT_MOODS.filter(x => x !== cur && x !== "sad"), pick = pool[Math.floor(Math.random() * pool.length)];
     const tmp = document.createElement("div"); tmp.innerHTML = mascot(pick, px); const n = tmp.firstElementChild; n._busy = true;
@@ -280,29 +280,41 @@
   /* ---------- Rocco en el mapa ----------
      Aparece unos segundos de vez en cuando, hace algo al azar (comer chocolate, lavarse las patas, tomar café...) y a veces comenta.
      No aparece en las lecciones, no insiste y se desactiva en Perfil. */
-  let palT = null, palFirst = true;
+  let palT = null, palFirst = true, palCur = "happy";
   function palStop() { clearTimeout(palT); const e = $("#roccoPal"); if (e) { clearTimeout(e._t); e.remove(); } }
-  function palShow(mood, line, ms = 8000) {
-    let el = $("#roccoPal");
+  /* Rocco se queda en el mapa y va a lo suyo: cambia de actividad cada pocos segundos (móvil, música, libro, helado...). */
+  function palShow(mood, line, ms = 12000) {
+    let el = $("#roccoPal"), fresh = !el;
     if (!el) { el = document.createElement("div"); el.id = "roccoPal"; document.body.appendChild(el); }
-    el.className = "in"; el.innerHTML = mascot(mood, 84) + (line ? `<div class="rb-bubble">${esc(line)}</div>` : "");
-    clearTimeout(el._t); el._t = setTimeout(() => { el.className = "out"; setTimeout(() => { if (el.className === "out") el.remove(); }, 450); }, ms);
+    if (fresh || el.className === "out") el.className = "in";
+    palCur = mood;
+    el.innerHTML = mascot(mood, 92) + (line ? `<div class="rb-bubble">${esc(line)}</div>` : "");
+    clearTimeout(el._t); el._t = setTimeout(() => { if (el.className !== "out") { const b = el.querySelector(".rb-bubble"); if (b) b.remove(); } }, Math.min(ms, 6500));
   }
   function palGreeting() {
     let away = 0; try { away = S.lastDay ? Math.floor((Date.now() - new Date(S.lastDay).getTime()) / 86400000) : 0; } catch (e) {}
     const h = new Date().getHours();
     return away >= 3 ? "back" : h < 5 ? "greetNight" : h < 12 ? "greetMorning" : h < 19 ? "greetAfternoon" : h < 23 ? "greetEvening" : "greetNight";
   }
+  const palPick = () => { const pool = MASCOT_ACTIVITIES.filter(x => x !== palCur); return pool[Math.floor(Math.random() * pool.length)]; };
   function palLoop(first) {
     clearTimeout(palT);
     if (S.rocco === false || S.tab !== "learn" || !S.lang || P) return;
     palT = setTimeout(() => {
       if (document.hidden || P || !modal.hidden) return palLoop(false);
       if (first) { const ev = palGreeting(); palShow(ev === "back" ? "love" : "wink", roccoSay(ev), 7000); palFirst = false; }
-      else { const act = MASCOT_ACTIVITIES[Math.floor(Math.random() * MASCOT_ACTIVITIES.length)]; palShow(act, Math.random() < .6 ? roccoSay(act) : "", 8000); }
+      else { const act = palPick(); palShow(act, Math.random() < .55 ? roccoSay(act) : "", 12000); }
       palLoop(false);
-    }, first ? 3500 : 45000 + Math.random() * 30000);
+    }, first ? 2500 : 11000 + Math.random() * 8000);
   }
+  /* Tocarlo: hace algo distinto cada vez (una reacción o una de sus actividades), con su frase. */
+  document.addEventListener("click", e => {
+    const m = e.target.closest && e.target.closest("#roccoPal svg.mascot"); if (!m) return;
+    const pool = [...MASCOT_REACTIONS, ...MASCOT_ACTIVITIES].filter(x => x !== palCur), pick = pool[Math.floor(Math.random() * pool.length)];
+    sfx.pop && sfx.pop(2);
+    palShow(pick, MASCOT_ACTIVITIES.includes(pick) ? roccoSay(pick) : roccoSay("tap"), 9000);
+    palLoop(false);
+  });
   function render() { palStop(); render0(); if (S.tab === "learn" && S.lang && !S.pick && !levelPickFor) palLoop(palFirst); }
 
   function render0() {
