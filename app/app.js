@@ -67,13 +67,12 @@
     modal.innerHTML = `<div class="box"><h2>Copia de seguridad</h2>
       <p class="muted small">Tu progreso se guarda solo en este navegador. Para llevarlo a otro dispositivo, copia este código y pégalo allí en «Restaurar».</p>
       <textarea id="bk" class="bk" readonly rows="4">${backupCode()}</textarea>
-      <div class="row center"><button class="btn ghost" id="bkCopy">Copiar código</button><button class="btn ghost" id="bkFile">Descargar archivo</button></div>
+      <div class="row center"><button class="btn ghost" id="bkCopy">Copiar código</button></div>
       <h3>Restaurar</h3><textarea id="bkIn" class="bk" rows="3" placeholder="Pega aquí tu código"></textarea>
       <p class="muted small" id="bkMsg"></p>
       <div class="row center"><button class="btn ghost" id="bkClose">Cerrar</button><button class="btn" id="bkRestore">Restaurar</button></div></div>`;
     $("#bkClose").onclick = closeModal;
     $("#bkCopy").onclick = async () => { const t = $("#bk"); try { await navigator.clipboard.writeText(t.value); $("#bkMsg").textContent = "Código copiado."; } catch (e) { t.select(); $("#bkMsg").textContent = "Selecciona el código y cópialo."; } };
-    $("#bkFile").onclick = () => { try { const u = URL.createObjectURL(new Blob([backupCode()], { type: "text/plain" })), l = document.createElement("a"); l.href = u; l.download = "rocco-progreso.txt"; l.click(); setTimeout(() => URL.revokeObjectURL(u), 2000); } catch (e) { $("#bkMsg").textContent = "No se pudo descargar: copia el código."; } };
     $("#bkRestore").onclick = () => { if (restoreCode($("#bkIn").value)) { closeModal(); render(); fxToast(`${ic("check")} Progreso restaurado`); } else $("#bkMsg").textContent = "Ese código no es válido."; };
   }
   const prem = () => S.plan === "premium";
