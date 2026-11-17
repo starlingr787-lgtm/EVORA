@@ -3,7 +3,7 @@
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const KEY = "lingo-state-v3";
-  const AUDIO_V = "20261116h"; // súbela cuando regeneres los audios (rompe la caché del navegador)
+  const AUDIO_V = "20261117a"; // súbela cuando regeneres los audios (rompe la caché del navegador)
   const today = () => new Date().toISOString().slice(0, 10);
   const LV = EX.LEVELS, NL = LV.length;
   const canSpeak = "speechSynthesis" in window;
