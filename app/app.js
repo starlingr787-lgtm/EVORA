@@ -307,12 +307,31 @@
       palLoop(false);
     }, first ? 2500 : 11000 + Math.random() * 8000);
   }
-  /* Tocarlo: hace algo distinto cada vez (una reacción o una de sus actividades), con su frase. */
+  /* Tocarlo: nunca solo saluda. Cada toque hace algo distinto: una actividad con su objeto, una palabra del curso con audio,
+     un consejo, un chiste o una reacción. Si lo tocas muchas veces seguidas se marea y, al final, se va a descansar un rato. */
+  let palTaps = [], palSeq = 0;
+  function palWord() {
+    if (!S.lang) return null;
+    try {
+      const open = Math.max(1, Object.keys(S.progress[S.lang] || {}).length ? 10 : 3), ui = Math.floor(Math.random() * Math.min(open, UNITS.length)), W = EX.unit(S.lang, ui).words;
+      const w = W[Math.floor(Math.random() * Math.min(W.length, 34))]; return w && { t: w.t, n: w.es };
+    } catch (e) { return null; }
+  }
   document.addEventListener("click", e => {
     const m = e.target.closest && e.target.closest("#roccoPal svg.mascot"); if (!m) return;
-    const pool = [...MASCOT_REACTIONS, ...MASCOT_ACTIVITIES].filter(x => x !== palCur), pick = pool[Math.floor(Math.random() * pool.length)];
+    const now = Date.now(); palTaps = palTaps.filter(t => now - t < 6000); palTaps.push(now);
     sfx.pop && sfx.pop(2);
-    palShow(pick, MASCOT_ACTIVITIES.includes(pick) ? roccoSay(pick) : roccoSay("tap"), 9000);
+    if (palTaps.length >= 8) { palTaps = []; palShow("angry", roccoSay("enough"), 4000); const el = $("#roccoPal"); setTimeout(() => { if (el && el.isConnected) { el.className = "out"; setTimeout(() => el.remove(), 450); } }, 2600); clearTimeout(palT); palT = setTimeout(() => palLoop(false), 20000); return; }
+    if (palTaps.length >= 5) { palShow("dizzy", roccoSay("dizzy"), 5000); palLoop(false); return; }
+    const kinds = ["act", "word", "tip", "joke", "react"].filter(k => k !== palSeq), kind = kinds[Math.floor(Math.random() * kinds.length)]; palSeq = kind;
+    if (kind === "word") {
+      const w = palWord();
+      if (w) { palShow(["think", "curious", "proud", "wink"][Math.floor(Math.random() * 4)], `${roccoSay("word")} ${w.t} = ${w.n}`, 9000); try { speak(w.t, S.lang); } catch (er) {} palLoop(false); return; }
+    }
+    if (kind === "tip") palShow(["think", "proud", "cool"][Math.floor(Math.random() * 3)], roccoSay("tip"), 9000);
+    else if (kind === "joke") palShow(["laugh", "wink", "cool", "party"][Math.floor(Math.random() * 4)], roccoSay("joke"), 9000);
+    else if (kind === "react") { const r = MASCOT_REACTIONS.filter(x => x !== palCur && x !== "wave"); palShow(r[Math.floor(Math.random() * r.length)], roccoSay("tap"), 7000); }
+    else { const act = palPick(); palShow(act, roccoSay(act), 9000); }
     palLoop(false);
   });
   function render() { palStop(); render0(); if (S.tab === "learn" && S.lang && !S.pick && !levelPickFor) palLoop(palFirst); }
