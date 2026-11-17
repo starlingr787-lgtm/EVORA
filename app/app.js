@@ -24,7 +24,58 @@
   /* Idioma base (preguntas) e idioma de la interfaz: español si el base es español; si no, inglés (o el que se elija en el perfil). */
   const applyLangs = () => { EX.setNative(S.native); window.__uiLang = S.ui || (S.native === "es" ? "es" : "en"); };
   applyLangs();
-  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
+  /* Guardado: localStorage + copia en IndexedDB (por si el navegador borra una de las dos) + petición de almacenamiento persistente. */
+  const idb = (mode, fn) => new Promise(res => {
+    try {
+      const rq = indexedDB.open("rocco", 1);
+      rq.onupgradeneeded = () => rq.result.createObjectStore("kv");
+      rq.onsuccess = () => { try { const t = rq.result.transaction("kv", mode), r = fn(t.objectStore("kv")); t.oncomplete = () => res(r && r.result); t.onerror = t.onabort = () => res(null); } catch (e) { res(null); } };
+      rq.onerror = () => res(null);
+    } catch (e) { res(null); }
+  });
+  let saveT = 0;
+  const mirror = () => { clearTimeout(saveT); saveT = 0; try { const json = JSON.stringify(S); idb("readwrite", st => st.put(json, KEY)); } catch (e) {} };
+  const save = () => {
+    try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {}
+    if (!saveT) saveT = setTimeout(mirror, 400);
+  };
+  const flushSave = () => { if (saveT) mirror(); };
+  addEventListener("pagehide", flushSave); document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") flushSave(); });
+  try { navigator.storage && navigator.storage.persist && navigator.storage.persist(); } catch (e) {}
+  /* Si el navegador vació localStorage pero queda la copia en IndexedDB, se recupera sola al abrir la app. */
+  (function restoreIfLost() {
+    let has = false; try { has = !!localStorage.getItem(KEY); } catch (e) {}
+    if (has) return;
+    idb("readonly", st => st.get(KEY)).then(json => {
+      if (!json) return; let d; try { d = JSON.parse(json); } catch (e) { return; }
+      if (!d || typeof d !== "object" || (S.xp || 0) > (d.xp || 0)) return;
+      Object.assign(S, d); if (S.lang === S.native) S.lang = null; applyLangs(); save(); render();
+    });
+  })();
+  /* Copia de seguridad: código de texto que se puede guardar o pegar en otro dispositivo. */
+  const backupCode = () => btoa(unescape(encodeURIComponent(JSON.stringify({ rocco: 1, state: S }))));
+  function restoreCode(text) {
+    try {
+      const d = JSON.parse(decodeURIComponent(escape(atob(String(text).trim()))));
+      if (!d || d.rocco !== 1 || typeof d.state !== "object") return false;
+      Object.assign(S, d.state); if (!COURSES[S.native]) S.native = "es"; if (S.lang === S.native) S.lang = null;
+      applyLangs(); applySkin(); save(); mirror(); return true;
+    } catch (e) { return false; }
+  }
+  function openBackup() {
+    modal.hidden = false;
+    modal.innerHTML = `<div class="box"><h2>Copia de seguridad</h2>
+      <p class="muted small">Tu progreso se guarda solo en este navegador. Para llevarlo a otro dispositivo, copia este código y pégalo allí en «Restaurar».</p>
+      <textarea id="bk" class="bk" readonly rows="4">${backupCode()}</textarea>
+      <div class="row center"><button class="btn ghost" id="bkCopy">Copiar código</button><button class="btn ghost" id="bkFile">Descargar archivo</button></div>
+      <h3>Restaurar</h3><textarea id="bkIn" class="bk" rows="3" placeholder="Pega aquí tu código"></textarea>
+      <p class="muted small" id="bkMsg"></p>
+      <div class="row center"><button class="btn ghost" id="bkClose">Cerrar</button><button class="btn" id="bkRestore">Restaurar</button></div></div>`;
+    $("#bkClose").onclick = closeModal;
+    $("#bkCopy").onclick = async () => { const t = $("#bk"); try { await navigator.clipboard.writeText(t.value); $("#bkMsg").textContent = "Código copiado."; } catch (e) { t.select(); $("#bkMsg").textContent = "Selecciona el código y cópialo."; } };
+    $("#bkFile").onclick = () => { try { const u = URL.createObjectURL(new Blob([backupCode()], { type: "text/plain" })), l = document.createElement("a"); l.href = u; l.download = "rocco-progreso.txt"; l.click(); setTimeout(() => URL.revokeObjectURL(u), 2000); } catch (e) { $("#bkMsg").textContent = "No se pudo descargar: copia el código."; } };
+    $("#bkRestore").onclick = () => { if (restoreCode($("#bkIn").value)) { closeModal(); render(); fxToast(`${ic("check")} Progreso restaurado`); } else $("#bkMsg").textContent = "Ese código no es válido."; };
+  }
   const prem = () => S.plan === "premium";
   const unitOpen = ui => prem() || (ui - EX.lvStart(ui)) < PLANS.standard.units;
   const stars = (ui, li, lang = S.lang) => (S.progress[lang] || {})[ui + "-" + li] || 0;
@@ -1331,12 +1382,15 @@
         <div class="native-chips" role="group" aria-label="Rocco te acompaña">${[[1, "Activado"], [0, "Desactivado"]].map(([v, n]) => `<button class="chip ${(S.rocco !== false) === !!v ? "on" : ""}" data-rocco="${v}" aria-pressed="${(S.rocco !== false) === !!v}">${n}</button>`).join("")}</div></div>
       <div class="card native-pick"><b>Idioma de la interfaz</b>
         <div class="native-chips" data-notr role="group" aria-label="Idioma de la interfaz">${[["es", "Español"], ["en", "English"]].map(([k, n]) => `<button class="chip ${uiLang() === k ? "on" : ""}" data-ui="${k}" aria-pressed="${uiLang() === k}">${n}</button>`).join("")}</div></div>
+      <div class="card native-pick"><b>Tu progreso</b><span class="muted small">Se guarda solo en este navegador. Haz una copia para no perderlo o para pasarlo a otro dispositivo.</span>
+        <div class="native-chips"><button class="chip" id="bkOpen">Copia de seguridad</button></div></div>
       <p class="credits">Voces generadas con <a href="https://github.com/OHF-Voice/piper1-gpl" target="_blank" rel="noopener">Piper</a>.
         Francés: «Siwis French Speech Synthesis Database», Universidad de Edimburgo — <a href="https://datashare.ed.ac.uk/handle/10283/2353" target="_blank" rel="noopener">CC BY 4.0</a>.
         Italiano: «serena-synthetic-it-27h», committa — <a href="https://huggingface.co/datasets/committa/serena-synthetic-it-27h" target="_blank" rel="noopener">CC BY 4.0</a>.
         Español: voz «claude» (es_MX) de rhasspy/piper-voices — Apache-2.0.
         Rumano: Google Cloud Text-to-Speech (voz Chirp 3 HD).</p>`;
     $("#pl").onclick = () => openPlans();
+    $("#bkOpen").onclick = openBackup;
     $$(".native-chips .chip[data-ui]").forEach(b => b.onclick = () => { S.ui = b.dataset.ui; applyLangs(); save(); render(); });
     $$(".chip[data-rocco]").forEach(b => b.onclick = () => { S.rocco = b.dataset.rocco === "1"; save(); palStop(); viewProfile(); });
     $$(".skinprev").forEach(el => shapePiece(el, el.dataset.skin));
