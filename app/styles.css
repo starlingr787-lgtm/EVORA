@@ -536,3 +536,30 @@ body.skin-choco .pz.c6:not(.ok):not(.bad):not(.skinprev){--pf:#7ea35a;--ps:#4c6c
 .node.situ .disc{background:linear-gradient(145deg,var(--pa-situ-a),var(--pa-situ-b));border-bottom-color:var(--pa-situ-d);color:#a13c63}
 .path>svg path{stroke:color-mix(in srgb,var(--line) 80%,#fff)}
 .nstars .ic.on{color:#ffcf4d}
+
+/* ---- Más estilos de pieza: algodón de azúcar (todo rosa), píxeles, tela cosida y entradas de cine ---- */
+body.skin-cotton .pz:not(.wide):not(.empty):not(.skinprev),body.skin-cotton .pz.empty{padding-inline:30px;min-height:56px}
+body.skin-cotton .board,body.skin-cotton .bank,body.skin-cotton .board.solved{column-gap:14px}
+body.skin-pixel .pz:not(.wide):not(.empty):not(.skinprev),body.skin-pixel .pz.empty{padding-inline:22px;min-height:52px}
+body.skin-pixel .board,body.skin-pixel .bank,body.skin-pixel .board.solved{column-gap:10px}
+body.skin-stitch .pz:not(.wide):not(.empty):not(.skinprev),body.skin-stitch .pz.empty{padding-inline:24px;min-height:54px}
+body.skin-stitch .board,body.skin-stitch .bank,body.skin-stitch .board.solved{column-gap:10px}
+body.skin-ticket .pz:not(.wide):not(.empty):not(.skinprev),body.skin-ticket .pz.empty{padding-inline:30px;min-height:54px}
+body.skin-ticket .board,body.skin-ticket .bank,body.skin-ticket .board.solved{column-gap:10px}
+.skinprev[data-skin="cotton"]{padding-inline:30px;min-height:56px}.skinprev[data-skin="pixel"]{padding-inline:22px;min-height:52px}
+.skinprev[data-skin="stitch"]{padding-inline:24px;min-height:54px}.skinprev[data-skin="ticket"]{padding-inline:30px;min-height:54px}
+.pzs .spk circle{fill:#fff;fill-opacity:.8}
+.pzs .fl.px,.pzs .sh.px{stroke-linejoin:miter}.pzs .fl.px{stroke-width:3}
+.pzs .phi{fill:#fff;fill-opacity:.4}.pzs .pdk{fill:#000;fill-opacity:.14}.pzs .pxd rect{fill:#fff;fill-opacity:.35}
+.pzs .hatch path{fill:none;stroke:#fff;stroke-opacity:.12;stroke-width:1}
+.pzs .stitch{fill:none;stroke:#fff;stroke-opacity:.85;stroke-width:1.8;stroke-dasharray:5 4;stroke-linecap:round}
+.pzs .perf{fill:none;stroke:#fff;stroke-opacity:.7;stroke-width:2;stroke-dasharray:3 5;stroke-linecap:round}
+body.skin-pixel .pz:not(.empty):not(.skinprev){font-family:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;letter-spacing:0;font-weight:800}
+.skinprev[data-skin="pixel"]{font-family:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;letter-spacing:0}
+/* Algodón de azúcar: todas las piezas en tonos rosa, con letra rosa oscuro */
+body.skin-cotton .pz.c0:not(.ok):not(.bad):not(.skinprev){--pf:#ffc4da;--ps:#f29bbd}body.skin-cotton .pz.c1:not(.ok):not(.bad):not(.skinprev){--pf:#ffb1d0;--ps:#ec86ae}
+body.skin-cotton .pz.c2:not(.ok):not(.bad):not(.skinprev){--pf:#ffd3e4;--ps:#f5a9c6}body.skin-cotton .pz.c3:not(.ok):not(.bad):not(.skinprev){--pf:#ff9ec6;--ps:#e676a3}
+body.skin-cotton .pz.c4:not(.ok):not(.bad):not(.skinprev){--pf:#ffcade;--ps:#f2a0bf}body.skin-cotton .pz.c5:not(.ok):not(.bad):not(.skinprev){--pf:#ffbbd5;--ps:#ee90b4}
+body.skin-cotton .pz.c6:not(.ok):not(.bad):not(.skinprev){--pf:#ffdcea;--ps:#f6b1cb}body.skin-cotton .pz.c7:not(.ok):not(.bad):not(.skinprev){--pf:#ffa9cb;--ps:#e97fa9}
+body.skin-cotton .pz:not(.empty):not(.ok):not(.bad):not(.skinprev){color:#8a2250;text-shadow:0 1px 0 rgba(255,255,255,.7)}
+.skinprev[data-skin="cotton"]{--pf:#ffc4da;--ps:#f29bbd;color:#8a2250;text-shadow:0 1px 0 rgba(255,255,255,.7)}

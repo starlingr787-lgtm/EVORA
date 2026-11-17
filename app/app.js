@@ -641,7 +641,11 @@
     { id: "candy", name: "Caramelos" },
     { id: "mandala", name: "Mándala" },
     { id: "bubble", name: "Burbujas de agua" },
-    { id: "choco", name: "Barras de chocolate" }
+    { id: "choco", name: "Barras de chocolate" },
+    { id: "cotton", name: "Algodón de azúcar" },
+    { id: "pixel", name: "Píxeles" },
+    { id: "stitch", name: "Tela cosida" },
+    { id: "ticket", name: "Entradas de cine" }
   ];
   const skinId = () => (prem() && SKINS.some(s => s.id === S.skin) ? S.skin : "standard");
   function applySkin() {
@@ -658,9 +662,9 @@
     return d + `V${r}Q0 0 ${r} 0Z`;
   }
   /* Contorno de estadio con el borde en festón (mándala). Se recorre en sentido horario y cada festón es un arco hacia fuera. */
-  function scallopPath(w, h) {
+  function scallopPath(w, h, spacing = 9.5, fac = .56) {
     const r = h / 2 - 1.5, straight = Math.max(0, w - 2 * r), arc = Math.PI * r, total = 2 * straight + 2 * arc;
-    const n = Math.max(14, Math.round(total / 9.5)), pt = i => {
+    const n = Math.max(spacing > 12 ? 10 : 14, Math.round(total / spacing)), pt = i => {
       const s = (i % n) / n * total;
       if (s < straight) return [r + s, 1.5];
       if (s < straight + arc) { const a = -Math.PI / 2 + (s - straight) / r; return [w - r + r * Math.cos(a), h / 2 + r * Math.sin(a)]; }
@@ -668,7 +672,7 @@
       const a = Math.PI / 2 + (s - 2 * straight - arc) / r; return [r + r * Math.cos(a), h / 2 + r * Math.sin(a)];
     };
     const f = v => v.toFixed(1); let p = pt(0), d = `M${f(p[0])} ${f(p[1])}`;
-    for (let i = 1; i <= n; i++) { const q = pt(i), rr = Math.hypot(q[0] - p[0], q[1] - p[1]) * .56; d += `A${f(rr)} ${f(rr)} 0 0 1 ${f(q[0])} ${f(q[1])}`; p = q; }
+    for (let i = 1; i <= n; i++) { const q = pt(i), rr = Math.hypot(q[0] - p[0], q[1] - p[1]) * fac; d += `A${f(rr)} ${f(rr)} 0 0 1 ${f(q[0])} ${f(q[1])}`; p = q; }
     return d + "Z";
   }
   const rrect = (x, y, w, h, r) => `M${x + r} ${y}H${x + w - r}Q${x + w} ${y} ${x + w} ${y + r}V${y + h - r}Q${x + w} ${y + h} ${x + w - r} ${y + h}H${x + r}Q${x} ${y + h} ${x} ${y + h - r}V${y + r}Q${x} ${y} ${x + r} ${y}Z`;
@@ -698,6 +702,34 @@
       return `<defs><radialGradient id="${cid}r" cx=".34" cy=".26" r=".9"><stop offset="0" style="stop-color:var(--pf)" stop-opacity=".1"/><stop offset=".62" style="stop-color:var(--pf)" stop-opacity=".3"/><stop offset=".9" style="stop-color:var(--pf)" stop-opacity=".62"/><stop offset="1" style="stop-color:var(--ps)" stop-opacity=".9"/></radialGradient></defs>
         <ellipse class="bsh" cx="${w / 2}" cy="${h + 3}" rx="${w * .42}" ry="3.5"/><path d="${d}" fill="url(#${cid}r)" class="bub"/>
         <path class="rim" d="${d}"/><path class="rim2" d="M${h * .5} ${h - 5}Q${w / 2} ${h + 1} ${w - h * .5} ${h - 5}"/><ellipse class="hl" cx="${w * .24}" cy="${h * .27}" rx="${Math.max(8, w * .13)}" ry="${h * .11}" transform="rotate(-14 ${w * .24} ${h * .27})"/><circle class="hl2" cx="${w * .84}" cy="${h * .73}" r="${Math.max(2, h * .07)}"/>`;
+    }
+    if (skin === "cotton") {
+      const d = scallopPath(w, h, 17, .66);
+      if (empty) return `<path class="fl" d="${d}"/>`;
+      const dots = Array.from({ length: Math.max(3, Math.round(w / 26)) }, (_, i) => `<circle cx="${(i + .5) * w / Math.max(3, Math.round(w / 26))}" cy="${h * (i % 2 ? .3 : .72)}" r="${i % 2 ? 1.6 : 2.2}"/>`).join("");
+      return `${clip(d)}<path class="sh" d="${d}" transform="translate(0 5)"/><path class="fl" d="${d}"/>
+        <g clip-path="url(#${cid})"><ellipse class="spec" cx="${w * .5}" cy="${h * .17}" rx="${w * .34}" ry="${h * .09}"/><g class="spk">${dots}</g></g>`;
+    }
+    if (skin === "pixel") {
+      const e = 8, q = 4, d = `M${e} 0H${w - e}V${q}H${w - q}V${e}H${w}V${h - e}H${w - q}V${h - q}H${w - e}V${h}H${e}V${h - q}H${q}V${h - e}H0V${e}H${q}V${q}H${e}Z`;
+      if (empty) return `<path class="fl px" d="${d}"/>`;
+      const px = Array.from({ length: Math.max(2, Math.round(w / 22)) }, (_, i) => `<rect x="${10 + i * 22}" y="${i % 2 ? h - 10 : h - 14}" width="4" height="4"/>`).join("");
+      return `${clip(d)}<path class="sh px" d="${d}" transform="translate(0 5)"/><path class="fl px" d="${d}"/>
+        <g clip-path="url(#${cid})"><rect class="phi" x="${e}" y="3" width="${w - 2 * e}" height="4"/><rect class="phi" x="3" y="${e}" width="4" height="${Math.max(4, h - 2 * e - 4)}"/><rect class="pdk" x="0" y="${h - 7}" width="${w}" height="7"/><g class="pxd">${px}</g></g>`;
+    }
+    if (skin === "stitch") {
+      const r = Math.min(12, h / 3), d = rrect(0, 0, w, h, r);
+      if (empty) return `<path class="fl" d="${d}"/>`;
+      const hatch = Array.from({ length: Math.ceil((w + h) / 9) }, (_, i) => `<path d="M${i * 9 - h} ${h}l${h} ${-h}"/><path d="M${i * 9} ${h}l${-h} ${-h}"/>`).join("");
+      return `${clip(d)}<path class="sh" d="${d}" transform="translate(0 5)"/><path class="fl" d="${d}"/>
+        <g clip-path="url(#${cid})"><g class="hatch">${hatch}</g><path class="stitch" d="${rrect(5, 5, w - 10, h - 10, Math.max(4, r - 5))}"/></g>`;
+    }
+    if (skin === "ticket") {
+      const r = 8, n = 7, m = h / 2;
+      const d = `M${r} 0H${w - r}Q${w} 0 ${w} ${r}V${m - n}A${n} ${n} 0 0 0 ${w} ${m + n}V${h - r}Q${w} ${h} ${w - r} ${h}H${r}Q0 ${h} 0 ${h - r}V${m + n}A${n} ${n} 0 0 0 0 ${m - n}V${r}Q0 0 ${r} 0Z`;
+      if (empty) return `<path class="fl" d="${d}"/>`;
+      return `${clip(d)}<path class="sh" d="${d}" transform="translate(0 5)"/><path class="fl" d="${d}"/>
+        <g clip-path="url(#${cid})"><path class="perf" d="M15 7V${h - 7}M${w - 15} 7V${h - 7}"/><ellipse class="spec" cx="${w * .5}" cy="${h * .16}" rx="${w * .34}" ry="${h * .07}"/><rect class="shade" x="0" y="${h * .76}" width="${w}" height="${h * .24}"/></g>`;
     }
     if (skin === "choco") {
       const d = rrect(0, 0, w, h, 8);

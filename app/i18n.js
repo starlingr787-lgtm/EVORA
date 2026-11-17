@@ -149,7 +149,7 @@
     "El mesero": "The waiter",
     "Rocco te acompaña": "Rocco keeps you company", "Aparece a veces en el mapa con comentarios y pequeñas animaciones. Puedes desactivarlo.": "He sometimes shows up on the map with comments and little animations. You can turn him off.",
     "Activado": "On", "Desactivado": "Off",
-    "Estilo de las piezas": "Piece style", "Clásico": "Classic", "Caramelos": "Candy", "Mándala": "Mandala", "Burbujas de agua": "Water bubbles", "Barras de chocolate": "Chocolate bars",
+    "Estilo de las piezas": "Piece style", "Clásico": "Classic", "Caramelos": "Candy", "Mándala": "Mandala", "Burbujas de agua": "Water bubbles", "Barras de chocolate": "Chocolate bars", "Algodón de azúcar": "Cotton candy", "Píxeles": "Pixels", "Tela cosida": "Stitched fabric", "Entradas de cine": "Cinema tickets",
     "El estilo Clásico es gratis; los demás son Premium.": "The Classic style is free; the others are Premium.",
     "Los estilos de piezas son una función Premium.": "Piece styles are a Premium feature.",
     "Saludar y preguntar cómo está": "Greeting and asking how someone is",
