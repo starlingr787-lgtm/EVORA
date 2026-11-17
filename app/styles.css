@@ -609,3 +609,17 @@ body{background-color:var(--bg);background-image:radial-gradient(circle at 12% 6
 .course-card .lb.fl{margin-bottom:4px}
 
 .bk{width:100%;box-sizing:border-box;font:600 12px/1.3 ui-monospace,Menlo,Consolas,monospace;border:2px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);padding:8px;margin:6px 0;resize:vertical;word-break:break-all}
+
+/* Rocco más tierno + gestos nuevos */
+.rocco .rblush{opacity:.5}.rocco .rblush2{opacity:.7}
+.rocco .rsun{fill:#1a1d24}.rocco .rsunb{fill:none;stroke:#1a1d24;stroke-width:4;stroke-linecap:round}.rocco .rsunhl{fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;opacity:.45}
+.rocco .rstar{fill:#ffc933;stroke:#e59a00;stroke-width:1.500;stroke-linejoin:round}
+.rocco .rtear{fill:none;stroke:#5bb8ff;stroke-width:4;stroke-linecap:round;opacity:.7}
+.rocco .rb2{stroke-width:6}.rocco .rex2{stroke:#ff5d7a}
+.rocco .rbl{fill:none;stroke:#ff8fb1;stroke-width:3;stroke-linecap:round}
+.rocco .rnote{fill:#7a5af8;font:900 24px system-ui,sans-serif}
+.rocco .rgreen ellipse{fill:#8fd36b;opacity:.5}
+.rocco .rhat{fill:#ff6fa5}.rocco .rhat2{fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;opacity:.8}.rocco .rpom{fill:#ffc933}
+.rocco .r-wave{transform-origin:56px 150px;animation:r-wavea .7s ease-in-out infinite alternate}
+.rocco .r-tears{animation:r-fall 1.1s linear infinite}
+@keyframes r-wavea{from{transform:rotate(-10deg)}to{transform:rotate(14deg)}}

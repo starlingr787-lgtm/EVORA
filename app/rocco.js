@@ -2,13 +2,14 @@
    Dibujo propio en SVG (200x210), con volumen en el pelaje, máscara, ojos con brillo, bigotes, cola anillada y patas con dedos.
    rocco(mood, px) devuelve el SVG; las partes son grupos con clase (r-tail, r-body, r-head, r-eyes, r-arms...) que animan los estilos de
    styles.css (respiración, parpadeo, cola, orejas, masticar, lavarse las patas...).
-   Gestos: happy cheer sad think wow wink sleepy love proud curious focus oops eat wash yawn coffee.
+   Gestos: happy cheer sad think wow wink sleepy love proud curious focus oops eat wash yawn coffee
+   y los nuevos laugh cry angry shy dizzy starry cool kiss thumbsup wave party sick bored sing.
    window.mascot es un alias para que el resto de la app siga llamando a mascot(mood, px). */
 (() => {
-  window.MASCOT_MOODS = ["happy", "cheer", "sad", "think", "wow", "wink", "sleepy", "love", "proud", "curious", "focus", "oops", "eat", "wash", "yawn", "coffee"];
+  window.MASCOT_MOODS = ["happy", "cheer", "sad", "think", "wow", "wink", "sleepy", "love", "proud", "curious", "focus", "oops", "eat", "wash", "yawn", "coffee", "laugh", "cry", "angry", "shy", "dizzy", "starry", "cool", "kiss", "thumbsup", "wave", "party", "sick", "bored", "sing"];
   /* Gestos para reacciones al tocar a Rocco (sin los que expresan tristeza) y actividades "al azar" que hace por su cuenta. */
-  window.MASCOT_REACTIONS = ["wink", "love", "wow", "cheer", "proud", "curious", "yawn"];
-  window.MASCOT_ACTIVITIES = ["eat", "wash", "coffee", "yawn", "sleepy", "curious", "think"];
+  window.MASCOT_REACTIONS = ["wink", "love", "wow", "cheer", "proud", "curious", "yawn", "laugh", "shy", "kiss", "starry", "cool", "thumbsup", "wave", "party", "dizzy"];
+  window.MASCOT_ACTIVITIES = ["eat", "wash", "coffee", "yawn", "sleepy", "curious", "think", "sing", "bored"];
 
   let uid = 0;
   const heart = (cx, cy, s = 1, cls = "rh") => `<path d="M${cx} ${cy + 7 * s}C${cx - 13 * s} ${cy - 1 * s} ${cx - 7 * s} ${cy - 10 * s} ${cx} ${cy - 4 * s}C${cx + 7 * s} ${cy - 10 * s} ${cx + 13 * s} ${cy - 1 * s} ${cx} ${cy + 7 * s}Z" class="${cls}"/>`;
@@ -19,16 +20,22 @@
     if (!window.MASCOT_MOODS.includes(mood)) mood = "happy";
     const u = "r" + (++uid);
     const g = id => `url(#${id}${u})`;
-    const L = [72, 92], R = [128, 92];
+    const L = [71, 95], R = [129, 95];
 
     /* ----- ojos ----- */
-    const eyeOpen = (cx, cy, dx = 0, dy = 0, rx = 11, ry = 12.5) =>
+    const eyeOpen = (cx, cy, dx = 0, dy = 0, rx = 12.5, ry = 14) =>
       `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${g("eye")}"/><circle cx="${cx + dx * .6}" cy="${cy + dy * .6}" r="${rx * .5}" class="rn"/>` +
-      `<circle cx="${cx + dx + 3.500}" cy="${cy + dy - 4.500}" r="3.300" fill="#fff"/><circle cx="${cx + dx - 3}" cy="${cy + dy + 4}" r="1.700" fill="#fff" opacity=".8"/>`;
+      `<circle cx="${cx + dx + 4}" cy="${cy + dy - 5}" r="4.600" fill="#fff"/><circle cx="${cx + dx - 3.500}" cy="${cy + dy + 4.500}" r="2.300" fill="#fff" opacity=".85"/><circle cx="${cx + dx + 5.500}" cy="${cy + dy + 2}" r="1.100" fill="#fff" opacity=".9"/>`;
     const arc = (cx, cy, up = true) => `<path d="M${cx - 12} ${cy + 3}Q${cx} ${up ? cy - 14 : cy + 15} ${cx + 12} ${cy + 3}" class="rk"/>`;
+    const starPath = (cx, cy, r) => { let d = ""; for (let i = 0; i < 10; i++) { const a = -Math.PI / 2 + i * Math.PI / 5, rr = i % 2 ? r * .45 : r; d += (i ? "L" : "M") + (cx + rr * Math.cos(a)).toFixed(1) + " " + (cy + rr * Math.sin(a)).toFixed(1); } return d + "Z"; };
+    const starEye = (cx, cy) => `<path d="${starPath(cx, cy, 15)}" class="rstar"/><circle cx="${cx - 3}" cy="${cy - 4}" r="2.600" fill="#fff" opacity=".9"/>`;
+    const spiral = (cx, cy) => `<path d="M${cx} ${cy}m0-2.500a2.500 2.500 0 1 1-2.500 2.500a5 5 0 1 1 5-5a7.500 7.500 0 1 1-7.500 7.500a10 10 0 1 1 10-10" class="rk"/>`;
     const eyes = {
       open: (dx = 0, dy = 1) => eyeOpen(...L, dx, dy) + eyeOpen(...R, dx, dy),
-      wide: () => eyeOpen(...L, 0, 0, 13, 14.500) + eyeOpen(...R, 0, 0, 13, 14.500) + `<circle cx="${L[0]}" cy="${L[1]}" r="15.500" class="rring"/><circle cx="${R[0]}" cy="${R[1]}" r="15.500" class="rring"/>`,
+      wide: () => eyeOpen(...L, 0, 0, 14, 15.500) + eyeOpen(...R, 0, 0, 14, 15.500) + `<circle cx="${L[0]}" cy="${L[1]}" r="17" class="rring"/><circle cx="${R[0]}" cy="${R[1]}" r="17" class="rring"/>`,
+      star: () => starEye(...L) + starEye(...R),
+      spiral: () => spiral(...L) + spiral(...R),
+      cool: () => `<g class="rsun"><rect x="49" y="82" width="45" height="26" rx="10"/><rect x="106" y="82" width="45" height="26" rx="10"/><path d="M94 90Q100 85 106 90" class="rsunb"/></g><path d="M56 88l14 -2M113 88l14 -2" class="rsunhl"/>`,
       happy: () => arc(...L) + arc(...R),
       closed: () => arc(...L, false) + arc(...R, false),
       wink: () => eyeOpen(...L, 0, 1) + arc(...R),
@@ -41,12 +48,14 @@
       sad: `<path d="M58 80L84 70M142 80L116 70" class="rb"/>`,
       up: `<path d="M60 74Q72 62 84 72M116 72Q128 62 140 74" class="rb"/>`,
       raise: `<path d="M60 76Q72 72 84 76M116 70Q128 60 142 70" class="rb"/>`,
-      down: `<path d="M60 70L84 79M140 70L116 79" class="rb"/>`
+      down: `<path d="M60 70L84 79M140 70L116 79" class="rb"/>`,
+      angry: `<path d="M56 68L86 82M144 68L114 82" class="rb rb2"/>`,
+      worry: `<path d="M58 78Q70 66 86 76M142 78Q130 66 114 76" class="rb"/>`
     };
 
     /* ----- boca ----- */
     const mouths = {
-      smile: `<path d="M100 110V121M84 121Q100 138 116 121" class="rm"/>`,
+      smile: `<path d="M100 111V118M87 118Q93.500 129 100 118Q106.500 129 113 118" class="rm"/>`,
       grin: `<path d="M82 119Q100 148 118 119Z" class="rmo"/><path d="M92 133Q100 141 108 133Q100 128 92 133Z" class="rp"/>`,
       open: `<path d="M79 117Q100 158 121 117Z" class="rmo"/><path d="M90 137Q100 148 110 137Q100 129 90 137Z" class="rp"/><path d="M86 118H114" class="rteeth"/>`,
       o: `<ellipse cx="100" cy="128" rx="7" ry="9" class="rmo"/>`,
@@ -54,6 +63,11 @@
       flat: `<path d="M100 110V121M90 124H110" class="rm"/>`,
       smirk: `<path d="M100 110V121M88 125Q102 131 116 120" class="rm"/>`,
       tiny: `<ellipse cx="100" cy="124" rx="4.500" ry="3.300" class="rmo"/>`,
+      pout: `<path d="M100 111V118M90 128Q100 119 110 128" class="rm"/>`,
+      laugh: `<path d="M80 116Q100 158 120 116Z" class="rmo"/><path d="M92 140Q100 148 108 140Q100 133 92 140Z" class="rp"/><path d="M86 117H114" class="rteeth"/>`,
+      sob: `<path d="M100 111V118M86 132Q93 120 100 128Q107 120 114 132" class="rm"/>`,
+      kiss: `<path d="M100 111V117"  class="rm"/><ellipse cx="104" cy="125" rx="5" ry="6" class="rmo"/>`,
+      cat: `<path d="M100 111V117M88 117Q94 126 100 117Q106 126 112 117" class="rm"/><path d="M98 122l2 5l2 -5" class="rteeth"/>`,
       wavy: `<path d="M100 110V120M84 127Q92 120 100 127T116 127" class="rm"/>`,
       yawn: `<ellipse cx="100" cy="130" rx="14" ry="17" class="rmo"/><path d="M90 140Q100 152 110 140Q100 132 90 140Z" class="rp"/>`,
       chew: `<g class="r-chew"><path d="M100 110V121M85 121Q100 135 115 121" class="rm"/></g>`
@@ -65,10 +79,16 @@
       rest: restArms,
       up: arm(56, 152, 26, 108) + arm(144, 152, 174, 108) + paw(24, 100, -25) + paw(176, 100, 25),
       chin: arm(58, 150, 64, 178) + paw(64, 181, 10) + arm(142, 152, 118, 142),
-      eat: "", wash: "", mug: arm(58, 150, 64, 178) + paw(64, 181, 10)
+      eat: "", wash: "", mug: arm(58, 150, 64, 178) + paw(64, 181, 10),
+      cheeks: arm(58, 152, 48, 122) + arm(142, 152, 152, 122) + paw(47, 117, -20) + paw(153, 117, 20),
+      thumb: arm(142, 150, 136, 178) + paw(136, 181, -10) + arm(58, 152, 34, 128),
+      wave: arm(142, 150, 136, 178) + paw(136, 181, -10) + `<g class="r-wave">${arm(56, 150, 26, 112)}${paw(24, 104, -20)}</g>`,
+      hug: arm(58, 150, 30, 138) + arm(142, 150, 170, 138) + paw(26, 134, -40) + paw(174, 134, 40)
     };
     const front = {
       chin: paw(112, 138, -60),
+      thumb: `<g transform="translate(30 118)"><ellipse cx="0" cy="0" rx="12" ry="11" class="rd2"/><ellipse cx="1" cy="-15" rx="4.800" ry="9" class="rd2" transform="rotate(8)"/><path d="M-8 3h16M-8 -2h16" class="rtoes"/></g>`,
+      hat: `<path d="M100 2L76 42H124Z" class="rhat"/><path d="M85 28L115 28M80 36L120 36" class="rhat2"/><circle cx="100" cy="4" r="6" class="rpom"/>`,
       eat: `<g class="r-eat">${arm(62, 152, 80, 142)}${arm(138, 152, 120, 142)}
         <g transform="rotate(-8 100 140)"><rect x="76" y="128" width="48" height="24" rx="4" fill="${g("choc")}"/><path d="M92 128V152M108 128V152M76 140H124" class="rchl"/><path d="M76 148H124V152Q100 155 76 152Z" class="rfoil"/><path d="M118 128l8 0l-2 8l-8-4z" fill="${g("choc")}"/></g>
         ${paw(78, 142, -10)}${paw(122, 142, 10)}</g><g class="r-crumbs"><circle cx="86" cy="158" r="2" class="rcr"/><circle cx="112" cy="162" r="1.700" class="rcr"/><circle cx="100" cy="168" r="1.400" class="rcr"/></g>`,
@@ -89,7 +109,17 @@
       hearts: `<g class="r-hearts">${heart(168, 40, .9)}${heart(28, 56, .65)}${heart(180, 70, .5)}</g>`,
       sweat: `<path d="M158 70q-6 11 0 16q6-5 0-16z" class="rt"/>`,
       shine: `<g class="r-sparks"><path d="M170 30l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" class="ry"/><path d="M30 44l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" class="ry"/></g>`,
-      curious: `<text x="160" y="40" class="rq2">?</text>`
+      curious: `<text x="160" y="40" class="rq2">?</text>`,
+      joy: `<g class="r-tears"><path d="M44 100q-6 10 0 15q6-5 0-15z" class="rt"/><path d="M156 100q-6 10 0 15q6-5 0-15z" class="rt"/></g>`,
+      cry: `<g class="r-tears"><path d="M60 112Q56 128 62 142M140 112Q144 128 138 142" class="rtear"/><path d="M52 108q-6 10 0 15q6-5 0-15z" class="rt"/><path d="M148 108q-6 10 0 15q6-5 0-15z" class="rt"/></g>`,
+      anger: `<g class="r-sparks"><path d="M150 36l10 2l2 10M146 28l8 -6M164 50l8 4" class="rex rex2"/></g>`,
+      blush: `<g class="r-sparks"><path d="M40 108l-6 4M44 114l-6 4M160 108l6 4M156 114l6 4" class="rbl"/></g>`,
+      dizzy: `<g class="r-sparks"><path d="M62 26l2.500 6 6 2.500-6 2.500-2.500 6-2.500-6-6-2.500 6-2.500z" class="ry"/><path d="M138 22l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" class="ry"/><circle cx="100" cy="18" r="3.500" class="rp"/></g>`,
+      kiss: `<g class="r-hearts">${heart(138, 118, .7)}${heart(158, 98, .5)}</g>`,
+      notes: `<g class="r-hearts"><text x="150" y="40" class="rnote">♪</text><text x="26" y="52" class="rnote" font-size="18">♫</text><text x="168" y="74" class="rnote" font-size="16">♪</text></g>`,
+      confetti: `<g class="r-sparks"><path d="M24 40l6 3M168 36l-5 5M34 70l5-4M176 80l-6 2" class="rex"/><circle cx="26" cy="64" r="3" class="rp"/><circle cx="174" cy="56" r="3" class="rt"/><circle cx="50" cy="26" r="3" class="ry"/><circle cx="150" cy="20" r="3" class="rh"/></g>`,
+      sick: `<g class="rgreen"><ellipse cx="53" cy="115" rx="12" ry="8"/><ellipse cx="147" cy="115" rx="12" ry="8"/></g><path d="M158 70q-6 11 0 16q6-5 0-16z" class="rt"/>`,
+      blushbig: `<ellipse cx="53" cy="115" rx="13" ry="8" class="rp rblush2"/><ellipse cx="147" cy="115" rx="13" ry="8" class="rp rblush2"/>`
     };
 
     const M = {
@@ -108,7 +138,21 @@
       eat: { e: "happy", m: "chew", a: "eat", f: "eat" },
       wash: { e: "open", look: [0, 6], m: "smile", a: "wash", f: "wash" },
       yawn: { e: "closed", m: "yawn", a: "rest", c: "yawn" },
-      coffee: { e: "happy", m: "smile", a: "mug", f: "mug" }
+      coffee: { e: "happy", m: "smile", a: "mug", f: "mug" },
+      laugh: { e: "happy", m: "laugh", a: "rest", x: "joy", c: "hop" },
+      cry: { e: "open", look: [0, 5], m: "sob", b: "worry", a: "rest", x: "cry", c: "droop" },
+      angry: { e: "open", look: [0, 2], m: "pout", b: "angry", a: "rest", x: "anger", c: "tilt" },
+      shy: { e: "open", look: [5, 6], m: "tiny", b: "worry", a: "cheeks", k: "blushbig", x: "blush", c: "proud" },
+      dizzy: { e: "spiral", m: "wavy", a: "rest", x: "dizzy", c: "tilt" },
+      starry: { e: "star", m: "open", a: "up", x: "sparks", c: "hop" },
+      cool: { e: "cool", m: "smirk", a: "rest", x: "shine", c: "proud" },
+      kiss: { e: "happy", m: "kiss", a: "rest", x: "kiss" },
+      thumbsup: { e: "wink", m: "grin", a: "thumb", f: "thumb", x: "shine" },
+      wave: { e: "open", m: "cat", a: "wave", c: "hop" },
+      party: { e: "happy", m: "laugh", a: "up", f: "hat", x: "confetti", c: "hop" },
+      sick: { e: "half", m: "wavy", b: "worry", a: "rest", x: "sick", c: "droop" },
+      bored: { e: "half", m: "flat", a: "chin", f: "chin", c: "tilt" },
+      sing: { e: "happy", m: "o", a: "rest", x: "notes", c: "hop" }
     }[mood];
     const eyeSvg = M.e === "open" ? eyes.open(...(M.look || [0, 1])) : eyes[M.e]();
     const blink = M.e === "open" ? "r-eyes" : "";
@@ -153,10 +197,10 @@
         <ellipse cx="100" cy="116" rx="30" ry="25" fill="${g("muz")}"/>
         <g class="${blink}">${eyeSvg}</g>
         ${M.b ? brows[M.b] : ""}
-        <path d="M89 99Q100 92 111 99Q109 111 100 114Q91 111 89 99Z" class="rn"/><ellipse cx="95" cy="98" rx="4.500" ry="2" class="rnhl"/>
+        <path d="M92 101Q100 95 108 101Q106 109 100 111.500Q94 109 92 101Z" class="rn"/><ellipse cx="96" cy="100" rx="3.600" ry="1.700" class="rnhl"/>
         <g class="r-mouth">${mouths[M.m]}</g>
         <path d="M78 114Q54 108 36 114M78 118Q56 120 38 130M78 110Q58 100 44 100M122 114Q146 108 164 114M122 118Q144 120 162 130M122 110Q142 100 156 100" class="rwh"/>
-        <circle cx="48" cy="112" r="6" class="rp" opacity=".25"/><circle cx="152" cy="112" r="6" class="rp" opacity=".25"/>
+        <ellipse cx="53" cy="115" rx="10" ry="6" class="rp rblush"/><ellipse cx="147" cy="115" rx="10" ry="6" class="rp rblush"/>${M.k ? extras[M.k] : ""}
       </g>
       ${M.f ? front[M.f] : ""}
       ${M.x ? extras[M.x] : ""}
@@ -192,7 +236,9 @@
       yawn: ["Uaaah… perdón, es contagioso.", "¿Ya es hora de una siesta?"],
       sleepy: ["Zzz… ¿ya empezamos?", "Solo cierro los ojos un segundo…"],
       think: ["Hmm… ¿qué palabra tocará hoy?", "Pensando en frases bonitas."],
-      curious: ["¿Qué habrá en la siguiente unidad?", "Huele a palabra nueva."]
+      curious: ["¿Qué habrá en la siguiente unidad?", "Huele a palabra nueva."],
+      sing: ["La la la… ¡practicando pronunciación!", "Cantar ayuda a recordar las palabras.", "♪ Una palabra, dos palabras… ♪"],
+      bored: ["Uf, qué quietud. ¿Hacemos algo?", "Cuéntame, ¿qué palabra toca hoy?"]
     },
     en: {
       correct: ["Nicely done!", "That was clean.", "Well played.", "Right on target!", "You had that one.", "I like how you think."],
@@ -219,7 +265,9 @@
       yawn: ["Yaaawn… sorry, it's contagious.", "Is it nap time already?"],
       sleepy: ["Zzz… are we starting?", "Just closing my eyes for a second…"],
       think: ["Hmm… which word will it be today?", "Thinking of pretty sentences."],
-      curious: ["What's in the next unit?", "Smells like a new word."]
+      curious: ["What's in the next unit?", "Smells like a new word."],
+      sing: ["La la la… practising pronunciation!", "Singing helps you remember words.", "♪ One word, two words… ♪"],
+      bored: ["Phew, so quiet. Shall we do something?", "Tell me, which word is it today?"]
     }
   };
   const lastSay = {};
