@@ -3,7 +3,7 @@
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const KEY = "lingo-state-v3";
-  const AUDIO_V = "20261117d"; // súbela cuando regeneres los audios (rompe la caché del navegador)
+  const AUDIO_V = "20261118a"; // súbela cuando regeneres los audios (rompe la caché del navegador)
   const today = () => new Date().toISOString().slice(0, 10);
   const LV = EX.LEVELS, NL = LV.length;
   const canSpeak = "speechSynthesis" in window;
@@ -1402,7 +1402,6 @@
         <div class="native-chips"><button class="chip" id="bkOpen">Copia de seguridad</button></div></div>
       <p class="credits">Voces generadas con <a href="https://github.com/OHF-Voice/piper1-gpl" target="_blank" rel="noopener">Piper</a>.
         Francés: «Siwis French Speech Synthesis Database», Universidad de Edimburgo — <a href="https://datashare.ed.ac.uk/handle/10283/2353" target="_blank" rel="noopener">CC BY 4.0</a>.
-        Italiano: «serena-synthetic-it-27h», committa — <a href="https://huggingface.co/datasets/committa/serena-synthetic-it-27h" target="_blank" rel="noopener">CC BY 4.0</a>.
         Español: voz «claude» (es_MX) de rhasspy/piper-voices — Apache-2.0.
         Rumano: Google Cloud Text-to-Speech (voz Chirp 3 HD).</p>`;
     $("#pl").onclick = () => openPlans();

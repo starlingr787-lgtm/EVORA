@@ -82,14 +82,14 @@ Se generaron con [Piper](https://github.com/OHF-Voice/piper1-gpl) (voces `rhassp
 |---|---|---|
 | Inglés | en_GB-cori-high | Dominio público |
 | Francés | fr_FR-siwis-medium | CC BY 4.0 (Siwis, Universidad de Edimburgo) |
-| Alemán | de_DE-thorsten-high | CC0 |
-| Italiano | it_IT-serena-high | CC BY 4.0 (committa/serena-synthetic-it-27h) |
-| Portugués | pt_PT-tugão-medium | CC0 |
+| Alemán | de_DE-kerstin-medium | CC0 |
+| Italiano | it_IT-paola-medium | CC0 |
+| Portugués (de Brasil) | pt_BR-faber-medium | CC0 |
 | Ruso | ru_RU-denis-medium | CC0 |
 | Rumano | Google Cloud TTS `ro-RO-Chirp3-HD-Sulafat` (voz femenina de pago, audio pregenerado) | Términos de Google Cloud; sin atribución obligatoria, revisar antes de uso comercial |
 | Español (curso para angloparlantes) | es_MX-claude-high | Apache-2.0 |
 
-Las voces francesa e italiana exigen atribución (CC BY 4.0): mantén esta tabla visible en la app si la publicas. Antes de uso comercial, revisa las licencias vigentes de cada voz.
+La voz francesa exige atribución (CC BY 4.0): mantén esta tabla visible en la app si la publicas. Antes de uso comercial, revisa las licencias vigentes de cada voz.
 **Paquetes de palabras.** `node tools/tts/export_texts.js` también escribe `tools/tts/.work/texts-w.json` (cada palabra distinta de las frases, clave `w:<palabra>`); `python tools/tts/generate.py --set w` genera `audio/<idioma>-w.*`. Hay que regenerarlo si cambian las frases.
 **Control de calidad de la voz.** `tools/tts/verify.py` transcribe cada clip con Whisper y puntúa el parecido. Esa medida es poco fiable en palabras sueltas de menos de 1 s (alucina "uh, uh…" o escribe "4." en vez de "Four"), por lo que una puntuación baja en clips cortos no implica mala voz (p. ej. el 0,674 del portugués es un artefacto de medición, no se tocó). El rumano sí mejoró de forma real con el método "mejor de N". Sigue pendiente la escucha por hablantes nativos.
 El contenido ampliado vive en `extra.js` (cargador) y `data7a.js`, `data7b.js`, `data7c.js` (una línea por elemento con las 8 lenguas en columnas `es|en|fr|de|it|pt|ru|ro`); se añade AL FINAL de cada unidad, así los 8 elementos originales y sus claves de audio no cambian. Las lecciones tienen un tope de preguntas (`MAX_Q_*` en `exercises.js`) aunque la unidad tenga mucho contenido; la pantalla de introducción muestra todo y cada intento sortea elementos distintos. Para regenerar el audio tras cambiar `data.js`, `data2.js` o los `data7*.js` hay que repetir la síntesis con el mismo orden de claves (`<unidad>w<n>` para palabras, `<unidad>s<n>` para frases y las de `extraClips()` en `data3.js` para situaciones).

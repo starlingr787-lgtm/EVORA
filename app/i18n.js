@@ -205,7 +205,6 @@
     "Es educado y le quita trabajo.": "It is polite and takes work off his plate.",
     "Presionar al final deja mal sabor de boca.": "Pushing at the end leaves a bad taste.",
     ". Francés: «Siwis French Speech Synthesis Database», Universidad de Edimburgo —": ". French: «Siwis French Speech Synthesis Database», University of Edinburgh —",
-    ". Italiano: «serena-synthetic-it-27h», committa —": ". Italian: «serena-synthetic-it-27h», committa —",
     ". Español: voz «claude» (es_MX) de rhasspy/piper-voices — Apache-2.0. Rumano: Google Cloud Text-to-Speech (voz Chirp 3 HD).": ". Spanish: voice «claude» (es_MX) from rhasspy/piper-voices — Apache-2.0. Romanian: Google Cloud Text-to-Speech (Chirp 3 HD voice)."
   };
   Object.assign(EN, window.EN_EXTRA || {}); /* textos de situaciones añadidos en data14.js y data15.js */

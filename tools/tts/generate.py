@@ -25,8 +25,8 @@ ROOT = Path(__file__).resolve().parents[2]
 AUDIO, WORK = ROOT / "tools" / "tts" / "packs", ROOT / "tools" / "tts" / ".work"  # paquetes COMPLETOS; la app sirve los repartidos (packs.py)
 MODELS = Path(os.environ.get("TTS_MODELS_DIR", ROOT / "tools" / "tts" / "models"))
 VOICES = {  # voz elegida por idioma (todas con licencia que permite uso comercial; ver README de la app)
-    "en": "piper:en_GB-cori-high", "fr": "piper:fr_FR-siwis-medium", "de": "piper:de_DE-thorsten-high",
-    "it": "piper:it_IT-serena-high", "pt": "piper:pt_PT-tugão-medium", "ru": "piper:ru_RU-denis-medium", "ro": "google:ro-RO-Chirp3-HD-Sulafat",
+    "en": "piper:en_GB-cori-high", "fr": "piper:fr_FR-siwis-medium", "de": "piper:de_DE-kerstin-medium",
+    "it": "piper:it_IT-paola-medium", "pt": "piper:pt_BR-faber-medium", "ru": "piper:ru_RU-denis-medium", "ro": "google:ro-RO-Chirp3-HD-Sulafat",
     "es": "piper:es_MX-claude-high",
 }
 SETTINGS = {"length_scale": 1.08}
