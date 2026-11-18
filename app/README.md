@@ -85,7 +85,7 @@ Se generaron con [Piper](https://github.com/OHF-Voice/piper1-gpl) (voces `rhassp
 | Alemán | de_DE-kerstin-medium | CC0 |
 | Italiano | it_IT-paola-medium | CC0 |
 | Portugués (de Brasil) | pt_BR-faber-medium | CC0 |
-| Ruso | ru_RU-denis-medium | CC0 |
+| Ruso | ru_RU-dmitri-medium | CC0 |
 | Rumano | Google Cloud TTS `ro-RO-Chirp3-HD-Sulafat` (voz femenina de pago, audio pregenerado) | Términos de Google Cloud; sin atribución obligatoria, revisar antes de uso comercial |
 | Español (curso para angloparlantes) | es_MX-claude-high | Apache-2.0 |
 

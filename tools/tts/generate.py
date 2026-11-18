@@ -26,7 +26,7 @@ AUDIO, WORK = ROOT / "tools" / "tts" / "packs", ROOT / "tools" / "tts" / ".work"
 MODELS = Path(os.environ.get("TTS_MODELS_DIR", ROOT / "tools" / "tts" / "models"))
 VOICES = {  # voz elegida por idioma (todas con licencia que permite uso comercial; ver README de la app)
     "en": "piper:en_GB-cori-high", "fr": "piper:fr_FR-siwis-medium", "de": "piper:de_DE-kerstin-medium",
-    "it": "piper:it_IT-paola-medium", "pt": "piper:pt_BR-faber-medium", "ru": "piper:ru_RU-denis-medium", "ro": "google:ro-RO-Chirp3-HD-Sulafat",
+    "it": "piper:it_IT-paola-medium", "pt": "piper:pt_BR-faber-medium", "ru": "piper:ru_RU-dmitri-medium", "ro": "google:ro-RO-Chirp3-HD-Sulafat",
     "es": "piper:es_MX-claude-high",
 }
 SETTINGS = {"length_scale": 1.08}
