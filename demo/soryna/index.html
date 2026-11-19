@@ -227,7 +227,7 @@ footer{text-align:center;color:var(--mute);font-size:.82rem;padding:36px 0 8px}
     <p>Apasă pe WhatsApp ca să o trimiți.</p>
     <div class="msgbox" id="msgbox"></div>
     <div class="btns">
-      <a class="btn" id="wa" href="#" target="_blank" rel="noopener">Deschide WhatsApp</a>
+      <a class="btn" id="wa" role="button" tabindex="0" target="_blank" rel="noopener">Deschide WhatsApp</a>
       <button class="btn ghost" id="copy" type="button">Copiază mesajul</button>
     </div>
   </div>
@@ -242,7 +242,7 @@ footer{text-align:center;color:var(--mute);font-size:.82rem;padding:36px 0 8px}
       <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Strada+Taberei+Tulcea">Deschide în hărți</a></div>
     <div class="glass card" style="margin:0"><h3>Program</h3>
       <table><tr><td>Luni – Sâmbătă</td><td>9:00 – 17:00</td></tr><tr><td>Duminică</td><td>9:00 – 12:00</td></tr></table>
-      <div class="cta-row"><a class="btn ghost" id="waContact" target="_blank" rel="noopener" href="#">WhatsApp</a><a class="btn ghost" target="_blank" rel="noopener" href="https://instagram.com/lashes.tulcea">@lashes.tulcea</a></div></div>
+      <div class="cta-row"><a class="btn ghost" id="waContact" role="button" tabindex="0" target="_blank" rel="noopener">WhatsApp</a><a class="btn ghost" target="_blank" rel="noopener" href="https://instagram.com/lashes.tulcea">@lashes.tulcea</a></div></div>
   </div>
 </section>
 </main>
@@ -252,7 +252,7 @@ footer{text-align:center;color:var(--mute);font-size:.82rem;padding:36px 0 8px}
 
 <script>
 // ===== CONFIG (de schimbat) =====
-const WHATSAPP = "40700000000"; // PLACEHOLDER: număr în format internațional, fără +
+const WHATSAPP = ""; // De completat cu numărul real, format internațional, fără + (ex. 407xxxxxxxx). Gol = butoanele WhatsApp nu deschid nimic.
 const HOURS = {1:[9,17],2:[9,17],3:[9,17],4:[9,17],5:[9,17],6:[9,17],0:[9,12]};
 const STEP_MIN = 60, DAYS_AHEAD = 21;
 const SERVICES = [
@@ -318,14 +318,14 @@ function update(){
 $("f").onsubmit=e=>{e.preventDefault();if($("go").disabled)return;
   const m=msgText();
   $("msgbox").textContent=m;
-  $("wa").href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(m)}`;
+  if(WHATSAPP)$("wa").href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(m)}`;
   $("ok").hidden=false;$("ok").scrollIntoView({behavior:"smooth",block:"center"});};
 $("copy").onclick=()=>{
   const m=msgText();
   const done=()=>$("copy").textContent="Copiat ✓";
   if(navigator.clipboard)navigator.clipboard.writeText(m).then(done,()=>{const r=document.createRange();r.selectNodeContents($("msgbox"));const s=getSelection();s.removeAllRanges();s.addRange(r);$("copy").textContent="Selectat, copiază"});
 };
-$("waContact").href="https://wa.me/"+WHATSAPP;
+if(WHATSAPP)$("waContact").href="https://wa.me/"+WHATSAPP;
 renderServices();renderDays();update();
 </script>
 
