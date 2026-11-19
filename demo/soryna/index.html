@@ -7,6 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Extensii de gene, pensat și vopsit sprâncene în Tulcea. Programează-te online.">
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#f6f4f8">
+<meta property="og:title" content="Soryna by lashes · Extensii de gene Tulcea">
+<meta property="og:description" content="Vezi serviciile și prețurile, apoi programează-te online în câteva atingeri.">
+<meta property="og:locale" content="ro_RO">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -124,6 +128,11 @@ input,textarea{width:100%;padding:13px 14px;border-radius:14px;border:1px solid 
 .ok .btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px}
 .msgbox{white-space:pre-wrap;text-align:left;font-size:.88rem;background:rgba(255,255,255,.6);border:1px solid var(--line);border-radius:14px;padding:12px;margin-top:14px}
 
+.need{font-size:.82rem;color:var(--accent-d);margin-bottom:10px;text-align:center}
+.need:empty{display:none}
+.work{text-align:center}
+.work p{color:var(--mute);margin-bottom:18px}
+.cta-row{display:flex;gap:10px;flex-wrap:wrap}
 /* contact */
 .contact{display:grid;gap:14px}
 .contact h3{font-size:1.3rem;margin-bottom:6px}
@@ -182,6 +191,15 @@ footer{text-align:center;color:var(--mute);font-size:.82rem;padding:36px 0 8px}
   </div>
 </section>
 
+<section id="lucrari">
+  <div class="glass card work">
+    <div class="eyebrow">Lucrările mele</div>
+    <h2>Vezi rezultatele</h2>
+    <p>Toate lucrările sunt pe Instagram.</p>
+    <a class="btn ghost" target="_blank" rel="noopener" href="https://instagram.com/lashes.tulcea">Deschide @lashes.tulcea</a>
+  </div>
+</section>
+
 <section id="reserva">
   <div class="eyebrow">Programare online</div>
   <h2>Programează-te în 4 pași</h2>
@@ -198,8 +216,9 @@ footer{text-align:center;color:var(--mute);font-size:.82rem;padding:36px 0 8px}
       <label for="tel">Telefon</label><input id="tel" type="tel" autocomplete="tel" inputmode="tel" placeholder="07xx xxx xxx">
       <label for="msg">Mențiuni (opțional)</label><textarea id="msg" rows="2" placeholder="Ex.: prima dată, am alergii…"></textarea>
       <div class="sum" id="sum" aria-live="polite"></div>
+      <p class="need" id="need" aria-live="polite"></p>
       <button class="btn" id="go" type="submit" style="width:100%" disabled>Pregătește cererea</button>
-      <p class="fine">Programarea este confirmată abia după răspunsul Soryna.</p>
+      <p class="fine">Programarea este confirmată abia după răspunsul Soryna. Dacă nu poți ajunge, anunț-o din timp. Datele tale nu se salvează pe site, ci doar se trimit în mesajul WhatsApp.</p>
     </div>
   </form>
 
@@ -223,12 +242,13 @@ footer{text-align:center;color:var(--mute);font-size:.82rem;padding:36px 0 8px}
       <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Strada+Taberei+Tulcea">Deschide în hărți</a></div>
     <div class="glass card" style="margin:0"><h3>Program</h3>
       <table><tr><td>Luni – Sâmbătă</td><td>9:00 – 17:00</td></tr><tr><td>Duminică</td><td>9:00 – 12:00</td></tr></table>
-      <a class="btn ghost" target="_blank" rel="noopener" href="https://instagram.com/lashes.tulcea">@lashes.tulcea</a></div>
+      <div class="cta-row"><a class="btn ghost" id="waContact" target="_blank" rel="noopener" href="#">WhatsApp</a><a class="btn ghost" target="_blank" rel="noopener" href="https://instagram.com/lashes.tulcea">@lashes.tulcea</a></div></div>
   </div>
 </section>
 </main>
 
 <footer>© Soryna by lashes · Tulcea<br>Demo realizat de EVORA Creative</footer>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BeautySalon","name":"Soryna by lashes","address":{"@type":"PostalAddress","streetAddress":"Str. Taberei","addressLocality":"Tulcea","addressCountry":"RO"},"sameAs":["https://instagram.com/lashes.tulcea"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"17:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"09:00","closes":"12:00"}]}</script>
 
 <script>
 // ===== CONFIG (de schimbat) =====
@@ -261,7 +281,7 @@ function renderServices(){
 function renderDays(){
   const t=new Date();t.setHours(0,0,0,0);let h="";
   for(let i=0;i<=DAYS_AHEAD;i++){const d=new Date(t);d.setDate(t.getDate()+i);
-    h+=`<button type="button" class="day" aria-pressed="false" data-i="${i}"><small>${zi[d.getDay()]}</small><b>${d.getDate()}</b><small>${luni[d.getMonth()]}</small></button>`;}
+    h+=`<button type="button" class="day" aria-pressed="false" data-i="${i}" aria-label="${ziFull[d.getDay()]} ${d.getDate()} ${luni[d.getMonth()]}"><small>${zi[d.getDay()]}</small><b>${d.getDate()}</b><small>${luni[d.getMonth()]}</small></button>`;}
   $("days").innerHTML=h;
   $("days").onclick=e=>{const b=e.target.closest(".day");if(!b)return;
     const d=new Date(t);d.setDate(t.getDate()+ +b.dataset.i);day=d;time=null;
@@ -272,7 +292,7 @@ function renderSlots(){
   const [o,c]=HOURS[day.getDay()],now=new Date(),out=[];
   for(let m=o*60;m<c*60;m+=STEP_MIN){
     const s=new Date(day);s.setHours(0,m,0,0);
-    if(s>now)out.push(`${String(Math.floor(m/60)).padStart(2,"0")}:${String(m%60).padStart(2,"0")}`);}
+    if(s>new Date(now.getTime()+60*60000))out.push(`${String(Math.floor(m/60)).padStart(2,"0")}:${String(m%60).padStart(2,"0")}`);}
   $("slots").innerHTML=out.map(x=>`<button type="button" class="slot" aria-pressed="false">${x}</button>`).join("");
   $("slothint").textContent=out.length?"":"Nu mai sunt ore libere în ziua aleasă. Alege altă zi.";
   $("slots").onclick=e=>{const b=e.target.closest(".slot");if(!b)return;time=b.textContent;
@@ -290,7 +310,9 @@ function update(){
    `<div class="tot"><span>Total estimat</span><span>${tot} lei</span></div>`+(day&&time?`<div style="margin-top:6px;color:var(--mute)"><span>${dateStr()} · ${time}</span></div>`:""):
    `<span style="color:var(--mute)">Nu ai ales încă niciun serviciu.</span>`;
   const okTel=$("tel").value.replace(/\D/g,"").length>=9;
-  $("go").disabled=!(it.length&&day&&time&&$("nm").value.trim()&&okTel);
+  const miss=[];if(!it.length)miss.push("serviciul");if(!day)miss.push("ziua");else if(!time)miss.push("ora");if(!$("nm").value.trim())miss.push("numele");if(!okTel)miss.push("telefonul");
+  $("go").disabled=miss.length>0;
+  $("need").textContent=miss.length?"Mai ai de completat: "+miss.join(", ")+".":"";
 }
 ["nm","tel","msg"].forEach(i=>$(i).addEventListener("input",update));
 $("f").onsubmit=e=>{e.preventDefault();if($("go").disabled)return;
@@ -303,6 +325,7 @@ $("copy").onclick=()=>{
   const done=()=>$("copy").textContent="Copiat ✓";
   if(navigator.clipboard)navigator.clipboard.writeText(m).then(done,()=>{const r=document.createRange();r.selectNodeContents($("msgbox"));const s=getSelection();s.removeAllRanges();s.addRange(r);$("copy").textContent="Selectat, copiază"});
 };
+$("waContact").href="https://wa.me/"+WHATSAPP;
 renderServices();renderDays();update();
 </script>
 
