@@ -6,6 +6,7 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#ffffff">
 <title>Amirali Akhlaghi</title>
+<link rel="icon" type="image/png" href="images/logo.png">
 <meta name="description" content="Amirali Akhlaghi, interior architect and decorator. Projects in Turkey, Iran, the USA and worldwide.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,6 +68,11 @@ header.open{background:#ffffff;color:var(--ink);mix-blend-mode:normal;padding-bo
 .ov-social{display:flex;gap:22px;flex-wrap:wrap}
 
 /* Hero */
+.hero-inner{position:relative;z-index:2;display:grid;justify-items:center;gap:clamp(18px,3.4vh,34px);padding-top:40px}
+.hero-logo{height:clamp(84px,15vh,150px);width:auto;border:1px solid rgba(255,255,255,.3)}
+.ov-logo{height:64px;width:auto;margin-bottom:6px}
+.f-brand{display:flex;align-items:center;gap:14px}
+.f-brand img{height:30px;width:auto}
 .hero{height:100svh;min-height:520px;display:grid;place-items:center}
 .hero h1{position:relative;z-index:2;font-family:var(--display);font-weight:500;color:#fff;font-size:clamp(34px,6.4vw,98px);letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:0 20px;line-height:1.1}
 .hero small{position:absolute;z-index:2;bottom:34px;left:0;right:0;text-align:center;color:#ffffff;font-size:10px;letter-spacing:.34em;text-transform:uppercase;opacity:.85}
@@ -212,17 +218,18 @@ button.wa-btn{border:0;cursor:pointer;font-family:var(--text)}
     <a href="#contact"><strong>Contact</strong><span>Write to Amirali on WhatsApp</span></a>
   </nav>
   <div class="ov-info">
+    <img class="ov-logo" src="images/logo.png" alt="" width="444" height="558">
     <div><h4>Practice</h4><p>Design, execution and supervision of residential, office, commercial and hotel projects, and jewelry galleries.</p></div>
     <div><h4>Locations</h4><p>Turkey, Iran and the USA. Projects worldwide.</p></div>
     <div><h4>Latest project</h4><p>A residential interior in Tehran, 2026.</p></div>
-    <div><h4>Contact</h4><p>By message on Instagram or WhatsApp.</p></div>
+    <div><h4>Contact</h4><p>WhatsApp +90 531 302 3822<br>amirali.akhlaghi@yahoo.com</p></div>
     <div class="ov-social"><a href="https://www.instagram.com/akhlaghi.decorator/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/61583439316098" target="_blank" rel="noopener">Facebook</a></div>
   </div>
 </div>
 
 <main id="top">
   <section class="hero shot t-hero">
-    <h1>Amirali Akhlaghi</h1>
+    <div class="hero-inner"><img class="hero-logo" src="images/logo.png" alt="Amirali Akhlaghi logo" width="444" height="558"><h1>Amirali Akhlaghi</h1></div>
     <small>Interior Architect and Decorator</small>
   </section>
 
@@ -315,18 +322,19 @@ button.wa-btn{border:0;cursor:pointer;font-family:var(--text)}
     <div class="rv"><h4>Based</h4><p>Turkey, Iran, USA</p><small>Projects worldwide</small></div>
     <div class="rv"><h4>Education</h4><p>B.A. Interior Architecture</p><small>Top-ranked graduate</small></div>
     <div class="rv"><h4>Latest project</h4><p>Tehran, 2026</p><small>A residential interior</small></div>
-    <div class="rv"><h4>Contact</h4><p>Instagram and WhatsApp</p><small>Direct message</small></div>
+    <div class="rv"><h4>Contact</h4><p>Instagram and WhatsApp</p><small>+90 531 302 3822</small></div>
   </section>
 
   <section class="contact" id="contact">
     <div>
       <p class="eyebrow">Contact</p>
       <h2>Let us talk about your space</h2>
-      <p class="lead">Tell Amirali about your project. Write your message here and send it by Instagram or WhatsApp.</p>
+      <p class="lead">Tell Amirali about your project. Write your message here and send it straight to WhatsApp or Instagram.</p>
       <div class="c-info">
-        <div><h4>WhatsApp</h4><p id="wa-user">@akhlaghi.decorator</p><small>Search this username in WhatsApp to start the chat.</small><button type="button" id="copy-user">Copy username</button></div>
-        <div><h4>Instagram</h4><p>@akhlaghi.decorator</p><small>Direct message, answered by Amirali.</small><a class="l" href="https://ig.me/m/akhlaghi.decorator" target="_blank" rel="noopener">Open chat</a></div>
-        <div><h4>Facebook</h4><p>Amirali Akhlaghi</p><small>Interior Designer</small></div>
+        <div><h4>WhatsApp</h4><p>+90 531 302 3822</p><small>Message Amirali directly.</small><a class="l" href="https://wa.me/905313023822" target="_blank" rel="noopener">Open chat</a></div>
+        <div><h4>Instagram</h4><p>@akhlaghi.decorator</p><small>Direct message.</small><a class="l" href="https://ig.me/m/akhlaghi.decorator" target="_blank" rel="noopener">Open chat</a></div>
+        <div><h4>Email</h4><p id="mail">amirali.akhlaghi@yahoo.com</p><small>For quotes and project details.</small><button type="button" id="copy-mail">Copy email</button></div>
+        <div><h4>Locations</h4><p>Türkiye, USA, Iran</p><small>Projects worldwide.</small></div>
       </div>
     </div>
     <form class="wa-form" id="wa-form" autocomplete="off">
@@ -334,23 +342,23 @@ button.wa-btn{border:0;cursor:pointer;font-family:var(--text)}
       <div><label for="wa-city">City</label><input id="wa-city" type="text" placeholder="Where is the project"></div>
       <div><label for="wa-msg">Your project</label><textarea id="wa-msg" rows="4" placeholder="A few words about the space"></textarea></div>
       <div class="wa-actions">
-        <button type="button" class="wa-btn" id="wa-send">Send on WhatsApp</button>
+        <a class="wa-btn" id="wa-send" href="https://wa.me/905313023822" target="_blank" rel="noopener">Send on WhatsApp</a>
         <a class="wa-btn alt" id="ig-send" href="https://ig.me/m/akhlaghi.decorator" target="_blank" rel="noopener">Send on Instagram</a>
       </div>
       <p class="wa-status" id="wa-status" role="status" aria-live="polite"></p>
-      <p class="wa-hint">Your message is copied automatically. Paste it into the chat that opens.</p>
+      <p class="wa-hint">WhatsApp opens with your message already written. On Instagram, your message is copied so you can paste it.</p>
     </form>
   </section>
 
   <nav class="social" aria-label="Social media">
     <a href="https://www.instagram.com/akhlaghi.decorator/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.500Zm0 2A2.5 2.5 0 1 0 14.500 12 2.500 2.500 0 0 0 12 9.500ZM17.500 5.800a1.200 1.200 0 1 1-1.200 1.200 1.200 1.200 0 0 1 1.200-1.200Z"/></svg>Instagram</a>
     <a href="https://www.facebook.com/61583439316098" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.500 22v-8.500h2.800l.5-3.400h-3.300V8c0-1 .4-1.700 1.800-1.700h1.600V3.300A20 20 0 0 0 14.600 3C12 3 10.200 4.600 10.200 7.500v2.600H7.400v3.400h2.800V22h3.300Z"/></svg>Facebook</a>
-    <a href="#contact" id="wa-social"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.600 15.100L2 22l5-1.300A10 10 0 1 0 12 2Zm0 2a8 8 0 1 1-4.200 14.800l-.4-.2-2.900.8.8-2.800-.3-.4A8 8 0 0 1 12 4Zm-3 3.800c-.2 0-.5.100-.7.400-.3.300-1 1-1 2.400s1 2.800 1.200 3c.1.200 2 3.100 4.900 4.300 2.400 1 2.900.8 3.400.7.500-.1 1.700-.7 1.900-1.400.2-.7.200-1.200.2-1.400-.1-.1-.3-.2-.6-.4l-1.900-.9c-.3-.1-.5-.1-.7.100l-.9 1.100c-.2.200-.3.200-.6.100-.3-.2-1.200-.4-2.200-1.400-.8-.7-1.400-1.600-1.500-1.900-.2-.3 0-.4.100-.6l.4-.5c.1-.2.200-.3.300-.5.100-.2 0-.4 0-.5l-.9-2.100c-.2-.5-.5-.5-.7-.5H9Z"/></svg>WhatsApp</a>
+    <a href="https://wa.me/905313023822" id="wa-social" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.600 15.100L2 22l5-1.300A10 10 0 1 0 12 2Zm0 2a8 8 0 1 1-4.200 14.800l-.4-.2-2.900.8.8-2.800-.3-.4A8 8 0 0 1 12 4Zm-3 3.800c-.2 0-.5.100-.7.400-.3.300-1 1-1 2.400s1 2.800 1.200 3c.1.200 2 3.100 4.900 4.300 2.400 1 2.900.8 3.400.7.500-.1 1.700-.7 1.900-1.400.2-.7.200-1.200.2-1.400-.1-.1-.3-.2-.6-.4l-1.900-.9c-.3-.1-.5-.1-.7.100l-.9 1.100c-.2.200-.3.200-.6.100-.3-.2-1.200-.4-2.200-1.400-.8-.7-1.400-1.600-1.500-1.900-.2-.3 0-.4.100-.6l.4-.5c.1-.2.200-.3.300-.5.100-.2 0-.4 0-.5l-.9-2.100c-.2-.5-.5-.5-.7-.5H9Z"/></svg>WhatsApp</a>
   </nav>
 </main>
 
 <footer>
-  <span>Amirali Akhlaghi</span>
+  <span class="f-brand"><img src="images/logo.png" alt="" width="444" height="558">Amirali Akhlaghi</span>
   <span>Preview by EVORA Studio. Sample images are placeholders.</span>
 </footer>
 
@@ -363,17 +371,17 @@ if('IntersectionObserver' in window){
 </script>
 <script>
 (function(){
-  // His WhatsApp shows a username, not a number. If he shares the number, put it here
-  // with country code and digits only, for example 905551234567, and the button opens the chat directly.
-  var NUMBER = "";
-  var USER = "@akhlaghi.decorator";
+  var NUMBER = "905313023822";
+  var EMAIL = "amirali.akhlaghi@yahoo.com";
   var status = document.getElementById("wa-status");
+  var send = document.getElementById("wa-send");
   function message(){
     var n = document.getElementById("wa-name").value.trim();
     var c = document.getElementById("wa-city").value.trim();
     var m = document.getElementById("wa-msg").value.trim();
     return "Hello Amirali," + (n ? " my name is " + n + "." : "") + (c ? " My project is in " + c + "." : "") + (m ? " " + m : "");
   }
+  function refresh(){ send.href = "https://wa.me/" + NUMBER + "?text=" + encodeURIComponent(message()); }
   function copy(text){
     return new Promise(function(resolve){
       function fallback(){
@@ -389,28 +397,18 @@ if('IntersectionObserver' in window){
       } else { fallback(); }
     });
   }
-  document.getElementById("wa-send").addEventListener("click", function(){
-    var text = message();
-    if (NUMBER) {
-      window.open("https://wa.me/" + NUMBER + "?text=" + encodeURIComponent(text), "_blank", "noopener");
-      status.textContent = "Opening WhatsApp.";
-      return;
-    }
-    copy(text).then(function(ok){
-      status.textContent = ok
-        ? "Message copied. Open WhatsApp, search " + USER + " and paste it."
-        : "Open WhatsApp and search " + USER + ". Select your message above and copy it.";
-    });
-  });
+  ["wa-name","wa-city","wa-msg"].forEach(function(id){ document.getElementById(id).addEventListener("input", refresh); });
+  send.addEventListener("click", function(){ refresh(); status.textContent = "Opening WhatsApp with your message."; });
   document.getElementById("ig-send").addEventListener("click", function(){
     copy(message()).then(function(ok){
       status.textContent = ok ? "Message copied. Paste it in the Instagram chat." : "Select your message above and copy it before sending.";
     });
   });
-  document.getElementById("copy-user").addEventListener("click", function(){
-    copy(USER).then(function(ok){ status.textContent = ok ? "Username copied: " + USER : "Username: " + USER; });
+  document.getElementById("copy-mail").addEventListener("click", function(){
+    copy(EMAIL).then(function(ok){ status.textContent = ok ? "Email copied: " + EMAIL : "Email: " + EMAIL; });
   });
   document.getElementById("wa-form").addEventListener("submit", function(e){ e.preventDefault(); });
+  refresh();
 })();
 </script>
 <script>
