@@ -41,6 +41,7 @@ img{display:block;max-width:100%}
 
 /* Header */
 header{position:fixed;top:0;left:0;right:0;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:22px clamp(20px,4vw,56px);color:#ffffff;mix-blend-mode:difference}
+header.open{background:#ffffff;color:var(--ink);mix-blend-mode:normal;padding-bottom:18px}
 .brand{font-family:var(--display);font-size:19px;font-weight:500;letter-spacing:.04em}
 .menu-btn{display:flex;align-items:center;gap:14px;background:none;border:0;color:inherit;cursor:pointer;font:400 10px var(--text);letter-spacing:.32em;text-transform:uppercase;padding:8px 0}
 .bars{display:grid;gap:6px;width:28px}
@@ -48,9 +49,10 @@ header{position:fixed;top:0;left:0;right:0;z-index:30;display:flex;justify-conte
 .menu-btn[aria-expanded="true"] .bars i:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .menu-btn[aria-expanded="true"] .bars i:nth-child(2){opacity:0}
 .menu-btn[aria-expanded="true"] .bars i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.menu-btn:focus-visible{outline:2px solid #fff;outline-offset:6px}
-.overlay{position:fixed;inset:0;z-index:25;background:#ffffff;display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(30px,6vw,110px);align-content:center;padding:96px clamp(20px,6vw,96px) 48px;overflow-y:auto;visibility:hidden;opacity:0;transition:opacity .5s ease,visibility .5s}
+.menu-btn:focus-visible{outline:2px solid currentColor;outline-offset:6px}
+.overlay{position:fixed;inset:0;z-index:25;background:#ffffff;display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(30px,6vw,110px);align-content:center;padding:110px clamp(20px,6vw,96px) 48px;overflow-y:auto;visibility:hidden;opacity:0;transition:opacity .5s ease,visibility .5s}
 .overlay.open{visibility:visible;opacity:1}
+.overlay{overscroll-behavior:contain}
 .ov-links{display:grid;align-content:center}
 .ov-links a{display:block;padding:20px 0;border-bottom:1px solid rgba(27,25,23,.14);color:var(--ink)}
 .ov-links a:first-child{border-top:1px solid rgba(27,25,23,.14)}
@@ -91,6 +93,13 @@ header{position:fixed;top:0;left:0;right:0;z-index:30;display:flex;justify-conte
 .frame figcaption{position:relative;z-index:2;width:100%;padding:0 clamp(20px,4vw,56px) 38px;display:flex;justify-content:space-between;align-items:end;gap:20px;color:#ffffff}
 .frame h3{font-family:var(--display);font-weight:500;font-size:clamp(32px,4.6vw,68px);line-height:1.05}
 .frame span{font-size:10px;letter-spacing:.32em;text-transform:uppercase;opacity:.85}
+
+/* Film */
+.film-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.sound{position:relative;z-index:3;background:none;border:1px solid rgba(255,255,255,.7);color:#fff;font:400 10px var(--text);letter-spacing:.3em;text-transform:uppercase;padding:12px 22px;cursor:pointer;display:none}
+.sound.show{display:inline-block}
+.sound:hover{background:#fff;color:var(--ink)}
+.sound:focus-visible{outline:2px solid #fff;outline-offset:4px}
 
 /* About */
 .about{background:var(--deep);color:#ffffff;margin-top:6px;display:grid;grid-template-columns:1.1fr 1fr;min-height:100svh}
@@ -209,7 +218,10 @@ footer{padding:26px clamp(20px,4vw,56px);display:flex;justify-content:space-betw
       </div>
     </div>
 
-    <figure class="frame shot t-design"><figcaption><h3>New Design</h3><span>Interior architecture</span></figcaption></figure>
+    <figure class="frame shot t-design" id="film-frame">
+      <video class="film-video" id="film" muted loop playsinline autoplay preload="metadata" poster="images/film-poster.jpg"><source src="images/film.mp4" type="video/mp4"></video>
+      <figcaption><div><h3>New Design</h3><span>Film</span></div><button class="sound" id="sound" type="button" aria-pressed="false">Sound on</button></figcaption>
+    </figure>
 
     <div class="note rv">
       <div>
@@ -298,10 +310,26 @@ if('IntersectionObserver' in window){
     btn.setAttribute("aria-expanded",open?"true":"false");
     menu.setAttribute("aria-hidden",open?"false":"true");
     btn.firstElementChild.textContent=open?"Close":"Menu";
+    document.querySelector("header").classList.toggle("open",open);
+    document.body.style.overflow=open?"hidden":"";
+    if(open)menu.scrollTop=0;
   }
   btn.addEventListener("click",function(){set(!menu.classList.contains("open"))});
   menu.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){set(false)})});
   document.addEventListener("keydown",function(e){if(e.key==="Escape")set(false)});
+})();
+</script>
+<script>
+(function(){
+  var v=document.getElementById("film"),b=document.getElementById("sound");
+  if(!v||!b)return;
+  v.addEventListener("loadeddata",function(){b.classList.add("show")});
+  b.addEventListener("click",function(){
+    v.muted=!v.muted;
+    b.textContent=v.muted?"Sound on":"Sound off";
+    b.setAttribute("aria-pressed",v.muted?"false":"true");
+    if(!v.muted)v.play().catch(function(){});
+  });
 })();
 </script>
 </body>
