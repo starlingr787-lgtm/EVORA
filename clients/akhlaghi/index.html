@@ -42,8 +42,11 @@ img{display:block;max-width:100%}
 .t-portrait::after{display:none}
 
 /* Header */
-header{position:fixed;top:0;left:0;right:0;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:22px clamp(20px,4vw,56px);color:#ffffff;mix-blend-mode:difference}
-header.open{background:#ffffff;color:var(--ink);mix-blend-mode:normal;padding-bottom:18px}
+header{position:fixed;top:0;left:0;right:0;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:20px clamp(20px,4vw,56px);color:#ffffff;transition:background .35s ease,color .35s ease}
+header.t-top{background:transparent;color:#ffffff}
+header.t-dark{background:rgba(24,19,16,.8);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#ffffff}
+header.t-light{background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:var(--ink)}
+header.open{background:#ffffff;color:var(--ink)}
 .brand{font-family:var(--display);font-size:19px;font-weight:500;letter-spacing:.04em}
 .menu-btn{display:flex;align-items:center;gap:14px;background:none;border:0;color:inherit;cursor:pointer;font:400 10px var(--text);letter-spacing:.32em;text-transform:uppercase;padding:8px 0}
 .bars{display:grid;gap:6px;width:28px}
@@ -133,13 +136,16 @@ header.open{background:#ffffff;color:var(--ink);mix-blend-mode:normal;padding-bo
 .strip .t-a{background-position:50% 100%}
 
 /* Services */
-.services{padding:clamp(80px,12vw,180px) clamp(20px,6vw,96px);background:#fff}
-.services h2{font-family:var(--display);font-weight:500;font-size:clamp(34px,4.8vw,70px);line-height:1.08;max-width:16ch}
-.svc-list{margin-top:clamp(36px,5vw,72px);border-top:1px solid rgba(27,25,23,.2)}
-.svc{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(20px,5vw,90px);padding:34px 0;border-bottom:1px solid rgba(27,25,23,.2);align-items:start}
-.svc h3{font-family:var(--display);font-weight:500;font-size:clamp(28px,3.2vw,46px);line-height:1.1}
-.svc p{font-size:clamp(15px,1.2vw,17px);color:#4a4540;max-width:52ch}
-.svc p+p{margin-top:10px}
+.services{padding:clamp(90px,13vw,200px) clamp(20px,6vw,96px);background:#fff}
+.svc-wrap{display:grid;grid-template-columns:5fr 7fr;gap:clamp(40px,8vw,140px);align-items:start}
+.svc-intro{position:sticky;top:130px}
+.services h2{font-family:var(--display);font-weight:500;font-size:clamp(36px,4.8vw,72px);line-height:1.06;max-width:12ch}
+.svc-lead{margin-top:28px;font-size:clamp(16px,1.3vw,18px);color:#4a4540;max-width:34ch}
+.svc-items{display:grid;gap:clamp(60px,8vw,120px)}
+.svc .tag{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--stone);margin-bottom:14px}
+.svc h3{font-family:var(--display);font-weight:500;font-size:clamp(32px,3.6vw,56px);line-height:1.04;margin-bottom:20px}
+.svc p{font-size:clamp(16px,1.25vw,18px);color:#4a4540;max-width:48ch}
+.svc p+p{margin-top:14px}
 
 /* Quote */
 .quote{background:linear-gradient(rgba(22,16,12,.66),rgba(22,16,12,.72)),url("images/quote.jpg") center/cover,var(--deep);color:#fff;padding:clamp(90px,14vw,210px) clamp(20px,6vw,96px);text-align:center}
@@ -226,6 +232,24 @@ button.wa-btn{border:0;cursor:pointer;font-family:var(--text)}
   .strip .shot{height:auto;aspect-ratio:3/4;background-position:50% 50%}
   .strip .t-a{aspect-ratio:9/16;background-position:50% 100%}
   .quote{padding-block:clamp(110px,30vw,200px)}
+}
+
+/* Form, editorial */
+.wa-form{gap:clamp(30px,3.4vw,44px);align-content:start}
+.wa-form .row2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px)}
+.wa-form label{font-size:10px;letter-spacing:.32em;color:var(--stone)}
+.wa-form input,.wa-form textarea{margin-top:10px;padding:8px 0 14px;border:0;border-bottom:1px solid rgba(27,25,23,.22);font:500 clamp(22px,2vw,28px)/1.35 var(--display);color:var(--ink)}
+.wa-form input::placeholder,.wa-form textarea::placeholder{font-style:italic;font-weight:400;color:#a29b92}
+.wa-form input:focus,.wa-form textarea:focus{border-bottom-color:var(--ink)}
+.wa-actions{margin-top:6px;gap:clamp(20px,3vw,36px)}
+.wa-btn.alt{background:none;border:0;border-bottom:1px solid var(--ink);padding:0 0 5px;color:var(--ink)}
+.wa-btn.alt:hover{background:none;color:var(--ink);opacity:.6}
+.wa-status{min-height:20px}
+.wa-hint{max-width:46ch;line-height:1.6}
+@media (max-width:820px){
+  .svc-wrap{grid-template-columns:1fr}
+  .svc-intro{position:static}
+  .wa-form .row2{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -317,13 +341,18 @@ button.wa-btn{border:0;cursor:pointer;font-family:var(--text)}
   </section>
 
   <section class="services" id="services">
-    <p class="eyebrow rv">Services</p>
-    <h2 class="rv">From the plan to the last object</h2>
-    <div class="svc-list">
-      <div class="svc rv"><h3>Interior architecture</h3><div><p>Space planning and complete interior design for residences, offices, commercial spaces, hotels and jewelry galleries, from the first concept to supervision on site.</p><p>Design, execution and supervision stay with the same designer, so the finished space matches the idea.</p></div></div>
-      <div class="svc rv"><h3>Decoration and styling</h3><div><p>The layer that gives a room its character. Art, color, glass, porcelain and sculptural lighting are chosen and placed one by one.</p><p>Where art, color and character come together.</p></div></div>
-      <div class="svc rv"><h3>Home staging</h3><div><p>Preparing a property to be seen at its best, with furniture, textiles and objects arranged to show its potential.</p></div></div>
-      <div class="svc rv"><h3>Accessories</h3><div><p>Selected pieces and finishing touches to complete a project, from decorative objects to details that tie a room together.</p></div></div>
+    <div class="svc-wrap">
+      <div class="svc-intro rv">
+        <p class="eyebrow">Services</p>
+        <h2>From the plan to the last object</h2>
+        <p class="svc-lead">For a single room or a complete project, the work stays with one designer, from the first sketch to the final styling.</p>
+      </div>
+      <div class="svc-items">
+        <article class="svc rv"><p class="tag">Architecture</p><h3>Interior architecture</h3><p>Space planning and complete interior design for residences, offices, commercial spaces, hotels and jewelry galleries, from the first concept to supervision on site.</p><p>Design, execution and supervision stay with the same designer, so the finished space matches the idea.</p></article>
+        <article class="svc rv"><p class="tag">Styling</p><h3>Decoration and styling</h3><p>The layer that gives a room its character. Art, color, glass, porcelain and sculptural lighting are chosen and placed one by one.</p><p>Where art, color and character come together.</p></article>
+        <article class="svc rv"><p class="tag">Staging</p><h3>Home staging</h3><p>Preparing a property to be seen at its best, with furniture, textiles and objects arranged to show its potential.</p></article>
+        <article class="svc rv"><p class="tag">Details</p><h3>Accessories</h3><p>Selected pieces and finishing touches to complete a project, from decorative objects to details that tie a room together.</p></article>
+      </div>
     </div>
   </section>
 
@@ -376,9 +405,9 @@ button.wa-btn{border:0;cursor:pointer;font-family:var(--text)}
       </div>
     </div>
     <form class="wa-form" id="wa-form" autocomplete="off">
-      <div><label for="wa-name">Your name</label><input id="wa-name" type="text" placeholder="Name"></div>
-      <div><label for="wa-city">City</label><input id="wa-city" type="text" placeholder="Where is the project"></div>
-      <div><label for="wa-msg">Your project</label><textarea id="wa-msg" rows="4" placeholder="A few words about the space"></textarea></div>
+      <div class="row2"><div><label for="wa-name">Your name</label><input id="wa-name" type="text" placeholder="Name"></div>
+      <div><label for="wa-city">City</label><input id="wa-city" type="text" placeholder="Where is the project"></div></div>
+      <div><label for="wa-msg">Your project</label><textarea id="wa-msg" rows="5" placeholder="A few words about the space"></textarea></div>
       <div class="wa-actions">
         <a class="wa-btn" id="wa-send" href="https://wa.me/905313023822" target="_blank" rel="noopener">Send on WhatsApp</a>
         <a class="wa-btn alt" id="ig-send" href="https://ig.me/m/akhlaghi.decorator" target="_blank" rel="noopener">Send on Instagram</a>
@@ -497,6 +526,30 @@ if('IntersectionObserver' in window){
   }
   car.addEventListener("pointerup", end);
   car.addEventListener("pointercancel", end);
+})();
+</script>
+<script>
+(function(){
+  var header = document.querySelector("header");
+  var menu = document.getElementById("menu");
+  var ticking = false;
+  function update(){
+    ticking = false;
+    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+    var els = document.elementsFromPoint(Math.round(window.innerWidth / 2), 60);
+    var el = null;
+    for (var i = 0; i < els.length; i++) {
+      if (!els[i].closest("header") && !els[i].closest("#menu")) { el = els[i]; break; }
+    }
+    var light = el && el.closest(".statement,.note,.services,.glance,.contact,.social,footer");
+    var tone = y < 40 ? "t-top" : (light ? "t-light" : "t-dark");
+    header.classList.remove("t-top", "t-dark", "t-light");
+    header.classList.add(tone);
+  }
+  function req(){ if (!ticking) { ticking = true; window.requestAnimationFrame(update); } }
+  window.addEventListener("scroll", req, { passive: true });
+  window.addEventListener("resize", req);
+  update();
 })();
 </script>
 </body>
