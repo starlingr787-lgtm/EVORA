@@ -15,7 +15,7 @@
 <meta property="og:description" content="Interior architecture, decoration and home staging. Projects in Turkey, Iran, the USA and worldwide.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Hanken+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Hanken+Grotesk:wght@300;400;500&family=Vazirmatn:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --paper:#ffffff;
@@ -255,14 +255,46 @@ button.wa-btn{border:0;cursor:pointer;font-family:var(--text)}
   .svc-intro{position:static}
   .wa-form .row2{grid-template-columns:1fr}
 }
+
+/* Language switcher and right-to-left support */
+.hr{display:flex;align-items:center;gap:clamp(8px,2vw,26px)}
+.lang{display:flex;gap:2px}
+.lang button{background:none;border:0;color:inherit;font:400 10px var(--text);letter-spacing:.2em;padding:8px 6px;cursor:pointer;opacity:.6;position:relative;transition:opacity .3s}
+.lang button:hover{opacity:1}
+.lang button[aria-pressed="true"]{opacity:1}
+.lang button[aria-pressed="true"]::after{content:"";position:absolute;left:6px;right:6px;bottom:3px;height:1px;background:currentColor}
+.lang button:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.latin{font-family:"Cormorant Garamond","Garamond","Times New Roman",serif!important}
+.car-wrap{direction:ltr}
+.slide figcaption{unicode-bidi:plaintext;text-align:start}
+html[lang="fa"]{--display:"Vazirmatn","Cormorant Garamond",serif;--text:"Vazirmatn",system-ui,sans-serif}
+html[lang="fa"] *:not(.latin){letter-spacing:normal!important;text-transform:none!important}
+html[lang="fa"] em{font-style:normal}
+html[lang="fa"] .quote blockquote{font-style:normal}
+html[lang="fa"] body{line-height:1.95}
+html[lang="fa"] h2,html[lang="fa"] h3,html[lang="fa"] blockquote{line-height:1.4}
+html[lang="fa"] .lang button{letter-spacing:.1em!important}
+
+/* Persian type sizes */
+html[lang="fa"] .statement h2,html[lang="fa"] .note h2{font-size:clamp(28px,3.6vw,54px)}
+html[lang="fa"] .services h2{font-size:clamp(30px,4vw,60px);max-width:14ch}
+html[lang="fa"] .svc h3{font-size:clamp(30px,3.4vw,52px)}
+html[lang="fa"] .svc h3 + p{font-size:clamp(19px,1.7vw,25px);line-height:1.7}
+html[lang="fa"] .contact h2{font-size:clamp(30px,4vw,60px);max-width:16ch}
+html[lang="fa"] .quote blockquote{font-size:clamp(28px,4.4vw,66px)}
+html[lang="fa"] .frame h3{font-size:clamp(28px,3.8vw,56px)}
+html[lang="fa"] .glance p,html[lang="fa"] .c-info p{font-size:clamp(20px,1.8vw,26px)}
+html[lang="fa"] .about h2.latin{font-size:clamp(36px,4.6vw,68px)}
+html[lang="fa"] .eyebrow,html[lang="fa"] .svc .tag,html[lang="fa"] .wa-form label,html[lang="fa"] .glance h3,html[lang="fa"] .c-info h3,html[lang="fa"] .ov-info h3,html[lang="fa"] .menu-btn,html[lang="fa"] .hero small,html[lang="fa"] .frame span,html[lang="fa"] .slide figcaption,html[lang="fa"] .wa-btn,html[lang="fa"] .c-info a.l,html[lang="fa"] .c-info button,html[lang="fa"] .link,html[lang="fa"] .wa-hint,html[lang="fa"] .social a,html[lang="fa"] footer,html[lang="fa"] .ov-links span{font-size:13px}
+html[lang="fa"] .svc h3 + p + p,html[lang="fa"] .wa-hint{font-size:15px;line-height:1.9}
 </style>
 </head>
 <body>
 <a class="skip" href="#top">Skip to content</a>
 
 <header>
-  <a class="brand" href="#top">Amirali Akhlaghi</a>
-  <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu"><span>Menu</span><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span></button>
+  <a class="brand latin" href="#top">Amirali Akhlaghi</a>
+  <div class="hr"><div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="tr" aria-pressed="false">TR</button><button type="button" data-lang="fa" aria-pressed="false">FA</button></div><button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu"><span>Menu</span><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span></button></div>
 </header>
 <div class="overlay" id="menu" aria-hidden="true">
   <nav class="ov-links" aria-label="Main">
@@ -276,14 +308,14 @@ button.wa-btn{border:0;cursor:pointer;font-family:var(--text)}
     <div><h3>Practice</h3><p>Design, execution and supervision of residential, office, commercial and hotel projects, and jewelry galleries.</p></div>
     <div><h3>Locations</h3><p>Turkey, Iran and the USA. Projects worldwide.</p></div>
     <div><h3>Latest project</h3><p>A residential interior in Tehran, 2026.</p></div>
-    <div><h3>Contact</h3><p>WhatsApp +90 531 302 3822<br>amirali.akhlaghi@yahoo.com</p></div>
+    <div><h3>Contact</h3><p><bdi>WhatsApp +90 531 302 3822<br>amirali.akhlaghi@yahoo.com</bdi></p></div>
     <div class="ov-social"><a href="https://www.instagram.com/akhlaghi.decorator/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/61583439316098" target="_blank" rel="noopener">Facebook</a></div>
   </div>
 </div>
 
 <main id="top">
   <section class="hero shot t-hero">
-    <div class="hero-inner"><img class="hero-logo" src="images/logo.png" alt="Amirali Akhlaghi logo" width="444" height="558"><h1>Amirali Akhlaghi</h1></div>
+    <div class="hero-inner"><img class="hero-logo" src="images/logo.png" alt="Amirali Akhlaghi logo" width="444" height="558"><h1 class="latin">Amirali Akhlaghi</h1></div>
     <small>Interior Architect and Decorator</small>
   </section>
 
@@ -363,13 +395,13 @@ button.wa-btn{border:0;cursor:pointer;font-family:var(--text)}
 
   <section class="quote">
     <blockquote class="rv">Turning ideas into art.</blockquote>
-    <cite class="rv">Amirali Akhlaghi</cite>
+    <cite class="rv latin">Amirali Akhlaghi</cite>
   </section>
 
   <section class="about" id="about">
     <div class="copy rv">
       <p class="eyebrow">About</p>
-      <h2>Amirali Akhlaghi</h2>
+      <h2 class="latin">Amirali Akhlaghi</h2>
       <p>Amirali is an architect and interior designer, a top-ranked graduate with a Bachelor's degree in Interior Architecture.</p>
       <p>His experience covers the design, execution and supervision of residential projects, office spaces, commercial projects, hotels and jewelry galleries, in Iran, Turkey and the USA.</p>
       <p>In April 2026 he began a new residential project in Tehran, which he designs, supervises, styles and decorates himself, from concept to completion. His recent work also includes hotel room design.</p>
@@ -394,7 +426,7 @@ button.wa-btn{border:0;cursor:pointer;font-family:var(--text)}
     <div class="rv"><h3>Based</h3><p>Turkey, Iran, USA</p><small>Projects worldwide</small></div>
     <div class="rv"><h3>Education</h3><p>B.A. Interior Architecture</p><small>Top-ranked graduate</small></div>
     <div class="rv"><h3>Latest project</h3><p>Tehran, 2026</p><small>A residential interior</small></div>
-    <div class="rv"><h3>Contact</h3><p>Instagram and WhatsApp</p><small>+90 531 302 3822</small></div>
+    <div class="rv"><h3>Contact</h3><p>Instagram and WhatsApp</p><small><bdi>+90 531 302 3822</bdi></small></div>
   </section>
 
   <section class="contact" id="contact">
@@ -403,9 +435,9 @@ button.wa-btn{border:0;cursor:pointer;font-family:var(--text)}
       <h2>Let us talk about your space</h2>
       <p class="lead">Tell Amirali about your project. Write your message here and send it straight to WhatsApp or Instagram.</p>
       <div class="c-info">
-        <div><h3>WhatsApp</h3><p>+90 531 302 3822</p><small>Message Amirali directly.</small><a class="l" href="https://wa.me/905313023822" target="_blank" rel="noopener">Open chat</a></div>
-        <div><h3>Instagram</h3><p>@akhlaghi.decorator</p><small>Direct message.</small><a class="l" href="https://ig.me/m/akhlaghi.decorator" target="_blank" rel="noopener">Open chat</a></div>
-        <div><h3>Email</h3><p id="mail">amirali.akhlaghi@yahoo.com</p><small>For quotes and project details.</small><button type="button" id="copy-mail">Copy email</button></div>
+        <div><h3>WhatsApp</h3><p><bdi>+90 531 302 3822</bdi></p><small>Message Amirali directly.</small><a class="l" href="https://wa.me/905313023822" target="_blank" rel="noopener">Open chat</a></div>
+        <div><h3>Instagram</h3><p><bdi>@akhlaghi.decorator</bdi></p><small>Direct message.</small><a class="l" href="https://ig.me/m/akhlaghi.decorator" target="_blank" rel="noopener">Open chat</a></div>
+        <div><h3>Email</h3><p id="mail"><bdi>amirali.akhlaghi@yahoo.com</bdi></p><small>For quotes and project details.</small><button type="button" id="copy-mail">Copy email</button></div>
         <div><h3>Locations</h3><p>Türkiye, USA, Iran</p><small>Projects worldwide.</small></div>
       </div>
     </div>
@@ -443,6 +475,7 @@ if('IntersectionObserver' in window){
 </script>
 <script>
 (function(){
+  var T = function(x){ return window.t ? window.t(x) : x; };
   var NUMBER = "905313023822";
   var EMAIL = "amirali.akhlaghi@yahoo.com";
   var status = document.getElementById("wa-status");
@@ -470,14 +503,14 @@ if('IntersectionObserver' in window){
     });
   }
   ["wa-name","wa-city","wa-msg"].forEach(function(id){ document.getElementById(id).addEventListener("input", refresh); });
-  send.addEventListener("click", function(){ refresh(); status.textContent = "Opening WhatsApp with your message."; });
+  send.addEventListener("click", function(){ refresh(); status.textContent = T("Opening WhatsApp with your message."); });
   document.getElementById("ig-send").addEventListener("click", function(){
     copy(message()).then(function(ok){
-      status.textContent = ok ? "Message copied. Paste it in the Instagram chat." : "Select your message above and copy it before sending.";
+      status.textContent = ok ? T("Message copied. Paste it in the Instagram chat.") : T("Select your message above and copy it before sending.");
     });
   });
   document.getElementById("copy-mail").addEventListener("click", function(){
-    copy(EMAIL).then(function(ok){ status.textContent = ok ? "Email copied: " + EMAIL : "Email: " + EMAIL; });
+    copy(EMAIL).then(function(ok){ status.textContent = ok ? T("Email copied:") + " " + EMAIL : T("Email") + ": " + EMAIL; });
   });
   document.getElementById("wa-form").addEventListener("submit", function(e){ e.preventDefault(); });
   refresh();
@@ -490,12 +523,13 @@ if('IntersectionObserver' in window){
     menu.classList.toggle("open",open);
     btn.setAttribute("aria-expanded",open?"true":"false");
     menu.setAttribute("aria-hidden",open?"false":"true");
-    btn.firstElementChild.textContent=open?"Close":"Menu";
+    btn.firstElementChild.textContent=(window.t||function(x){return x})(open?"Close":"Menu");
     document.querySelector("header").classList.toggle("open",open);
     document.body.style.overflow=open?"hidden":"";
     if(open)menu.scrollTop=0;
   }
   btn.addEventListener("click",function(){set(!menu.classList.contains("open"))});
+  document.addEventListener("langchange",function(){btn.firstElementChild.textContent=(window.t||function(x){return x})(menu.classList.contains("open")?"Close":"Menu");});
   menu.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){set(false)})});
   document.addEventListener("keydown",function(e){if(e.key==="Escape")set(false)});
 })();
@@ -572,6 +606,66 @@ if('IntersectionObserver' in window){
   window.addEventListener("scroll", check, { passive: true });
   window.addEventListener("resize", check);
   check();
+})();
+</script>
+<script>
+(function(){
+  var D = {"Skip to content":{"tr":"İçeriğe atla","fa":"رفتن به محتوا"},"Menu":{"tr":"Menü","fa":"منو"},"Close":{"tr":"Kapat","fa":"بستن"},"Work":{"tr":"Portföy","fa":"پورتفولیو"},"Selected projects and styling":{"tr":"Seçilmiş projeler ve stil çalışmaları","fa":"پروژه‌های منتخب و استایلینگ"},"Services":{"tr":"Hizmetler","fa":"خدمات"},"Architecture, styling and staging":{"tr":"Mimarlık, tasarım ve ev düzenleme","fa":"معماری، طراحی و چیدمان منزل"},"About":{"tr":"Hakkında","fa":"درباره"},"The designer and his practice":{"tr":"Tasarımcı ve çalışmaları hakkında","fa":"درباره طراح و آثارش"},"Contact":{"tr":"İletişim","fa":"تماس"},"Write to Amirali on WhatsApp":{"tr":"WhatsApp üzerinden Amirali’ye mesaj gönder","fa":"به امیرعلی در واتس‌اپ پیام بدهید"},"Practice":{"tr":"Uzmanlık alanları","fa":"حوزه‌های تخصصی"},"Design, execution and supervision of residential, office, commercial and hotel projects, and jewelry galleries.":{"tr":"Konut, ofis, ticari ve otel projelerinin yanı sıra mücevher galerilerinin tasarımı, uygulaması ve denetimi.","fa":"طراحی، اجرا و نظارت بر پروژه‌های مسکونی، اداری، تجاری و هتل و گالری‌های جواهرات."},"Locations":{"tr":"Konumlar","fa":"مکان‌ها"},"Turkey, Iran and the USA. Projects worldwide.":{"tr":"Türkiye, İran ve ABD. Dünya çapında projeler.","fa":"ترکیه، ایران و ایالات متحده آمریکا. پروژه‌ها در سراسر جهان."},"Latest project":{"tr":"En son proje","fa":"آخرین پروژه"},"A residential interior in Tehran, 2026.":{"tr":"2026 yılında Tahran’da bir konut iç mekanı.","fa":"فضای داخلی مسکونی در تهران، ۲۰۲۶."},"Interior Architect and Decorator":{"tr":"İç Mimar ve Dekoratör","fa":"معمار و دکوراتور داخلی"},"Turkey, Iran, USA and worldwide projects":{"tr":"Türkiye, İran, ABD ve dünya çapındaki projeler","fa":"پروژه‌های ترکیه، ایران، ایالات متحده آمریکا و سراسر جهان"},"Where art, color and character come together":{"tr":"Sanat, renk ve karakterin bir araya geldiği yer","fa":"جایی که هنر، رنگ و شخصیت به هم می‌پیوندند"},"View projects":{"tr":"Projeleri görüntüle","fa":"مشاهده پروژه‌ها"},"Approach":{"tr":"Yaklaşım","fa":"رویکرد"},"Every detail tells a story":{"tr":"Her bir ayrıntı bir hikâye anlatır","fa":"هر جزئیاتی داستانی را روایت می‌کند."},"Amirali designs interiors around the people who live in them and the pieces they love. Architecture sets the structure. Decoration, art and carefully chosen objects give each room its voice.":{"tr":"Amirali, iç mekan tasarımlarını o mekanlarda yaşayan insanlar ve onların sevdiği eşyalar etrafında şekillendirir. Mimari, yapının temelini oluşturur. Dekorasyon, sanat eserleri ve özenle seçilmiş nesneler ise her odaya kendine özgü bir karakter kazandırır.","fa":"امیرعلی طراحی داخلی را بر اساس افرادی که در آن زندگی می‌کنند و اشیایی که دوست دارند انجام می‌دهد. معماری ساختار را تعیین می‌کند. تزئینات، هنر و اشیای با دقت انتخاب‌شده به هر اتاق هویت می‌بخشند."},"From the first sketch to the final styling, the work is guided by color, material and close attention to detail.":{"tr":"İlk eskizden son şekillendirmeye kadar, bu süreç renk, malzeme ve detaylara gösterilen özenle şekillenir.","fa":"از اولین طرح اولیه تا استایل نهایی، کار با رنگ، جنس و توجه دقیق به جزئیات هدایت می‌شود."},"Tehran Project":{"tr":"Tahran Projesi","fa":"پروژه تهران"},"Interior design and styling, 2026":{"tr":"İç tasarım ve stil, 2026","fa":"طراحی داخلی و استایلینگ، ۲۰۲۶"},"Styling":{"tr":"İç tasarım","fa":"طراحی داخلی"},"The objects make the room":{"tr":"Oda, içindeki nesnelerle şekillenir","fa":"اشیاء اتاق را می‌سازند"},"Glass, porcelain, crystal and sculptural lighting are placed with the same care as the architecture, so that every corner reads as a composition.":{"tr":"Cam, porselen, kristal ve heykelsi aydınlatma unsurları, mimariye gösterilen özenle yerleştirilmiştir; böylece her köşe bir kompozisyon gibi algılanmaktadır.","fa":"شیشه، چینی، کریستال و نورپردازی مجسمه‌ای با همان دقتی که در معماری به کار رفته، قرار گرفته‌اند تا هر گوشه به مثابه یک ترکیب‌بندی خوانده شود."},"Home staging and accessories complete a project and prepare a property to be seen at its best.":{"tr":"Ev düzenleme ve aksesuarlar, bir projeyi tamamlar ve bir gayrimenkulün en iyi şekilde sergilenmesini sağlar.","fa":"چیدمان منزل و لوازم جانبی یک پروژه را تکمیل کرده و ملک را برای نمایش در بهترین حالت آماده می‌کنند."},"New Design":{"tr":"Yeni Tasarım","fa":"طراحی جدید"},"Film":{"tr":"Film","fa":"فیلم"},"Worldwide":{"tr":"Dünya çapında","fa":"در سراسر جهان"},"Between Turkey, Iran and the USA":{"tr":"Türkiye, İran ve ABD arasında","fa":"بین ترکیه، ایران و ایالات متحده آمریکا"},"Amirali works with clients across Turkey, Iran and the USA, and takes on projects worldwide.":{"tr":"Amirali, Türkiye, İran ve ABD’deki müşterilerle çalışmakta ve dünya çapında projeler üstlenmektedir.","fa":"امیرعلی با مشتریانی در سراسر ترکیه، ایران و ایالات متحده آمریکا همکاری می‌کند و پروژه‌هایی را در سراسر جهان بر عهده می‌گیرد."},"His latest published project is in Tehran, dated 2026.":{"tr":"En son yayınlanan projesi, 2026 tarihli ve Tahran’da gerçekleştirilmiştir.","fa":"جدیدترین پروژه منتشرشدهٔ او در تهران است که تاریخ آن ۲۰۲۶ است."},"Home Staging":{"tr":"Ev düzenleme","fa":"چیدمان منزل"},"Styling and accessories":{"tr":"İç mekan tasarımı ve ev aksesuarları","fa":"طراحی داخلی و لوازم تزئینی منزل"},"From the plan to the last object":{"tr":"Plan aşamasından son nesneye kadar","fa":"از طرح تا آخرین شیء"},"For a single room or a complete project, the work stays with one designer, from the first sketch to the final styling.":{"tr":"İster tek bir oda ister kapsamlı bir proje olsun, ilk eskizden son stil düzenlemesine kadar tüm süreç tek bir tasarımcı tarafından yürütülür.","fa":"چه برای یک اتاق واحد و چه برای یک پروژه کامل، کار از اولین طرح اولیه تا استایل نهایی با یک طراح باقی می‌ماند."},"Architecture":{"tr":"Mimarlık","fa":"معماری"},"Interior architecture":{"tr":"İç mimari","fa":"معماری داخلی"},"Space planning and complete interior design for residences, offices, commercial spaces, hotels and jewelry galleries, from the first concept to supervision.":{"tr":"Konutlar, ofisler, ticari mekanlar, oteller ve mücevher galerileri için ilk konsept aşamasından şantiye denetimine kadar uzanan alan planlaması ve kapsamlı iç tasarım hizmetleri.","fa":"طرح‌ریزی فضا و طراحی داخلی کامل برای منازل، دفاتر، فضاهای تجاری، هتل‌ها و گالری‌های جواهرات، از ایده اولیه تا نظارت."},"Design, execution and supervision stay with the same designer, so the finished space matches the idea.":{"tr":"Tasarım, uygulama ve denetim işleri aynı tasarımcı tarafından yürütülür; böylece tamamlanan mekan, ilk fikre tam olarak uyar.","fa":"طراحی، اجرا و نظارت بر عهدهٔ یک طراح واحد است، بنابراین فضای نهایی با ایده مطابقت دارد."},"Decoration and styling":{"tr":"Dekorasyon ve iç mekan tasarımı","fa":"دکوراسیون و طراحی داخلی"},"The layer that gives a room its character. Art, color, glass, porcelain and sculptural lighting are chosen and placed one by one.":{"tr":"Bir odaya karakterini kazandıran katman. Sanat eserleri, renkler, cam, porselen ve heykelsi aydınlatma unsurları tek tek seçilip yerleştirilir.","fa":"لایه‌ای که به یک اتاق شخصیت می‌بخشد. هنر، رنگ، شیشه، چینی و نورپردازی مجسمه‌ای یکی‌یکی انتخاب و قرار داده می‌شوند."},"Staging":{"tr":"Emlak sunumu","fa":"آماده‌سازی ملک"},"Home staging":{"tr":"Ev düzenleme","fa":"چیدمان منزل"},"Preparing a property to be seen at its best, with furniture, textiles and objects arranged to show its potential.":{"tr":"Bir mülkün en iyi şekilde sergilenmesi için hazırlanması; mobilyaların, tekstil ürünlerinin ve eşyaların, mülkün potansiyelini ortaya çıkaracak şekilde düzenlenmesidir.","fa":"آماده‌سازی یک ملک برای نمایش در بهترین شکل، با چیدمان مبلمان، منسوجات و اشیاء به‌منظور نشان دادن پتانسیل آن."},"Details":{"tr":"Ayrıntılar","fa":"جزئیات"},"Selected accessories":{"tr":"Seçilmiş aksesuarlar","fa":"لوازم جانبی منتخب"},"Selected pieces and finishing touches to complete a project, from decorative objects to details that tie a room together.":{"tr":"Bir projeyi tamamlamak için seçilmiş parçalar ve son rötuşlar; dekoratif nesnelerden, bir odayı bütünleyen detaylara kadar.","fa":"قطعات منتخب و جزئیات نهایی برای تکمیل یک پروژه، از اشیاء تزئینی تا جزئیاتی که یک اتاق را هماهنگ می‌کنند."},"Turning ideas into art.":{"tr":"Fikirleri sanata dönüştürmek.","fa":"تبدیل ایده‌ها به هنر."},"Amirali is an architect and interior designer, a top-ranked graduate with a Bachelor's degree in Interior Architecture.":{"tr":"Amirali, bir mimar ve iç mimardır; İç Mimarlık alanında lisans derecesini en yüksek notlarla tamamlamıştır.","fa":"امیرعلی معمار و طراح داخلی است، فارغ‌التحصیل با رتبه برتر در رشته معماری داخلی."},"His experience covers the design, execution and supervision of residential projects, office spaces, commercial projects, hotels and jewelry galleries, in Iran, Turkey and the USA.":{"tr":"Deneyimi, İran, Türkiye ve ABD’de konut projeleri, ofis alanları, ticari projeler, oteller ve mücevher galerilerinin tasarımı, uygulaması ve denetimini kapsamaktadır.","fa":"تجربهٔ او شامل طراحی، اجرا و نظارت بر پروژه‌های مسکونی، فضاهای اداری، پروژه‌های تجاری، هتل‌ها و گالری‌های جواهرات در ایران، ترکیه و ایالات متحدهٔ آمریکا است."},"In April 2026 he began a new residential project in Tehran, which he designs, supervises, styles and decorates himself, from concept to completion. His recent work also includes hotel room design.":{"tr":"Nisan 2026’da Tahran’da yeni bir konut projesine başladı; bu projenin konsept aşamasından tamamlanmasına kadar tüm aşamalarını kendisi tasarlıyor, denetliyor, stilini belirliyor ve dekorasyonunu yapıyor. Son dönemdeki çalışmaları arasında otel odası tasarımı da yer alıyor.","fa":"در آوریل ۲۰۲۶ او پروژهٔ مسکونی جدیدی را در تهران آغاز کرد که از مفهوم تا تکمیل آن را خود طراحی، نظارت، سبک‌دهی و تزئین می‌کند. آثار اخیر او همچنین شامل طراحی اتاق‌های هتل است."},"Clients can write to him directly on Instagram or WhatsApp.":{"tr":"Müşteriler, Instagram veya WhatsApp üzerinden kendisine doğrudan mesaj gönderebilirler.","fa":"مشتریان می‌توانند مستقیماً در اینستاگرام یا واتس‌اپ برای او پیام بفرستند."},"Behind the scenes":{"tr":"Perde arkası","fa":"پشت صحنه"},"Reviewing a material sample":{"tr":"Bir malzeme numunesinin incelenmesi","fa":"بررسی نمونهٔ ماده"},"Based":{"tr":"Konum","fa":"مکان"},"Turkey, Iran, USA":{"tr":"Türkiye, İran, ABD","fa":"ترکیه، ایران، ایالات متحده آمریکا"},"Projects worldwide":{"tr":"Dünya çapındaki projeler","fa":"پروژه‌ها در سراسر جهان"},"Education":{"tr":"Eğitim","fa":"آموزش"},"B.A. Interior Architecture":{"tr":"İç Mimarlık Lisans Derecesi","fa":"کارشناسی معماری داخلی"},"Top-ranked graduate":{"tr":"En başarılı öğrenciler arasında mezun oldu","fa":"در میان دانشجویان برتر فارغ‌التحصیل شد"},"Tehran, 2026":{"tr":"Tahran, 2026","fa":"تهران، ۲۰۲۶"},"A residential interior":{"tr":"Bir konut iç mekanı","fa":"فضای داخلی مسکونی"},"Instagram and WhatsApp":{"tr":"Instagram ve WhatsApp","fa":"اینستاگرام و واتس‌اپ"},"Let us talk about your space":{"tr":"Mekanınız hakkında konuşalım","fa":"بیایید درباره فضای شما صحبت کنیم"},"Tell Amirali about your project. Write your message here and send it straight to WhatsApp or Instagram.":{"tr":"Amirali’ye projenizden bahsedin. Mesajınızı buraya yazın ve doğrudan WhatsApp veya Instagram’a gönderin.","fa":"درباره پروژه‌تان به امیرعلی بگویید. پیام‌تان را اینجا بنویسید و مستقیماً به واتس‌اپ یا اینستاگرام ارسال کنید."},"Message Amirali directly.":{"tr":"Amirali’ye doğrudan mesaj gönderin.","fa":"مستقیماً به امیرعلی پیام بدهید."},"Open chat":{"tr":"Sohbeti aç","fa":"چت را باز کنید"},"Direct message.":{"tr":"Doğrudan mesaj gönder.","fa":"پیام مستقیم بفرستید."},"Email":{"tr":"E-posta","fa":"ایمیل"},"For quotes and project details.":{"tr":"Fiyat teklifi ve proje detayları için.","fa":"برای دریافت قیمت‌ها و جزئیات پروژه."},"Copy email":{"tr":"E-postayı kopyala","fa":"کپی ایمیل"},"Türkiye, USA, Iran":{"tr":"Türkiye, ABD, İran","fa":"ترکیه، ایالات متحده آمریکا، ایران"},"Projects worldwide.":{"tr":"Dünya çapında projeler.","fa":"پروژه‌ها در سراسر جهان"},"Your name":{"tr":"Adınız","fa":"نام شما"},"City":{"tr":"Şehir","fa":"شهر"},"Your project":{"tr":"Projeniz","fa":"پروژه شما"},"Send on WhatsApp":{"tr":"WhatsApp üzerinden mesaj gönder","fa":"پیامی در واتس‌اپ ارسال کنید"},"Send on Instagram":{"tr":"Instagram'da mesaj gönder","fa":"ارسال پیام در اینستاگرام"},"WhatsApp opens with your message already written. On Instagram, your message is copied so you can paste it.":{"tr":"WhatsApp, mesajınız zaten yazılmış halde açılır. Instagram’da ise mesajınız kopyalanır, böylece yapıştırabilirsiniz.","fa":"واتس‌اپ با پیام از پیش نوشته‌شده‌ی شما باز می‌شود. در اینستاگرام، پیام شما کپی می‌شود تا بتوانید آن را جای‌گذاری کنید."},"Preview by EVORA Studio. Sample images are placeholders.":{"tr":"Önizleme EVORA Studio tarafından hazırlanmıştır. Gösterilen görseller geçici örneklerdir.","fa":"پیش‌نمایش ساخته‌شده توسط استودیو EVORA. تصاویر نمایش‌داده‌شده نمونه‌های موقتی هستند."},"Opening WhatsApp with your message.":{"tr":"WhatsApp, mesajınızla açılıyor.","fa":"واتس‌اپ با پیام شما باز می‌شود."},"Message copied. Paste it in the Instagram chat.":{"tr":"Mesaj kopyalandı. Bunu Instagram sohbetine yapıştır.","fa":"پیام کپی شد. آن را در چت اینستاگرام بچسبانید."},"Select your message above and copy it before sending.":{"tr":"Yukarıdan mesajınızı seçin ve göndermeden önce kopyalayın.","fa":"پیام خود را در بالا انتخاب کرده و قبل از ارسال، آن را کپی کنید."},"Email copied:":{"tr":"E-posta kopyalandı:","fa":"ایمیل کپی شد:"},"Name":{"tr":"Ad","fa":"نام"},"Where is the project":{"tr":"Proje nerede?","fa":"پروژه کجاست؟"},"A few words about the space":{"tr":"Mekan hakkında birkaç söz","fa":"چند کلمه‌ای دربارهٔ فضا"}};
+  var lang = "en", items = [], inputs = [];
+  var skip = { SCRIPT:1, STYLE:1, NOSCRIPT:1, SVG:1, VIDEO:1, TEXTAREA:1, INPUT:1 };
+  function norm(t){ return t.replace(/\s+/g, " ").trim(); }
+  function leaf(el){
+    for (var i = 0; i < el.childNodes.length; i++) {
+      var n = el.childNodes[i];
+      if (n.nodeType === 1 && n.tagName !== "EM") return false;
+    }
+    return true;
+  }
+  function esc(x){ return x.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+  var all = document.body.querySelectorAll("*");
+  for (var i = 0; i < all.length; i++) {
+    var el = all[i];
+    if (skip[el.tagName.toUpperCase()] || el.closest("svg") || el.closest("video") || el.closest("script")) continue;
+    if (el.tagName === "EM" && el.parentNode && el.parentNode.nodeType === 1 && leaf(el.parentNode) && el.parentNode !== document.body) continue;
+    if (!leaf(el)) continue;
+    var key = norm(el.textContent);
+    if (!key || !D[key]) continue;
+    var em = el.querySelector("em");
+    items.push({ el: el, html: el.innerHTML, key: key, em: em ? norm(em.textContent).split(" ").length : 0 });
+  }
+  var ph = document.querySelectorAll("[placeholder]");
+  for (var j = 0; j < ph.length; j++) { var pv = ph[j].getAttribute("placeholder"); if (D[pv]) inputs.push({ el: ph[j], en: pv }); }
+  window.t = function(en){ return lang === "en" ? en : (D[en] && D[en][lang]) || en; };
+  function apply(l){
+    lang = l;
+    items.forEach(function(it){
+      if (l === "en") { it.el.innerHTML = it.html; return; }
+      var tr = D[it.key][l];
+      if (!tr) { it.el.innerHTML = it.html; return; }
+      if (it.em) {
+        var w = tr.split(" "), n = Math.min(it.em, w.length - 1);
+        if (n > 0) { it.el.innerHTML = esc(w.slice(0, w.length - n).join(" ")) + " <em>" + esc(w.slice(w.length - n).join(" ")) + "</em>"; return; }
+      }
+      it.el.textContent = tr;
+    });
+    inputs.forEach(function(x){ x.el.setAttribute("placeholder", l === "en" ? x.en : D[x.en][l]); });
+    document.documentElement.setAttribute("lang", l);
+    document.documentElement.setAttribute("dir", l === "fa" ? "rtl" : "ltr");
+    var bs = document.querySelectorAll(".lang button");
+    for (var k = 0; k < bs.length; k++) bs[k].setAttribute("aria-pressed", bs[k].getAttribute("data-lang") === l ? "true" : "false");
+    document.dispatchEvent(new Event("langchange"));
+  }
+  var bs = document.querySelectorAll(".lang button");
+  for (var m = 0; m < bs.length; m++) {
+    bs[m].addEventListener("click", function(){
+      var l = this.getAttribute("data-lang");
+      apply(l);
+      try { localStorage.setItem("lang", l); } catch (e) {}
+    });
+  }
+  var saved = null;
+  try { saved = localStorage.getItem("lang"); } catch (e) {}
+  if (saved === "tr" || saved === "fa") apply(saved);
 })();
 </script>
 </body>
