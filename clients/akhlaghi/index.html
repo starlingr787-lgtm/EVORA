@@ -37,7 +37,7 @@ img{display:block;max-width:100%}
 .t-tehran{background-image:url("images/tehran.jpg"),radial-gradient(60% 55% at 55% 30%,#d9a85a55,transparent 70%),linear-gradient(180deg,#4a2f1e,#150f0b)}
 .t-design{background-image:url("images/new-design.jpg"),radial-gradient(60% 55% at 30% 50%,#9c6b4155,transparent 70%),linear-gradient(160deg,#35302c,#141210)}
 .t-staging{background-image:url("images/home-staging.jpg"),radial-gradient(60% 55% at 70% 40%,#d8c8ae44,transparent 70%),linear-gradient(170deg,#6b5c4c,#221c17)}
-.t-portrait{background-image:url("images/portrait.jpg"),linear-gradient(170deg,#8b8378,#3a332d)}
+.t-portrait{background-image:url("images/portrait.jpg"),linear-gradient(170deg,#8b8378,#3a332d);background-position:50% 22%}
 .t-portrait::after{display:none}
 
 /* Header */
@@ -104,7 +104,7 @@ header.open{background:#ffffff;color:var(--ink);mix-blend-mode:normal;padding-bo
 
 /* Services */
 .services{padding:clamp(80px,12vw,180px) clamp(20px,6vw,96px);background:#fff}
-.services h2,.palettes h2{font-family:var(--display);font-weight:500;font-size:clamp(34px,4.8vw,70px);line-height:1.08;max-width:16ch}
+.services h2{font-family:var(--display);font-weight:500;font-size:clamp(34px,4.8vw,70px);line-height:1.08;max-width:16ch}
 .svc-list{margin-top:clamp(36px,5vw,72px);border-top:1px solid rgba(27,25,23,.2)}
 .svc{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(20px,5vw,90px);padding:34px 0;border-bottom:1px solid rgba(27,25,23,.2);align-items:start}
 .svc h3{font-family:var(--display);font-weight:500;font-size:clamp(28px,3.2vw,46px);line-height:1.1}
@@ -115,15 +115,6 @@ header.open{background:#ffffff;color:var(--ink);mix-blend-mode:normal;padding-bo
 .quote{background:linear-gradient(rgba(22,16,12,.66),rgba(22,16,12,.72)),url("images/quote.jpg") center/cover,var(--deep);color:#fff;padding:clamp(90px,14vw,210px) clamp(20px,6vw,96px);text-align:center}
 .quote blockquote{font-family:var(--display);font-weight:500;font-style:italic;font-size:clamp(34px,5.6vw,86px);line-height:1.1;max-width:18ch;margin:0 auto}
 .quote cite{display:block;margin-top:34px;font-style:normal;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:#b9ada0}
-
-/* Palettes */
-.palettes{padding:clamp(80px,12vw,180px) clamp(20px,6vw,96px) clamp(60px,8vw,120px);background:#fff}
-.pal-intro{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(30px,6vw,110px);align-items:end}
-.pal-intro p{font-size:clamp(16px,1.3vw,18px);color:#4a4540;max-width:46ch}
-.pal-grid{margin-top:clamp(36px,5vw,72px);display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
-.sw{position:relative;aspect-ratio:3/5;display:flex;align-items:flex-end;padding:18px;color:#fff}
-.sw span{font-family:var(--display);font-weight:500;font-size:clamp(18px,1.8vw,26px);line-height:1.1}
-.sw small{display:block;margin-top:4px;font:300 11px var(--text);letter-spacing:.14em;text-transform:uppercase;opacity:.85}
 
 /* At a glance */
 .glance{padding:clamp(60px,9vw,130px) clamp(20px,6vw,96px);background:#fff;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(24px,4vw,64px);border-top:1px solid rgba(27,25,23,.14)}
@@ -172,8 +163,7 @@ footer{padding:26px clamp(20px,4vw,56px);display:flex;justify-content:space-betw
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
 
 @media (max-width:820px){
-  .statement,.note,.contact,.overlay,.svc,.pal-intro{grid-template-columns:1fr}
-  .pal-grid{grid-template-columns:repeat(2,1fr)}
+  .statement,.note,.contact,.overlay,.svc{grid-template-columns:1fr}
   .glance{grid-template-columns:1fr 1fr}
   .overlay{align-content:start;gap:36px}
   .strip{grid-template-columns:1fr}
@@ -211,7 +201,7 @@ footer{padding:26px clamp(20px,4vw,56px);display:flex;justify-content:space-betw
     <a href="#contact"><strong>Contact</strong><span>Write to Amirali on WhatsApp</span></a>
   </nav>
   <div class="ov-info">
-    <div><h4>Practice</h4><p>Interior architecture, decoration, home staging and accessories.</p></div>
+    <div><h4>Practice</h4><p>Design, execution and supervision of residential, office, commercial and hotel projects, and jewelry galleries.</p></div>
     <div><h4>Locations</h4><p>Turkey, Iran and the USA. Projects worldwide.</p></div>
     <div><h4>Latest project</h4><p>A residential interior in Tehran, 2026.</p></div>
     <div><h4>Contact</h4><p>By message on Instagram or WhatsApp.</p></div>
@@ -287,7 +277,7 @@ footer{padding:26px clamp(20px,4vw,56px);display:flex;justify-content:space-betw
     <p class="eyebrow rv">Services</p>
     <h2 class="rv">From the plan to the last object</h2>
     <div class="svc-list">
-      <div class="svc rv"><h3>Interior architecture</h3><div><p>Space planning and complete interior design for residences and private projects, from the first concept to the final layout.</p><p>Walls, wood, stone, lighting and furniture are decided together, so the space feels like one idea.</p></div></div>
+      <div class="svc rv"><h3>Interior architecture</h3><div><p>Space planning and complete interior design for residences, offices, commercial spaces, hotels and jewelry galleries, from the first concept to supervision on site.</p><p>Design, execution and supervision stay with the same designer, so the finished space matches the idea.</p></div></div>
       <div class="svc rv"><h3>Decoration and styling</h3><div><p>The layer that gives a room its character. Art, color, glass, porcelain and sculptural lighting are chosen and placed one by one.</p><p>In his own words, the final layer is always the most important.</p></div></div>
       <div class="svc rv"><h3>Home staging</h3><div><p>Preparing a property to be seen at its best, with furniture, textiles and objects arranged to show its potential.</p></div></div>
       <div class="svc rv"><h3>Accessories</h3><div><p>Selected pieces and finishing touches to complete a project, from decorative objects to details that tie a room together.</p></div></div>
@@ -299,35 +289,20 @@ footer{padding:26px clamp(20px,4vw,56px);display:flex;justify-content:space-betw
     <cite class="rv">Amirali Akhlaghi</cite>
   </section>
 
-  <section class="palettes">
-    <div class="pal-intro">
-      <div class="rv"><p class="eyebrow">Palettes</p><h2>One room, one mood</h2></div>
-      <p class="rv">Every project starts with a palette. Color, stone and wood are combined until the room has the mood the client wants to live in, from deep and warm to light and quiet.</p>
-    </div>
-    <div class="pal-grid">
-      <div class="sw" style="background:#4a2f1e"><div><span>Walnut</span><small>Wood</small></div></div>
-      <div class="sw" style="background:#a8672f"><div><span>Amber</span><small>Light</small></div></div>
-      <div class="sw" style="background:#d9d2c6;color:#1b1917"><div><span>Marble</span><small>Stone</small></div></div>
-      <div class="sw" style="background:#4d5a3f"><div><span>Olive</span><small>Textile</small></div></div>
-      <div class="sw" style="background:#6d2c36"><div><span>Burgundy</span><small>Velvet</small></div></div>
-      <div class="sw" style="background:#1b1917"><div><span>Ink</span><small>Contrast</small></div></div>
-    </div>
-  </section>
-
   <section class="about" id="about">
     <div class="copy rv">
       <p class="eyebrow">About</p>
       <h2>Amirali Akhlaghi</h2>
-      <p>Amirali is an interior architect and decorator with a B.A. in Interior Architecture. His practice moves between architecture and styling, from the plan of a space to the objects that finish it.</p>
-      <p>He designs residential interiors, most recently a new home in Tehran, developing the concept, the design and the final styling. Home staging and accessories complete the work.</p>
-      <p>He works between Turkey, Iran and the USA, with projects worldwide. Clients can write to him directly on Instagram or WhatsApp.</p>
+      <p>Amirali is an architect and interior designer, a top-ranked graduate with a Bachelor's degree in Interior Architecture.</p>
+      <p>His experience covers the design, execution and supervision of residential projects, office spaces, commercial projects, hotels and jewelry galleries, in Iran, Turkey and the USA.</p>
+      <p>From the first concept to the finished site, he follows each project to the last detail. Clients can write to him directly on Instagram or WhatsApp.</p>
     </div>
     <div class="pic"><div class="shot t-portrait"></div></div>
   </section>
 
   <section class="glance">
     <div class="rv"><h4>Based</h4><p>Turkey, Iran, USA</p><small>Projects worldwide</small></div>
-    <div class="rv"><h4>Education</h4><p>B.A. Interior Architecture</p></div>
+    <div class="rv"><h4>Education</h4><p>B.A. Interior Architecture</p><small>Top-ranked graduate</small></div>
     <div class="rv"><h4>Latest project</h4><p>Tehran, 2026</p><small>A residential interior</small></div>
     <div class="rv"><h4>Contact</h4><p>Instagram and WhatsApp</p><small>Direct message</small></div>
   </section>
