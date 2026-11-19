@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Soryna by lashes · Extensii de gene Tulcea</title>
+<meta name="description" content="Extensii de gene, pensat și vopsit sprâncene în Tulcea. Programează-te online în câteva atingeri.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbf8f4;--card:#fff;--ink:#231f1c;--mute:#7a716a;--line:#ece5dc;--gold:#b08a4e;--gold-d:#8f6d37;--soft:#f4ece1}
+@media (prefers-color-scheme:dark){:root{--bg:#161412;--card:#201d1a;--ink:#f3ede6;--mute:#a59b91;--line:#34302b;--gold:#c9a469;--gold-d:#d9b97f;--soft:#2a2622}}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;line-height:1.1}
+section{padding:56px 0}
+.eyebrow{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-d);font-weight:600}
+h2{font-size:2.1rem;margin:6px 0 8px}
+.lead{color:var(--mute);margin-bottom:28px}
+.btn{display:inline-block;background:var(--gold);color:#fff;border:0;border-radius:999px;padding:14px 28px;font:600 1rem Inter,sans-serif;text-decoration:none;cursor:pointer;transition:background .2s}
+.btn:hover{background:var(--gold-d)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{background:var(--soft)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+/* nav */
+header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+.logo{font-family:"Cormorant Garamond",serif;font-size:1.35rem;font-weight:600}
+.logo em{color:var(--gold-d)}
+header a.btn{padding:9px 18px;font-size:.88rem}
+/* hero */
+.hero{padding:72px 0 56px;text-align:center}
+.hero h1{font-size:clamp(2.6rem,10vw,4.2rem);margin:12px 0 14px}
+.hero h1 em{color:var(--gold-d);font-style:italic}
+.hero p{color:var(--mute);max-width:440px;margin:0 auto 28px}
+.hero .meta{margin-top:22px;font-size:.88rem;color:var(--mute)}
+/* services */
+.group{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:16px}
+.group h3{font-size:1.5rem;margin-bottom:4px}
+.group .sub{color:var(--mute);font-size:.88rem;margin-bottom:10px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.row b{font-weight:500}
+.row small{display:block;color:var(--mute);font-size:.82rem}
+.price{font-weight:600;white-space:nowrap;color:var(--gold-d)}
+.note{font-size:.82rem;color:var(--mute);margin-top:6px}
+/* booking */
+#reserva{background:var(--soft)}
+.step{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-bottom:16px}
+.step h3{font-size:1.3rem;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.step h3 span{width:28px;height:28px;border-radius:50%;background:var(--gold);color:#fff;font:600 .85rem Inter;display:grid;place-items:center}
+.opts{display:grid;gap:8px}
+.opt{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;cursor:pointer;background:var(--bg);font-size:.95rem;text-align:left;color:var(--ink);font-family:inherit;width:100%}
+.opt .p{color:var(--gold-d);font-weight:600;white-space:nowrap}
+.opt[aria-pressed=true]{border-color:var(--gold);background:var(--soft)}
+.opt[aria-pressed=true]::before{content:"✓";color:var(--gold-d);font-weight:700;margin-right:8px}
+.opt .n{flex:1}
+.cat{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:12px 0 2px;font-weight:600}
+.cat:first-child{margin-top:0}
+.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.day{flex:0 0 auto;width:62px;padding:10px 0;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);text-align:center;cursor:pointer;color:var(--ink);font-family:inherit}
+.day small{display:block;font-size:.7rem;color:var(--mute);text-transform:uppercase}
+.day b{font-size:1.15rem;font-weight:600}
+.day[aria-pressed=true]{border-color:var(--gold);background:var(--gold);color:#fff}
+.day[aria-pressed=true] small{color:#fff}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
+.slot{padding:10px 0;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);cursor:pointer;font:500 .92rem Inter;color:var(--ink)}
+.slot[aria-pressed=true]{border-color:var(--gold);background:var(--gold);color:#fff}
+.hint{color:var(--mute);font-size:.88rem;margin-top:12px}
+label{display:block;font-size:.85rem;font-weight:500;margin:0 0 6px}
+input,textarea{width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:1rem Inter,sans-serif;margin-bottom:14px}
+input:focus,textarea:focus,.opt:focus-visible,.day:focus-visible,.slot:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.sum{background:var(--soft);border-radius:12px;padding:14px;font-size:.92rem;margin-bottom:16px}
+.sum div{display:flex;justify-content:space-between;gap:10px;padding:2px 0}
+.sum .tot{border-top:1px solid var(--line);margin-top:6px;padding-top:8px;font-weight:600}
+.fine{font-size:.8rem;color:var(--mute);margin-top:12px;text-align:center}
+.ok{display:none;text-align:center;padding:10px 0}
+.ok h3{font-size:1.6rem;margin-bottom:8px}
+/* contact */
+.contact{display:grid;gap:12px}
+.contact .box{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
+.contact h3{font-size:1.25rem;margin-bottom:6px}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+td{padding:5px 0}td:last-child{text-align:right;font-weight:500}
+footer{padding:28px 0 90px;text-align:center;color:var(--mute);font-size:.82rem;border-top:1px solid var(--line)}
+.sticky{position:fixed;bottom:12px;left:16px;right:16px;z-index:6;display:none}
+.sticky .btn{width:100%;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+@media(min-width:720px){.sticky{display:none!important}.slots{grid-template-columns:repeat(6,1fr)}.contact{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="logo">Soryna <em>by lashes</em></div>
+  <a class="btn" href="#reserva">Programează-te</a>
+</div></header>
+
+<main>
+<section class="hero"><div class="wrap">
+  <div class="eyebrow">Tulcea · Str. Taberei</div>
+  <h1>Extensii de gene,<br><em>făcute cu grijă</em></h1>
+  <p>Alege serviciul, ziua și ora direct de pe telefon. Fără mesaje lungi.</p>
+  <a class="btn" href="#reserva">Programează-te</a>
+  <p class="meta">Luni–Sâmbătă 9:00–17:00 · Duminică 9:00–12:00</p>
+</div></section>
+
+<section id="servicii"><div class="wrap">
+  <div class="eyebrow">Servicii și prețuri</div>
+  <h2>Ce pot face pentru tine</h2>
+  <p class="lead">Toate prețurile sunt în lei.</p>
+
+  <div class="group">
+    <h3>Extensii de gene</h3>
+    <div class="sub">Alege tehnica potrivită pentru privirea dorită</div>
+    <div class="row"><b>2D</b><span class="price">150 lei</span></div>
+    <div class="row"><b>3D</b><span class="price">160 lei</span></div>
+    <div class="row"><b>4D</b><span class="price">170 lei</span></div>
+    <div class="row"><b>Foxy</b><span class="price">180 lei</span></div>
+    <div class="row"><b>Soft volum</b><span class="price">180 lei</span></div>
+    <div class="row"><b>Volum rusesc</b><span class="price">200 lei</span></div>
+    <div class="row"><b>Mega volum</b><span class="price">250 lei</span></div>
+  </div>
+
+  <div class="group">
+    <h3>Servicii suplimentare</h3>
+    <div class="row"><b>Demontare gene</b><span class="price">30 lei</span></div>
+    <div class="row"><b>Pietricele</b><span class="price">5 lei</span></div>
+  </div>
+
+  <div class="group">
+    <h3>Pensat și sprâncene</h3>
+    <div class="row"><b>Pensat sprâncene</b><span class="price">25 lei</span></div>
+    <div class="row"><b>Vopsit sprâncene</b><span class="price">15 lei</span></div>
+  </div>
+
+  <div class="group">
+    <h3>Epilat</h3>
+    <div class="row"><b>Epilat mustață</b><span class="price">15 lei</span></div>
+    <p class="note">Alte zone de epilat: întreabă la programare.</p>
+  </div>
+</div></section>
+
+<section id="reserva"><div class="wrap">
+  <div class="eyebrow">Programare online</div>
+  <h2>Programează-te în 4 pași</h2>
+  <p class="lead">Trimiți cererea pe WhatsApp, iar Soryna ți-o confirmă.</p>
+
+  <form id="f" novalidate>
+    <div class="step"><h3><span>1</span>Alege serviciul</h3><div class="opts" id="svc"></div></div>
+    <div class="step"><h3><span>2</span>Alege ziua</h3><div class="days" id="days"></div></div>
+    <div class="step"><h3><span>3</span>Alege ora</h3>
+      <div class="slots" id="slots"></div>
+      <p class="hint" id="slothint">Alege mai întâi o zi.</p></div>
+    <div class="step"><h3><span>4</span>Datele tale</h3>
+      <label for="nm">Nume</label><input id="nm" autocomplete="name" placeholder="Numele tău">
+      <label for="tel">Telefon</label><input id="tel" type="tel" autocomplete="tel" inputmode="tel" placeholder="07xx xxx xxx">
+      <label for="msg">Mențiuni (opțional)</label><textarea id="msg" rows="2" placeholder="Ex.: prima dată, am alergii…"></textarea>
+      <div class="sum" id="sum" aria-live="polite"></div>
+      <button class="btn" id="go" type="submit" style="width:100%" disabled>Trimite cererea pe WhatsApp</button>
+      <p class="fine">Programarea este confirmată abia după răspunsul Soryna.</p>
+    </div>
+  </form>
+  <div class="step ok" id="ok"><h3>Cerere pregătită ✓</h3>
+    <p>Dacă WhatsApp nu s-a deschis, copiază mesajul și trimite-l.</p><br>
+    <button class="btn ghost" id="copy" type="button">Copiază mesajul</button></div>
+</div></section>
+
+<section id="contact" style="padding-top:24px"><div class="wrap">
+  <div class="eyebrow">Unde mă găsești</div>
+  <h2>Contact</h2><p class="lead"></p>
+  <div class="contact">
+    <div class="box"><h3>Salon</h3>
+      <p>Tulcea, Str. Taberei</p><br>
+      <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Strada+Taberei+Tulcea">Deschide în hărți</a></div>
+    <div class="box"><h3>Program</h3>
+      <table><tr><td>Luni – Sâmbătă</td><td>9:00 – 17:00</td></tr><tr><td>Duminică</td><td>9:00 – 12:00</td></tr></table><br>
+      <a class="btn ghost" target="_blank" rel="noopener" href="https://instagram.com/lashes.tulcea">@lashes.tulcea</a></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">© Soryna by lashes · Tulcea<br>Demo realizat de EVORA Creative</div></footer>
+<div class="sticky" id="sticky"><a class="btn" href="#reserva">Programează-te</a></div>
+
+<script>
+// ===== CONFIG (de schimbat) =====
+const WHATSAPP = "40700000000"; // PLACEHOLDER: număr în format internațional, fără +
+const HOURS = {1:[9,17],2:[9,17],3:[9,17],4:[9,17],5:[9,17],6:[9,17],0:[9,12]}; // ziua săptămânii -> [deschide, închide]
+const STEP_MIN = 60;      // pas între ore
+const DAYS_AHEAD = 21;
+const SERVICES = [
+ ["Extensii de gene",[["2D",150],["3D",160],["4D",170],["Foxy",180],["Soft volum",180],["Volum rusesc",200],["Mega volum",250]]],
+ ["Suplimentare",[["Demontare gene",30],["Pietricele",5]]],
+ ["Sprâncene",[["Pensat sprâncene",25],["Vopsit sprâncene",15]]],
+ ["Epilat",[["Epilat mustață",15]]]
+];
+// ================================
+const $=id=>document.getElementById(id);
+const sel=new Set();let day=null,time=null;
+const zi=["Dum","Lun","Mar","Mie","Joi","Vin","Sâm"];
+const ziFull=["duminică","luni","marți","miercuri","joi","vineri","sâmbătă"];
+const luni=["ian","feb","mar","apr","mai","iun","iul","aug","sep","oct","nov","dec"];
+
+function renderServices(){
+  $("svc").innerHTML=SERVICES.map(([cat,items])=>`<div class="cat">${cat}</div>`+items.map(([n,p])=>
+   `<button type="button" class="opt" aria-pressed="false" data-n="${n}" data-p="${p}"><span class="n">${n}</span><span class="p">${p} lei</span></button>`).join("")).join("");
+  $("svc").onclick=e=>{const b=e.target.closest(".opt");if(!b)return;
+    const n=b.dataset.n,isLash=SERVICES[0][1].some(x=>x[0]===n);
+    if(sel.has(n)){sel.delete(n);}else{
+      if(isLash)SERVICES[0][1].forEach(x=>sel.delete(x[0])); // o singură tehnică de extensii
+      sel.add(n);}
+    document.querySelectorAll(".opt").forEach(o=>o.setAttribute("aria-pressed",sel.has(o.dataset.n)));
+    update();};
+}
+function renderDays(){
+  const t=new Date();t.setHours(0,0,0,0);let h="";
+  for(let i=0;i<=DAYS_AHEAD;i++){const d=new Date(t);d.setDate(t.getDate()+i);
+    const key=d.toISOString?`${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`:"";
+    h+=`<button type="button" class="day" aria-pressed="false" data-i="${i}"><small>${zi[d.getDay()]}</small><b>${d.getDate()}</b><small>${luni[d.getMonth()]}</small></button>`;}
+  $("days").innerHTML=h;
+  $("days").onclick=e=>{const b=e.target.closest(".day");if(!b)return;
+    const d=new Date(t);d.setDate(t.getDate()+ +b.dataset.i);day=d;time=null;
+    document.querySelectorAll(".day").forEach(x=>x.setAttribute("aria-pressed",x===b));
+    renderSlots();update();};
+}
+function renderSlots(){
+  const [o,c]=HOURS[day.getDay()],now=new Date(),out=[];
+  for(let m=o*60;m<c*60;m+=STEP_MIN){
+    const s=new Date(day);s.setHours(0,m,0,0);
+    if(s>now)out.push(`${String(Math.floor(m/60)).padStart(2,"0")}:${String(m%60).padStart(2,"0")}`);}
+  $("slots").innerHTML=out.map(x=>`<button type="button" class="slot" aria-pressed="false">${x}</button>`).join("");
+  $("slothint").textContent=out.length?"":"Nu mai sunt ore libere în ziua aleasă. Alege altă zi.";
+  $("slots").onclick=e=>{const b=e.target.closest(".slot");if(!b)return;time=b.textContent;
+    document.querySelectorAll(".slot").forEach(x=>x.setAttribute("aria-pressed",x===b));update();};
+}
+const dateStr=()=>day?`${ziFull[day.getDay()]}, ${day.getDate()} ${luni[day.getMonth()]}`:"";
+function msgText(){
+  const all=SERVICES.flatMap(s=>s[1]),items=[...sel].map(n=>all.find(x=>x[0]===n));
+  const tot=items.reduce((a,x)=>a+x[1],0);
+  return `Bună, Soryna! Aș dori o programare.\n\nServicii: ${items.map(x=>x[0]).join(", ")}\nZiua: ${dateStr()}\nOra: ${time}\nTotal estimat: ${tot} lei\n\nNume: ${$("nm").value.trim()}\nTelefon: ${$("tel").value.trim()}`+($("msg").value.trim()?`\nMențiuni: ${$("msg").value.trim()}`:"");
+}
+function update(){
+  const all=SERVICES.flatMap(s=>s[1]),items=[...sel].map(n=>all.find(x=>x[0]===n)),tot=items.reduce((a,x)=>a+x[1],0);
+  $("sum").innerHTML=items.length?items.map(x=>`<div><span>${x[0]}</span><span>${x[1]} lei</span></div>`).join("")+
+   `<div class="tot"><span>Total estimat</span><span>${tot} lei</span></div>`+(day&&time?`<div style="margin-top:6px;color:var(--mute)"><span>${dateStr()} · ${time}</span></div>`:""):
+   `<span style="color:var(--mute)">Nu ai ales încă niciun serviciu.</span>`;
+  const okTel=$("tel").value.replace(/\D/g,"").length>=9;
+  $("go").disabled=!(items.length&&day&&time&&$("nm").value.trim()&&okTel);
+}
+["nm","tel","msg"].forEach(i=>$(i).addEventListener("input",update));
+$("f").onsubmit=e=>{e.preventDefault();if($("go").disabled)return;
+  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msgText())}`,"_blank","noopener");
+  $("ok").style.display="block";$("ok").scrollIntoView({behavior:"smooth",block:"center"});};
+$("copy").onclick=()=>{navigator.clipboard?.writeText(msgText()).then(()=>$("copy").textContent="Copiat ✓")};
+// buton fix pe mobil
+const st=$("sticky");
+new IntersectionObserver(([e])=>{st.style.display=(e.isIntersecting||innerWidth>=720)?"none":"block"},{}).observe($("reserva"));
+addEventListener("scroll",()=>{if(innerWidth<720&&scrollY>500){const r=$("reserva").getBoundingClientRect();st.style.display=(r.top<innerHeight&&r.bottom>0)?"none":"block"}else st.style.display="none"},{passive:true});
+renderServices();renderDays();update();
+</script>
+</body>
+</html>
