@@ -90,6 +90,8 @@ nav a:hover{color:var(--accent-dark)}
 
 /* Gallery */
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.sub{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;font-weight:500;margin:0 0 14px}
+.sub:not(:first-of-type){margin-top:40px}
 .grid .ph{aspect-ratio:1}
 @media(max-width:760px){.grid{grid-template-columns:repeat(2,1fr)}}
 
@@ -201,9 +203,12 @@ footer .small{font-size:.75rem;color:var(--muted)}
     <div class="wrap">
       <div class="head">
         <p class="eyebrow">Gallery</p>
-        <h2>The space &amp; the work</h2>
+        <h2>The studio &amp; the results</h2>
       </div>
-      <div class="grid" id="grid"></div>
+      <h3 class="sub">The studio</h3>
+      <div class="grid" id="grid-studio"></div>
+      <h3 class="sub">Results</h3>
+      <div class="grid" id="grid-results"></div>
     </div>
   </section>
 
@@ -303,34 +308,6 @@ const SERVICES = [
   ]},
 ];
 
-const GALLERY = ["space-1","space-2","brows-1","lashes-1","facial-1","facial-2","waxes-1","space-3"]; // images/<name>.jpg
-
-/* ===== Render services + tabs + select ===== */
-const tabs = document.getElementById("tabs"), panels = document.getElementById("panels"), sel = document.getElementById("service");
-sel.innerHTML = '<option value="">Select a service…</option>';
-SERVICES.forEach((c,i)=>{
-  const t = document.createElement("button");
-  t.className="tab"; t.role="tab"; t.id="tab-"+c.id; t.textContent=c.label;
-  t.setAttribute("aria-selected", i===0); t.setAttribute("aria-controls","panel-"+c.id);
-  t.onclick=()=>show(c.id); tabs.appendChild(t);
-
-  const p = document.createElement("div");
-  p.className="panel"; p.id="panel-"+c.id; p.role="tabpanel"; p.hidden = i!==0;
-  p.innerHTML = c.items.map(s=>`<div class="svc"><div class="l"><h3>${s.name}</h3></div><span class="dots"></span><span class="price">$${s.price}</span></div>`).join("");
-  panels.appendChild(p);
-
-  const g = document.createElement("optgroup"); g.label=c.label;
-  c.items.forEach(s=>{ const o=document.createElement("option"); o.value=s.name; o.textContent=`${s.name} — $${s.price}`; g.appendChild(o); });
-  sel.appendChild(g);
-});
-sel.insertAdjacentHTML("beforeend",'<option value="Not sure yet / consultation">Not sure yet — consultation</option>');
-function show(id){
-  SERVICES.forEach(c=>{
-    document.getElementById("panel-"+c.id).hidden = c.id!==id;
-    document.getElementById("tab-"+c.id).setAttribute("aria-selected", c.id===id);
-  });
-}
-
 /* ===== Photos: show slot until image loads ===== */
 function slot(el){
   const img = el.querySelector("img"); if(!img) return;
@@ -339,11 +316,17 @@ function slot(el){
   img.addEventListener("load",ok);
   if(img.complete && img.naturalWidth) ok();
 }
-const grid = document.getElementById("grid");
-GALLERY.forEach(n=>{
-  const d=document.createElement("div"); d.className="ph empty"; d.dataset.label="Photo";
-  d.innerHTML=`<img src="images/${n}.jpg" alt="Gifted Hands Aesthetics – ${n.replace(/-\d+$/,"")}" loading="lazy">`;
-  grid.appendChild(d); slot(d);
+const GALLERY = {
+  studio:  [["space-1","Treatment room"],["space-2","Treatment room equipment"],["space-3","Towels and candle"],["waxes-1","Wax warmer and supplies"]],
+  results: [["facial-1","Facial treatment"],["facial-2","Skin before and after"],["brows-1","Brow lamination before and after"],["lashes-1","Lash lift"]],
+}; // images/<name>.jpg
+Object.entries(GALLERY).forEach(([group,list])=>{
+  const grid = document.getElementById("grid-"+group);
+  list.forEach(([n,alt])=>{
+    const d=document.createElement("div"); d.className="ph empty"; d.dataset.label="Photo";
+    d.innerHTML=`<img src="images/${n}.jpg" alt="${alt}" loading="lazy">`;
+    grid.appendChild(d); slot(d);
+  });
 });
 slot(document.getElementById("about-photo"));
 
@@ -382,7 +365,7 @@ form.addEventListener("submit",e=>{
   ].filter(x=>x!==null).join("\n");
   document.getElementById("summary").textContent = msg;
   document.getElementById("send-ig").href = ig;
-  document.getElementById("send-ig").onclick = ()=>navigator.clipboard?.writeText(msg);
+  document.getElementById("send-ig").onclick = ()=>navigator.clipboard?.writeText(msg).catch(()=>{});
   const mail=document.getElementById("send-mail");
   if(CONFIG.email){ mail.href=`mailto:${CONFIG.email}?subject=${encodeURIComponent("Appointment request – "+d.service)}&body=${encodeURIComponent(msg)}`; }
   else mail.style.display="none";
