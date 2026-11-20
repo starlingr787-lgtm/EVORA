@@ -95,6 +95,10 @@ nav a:hover{color:var(--accent-dark)}
 .grid .ph{aspect-ratio:1}
 @media(max-width:760px){.grid{grid-template-columns:repeat(2,1fr)}}
 
+/* Letter */
+.letter{text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px}
+.letter img{width:100%;max-width:560px;height:auto;border:1px solid var(--line);margin:22px 0 28px}
+
 /* Booking */
 .book{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start}
 .how{list-style:none;margin-top:22px;counter-reset:s}
@@ -209,6 +213,17 @@ footer .small{font-size:.75rem;color:var(--muted)}
       <div class="grid" id="grid-studio"></div>
       <h3 class="sub">Results</h3>
       <div class="grid" id="grid-results"></div>
+    </div>
+  </section>
+
+  <!-- LETTER -->
+  <section id="letter">
+    <div class="wrap letter">
+      <p class="eyebrow">A note to my clients</p>
+      <h2>Will you be my clientine?</h2>
+      <img src="images/letter.jpg" width="1290" height="1693" loading="lazy"
+           alt="Newsletter titled The Cupid Post, “Will you be my clientine?”. A letter to clients: with me you can feel confident knowing you’ll receive high-quality, personalized care every time, through custom facials, waxing, lash lifts and brow laminations, each tailored to your natural beauty. It ends with a blessing over each client and the words “Book your services”.">
+      <a class="btn" href="#book">Book your services</a>
     </div>
   </section>
 
