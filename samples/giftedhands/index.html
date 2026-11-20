@@ -71,6 +71,12 @@ nav a:hover{color:var(--accent-dark)}
 .svc .price{font-family:var(--serif);font-size:1.3rem;color:var(--accent-dark);font-weight:600}
 .svc small{display:block;color:var(--muted);font-size:.85rem;margin-top:2px}
 .svc .l{flex:0 1 auto}
+.menu{max-width:340px;margin:44px auto 0;text-align:center}
+.menu a{display:block;border:1px solid var(--line);transition:border-color .2s}
+.menu a:hover{border-color:var(--ink)}
+.menu img{width:100%;height:auto}
+.menu figcaption{margin-top:12px;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase}
+.menu figcaption a{display:inline;border:0;text-decoration:underline;text-underline-offset:3px}
 .note{text-align:center;color:var(--muted);font-size:.82rem;margin-top:26px}
 
 /* About */
@@ -163,6 +169,10 @@ footer .small{font-size:.75rem;color:var(--muted)}
       </div>
       <div class="tabs" role="tablist" id="tabs"></div>
       <div id="panels"></div>
+      <figure class="menu">
+        <a href="images/menu.png" target="_blank" rel="noopener"><img src="images/menu.png" alt="Gifted Hands Aesthetics full service menu with prices" loading="lazy" width="1080" height="1350"></a>
+        <figcaption><a href="images/menu.png" download="gifted-hands-menu.png">Download full menu</a></figcaption>
+      </figure>
       <p class="note">Prices shown are from the April–July menu and may change. Not sure what you need? Request a consultation.</p>
     </div>
   </section>
@@ -170,7 +180,7 @@ footer .small{font-size:.75rem;color:var(--muted)}
   <!-- ABOUT -->
   <section id="about">
     <div class="wrap about">
-      <div class="ph empty" data-label="Photo: Chantel" id="about-photo"><img src="images/about.jpg" alt="Chantel Hernandez, licensed esthetician" loading="lazy"></div>
+      <div class="ph empty" data-label="Photo: studio" id="about-photo"><img src="images/about.jpg" alt="Private treatment room" loading="lazy"></div>
       <div>
         <p class="eyebrow">Meet your esthetician</p>
         <h2>Chantel Hernandez</h2>
