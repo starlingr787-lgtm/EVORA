@@ -1560,6 +1560,124 @@ font-size: 13px;
 display: none;
 }
 }
+/* =========================================
+COOKIE CONSENT
+========================================= */
+.cookie-banner {
+position: fixed;
+left: 0;
+right: 0;
+bottom: 0;
+z-index: 200;
+padding: 20px 3vw calc(20px + env(safe-area-inset-bottom));
+background: var(--white);
+border-top: 1px solid var(--line);
+box-shadow: 0 -10px 30px rgba(22, 20, 18, 0.12);
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+justify-content: space-between;
+gap: 16px;
+visibility: hidden;
+opacity: 0;
+transform: translateY(24px);
+transition:
+opacity .35s ease,
+transform .35s ease;
+}
+.cookie-banner.is-visible {
+visibility: visible;
+opacity: 1;
+transform: translateY(0);
+}
+.cookie-copy {
+max-width: 640px;
+}
+.cookie-copy h2 {
+margin: 0 0 6px;
+font-family: Georgia, "Times New Roman", serif;
+font-size: 18px;
+font-weight: 400;
+}
+.cookie-copy p {
+margin: 0;
+font-size: 13px;
+line-height: 1.6;
+color: var(--grey);
+}
+.cookie-actions {
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+}
+.cookie-btn {
+min-height: 44px;
+padding: 0 24px;
+border: 1px solid var(--black);
+border-radius: 999px;
+background: transparent;
+color: var(--black);
+font: inherit;
+font-size: 13px;
+letter-spacing: 0.04em;
+cursor: pointer;
+transition:
+background-color .25s ease,
+border-color .25s ease,
+color .25s ease,
+transform .25s ease;
+}
+.cookie-btn:hover {
+transform: translateY(-2px);
+}
+.cookie-btn--primary {
+background: var(--black);
+color: var(--white);
+}
+.cookie-btn--primary:hover {
+background: var(--wine);
+border-color: var(--wine);
+}
+.cookie-settings {
+position: fixed;
+left: 12px;
+bottom: 12px;
+z-index: 190;
+min-height: 44px;
+padding: 0 18px;
+border: 1px solid var(--line);
+border-radius: 999px;
+background: var(--white);
+color: var(--black);
+font: inherit;
+font-size: 12px;
+letter-spacing: 0.04em;
+box-shadow: 0 6px 18px rgba(22, 20, 18, 0.12);
+cursor: pointer;
+transition:
+background-color .25s ease,
+transform .25s ease;
+}
+.cookie-settings:hover {
+background: var(--cream-dark);
+transform: translateY(-2px);
+}
+.cookie-settings[hidden] {
+display: none;
+}
+@media (max-width: 700px) {
+.cookie-banner {
+flex-direction: column;
+align-items: flex-start;
+padding: 18px 16px calc(18px + env(safe-area-inset-bottom));
+}
+.cookie-actions {
+width: 100%;
+}
+.cookie-btn {
+flex: 1;
+}
+}
 </style>
 </head>
 <body>
@@ -2318,6 +2436,46 @@ Start a Project →
 </div>
 </section>
 </main>
+<!-- =====================================
+COOKIE CONSENT
+===================================== -->
+<div
+class="cookie-banner"
+id="cookieBanner"
+role="dialog"
+aria-labelledby="cookieBannerTitle"
+aria-describedby="cookieBannerText">
+<div class="cookie-copy">
+<h2 id="cookieBannerTitle">
+Cookies on evoracreative.com
+</h2>
+<p id="cookieBannerText">
+We use cookies to remember your preferences and understand how the site is used.
+You can allow or deny them, and change your choice at any time.
+</p>
+</div>
+<div class="cookie-actions">
+<button
+type="button"
+class="cookie-btn cookie-btn--primary"
+data-cookie-accept>
+Allow cookies
+</button>
+<button
+type="button"
+class="cookie-btn"
+data-cookie-deny>
+Deny
+</button>
+</div>
+</div>
+<button
+type="button"
+class="cookie-settings"
+id="cookieSettingsButton"
+hidden>
+Cookie settings
+</button>
 <script>
 /* =========================================
 SCROLL REVEALS
@@ -2513,6 +2671,69 @@ submitButton.textContent = submitButtonLabel;
 form.removeAttribute("aria-busy");
 }
 });
+/* =========================================
+COOKIE CONSENT
+========================================= */
+(function () {
+const STORAGE_KEY = "evora_cookie_consent";
+const COOKIE_NAME = "evora_cookie_consent";
+const banner = document.getElementById("cookieBanner");
+const settingsButton = document.getElementById("cookieSettingsButton");
+if (!banner || !settingsButton) return;
+function readStoredChoice() {
+try {
+const stored = localStorage.getItem(STORAGE_KEY);
+if (stored === "accepted" || stored === "denied") return stored;
+} catch (error) {
+/* Storage may be blocked; fall back to the consent cookie. */
+}
+const match = document.cookie
+.split("; ")
+.find(row => row.startsWith(COOKIE_NAME + "="));
+if (!match) return null;
+const value = decodeURIComponent(match.split("=").slice(1).join("="));
+return value === "accepted" || value === "denied" ? value : null;
+}
+function storeChoice(value) {
+try {
+localStorage.setItem(STORAGE_KEY, value);
+} catch (error) {
+/* The consent cookie below still records the decision. */
+}
+document.cookie =
+COOKIE_NAME +
+"=" +
+encodeURIComponent(value) +
+"; path=/; max-age=" +
+60 * 60 * 24 * 180 +
+"; SameSite=Lax";
+}
+function showBanner() {
+banner.classList.add("is-visible");
+settingsButton.hidden = true;
+}
+function hideBanner() {
+banner.classList.remove("is-visible");
+settingsButton.hidden = false;
+}
+function saveChoice(value) {
+storeChoice(value);
+hideBanner();
+}
+banner
+.querySelector("[data-cookie-accept]")
+.addEventListener("click", () => saveChoice("accepted"));
+banner
+.querySelector("[data-cookie-deny]")
+.addEventListener("click", () => saveChoice("denied"));
+settingsButton.addEventListener("click", showBanner);
+if (readStoredChoice()) {
+settingsButton.hidden = false;
+} else {
+showBanner();
+}
+})();
+
 </script>
 </body>
 </html>
