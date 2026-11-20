@@ -11,8 +11,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#faf6f1; --bg-alt:#f2e9df; --ink:#3a2f28; --muted:#7d6e63;
-  --accent:#b08d57; --accent-dark:#8f6f3f; --line:#e3d6c6; --white:#fff;
+  --bg:#ffffff; --bg-alt:#ffffff; --ink:#2a2a2a; --muted:#757575;
+  --accent:#b08d57; --accent-dark:#8f6f3f; --line:#e8e8e8; --white:#fff;
   --serif:"Cormorant Garamond",Georgia,serif; --sans:"Jost",system-ui,sans-serif; --script:"Pinyon Script",cursive;
   --max:1080px; --gut:20px;
 }
@@ -23,7 +23,7 @@ img{max-width:100%;display:block}
 a{color:inherit}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
 section{padding:72px 0}
-.alt{background:var(--bg-alt)}
+.alt{background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .eyebrow{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent-dark);font-weight:500}
 h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.15}
 h2{font-size:clamp(2rem,5vw,2.8rem);margin:8px 0 12px}
@@ -36,7 +36,7 @@ h2{font-size:clamp(2rem,5vw,2.8rem);margin:8px 0 12px}
 .btn.ghost:hover{background:var(--accent-dark);color:var(--white)}
 
 /* Nav */
-header{position:sticky;top:0;z-index:20;background:rgba(250,246,241,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
 .brand{font-family:var(--serif);font-size:1.2rem;text-decoration:none;letter-spacing:.04em}
 .brand b{font-weight:600;color:var(--accent-dark)}
@@ -55,7 +55,7 @@ nav a:hover{color:var(--accent-dark)}
 .hero .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
 /* Photos (empty slots until images are added) */
-.ph{background:linear-gradient(135deg,#eadfd2,#f5ede3);border:1px solid var(--line);overflow:hidden;position:relative;aspect-ratio:4/5}
+.ph{background:linear-gradient(135deg,#f1f1f1,#fafafa);border:1px solid var(--line);overflow:hidden;position:relative;aspect-ratio:4/5}
 .ph img{width:100%;height:100%;object-fit:cover}
 .ph.empty::after{content:attr(data-label);position:absolute;inset:0;display:grid;place-items:center;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 
@@ -96,7 +96,7 @@ form{background:var(--white);border:1px solid var(--line);padding:30px}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .f{margin-bottom:16px}
 label{display:block;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-input,select,textarea{width:100%;padding:12px;border:1px solid var(--line);background:var(--bg);font:300 1rem var(--sans);color:var(--ink);border-radius:0}
+input,select,textarea{width:100%;padding:12px;border:1px solid var(--line);background:var(--white);font:300 1rem var(--sans);color:var(--ink);border-radius:0}
 input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:0}
 textarea{min-height:90px;resize:vertical}
 .chk{display:flex;gap:10px;align-items:flex-start;font-size:.85rem;color:var(--muted);margin-bottom:18px}
@@ -106,7 +106,7 @@ textarea{min-height:90px;resize:vertical}
 .bad{border-color:#a3402f}
 .done{display:none;text-align:center;padding:10px 0}
 .done h3{font-size:1.8rem;margin-bottom:8px}
-.done pre{text-align:left;white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);padding:14px;font:300 .9rem var(--sans);margin:16px 0}
+.done pre{text-align:left;white-space:pre-wrap;background:#fafafa;border:1px solid var(--line);padding:14px;font:300 .9rem var(--sans);margin:16px 0}
 .done .actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 @media(max-width:760px){.book{grid-template-columns:1fr}.row{grid-template-columns:1fr}form{padding:22px}}
 
@@ -115,7 +115,7 @@ footer{padding:44px 0 28px;text-align:center;border-top:1px solid var(--line)}
 footer .script{font-family:var(--script);font-size:1.8rem;color:var(--accent-dark)}
 footer ul{list-style:none;display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin:14px 0;font-size:.9rem}
 footer .small{font-size:.75rem;color:var(--muted)}
-.credit{background:var(--ink);color:#d9cdbf;text-align:center;font-size:.75rem;letter-spacing:.08em;padding:12px var(--gut)}
+.credit{background:var(--ink);color:#d0d0d0;text-align:center;font-size:.75rem;letter-spacing:.08em;padding:12px var(--gut)}
 .credit a{color:#e4c791}
 </style>
 </head>
