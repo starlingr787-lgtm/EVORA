@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Gifted Hands Aesthetics | Licensed Esthetician</title>
+<meta name="description" content="Licensed esthetician offering custom facials, brow lamination, lash lifts and waxing. Request your consultation online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf6f1; --bg-alt:#f2e9df; --ink:#3a2f28; --muted:#7d6e63;
+  --accent:#b08d57; --accent-dark:#8f6f3f; --line:#e3d6c6; --white:#fff;
+  --serif:"Cormorant Garamond",Georgia,serif; --sans:"Jost",system-ui,sans-serif; --script:"Pinyon Script",cursive;
+  --max:1080px; --gut:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:var(--sans);font-weight:300;color:var(--ink);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+section{padding:72px 0}
+.alt{background:var(--bg-alt)}
+.eyebrow{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent-dark);font-weight:500}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.15}
+h2{font-size:clamp(2rem,5vw,2.8rem);margin:8px 0 12px}
+.lead{color:var(--muted);max-width:560px}
+.head{text-align:center;margin-bottom:44px}
+.head .lead{margin:0 auto}
+.btn{display:inline-block;padding:14px 30px;background:var(--accent-dark);color:var(--white);text-decoration:none;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;border:1px solid var(--accent-dark);cursor:pointer;font-family:var(--sans);transition:background .2s,color .2s}
+.btn:hover{background:transparent;color:var(--accent-dark)}
+.btn.ghost{background:transparent;color:var(--accent-dark)}
+.btn.ghost:hover{background:var(--accent-dark);color:var(--white)}
+
+/* Nav */
+header{position:sticky;top:0;z-index:20;background:rgba(250,246,241,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-family:var(--serif);font-size:1.2rem;text-decoration:none;letter-spacing:.04em}
+.brand b{font-weight:600;color:var(--accent-dark)}
+nav ul{display:flex;gap:26px;list-style:none}
+nav a{text-decoration:none;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase}
+nav a:hover{color:var(--accent-dark)}
+.nav .btn{padding:9px 18px;font-size:.7rem}
+@media(max-width:760px){nav ul{display:none}}
+
+/* Hero */
+.hero{padding:88px 0 80px;text-align:center}
+.mono{width:88px;height:88px;border-radius:50%;border:1px solid var(--accent);margin:0 auto 22px;display:grid;place-items:center;font-family:var(--serif);font-size:2rem;color:var(--accent-dark)}
+.hero .script{font-family:var(--script);font-size:clamp(1.6rem,4vw,2.1rem);color:var(--accent-dark)}
+.hero h1{font-size:clamp(2.6rem,8vw,4.8rem);margin:6px 0 14px}
+.hero p{color:var(--muted);max-width:520px;margin:0 auto 30px}
+.hero .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* Photos (empty slots until images are added) */
+.ph{background:linear-gradient(135deg,#eadfd2,#f5ede3);border:1px solid var(--line);overflow:hidden;position:relative;aspect-ratio:4/5}
+.ph img{width:100%;height:100%;object-fit:cover}
+.ph.empty::after{content:attr(data-label);position:absolute;inset:0;display:grid;place-items:center;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+
+/* Services */
+.tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:34px}
+.tab{background:transparent;border:1px solid var(--line);padding:9px 20px;font:400 .75rem var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);cursor:pointer}
+.tab[aria-selected=true]{background:var(--accent-dark);color:var(--white);border-color:var(--accent-dark)}
+.panel{max-width:680px;margin:0 auto}
+.panel[hidden]{display:none}
+.svc{display:flex;align-items:baseline;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.svc h3{font-size:1.3rem}
+.svc .dots{flex:1;border-bottom:1px dotted var(--accent);transform:translateY(-4px)}
+.svc .price{font-family:var(--serif);font-size:1.3rem;color:var(--accent-dark);font-weight:600}
+.svc small{display:block;color:var(--muted);font-size:.85rem;margin-top:2px}
+.svc .l{flex:0 1 auto}
+.note{text-align:center;color:var(--muted);font-size:.82rem;margin-top:26px}
+
+/* About */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.about p+p{margin-top:14px}
+.about .quote{font-family:var(--script);font-size:1.7rem;color:var(--accent-dark);margin-top:22px;line-height:1.3}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+.facts div{border-top:1px solid var(--accent);padding-top:10px;font-size:.85rem;color:var(--muted)}
+.facts b{display:block;font-family:var(--serif);font-size:1.15rem;color:var(--ink);font-weight:500}
+@media(max-width:760px){.about{grid-template-columns:1fr;gap:28px}}
+
+/* Gallery */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.grid .ph{aspect-ratio:1}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,1fr)}}
+
+/* Booking */
+.book{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start}
+.how{list-style:none;margin-top:22px;counter-reset:s}
+.how li{counter-increment:s;padding-left:44px;position:relative;margin-bottom:16px}
+.how li::before{content:counter(s);position:absolute;left:0;top:0;width:30px;height:30px;border:1px solid var(--accent);border-radius:50%;display:grid;place-items:center;font-family:var(--serif);color:var(--accent-dark)}
+form{background:var(--white);border:1px solid var(--line);padding:30px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.f{margin-bottom:16px}
+label{display:block;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+input,select,textarea{width:100%;padding:12px;border:1px solid var(--line);background:var(--bg);font:300 1rem var(--sans);color:var(--ink);border-radius:0}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:0}
+textarea{min-height:90px;resize:vertical}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:.85rem;color:var(--muted);margin-bottom:18px}
+.chk input{width:auto;margin-top:5px}
+.err{color:#a3402f;font-size:.8rem;margin-top:4px;display:none}
+.bad+.err{display:block}
+.bad{border-color:#a3402f}
+.done{display:none;text-align:center;padding:10px 0}
+.done h3{font-size:1.8rem;margin-bottom:8px}
+.done pre{text-align:left;white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);padding:14px;font:300 .9rem var(--sans);margin:16px 0}
+.done .actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+@media(max-width:760px){.book{grid-template-columns:1fr}.row{grid-template-columns:1fr}form{padding:22px}}
+
+/* Footer */
+footer{padding:44px 0 28px;text-align:center;border-top:1px solid var(--line)}
+footer .script{font-family:var(--script);font-size:1.8rem;color:var(--accent-dark)}
+footer ul{list-style:none;display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin:14px 0;font-size:.9rem}
+footer .small{font-size:.75rem;color:var(--muted)}
+.credit{background:var(--ink);color:#d9cdbf;text-align:center;font-size:.75rem;letter-spacing:.08em;padding:12px var(--gut)}
+.credit a{color:#e4c791}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">Gifted Hands <b>Aesthetics</b></a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#book">Book</a></li>
+      </ul>
+    </nav>
+    <a class="btn" href="#book">Book now</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="mono" aria-hidden="true">GH</div>
+      <p class="script">enhancing your natural beauty</p>
+      <h1>Gifted Hands<br>Aesthetics</h1>
+      <p class="eyebrow" style="margin-bottom:18px">Licensed Esthetician · Skin Specialist · Custom Treatments</p>
+      <p>Personalized facials, brows, lashes and waxing in a calm, welcoming space. Tell me about your skin and let’s build the treatment around you.</p>
+      <div class="actions">
+        <a class="btn" href="#book">Request a consultation</a>
+        <a class="btn ghost" href="#services">View services &amp; prices</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="alt">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Services &amp; Pricing</p>
+        <h2>Treatments</h2>
+        <p class="lead">Every service is tailored to your skin and your goals.</p>
+      </div>
+      <div class="tabs" role="tablist" id="tabs"></div>
+      <div id="panels"></div>
+      <p class="note">Prices shown are from the April–July menu and may change. Not sure what you need? Request a consultation.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about">
+      <div class="ph empty" data-label="Photo: Chantel" id="about-photo"><img src="images/about.jpg" alt="Chantel Hernandez, licensed esthetician" loading="lazy"></div>
+      <div>
+        <p class="eyebrow">Meet your esthetician</p>
+        <h2>Chantel Hernandez</h2>
+        <p>Licensed esthetician and skin specialist. Every client receives high-quality, personalized care through custom facials, waxing, lash lifts and brow laminations, each service tailored to enhance your natural beauty and meet your unique needs.</p>
+        <p>My goal is for every client to feel refreshed, confident and truly taken care of.</p>
+        <p class="quote">Your skin, your story.</p>
+        <div class="facts">
+          <div><b>Licensed</b>Esthetician</div>
+          <div><b>Custom</b>Treatments</div>
+          <div><b>1:1</b>Personal care</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="alt">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Gallery</p>
+        <h2>The space &amp; the work</h2>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="book">
+    <div class="wrap book">
+      <div>
+        <p class="eyebrow">Consultation &amp; booking</p>
+        <h2>Book in a couple of taps</h2>
+        <p class="lead">No more back-and-forth in DMs. Send your request and I’ll confirm your appointment.</p>
+        <ol class="how">
+          <li><b>Choose your service</b><br>Pick what you’re interested in, or “Not sure yet”.</li>
+          <li><b>Pick a preferred day &amp; time</b><br>Share what works best for you.</li>
+          <li><b>Get confirmation</b><br>I’ll reply with your confirmed time and prep tips.</li>
+        </ol>
+      </div>
+
+      <div>
+        <form id="form" novalidate>
+          <div class="row">
+            <div class="f"><label for="name">Full name</label><input id="name" name="name" autocomplete="name" required><p class="err">Please enter your name.</p></div>
+            <div class="f"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" required><p class="err">Please enter a phone number.</p></div>
+          </div>
+          <div class="f"><label for="email">Email (optional)</label><input id="email" name="email" type="email" autocomplete="email"><p class="err">Please enter a valid email.</p></div>
+          <div class="f"><label for="service">Service</label><select id="service" name="service" required></select><p class="err">Please choose a service.</p></div>
+          <div class="row">
+            <div class="f"><label for="date">Preferred date</label><input id="date" name="date" type="date" required><p class="err">Please choose a date.</p></div>
+            <div class="f"><label for="time">Preferred time</label>
+              <select id="time" name="time" required>
+                <option value="">Select…</option><option>Morning</option><option>Midday</option><option>Afternoon</option><option>Evening</option>
+              </select><p class="err">Please choose a time.</p></div>
+          </div>
+          <div class="f"><label for="first">First visit?</label>
+            <select id="first" name="first"><option>Yes, first time</option><option>No, I’m a returning client</option></select></div>
+          <div class="f"><label for="notes">Skin concerns, allergies or notes</label><textarea id="notes" name="notes" placeholder="Anything I should know before your visit?"></textarea></div>
+          <label class="chk" for="consent"><input id="consent" type="checkbox" required> <span>I understand this is a booking request and the appointment is confirmed once Chantel replies.</span></label>
+          <button class="btn" type="submit" style="width:100%">Send request</button>
+        </form>
+
+        <div class="done" id="done" role="status" aria-live="polite">
+          <h3>Request ready ✦</h3>
+          <p class="lead" style="margin:0 auto">Here is your request. Send it to Chantel with one tap.</p>
+          <pre id="summary"></pre>
+          <div class="actions">
+            <a class="btn" id="send-ig" target="_blank" rel="noopener">Send via Instagram</a>
+            <a class="btn ghost" id="send-mail">Send via email</a>
+          </div>
+          <p class="note"><a href="#book" id="again">Edit request</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="script">Gifted Hands Aesthetics</p>
+    <ul>
+      <li><a id="ig-link" target="_blank" rel="noopener">Instagram</a></li>
+      <li id="loc"></li>
+      <li id="tel"></li>
+      <li id="mail"></li>
+    </ul>
+    <p class="small">Licensed Esthetician · Skin Specialist · Custom Treatments</p>
+  </div>
+</footer>
+<div class="credit">Sample design by <a href="https://evoracreative.com" target="_blank" rel="noopener">EVORA Studio</a> · Not a live booking system</div>
+
+<script>
+/* ===== Editable info (fill in when available) ===== */
+const CONFIG = {
+  instagram: "giftedhands.aesthetics_",
+  email: "",        // e.g. "hello@example.com"
+  phone: "",        // e.g. "(555) 123-4567"
+  location: "",     // e.g. "City, State"
+};
+
+/* ===== Single source of truth for services ===== */
+const SERVICES = [
+  { id:"facials", label:"Facials", items:[
+    { name:"Pro Skin 30 (Basic Facial)", price:60 },
+    { name:"Microdermabrasion", price:70 },
+    { name:"High Frequency", price:65 },
+    { name:"Dermaplane", price:65 },
+    { name:"Chemical Peel", price:100 },
+  ]},
+  { id:"brows-lashes", label:"Brows & Lashes", items:[
+    { name:"Brow Lamination & Tint", price:50 },
+    { name:"Lash Lift & Tint", price:50 },
+  ]},
+  { id:"waxes", label:"Waxes", items:[
+    { name:"Eye Brow Wax", price:15 },
+    { name:"UnderArm Wax", price:15 },
+    { name:"Leg & Arm Wax", price:50 },
+    { name:"Upper Lip", price:10 },
+    { name:"Brazilian", price:70 },
+  ]},
+];
+
+const GALLERY = ["space-1","space-2","brows-1","lashes-1","facial-1","facial-2","waxes-1","space-3"]; // images/<name>.jpg
+
+/* ===== Render services + tabs + select ===== */
+const tabs = document.getElementById("tabs"), panels = document.getElementById("panels"), sel = document.getElementById("service");
+sel.innerHTML = '<option value="">Select a service…</option>';
+SERVICES.forEach((c,i)=>{
+  const t = document.createElement("button");
+  t.className="tab"; t.role="tab"; t.id="tab-"+c.id; t.textContent=c.label;
+  t.setAttribute("aria-selected", i===0); t.setAttribute("aria-controls","panel-"+c.id);
+  t.onclick=()=>show(c.id); tabs.appendChild(t);
+
+  const p = document.createElement("div");
+  p.className="panel"; p.id="panel-"+c.id; p.role="tabpanel"; p.hidden = i!==0;
+  p.innerHTML = c.items.map(s=>`<div class="svc"><div class="l"><h3>${s.name}</h3></div><span class="dots"></span><span class="price">$${s.price}</span></div>`).join("");
+  panels.appendChild(p);
+
+  const g = document.createElement("optgroup"); g.label=c.label;
+  c.items.forEach(s=>{ const o=document.createElement("option"); o.value=s.name; o.textContent=`${s.name} — $${s.price}`; g.appendChild(o); });
+  sel.appendChild(g);
+});
+sel.insertAdjacentHTML("beforeend",'<option value="Not sure yet / consultation">Not sure yet — consultation</option>');
+function show(id){
+  SERVICES.forEach(c=>{
+    document.getElementById("panel-"+c.id).hidden = c.id!==id;
+    document.getElementById("tab-"+c.id).setAttribute("aria-selected", c.id===id);
+  });
+}
+
+/* ===== Photos: show slot until image loads ===== */
+function slot(el){
+  const img = el.querySelector("img"); if(!img) return;
+  const ok = ()=>el.classList.remove("empty");
+  img.addEventListener("error",()=>{img.remove()});
+  img.addEventListener("load",ok);
+  if(img.complete && img.naturalWidth) ok();
+}
+const grid = document.getElementById("grid");
+GALLERY.forEach(n=>{
+  const d=document.createElement("div"); d.className="ph empty"; d.dataset.label="Photo";
+  d.innerHTML=`<img src="images/${n}.jpg" alt="Gifted Hands Aesthetics – ${n.replace(/-\d+$/,"")}" loading="lazy">`;
+  grid.appendChild(d); slot(d);
+});
+slot(document.getElementById("about-photo"));
+
+/* ===== Contact info ===== */
+const ig = "https://instagram.com/"+CONFIG.instagram;
+document.getElementById("ig-link").href = ig;
+if(CONFIG.location) document.getElementById("loc").textContent = CONFIG.location; else document.getElementById("loc").remove();
+if(CONFIG.phone) document.getElementById("tel").innerHTML = `<a href="tel:${CONFIG.phone.replace(/[^\d+]/g,"")}">${CONFIG.phone}</a>`; else document.getElementById("tel").remove();
+if(CONFIG.email) document.getElementById("mail").innerHTML = `<a href="mailto:${CONFIG.email}">${CONFIG.email}</a>`; else document.getElementById("mail").remove();
+
+/* ===== Booking form (demo) ===== */
+const form = document.getElementById("form"), done = document.getElementById("done");
+const dateEl = document.getElementById("date"); dateEl.min = new Date().toISOString().split("T")[0];
+function validate(){
+  let ok=true;
+  form.querySelectorAll("[required]").forEach(el=>{
+    const bad = el.type==="checkbox" ? !el.checked : !el.value.trim();
+    if(el.type!=="checkbox") el.classList.toggle("bad",bad);
+    if(bad) ok=false;
+  });
+  const em=document.getElementById("email");
+  const badMail = em.value && !/^\S+@\S+\.\S+$/.test(em.value);
+  em.classList.toggle("bad",!!badMail); if(badMail) ok=false;
+  return ok;
+}
+form.addEventListener("submit",e=>{
+  e.preventDefault();
+  if(!validate()){ form.querySelector(".bad,#consent:not(:checked)")?.focus(); return; }
+  const d = Object.fromEntries(new FormData(form));
+  const msg = [
+    "Hi Chantel! I'd like to request an appointment.",
+    "",
+    `Name: ${d.name}`, `Phone: ${d.phone}`, d.email?`Email: ${d.email}`:null,
+    `Service: ${d.service}`, `Preferred: ${d.date}, ${d.time}`, `First visit: ${d.first}`,
+    d.notes?`Notes: ${d.notes}`:null,
+  ].filter(x=>x!==null).join("\n");
+  document.getElementById("summary").textContent = msg;
+  document.getElementById("send-ig").href = ig;
+  document.getElementById("send-ig").onclick = ()=>navigator.clipboard?.writeText(msg);
+  const mail=document.getElementById("send-mail");
+  if(CONFIG.email){ mail.href=`mailto:${CONFIG.email}?subject=${encodeURIComponent("Appointment request – "+d.service)}&body=${encodeURIComponent(msg)}`; }
+  else mail.style.display="none";
+  form.style.display="none"; done.style.display="block";
+  done.scrollIntoView({behavior:"smooth",block:"center"});
+});
+document.getElementById("again").onclick=e=>{e.preventDefault();done.style.display="none";form.style.display="block"};
+</script>
+</body>
+</html>
