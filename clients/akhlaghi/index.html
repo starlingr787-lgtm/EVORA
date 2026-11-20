@@ -287,10 +287,19 @@ html[lang="fa"] .glance p,html[lang="fa"] .c-info p{font-size:clamp(20px,1.8vw,2
 html[lang="fa"] .about h2.latin{font-size:clamp(36px,4.6vw,68px)}
 html[lang="fa"] .eyebrow,html[lang="fa"] .svc .tag,html[lang="fa"] .wa-form label,html[lang="fa"] .glance h3,html[lang="fa"] .c-info h3,html[lang="fa"] .ov-info h3,html[lang="fa"] .menu-btn,html[lang="fa"] .hero small,html[lang="fa"] .frame span,html[lang="fa"] .slide figcaption,html[lang="fa"] .wa-btn,html[lang="fa"] .c-info a.l,html[lang="fa"] .c-info button,html[lang="fa"] .link,html[lang="fa"] .wa-hint,html[lang="fa"] .social a,html[lang="fa"] footer,html[lang="fa"] .ov-links span{font-size:13px}
 html[lang="fa"] .svc h3 + p + p,html[lang="fa"] .wa-hint{font-size:15px;line-height:1.9}
+
+/* EVORA signature: slim vertical tag on the left edge, inside the page gutter */
+.sig{position:fixed;left:5px;top:50%;z-index:20;transform:translateY(-50%) rotate(180deg);writing-mode:vertical-rl;display:flex;align-items:center;gap:12px;color:#fff;mix-blend-mode:difference;pointer-events:none;white-space:nowrap;font-family:Georgia,"Times New Roman",serif;line-height:1}
+.sig-mark{font-size:14px;letter-spacing:.16em}
+.sig-demo{font:400 8px var(--text);letter-spacing:.36em;text-transform:uppercase;opacity:.8}
+html[lang="fa"] .sig *{letter-spacing:.16em!important}
+html[lang="fa"] .sig .sig-demo{letter-spacing:.36em!important;text-transform:uppercase!important}
+@media (max-width:820px){.sig{left:3px}.sig-mark{font-size:12px}.sig-demo{font-size:7px}}
 </style>
 </head>
 <body>
 <a class="skip" href="#top">Skip to content</a>
+<div class="sig" aria-label="Demo by EVORA Studio"><span class="sig-mark">EVORA</span><span class="sig-demo">Demo</span></div>
 
 <header>
   <a class="brand latin" href="#top">Amirali Akhlaghi</a>
