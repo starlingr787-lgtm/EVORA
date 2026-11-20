@@ -175,7 +175,7 @@ footer .small{font-size:.75rem;color:var(--muted)}
         <a href="images/menu.png" target="_blank" rel="noopener"><img src="images/menu.png" alt="Gifted Hands Aesthetics full service menu with prices" loading="lazy" width="1080" height="1350"></a>
         <figcaption><a href="images/menu.png" download="gifted-hands-menu.png">Download full menu</a></figcaption>
       </figure>
-      <p class="note">Prices shown are from the April–July menu and may change. Not sure what you need? Request a consultation.</p>
+      <p class="note">Prices may change. Not sure which service is right for you? Request a consultation.</p>
     </div>
   </section>
 
@@ -308,6 +308,32 @@ const SERVICES = [
   ]},
 ];
 
+/* ===== Render services + tabs + select ===== */
+const tabs = document.getElementById("tabs"), panels = document.getElementById("panels"), sel = document.getElementById("service");
+sel.innerHTML = '<option value="">Select a service…</option>';
+SERVICES.forEach((c,i)=>{
+  const t = document.createElement("button");
+  t.type="button"; t.className="tab"; t.setAttribute("role","tab"); t.id="tab-"+c.id; t.textContent=c.label;
+  t.setAttribute("aria-selected", i===0); t.setAttribute("aria-controls","panel-"+c.id);
+  t.onclick=()=>show(c.id); tabs.appendChild(t);
+
+  const p = document.createElement("div");
+  p.className="panel"; p.id="panel-"+c.id; p.setAttribute("role","tabpanel"); p.hidden = i!==0;
+  p.innerHTML = c.items.map(s=>`<div class="svc"><div class="l"><h3>${s.name}</h3></div><span class="dots"></span><span class="price">$${s.price}</span></div>`).join("");
+  panels.appendChild(p);
+
+  const g = document.createElement("optgroup"); g.label=c.label;
+  c.items.forEach(s=>{ const o=document.createElement("option"); o.value=s.name; o.textContent=`${s.name} — $${s.price}`; g.appendChild(o); });
+  sel.appendChild(g);
+});
+sel.insertAdjacentHTML("beforeend",'<option value="Not sure yet / consultation">Not sure yet — consultation</option>');
+function show(id){
+  SERVICES.forEach(c=>{
+    document.getElementById("panel-"+c.id).hidden = c.id!==id;
+    document.getElementById("tab-"+c.id).setAttribute("aria-selected", c.id===id);
+  });
+}
+
 /* ===== Photos: show slot until image loads ===== */
 function slot(el){
   const img = el.querySelector("img"); if(!img) return;
@@ -318,7 +344,7 @@ function slot(el){
 }
 const GALLERY = {
   studio:  [["space-1","Treatment room"],["space-2","Treatment room equipment"],["space-3","Towels and candle"],["waxes-1","Wax warmer and supplies"]],
-  results: [["facial-1","Facial treatment"],["facial-2","Skin before and after"],["brows-1","Brow lamination before and after"],["lashes-1","Lash lift"]],
+  results: [["facial-1","Facial treatment"],["facial-2","Skin results before and after"],["brows-1","Brow lamination before and after"],["lashes-1","Lash lift"]],
 }; // images/<name>.jpg
 Object.entries(GALLERY).forEach(([group,list])=>{
   const grid = document.getElementById("grid-"+group);
