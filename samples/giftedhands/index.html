@@ -56,7 +56,8 @@ nav a:hover{color:var(--accent-dark)}
 
 /* Photos (empty slots until images are added) */
 .ph{background:linear-gradient(135deg,#f1f1f1,#fafafa);border:1px solid var(--line);overflow:hidden;position:relative;aspect-ratio:4/5}
-.ph img{width:100%;height:100%;object-fit:cover}
+.ph img{width:100%;height:100%;object-fit:cover;transition:opacity .35s ease}
+.ph.empty img{opacity:0}
 .ph.empty::after{content:attr(data-label);position:absolute;inset:0;display:grid;place-items:center;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 
 /* Services */
@@ -176,8 +177,8 @@ footer .small{font-size:.75rem;color:var(--muted)}
       <div class="tabs" role="tablist" id="tabs"></div>
       <div id="panels"></div>
       <figure class="menu">
-        <a href="images/menu.png" target="_blank" rel="noopener"><img src="images/menu.png" alt="Gifted Hands Aesthetics full service menu with prices" loading="lazy" width="1080" height="1350"></a>
-        <figcaption><a href="images/menu.png" download="gifted-hands-menu.png">Download full menu</a></figcaption>
+        <a href="images/menu.webp" target="_blank" rel="noopener"><img src="images/menu.webp" alt="Gifted Hands Aesthetics full service menu with prices" width="1080" height="1350"></a>
+        <figcaption><a href="images/menu.webp" download="gifted-hands-menu.webp">Download full menu</a></figcaption>
       </figure>
       <p class="note">Prices may change. Not sure which service is right for you? Request a consultation.</p>
     </div>
@@ -186,7 +187,7 @@ footer .small{font-size:.75rem;color:var(--muted)}
   <!-- ABOUT -->
   <section id="about">
     <div class="wrap about">
-      <div class="ph empty" data-label="Photo: studio" id="about-photo"><img src="images/about.jpg" alt="Private treatment room" loading="lazy"></div>
+      <div class="ph empty" data-label="Photo: studio" id="about-photo"><img src="images/about.webp" alt="Private treatment room"></div>
       <div>
         <p class="eyebrow">Meet your esthetician</p>
         <h2>Chantel Hernandez</h2>
@@ -221,7 +222,7 @@ footer .small{font-size:.75rem;color:var(--muted)}
     <div class="wrap letter">
       <p class="eyebrow">A note to my clients</p>
       <h2>Will you be my clientine?</h2>
-      <img src="images/letter.jpg" width="1290" height="1693" loading="lazy"
+      <img src="images/letter.webp" width="1290" height="1693"
            alt="Newsletter titled The Cupid Post, “Will you be my clientine?”. A letter to clients: with me you can feel confident knowing you’ll receive high-quality, personalized care every time, through custom facials, waxing, lash lifts and brow laminations, each tailored to your natural beauty. It ends with a blessing over each client and the words “Book your services”.">
       <a class="btn" href="#book">Book your services</a>
     </div>
@@ -360,12 +361,12 @@ function slot(el){
 const GALLERY = {
   studio:  [["space-1","Treatment room"],["space-2","Treatment room equipment"],["space-3","Towels and candle"],["waxes-1","Wax warmer and supplies"]],
   results: [["facial-1","Facial treatment"],["facial-2","Skin results before and after"],["brows-1","Brow lamination before and after"],["lashes-1","Lash lift"]],
-}; // images/<name>.jpg
+}; // images/<name>.webp
 Object.entries(GALLERY).forEach(([group,list])=>{
   const grid = document.getElementById("grid-"+group);
   list.forEach(([n,alt])=>{
     const d=document.createElement("div"); d.className="ph empty"; d.dataset.label="Photo";
-    d.innerHTML=`<img src="images/${n}.jpg" alt="${alt}" loading="lazy">`;
+    d.innerHTML=`<img src="images/${n}.webp" alt="${alt}">`;
     grid.appendChild(d); slot(d);
   });
 });
