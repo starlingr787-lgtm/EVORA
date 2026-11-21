@@ -169,21 +169,39 @@
     }
 
     /* ==========================================================
-       2. HERO
+       2. HERO (foto a sangrado completo, titular editorial encima)
        ========================================================== */
-    .hero { padding-top: calc(var(--header-h) + clamp(2.5rem, 6vw, 5rem)); padding-bottom: clamp(3rem, 7vw, 6rem); }
-    .hero-grid { display: grid; gap: 2.5rem; }
-    .hero h1 { font-size: clamp(3.4rem, 11vw, 8.2rem); margin-top: 1.4rem; }
-    .hero h1 em { font-style: italic; color: var(--abeto); }
-    .hero-lead { max-width: 30rem; color: var(--gris); font-size: 1.05rem; margin-top: 1.8rem; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 1.2rem 1.8rem; align-items: center; margin-top: 2.4rem; }
-    .hero-media { aspect-ratio: 4 / 5; }
-    .hero-caption { font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gris); margin-top: .9rem; }
-
-    @media (min-width: 900px) {
-      .hero-grid { grid-template-columns: 4fr 8fr; gap: clamp(2rem, 4vw, 4rem); align-items: end; }
-      .hero-media { aspect-ratio: 1 / 1; margin-bottom: -3rem; }
+    .hero {
+      position: relative; isolation: isolate; color: #fff;
+      margin-top: var(--header-h); padding: 0;
+      min-height: clamp(600px, calc(100svh - var(--header-h)), 1000px);
+      display: flex; background: #4B423C; /* reserva oscura: el texto se lee con o sin foto */
     }
+    .hero-bg { position: absolute; inset: 0; z-index: -2; background: #4B423C; }
+    .hero-bg img { width: 100%; height: 100%; object-fit: cover; color: transparent; font-size: 0; }
+    .hero::after { /* velo muy suave para asegurar contraste del texto */
+      content: ""; position: absolute; inset: 0; z-index: -1;
+      background: linear-gradient(to top, rgba(24, 20, 18, .55), rgba(24, 20, 18, .12) 60%);
+    }
+    .hero-content {
+      width: 100%; display: flex; flex-direction: column; justify-content: space-between;
+      padding-block: clamp(1.5rem, 3vw, 2.5rem) clamp(2rem, 4vw, 3.5rem); gap: 3rem;
+    }
+    .hero-top { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 500; }
+    .hero .eyebrow { color: #fff; }
+    .hero-caption { color: rgba(255, 255, 255, .85); }
+    .hero h1 { font-size: clamp(3.6rem, 12.5vw, 11.5rem); max-width: 14ch; }
+    .hero h1 em { font-style: italic; color: #E6D9CE; }
+    .hero-foot {
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1.8rem 3rem;
+      margin-top: 2rem; padding-top: 1.6rem; border-top: 1px solid rgba(255, 255, 255, .45);
+    }
+    .hero-lead { max-width: 28rem; color: rgba(255, 255, 255, .92); font-size: 1.05rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 1.2rem 1.8rem; align-items: center; }
+    .hero .btn { background: #fff; color: var(--tinta); border-color: #fff; }
+    .hero .btn:hover { background: var(--gris-claro); border-color: var(--gris-claro); }
+    .hero .link-arrow:hover { color: #fff; opacity: .75; }
+    .hero :focus-visible { outline-color: #fff; }
 
     /* ==========================================================
        3. MANIFIESTO + ESTUDIO
@@ -367,25 +385,27 @@
          2. HERO
          ========================================================== -->
     <section class="hero" id="inicio" aria-labelledby="hero-title">
-      <div class="wrap hero-grid">
-        <div>
-          <p class="eyebrow reveal">Estudio de interiorismo residencial</p>
-          <h1 class="display reveal" id="hero-title" style="--d:.1s">Interiores con calma y <em>carácter.</em></h1>
-          <p class="hero-lead reveal" style="--d:.2s">
-            Diseñamos hogares que se sienten serenos y propios: materiales nobles, luz bien pensada y un orden que se nota al vivirlos.
-          </p>
-          <div class="hero-actions reveal" style="--d:.3s">
-            <a href="#contacto" class="btn">Agendar consulta</a>
-            <a href="#proyectos" class="link-arrow">Ver proyectos</a>
-          </div>
+      <figure class="hero-bg">
+        <img src="/images/hero.jpg" alt="Salón luminoso con sofá de lino, mesa baja de madera y cortinas ligeras" width="2000" height="1200" fetchpriority="high">
+      </figure>
+
+      <div class="wrap hero-content">
+        <div class="hero-top reveal">
+          <p class="eyebrow">Estudio de interiorismo residencial</p>
+          <p class="hero-caption">Casa del Olivar · salón · 2024</p>
         </div>
 
-        <figure class="reveal" style="--d:.2s">
-          <div class="ph hero-media">
-            <img src="/images/hero.jpg" alt="Salón luminoso con sofá de lino, mesa baja de madera y cortinas ligeras" width="1200" height="1500" fetchpriority="high">
+        <div>
+          <h1 class="display reveal" id="hero-title" style="--d:.1s">Interiores con calma y <em>carácter.</em></h1>
+
+          <div class="hero-foot reveal" style="--d:.2s">
+            <p class="hero-lead">Diseñamos hogares que se sienten serenos y propios: materiales nobles, luz bien pensada y un orden que se nota al vivirlos.</p>
+            <div class="hero-actions">
+              <a href="#contacto" class="btn">Agendar consulta</a>
+              <a href="#proyectos" class="link-arrow">Ver proyectos</a>
+            </div>
           </div>
-          <figcaption class="hero-caption">Casa del Olivar — salón, 2024</figcaption>
-        </figure>
+        </div>
       </div>
     </section>
 
