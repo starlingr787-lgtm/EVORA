@@ -13,6 +13,7 @@
   <!-- Favicon simple (SVG embebido): "L" en serif sobre fondo carbón -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%232E2622'/%3E%3Ctext x='32' y='47' font-family='Georgia,serif' font-size='44' text-anchor='middle' fill='%23FFFFFF'%3EL%3C/text%3E%3C/svg%3E">
 
+  <link rel="preload" as="image" href="/images/hero.jpg" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -125,7 +126,6 @@
       position: fixed; inset: 0 0 auto 0; z-index: 50;
       height: var(--header-h);
       background: rgba(255, 255, 255, .94);
-      backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--linea);
     }
     .site-header .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; }
@@ -175,6 +175,7 @@
     .hero {
       position: relative; isolation: isolate; color: #fff;
       margin-top: var(--header-h); padding: 0;
+      min-height: clamp(600px, calc(100vh - var(--header-h)), 1000px);
       min-height: clamp(600px, calc(100svh - var(--header-h)), 1000px);
       display: flex; background: #4B423C; /* reserva oscura: el texto se lee con o sin foto */
     }
@@ -437,7 +438,7 @@
          ========================================================== -->
     <section class="hero" id="inicio" aria-labelledby="hero-title">
       <figure class="hero-bg">
-        <img src="/images/hero.jpg" alt="Salón con paneles de pared en tono arena, sofá de lino, cojines y mesa de madera con velas" width="2000" height="1200" fetchpriority="high">
+        <img src="/images/hero.jpg" alt="Salón con paneles de pared en tono arena, sofá de lino, cojines y mesa de madera con velas" width="1000" height="1500" fetchpriority="high">
       </figure>
 
       <div class="wrap hero-content">
@@ -473,7 +474,7 @@
 
         <div class="manifesto-side reveal" style="--d:.2s">
           <div class="ph studio-img">
-            <img src="/images/estudio.jpg" alt="Mesa de trabajo del estudio con muestras de lino, madera y papel" width="800" height="600" loading="lazy">
+            <img src="/images/estudio.jpg" alt="Mesa de trabajo del estudio con muestras de lino, madera y papel" width="736" height="920" loading="lazy" decoding="async">
           </div>
           <p>Un equipo pequeño que trabaja de cerca con cada familia, de la primera conversación a la última lámpara.</p>
         </div>
@@ -494,7 +495,7 @@
           <article class="project project--1 reveal">
             <a href="#proyectos" aria-label="Casa del Olivar, Valle de Aranza, 2024">
               <div class="ph">
-                <img src="/images/proyecto-1.jpg" alt="Comedor con mesa de roble, sillas de lino y ventanal al jardín" width="1000" height="1250" loading="lazy">
+                <img src="/images/proyecto-1.jpg" alt="Comedor con mesa de roble, sillas de lino y ventanal al jardín" width="1200" height="1600" loading="lazy" decoding="async">
               </div>
               <div class="project-meta">
                 <div>
@@ -508,7 +509,7 @@
           <article class="project project--2 reveal" style="--d:.1s">
             <a href="#proyectos" aria-label="Ático Marea, Puerto Calma, 2023">
               <div class="ph">
-                <img src="/images/proyecto-2.jpg" alt="Dormitorio en tonos crema con cabecero de madera y ropa de cama de lino" width="900" height="900" loading="lazy">
+                <img src="/images/proyecto-2.jpg" alt="Dormitorio en tonos crema con cabecero de madera y ropa de cama de lino" width="1200" height="800" loading="lazy" decoding="async">
               </div>
               <div class="project-meta">
                 <div>
@@ -522,7 +523,7 @@
           <article class="project project--3 reveal">
             <a href="#proyectos" aria-label="Casa Sauce, Villa Brisa, 2022">
               <div class="ph">
-                <img src="/images/proyecto-3.jpg" alt="Cocina abierta con isla de piedra clara y estanterías de madera" width="1000" height="800" loading="lazy">
+                <img src="/images/proyecto-3.jpg" alt="Cocina abierta con isla de piedra clara y estanterías de madera" width="1024" height="559" loading="lazy" decoding="async">
               </div>
               <div class="project-meta">
                 <div>
@@ -640,7 +641,7 @@
          ========================================================== -->
     <section class="contact" id="contacto" aria-labelledby="contacto-title">
       <figure class="contact-bg">
-        <img src="/images/cierre.jpg" alt="Salón luminoso con ventanales y revestimiento de madera clara, sofá de lino y mesa baja" width="1200" height="800" loading="lazy">
+        <img src="/images/cierre.jpg" alt="Salón luminoso con ventanales y revestimiento de madera clara, sofá de lino y mesa baja" width="1200" height="800" loading="lazy" decoding="async">
       </figure>
       <div class="wrap contact-grid">
         <div class="reveal">
