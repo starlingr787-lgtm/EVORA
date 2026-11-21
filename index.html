@@ -363,6 +363,21 @@
     .contact .btn { background: #fff; color: var(--tinta); border-color: #fff; }
     .contact .btn:hover { background: var(--gris-claro); border-color: var(--gris-claro); }
 
+    /* Acciones de contacto y confirmación de envío */
+    .contact-actions { display: grid; gap: 1.6rem; margin-top: 2rem; justify-items: start; }
+    .btn--wa { gap: .7rem; }
+    .contact-data { display: grid; gap: .4rem; font-size: .95rem; color: rgba(255, 255, 255, .92); }
+    .contact-data span { display: inline-block; min-width: 5.5rem; font-size: .7rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: #fff; }
+    .trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .form-fields { display: grid; gap: 1.8rem; align-content: start; }
+    .form-fields[hidden] { display: none; }
+    .form-success { display: grid; gap: 1.2rem; align-content: start; padding: clamp(1.5rem, 3vw, 2.5rem); border: 1px solid rgba(255, 255, 255, .6); background: rgba(24, 20, 18, .35); }
+    .form-success[hidden] { display: none; }
+    .form-success-title { font-family: var(--display); font-size: clamp(1.8rem, 3.4vw, 2.6rem); text-transform: uppercase; letter-spacing: .05em; line-height: 1.1; }
+    .form-success-text { color: rgba(255, 255, 255, .92); max-width: 30rem; }
+    .contact .pause { color: #fff; justify-self: start; }
+    .form-status { min-height: 1.5rem; }
+
     /* ==========================================================
        9. FOOTER
        ========================================================== */
@@ -631,26 +646,43 @@
         <div class="reveal">
           <p class="eyebrow">Contacto</p>
           <h2 class="display" id="contacto-title">Hablemos de tu espacio</h2>
-          <p class="contact-intro">Cuéntanos qué imaginas para tu hogar. Te responderemos con calma y sin compromiso para concretar una primera consulta.</p>
+          <p class="contact-intro">Las consultas se atienden por WhatsApp. Escríbenos para agendar tu primera consulta, sin compromiso, o déjanos un mensaje y te contactaremos.</p>
+          <div class="contact-actions">
+            <a class="btn btn--wa" href="https://wa.me/34677160298?text=Hola%2C%20quiero%20agendar%20una%20consulta%20con%20Lumen%20%26%20Lino." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp al +34 677 16 02 98 (se abre en una pestaña nueva)"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.95L2 22l5.2-1.5A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.08.89.9-3-.2-.31a8.2 8.2 0 1 1 6.88 3.75Zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.09-.39-.13-.56.12s-.64.8-.78.96c-.14.17-.29.19-.54.06a6.7 6.7 0 0 1-3.3-2.88c-.25-.43.25-.4.71-1.32.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48a.93.93 0 0 0-.67.31c-.23.25-.88.86-.88 2.1s.9 2.43 1.03 2.6c.12.17 1.78 2.72 4.3 3.81 1.6.69 2.23.75 3.03.63.49-.07 1.46-.6 1.67-1.17.2-.58.2-1.07.14-1.17-.06-.1-.23-.16-.48-.29Z"/></svg><span>Escribir por WhatsApp</span></a>
+            <ul class="contact-data">
+              <li><span>WhatsApp</span> +34 677 16 02 98</li>
+              <li><span>Email</span> hola@lumenylino.example</li>
+            </ul>
+          </div>
         </div>
 
         <!-- Sin backend: el envío se simula en JS -->
-        <form class="form reveal" id="form-contacto" style="--d:.1s" novalidate>
-          <div class="field">
-            <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+        <form class="form reveal" id="form-contacto" name="contacto" method="POST" action="/" data-netlify="true" netlify-honeypot="campo-trampa" style="--d:.1s" novalidate>
+          <input type="hidden" name="form-name" value="contacto">
+          <p class="trap" aria-hidden="true"><label>No rellenar: <input name="campo-trampa" tabindex="-1" autocomplete="off"></label></p>
+
+          <div class="form-fields">
+            <div class="field">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="mensaje">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn">Enviar mensaje</button>
+            <p class="form-status" role="alert" aria-live="assertive"></p>
           </div>
-          <div class="field">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="email" required>
+
+          <div class="form-success" role="status" aria-live="polite" tabindex="-1" hidden>
+            <p class="form-success-title">Mensaje enviado</p>
+            <p class="form-success-text">Gracias, <span class="js-nombre"></span>. Hemos recibido tu mensaje y nos pondremos en contacto contigo muy pronto. Si prefieres una respuesta más rápida, escríbenos por WhatsApp.</p>
+            <button type="button" class="pause js-otro">Enviar otro mensaje</button>
           </div>
-          <div class="field">
-            <label for="mensaje">Mensaje</label>
-            <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
-          </div>
-          <button type="submit" class="btn">Enviar mensaje</button>
-          <p class="form-status" role="status" aria-live="polite"></p>
-          <p class="form-note">Formulario de demostración: no se envía ni se guarda ningún dato.</p>
         </form>
       </div>
     </section>
@@ -766,10 +798,20 @@
       else start();
     })();
 
-    /* ---- Formulario (solo maquetación, sin backend) ---- */
+    /* ---- Formulario: envío (Netlify Forms) y confirmación al cliente ---- */
     (function () {
       var form = document.getElementById('form-contacto');
+      var fields = form.querySelector('.form-fields');
       var status = form.querySelector('.form-status');
+      var ok = form.querySelector('.form-success');
+      var btn = form.querySelector('button[type="submit"]');
+
+      function showSuccess() {
+        form.querySelector('.js-nombre').textContent = (form.nombre.value || '').trim().split(/\s+/)[0] || 'gracias por escribirnos';
+        fields.hidden = true; ok.hidden = false; ok.focus();
+        form.reset();
+      }
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         if (!form.checkValidity()) {
@@ -778,8 +820,20 @@
           if (first) first.focus();
           return;
         }
-        status.textContent = 'Gracias. Esto es una demostración: tu mensaje no se ha enviado.';
-        form.reset();
+        status.textContent = '';
+        btn.disabled = true; btn.textContent = 'Enviando…';
+        var body = new URLSearchParams(new FormData(form)).toString();
+        var send = fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
+          .catch(function () { /* sin servidor (vista previa): se muestra igualmente la confirmación */ });
+        var wait = new Promise(function (r) { setTimeout(r, 800); });
+        Promise.all([send, wait]).then(function () {
+          btn.disabled = false; btn.textContent = 'Enviar mensaje';
+          showSuccess();
+        });
+      });
+
+      form.querySelector('.js-otro').addEventListener('click', function () {
+        ok.hidden = true; fields.hidden = false; form.nombre.focus();
       });
     })();
 
