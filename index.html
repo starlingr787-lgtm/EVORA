@@ -181,8 +181,8 @@
     .hero-caption { font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gris); margin-top: .9rem; }
 
     @media (min-width: 900px) {
-      .hero-grid { grid-template-columns: 5fr 7fr; gap: clamp(2rem, 4vw, 4rem); align-items: end; }
-      .hero-media { aspect-ratio: 5 / 5.6; margin-bottom: -3rem; }
+      .hero-grid { grid-template-columns: 4fr 8fr; gap: clamp(2rem, 4vw, 4rem); align-items: end; }
+      .hero-media { aspect-ratio: 1 / 1; margin-bottom: -3rem; }
     }
 
     /* ==========================================================
@@ -197,11 +197,11 @@
     }
     .manifesto blockquote em { color: var(--abeto); }
     .manifesto-side { display: grid; gap: 1.5rem; align-content: start; }
-    .studio-img { aspect-ratio: 4 / 5; }
+    .studio-img { aspect-ratio: 1 / 1; }
     .manifesto-side p { color: var(--gris); max-width: 28rem; }
 
     @media (min-width: 900px) {
-      .manifesto-grid { grid-template-columns: 1fr 5fr 4fr; gap: clamp(1.5rem, 4vw, 4rem); }
+      .manifesto-grid { grid-template-columns: 1fr 4fr 5fr; gap: clamp(1.5rem, 4vw, 4rem); }
       .manifesto-side { margin-top: 3rem; }
     }
 
@@ -220,15 +220,15 @@
     .project-meta { display: flex; gap: 1.1rem; align-items: baseline; padding-top: 1rem; border-top: 1px solid var(--linea); margin-top: 1rem; }
     .project h3 { font-family: var(--serif); font-weight: 400; font-size: 1.8rem; letter-spacing: -.015em; line-height: 1.1; }
     .project-info { font-size: .75rem; letter-spacing: .16em; text-transform: uppercase; color: var(--gris); margin-top: .35rem; }
-    .project--1 .ph { aspect-ratio: 4 / 5; }
-    .project--2 .ph { aspect-ratio: 4 / 5; }
+    .project--1 .ph { aspect-ratio: 1 / 1; }
+    .project--2 .ph { aspect-ratio: 7 / 5; }
     .project--3 .ph { aspect-ratio: 3 / 2; }
 
     @media (min-width: 900px) {
       .project-grid { grid-template-columns: repeat(12, 1fr); column-gap: clamp(1.5rem, 3vw, 3rem); row-gap: 0; }
-      .project--1 { grid-column: 1 / 9; }
-      .project--2 { grid-column: 9 / 13; margin-top: 10rem; }
-      .project--3 { grid-column: 2 / 11; margin-top: 3rem; }
+      .project--1 { grid-column: 1 / 10; }
+      .project--2 { grid-column: 6 / 13; margin-top: 4rem; }
+      .project--3 { grid-column: 1 / 11; margin-top: 4rem; }
     }
 
     /* ==========================================================
@@ -245,7 +245,7 @@
     .service p { color: var(--gris); max-width: 26rem; }
 
     @media (min-width: 900px) {
-      .service { grid-template-columns: 1fr 5fr 4fr; align-items: baseline; }
+      .service { grid-template-columns: 6fr 5fr; align-items: baseline; }
     }
 
     /* ==========================================================
@@ -415,18 +415,17 @@
     <section class="projects" id="proyectos" aria-labelledby="proyectos-title">
       <div class="wrap">
         <div class="section-head reveal">
-          <p class="eyebrow">01 — Proyectos</p>
+          <p class="eyebrow">Proyectos</p>
           <h2 class="display" id="proyectos-title">Casas que se habitan despacio</h2>
         </div>
 
         <div class="project-grid">
           <article class="project project--1 reveal">
-            <a href="#proyectos" aria-label="Proyecto 01: Casa del Olivar, Valle de Aranza, 2024">
+            <a href="#proyectos" aria-label="Casa del Olivar, Valle de Aranza, 2024">
               <div class="ph">
                 <img src="/images/proyecto-1.jpg" alt="Comedor con mesa de roble, sillas de lino y ventanal al jardín" width="1000" height="1250" loading="lazy">
               </div>
               <div class="project-meta">
-                <span class="num">01</span>
                 <div>
                   <h3>Casa del Olivar</h3>
                   <p class="project-info">Valle de Aranza · 2024</p>
@@ -436,12 +435,11 @@
           </article>
 
           <article class="project project--2 reveal" style="--d:.1s">
-            <a href="#proyectos" aria-label="Proyecto 02: Ático Marea, Puerto Calma, 2023">
+            <a href="#proyectos" aria-label="Ático Marea, Puerto Calma, 2023">
               <div class="ph">
                 <img src="/images/proyecto-2.jpg" alt="Dormitorio en tonos crema con cabecero de madera y ropa de cama de lino" width="900" height="900" loading="lazy">
               </div>
               <div class="project-meta">
-                <span class="num">02</span>
                 <div>
                   <h3>Ático Marea</h3>
                   <p class="project-info">Puerto Calma · 2023</p>
@@ -451,12 +449,11 @@
           </article>
 
           <article class="project project--3 reveal">
-            <a href="#proyectos" aria-label="Proyecto 03: Casa Sauce, Villa Brisa, 2022">
+            <a href="#proyectos" aria-label="Casa Sauce, Villa Brisa, 2022">
               <div class="ph">
                 <img src="/images/proyecto-3.jpg" alt="Cocina abierta con isla de piedra clara y estanterías de madera" width="1000" height="800" loading="lazy">
               </div>
               <div class="project-meta">
-                <span class="num">03</span>
                 <div>
                   <h3>Casa Sauce</h3>
                   <p class="project-info">Villa Brisa · 2022</p>
@@ -474,23 +471,20 @@
     <section id="servicios" aria-labelledby="servicios-title">
       <div class="wrap">
         <div class="section-head reveal">
-          <p class="eyebrow">02 — Servicios</p>
+          <p class="eyebrow">Servicios</p>
           <h2 class="display" id="servicios-title">Cómo podemos ayudarte</h2>
         </div>
 
         <ul class="services-list">
           <li class="service reveal">
-            <span class="num">01</span>
             <h3>Diseño integral</h3>
             <p>Concepto, distribución y materiales pensados como un todo coherente para tu vivienda.</p>
           </li>
           <li class="service reveal" style="--d:.1s">
-            <span class="num">02</span>
             <h3>Reforma y dirección de obra</h3>
             <p>Coordinamos oficios y plazos para que la obra respete el diseño y tu tranquilidad.</p>
           </li>
           <li class="service reveal" style="--d:.2s">
-            <span class="num">03</span>
             <h3>Mobiliario y styling</h3>
             <p>Selección de piezas, textiles e iluminación para terminar cada estancia con intención.</p>
           </li>
@@ -504,28 +498,24 @@
     <section class="process" aria-labelledby="proceso-title">
       <div class="wrap">
         <div class="section-head reveal">
-          <p class="eyebrow">03 — Proceso</p>
+          <p class="eyebrow">Proceso</p>
           <h2 class="display" id="proceso-title">Cuatro pasos, sin prisa</h2>
         </div>
 
         <ol class="process-list">
           <li class="step reveal">
-            <span class="num">01</span>
             <h3>Escucha</h3>
             <p>Conversamos sobre tu forma de vivir, tus hábitos y lo que quieres sentir al llegar a casa.</p>
           </li>
           <li class="step reveal" style="--d:.1s">
-            <span class="num">02</span>
             <h3>Concepto</h3>
             <p>Traducimos esa conversación en una propuesta: ambiente, paleta, materiales y distribución.</p>
           </li>
           <li class="step reveal" style="--d:.2s">
-            <span class="num">03</span>
             <h3>Desarrollo</h3>
             <p>Afinamos planos, detalles y presupuesto, y coordinamos la ejecución con cada oficio.</p>
           </li>
           <li class="step reveal" style="--d:.3s">
-            <span class="num">04</span>
             <h3>Entrega</h3>
             <p>Montamos, revisamos cada detalle y te entregamos un hogar listo para estrenar.</p>
           </li>
@@ -552,7 +542,7 @@
     <section class="contact" id="contacto" aria-labelledby="contacto-title">
       <div class="wrap contact-grid">
         <div class="reveal">
-          <p class="eyebrow">04 — Contacto</p>
+          <p class="eyebrow">Contacto</p>
           <h2 class="display" id="contacto-title">Hablemos de tu espacio</h2>
           <p class="contact-intro">Cuéntanos qué imaginas para tu hogar. Te responderemos con calma y sin compromiso para concretar una primera consulta.</p>
         </div>
