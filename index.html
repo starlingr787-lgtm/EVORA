@@ -395,6 +395,35 @@
     }
 
     /* ==========================================================
+       10. AVISO DE COOKIES
+       ========================================================== */
+    .cookie-banner {
+      position: fixed; z-index: 60; left: 0; right: 0; bottom: 0;
+      padding: 1.4rem var(--gutter) calc(1.4rem + env(safe-area-inset-bottom, 0px));
+      background: var(--blanco); color: var(--tinta);
+      border-top: 1px solid var(--linea);
+      transform: translateY(0); opacity: 1; transition: transform .6s ease, opacity .6s ease;
+    }
+    .cookie-banner[hidden] { display: none; }
+    .cookie-banner.is-entering { transform: translateY(100%); opacity: 0; }
+    .cookie-inner { max-width: var(--max); margin-inline: auto; display: grid; gap: 1.2rem; align-items: center; }
+    .cookie-title { font-family: var(--display); font-size: 1.1rem; text-transform: uppercase; letter-spacing: .12em; margin-bottom: .4rem; }
+    .cookie-text { font-size: .9rem; color: var(--gris); max-width: 46rem; }
+    .cookie-more { margin-top: .6rem; font-size: .85rem; color: var(--gris); max-width: 46rem; }
+    .cookie-more summary { cursor: pointer; display: inline-block; font-size: .72rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--tinta); border-bottom: 1px solid currentColor; padding-bottom: .15rem; }
+    .cookie-more p { margin-top: .7rem; }
+    .cookie-actions { display: flex; flex-wrap: wrap; gap: .8rem; }
+    .cookie-actions .btn { padding: .9rem 1.5rem; flex: 1 1 9rem; justify-content: center; }
+    @media (min-width: 900px) {
+      .cookie-inner { grid-template-columns: 1fr auto; gap: 3rem; }
+      .cookie-actions { flex-wrap: nowrap; }
+      .cookie-actions .btn { flex: none; }
+    }
+    .linklike { background: none; border: 0; padding: 0; font: inherit; color: inherit; cursor: pointer; text-decoration: underline; text-underline-offset: .2em; }
+    .linklike:hover { color: var(--abeto-texto); }
+    @media (prefers-reduced-motion: reduce) { .cookie-banner { transition: none; } }
+
+    /* ==========================================================
        Accesibilidad: movimiento reducido
        ========================================================== */
     @media (prefers-reduced-motion: reduce) {
@@ -700,9 +729,30 @@
       </div>
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> Lumen &amp; Lino</p>
+        <button type="button" class="linklike" id="abrir-cookies">Configurar cookies</button>
       </div>
     </div>
   </footer>
+
+  <!-- ==========================================================
+       10. AVISO DE COOKIES
+       ========================================================== -->
+  <section class="cookie-banner" id="cookie-banner" role="region" aria-labelledby="cookie-title" aria-describedby="cookie-text" hidden>
+    <div class="cookie-inner">
+      <div>
+        <p class="cookie-title" id="cookie-title">Cookies</p>
+        <p class="cookie-text" id="cookie-text">Usamos cookies propias y de terceros, como las de las tipografías, para que la web funcione bien y mejorar tu experiencia. Puedes aceptarlas o rechazarlas.</p>
+        <details class="cookie-more">
+          <summary>Más información</summary>
+          <p>Las cookies técnicas son necesarias para el funcionamiento del sitio y se guardan siempre. Las de terceros, como Google Fonts para las tipografías, se usan solo si las aceptas. Puedes cambiar tu elección en cualquier momento desde "Configurar cookies", al pie de la página.</p>
+        </details>
+      </div>
+      <div class="cookie-actions">
+        <button type="button" class="btn btn--ghost" data-cookie="rejected">Rechazar</button>
+        <button type="button" class="btn" data-cookie="accepted">Aceptar</button>
+      </div>
+    </div>
+  </section>
 
   <script>
     /* Marca que hay JS para activar las animaciones de entrada */
@@ -830,6 +880,38 @@
       form.querySelector('.js-otro').addEventListener('click', function () {
         ok.hidden = true; fields.hidden = false; form.nombre.focus();
       });
+    })();
+
+    /* ---- Aviso de cookies: Aceptar / Rechazar, recordado en el navegador ---- */
+    (function () {
+      var KEY = 'lumen-lino-cookies';
+      var banner = document.getElementById('cookie-banner');
+      var reopen = document.getElementById('abrir-cookies');
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+      function write(v) { try { localStorage.setItem(KEY, v); } catch (e) { /* almacenamiento bloqueado: se vuelve a preguntar */ } }
+
+      function show() {
+        banner.hidden = false;
+        if (reduce) return;
+        banner.classList.add('is-entering');
+        requestAnimationFrame(function () { requestAnimationFrame(function () { banner.classList.remove('is-entering'); }); });
+      }
+      function choose(v) {
+        write(v);
+        banner.hidden = true;
+        /* Punto de enganche: aquí se activarían scripts de analítica solo si v === 'accepted' */
+        document.dispatchEvent(new CustomEvent('cookies:choice', { detail: v }));
+        if (reopen) reopen.focus();
+      }
+
+      banner.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-cookie]');
+        if (b) choose(b.getAttribute('data-cookie'));
+      });
+      if (reopen) reopen.addEventListener('click', show);
+      if (!read()) setTimeout(show, 700);
     })();
 
     /* ---- Año del copyright ---- */
