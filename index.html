@@ -15,7 +15,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     /* ==========================================================
@@ -31,7 +31,7 @@
       --gris: #5C6063;         /* texto secundario, AA sobre blanco */
       --linea: rgba(38, 40, 42, .16);
 
-      --display: "Jost", "Futura", "Century Gothic", system-ui, sans-serif;
+      --display: "Bodoni Moda", "Didot", "Playfair Display", "Times New Roman", serif;
       --sans: "Inter", "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
 
       --gutter: clamp(1.25rem, 3.5vw, 2.5rem);
@@ -78,9 +78,9 @@
     }
     .display {
       font-family: var(--display);
-      font-weight: 300;
-      letter-spacing: .04em;
-      line-height: 1.08;
+      font-weight: 400;
+      letter-spacing: .05em;
+      line-height: 1.1;
       text-transform: uppercase;
     }
     .num {
@@ -130,7 +130,7 @@
     }
     .site-header .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; }
     .logo { font-family: var(--display); font-size: 1.05rem; font-weight: 400; letter-spacing: .38em; text-transform: uppercase; white-space: nowrap; }
-    .logo span span { color: var(--abeto-texto); font-weight: 300; margin-inline: .3em; }
+    .logo span span { color: var(--abeto-texto); font-weight: 400; font-style: italic; text-transform: none; letter-spacing: 0; margin-inline: .3em; }
 
     .nav { display: none; }
     .nav-list { display: flex; gap: 2.2rem; align-items: center; }
@@ -161,7 +161,7 @@
       padding: 1.5rem var(--gutter) 2rem;
     }
     .nav.is-open .nav-list { flex-direction: column; align-items: flex-start; gap: 1.2rem; }
-    .nav.is-open a:not(.btn) { font-family: var(--display); font-size: 1.5rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 300; }
+    .nav.is-open a:not(.btn) { font-family: var(--display); font-size: 1.5rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 400; }
     .nav.is-open .nav-cta { margin-top: .8rem; }
 
     @media (min-width: 900px) {
@@ -191,8 +191,8 @@
     .hero-top { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 500; }
     .hero .eyebrow { color: #fff; }
     .hero-caption { color: rgba(255, 255, 255, .85); }
-    .hero h1 { font-size: clamp(2.6rem, 8.4vw, 8rem); max-width: 16ch; }
-    .hero h1 em { font-style: normal; font-weight: 200; color: #E6D9CE; }
+    .hero h1 { font-size: clamp(2.5rem, 7.4vw, 7rem); max-width: 16ch; }
+    .hero h1 em { font-style: italic; font-weight: 400; color: #E6D9CE; }
     .hero-foot {
       display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1.8rem 3rem;
       margin-top: 2rem; padding-top: 1.6rem; border-top: 1px solid rgba(255, 255, 255, .45);
@@ -210,11 +210,11 @@
     .manifesto { border-top: 1px solid var(--linea); }
     .manifesto-grid { display: grid; gap: 2.5rem; }
     .manifesto blockquote p {
-      font-family: var(--display); font-weight: 300;
+      font-family: var(--display); font-weight: 400;
       font-size: clamp(1.6rem, 3.6vw, 2.9rem);
       line-height: 1.28; letter-spacing: .005em;
     }
-    .manifesto blockquote em { font-style: normal; color: var(--abeto); }
+    .manifesto blockquote em { font-style: italic; color: var(--abeto); }
     .manifesto-side { display: grid; gap: 1.5rem; align-content: start; }
     .studio-img { aspect-ratio: 1 / 1; }
     .manifesto-side p { color: var(--gris); max-width: 28rem; }
@@ -260,7 +260,7 @@
       transition: padding-left .4s ease;
     }
     .service:hover { padding-left: .8rem; }
-    .service h3 { font-family: var(--display); font-weight: 300; font-size: clamp(1.3rem, 2.6vw, 2rem); letter-spacing: .1em; text-transform: uppercase; line-height: 1.2; }
+    .service h3 { font-family: var(--display); font-weight: 400; font-size: clamp(1.3rem, 2.6vw, 2rem); letter-spacing: .1em; text-transform: uppercase; line-height: 1.2; }
     .service p { color: var(--gris); max-width: 26rem; }
 
     @media (min-width: 900px) {
@@ -291,10 +291,10 @@
     .voices { --gris-oscuro: #3E4144; color: var(--gris-oscuro); }
     .voices .eyebrow { color: var(--gris-oscuro); }
     .voices-body { display: grid; gap: 1rem; }
-    .quote-mark { font-family: var(--display); font-weight: 200; font-size: 6rem; line-height: .6; color: #9A9DA0; }
+    .quote-mark { font-family: var(--display); font-weight: 400; font-size: 6rem; line-height: .6; color: #9A9DA0; }
     .slides { display: grid; gap: 3rem; }
     .slide p {
-      font-family: var(--display); font-weight: 300;
+      font-family: var(--display); font-weight: 400;
       font-size: clamp(1.6rem, 3.6vw, 2.9rem); line-height: 1.28; letter-spacing: .005em; max-width: 28ch;
     }
     .slide cite { display: block; margin-top: 1.6rem; font-style: normal; font-size: .72rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--gris-oscuro); }
@@ -346,12 +346,22 @@
     }
 
         /* ==========================================================
-       8b. IMAGEN DE CIERRE (a sangrado completo, bajo el contacto)
+       8b. CONTACTO SOBRE FOTO (texto blanco, velo oscuro para contraste)
        ========================================================== */
-    .closing { margin: 0; }
-    .closing .ph { aspect-ratio: 4 / 3; }
-    .closing img { object-position: 50% 55%; }
-    @media (min-width: 700px) { .closing .ph { aspect-ratio: 21 / 9; } }
+    .contact { position: relative; isolation: isolate; color: #fff; background: #4B423C; padding-block: clamp(5rem, 12vw, 11rem); }
+    .contact-bg { position: absolute; inset: 0; z-index: -2; margin: 0; }
+    .contact-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; color: transparent; font-size: 0; }
+    .contact::after { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(24, 20, 18, .58); }
+    .contact .eyebrow { color: #fff; }
+    .contact .contact-intro { color: rgba(255, 255, 255, .92); }
+    .contact .field label { color: #fff; }
+    .contact .field input, .contact .field textarea { color: #fff; border-bottom-color: rgba(255, 255, 255, .85); }
+    .contact .field input:focus, .contact .field textarea:focus { border-bottom: 2px solid #fff; }
+    .contact :focus-visible { outline-color: #fff; }
+    .contact .form-note { color: rgba(255, 255, 255, .85); }
+    .contact .form-status { color: #fff; }
+    .contact .btn { background: #fff; color: var(--tinta); border-color: #fff; }
+    .contact .btn:hover { background: var(--gris-claro); border-color: var(--gris-claro); }
 
     /* ==========================================================
        9. FOOTER
@@ -614,6 +624,9 @@
          8. CTA FINAL + FORMULARIO (solo maquetación)
          ========================================================== -->
     <section class="contact" id="contacto" aria-labelledby="contacto-title">
+      <figure class="contact-bg">
+        <img src="/images/cierre.jpg" alt="Salón luminoso con ventanales y revestimiento de madera clara, sofá de lino y mesa baja" width="1200" height="800" loading="lazy">
+      </figure>
       <div class="wrap contact-grid">
         <div class="reveal">
           <p class="eyebrow">Contacto</p>
@@ -641,13 +654,6 @@
         </form>
       </div>
     </section>
-
-    <!-- 8b. IMAGEN DE CIERRE -->
-    <figure class="closing reveal">
-      <div class="ph">
-        <img src="/images/cierre.jpg" alt="Salón luminoso con ventanales y revestimiento de madera clara, sofá de lino y mesa baja" width="1200" height="800" loading="lazy">
-      </div>
-    </figure>
 
   </main>
 
