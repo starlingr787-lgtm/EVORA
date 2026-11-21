@@ -903,7 +903,7 @@
         banner.hidden = true;
         /* Punto de enganche: aquí se activarían scripts de analítica solo si v === 'accepted' */
         document.dispatchEvent(new CustomEvent('cookies:choice', { detail: v }));
-        if (reopen) reopen.focus();
+        if (reopen) reopen.focus({ preventScroll: true }); /* devuelve el foco sin mover la página */
       }
 
       banner.addEventListener('click', function (e) {
