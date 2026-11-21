@@ -11,7 +11,7 @@
   <meta property="og:type" content="website">
 
   <!-- Favicon simple (SVG embebido): "L" en serif sobre fondo carbón -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2333281F'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='42' text-anchor='middle' fill='%23FFFFFF'%3EL%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%232E2622'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='42' text-anchor='middle' fill='%23FFFFFF'%3EL%3C/text%3E%3C/svg%3E">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,17 +25,17 @@
       --blanco: #FFFFFF;       /* fondo base: blanco limpio */
       --gris-claro: #EEEDEB;   /* bandas y placeholders: gris cálido muy claro */
       --tinta: #26282A;        /* texto y botones: gris carbón */
-      --abeto: #A07B55;        /* acento café madera de abeto: decorativo y texto grande */
-      --abeto-texto: #6E4D30;  /* variante oscura, contraste AA en texto pequeño */
-      --abeto-oscuro: #33281F; /* café profundo para la banda de proceso */
+      --abeto: #7B5C48;        /* acento café madera: decorativo y texto grande (sin dorados) */
+      --abeto-texto: #5C4033;  /* variante oscura, contraste AA en texto pequeño */
+      --abeto-oscuro: #2E2622; /* café profundo para la banda de proceso */
       --gris: #5C6063;         /* texto secundario, AA sobre blanco */
       --linea: rgba(38, 40, 42, .16);
 
       --serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
       --sans: "Inter", "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
 
-      --gutter: clamp(1.25rem, 4vw, 3rem);
-      --max: 1320px;
+      --gutter: clamp(1.25rem, 3.5vw, 2.5rem);
+      --max: 1520px;
       --header-h: 68px;
     }
 
@@ -181,8 +181,8 @@
     .hero-caption { font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gris); margin-top: .9rem; }
 
     @media (min-width: 900px) {
-      .hero-grid { grid-template-columns: 6fr 5fr; gap: clamp(2rem, 6vw, 6rem); align-items: end; }
-      .hero-media { aspect-ratio: 4 / 5.2; margin-bottom: -3rem; }
+      .hero-grid { grid-template-columns: 5fr 7fr; gap: clamp(2rem, 4vw, 4rem); align-items: end; }
+      .hero-media { aspect-ratio: 5 / 5.6; margin-bottom: -3rem; }
     }
 
     /* ==========================================================
@@ -197,11 +197,11 @@
     }
     .manifesto blockquote em { color: var(--abeto); }
     .manifesto-side { display: grid; gap: 1.5rem; align-content: start; }
-    .studio-img { aspect-ratio: 4 / 3; }
+    .studio-img { aspect-ratio: 4 / 5; }
     .manifesto-side p { color: var(--gris); max-width: 28rem; }
 
     @media (min-width: 900px) {
-      .manifesto-grid { grid-template-columns: 1fr 5fr 3fr; gap: clamp(1.5rem, 4vw, 4rem); }
+      .manifesto-grid { grid-template-columns: 1fr 5fr 4fr; gap: clamp(1.5rem, 4vw, 4rem); }
       .manifesto-side { margin-top: 3rem; }
     }
 
@@ -221,14 +221,14 @@
     .project h3 { font-family: var(--serif); font-weight: 400; font-size: 1.8rem; letter-spacing: -.015em; line-height: 1.1; }
     .project-info { font-size: .75rem; letter-spacing: .16em; text-transform: uppercase; color: var(--gris); margin-top: .35rem; }
     .project--1 .ph { aspect-ratio: 4 / 5; }
-    .project--2 .ph { aspect-ratio: 1 / 1; }
-    .project--3 .ph { aspect-ratio: 5 / 4; }
+    .project--2 .ph { aspect-ratio: 4 / 5; }
+    .project--3 .ph { aspect-ratio: 3 / 2; }
 
     @media (min-width: 900px) {
       .project-grid { grid-template-columns: repeat(12, 1fr); column-gap: clamp(1.5rem, 3vw, 3rem); row-gap: 0; }
-      .project--1 { grid-column: 1 / 8; }
-      .project--2 { grid-column: 9 / 13; margin-top: 9rem; }
-      .project--3 { grid-column: 3 / 10; margin-top: 3rem; }
+      .project--1 { grid-column: 1 / 9; }
+      .project--2 { grid-column: 9 / 13; margin-top: 10rem; }
+      .project--3 { grid-column: 2 / 11; margin-top: 3rem; }
     }
 
     /* ==========================================================
@@ -252,8 +252,8 @@
        6. PROCESO
        ========================================================== */
     .process { background: var(--abeto-oscuro); color: var(--blanco); }
-    .process .eyebrow { color: #D8BC98; }
-    .process .num { color: #D8BC98; }
+    .process .eyebrow { color: #CDB9AB; }
+    .process .num { color: #CDB9AB; }
     .process-list { display: grid; gap: 0; border-top: 1px solid rgba(255, 255, 255, .2); }
     .step { padding-block: 1.8rem; border-bottom: 1px solid rgba(255, 255, 255, .2); }
     .step h3 { font-family: var(--serif); font-weight: 400; font-size: 2rem; letter-spacing: -.015em; margin: .5rem 0 .6rem; }
