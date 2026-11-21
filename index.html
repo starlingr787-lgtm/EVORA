@@ -285,20 +285,28 @@
     }
 
     /* ==========================================================
-       7. TESTIMONIO
+       7. TESTIMONIOS (uno destacado + tres en columnas)
        ========================================================== */
-    .quote { text-align: left; }
-    .quote-grid { display: grid; gap: 2rem; }
-    .quote blockquote p {
+    .voices-featured { display: grid; gap: 1.5rem; padding-bottom: clamp(2.5rem, 6vw, 4.5rem); }
+    .voices-featured blockquote p {
       font-family: var(--serif); font-style: italic; font-weight: 400;
-      font-size: clamp(1.8rem, 4vw, 3.2rem); line-height: 1.15; letter-spacing: -.015em;
+      font-size: clamp(1.9rem, 4.4vw, 3.6rem); line-height: 1.12; letter-spacing: -.015em; max-width: 24ch;
     }
     .quote-mark { font-family: var(--serif); font-size: 6rem; line-height: .6; color: var(--abeto); }
-    .quote cite { display: block; margin-top: 1.6rem; font-style: normal; font-size: .75rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gris); }
+    .voices-grid { display: grid; border-top: 1px solid var(--linea); }
+    .voice { padding-block: 1.8rem; border-bottom: 1px solid var(--linea); }
+    .voice p { font-family: var(--serif); font-size: 1.45rem; line-height: 1.3; letter-spacing: -.01em; }
+    cite { display: block; margin-top: 1.2rem; font-style: normal; font-size: .72rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--gris); }
+    cite span { display: block; margin-top: .2rem; letter-spacing: .12em; font-weight: 400; }
+    .voices-note { margin-top: 1.5rem; font-size: .8rem; color: var(--gris); }
 
     @media (min-width: 900px) {
-      .quote-grid { grid-template-columns: 1fr 8fr; }
-      .quote blockquote { grid-column: 2; }
+      .voices-featured { grid-template-columns: 1fr 8fr; }
+      .voices-featured blockquote { grid-column: 2; }
+      .voices-grid { grid-template-columns: repeat(3, 1fr); }
+      .voice { padding: 2rem 2rem 2rem 0; border-bottom: 0; border-right: 1px solid var(--linea); }
+      .voice + .voice { padding-left: 2rem; }
+      .voice:last-child { border-right: 0; }
     }
 
     /* ==========================================================
@@ -546,13 +554,36 @@
     <!-- ==========================================================
          7. TESTIMONIO
          ========================================================== -->
-    <section class="quote" aria-label="Testimonio">
-      <div class="wrap quote-grid">
-        <span class="quote-mark reveal" aria-hidden="true">“</span>
-        <blockquote class="reveal" style="--d:.1s">
-          <p>Entrar en casa ahora se siente distinto: todo tiene su lugar y el espacio nos da calma.</p>
-          <cite>Una clienta, proyecto residencial (testimonio ilustrativo)</cite>
-        </blockquote>
+    <section class="voices" aria-labelledby="voces-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Testimonios</p>
+          <h2 class="display" id="voces-title">Lo que cuentan quienes ya viven su casa</h2>
+        </div>
+
+        <div class="voices-featured">
+          <span class="quote-mark reveal" aria-hidden="true">“</span>
+          <blockquote class="reveal" style="--d:.1s">
+            <p>Entrar en casa ahora se siente distinto: todo tiene su lugar y el espacio nos da calma.</p>
+            <cite>Clienta de Casa del Olivar<span>Reforma y diseño integral</span></cite>
+          </blockquote>
+        </div>
+
+        <div class="voices-grid">
+          <blockquote class="voice reveal">
+            <p>Nos escucharon de verdad. La casa refleja cómo vivimos, no una tendencia.</p>
+            <cite>Cliente de Ático Marea<span>Diseño integral</span></cite>
+          </blockquote>
+          <blockquote class="voice reveal" style="--d:.1s">
+            <p>La obra fue ordenada y sin sobresaltos. Cada decisión estaba explicada.</p>
+            <cite>Clienta de Casa Sauce<span>Reforma y dirección de obra</span></cite>
+          </blockquote>
+          <blockquote class="voice reveal" style="--d:.2s">
+            <p>Las piezas elegidas dieron a cada estancia un carácter propio, sin recargar.</p>
+            <cite>Cliente de vivienda familiar<span>Mobiliario y styling</span></cite>
+          </blockquote>
+        </div>
+        <p class="voices-note reveal">Testimonios ilustrativos de este concept design.</p>
       </div>
     </section>
 
