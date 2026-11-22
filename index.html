@@ -1643,7 +1643,7 @@ flex: 1;
 .demo:nth-child(2) .demo-image,.demo:nth-child(3) .demo-image{aspect-ratio:4/5}
 .demo-image{padding:0;box-shadow:0 0 0 10px #f6f1ea,0 0 0 11px rgba(0,0,0,.14);margin:11px 11px 0}
 .demo-text{counter-increment:demo;padding:30px 11px 0;display:flex;flex-direction:column;gap:6px}
-.demo-text::before{content:"0" counter(demo);font-size:11px;letter-spacing:.2em;color:var(--grey)}
+.demo-text::before{content:none}
 .demo-text h3{font-family: var(--serif);font-weight:400;font-size:clamp(26px,2.6vw,40px);line-height:1}
 
 .connection-grid{gap:34px;align-items:start}
@@ -1820,7 +1820,7 @@ p{font-weight:300;line-height:1.65}
 .svc-list{border-top:1px solid var(--line)}
 .svc-row{display:grid;grid-template-columns:repeat(12,1fr);gap:0 2vw;padding:clamp(34px,4.5vw,64px) 0;border-bottom:1px solid var(--line)}
 .svc-num{grid-column:1/3;font-size:11px;letter-spacing:.2em;color:var(--grey);padding-top:.9em}
-.svc-body{grid-column:3/13}
+.svc-body{grid-column:1/13}
 .svc-body h3{margin:0 0 20px;font-size:clamp(42px,5.4vw,92px);line-height:.95;transition:color .5s}
 .svc-row:hover h3{color:var(--grey)}
 .svc-body p{max-width:56ch;margin:0;color:var(--grey-dark);font-size:clamp(16px,1.25vw,19px);line-height:1.7;font-weight:300}
@@ -1828,6 +1828,143 @@ p{font-weight:300;line-height:1.65}
 .svc-head h2{grid-column:1/-1}
 .svc-num{grid-column:1/-1;padding:0 0 14px}
 .svc-body{grid-column:1/-1}
+}
+</style>
+<style id="editorial-buttons">
+/* ===== EDITORIAL BUTTONS: fine line, square, colour sweeps in from the left ===== */
+.nav-cta,.email-form button,.cookie-btn,.cookie-settings{
+--fill:#fff;--on:#000;
+position:relative;display:inline-flex;align-items:center;justify-content:center;
+min-height:44px;padding:0 30px;border:1px solid currentColor;border-radius:0;
+font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;
+background:linear-gradient(var(--fill),var(--fill)) no-repeat left center/0% 100%;
+cursor:pointer;transform:none;
+transition:background-size .55s cubic-bezier(.7,0,.2,1),color .45s ease,border-color .45s ease,letter-spacing .55s cubic-bezier(.7,0,.2,1)}
+.nav-cta:hover,.email-form button:hover:not(:disabled),.cookie-btn:hover,.cookie-settings:hover{
+background-size:100% 100%;color:var(--on);letter-spacing:.32em;transform:none}
+.nav-cta{color:#fff;--fill:#fff;--on:#000;min-height:40px;padding:0 24px}
+/* contact form (on wine) */
+.email-form button{color:#f3e7e1;background-color:transparent;border-color:rgba(243,231,225,.7);--fill:#f3e7e1;--on:var(--wine);min-height:50px;padding:0 38px}
+.email-form button:hover:not(:disabled){background:linear-gradient(var(--fill),var(--fill)) no-repeat left center/100% 100%;border-color:#f3e7e1}
+/* cookie banner */
+.cookie-btn{color:var(--black);background-color:transparent;border-color:var(--black);--fill:var(--black);--on:#fff;font-size:10px;min-height:44px;padding:0 26px}
+.cookie-btn--primary{color:#fff;background-color:var(--black);--fill:#fff;--on:var(--black)}
+.cookie-btn--primary:hover{background-color:var(--black);border-color:var(--black)}
+.cookie-settings{color:var(--black);background-color:var(--white);border-color:var(--black);--fill:var(--black);--on:#fff;padding:0 20px}
+.email-form input,.email-form textarea{border-radius:0}
+/* text link: a line that draws itself */
+.gallery-aside-link{position:relative;display:inline-block;padding:0 0 10px;border:0;font-size:10px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;
+background:linear-gradient(var(--black),var(--black)) no-repeat left bottom/100% 1px;transition:background-size .5s cubic-bezier(.7,0,.2,1),letter-spacing .5s cubic-bezier(.7,0,.2,1)}
+.gallery-aside-link::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--grey-light);transform-origin:left;transform:scaleX(0);transition:transform .5s cubic-bezier(.7,0,.2,1)}
+.gallery-aside-link:hover{letter-spacing:.34em}
+.gallery-aside-link:hover::after{transform:scaleX(1)}
+/* hero play/pause: thin square ring */
+.hero-video-toggle{border-radius:0;border:1px solid rgba(255,255,255,.55);background:transparent}
+.hero-video-toggle:hover{background:#fff;color:#000;transform:none}
+.hero-video-toggle:hover svg{fill:#000}
+@media (max-width:800px){
+.nav-cta{padding:0 16px;letter-spacing:.2em}
+.nav-cta:hover,.email-form button:hover:not(:disabled),.cookie-btn:hover{letter-spacing:.26em}
+}
+</style>
+<style id="hero-editorial">
+/* ===== HERO: magazine cover ===== */
+.hero-meta{display:none!important}
+.hero-bg{background:
+linear-gradient(180deg,rgba(14,11,9,.55) 0,rgba(14,11,9,0) 26%),
+linear-gradient(0deg,rgba(14,11,9,.82) 0,rgba(14,11,9,.4) 38%,rgba(14,11,9,0) 70%)}
+.hero-top{position:absolute;z-index:2;left:3vw;right:3vw;top:84px;display:grid;grid-template-columns:1fr 1fr 1fr;padding-top:14px;border-top:1px solid rgba(255,255,255,.38);font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.hero-top span:nth-child(2){text-align:center}
+.hero-top span:nth-child(3){text-align:right}
+.hero-content{display:grid;grid-template-columns:repeat(12,1fr);gap:0 2vw;align-items:end;padding:0 3vw 112px;container-type:normal}
+.hero-title{grid-column:1/10;max-width:none;font-size:clamp(46px,7.6vw,138px);font-weight:300;line-height:.9;letter-spacing:-.03em;text-wrap:balance}
+.hero-title em{font-style:italic;font-weight:300;color:rgba(255,255,255,.62)}
+.hero-side{grid-column:10/13;padding-top:18px;border-top:1px solid rgba(255,255,255,.38);margin-bottom:.8vw}
+.hero-description{margin:0 0 26px;max-width:34ch;font-size:15px;line-height:1.65;font-weight:300;color:rgba(255,255,255,.86)}
+.hero-link{display:inline-block;padding:0 0 9px;color:#fff;font-size:10px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;
+background:linear-gradient(rgba(255,255,255,.35),rgba(255,255,255,.35)) no-repeat left bottom/100% 1px;position:relative;transition:letter-spacing .5s cubic-bezier(.7,0,.2,1)}
+.hero-link::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:#fff;transform-origin:left;transform:scaleX(0);transition:transform .5s cubic-bezier(.7,0,.2,1)}
+.hero-link:hover{letter-spacing:.34em}
+.hero-link:hover::after{transform:scaleX(1)}
+.hero-foot{position:absolute;z-index:2;left:3vw;right:calc(3vw + 70px);bottom:36px;display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(255,255,255,.3);font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.hero-scroll{display:inline-flex;align-items:center;gap:14px}
+.hero-scroll::after{content:"";width:48px;height:1px;background:rgba(255,255,255,.7);transform-origin:left;animation:heroScroll 2.4s ease-in-out infinite}
+@keyframes heroScroll{0%{transform:scaleX(0)}50%{transform:scaleX(1)}100%{transform:scaleX(1);opacity:0}}
+@media (prefers-reduced-motion:reduce){.hero-scroll::after{animation:none}}
+@media (max-width:900px){
+.hero-top{top:76px;grid-template-columns:1fr 1fr}
+.hero-top span:nth-child(2){display:none}
+.hero-content{grid-template-columns:1fr;padding:0 16px 104px;gap:30px}
+.hero-title{grid-column:1;font-size:clamp(44px,13vw,80px)}
+.hero-side{grid-column:1}
+.hero-foot{left:16px;right:72px}
+.hero-foot span:first-child{display:none}
+.hero-foot{justify-content:flex-end}
+}
+@media (max-height:640px){.hero-title{font-size:clamp(36px,6vw,72px)}.hero-content{padding-bottom:90px}}
+</style>
+<style id="ticker-wine">
+/* ===== TICKER: deep wine band, editorial serif ===== */
+.ticker{background:#3b0f19;border:0;border-top:1px solid rgba(243,231,225,.18);border-bottom:1px solid rgba(243,231,225,.18)}
+.ticker-track{gap:46px;padding:20px 0;align-items:center;font-family:var(--serif);font-size:clamp(22px,2.1vw,30px);font-weight:300;letter-spacing:0;text-transform:none;color:#f3e7e1}
+.ticker-track span{display:inline-flex;align-items:center;gap:46px;white-space:nowrap;line-height:1}
+.ticker-track span:nth-child(even){font-style:italic;color:#d9a9a6}
+.ticker-track span::after{content:"";width:5px;height:5px;border-radius:50%;background:#b97c80;flex:none}
+</style>
+<style id="type-scale-up">
+/* ===== LARGER SMALL TEXT ===== */
+nav{font-size:13px;letter-spacing:.2em}
+.eyebrow,small{font-size:12px}
+.hero-top,.hero-foot{font-size:12px}
+.hero-description{font-size:clamp(16px,1.25vw,19px)}
+.hero-link{font-size:12px}
+.nav-cta,.email-form button,.cookie-btn,.cookie-settings{font-size:12px}
+.nav-cta{padding:0 26px}
+.section-intro p,.live-intro p{font-size:clamp(15px,1.15vw,18px);max-width:420px}
+.gallery-window .gallery-info small{font-size:12px}
+.gallery-window .gallery-copy{font-size:clamp(16px,1.2vw,18px)}
+.gallery-window .gallery-info p:not(.gallery-copy){font-size:12px}
+.gallery-aside small{font-size:12px}
+.gallery-aside-body{font-size:clamp(17px,1.3vw,20px)}
+.gallery-aside-link{font-size:12px}
+.demo-text small{font-size:12px}
+.svc-head small{font-size:12px}
+.svc-body p{font-size:clamp(18px,1.5vw,22px)}
+.step small{font-size:13px}
+.step p{font-size:16px;line-height:1.6}
+.contact-card p{font-size:16px}
+.email-form label{font-size:13px}
+.email-form input,.email-form textarea{font-size:15px}
+.email-form .form-status{font-size:14px}
+.cookie-copy p{font-size:15px}
+.cookie-settings{font-size:12px}
+.ticker-track{font-size:clamp(24px,2.3vw,34px)}
+@media (max-width:800px){
+nav{font-size:13px}
+.hero-top{font-size:11px}
+.step p{font-size:15px}
+.gallery-aside-body{font-size:17px}
+}
+</style>
+<style id="responsive-fixes">
+@media (max-width:800px){
+.gallery-window .gallery-card:nth-child(n){grid-column:1/-1}
+.process-header{display:block}
+.process-header .eyebrow{margin-top:14px}
+}
+</style>
+<style id="responsive-fixes-2">
+@media (min-width:801px) and (max-width:1100px){
+.gallery-window .gallery-card:nth-child(n){grid-column:span 6;margin-top:0}
+.gallery-window .gallery-card:nth-child(even){margin-top:70px}
+.gallery-window .gallery-card:nth-child(7){grid-column:1/7;margin-top:0}
+.gallery-aside{grid-column:7/13;padding-right:0}
+.gallery-aside-quote{font-size:clamp(38px,5.4vw,56px)}
+}
+@media (max-width:800px){
+h1,h2{line-height:1}
+.hero-title{line-height:.95}
+.live-intro h2,.section-intro h2,.process-header h2,.svc-head h2{line-height:1.02}
 }
 </style>
 </head>
@@ -1854,7 +1991,7 @@ Contact
 </a>
 </nav>
 <a href="#contact" class="nav-cta">
-Start a Project →
+Start a Project
 </a>
 </header>
 <main>
@@ -1877,22 +2014,31 @@ aria-label="EVORA Studio showreel — florals, patisserie and tableware in motio
 </div>
 <div class="hero-bg"></div>
 <span class="hero-meta hero-meta--left" aria-hidden="true">
-Showreel 01 — In Motion
+Showreel — In Motion
 </span>
 <span class="hero-meta hero-meta--right" aria-hidden="true">
 Florals · Patisserie · Tableware
 </span>
+<div class="hero-top" aria-hidden="true">
+<span>Nº 01 — Digital Studio</span>
+<span>Madrid / Worldwide</span>
+<span>Showreel — In Motion</span>
+</div>
 <div class="hero-content">
-<p class="eyebrow">
-EVORA Studio · Madrid / Worldwide
-</p>
 <h1 class="hero-title">
 Digital experiences for brands with <em>something to say.</em>
 </h1>
+<div class="hero-side">
 <p class="hero-description">
 We turn what makes a business worth choosing
 into an experience people can see, feel and remember.
 </p>
+<a href="#work" class="hero-link">View our work</a>
+</div>
+</div>
+<div class="hero-foot" aria-hidden="true">
+<span>Fashion · Patisserie · Beauty · Jewelry · Hotels · Interiors</span>
+<span class="hero-scroll">Scroll</span>
 </div>
 <button
 class="hero-video-toggle"
@@ -1946,7 +2092,7 @@ shaped into a website that feels like it.
 <article class="gallery-card">
 <img src="assets/images/photo-fashion-portrait.jpg" loading="lazy" decoding="async" alt="Model in a flowing couture garment">
 <div class="gallery-info">
-<small>01 — Fashion & Modeling</small>
+<small>Fashion & Modeling</small>
 <h3>Behind the look, a brand.</h3>
 <p class="gallery-copy">A fashion site should move like an editorial: lookbooks that unfold, collections that breathe, and a portfolio where every model and every piece gets room to be seen.</p>
 <p>Designers · ateliers · model agencies · portfolios</p>
@@ -1955,7 +2101,7 @@ shaped into a website that feels like it.
 <article class="gallery-card">
 <img src="assets/images/photo-patisserie-window.jpg" loading="lazy" decoding="async" alt="Patisserie window glowing at dusk">
 <div class="gallery-info">
-<small>02 — Patisserie</small>
+<small>Patisserie</small>
 <h3>Behind the window, a bakery.</h3>
 <p class="gallery-copy">Before anyone tastes a thing, they decide with their eyes. We bring the glow of your shop window online — your pastries, your hours, your neighbourhood, one tap away.</p>
 <p>Pastry shops · bakeries · dessert boutiques</p>
@@ -1964,7 +2110,7 @@ shaped into a website that feels like it.
 <article class="gallery-card">
 <img src="assets/images/photo-hand-cream-olives.jpg" loading="lazy" decoding="async" alt="Hand cream tube resting in a bowl of olives">
 <div class="gallery-info">
-<small>03 — Beauty & Skincare</small>
+<small>Beauty & Skincare</small>
 <h3>Behind the product, a ritual.</h3>
 <p class="gallery-copy">Skincare is a daily ritual, not a transaction. We design pages that let people feel the texture, understand the formula and trust the brand before they ever open the jar.</p>
 <p>Cosmetics · skincare · wellness brands</p>
@@ -1973,7 +2119,7 @@ shaped into a website that feels like it.
 <article class="gallery-card">
 <img src="assets/images/photo-jewelry-martini.jpg" loading="lazy" decoding="async" alt="Rings on a cocktail pick over a coupe glass">
 <div class="gallery-info">
-<small>04 — Jewelry & Luxury</small>
+<small>Jewelry & Luxury</small>
 <h3>Behind the sparkle, a maker.</h3>
 <p class="gallery-copy">Jewelry sells on detail and story. We frame each piece the way a jeweler would — close, slow and lit — so the craft behind it is as visible as the stone.</p>
 <p>Jewelers · luxury goods · limited collections</p>
@@ -1982,7 +2128,7 @@ shaped into a website that feels like it.
 <article class="gallery-card">
 <img src="assets/images/photo-hand-phone.jpg" loading="lazy" decoding="async" alt="Hand holding a phone against a pale wall">
 <div class="gallery-info">
-<small>05 — Online Shops</small>
+<small>Online Shops</small>
 <h3>Behind the screen, a shop that never closes.</h3>
 <p class="gallery-copy">Small brands deserve a store that feels hand-made. Clear collections, effortless checkout and a launch page that sells while the owner is asleep.</p>
 <p>Ecommerce · launches · independent brands</p>
@@ -1991,7 +2137,7 @@ shaped into a website that feels like it.
 <article class="gallery-card">
 <img src="assets/images/photo-library-lounge.jpg" loading="lazy" decoding="async" alt="Lounge with lit bookshelves and armchairs">
 <div class="gallery-info">
-<small>06 — Bookshops & Clubs</small>
+<small>Bookshops & Clubs</small>
 <h3>Behind the shelves, a community.</h3>
 <p class="gallery-copy">Bookshops and members’ clubs are about belonging. We build digital rooms with a clear voice — events, memberships and recommendations that make people want to be invited in.</p>
 <p>Bookshops · members’ clubs · cultural spaces</p>
@@ -2000,7 +2146,7 @@ shaped into a website that feels like it.
 <article class="gallery-card">
 <img src="assets/images/photo-lounge-sofa-book.jpg" loading="lazy" decoding="async" alt="Leather sofa with an open book in a warm lounge">
 <div class="gallery-info">
-<small>07 — Hotels & Interiors</small>
+<small>Hotels & Interiors</small>
 <h3>Behind the room, a host.</h3>
 <p class="gallery-copy">Hotels, lounges and interior studios sell an atmosphere. We translate light, texture and space into a website that makes guests feel the stay before they book it.</p>
 <p>Hotels · lounges · interior studios</p>
@@ -2010,7 +2156,7 @@ shaped into a website that feels like it.
 <small>The common thread</small>
 <p class="gallery-aside-quote">Every brand we meet is already <em>a world.</em> We simply open the door.</p>
 <p class="gallery-aside-body">Whether it is a pastry counter at seven in the morning or a fashion collection about to launch, the work begins in the same place: listening to what makes the business worth choosing, then building a screen that feels like walking in.</p>
-<a href="#contact" class="gallery-aside-link">Start a project →</a>
+<a href="#contact" class="gallery-aside-link">Start a project</a>
 </aside>
 </div>
 </div>
@@ -2025,28 +2171,24 @@ WHAT WE DO (text only)
 </div>
 <div class="svc-list">
 <article class="svc-row reveal">
-<span class="svc-num">01</span>
 <div class="svc-body">
 <h3>Websites</h3>
 <p>Custom-designed, fast and fully responsive websites, built from scratch around your brand. Clear structure, beautiful detail, and a design that works as well on a phone as on a desktop.</p>
 </div>
 </article>
 <article class="svc-row reveal">
-<span class="svc-num">02</span>
 <div class="svc-body">
 <h3>Digital Experiences</h3>
 <p>Interactive pages that go beyond a brochure: digital menus, booking flows, product discovery and immersive storytelling that let visitors explore instead of simply scroll.</p>
 </div>
 </article>
 <article class="svc-row reveal">
-<span class="svc-num">03</span>
 <div class="svc-body">
 <h3>Digital Identity</h3>
 <p>The visual language behind the screen — typography, art direction, colour and design systems — so every page, post and pixel feels unmistakably like you.</p>
 </div>
 </article>
 <article class="svc-row reveal">
-<span class="svc-num">04</span>
 <div class="svc-body">
 <h3>Launch Pages</h3>
 <p>A single focused page for a product, an opening, a campaign or a special moment. Built quickly, designed to be remembered, and made to turn attention into action.</p>
@@ -2085,7 +2227,7 @@ displayed in a mockup.
 </div>
 <div class="demo-text">
 <h3>The Neighbourhood Café</h3>
-<small>Cafés &amp; coffee shops →</small>
+<small>Cafés &amp; coffee shops</small>
 </div>
 </article>
 <article class="demo reveal">
@@ -2094,7 +2236,7 @@ displayed in a mockup.
 </div>
 <div class="demo-text">
 <h3>The Menu, Reimagined</h3>
-<small>Restaurants →</small>
+<small>Restaurants</small>
 </div>
 </article>
 <article class="demo reveal">
@@ -2103,7 +2245,7 @@ displayed in a mockup.
 </div>
 <div class="demo-text">
 <h3>The Studio Showroom</h3>
-<small>Interiors &amp; furniture design →</small>
+<small>Interiors &amp; furniture design</small>
 </div>
 </article>
 <article class="demo reveal">
@@ -2112,7 +2254,7 @@ displayed in a mockup.
 </div>
 <div class="demo-text">
 <h3>Reserve the Evening</h3>
-<small>Fine dining &amp; private events →</small>
+<small>Fine dining &amp; private events</small>
 </div>
 </article>
 </div>
@@ -2176,7 +2318,7 @@ maxlength="3000"
 placeholder="A little about what you have in mind"></textarea>
 </label>
 <button type="submit">
-Let's Talk →
+Let's Talk
 </button>
 <p
 class="form-status"
