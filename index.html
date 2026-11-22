@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#f2eee7">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <meta name="robots" content="index, follow">
 <title>EVORA Studio | Premium Websites &amp; Digital Experiences</title>
@@ -80,7 +83,7 @@ body {
 margin: 0;
 background: var(--cream);
 color: var(--black);
-font-family: Arial, Helvetica, sans-serif;
+font-family: var(--sans);
 overflow-x: hidden;
 }
 a {
@@ -98,7 +101,7 @@ width: 100%;
 display: block;
 }
 .serif {
-font-family: Georgia, "Times New Roman", serif;
+font-family: var(--serif);
 }
 /* =========================================
 NAVIGATION
@@ -117,7 +120,7 @@ color: white;
 mix-blend-mode: difference;
 }
 .logo {
-font-family: Georgia, serif;
+font-family: var(--serif);
 font-size: 24px;
 letter-spacing: -0.03em;
 }
@@ -296,10 +299,7 @@ color: rgba(250, 248, 244, .72);
 .hero-title {
 margin: 0;
 max-width: 640px;
-font-family:
-Georgia,
-"Times New Roman",
-serif;
+font-family: var(--serif);
 font-weight: 400;
 font-size:
 clamp(
@@ -390,7 +390,7 @@ justify-content: space-between;
 }
 .section-intro h2 {
 margin: 0;
-font-family: Georgia, serif;
+font-family: var(--serif);
 font-size:
 clamp(
 50px,
@@ -499,9 +499,7 @@ letter-spacing: .18em;
 opacity: .8;
 }
 .gallery-info h3 {
-font-family:
-Georgia,
-serif;
+font-family: var(--serif);
 font-size: 34px;
 font-weight: 400;
 margin:
@@ -539,9 +537,7 @@ justify-content: center;
 flex-direction: column;
 }
 .manifesto-copy h2 {
-font-family:
-Georgia,
-serif;
+font-family: var(--serif);
 font-size:
 clamp(
 55px,
@@ -555,7 +551,7 @@ margin:
 0;
 }
 .manifesto-copy .lead {
-font-family: Georgia, serif;
+font-family: var(--serif);
 font-size: 25px;
 max-width: 470px;
 }
@@ -579,9 +575,7 @@ top: 9%;
 right: 7%;
 padding: 15px 18px;
 background: var(--white);
-font-family:
-Georgia,
-serif;
+font-family: var(--serif);
 font-size: 19px;
 font-style: italic;
 transform:
@@ -612,9 +606,7 @@ gap: 5vw;
 align-items: center;
 }
 .featured-copy h2 {
-font-family:
-Georgia,
-serif;
+font-family: var(--serif);
 font-size:
 clamp(
 55px,
@@ -687,7 +679,7 @@ margin-bottom: 35px;
 }
 .live-intro h2 {
 margin: 0;
-font-family: Georgia, serif;
+font-family: var(--serif);
 font-size:
 clamp(
 55px,
@@ -738,7 +730,7 @@ padding: 17px;
 }
 .demo-text h3 {
 margin: 0;
-font-family: Georgia, serif;
+font-family: var(--serif);
 font-weight: 400;
 font-size: 24px;
 }
@@ -746,83 +738,6 @@ font-size: 24px;
 display: block;
 margin-top: 10px;
 color: var(--grey);
-}
-/* =========================================
-SERVICES
-========================================= */
-.services {
-padding:
-70px
-3vw;
-background: var(--white);
-}
-.services-header {
-display: flex;
-justify-content: space-between;
-align-items: flex-end;
-margin-bottom: 30px;
-}
-.services-header h2 {
-font-family: Georgia, serif;
-font-size:
-clamp(
-50px,
-5.5vw,
-85px
-);
-margin: 0;
-font-weight: 400;
-}
-.services-header p {
-max-width: 360px;
-color: var(--grey);
-font-size: 13px;
-line-height: 1.5;
-}
-.service-grid {
-display: grid;
-grid-template-columns:
-repeat(
-4,
-1fr
-);
-border-top:
-1px solid
-var(--line);
-}
-.service {
-padding:
-25px
-20px
-30px
-0;
-border-right:
-1px solid
-var(--line);
-}
-.service:not(:first-child) {
-padding-left: 20px;
-}
-.service:last-child {
-border-right: 0;
-}
-.service-number {
-color: var(--wine);
-font-size: 10px;
-}
-.service h3 {
-margin:
-55px
-0
-12px;
-font-family: Georgia, serif;
-font-weight: 400;
-font-size: 27px;
-}
-.service p {
-color: var(--grey);
-font-size: 12px;
-line-height: 1.5;
 }
 /* =========================================
 WINE CTA
@@ -868,9 +783,7 @@ right: -300px;
 top: -400px;
 }
 .contact-card h2 {
-font-family:
-Georgia,
-serif;
+font-family: var(--serif);
 font-size:
 clamp(
 42px,
@@ -985,7 +898,7 @@ justify-content: space-between;
 }
 .connection-header h2 {
 margin: 0;
-font-family: Georgia, serif;
+font-family: var(--serif);
 font-size:
 clamp(
 52px,
@@ -1058,7 +971,7 @@ align-items: flex-end;
 margin-bottom: 30px;
 }
 .process-header h2 {
-font-family: Georgia, serif;
+font-family: var(--serif);
 font-size:
 clamp(
 45px,
@@ -1142,8 +1055,8 @@ transition: opacity 0.7s ease;
 background:
 linear-gradient(
 180deg,
-rgba(242, 238, 231, 0) 50%,
-rgba(242, 238, 231, 0.5) 100%
+rgba(255, 255, 255, 0) 50%,
+rgba(255, 255, 255, 0.5) 100%
 );
 }
 .step--shape .step-media::after {
@@ -1252,7 +1165,7 @@ background: linear-gradient(135deg, var(--wine), var(--wine-light));
 transform: translateY(-3px) scale(1.07);
 }
 .step h3 {
-font-family: Georgia, serif;
+font-family: var(--serif);
 font-weight: 400;
 font-size: 25px;
 margin:
@@ -1322,7 +1235,7 @@ margin:
 10px
 0
 20px;
-font-family: Georgia, serif;
+font-family: var(--serif);
 font-size:
 clamp(
 65px,
@@ -1595,7 +1508,7 @@ max-width: 640px;
 }
 .cookie-copy h2 {
 margin: 0 0 6px;
-font-family: Georgia, "Times New Roman", serif;
+font-family: var(--serif);
 font-size: 18px;
 font-weight: 400;
 }
@@ -1677,6 +1590,244 @@ width: 100%;
 .cookie-btn {
 flex: 1;
 }
+}
+</style>
+<style id="editorial-photos">
+/* ===== EDITORIAL PHOTO FRAMES ===== */
+.gallery-card img,.manifesto-image img,.demo-image img,.connection-item img,.step-media img{display:block;width:100%;height:100%;object-fit:cover}
+.gallery-track{gap:20px}
+.gallery-card{width:min(44vw,700px);height:680px}
+.manifesto{grid-template-columns:.8fr 1.2fr;min-height:880px}
+.manifesto-image img{position:absolute;inset:0}
+.demo-grid{grid-template-columns:1fr 1fr;gap:28px 24px}
+.demo{border:0;background:transparent}
+.demo-image{height:auto;aspect-ratio:4/3}
+.demo:nth-child(1) img{object-position:50% 40%}
+.demo:nth-child(3) img{object-position:50% 72%}
+.demo:nth-child(4) img{object-position:50% 70%}
+.demo-text{padding:16px 2px 0}
+.connection-grid{gap:16px}
+.connection-item{height:auto;aspect-ratio:3/4.4}
+.step-media{aspect-ratio:1/1}
+.step--shape .step-media{background:#161412}
+.step--shape .step-media img{object-fit:contain}
+@media (max-width:800px){
+.gallery-card{width:86vw;height:580px}
+.manifesto{grid-template-columns:1fr}
+.manifesto-image{height:min(135vw,560px)}
+.demo-grid{grid-template-columns:1fr}
+.connection-grid{gap:10px}
+.connection-item{height:auto;aspect-ratio:3/4.2}
+}
+</style>
+<style id="editorial-layout">
+/* ===== EDITORIAL LAYOUT v2 ===== */
+.gallery-track{align-items:flex-end;gap:28px;padding-right:3vw}
+.gallery-card{height:var(--h,680px);width:calc(var(--h,680px)*.74)}
+.gallery-card:nth-child(5n+1){--h:720px}
+.gallery-card:nth-child(5n+2){--h:600px}
+.gallery-card:nth-child(5n+3){--h:680px}
+.gallery-card:nth-child(5n+4){--h:560px}
+.gallery-card:nth-child(5n+5){--h:700px}
+.gallery-card img{filter:saturate(.9) contrast(1)}
+.gallery-info{left:26px;right:26px;bottom:26px}
+.gallery-info small{letter-spacing:.18em;text-transform:uppercase;font-size:10px}
+.gallery-info h3{font-family: var(--serif);font-weight:400;font-size:clamp(24px,2.2vw,34px);line-height:1.05}
+
+.demo-grid{grid-template-columns:repeat(12,1fr);gap:90px 2vw;align-items:end;counter-reset:demo}
+.demo:nth-child(1){grid-column:1/8}
+.demo:nth-child(2){grid-column:9/13}
+.demo:nth-child(3){grid-column:2/6}
+.demo:nth-child(4){grid-column:7/13}
+.demo:nth-child(1) .demo-image,.demo:nth-child(4) .demo-image{aspect-ratio:4/3}
+.demo:nth-child(2) .demo-image,.demo:nth-child(3) .demo-image{aspect-ratio:4/5}
+.demo-image{padding:0;box-shadow:0 0 0 10px #f6f1ea,0 0 0 11px rgba(0,0,0,.14);margin:11px 11px 0}
+.demo-text{counter-increment:demo;padding:30px 11px 0;display:flex;flex-direction:column;gap:6px}
+.demo-text::before{content:"0" counter(demo);font-size:11px;letter-spacing:.2em;color:var(--grey)}
+.demo-text h3{font-family: var(--serif);font-weight:400;font-size:clamp(26px,2.6vw,40px);line-height:1}
+
+.connection-grid{gap:34px;align-items:start}
+.connection-item{height:auto;aspect-ratio:auto;overflow:visible;display:flex;flex-direction:column}
+.connection-item:nth-child(even){margin-top:70px}
+.connection-item img{order:1;aspect-ratio:3/4;height:auto;padding:0;box-shadow:0 0 0 8px var(--black),0 0 0 9px rgba(255,255,255,.35);margin:9px;width:calc(100% - 18px);filter:saturate(.85) brightness(.9)}
+.connection-item span{position:static;order:0;padding:0 9px 18px;font-size:10px;letter-spacing:.2em;color:#d9c9b5}
+.connection-item p{order:2;margin:22px 9px 0;font-family: var(--serif);font-size:17px;line-height:1.25;color:#e9e1d6}
+
+@media (max-width:800px){
+.gallery-card{width:76vw;height:var(--h)!important;--h:560px}
+.gallery-card:nth-child(even){--h:500px}
+.demo-grid{grid-template-columns:1fr;gap:56px}
+.demo:nth-child(n){grid-column:1/-1}
+.demo:nth-child(n) .demo-image{aspect-ratio:4/5}
+.connection-grid{grid-template-columns:1fr 1fr;gap:20px 14px}
+.connection-item:nth-child(even){margin-top:36px}
+.connection-item p{font-size:14px}
+}
+</style>
+<style id="immersive-photos">
+/* ===== IMMERSIVE: bigger, full-bleed, no frames ===== */
+.gallery-track{gap:6px;padding-left:0}
+.gallery-card{height:var(--h,820px);width:calc(var(--h,820px)*.8)}
+.gallery-card:nth-child(5n+1){--h:860px}
+.gallery-card:nth-child(5n+2){--h:720px}
+.gallery-card:nth-child(5n+3){--h:820px}
+.gallery-card:nth-child(5n+4){--h:680px}
+.gallery-card:nth-child(5n+5){--h:840px}
+
+.live{overflow:hidden}
+.demo-grid{margin-inline:-3vw;gap:6px;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(520px,52vw,860px);align-items:stretch}
+.demo:nth-child(1){grid-column:1/9}
+.demo:nth-child(2){grid-column:9/13}
+.demo:nth-child(3){grid-column:1/6}
+.demo:nth-child(4){grid-column:6/13}
+.demo{position:relative;overflow:hidden;background:#000}
+.demo-image,.demo:nth-child(n) .demo-image{position:absolute;inset:0;aspect-ratio:auto;height:auto;margin:0;box-shadow:none}
+.demo-image img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s ease}
+.demo:hover .demo-image img{transform:scale(1.04)}
+.demo::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(0,0,0,.72));pointer-events:none}
+.demo-text{position:absolute;z-index:2;left:clamp(20px,2.4vw,40px);bottom:clamp(20px,2.4vw,38px);right:20px;padding:0;color:#fff}
+.demo-text h3{color:#fff}
+.demo-text small,.demo-text::before{color:rgba(255,255,255,.8)}
+
+.connection-grid{margin-inline:-3vw;gap:4px;align-items:stretch}
+.connection-item,.connection-item:nth-child(even){position:relative;margin:0;height:clamp(600px,60vw,920px);overflow:hidden;display:block}
+.connection-item img,.connection-item img{position:absolute;inset:0;width:100%;height:100%;margin:0;box-shadow:none;aspect-ratio:auto;object-fit:cover;filter:saturate(.9) brightness(.82)}
+.connection-item::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.35),transparent 30%,transparent 55%,rgba(0,0,0,.78));pointer-events:none}
+.connection-item span{position:absolute;z-index:2;top:22px;left:22px;padding:0;color:#fff}
+.connection-item p{position:absolute;z-index:2;left:22px;right:22px;bottom:26px;margin:0;font-size:clamp(17px,1.6vw,24px);color:#fff}
+
+@media (max-width:800px){
+.gallery-card{width:88vw;height:640px!important}
+.demo-grid{margin-inline:-16px;grid-template-columns:1fr;grid-auto-rows:min(125vw,640px)}
+.demo:nth-child(n){grid-column:1/-1}
+.connection-grid{margin-inline:-16px;grid-template-columns:1fr 1fr;gap:3px}
+.connection-item,.connection-item:nth-child(even){height:min(115vw,520px)}
+.connection-item p{font-size:13px;left:14px;right:14px;bottom:16px}
+.connection-item span{left:14px;top:14px;font-size:9px}
+}
+</style>
+<style id="magazine-gallery">
+/* ===== MAGAZINE SPREAD (static, no motion) ===== */
+.gallery-window,.gallery-window:focus{overflow:visible}
+.gallery-window .gallery-track{display:grid;width:auto;animation:none!important;transform:none!important;grid-template-columns:repeat(12,1fr);gap:clamp(56px,7vw,110px) 2vw;align-items:start;padding:20px 3vw 0}
+.gallery-window .gallery-card{width:auto!important;height:auto!important;overflow:visible;background:none;position:relative}
+.gallery-window .gallery-card::after{display:none}
+.gallery-window .gallery-card img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;filter:none;transform:none}
+.gallery-window .gallery-card:hover img{transform:none;filter:none}
+.gallery-window .gallery-info{position:static;padding:18px 0 0;color:var(--black)}
+.gallery-window .gallery-info small{display:block;margin-bottom:10px;color:var(--grey);font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+.gallery-window .gallery-info h3{color:var(--black);font-family: var(--serif);font-weight:400;font-size:clamp(24px,2.4vw,36px);line-height:1.05;margin:0 0 8px}
+.gallery-window .gallery-info p{color:var(--grey);font-size:13px;margin:0}
+.gallery-card:nth-child(1){grid-column:1/8}
+.gallery-card:nth-child(1) img{aspect-ratio:5/6}
+.gallery-card:nth-child(2){grid-column:9/13;margin-top:240px}
+.gallery-card:nth-child(2) img{aspect-ratio:3/4}
+.gallery-card:nth-child(3){grid-column:1/5}
+.gallery-card:nth-child(4){grid-column:5/9;margin-top:110px}
+.gallery-card:nth-child(5){grid-column:9/13;margin-top:40px}
+.gallery-card:nth-child(5) img{aspect-ratio:3/4}
+.gallery-card:nth-child(6){grid-column:2/7}
+.gallery-card:nth-child(7){grid-column:8/13;margin-top:170px}
+@media (max-width:800px){
+.gallery-window .gallery-track{grid-template-columns:1fr 1fr;gap:44px 14px;padding:10px 16px 0}
+.gallery-card:nth-child(n){grid-column:auto;margin-top:0}
+.gallery-card:nth-child(odd){grid-column:1/-1}
+.gallery-card:nth-child(even){grid-column:1/-1;width:78%!important;justify-self:end}
+.gallery-window .gallery-info h3{font-size:24px}
+}
+</style>
+<style id="gallery-equal">
+.gallery-window .gallery-track{grid-template-columns:repeat(12,1fr);gap:clamp(64px,7vw,110px) 2.4vw}
+.gallery-window .gallery-card:nth-child(n){grid-column:span 4;margin-top:0}
+.gallery-window .gallery-card:nth-child(3n+2){margin-top:90px}
+.gallery-window .gallery-card:nth-child(7){grid-column:5/9}
+.gallery-window .gallery-card:nth-child(n) img{aspect-ratio:4/5}
+.gallery-window .gallery-card:nth-child(1) img{object-position:50% 4%}
+.gallery-window .gallery-copy{margin:0 0 14px;color:var(--black);font-size:15px;line-height:1.55;max-width:46ch}
+.gallery-window .gallery-info p:not(.gallery-copy){font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+@media (max-width:800px){
+.gallery-window .gallery-card:nth-child(n){grid-column:1/-1;margin-top:0;width:100%!important;justify-self:stretch}
+}
+</style>
+<style id="photo-band">
+.photo-band{position:relative;min-height:90vh;display:flex;align-items:flex-end;background:#161412 var(--band-image) center/cover no-repeat;color:#fff}
+.photo-band[hidden]{display:none}
+.photo-band::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(0,0,0,.6));pointer-events:none}
+.photo-band-copy{position:relative;z-index:1;padding:0 3vw 6vh}
+.photo-band-copy h2{margin:0;font-family: var(--serif);font-weight:400;font-size:clamp(40px,6vw,96px);line-height:.98}
+</style>
+<style id="typography-grey">
+/* ===== TYPE + GREY PALETTE ===== */
+:root{
+--serif:"Cormorant Garamond","Iowan Old Style",Georgia,serif;
+--sans:"Jost","Helvetica Neue",Arial,sans-serif;
+--cream:#ffffff;--cream-dark:#f3f3f2;--white:#ffffff;
+--black:#181817;--grey:#7b7873;--grey-dark:#4b4946;--grey-light:#b4b1ab;
+--line:rgba(24,24,23,.12);
+}
+body{font-family:var(--sans);font-weight:400;color:var(--black);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+button,input,textarea,select{font-family:inherit}
+h1,h2,h3,.logo,.lead,.note,.demo-text h3,.gallery-info h3{font-family:var(--serif);font-weight:300;letter-spacing:-.015em;font-size-adjust:.47}
+h1,h2{line-height:.92}
+h2 em,h1 em{font-style:italic;font-weight:300;color:var(--grey)}
+.hero-title em{color:rgba(255,255,255,.6)}
+.final h2 em,.connection h2 em{color:var(--grey-light)}
+.eyebrow,small,.gallery-info small,.demo-text small,.nav a,nav a,.hero-meta{font-family:var(--sans);font-weight:400;letter-spacing:.2em;text-transform:uppercase}
+.eyebrow,small{font-size:10px}
+p{font-weight:300;line-height:1.65}
+.section-intro p,.live-intro p,.hero-description{color:var(--grey-dark)}
+.gallery-window .gallery-copy{color:var(--grey-dark);font-weight:300;font-size:15px}
+.gallery-window .gallery-info small,.demo-text::before{color:var(--grey)}
+.gallery-window .gallery-info p:not(.gallery-copy){color:var(--grey);font-size:10px;letter-spacing:.16em}
+.gallery-window .gallery-info h3{font-size:clamp(28px,2.8vw,42px);line-height:1}
+.manifesto-copy h2{font-size:clamp(56px,6.4vw,104px)}
+.manifesto-copy .lead{font-size:28px;color:var(--black)}
+.manifesto-copy .body{color:var(--grey-dark)}
+.demo-text h3{font-size:clamp(30px,3vw,46px)}
+.section-intro h2,.live-intro h2,.services-header h2,.process-header h2{font-size:clamp(54px,7vw,112px);font-weight:300}
+.step h3,.service h3{font-size:30px}
+.step p,.service p{color:var(--grey-dark)}
+.step small{color:var(--grey)}
+/* photos always keep their natural colour */
+.gallery-window .gallery-card img,.gallery-window .gallery-card:hover img,.gallery-window .gallery-card:focus-within img,
+.step-media img,.step:hover .step-media img,
+.step--build .step-media img,.step--build:hover .step-media img,
+.demo-image img,.photo-band{filter:none!important}
+.services,.process{background:var(--cream)}
+.live{background:var(--cream-dark)}
+.manifesto{background:var(--white)}
+.nav-cta,button{letter-spacing:.14em}
+.contact-card h2{line-height:.98;margin-bottom:22px}
+</style>
+<style id="gallery-aside">
+.gallery-window .gallery-card:nth-child(7){grid-column:1/5;margin-top:0}
+.gallery-aside{grid-column:6/13;align-self:center;padding-right:3vw}
+.gallery-aside small{display:block;margin-bottom:28px;color:var(--grey)}
+.gallery-aside-quote{margin:0 0 34px;font-family:var(--serif);font-weight:300;font-size:clamp(40px,5vw,84px);line-height:.98;letter-spacing:-.02em;color:var(--black)}
+.gallery-aside-quote em{font-style:italic;color:var(--grey)}
+.gallery-aside-body{max-width:46ch;margin:0 0 34px;color:var(--grey-dark);font-size:16px;line-height:1.7;font-weight:300}
+.gallery-aside-link{display:inline-block;padding-bottom:6px;border-bottom:1px solid var(--black);font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+@media (max-width:800px){
+.gallery-aside{grid-column:1/-1;padding:0}
+.gallery-aside-quote{font-size:42px}
+}
+</style>
+<style id="services-editorial">
+.services-editorial{padding:clamp(80px,10vw,150px) 3vw clamp(60px,8vw,120px);background:var(--white)}
+.svc-head{display:grid;grid-template-columns:repeat(12,1fr);gap:0 2vw;margin-bottom:clamp(50px,7vw,100px)}
+.svc-head small{grid-column:1/-1;margin-bottom:26px;color:var(--grey)}
+.svc-head h2{grid-column:1/11;margin:0;font-size:clamp(44px,6.4vw,112px);line-height:.95}
+.svc-list{border-top:1px solid var(--line)}
+.svc-row{display:grid;grid-template-columns:repeat(12,1fr);gap:0 2vw;padding:clamp(34px,4.5vw,64px) 0;border-bottom:1px solid var(--line)}
+.svc-num{grid-column:1/3;font-size:11px;letter-spacing:.2em;color:var(--grey);padding-top:.9em}
+.svc-body{grid-column:3/13}
+.svc-body h3{margin:0 0 20px;font-size:clamp(42px,5.4vw,92px);line-height:.95;transition:color .5s}
+.svc-row:hover h3{color:var(--grey)}
+.svc-body p{max-width:56ch;margin:0;color:var(--grey-dark);font-size:clamp(16px,1.25vw,19px);line-height:1.7;font-weight:300}
+@media (max-width:800px){
+.svc-head h2{grid-column:1/-1}
+.svc-num{grid-column:1/-1;padding:0 0 14px}
+.svc-body{grid-column:1/-1}
 }
 </style>
 </head>
@@ -1780,240 +1931,136 @@ EXPERIENCES
 <section class="experiences" id="work">
 <div class="section-intro reveal">
 <h2>
-Selected
-concepts.
+Every image
+has a business
+behind it.
 </h2>
 <p>
-Digital worlds shaped around the character
-of the people and places behind them.
+Patisseries, fashion houses, beauty brands,
+hotels and studios — each with its own world,
+shaped into a website that feels like it.
 </p>
 </div>
-<div
-class="gallery-window"
-tabindex="0"
-aria-label="Selected experiences">
+<div class="gallery-window" aria-label="Selected experiences">
 <div class="gallery-track">
-<!-- Patisserie -->
 <article class="gallery-card">
-<img
-src="assets/images/patisserie-feature.jpg"
-decoding="async"
-alt="Boutique patisserie">
+<img src="assets/images/photo-fashion-portrait.jpg" loading="lazy" decoding="async" alt="Model in a flowing couture garment">
 <div class="gallery-info">
-<small>
-01 / Patisserie
-</small>
-<h3>
-Desserts worth desiring.
-</h3>
-<p>
-Patisserie · pastries · boutique dessert shop
-</p>
-</div>
-</article>
-<!-- Beauty -->
-<article class="gallery-card">
-<img
-src="assets/images/beauty-experience.jpg"
-decoding="async"
-alt="Beauty experience">
-<div class="gallery-info">
-<small>
-02 / Beauty
-</small>
-<h3>
-Products you can almost feel.
-</h3>
-<p>
-Beauty · wellness · skincare
-</p>
-</div>
-</article>
-<!-- High-End Cosmetics -->
-<article class="gallery-card">
-<img
-src="assets/images/luxury-cosmetics.jpg"
-decoding="async"
-alt="Luxury cosmetics">
-<div class="gallery-info">
-<small>
-03 / High-End Cosmetics
-</small>
-<h3>
-Beauty worth looking closer at.
-</h3>
-<p>
-Luxury cosmetics · skincare · premium beauty
-</p>
-</div>
-</article>
-<!-- Product -->
-<article class="gallery-card">
-<img
-src="assets/images/product-experience.jpg"
-decoding="async"
-alt="Product experience">
-<div class="gallery-info">
-<small>
-04 / Product
-</small>
-<h3>
-Designed to be desired.
-</h3>
-<p>
-Ecommerce · launches · products
-</p>
-</div>
-</article>
-<!-- Repeat for smooth movement -->
-<article class="gallery-card">
-<img
-src="assets/images/patisserie-feature.jpg"
-decoding="async"
-alt="Boutique patisserie">
-<div class="gallery-info">
-<small>
-01 / Patisserie
-</small>
-<h3>
-Desserts worth desiring.
-</h3>
-<p>
-Patisserie · pastries · boutique dessert shop
-</p>
+<small>01 — Fashion & Modeling</small>
+<h3>Behind the look, a brand.</h3>
+<p class="gallery-copy">A fashion site should move like an editorial: lookbooks that unfold, collections that breathe, and a portfolio where every model and every piece gets room to be seen.</p>
+<p>Designers · ateliers · model agencies · portfolios</p>
 </div>
 </article>
 <article class="gallery-card">
-<img
-src="assets/images/beauty-experience.jpg"
-decoding="async"
-alt="Beauty">
+<img src="assets/images/photo-patisserie-window.jpg" loading="lazy" decoding="async" alt="Patisserie window glowing at dusk">
 <div class="gallery-info">
-<small>
-02 / Beauty
-</small>
-<h3>
-Products you can almost feel.
-</h3>
-<p>
-Beauty · wellness · skincare
-</p>
+<small>02 — Patisserie</small>
+<h3>Behind the window, a bakery.</h3>
+<p class="gallery-copy">Before anyone tastes a thing, they decide with their eyes. We bring the glow of your shop window online — your pastries, your hours, your neighbourhood, one tap away.</p>
+<p>Pastry shops · bakeries · dessert boutiques</p>
 </div>
 </article>
 <article class="gallery-card">
-<img
-src="assets/images/luxury-cosmetics.jpg"
-decoding="async"
-alt="High-end cosmetics">
+<img src="assets/images/photo-hand-cream-olives.jpg" loading="lazy" decoding="async" alt="Hand cream tube resting in a bowl of olives">
 <div class="gallery-info">
-<small>
-03 / High-End Cosmetics
-</small>
-<h3>
-Beauty worth looking closer at.
-</h3>
-<p>
-Luxury cosmetics · skincare · premium beauty
-</p>
+<small>03 — Beauty & Skincare</small>
+<h3>Behind the product, a ritual.</h3>
+<p class="gallery-copy">Skincare is a daily ritual, not a transaction. We design pages that let people feel the texture, understand the formula and trust the brand before they ever open the jar.</p>
+<p>Cosmetics · skincare · wellness brands</p>
 </div>
 </article>
 <article class="gallery-card">
-<img
-src="assets/images/product-experience.jpg"
-decoding="async"
-alt="Product">
+<img src="assets/images/photo-jewelry-martini.jpg" loading="lazy" decoding="async" alt="Rings on a cocktail pick over a coupe glass">
 <div class="gallery-info">
-<small>
-04 / Product
-</small>
-<h3>
-Designed to be desired.
-</h3>
-<p>
-Ecommerce · launches · products
-</p>
+<small>04 — Jewelry & Luxury</small>
+<h3>Behind the sparkle, a maker.</h3>
+<p class="gallery-copy">Jewelry sells on detail and story. We frame each piece the way a jeweler would — close, slow and lit — so the craft behind it is as visible as the stone.</p>
+<p>Jewelers · luxury goods · limited collections</p>
 </div>
 </article>
+<article class="gallery-card">
+<img src="assets/images/photo-hand-phone.jpg" loading="lazy" decoding="async" alt="Hand holding a phone against a pale wall">
+<div class="gallery-info">
+<small>05 — Online Shops</small>
+<h3>Behind the screen, a shop that never closes.</h3>
+<p class="gallery-copy">Small brands deserve a store that feels hand-made. Clear collections, effortless checkout and a launch page that sells while the owner is asleep.</p>
+<p>Ecommerce · launches · independent brands</p>
+</div>
+</article>
+<article class="gallery-card">
+<img src="assets/images/photo-library-lounge.jpg" loading="lazy" decoding="async" alt="Lounge with lit bookshelves and armchairs">
+<div class="gallery-info">
+<small>06 — Bookshops & Clubs</small>
+<h3>Behind the shelves, a community.</h3>
+<p class="gallery-copy">Bookshops and members’ clubs are about belonging. We build digital rooms with a clear voice — events, memberships and recommendations that make people want to be invited in.</p>
+<p>Bookshops · members’ clubs · cultural spaces</p>
+</div>
+</article>
+<article class="gallery-card">
+<img src="assets/images/photo-lounge-sofa-book.jpg" loading="lazy" decoding="async" alt="Leather sofa with an open book in a warm lounge">
+<div class="gallery-info">
+<small>07 — Hotels & Interiors</small>
+<h3>Behind the room, a host.</h3>
+<p class="gallery-copy">Hotels, lounges and interior studios sell an atmosphere. We translate light, texture and space into a website that makes guests feel the stay before they book it.</p>
+<p>Hotels · lounges · interior studios</p>
+</div>
+</article>
+<aside class="gallery-aside">
+<small>The common thread</small>
+<p class="gallery-aside-quote">Every brand we meet is already <em>a world.</em> We simply open the door.</p>
+<p class="gallery-aside-body">Whether it is a pastry counter at seven in the morning or a fashion collection about to launch, the work begins in the same place: listening to what makes the business worth choosing, then building a screen that feels like walking in.</p>
+<a href="#contact" class="gallery-aside-link">Start a project →</a>
+</aside>
 </div>
 </div>
 </section>
 <!-- =====================================
-MANIFESTO
+WHAT WE DO (text only)
 ===================================== -->
-<section class="manifesto">
-<div class="manifesto-copy reveal">
-<div
-class="eyebrow"
-style="color:#74313e;">
-What EVORA means
+<section class="services-editorial" id="services">
+<div class="svc-head reveal">
+<small>What we do</small>
+<h2>Four ways we turn a business <em>into a screen.</em></h2>
 </div>
-<h2>
-A good business
-already has
-a feeling.
-</h2>
-<p class="lead">
-Our job is to make sure
-it survives the screen.
-</p>
-<p class="body">
-We design digital experiences
-that translate what makes a business
-special into something people
-can see, understand and remember.
-</p>
+<div class="svc-list">
+<article class="svc-row reveal">
+<span class="svc-num">01</span>
+<div class="svc-body">
+<h3>Websites</h3>
+<p>Custom-designed, fast and fully responsive websites, built from scratch around your brand. Clear structure, beautiful detail, and a design that works as well on a phone as on a desktop.</p>
 </div>
-<div class="manifesto-image">
-<img
-src="assets/images/patisserie-feature.jpg"
-loading="lazy"
-decoding="async"
-alt="Elegant patisserie">
-<div class="note">
-Same feeling.
-<br>
-New screen.
+</article>
+<article class="svc-row reveal">
+<span class="svc-num">02</span>
+<div class="svc-body">
+<h3>Digital Experiences</h3>
+<p>Interactive pages that go beyond a brochure: digital menus, booking flows, product discovery and immersive storytelling that let visitors explore instead of simply scroll.</p>
 </div>
+</article>
+<article class="svc-row reveal">
+<span class="svc-num">03</span>
+<div class="svc-body">
+<h3>Digital Identity</h3>
+<p>The visual language behind the screen — typography, art direction, colour and design systems — so every page, post and pixel feels unmistakably like you.</p>
+</div>
+</article>
+<article class="svc-row reveal">
+<span class="svc-num">04</span>
+<div class="svc-body">
+<h3>Launch Pages</h3>
+<p>A single focused page for a product, an opening, a campaign or a special moment. Built quickly, designed to be remembered, and made to turn attention into action.</p>
+</div>
+</article>
 </div>
 </section>
 <!-- =====================================
-FEATURED PROJECT
+PHOTO BAND 1 (full-bleed, after manifesto) — EMPTY SLOT (waiting for a Pinterest image)
+To activate: set the image path in style, delete the "hidden" attribute.
 ===================================== -->
-<section class="featured">
-<div class="featured-header">
-<div class="eyebrow">
-Patisserie · Digital Concept
-</div>
-<div class="eyebrow">
-Patisserie
-</div>
-</div>
-<div class="featured-project">
-<div class="featured-copy reveal">
-<div class="eyebrow">
-Digital Experience
-</div>
-<h2>
-Websites
-you can
-step into.
-</h2>
-<p>
-EVORA also focuses on turning websites into immersive experiences — blending motion, storytelling and detail so visitors don't just browse: they explore, feel and remember.
-</p>
-</div>
-<div class="featured-image reveal">
-<video
-class="featured-main-video"
-autoplay
-muted
-loop
-playsinline
-preload="metadata"
-aria-label="Video Project 2 — pastry shop showreel">
-<source src="assets/videos/video-project-2-crop.mp4" type="video/mp4">
-</video>
-</div>
+<section class="photo-band" id="band-1" hidden style="--band-image:url('assets/images/REPLACE-ME.jpg')">
+<div class="photo-band-copy">
+<h2>Every business has a feeling.<br>We make it visible.</h2>
 </div>
 </section>
 <!-- =====================================
@@ -2023,7 +2070,7 @@ CONCEPT APPLICATIONS
 <div class="live-intro reveal">
 <h2>
 From first glance
-to final detail.
+to the last detail.
 </h2>
 <p>
 Good digital work should
@@ -2034,143 +2081,40 @@ displayed in a mockup.
 <div class="demo-grid">
 <article class="demo reveal">
 <div class="demo-image">
-<img
-src="assets/images/interactive-menu.jpg"
-loading="lazy"
-decoding="async"
-alt="Menu experience">
+<img src="assets/images/photo-cafe-interior.jpg" loading="lazy" decoding="async" alt="Neighbourhood café with counter and tables">
 </div>
 <div class="demo-text">
-<h3>
-Interactive Menu
-</h3>
-<small>
-Hospitality →
-</small>
+<h3>The Neighbourhood Café</h3>
+<small>Cafés &amp; coffee shops →</small>
 </div>
 </article>
 <article class="demo reveal">
 <div class="demo-image">
-<img
-src="assets/images/boutique-patisserie.jpg"
-loading="lazy"
-decoding="async"
-alt="Boutique patisserie">
+<img src="assets/images/photo-menu-table.jpg" loading="lazy" decoding="async" alt="Printed menu on a set restaurant table">
 </div>
 <div class="demo-text">
-<h3>
-Boutique Patisserie
-</h3>
-<small>
-Pastries / Dessert Shop →
-</small>
+<h3>The Menu, Reimagined</h3>
+<small>Restaurants →</small>
 </div>
 </article>
 <article class="demo reveal">
 <div class="demo-image">
-<img
-src="assets/images/product-discovery.jpg"
-loading="lazy"
-decoding="async"
-alt="Product">
+<img src="assets/images/photo-interior-marble-table.jpg" loading="lazy" decoding="async" alt="Lounge corner with marble side table and olive armchair">
 </div>
 <div class="demo-text">
-<h3>
-Product Discovery
-</h3>
-<small>
-Beauty →
-</small>
+<h3>The Studio Showroom</h3>
+<small>Interiors &amp; furniture design →</small>
 </div>
 </article>
 <article class="demo reveal">
 <div class="demo-image">
-<img
-src="assets/images/immersive-story.jpg"
-loading="lazy"
-decoding="async"
-alt="Storytelling">
+<img src="assets/images/photo-candlelit-table.jpg" loading="lazy" decoding="async" alt="Candlelit table for two in a dark dining room">
 </div>
 <div class="demo-text">
-<h3>
-Immersive Story
-</h3>
-<small>
-Culture →
-</small>
+<h3>Reserve the Evening</h3>
+<small>Fine dining &amp; private events →</small>
 </div>
 </article>
-</div>
-</section>
-<!-- =====================================
-SERVICES
-===================================== -->
-<section class="services" id="services">
-<div class="services-header reveal">
-<h2>
-What we make.
-</h2>
-<p>
-Not every project needs
-the same thing.
-Sometimes it is a full website.
-Sometimes one digital moment
-needs to work much harder.
-</p>
-</div>
-<div class="service-grid">
-<div class="service reveal">
-<div class="service-number">
-01
-</div>
-<h3>
-Websites
-</h3>
-<p>
-Design, development
-and responsive experiences.
-</p>
-</div>
-<div class="service reveal">
-<div class="service-number">
-02
-</div>
-<h3>
-Digital Experiences
-</h3>
-<p>
-Interactive pages,
-menus, booking and
-product discovery.
-</p>
-</div>
-<div class="service reveal">
-<div class="service-number">
-03
-</div>
-<h3>
-Digital Identity
-</h3>
-<p>
-Typography,
-art direction,
-colour and systems.
-</p>
-</div>
-<div class="service reveal">
-<div class="service-number">
-04
-</div>
-<h3>
-Launch Pages
-</h3>
-<p>
-Products,
-openings,
-campaigns
-and special moments.
-</p>
-</div>
 </div>
 </section>
 <!-- =====================================
@@ -2245,66 +2189,6 @@ hidden></p>
 </div>
 </section>
 <!-- =====================================
-CONNECTION
-===================================== -->
-<section class="connection">
-<div class="connection-header reveal">
-<h2>
-That space
-in between
-is where we work.
-</h2>
-<p>
-A real business.
-A screen.
-A person on the other side.
-EVORA connects them.
-</p>
-</div>
-<div class="connection-grid reveal">
-<div class="connection-item">
-<span>
-A BUSINESS
-</span>
-<img
-src="assets/images/patisserie-feature.jpg"
-loading="lazy"
-decoding="async"
-alt="Patisserie">
-</div>
-<div class="connection-item">
-<span>
-A SCREEN
-</span>
-<img
-src="assets/images/luxury-cosmetics.jpg"
-loading="lazy"
-decoding="async"
-alt="Luxury cosmetics">
-</div>
-<div class="connection-item">
-<span>
-A PERSON
-</span>
-<img
-src="assets/images/editorial-portrait.jpg"
-loading="lazy"
-decoding="async"
-alt="Editorial portrait">
-</div>
-<div class="connection-item">
-<span>
-A CONNECTION
-</span>
-<img
-src="assets/images/luxury-patisserie.jpg"
-loading="lazy"
-decoding="async"
-alt="Patisserie product detail">
-</div>
-</div>
-</section>
-<!-- =====================================
 PROCESS
 ===================================== -->
 <section class="process">
@@ -2320,11 +2204,7 @@ How we work
 <div class="process-grid">
 <div class="step step--understand reveal">
 <div class="step-media">
-<img
-src="assets/images/process-understand.jpg"
-alt="Design professionals listening attentively during a client meeting"
-loading="lazy"
->
+<img src="assets/images/photo-designer-laptop.jpg" loading="lazy" decoding="async" alt="Designer working on a laptop">
 </div>
 <small>
 01
@@ -2340,11 +2220,7 @@ your business worth choosing.
 </div>
 <div class="step step--shape reveal">
 <div class="step-media">
-<img
-src="assets/images/process-shape.jpg"
-alt="Artist palette, brushes and creative materials on a dark wooden table"
-loading="lazy"
->
+<img src="assets/images/photo-palette-board.jpg" loading="lazy" decoding="async" alt="Colour palette board">
 </div>
 <small>
 02
@@ -2361,11 +2237,7 @@ the people you want to reach.
 </div>
 <div class="step step--build reveal">
 <div class="step-media">
-<img
-src="assets/images/process-build.jpg"
-alt="Colourful code on a dark screen with shallow depth of field"
-loading="lazy"
->
+<img src="assets/images/photo-desk-flatlay.jpg" loading="lazy" decoding="async" alt="Desk with laptop and notebook">
 </div>
 <small>
 03
@@ -2381,11 +2253,7 @@ website that feels alive.
 </div>
 <div class="step step--launch reveal">
 <div class="step-media">
-<img
-src="assets/images/process-launch.jpg"
-alt="Bottle of champagne and two flute glasses on a red cart"
-loading="lazy"
->
+<img src="assets/images/photo-open-sign.jpg" loading="lazy" decoding="async" alt="Neon open sign on a shop door">
 </div>
 <small>
 04
@@ -2402,37 +2270,12 @@ into the world with confidence.
 </div>
 </section>
 <!-- =====================================
-FINAL
+PHOTO BAND 2 (closing, after process) — EMPTY SLOT (waiting for a Pinterest image)
+To activate: set the image path in style, delete the "hidden" attribute.
 ===================================== -->
-<section class="final">
-<video
-class="final-video"
-autoplay
-muted
-loop
-playsinline
-preload="metadata"
-aria-label="EVORA closing showreel">
-<source src="assets/videos/video-project-1-crop.mp4" type="video/mp4">
-</video>
-<div class="final-copy reveal">
-<div class="eyebrow">
-EVORA STUDIO
-</div>
-<h2>
-Got something
-<br>
-worth noticing?
-</h2>
-<p>
-Let's make sure
-people notice it.
-</p>
-<a
-href="#contact"
-class="nav-cta">
-Start a Project →
-</a>
+<section class="photo-band" id="band-2" hidden style="--band-image:url('assets/images/REPLACE-ME.jpg')">
+<div class="photo-band-copy">
+<h2></h2>
 </div>
 </section>
 </main>
