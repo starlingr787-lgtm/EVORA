@@ -6,13 +6,13 @@
 <title>Technique Bathrooms — Bespoke Bathrooms, Glasgow &amp; The West</title>
 <meta name="description" content="Family-run bathroom specialists in Glasgow since 1999. Design, supply and installation of bespoke bathrooms across Glasgow and the West of Scotland.">
 <meta name="robots" content="noindex,nofollow"><!-- sample: remove on go-live -->
-<meta name="theme-color" content="#efeae1">
+<meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#efeae1; --paper-2:#e6dfd3; --ink:#14120f; --ink-2:#4a453d; --line:rgba(20,18,15,.18);
+  --paper:#ffffff; --paper-2:#f4f3f0; --ink:#14120f; --ink-2:#4a453d; --line:rgba(20,18,15,.18);
   --accent:#8fbf2f; /* from the Technique logo */
   --display:'Bodoni Moda',Didot,'Times New Roman',serif;
   --sans:'Hanken Grotesk',system-ui,-apple-system,Segoe UI,sans-serif;
@@ -32,9 +32,9 @@ em{font-style:italic}
 
 /* Photo slots: placeholder sits underneath; real <img> drops on top. Missing file = placeholder stays. */
 .ph{position:relative;overflow:hidden;background:
-  radial-gradient(120% 80% at 20% 10%,#f6f3ec 0,transparent 60%),
-  radial-gradient(90% 70% at 85% 90%,#cfc7b8 0,transparent 65%),
-  linear-gradient(135deg,#ddd5c7,#bfb6a5);}
+  radial-gradient(120% 80% at 20% 10%,#fafaf9 0,transparent 60%),
+  radial-gradient(90% 70% at 85% 90%,#d3d2ce 0,transparent 65%),
+  linear-gradient(135deg,#e6e5e2,#c9c7c1);}
 .ph::before{content:attr(data-n);position:absolute;left:14px;top:12px;font-size:11px;font-weight:600;letter-spacing:.2em;color:rgba(20,18,15,.45);z-index:0}
 .ph::after{content:attr(data-slot);position:absolute;left:14px;bottom:12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(20,18,15,.4);z-index:0}
 .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
@@ -44,7 +44,7 @@ figcaption{display:flex;gap:14px;justify-content:space-between;margin-top:12px;f
 figcaption b{font-weight:600;color:var(--ink)}
 
 /* Masthead */
-.mast{position:sticky;top:0;z-index:50;background:rgba(239,234,225,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.mast{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .mast .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:20px}
 .logo{font-family:var(--display);font-size:26px;letter-spacing:-.02em;white-space:nowrap}
 .logo i{font-style:italic}
@@ -123,10 +123,10 @@ section{position:relative}
 
 /* Reviews */
 .reviews{padding:clamp(56px,8vw,120px) 0;background:var(--ink);color:var(--paper)}
-.reviews .sec-head{border-color:rgba(239,234,225,.5)}
-.reviews .sec-title em{color:rgba(239,234,225,.55)}
+.reviews .sec-head{border-color:rgba(255,255,255,.5)}
+.reviews .sec-title em{color:rgba(255,255,255,.55)}
 .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,56px)}
-.rev{border-top:1px solid rgba(239,234,225,.3);padding-top:22px}
+.rev{border-top:1px solid rgba(255,255,255,.3);padding-top:22px}
 .rev .stars{color:var(--accent);letter-spacing:.3em;font-size:13px}
 .rev p{font-family:var(--display);font-size:clamp(21px,2vw,29px);line-height:1.25;margin:18px 0 22px;letter-spacing:-.01em}
 .rev .who{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;opacity:.7}
@@ -156,11 +156,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 .giant{font-family:var(--display);font-size:clamp(56px,16vw,260px);line-height:.8;letter-spacing:-.05em;padding:clamp(24px,4vw,56px) 0 clamp(20px,3vw,40px);white-space:nowrap;overflow:hidden}
 .giant i{color:var(--accent)}
 
-/* Reveal */
-@media (prefers-reduced-motion:no-preference){
-  .rv{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
-  .rv.in{opacity:1;transform:none}
-}
 
 /* Responsive */
 @media (max-width:900px){
@@ -342,9 +337,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 </footer>
 
 <script>
-// Reveal on scroll
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 document.getElementById('y').textContent=new Date().getFullYear();
 // Enquiry form: sample only — wire to Formspree/Netlify/email on go-live
 document.getElementById('enq').addEventListener('submit',e=>{
