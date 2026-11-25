@@ -63,8 +63,9 @@ figcaption b{font-weight:600;color:var(--ink)}
 .cover-top{display:flex;justify-content:space-between;gap:20px;padding-bottom:18px;border-bottom:1px solid var(--ink)}
 .cover-title{font-size:clamp(64px,15.2vw,248px);line-height:.82;letter-spacing:-.045em;padding:clamp(16px,2.5vw,36px) 0 0}
 .cover-title em{display:block;text-align:right;margin-top:-.06em}
-.cover-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(12px,1.6vw,24px);margin-top:clamp(24px,3vw,48px)}
-.cover-grid .ph{height:clamp(420px,50vw,780px)}
+.cover-grid{display:grid;grid-template-columns:768fr 1780fr;gap:clamp(12px,1.6vw,24px);margin-top:clamp(24px,3vw,48px)}
+.cover-grid .a{aspect-ratio:768/1300}
+.cover-grid .b{aspect-ratio:1180/861}
 .cover-lede{display:grid;grid-template-columns:5fr 7fr;gap:clamp(16px,3vw,48px);padding:clamp(28px,4vw,56px) 0 clamp(56px,8vw,120px)}
 .cover-lede p{font-size:clamp(18px,1.5vw,22px);color:var(--ink-2);max-width:34em}
 .cover-lede .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
@@ -162,7 +163,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
   .mast .wrap{gap:10px}
   .cover-grid,.cover-lede,.stand-grid,.contact-grid{grid-template-columns:1fr}
   .cover-grid .a{aspect-ratio:4/5}
-  .cover-grid .ph{height:auto;aspect-ratio:4/5}
+  .cover-grid{grid-template-columns:1fr}
+  .cover-grid .a{aspect-ratio:4/5}
+  .cover-grid .b{aspect-ratio:1180/861}
   .step .ph{height:auto;aspect-ratio:4/3}
   .spread{grid-template-columns:repeat(6,1fr)}
   .spread figure:nth-child(n){grid-column:span 3}
@@ -243,7 +246,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
     <div class="sec-head label"><span>Selected work</span><span>Recent projects</span></div>
     <h2 class="sec-title">The <em>portfolio</em></h2>
     <div class="spread">
-      <figure class="rv"><div class="ph" data-slot="Wide: freestanding bath, tall windows"><img src="img/work-1.jpg" alt="Freestanding bath beneath a large picture window with garden views" loading="lazy" onerror="this.remove()"></div><figcaption><b>The Marble Suite</b><span>Glasgow West End</span></figcaption></figure>
+      <figure class="rv"><div class="ph" data-slot="Wide: freestanding bath, tall windows"><img style="object-position:50% 72%" src="img/work-1.jpg" alt="Freestanding bath beneath a large picture window with garden views" loading="lazy" onerror="this.remove()"></div><figcaption><b>The Marble Suite</b><span>Glasgow West End</span></figcaption></figure>
       <figure class="rv"><div class="ph" data-slot="Portrait: fluted vanity detail"><img src="img/work-2.jpg" alt="Curved fluted oak vanity with marble top and brass handles" loading="lazy" onerror="this.remove()"></div><figcaption><b>Walnut &amp; Brass</b><span>Bearsden</span></figcaption></figure>
       <figure class="rv"><div class="ph" data-slot="Portrait: shower"><img src="img/work-3.jpg" alt="Wall hung oak vanity beside a glass walk in shower with marble tiles" loading="lazy" onerror="this.remove()"></div><figcaption><b>Warm Light</b><span>Newton Mearns</span></figcaption></figure>
       <figure class="rv"><div class="ph" data-slot="Landscape: green tile, oak floor"><img src="img/work-4.jpg" alt="Deep green tiled bathroom with a green freestanding bath and brass fittings" loading="lazy" onerror="this.remove()"></div><figcaption><b>Forest Green</b><span>Milngavie</span></figcaption></figure>
@@ -285,7 +288,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
       <article class="step rv">
         <h3>Install</h3>
         <p>Our own tradespeople, no subcontracting. Tidy, on schedule, and finished to the standard we’d want in our own homes.</p>
-        <div class="ph" data-slot="Process: tiler at work"><img src="img/step-3.jpg" alt="Tiler fitting marble wall tiles around a bath" loading="lazy" onerror="this.remove()"></div>
+        <div class="ph" data-slot="Process: finished detail"><img style="object-position:50% 58%" src="img/step-3.jpg" alt="Marble vanity with brass taps, finished and installed" loading="lazy" onerror="this.remove()"></div>
       </article>
     </div>
   </div>
@@ -308,7 +311,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 <section class="contact" id="contact">
   <div class="wrap">
     <div class="contact-grid">
-      <div class="ph" data-slot="Portrait: finished room"><img src="img/contact.jpg" alt="Marble double vanity with two tall brass framed mirrors" loading="lazy" onerror="this.remove()"></div>
+      <div class="ph" data-slot="Portrait: finished room"><img src="img/contact.jpg" alt="Cream vanity with a marble wall, large mirror and chandelier" loading="lazy" onerror="this.remove()"></div>
       <div>
         <div class="label" style="margin-bottom:20px">Free design visit</div>
         <h2>Let’s plan <em>yours.</em></h2>
