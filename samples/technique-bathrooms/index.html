@@ -35,11 +35,10 @@ em{font-style:italic}
   radial-gradient(120% 80% at 20% 10%,#fafaf9 0,transparent 60%),
   radial-gradient(90% 70% at 85% 90%,#d3d2ce 0,transparent 65%),
   linear-gradient(135deg,#e6e5e2,#c9c7c1);}
-.ph::before{content:attr(data-n);position:absolute;left:14px;top:12px;font-size:11px;font-weight:600;letter-spacing:.2em;color:rgba(20,18,15,.45);z-index:0}
 .ph::after{content:attr(data-slot);position:absolute;left:14px;bottom:12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(20,18,15,.4);z-index:0}
 .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
 .ph:hover img{transform:scale(1.03)}
-.dark .ph::before,.dark .ph::after{color:rgba(255,255,255,.35)}
+.dark .ph::after{color:rgba(255,255,255,.35)}
 figcaption{display:flex;gap:14px;justify-content:space-between;margin-top:12px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
 figcaption b{font-weight:600;color:var(--ink)}
 
@@ -64,9 +63,8 @@ figcaption b{font-weight:600;color:var(--ink)}
 .cover-top{display:flex;justify-content:space-between;gap:20px;padding-bottom:18px;border-bottom:1px solid var(--ink)}
 .cover-title{font-size:clamp(64px,15.2vw,248px);line-height:.82;letter-spacing:-.045em;padding:clamp(16px,2.5vw,36px) 0 0}
 .cover-title em{display:block;text-align:right;margin-top:-.06em}
-.cover-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(16px,3vw,48px);margin-top:clamp(24px,3vw,48px);align-items:end}
-.cover-grid .a{aspect-ratio:4/5}
-.cover-grid .b{aspect-ratio:16/11}
+.cover-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(12px,1.6vw,24px);margin-top:clamp(24px,3vw,48px)}
+.cover-grid .ph{height:clamp(420px,50vw,780px)}
 .cover-lede{display:grid;grid-template-columns:5fr 7fr;gap:clamp(16px,3vw,48px);padding:clamp(28px,4vw,56px) 0 clamp(56px,8vw,120px)}
 .cover-lede p{font-size:clamp(18px,1.5vw,22px);color:var(--ink-2);max-width:34em}
 .cover-lede .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
@@ -90,14 +88,13 @@ section{position:relative}
 
 /* Selected work: photo spread */
 .work{padding:clamp(56px,8vw,120px) 0}
-.spread{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(28px,4vw,64px) clamp(14px,2vw,32px)}
-.spread figure:nth-child(1){grid-column:1/8}  .spread figure:nth-child(1) .ph{aspect-ratio:4/3}
-.spread figure:nth-child(2){grid-column:8/13;align-self:end} .spread figure:nth-child(2) .ph{aspect-ratio:3/4}
-.spread figure:nth-child(3){grid-column:1/6}  .spread figure:nth-child(3) .ph{aspect-ratio:3/4}
-.spread figure:nth-child(4){grid-column:6/13;align-self:center} .spread figure:nth-child(4) .ph{aspect-ratio:16/10}
-.spread figure:nth-child(5){grid-column:1/5}  .spread figure:nth-child(5) .ph{aspect-ratio:1/1}
-.spread figure:nth-child(6){grid-column:5/9;margin-top:clamp(0px,6vw,96px)} .spread figure:nth-child(6) .ph{aspect-ratio:3/4}
-.spread figure:nth-child(7){grid-column:9/13} .spread figure:nth-child(7) .ph{aspect-ratio:3/4}
+.spread{--h1:clamp(340px,44vw,700px);--h2:clamp(340px,40vw,640px);display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(28px,3.4vw,52px) clamp(12px,1.6vw,24px)}
+.spread figure:nth-child(1){grid-column:1/9} .spread figure:nth-child(1) .ph{height:var(--h1)}
+.spread figure:nth-child(2){grid-column:9/13} .spread figure:nth-child(2) .ph{height:var(--h1)}
+.spread figure:nth-child(3){grid-column:1/5} .spread figure:nth-child(3) .ph{height:var(--h2)}
+.spread figure:nth-child(4){grid-column:5/13} .spread figure:nth-child(4) .ph{height:var(--h2)}
+.spread figure:nth-child(5){grid-column:1/5} .spread figure:nth-child(6){grid-column:5/9} .spread figure:nth-child(7){grid-column:9/13}
+.spread figure:nth-child(n+5) .ph{aspect-ratio:3/4}
 .more{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:clamp(40px,6vw,88px);padding-top:22px;border-top:1px solid var(--line)}
 .more p{font-family:var(--display);font-style:italic;font-size:clamp(22px,2.4vw,34px)}
 
@@ -105,7 +102,6 @@ section{position:relative}
 .bleed{position:relative;color:#fff}
 .bleed .ph{aspect-ratio:21/9;min-height:420px}
 .bleed .ph::after{color:rgba(255,255,255,.4)}
-.bleed .ph::before{color:rgba(255,255,255,.4)}
 .bleed .veil{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(10,9,8,.15),rgba(10,9,8,.6));display:flex;align-items:flex-end}
 .bleed blockquote{font-family:var(--display);font-style:italic;font-size:clamp(30px,5.2vw,84px);line-height:1;letter-spacing:-.025em;max-width:16em;padding-bottom:clamp(28px,5vw,72px)}
 .bleed cite{display:block;margin-top:20px;font-family:var(--sans);font-style:normal;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;opacity:.8}
@@ -117,7 +113,7 @@ section{position:relative}
 .step{padding:28px clamp(16px,2.4vw,36px) 36px 0}
 .step+.step{padding-left:clamp(16px,2.4vw,36px);border-left:1px solid var(--line)}
 .step .num{font-family:var(--display);font-style:italic;font-size:clamp(72px,10vw,160px);line-height:.9;letter-spacing:-.04em;color:var(--accent);-webkit-text-stroke:0}
-.step h3{font-size:clamp(30px,3.2vw,48px);margin:18px 0 14px}
+.step h3{font-size:clamp(40px,4.6vw,72px);margin:0 0 16px}
 .step p{color:var(--ink-2);max-width:26em}
 .step .ph{aspect-ratio:4/3;margin-top:28px}
 
@@ -164,10 +160,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
   .logo{font-size:22px}
   .cover-grid,.cover-lede,.stand-grid,.contact-grid{grid-template-columns:1fr}
   .cover-grid .a{aspect-ratio:4/5}
+  .cover-grid .ph{height:auto;aspect-ratio:4/5}
   .spread{grid-template-columns:repeat(6,1fr)}
-  .spread figure:nth-child(n){grid-column:span 6;margin-top:0;align-self:auto}
-  .spread figure:nth-child(2),.spread figure:nth-child(5),.spread figure:nth-child(6),.spread figure:nth-child(7){grid-column:span 3}
-  .spread figure:nth-child(3),.spread figure:nth-child(4){grid-column:span 6}
+  .spread figure:nth-child(n){grid-column:span 3}
+  .spread figure:nth-child(1),.spread figure:nth-child(4){grid-column:span 6}
+  .spread figure:nth-child(n) .ph{height:auto;aspect-ratio:3/4}
+  .spread figure:nth-child(1) .ph,.spread figure:nth-child(4) .ph{aspect-ratio:4/3}
   .steps,.rev-grid{grid-template-columns:1fr}
   .step+.step{padding-left:0;border-left:0;border-top:1px solid var(--line)}
   .contact .ph{position:static;aspect-ratio:4/3}
@@ -202,8 +200,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
     <h1 class="cover-title">Rooms made<em>to be lived in.</em></h1>
 
     <div class="cover-grid">
-      <figure class="rv"><div class="ph a" data-n="01" data-slot="Cover portrait — marble, brass mirror"><img src="img/cover-1.jpg" alt="Marble bathroom with fluted walnut vanity and brass-framed mirror" loading="eager" fetchpriority="high" onerror="this.remove()"></div></figure>
-      <figure class="rv"><div class="ph b" data-n="02" data-slot="Cover landscape — freestanding bath, white"><img src="img/cover-2.jpg" alt="Bright white bathroom with freestanding bath and large format tiles" loading="eager" onerror="this.remove()"></div></figure>
+      <figure class="rv"><div class="ph a" data-slot="Cover portrait — marble, brass mirror"><img src="img/cover-1.jpg" alt="Marble bathroom with fluted walnut vanity and brass-framed mirror" loading="eager" fetchpriority="high" onerror="this.remove()"></div></figure>
+      <figure class="rv"><div class="ph b" data-slot="Cover landscape — freestanding bath, white"><img src="img/cover-2.jpg" alt="Bright white bathroom with freestanding bath and large format tiles" loading="eager" onerror="this.remove()"></div></figure>
     </div>
 
     <div class="cover-lede">
@@ -237,16 +235,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 <!-- SELECTED WORK -->
 <section class="work" id="work">
   <div class="wrap">
-    <div class="sec-head label"><span>Selected work</span><span>Plates 03 — 09</span></div>
+    <div class="sec-head label"><span>Selected work</span><span>Recent projects</span></div>
     <h2 class="sec-title">The <em>portfolio</em></h2>
     <div class="spread">
-      <figure class="rv"><div class="ph" data-n="03" data-slot="Wide — freestanding bath, tall windows"><img src="img/work-1.jpg" alt="" loading="lazy" onerror="this.remove()"></div><figcaption><b>The Marble Suite</b><span>Glasgow West End</span></figcaption></figure>
-      <figure class="rv"><div class="ph" data-n="04" data-slot="Portrait — fluted vanity detail"><img src="img/work-2.jpg" alt="" loading="lazy" onerror="this.remove()"></div><figcaption><b>Walnut &amp; Brass</b><span>Bearsden</span></figcaption></figure>
-      <figure class="rv"><div class="ph" data-n="05" data-slot="Portrait — walk-in shower"><img src="img/work-3.jpg" alt="" loading="lazy" onerror="this.remove()"></div><figcaption><b>Walk-in, Warm Light</b><span>Newton Mearns</span></figcaption></figure>
-      <figure class="rv"><div class="ph" data-n="06" data-slot="Landscape — green tile, oak floor"><img src="img/work-4.jpg" alt="" loading="lazy" onerror="this.remove()"></div><figcaption><b>Forest Green</b><span>Milngavie</span></figcaption></figure>
-      <figure class="rv"><div class="ph" data-n="07" data-slot="Square — black fittings detail"><img src="img/work-5.jpg" alt="" loading="lazy" onerror="this.remove()"></div><figcaption><b>Matt Black</b><span>Paisley</span></figcaption></figure>
-      <figure class="rv"><div class="ph" data-n="08" data-slot="Portrait — round mirror, backlit"><img src="img/work-6.jpg" alt="" loading="lazy" onerror="this.remove()"></div><figcaption><b>Halo</b><span>Giffnock</span></figcaption></figure>
-      <figure class="rv"><div class="ph" data-n="09" data-slot="Portrait — crittall screen"><img src="img/work-7.jpg" alt="" loading="lazy" onerror="this.remove()"></div><figcaption><b>Crittall</b><span>Glasgow South</span></figcaption></figure>
+      <figure class="rv"><div class="ph" data-slot="Wide — freestanding bath, tall windows"><img src="img/work-1.jpg" alt="" loading="lazy" onerror="this.remove()"></div><figcaption><b>The Marble Suite</b><span>Glasgow West End</span></figcaption></figure>
+      <figure class="rv"><div class="ph" data-slot="Portrait — fluted vanity detail"><img src="img/work-2.jpg" alt="" loading="lazy" onerror="this.remove()"></div><figcaption><b>Walnut &amp; Brass</b><span>Bearsden</span></figcaption></figure>
+      <figure class="rv"><div class="ph" data-slot="Portrait — walk-in shower"><img src="img/work-3.jpg" alt="" loading="lazy" onerror="this.remove()"></div><figcaption><b>Walk-in, Warm Light</b><span>Newton Mearns</span></figcaption></figure>
+      <figure class="rv"><div class="ph" data-slot="Landscape — green tile, oak floor"><img src="img/work-4.jpg" alt="" loading="lazy" onerror="this.remove()"></div><figcaption><b>Forest Green</b><span>Milngavie</span></figcaption></figure>
+      <figure class="rv"><div class="ph" data-slot="Square — black fittings detail"><img src="img/work-5.jpg" alt="" loading="lazy" onerror="this.remove()"></div><figcaption><b>Matt Black</b><span>Paisley</span></figcaption></figure>
+      <figure class="rv"><div class="ph" data-slot="Portrait — round mirror, backlit"><img src="img/work-6.jpg" alt="" loading="lazy" onerror="this.remove()"></div><figcaption><b>Halo</b><span>Giffnock</span></figcaption></figure>
+      <figure class="rv"><div class="ph" data-slot="Portrait — crittall screen"><img src="img/work-7.jpg" alt="" loading="lazy" onerror="this.remove()"></div><figcaption><b>Crittall</b><span>Glasgow South</span></figcaption></figure>
     </div>
     <div class="more">
       <p>Over 350 projects on Instagram.</p>
@@ -257,7 +255,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 
 <!-- FULL BLEED -->
 <section class="bleed dark">
-  <div class="ph" data-n="10" data-slot="Full-bleed — signature room, wide"><img src="img/bleed.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+  <div class="ph" data-slot="Full-bleed — signature room, wide"><img src="img/bleed.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
   <div class="veil"><div class="wrap">
     <blockquote>“Every detail considered. Not a single thing out of place.”<cite>— Replace with a real client review</cite></blockquote>
   </div></div>
@@ -270,19 +268,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
     <h2 class="sec-title">Design, supply, <em>install.</em></h2>
     <div class="steps">
       <article class="step rv">
-        <div class="num">i.</div><h3>Design</h3>
+        <h3>Design</h3>
         <p>A free home visit, measured plans and a clear layout. We help you choose tiles, sanitaryware and lighting that work together.</p>
-        <div class="ph" data-n="11" data-slot="Process — plans, samples"><img src="img/step-1.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        <div class="ph" data-slot="Process — plans, samples"><img src="img/step-1.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
       </article>
       <article class="step rv">
-        <div class="num">ii.</div><h3>Supply</h3>
+        <h3>Supply</h3>
         <p>Trade pricing on the brands we trust, ordered and checked before work begins — so nothing holds the job up.</p>
-        <div class="ph" data-n="12" data-slot="Process — materials, tiles"><img src="img/step-2.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        <div class="ph" data-slot="Process — materials, tiles"><img src="img/step-2.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
       </article>
       <article class="step rv">
-        <div class="num">iii.</div><h3>Install</h3>
+        <h3>Install</h3>
         <p>Our own tradespeople, no subcontracting. Tidy, on schedule, and finished to the standard we’d want in our own homes.</p>
-        <div class="ph" data-n="13" data-slot="Process — tiler at work"><img src="img/step-3.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        <div class="ph" data-slot="Process — tiler at work"><img src="img/step-3.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
       </article>
     </div>
   </div>
@@ -305,7 +303,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 <section class="contact" id="contact">
   <div class="wrap">
     <div class="contact-grid">
-      <div class="ph" data-n="14" data-slot="Portrait — finished room"><img src="img/contact.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+      <div class="ph" data-slot="Portrait — finished room"><img src="img/contact.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
       <div>
         <div class="label" style="margin-bottom:20px">Free design visit</div>
         <h2>Let’s plan <em>yours.</em></h2>
