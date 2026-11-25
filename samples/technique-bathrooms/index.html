@@ -114,7 +114,7 @@ section{position:relative}
 .step .num{font-family:var(--display);font-style:italic;font-size:clamp(72px,10vw,160px);line-height:.9;letter-spacing:-.04em;color:var(--accent);-webkit-text-stroke:0}
 .step h3{font-size:clamp(40px,4.6vw,72px);margin:0 0 16px}
 .step p{color:var(--ink-2);max-width:26em}
-.step .ph{aspect-ratio:4/3;margin-top:28px}
+.step .ph{height:clamp(200px,21vw,320px);margin-top:28px}
 
 /* Reviews */
 .reviews{padding:clamp(56px,8vw,120px) 0;background:var(--ink);color:var(--paper)}
@@ -163,6 +163,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
   .cover-grid,.cover-lede,.stand-grid,.contact-grid{grid-template-columns:1fr}
   .cover-grid .a{aspect-ratio:4/5}
   .cover-grid .ph{height:auto;aspect-ratio:4/5}
+  .step .ph{height:auto;aspect-ratio:4/3}
   .spread{grid-template-columns:repeat(6,1fr)}
   .spread figure:nth-child(n){grid-column:span 3}
   .spread figure:nth-child(1),.spread figure:nth-child(4){grid-column:span 6}
@@ -202,8 +203,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
     <h1 class="cover-title">Rooms made<em>to be lived in.</em></h1>
 
     <div class="cover-grid">
-      <figure class="rv"><div class="ph a" data-slot="Cover portrait: marble, brass mirror"><img src="img/cover-1.jpg" alt="Marble bathroom with fluted walnut vanity and brass-framed mirror" loading="eager" fetchpriority="high" onerror="this.remove()"></div></figure>
-      <figure class="rv"><div class="ph b" data-slot="Cover landscape: freestanding bath, white"><img src="img/cover-2.jpg" alt="Bright white bathroom with freestanding bath and large format tiles" loading="eager" onerror="this.remove()"></div></figure>
+      <figure class="rv"><div class="ph a" data-slot="Cover portrait: marble, brass mirror"><img src="img/cover-1.jpg" alt="Dark marble bathroom with a round brass mirror and fluted oak vanity" loading="eager" fetchpriority="high" onerror="this.remove()"></div></figure>
+      <figure class="rv"><div class="ph b" data-slot="Cover landscape: freestanding bath, white"><img src="img/cover-2.jpg" alt="White marble bathroom with a freestanding bath beside a garden window" loading="eager" onerror="this.remove()"></div></figure>
     </div>
 
     <div class="cover-lede">
@@ -242,13 +243,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
     <div class="sec-head label"><span>Selected work</span><span>Recent projects</span></div>
     <h2 class="sec-title">The <em>portfolio</em></h2>
     <div class="spread">
-      <figure class="rv"><div class="ph" data-slot="Wide: freestanding bath, tall windows"><img src="img/work-1.jpg" alt="" loading="lazy" onerror="this.remove()"></div><figcaption><b>The Marble Suite</b><span>Glasgow West End</span></figcaption></figure>
-      <figure class="rv"><div class="ph" data-slot="Portrait: fluted vanity detail"><img src="img/work-2.jpg" alt="" loading="lazy" onerror="this.remove()"></div><figcaption><b>Walnut &amp; Brass</b><span>Bearsden</span></figcaption></figure>
-      <figure class="rv"><div class="ph" data-slot="Portrait: shower"><img src="img/work-3.jpg" alt="" loading="lazy" onerror="this.remove()"></div><figcaption><b>Warm Light</b><span>Newton Mearns</span></figcaption></figure>
-      <figure class="rv"><div class="ph" data-slot="Landscape: green tile, oak floor"><img src="img/work-4.jpg" alt="" loading="lazy" onerror="this.remove()"></div><figcaption><b>Forest Green</b><span>Milngavie</span></figcaption></figure>
-      <figure class="rv"><div class="ph" data-slot="Square: black fittings detail"><img src="img/work-5.jpg" alt="" loading="lazy" onerror="this.remove()"></div><figcaption><b>Matt Black</b><span>Paisley</span></figcaption></figure>
-      <figure class="rv"><div class="ph" data-slot="Portrait: round mirror, backlit"><img src="img/work-6.jpg" alt="" loading="lazy" onerror="this.remove()"></div><figcaption><b>Halo</b><span>Giffnock</span></figcaption></figure>
-      <figure class="rv"><div class="ph" data-slot="Portrait: crittall screen"><img src="img/work-7.jpg" alt="" loading="lazy" onerror="this.remove()"></div><figcaption><b>Crittall</b><span>Glasgow South</span></figcaption></figure>
+      <figure class="rv"><div class="ph" data-slot="Wide: freestanding bath, tall windows"><img src="img/work-1.jpg" alt="Freestanding bath beneath a large picture window with garden views" loading="lazy" onerror="this.remove()"></div><figcaption><b>The Marble Suite</b><span>Glasgow West End</span></figcaption></figure>
+      <figure class="rv"><div class="ph" data-slot="Portrait: fluted vanity detail"><img src="img/work-2.jpg" alt="Curved fluted oak vanity with marble top and brass handles" loading="lazy" onerror="this.remove()"></div><figcaption><b>Walnut &amp; Brass</b><span>Bearsden</span></figcaption></figure>
+      <figure class="rv"><div class="ph" data-slot="Portrait: shower"><img src="img/work-3.jpg" alt="Wall hung oak vanity beside a glass walk in shower with marble tiles" loading="lazy" onerror="this.remove()"></div><figcaption><b>Warm Light</b><span>Newton Mearns</span></figcaption></figure>
+      <figure class="rv"><div class="ph" data-slot="Landscape: green tile, oak floor"><img src="img/work-4.jpg" alt="Deep green tiled bathroom with a green freestanding bath and brass fittings" loading="lazy" onerror="this.remove()"></div><figcaption><b>Forest Green</b><span>Milngavie</span></figcaption></figure>
+      <figure class="rv"><div class="ph" data-slot="Square: black fittings detail"><img src="img/work-5.jpg" alt="Matt black heated towel rail in a stone tiled bathroom" loading="lazy" onerror="this.remove()"></div><figcaption><b>Matt Black</b><span>Paisley</span></figcaption></figure>
+      <figure class="rv"><div class="ph" data-slot="Portrait: round mirror, backlit"><img src="img/work-6.jpg" alt="Round backlit mirror above a stone basin and floating oak vanity" loading="lazy" onerror="this.remove()"></div><figcaption><b>Halo</b><span>Giffnock</span></figcaption></figure>
+      <figure class="rv"><div class="ph" data-slot="Portrait: crittall screen"><img src="img/work-7.jpg" alt="Black framed glass shower enclosure with marble tiles" loading="lazy" onerror="this.remove()"></div><figcaption><b>Crittall</b><span>Glasgow South</span></figcaption></figure>
     </div>
     <div class="more">
       <p>Every project, on Instagram.</p>
@@ -259,7 +260,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 
 <!-- FULL BLEED -->
 <section class="bleed dark">
-  <div class="ph" data-slot="Wide: signature room, wide"><img src="img/bleed.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+  <div class="ph" data-slot="Wide: signature room, wide"><img src="img/bleed.jpg" alt="Tile, stone and brass tap samples arranged on a table" loading="lazy" onerror="this.remove()"></div>
   <div class="veil"><div class="wrap">
     <blockquote>“Every detail considered. Not a single thing out of place.”<cite>Replace with a real client review</cite></blockquote>
   </div></div>
@@ -274,17 +275,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
       <article class="step rv">
         <h3>Design</h3>
         <p>A free home visit, measured plans and a clear layout. We help you choose tiles, sanitaryware and lighting that work together.</p>
-        <div class="ph" data-slot="Process: plans, samples"><img src="img/step-1.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        <div class="ph" data-slot="Process: plans, samples"><img src="img/step-1.jpg" alt="Material board with labelled tiles, taps and countertop" loading="lazy" onerror="this.remove()"></div>
       </article>
       <article class="step rv">
         <h3>Supply</h3>
         <p>Trade pricing on the brands we trust, ordered and checked before work begins, so nothing holds the job up.</p>
-        <div class="ph" data-slot="Process: materials, tiles"><img src="img/step-2.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        <div class="ph" data-slot="Process: materials, tiles"><img src="img/step-2.jpg" alt="Tile and stone samples laid out on a wooden floor" loading="lazy" onerror="this.remove()"></div>
       </article>
       <article class="step rv">
         <h3>Install</h3>
         <p>Our own tradespeople, no subcontracting. Tidy, on schedule, and finished to the standard we’d want in our own homes.</p>
-        <div class="ph" data-slot="Process: tiler at work"><img src="img/step-3.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        <div class="ph" data-slot="Process: tiler at work"><img src="img/step-3.jpg" alt="Tiler fitting marble wall tiles around a bath" loading="lazy" onerror="this.remove()"></div>
       </article>
     </div>
   </div>
@@ -307,7 +308,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 <section class="contact" id="contact">
   <div class="wrap">
     <div class="contact-grid">
-      <div class="ph" data-slot="Portrait: finished room"><img src="img/contact.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+      <div class="ph" data-slot="Portrait: finished room"><img src="img/contact.jpg" alt="Marble double vanity with two tall brass framed mirrors" loading="lazy" onerror="this.remove()"></div>
       <div>
         <div class="label" style="margin-bottom:20px">Free design visit</div>
         <h2>Let’s plan <em>yours.</em></h2>
