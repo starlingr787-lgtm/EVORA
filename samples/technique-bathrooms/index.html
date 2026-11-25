@@ -58,6 +58,8 @@ figcaption b{font-weight:600;color:var(--ink)}
 .btn.solid:hover{background:var(--accent);border-color:var(--accent);color:var(--ink)}
 .mast .btn{padding:11px 18px;white-space:nowrap}
 
+.demo{background:var(--ink);color:var(--paper);text-align:center;padding:8px var(--pad);font-size:11.5px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;line-height:1.2}
+.demo span::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:12px;vertical-align:middle;position:relative;top:-1px}
 /* Cover */
 .cover{padding:clamp(28px,4vw,56px) 0 0}
 .cover-top{display:flex;justify-content:space-between;gap:20px;padding-bottom:18px;border-bottom:1px solid var(--ink)}
@@ -198,6 +200,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 <body>
 
 <header class="mast">
+  <div class="demo" role="note"><span>EVORA Studio Demo</span></div>
   <div class="wrap">
     <a class="logo" href="#top">Technique <i>Bathrooms</i><span></span></a>
     <nav class="label">
@@ -351,7 +354,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 
 <footer>
   <div class="wrap"><div class="giant" aria-hidden="true">Technique<i>.</i></div></div>
-  <div class="wrap"><span>© <span id="y"></span> Technique Bathrooms</span><span>Family run · Est. 1999</span><span><a href="https://www.instagram.com/techniquebathrooms/" target="_blank" rel="noopener">Instagram</a></span></div>
+  <div class="wrap"><span>© <span id="y"></span> Technique Bathrooms</span><span>Demo by EVORA Studio</span><span><a href="https://www.instagram.com/techniquebathrooms/" target="_blank" rel="noopener">Instagram</a></span></div>
 </footer>
 
 <script>
